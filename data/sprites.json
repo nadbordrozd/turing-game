@@ -1,0 +1,461 @@
+{
+	"magicTile" : {
+		"sx" : 1600,
+		"sy" : 50,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 50,
+		"h" : 50
+	},
+	"obstacle" : {
+		"sx" : 1650,
+		"sy" : 50,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 50,
+		"h" : 50
+	},
+	"corner" : {
+		"sx" : 1700,
+		"sy" : 50,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 50,
+		"h" : 50
+	
+	},
+	"deadend" : {
+		"sx" : 1750,
+		"sy" : 50,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 50,
+		"h" : 50
+	
+	},
+	"wall" : {
+		"sx" : 1800,
+		"sy" : 50,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 50,
+		"h" : 50
+	},
+	"tunnel" : {
+		"sx" : 1850,
+		"sy" : 50,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 50,
+		"h" : 50
+	},
+	"emptyOperator" : {
+		"sx" : 1000,
+		"sy" : 300, 
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 50,
+		"h" : 50
+	},
+	"lava": {
+		"tilew": 50, 
+		"tileh": 50,
+		"w": 2000, 
+		"h": 50
+	},
+	"player" : {
+		"sx" : 0,
+		"sy" : 50,
+		"tilew": 50,
+		"tileh": 50,
+		"w" : 2000,
+		"h" : 50
+	},
+	"conveyor" : {
+		"sx" : 0,
+		"sy" : 100,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 1050,
+		"h" : 50
+	},
+	"cwrotator" : {
+		"sx" : 0,
+		"sy" : 150,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 2000,
+		"h" : 100
+	},
+	"ccwrotator" : {
+		"sx" : 0,
+		"sy" : 250,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 2000,
+		"h" : 100
+	},
+	"stepForward" : {
+		"sx" : 0,
+		"sy" : 350,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 2000,
+		"h" : 100
+	},
+	"detector" : {
+		"sx" : 1000,
+		"sy" : 100,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 1000,
+		"h" : 500
+	},
+	"spark" : {
+		"sx" : 0,
+		"sy" : 1050, 
+		"tilew" : 60,
+		"tileh" : 60, 
+		"w" : 1920,
+		"h" : 60
+	},
+	"incrementerRed" : {
+		"sx" : 0,
+		"sy" : 450,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 2000, 
+		"h" : 100
+	},
+	"incrementerBlue" : {
+		"sx" : 0,
+		"sy" : 550,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 2000, 
+		"h" : 100
+	},
+	"incrementerGreen" : {
+		"sx" : 0,
+		"sy" : 950,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 2000, 
+		"h" : 100
+	},
+	"incerementerPurple" : {
+		"sx" : 0,
+		"sy" : 650,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 2000, 
+		"h" : 100
+	},
+	"incrementerYellow" : {
+		"sx" : 0,
+		"sy" : 850,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 2000, 
+		"h" : 100
+	},
+	"incrementerPink" : {
+		"sx" : 0,
+		"sy" : 750,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 2000, 
+		"h" : 100
+	},
+	"decrementerRed" : {
+		"sx" : 1000,
+		"sy" : 500,
+		"tilew" : 50,
+		"tileh" : 50, 
+		"w" : 1000,
+		"h" : 50
+	},
+	"decrementerBlue" : {
+		"sx" : 1000,
+		"sy" : 600,
+		"tilew" : 50,
+		"tileh" : 50, 
+		"w" : 1000,
+		"h" : 50
+	},
+	"decrementerGreen" : {
+		"sx" : 1000,
+		"sy" : 1000,
+		"tilew" : 50,
+		"tileh" : 50, 
+		"w" : 1000,
+		"h" : 50
+	},
+	"decrementerYellow" : {
+		"sx" : 1000,
+		"sy" : 900,
+		"tilew" : 50,
+		"tileh" : 50, 
+		"w" : 2000,
+		"h" : 50
+	},
+	"decrementerPink" : {
+		"sx" : 1000,
+		"sy" : 800,
+		"tilew" : 50,
+		"tileh" : 50, 
+		"w" : 1000,
+		"h" : 50
+	},
+	"decrementerPurple" : {
+		"sx" : 1000,
+		"sy" : 700,
+		"tilew" : 50,
+		"tileh" : 50, 
+		"w" : 1000,
+		"h" : 50
+	},
+	"magicDetector" : {
+		"sx" : 1000,
+		"sy" : 200,
+		"tilew" : 50,
+		"tileh" : 50, 
+		"w" : 1000,
+		"h" : 50
+	},
+	"exitHatch" : {
+		"sx" : 0,
+		"sy" : 1110, 
+		"tilew" : 50,
+		"tileh" : 50, 
+		"w" : 1200,
+		"h" : 50
+	},
+	"fasterButton" : {
+		"sx" : 0,
+		"sy" : 1160,
+		"tilew" : 100, 
+		"tileh" : 100,
+		"w" : 100,
+		"h" : 100
+	},
+	"slowerButton" : {
+		"sx" : 100,
+		"sy" : 1160,
+		"tilew" : 100, 
+		"tileh" : 100,
+		"w" : 100,
+		"h" : 100
+	},
+	"playButton" : {
+		"sx" : 200,
+		"sy" : 1160,
+		"tilew" : 100, 
+		"tileh" : 100,
+		"w" : 100,
+		"h" : 100
+	},
+	"stopButton" : {
+		"sx" : 300,
+		"sy" : 1160,
+		"tilew" : 100, 
+		"tileh" : 100,
+		"w" : 100,
+		"h" : 100
+	},
+	"helpButton" : {
+		"sx" : 400,
+		"sy" : 1160,
+		"tilew" : 100, 
+		"tileh" : 100,
+		"w" : 100,
+		"h" : 100
+	},	
+	"rotateClockwiseButton" : {
+		"sx" : 500,
+		"sy" : 1160,
+		"tilew" : 100, 
+		"tileh" : 100,
+		"w" : 100,
+		"h" : 100
+	},	
+	"rotateCounterClockwiseButton" : {
+		"sx" : 600,
+		"sy" : 1160,
+		"tilew" : 100, 
+		"tileh" : 100,
+		"w" : 100,
+		"h" : 100
+	},	
+	"trashButton" : {
+		"sx" : 900,
+		"sy" : 1160,
+		"tilew" : 100, 
+		"tileh" : 100,
+		"w" : 100,
+		"h" : 100
+	}, 
+	"greenXButton" : {
+		"sx" : 1000,
+		"sy" : 1160,
+		"tilew" : 100, 
+		"tileh" : 100,
+		"w" : 100,
+		"h" : 100
+	}, 
+	"yellowHelpButton" : {
+		"sx" : 1100,
+		"sy" : 1160,
+		"tilew" : 100, 
+		"tileh" : 100,
+		"w" : 100,
+		"h" : 100
+	},
+	"singleStepButton" : {
+		"sx" : 1200,
+		"sy" : 1160,
+		"tilew" : 100, 
+		"tileh" : 100,
+		"w" : 100,
+		"h" : 100
+	},
+	"pauseButton" : {
+		"sx" : 1300,
+		"sy" : 1160,
+		"tilew" : 100, 
+		"tileh" : 100,
+		"w" : 100,
+		"h" : 100
+	},
+	"exitButton" : {
+		"sx" : 700,
+		"sy" : 1160,
+		"tilew" : 100, 
+		"tileh" : 100,
+		"w" : 100,
+		"h" : 100
+	},	
+	"menuButton" : {
+		"sx" : 800,
+		"sy" : 1160,
+		"tilew" : 100, 
+		"tileh" : 100,
+		"w" : 100,
+		"h" : 100
+	},	
+	"electricTrap" : {
+		"sx" : 0,
+		"sy" : 1260,
+		"tilew" : 50, 
+		"tileh" : 50,
+		"w" : 1100,
+		"h" : 50
+	},
+	"coil":{
+		"sx" : 0,
+		"sy" : 1310,
+		"tilew" : 188,
+		"tileh" : 188,
+		"w" : 188,
+		"h" : 188
+	},
+	"coilBW":{
+		"sx" : 188,
+		"sy" : 1310,
+		"tilew" : 188,
+		"tileh" : 188,
+		"w" : 188,
+		"h" : 188
+	},
+	"integratedCircuit":{
+		"sx" : 376,
+		"sy" : 1310,
+		"tilew" : 188,
+		"tileh" : 188,
+		"w" : 188,
+		"h" : 188
+	},
+	"integratedCircuitBW":{
+		"sx" : 564,
+		"sy" : 1310,
+		"tilew" : 188,
+		"tileh" : 188,
+		"w" : 188,
+		"h" : 188
+	},
+	"capacitor":{
+		"sx" : 752,
+		"sy" : 1310,
+		"tilew" : 149,
+		"tileh" : 188,
+		"w" : 149,
+		"h" : 188
+	},
+	"capacitorBW":{
+		"sx" : 901,
+		"sy" : 1310,
+		"tilew" : 149,
+		"tileh" : 188,
+		"w" : 149,
+		"h" : 188
+	}
+	
+	,
+	"coilMini":{
+		"sx" : 1050,
+		"sy" : 1110,
+		"tilew" : 23,
+		"tileh" : 23,
+		"w" : 23,
+		"h" : 23
+	},
+	"coilBWMini":{
+		"sx" : 1072,
+		"sy" : 1110,
+		"tilew" : 23,
+		"tileh" : 23,
+		"w" : 23,
+		"h" : 23
+	},
+	"integratedCircuitMini":{
+		"sx" : 1095,
+		"sy" : 1110,
+		"tilew" : 23,
+		"tileh" : 23,
+		"w" : 23,
+		"h" : 23
+	},
+	"integratedCircuitBWMini":{
+		"sx" : 1116,
+		"sy" : 1110,
+		"tilew" : 23,
+		"tileh" : 23,
+		"w" : 23,
+		"h" : 23
+	},
+	"capacitorMini":{
+		"sx" : 1139,
+		"sy" : 1110,
+		"tilew" : 18,
+		"tileh" : 23,
+		"w" : 149,
+		"h" : 23
+	},
+	"capacitorBWMini":{
+		"sx" : 1158,
+		"sy" : 1110,
+		"tilew" : 18,
+		"tileh" : 23,
+		"w" : 149,
+		"h" : 23
+	},
+	"startTile":{
+		"sx" : 1900,
+		"sy" : 50,
+		"tilew" : 50,
+		"tileh" : 50,
+		"w" : 50,
+		"h" : 50
+	}
+	
+}
