@@ -1,0 +1,476 @@
+{
+  "phosphor-robot-a": {
+    "id": "phosphor-robot-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-22a374ed-bc80-4d34-9037-f5ab47b3a1ad",
+    "submittedAt": "2026-11-01T13:29:46.588Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/explore-phosphor.txt",
+          "text": "Style (exploration concept A, \"Phosphor\"): vector CRT phosphor display art, like an old oscilloscope or vector arcade monitor. Thin bright glowing green lines (#3dff7a) drawn over near-black green-tinted surfaces (#03110a), outlines only with little or no fill, one hue in two or three brightnesses, a faint soft bloom halo around every line. Hazards may glow amber instead of green. Crisp, minimal, geometric."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: the player robot of a programming puzzle game, seen from high top-down, facing east (to the right). A small cute boxy robot drawn as glowing green line art: a rounded square body outline with a near-black fill, two track outlines along its top and bottom sides, one round glowing sensor eye on the right (east) side, a short antenna. Centered, fills about 75% of the canvas, on a transparent background."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": true,
+      "seed": 4101,
+      "outline": "single color outline",
+      "detail": "low detail",
+      "view": "high top-down",
+      "direction": "east",
+      "description": "Style (exploration concept A, \"Phosphor\"): vector CRT phosphor display art, like an old oscilloscope or vector arcade monitor. Thin bright glowing green lines (#3dff7a) drawn over near-black green-tinted surfaces (#03110a), outlines only with little or no fill, one hue in two or three brightnesses, a faint soft bloom halo around every line. Hazards may glow amber instead of green. Crisp, minimal, geometric. Subject: the player robot of a programming puzzle game, seen from high top-down, facing east (to the right). A small cute boxy robot drawn as glowing green line art: a rounded square body outline with a near-black fill, two track outlines along its top and bottom sides, one round glowing sensor eye on the right (east) side, a short antenna. Centered, fills about 75% of the canvas, on a transparent background. Must not include: full colour palette, blue, purple, flat filled cartoon shapes, photo texture, text, letters, numbers, watermark, signature, ground plate, shadow plate, floor, scenery, background tile, multiple robots."
+    },
+    "at": "2026-11-01T13:29:46.589Z",
+    "candidates": [
+      {
+        "file": "phosphor-robot-a-0.png",
+        "sha256": "4d290f21b13af4172fafc178da114587a4bfd198ca7d69056acc989e0db95a62",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  },
+  "phosphor-step-a": {
+    "id": "phosphor-step-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-ccd52e17-8403-4019-a6fc-d83a245366fa",
+    "submittedAt": "2026-11-01T13:30:13.322Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/explore-phosphor.txt",
+          "text": "Style (exploration concept A, \"Phosphor\"): vector CRT phosphor display art, like an old oscilloscope or vector arcade monitor. Thin bright glowing green lines (#3dff7a) drawn over near-black green-tinted surfaces (#03110a), outlines only with little or no fill, one hue in two or three brightnesses, a faint soft bloom halo around every line. Hazards may glow amber instead of green. Crisp, minimal, geometric."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a square instruction floor tile for a programming puzzle game, opaque, filling the whole canvas edge to edge, flat top-down. Near-black tile with a thin glowing green square outline inset two pixels from the edge, and in the centre one bold glowing green arrow pointing right (east), meaning step forward. The arrow is the only symbol, symmetric about the horizontal axis, large and readable when the tile is rotated."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": false,
+      "seed": 4102,
+      "outline": "single color outline",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Style (exploration concept A, \"Phosphor\"): vector CRT phosphor display art, like an old oscilloscope or vector arcade monitor. Thin bright glowing green lines (#3dff7a) drawn over near-black green-tinted surfaces (#03110a), outlines only with little or no fill, one hue in two or three brightnesses, a faint soft bloom halo around every line. Hazards may glow amber instead of green. Crisp, minimal, geometric. Subject: a square instruction floor tile for a programming puzzle game, opaque, filling the whole canvas edge to edge, flat top-down. Near-black tile with a thin glowing green square outline inset two pixels from the edge, and in the centre one bold glowing green arrow pointing right (east), meaning step forward. The arrow is the only symbol, symmetric about the horizontal axis, large and readable when the tile is rotated. Must not include: full colour palette, blue, purple, flat filled cartoon shapes, photo texture, text, letters, numbers, watermark, signature, multiple arrows, double arrow, curved arrow, diagonal arrow, robot, character."
+    },
+    "at": "2026-11-01T13:30:13.323Z",
+    "candidates": [
+      {
+        "file": "phosphor-step-a-0.png",
+        "sha256": "ff15fb2a8b2e1b8c1bad266141682d9edc6d01e9659c51c93789c0cc6a092f62",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  },
+  "phosphor-lava-a": {
+    "id": "phosphor-lava-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-e233303a-4e39-4ff3-942a-d68bed8e5ec8",
+    "submittedAt": "2026-11-01T13:30:34.200Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/explore-phosphor.txt",
+          "text": "Style (exploration concept A, \"Phosphor\"): vector CRT phosphor display art, like an old oscilloscope or vector arcade monitor. Thin bright glowing green lines (#3dff7a) drawn over near-black green-tinted surfaces (#03110a), outlines only with little or no fill, one hue in two or three brightnesses, a faint soft bloom halo around every line. Hazards may glow amber instead of green. Crisp, minimal, geometric."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a seamless tileable lava floor texture for a top-down puzzle game, opaque, filling the whole square edge to edge. Near-black ground covered with glowing amber-orange phosphor wavy contour lines and a few small bubble circles, like molten lava drawn on a vector CRT screen. The pattern continues across all four edges so copies tile without seams; even brightness, no border."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": false,
+      "seed": 4103,
+      "outline": "single color outline",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Style (exploration concept A, \"Phosphor\"): vector CRT phosphor display art, like an old oscilloscope or vector arcade monitor. Thin bright glowing green lines (#3dff7a) drawn over near-black green-tinted surfaces (#03110a), outlines only with little or no fill, one hue in two or three brightnesses, a faint soft bloom halo around every line. Hazards may glow amber instead of green. Crisp, minimal, geometric. Subject: a seamless tileable lava floor texture for a top-down puzzle game, opaque, filling the whole square edge to edge. Near-black ground covered with glowing amber-orange phosphor wavy contour lines and a few small bubble circles, like molten lava drawn on a vector CRT screen. The pattern continues across all four edges so copies tile without seams; even brightness, no border. Must not include: full colour palette, blue, purple, flat filled cartoon shapes, photo texture, text, letters, numbers, watermark, signature, border, frame, grid lines, edge highlight, vignette, bevel, rim, rocks around the edge, character."
+    },
+    "at": "2026-11-01T13:30:34.202Z",
+    "candidates": [
+      {
+        "file": "phosphor-lava-a-0.png",
+        "sha256": "cad60740d13a2357bd015b822a7b9cb0f3e2e6ee8d47b1912504109671b9b8d0",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  },
+  "circuit-robot-a": {
+    "id": "circuit-robot-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-2fe2a208-a6cf-4c26-8d44-f67757d8c87c",
+    "submittedAt": "2026-11-01T13:31:01.610Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/explore-circuit.txt",
+          "text": "Style (exploration concept B, \"Circuit board\"): clean modern flat game art built from printed circuit board materials. Deep navy or dark teal solder-mask surfaces, bright copper and gold traces, round pads and vias, thin white silkscreen marks, crisp simple readable icon shapes, soft even top-down light with subtle bevels and small soft shadows. Limited palette, high contrast, tidy and precise."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: the player robot of a programming puzzle game, seen from high top-down, facing east (to the right). A small cute rounded-square robot whose body is a navy circuit-board chip with gold edge pins and a copper trace pattern, two dark rubber tracks along its top and bottom sides, a bright teal round sensor eye on the right (east) side. Centered, fills about 75% of the canvas, on a transparent background."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": true,
+      "seed": 4201,
+      "outline": "selective outline",
+      "detail": "medium detail",
+      "view": "high top-down",
+      "direction": "east",
+      "description": "Style (exploration concept B, \"Circuit board\"): clean modern flat game art built from printed circuit board materials. Deep navy or dark teal solder-mask surfaces, bright copper and gold traces, round pads and vias, thin white silkscreen marks, crisp simple readable icon shapes, soft even top-down light with subtle bevels and small soft shadows. Limited palette, high contrast, tidy and precise. Subject: the player robot of a programming puzzle game, seen from high top-down, facing east (to the right). A small cute rounded-square robot whose body is a navy circuit-board chip with gold edge pins and a copper trace pattern, two dark rubber tracks along its top and bottom sides, a bright teal round sensor eye on the right (east) side. Centered, fills about 75% of the canvas, on a transparent background. Must not include: photo texture, noise, grunge, rust, neon glow, text, letters, numbers, watermark, signature, ground plate, shadow plate, floor, scenery, background tile, multiple robots."
+    },
+    "at": "2026-11-01T13:31:01.612Z",
+    "candidates": [
+      {
+        "file": "circuit-robot-a-0.png",
+        "sha256": "7abe92aab873aa2840252724e4741b07c1518ed4b5e1731d1574e612629b528d",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  },
+  "circuit-step-a": {
+    "id": "circuit-step-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-95434d6c-8e72-413c-87a6-b30599de1087",
+    "submittedAt": "2026-11-01T13:31:23.175Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/explore-circuit.txt",
+          "text": "Style (exploration concept B, \"Circuit board\"): clean modern flat game art built from printed circuit board materials. Deep navy or dark teal solder-mask surfaces, bright copper and gold traces, round pads and vias, thin white silkscreen marks, crisp simple readable icon shapes, soft even top-down light with subtle bevels and small soft shadows. Limited palette, high contrast, tidy and precise."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a square instruction floor tile for a programming puzzle game, opaque, filling the whole canvas edge to edge, flat top-down. Dark teal solder-mask board tile with four small copper pads in the corners and a subtle bevel, and in the centre one bold thick gold copper arrow pointing right (east), meaning step forward. The arrow is the only symbol, symmetric about the horizontal axis, large and readable when the tile is rotated."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": false,
+      "seed": 4202,
+      "outline": "selective outline",
+      "detail": "medium detail",
+      "view": "high top-down",
+      "description": "Style (exploration concept B, \"Circuit board\"): clean modern flat game art built from printed circuit board materials. Deep navy or dark teal solder-mask surfaces, bright copper and gold traces, round pads and vias, thin white silkscreen marks, crisp simple readable icon shapes, soft even top-down light with subtle bevels and small soft shadows. Limited palette, high contrast, tidy and precise. Subject: a square instruction floor tile for a programming puzzle game, opaque, filling the whole canvas edge to edge, flat top-down. Dark teal solder-mask board tile with four small copper pads in the corners and a subtle bevel, and in the centre one bold thick gold copper arrow pointing right (east), meaning step forward. The arrow is the only symbol, symmetric about the horizontal axis, large and readable when the tile is rotated. Must not include: photo texture, noise, grunge, rust, neon glow, text, letters, numbers, watermark, signature, multiple arrows, double arrow, curved arrow, diagonal arrow, robot, character."
+    },
+    "at": "2026-11-01T13:31:23.177Z",
+    "candidates": [
+      {
+        "file": "circuit-step-a-0.png",
+        "sha256": "8d5e07dc38ad80861286b614796aeec31a58b87e89b04e18de0130ae3768d455",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  },
+  "circuit-lava-a": {
+    "id": "circuit-lava-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-6cae4b47-97d8-4378-b68c-31e2cf02bed8",
+    "submittedAt": "2026-11-01T13:31:51.844Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/explore-circuit.txt",
+          "text": "Style (exploration concept B, \"Circuit board\"): clean modern flat game art built from printed circuit board materials. Deep navy or dark teal solder-mask surfaces, bright copper and gold traces, round pads and vias, thin white silkscreen marks, crisp simple readable icon shapes, soft even top-down light with subtle bevels and small soft shadows. Limited palette, high contrast, tidy and precise."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a seamless tileable lava floor texture for a top-down puzzle game, opaque, filling the whole square edge to edge. Glowing molten solder and copper: bright orange-gold molten metal with darker cooled crust patches and a few bright bubbles, clean flat shapes. The pattern continues across all four edges so copies tile without seams; even brightness, no border."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": false,
+      "seed": 4203,
+      "outline": "selective outline",
+      "detail": "medium detail",
+      "view": "high top-down",
+      "description": "Style (exploration concept B, \"Circuit board\"): clean modern flat game art built from printed circuit board materials. Deep navy or dark teal solder-mask surfaces, bright copper and gold traces, round pads and vias, thin white silkscreen marks, crisp simple readable icon shapes, soft even top-down light with subtle bevels and small soft shadows. Limited palette, high contrast, tidy and precise. Subject: a seamless tileable lava floor texture for a top-down puzzle game, opaque, filling the whole square edge to edge. Glowing molten solder and copper: bright orange-gold molten metal with darker cooled crust patches and a few bright bubbles, clean flat shapes. The pattern continues across all four edges so copies tile without seams; even brightness, no border. Must not include: photo texture, noise, grunge, rust, neon glow, text, letters, numbers, watermark, signature, border, frame, grid lines, edge highlight, vignette, bevel, rim, rocks around the edge, character."
+    },
+    "at": "2026-11-01T13:31:51.845Z",
+    "candidates": [
+      {
+        "file": "circuit-lava-a-0.png",
+        "sha256": "14039e1ad2b11245238d38866b5c2720661bae1cfe09b5a3ba392317be73ac7f",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  },
+  "toybox-robot-a": {
+    "id": "toybox-robot-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-e64dc58b-e000-45a4-be61-16e36e3783c7",
+    "submittedAt": "2026-11-01T13:32:27.624Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/explore-toybox.txt",
+          "text": "Style (exploration concept C, \"Toybox pixel\"): chunky friendly pixel art like a cosy toy box. Bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading lit from the top left, rounded cartoon shapes with a dark outline, cute and readable at a glance, big clear shapes and few details."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: the player robot of a programming puzzle game, seen from high top-down, facing east (to the right). A small cute round-cornered toy robot with a cream and tomato-red body, two chunky grey tracks along its top and bottom sides, a big friendly sky-blue eye visor on the right (east) side, a short antenna with a yellow ball. Centered, fills about 75% of the canvas, on a transparent background."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": true,
+      "seed": 4301,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "high top-down",
+      "direction": "east",
+      "description": "Style (exploration concept C, \"Toybox pixel\"): chunky friendly pixel art like a cosy toy box. Bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading lit from the top left, rounded cartoon shapes with a dark outline, cute and readable at a glance, big clear shapes and few details. Subject: the player robot of a programming puzzle game, seen from high top-down, facing east (to the right). A small cute round-cornered toy robot with a cream and tomato-red body, two chunky grey tracks along its top and bottom sides, a big friendly sky-blue eye visor on the right (east) side, a short antenna with a yellow ball. Centered, fills about 75% of the canvas, on a transparent background. Must not include: neon colours, photo texture, gritty detail, dithering noise, text, letters, numbers, watermark, signature, ground plate, shadow plate, floor, scenery, background tile, multiple robots."
+    },
+    "at": "2026-11-01T13:32:27.626Z",
+    "candidates": [
+      {
+        "file": "toybox-robot-a-0.png",
+        "sha256": "14e222ac4cc97346e9a03b3895413e83316d45e4a7af7c3f6bf9e562f681dafd",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  },
+  "toybox-step-a": {
+    "id": "toybox-step-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-02f4e0dd-c853-4da1-b8e0-e97e70a9b268",
+    "submittedAt": "2026-11-01T13:32:57.311Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/explore-toybox.txt",
+          "text": "Style (exploration concept C, \"Toybox pixel\"): chunky friendly pixel art like a cosy toy box. Bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading lit from the top left, rounded cartoon shapes with a dark outline, cute and readable at a glance, big clear shapes and few details."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a square instruction floor tile for a programming puzzle game, opaque, filling the whole canvas edge to edge, flat top-down. A light sky-blue tile with a soft rounded bevel, and in the centre one chunky tomato-red arrow with a dark outline pointing right (east), meaning step forward. The arrow is the only symbol, symmetric about the horizontal axis, large and readable when the tile is rotated."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": false,
+      "seed": 4302,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Style (exploration concept C, \"Toybox pixel\"): chunky friendly pixel art like a cosy toy box. Bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading lit from the top left, rounded cartoon shapes with a dark outline, cute and readable at a glance, big clear shapes and few details. Subject: a square instruction floor tile for a programming puzzle game, opaque, filling the whole canvas edge to edge, flat top-down. A light sky-blue tile with a soft rounded bevel, and in the centre one chunky tomato-red arrow with a dark outline pointing right (east), meaning step forward. The arrow is the only symbol, symmetric about the horizontal axis, large and readable when the tile is rotated. Must not include: neon colours, photo texture, gritty detail, dithering noise, text, letters, numbers, watermark, signature, multiple arrows, double arrow, curved arrow, diagonal arrow, robot, character."
+    },
+    "at": "2026-11-01T13:32:57.312Z",
+    "candidates": [
+      {
+        "file": "toybox-step-a-0.png",
+        "sha256": "6fb152dedf1ba22ec8b457752dcfc33692cff1afa2f351d52a61633787fd2f21",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  },
+  "toybox-lava-a": {
+    "id": "toybox-lava-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-aca3cc28-ec3f-4bf5-af0d-977b0ab22399",
+    "submittedAt": "2026-11-01T13:33:17.716Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/explore-toybox.txt",
+          "text": "Style (exploration concept C, \"Toybox pixel\"): chunky friendly pixel art like a cosy toy box. Bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading lit from the top left, rounded cartoon shapes with a dark outline, cute and readable at a glance, big clear shapes and few details."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a seamless tileable lava floor texture for a top-down puzzle game, opaque, filling the whole square edge to edge. Cartoon lava: bright orange and red molten lava with a few yellow bubbles and darker red crust cracks, soft simple shapes. The pattern continues across all four edges so copies tile without seams; even brightness, no border."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": false,
+      "seed": 4303,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Style (exploration concept C, \"Toybox pixel\"): chunky friendly pixel art like a cosy toy box. Bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading lit from the top left, rounded cartoon shapes with a dark outline, cute and readable at a glance, big clear shapes and few details. Subject: a seamless tileable lava floor texture for a top-down puzzle game, opaque, filling the whole square edge to edge. Cartoon lava: bright orange and red molten lava with a few yellow bubbles and darker red crust cracks, soft simple shapes. The pattern continues across all four edges so copies tile without seams; even brightness, no border. Must not include: neon colours, photo texture, gritty detail, dithering noise, text, letters, numbers, watermark, signature, border, frame, grid lines, edge highlight, vignette, bevel, rim, rocks around the edge, character."
+    },
+    "at": "2026-11-01T13:33:17.718Z",
+    "candidates": [
+      {
+        "file": "toybox-lava-a-0.png",
+        "sha256": "e84889265c2a62d724fe6168b6e9a96700193e2b4e7be6784696e2ada81779e2",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  },
+  "phosphor-lava-b": {
+    "id": "phosphor-lava-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixflux",
+    "jobId": "sync-69aaa1a9-ff49-454e-a295-b4ee7975f5fb",
+    "submittedAt": "2026-11-01T13:34:19.372Z",
+    "request": {
+      "endpoint": "create-image-pixflux",
+      "layers": [
+        {
+          "source": "fragments/explore-phosphor.txt",
+          "text": "Style (exploration concept A, \"Phosphor\"): vector CRT phosphor display art, like an old oscilloscope or vector arcade monitor. Thin bright glowing green lines (#3dff7a) drawn over near-black green-tinted surfaces (#03110a), outlines only with little or no fill, one hue in two or three brightnesses, a faint soft bloom halo around every line. Hazards may glow amber instead of green. Crisp, minimal, geometric."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a seamless repeating texture swatch cropped from the middle of a huge lava field, seen straight from above, for a top-down puzzle game. Near-black ground covered edge to edge with glowing amber-orange phosphor wavy contour lines and a few small bubble circles, like molten lava drawn on a vector CRT screen. Lines run off all four edges; no edges, corners or frame of its own."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": false,
+      "seed": 4113,
+      "outline": "lineless",
+      "shading": "flat shading",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Style (exploration concept A, \"Phosphor\"): vector CRT phosphor display art, like an old oscilloscope or vector arcade monitor. Thin bright glowing green lines (#3dff7a) drawn over near-black green-tinted surfaces (#03110a), outlines only with little or no fill, one hue in two or three brightnesses, a faint soft bloom halo around every line. Hazards may glow amber instead of green. Crisp, minimal, geometric. Subject: a seamless repeating texture swatch cropped from the middle of a huge lava field, seen straight from above, for a top-down puzzle game. Near-black ground covered edge to edge with glowing amber-orange phosphor wavy contour lines and a few small bubble circles, like molten lava drawn on a vector CRT screen. Lines run off all four edges; no edges, corners or frame of its own. Must not include: full colour palette, blue, purple, flat filled cartoon shapes, photo texture, text, letters, numbers, watermark, signature, border, frame, grid lines, edge highlight, vignette, bevel, rim, rocks around the edge, character."
+    },
+    "at": "2026-11-01T13:34:19.375Z",
+    "candidates": [
+      {
+        "file": "phosphor-lava-b-0.png",
+        "sha256": "5a8100a9faaec650774aa6b21843fe47f76b7d66d2fb33bfac876f6d1d7c5bce",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  },
+  "circuit-lava-b": {
+    "id": "circuit-lava-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixflux",
+    "jobId": "sync-de3dba0f-dea3-4927-baaa-60da1344ff0c",
+    "submittedAt": "2026-11-01T13:34:50.862Z",
+    "request": {
+      "endpoint": "create-image-pixflux",
+      "layers": [
+        {
+          "source": "fragments/explore-circuit.txt",
+          "text": "Style (exploration concept B, \"Circuit board\"): clean modern flat game art built from printed circuit board materials. Deep navy or dark teal solder-mask surfaces, bright copper and gold traces, round pads and vias, thin white silkscreen marks, crisp simple readable icon shapes, soft even top-down light with subtle bevels and small soft shadows. Limited palette, high contrast, tidy and precise."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a seamless repeating texture swatch cropped from the middle of a huge pool of molten solder, seen straight from above, for a top-down puzzle game. Bright orange-gold molten copper with a few darker cooled crust islands and small bright bubbles, clean flat shapes. Shapes run off all four edges; no chips, no traces, no edges, corners or frame of its own."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": false,
+      "seed": 4213,
+      "outline": "lineless",
+      "shading": "basic shading",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Style (exploration concept B, \"Circuit board\"): clean modern flat game art built from printed circuit board materials. Deep navy or dark teal solder-mask surfaces, bright copper and gold traces, round pads and vias, thin white silkscreen marks, crisp simple readable icon shapes, soft even top-down light with subtle bevels and small soft shadows. Limited palette, high contrast, tidy and precise. Subject: a seamless repeating texture swatch cropped from the middle of a huge pool of molten solder, seen straight from above, for a top-down puzzle game. Bright orange-gold molten copper with a few darker cooled crust islands and small bright bubbles, clean flat shapes. Shapes run off all four edges; no chips, no traces, no edges, corners or frame of its own. Must not include: photo texture, noise, grunge, rust, neon glow, text, letters, numbers, watermark, signature, border, frame, grid lines, edge highlight, vignette, bevel, rim, rocks around the edge, character."
+    },
+    "at": "2026-11-01T13:34:50.863Z",
+    "candidates": [
+      {
+        "file": "circuit-lava-b-0.png",
+        "sha256": "611df3b29cefbeda55d63d34a2b82beba6cb59b6672c6ed832323aca8d3e142f",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  },
+  "toybox-lava-b": {
+    "id": "toybox-lava-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixflux",
+    "jobId": "sync-25c763b2-e8fc-4758-a2ea-38a45707cef0",
+    "submittedAt": "2026-11-01T13:35:02.659Z",
+    "request": {
+      "endpoint": "create-image-pixflux",
+      "layers": [
+        {
+          "source": "fragments/explore-toybox.txt",
+          "text": "Style (exploration concept C, \"Toybox pixel\"): chunky friendly pixel art like a cosy toy box. Bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading lit from the top left, rounded cartoon shapes with a dark outline, cute and readable at a glance, big clear shapes and few details."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a seamless repeating texture swatch cropped from the middle of a huge cartoon lava lake, seen straight from above, for a top-down puzzle game. Bright orange molten lava with a few yellow bubbles and darker red crust cracks, soft simple shapes. Shapes run off all four edges; no stones, no edges, corners or frame of its own."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": false,
+      "seed": 4313,
+      "outline": "lineless",
+      "shading": "basic shading",
+      "detail": "low detail",
+      "view": "high top-down",
+      "description": "Style (exploration concept C, \"Toybox pixel\"): chunky friendly pixel art like a cosy toy box. Bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading lit from the top left, rounded cartoon shapes with a dark outline, cute and readable at a glance, big clear shapes and few details. Subject: a seamless repeating texture swatch cropped from the middle of a huge cartoon lava lake, seen straight from above, for a top-down puzzle game. Bright orange molten lava with a few yellow bubbles and darker red crust cracks, soft simple shapes. Shapes run off all four edges; no stones, no edges, corners or frame of its own. Must not include: neon colours, photo texture, gritty detail, dithering noise, text, letters, numbers, watermark, signature, border, frame, grid lines, edge highlight, vignette, bevel, rim, rocks around the edge, character."
+    },
+    "at": "2026-11-01T13:35:02.662Z",
+    "candidates": [
+      {
+        "file": "toybox-lava-b-0.png",
+        "sha256": "7ece3bbea664aea9217c2a91a01610fcb6a07f5595fc4739073b583640f9ac8d",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  }
+}

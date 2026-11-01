@@ -1,0 +1,62 @@
+{
+  "phosphor-robot-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Concept A representative: glowing green line-art box robot, eye on the east side, reads at 48 on light and dark; came out isometric, not top-down",
+    "at": "2026-11-01T13:35:59.380Z"
+  },
+  "phosphor-step-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Arrow centre is on-concept and reads in all 4 rotations, but the surround is rainbow circuit noise (blue/purple), off the monochrome phosphor concept",
+    "at": "2026-11-01T13:35:59.423Z"
+  },
+  "phosphor-lava-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Amber contour lines are on-concept but a green rim and grey bevel frame the tile; 3x3 repeat shows seams",
+    "at": "2026-11-01T13:35:59.466Z"
+  },
+  "phosphor-lava-b#0": {
+    "verdict": "REJECTED",
+    "notes": "Pixflux reseed tiles seamlessly but is almost entirely black with dim speckle; no readable lava",
+    "at": "2026-11-01T13:35:59.511Z"
+  },
+  "circuit-robot-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Isometric navy cube with orange speckle noise and glyph-like marks; muddy at 48, not the crisp PCB icon look",
+    "at": "2026-11-01T13:35:59.645Z"
+  },
+  "circuit-step-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Gold arrow is crisp and reads in all rotations, but the board sits on a grey margin (not edge to edge) and is covered in speckle noise",
+    "at": "2026-11-01T13:35:59.688Z"
+  },
+  "circuit-lava-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Draws a circuit chip framed by lava, not a lava floor; framed and not seamless",
+    "at": "2026-11-01T13:35:59.730Z"
+  },
+  "circuit-lava-b#0": {
+    "verdict": "REJECTED",
+    "notes": "Pixflux reseed tiles seamlessly but is a teal PCB pattern with no lava (off-subject); possible circuit-floor reference",
+    "at": "2026-11-01T13:35:59.774Z"
+  },
+  "toybox-robot-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Concept C representative: cute cream/red toy robot, clear silhouette, antenna, blue visor on the east-facing side; three-quarter rather than top-down view",
+    "at": "2026-11-01T13:35:59.898Z"
+  },
+  "toybox-step-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Concept C representative: chunky red arrow on a blue panel, reads at native size in all 4 rotations; wood corners repeat cleanly; baked top-left highlight rotates with the tile",
+    "at": "2026-11-01T13:35:59.941Z"
+  },
+  "toybox-lava-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Dark brick frame around the edge and stray blue-grey blobs; not seamless",
+    "at": "2026-11-01T13:35:59.986Z"
+  },
+  "toybox-lava-b#0": {
+    "verdict": "REJECTED",
+    "notes": "Best lava look of the set (chunky orange pool), but rock edges on two sides break the 3x3 repeat; not a seamless tile",
+    "at": "2026-11-01T13:36:00.028Z"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "set": "explore-v1",
+  "bead": "tg-vy4.1",
+  "class": "tiles",
+  "exploration": true,
+  "_doc": "Art-direction exploration (not canonical). Three concepts (A phosphor, B circuit, C toybox) x the same three subjects (robot, step-forward instruction tile, lava terrain tile) at 48x48. Concept style text lives in art/fragments/explore-<concept>.txt, not style.txt. See docs/art/PIPELINE.md. Recipes are never edited after generation: add a new id (new seed) instead.",
+  "shared": {
+    "robotOpts": { "outline": "single color outline", "detail": "low detail", "view": "high top-down", "direction": "east" },
+    "tileOpts": { "outline": "single color outline", "detail": "low detail", "view": "high top-down" },
+    "toyRobotOpts": { "outline": "single color black outline", "detail": "low detail", "view": "high top-down", "direction": "east" },
+    "toyTileOpts": { "outline": "single color black outline", "detail": "low detail", "view": "high top-down" },
+    "circuitRobotOpts": { "outline": "selective outline", "detail": "medium detail", "view": "high top-down", "direction": "east" },
+    "circuitTileOpts": { "outline": "selective outline", "detail": "medium detail", "view": "high top-down" },
+    "robotNeg": "ground plate, shadow plate, floor, scenery, background tile, multiple robots",
+    "stepNeg": "multiple arrows, double arrow, curved arrow, diagonal arrow, robot, character",
+    "lavaNeg": "border, frame, grid lines, edge highlight, vignette, bevel, rim, rocks around the edge, character"
+  },
+  "defaults": {
+    "endpoint": "create-image-pixen",
+    "noBackground": true,
+    "negative": "text, letters, numbers, watermark, signature"
+  },
+  "recipes": [
+    {
+      "id": "phosphor-robot-a", "concept": "A-PHOSPHOR / robot", "width": 48, "height": 48, "seed": 4101,
+      "fragments": ["explore-phosphor"], "options": "@robotOpts", "negative": "@robotNeg",
+      "subject": "Subject: the player robot of a programming puzzle game, seen from high top-down, facing east (to the right). A small cute boxy robot drawn as glowing green line art: a rounded square body outline with a near-black fill, two track outlines along its top and bottom sides, one round glowing sensor eye on the right (east) side, a short antenna. Centered, fills about 75% of the canvas, on a transparent background."
+    },
+    {
+      "id": "phosphor-step-a", "concept": "A-PHOSPHOR / step-forward tile", "width": 48, "height": 48, "seed": 4102, "noBackground": false,
+      "fragments": ["explore-phosphor"], "options": "@tileOpts", "negative": "@stepNeg",
+      "subject": "Subject: a square instruction floor tile for a programming puzzle game, opaque, filling the whole canvas edge to edge, flat top-down. Near-black tile with a thin glowing green square outline inset two pixels from the edge, and in the centre one bold glowing green arrow pointing right (east), meaning step forward. The arrow is the only symbol, symmetric about the horizontal axis, large and readable when the tile is rotated."
+    },
+    {
+      "id": "phosphor-lava-a", "concept": "A-PHOSPHOR / lava tile", "width": 48, "height": 48, "seed": 4103, "noBackground": false,
+      "fragments": ["explore-phosphor"], "options": "@tileOpts", "negative": "@lavaNeg",
+      "subject": "Subject: a seamless tileable lava floor texture for a top-down puzzle game, opaque, filling the whole square edge to edge. Near-black ground covered with glowing amber-orange phosphor wavy contour lines and a few small bubble circles, like molten lava drawn on a vector CRT screen. The pattern continues across all four edges so copies tile without seams; even brightness, no border."
+    },
+    {
+      "id": "circuit-robot-a", "concept": "B-CIRCUIT / robot", "width": 48, "height": 48, "seed": 4201,
+      "fragments": ["explore-circuit"], "options": "@circuitRobotOpts", "negative": "@robotNeg",
+      "subject": "Subject: the player robot of a programming puzzle game, seen from high top-down, facing east (to the right). A small cute rounded-square robot whose body is a navy circuit-board chip with gold edge pins and a copper trace pattern, two dark rubber tracks along its top and bottom sides, a bright teal round sensor eye on the right (east) side. Centered, fills about 75% of the canvas, on a transparent background."
+    },
+    {
+      "id": "circuit-step-a", "concept": "B-CIRCUIT / step-forward tile", "width": 48, "height": 48, "seed": 4202, "noBackground": false,
+      "fragments": ["explore-circuit"], "options": "@circuitTileOpts", "negative": "@stepNeg",
+      "subject": "Subject: a square instruction floor tile for a programming puzzle game, opaque, filling the whole canvas edge to edge, flat top-down. Dark teal solder-mask board tile with four small copper pads in the corners and a subtle bevel, and in the centre one bold thick gold copper arrow pointing right (east), meaning step forward. The arrow is the only symbol, symmetric about the horizontal axis, large and readable when the tile is rotated."
+    },
+    {
+      "id": "circuit-lava-a", "concept": "B-CIRCUIT / lava tile", "width": 48, "height": 48, "seed": 4203, "noBackground": false,
+      "fragments": ["explore-circuit"], "options": "@circuitTileOpts", "negative": "@lavaNeg",
+      "subject": "Subject: a seamless tileable lava floor texture for a top-down puzzle game, opaque, filling the whole square edge to edge. Glowing molten solder and copper: bright orange-gold molten metal with darker cooled crust patches and a few bright bubbles, clean flat shapes. The pattern continues across all four edges so copies tile without seams; even brightness, no border."
+    },
+    {
+      "id": "toybox-robot-a", "concept": "C-TOYBOX / robot", "width": 48, "height": 48, "seed": 4301,
+      "fragments": ["explore-toybox"], "options": "@toyRobotOpts", "negative": "@robotNeg",
+      "subject": "Subject: the player robot of a programming puzzle game, seen from high top-down, facing east (to the right). A small cute round-cornered toy robot with a cream and tomato-red body, two chunky grey tracks along its top and bottom sides, a big friendly sky-blue eye visor on the right (east) side, a short antenna with a yellow ball. Centered, fills about 75% of the canvas, on a transparent background."
+    },
+    {
+      "id": "toybox-step-a", "concept": "C-TOYBOX / step-forward tile", "width": 48, "height": 48, "seed": 4302, "noBackground": false,
+      "fragments": ["explore-toybox"], "options": "@toyTileOpts", "negative": "@stepNeg",
+      "subject": "Subject: a square instruction floor tile for a programming puzzle game, opaque, filling the whole canvas edge to edge, flat top-down. A light sky-blue tile with a soft rounded bevel, and in the centre one chunky tomato-red arrow with a dark outline pointing right (east), meaning step forward. The arrow is the only symbol, symmetric about the horizontal axis, large and readable when the tile is rotated."
+    },
+    {
+      "id": "toybox-lava-a", "concept": "C-TOYBOX / lava tile", "width": 48, "height": 48, "seed": 4303, "noBackground": false,
+      "fragments": ["explore-toybox"], "options": "@toyTileOpts", "negative": "@lavaNeg",
+      "subject": "Subject: a seamless tileable lava floor texture for a top-down puzzle game, opaque, filling the whole square edge to edge. Cartoon lava: bright orange and red molten lava with a few yellow bubbles and darker red crust cracks, soft simple shapes. The pattern continues across all four edges so copies tile without seams; even brightness, no border."
+    },
+    {
+      "id": "phosphor-lava-b", "concept": "A-PHOSPHOR / lava tile (reseed: pixflux, all pixen lava takes came back framed)", "endpoint": "create-image-pixflux", "width": 48, "height": 48, "seed": 4113, "noBackground": false,
+      "fragments": ["explore-phosphor"], "options": { "outline": "lineless", "shading": "flat shading", "detail": "low detail", "view": "high top-down" }, "negative": "@lavaNeg",
+      "subject": "Subject: a seamless repeating texture swatch cropped from the middle of a huge lava field, seen straight from above, for a top-down puzzle game. Near-black ground covered edge to edge with glowing amber-orange phosphor wavy contour lines and a few small bubble circles, like molten lava drawn on a vector CRT screen. Lines run off all four edges; no edges, corners or frame of its own."
+    },
+    {
+      "id": "circuit-lava-b", "concept": "B-CIRCUIT / lava tile (reseed: pixflux, all pixen lava takes came back framed)", "endpoint": "create-image-pixflux", "width": 48, "height": 48, "seed": 4213, "noBackground": false,
+      "fragments": ["explore-circuit"], "options": { "outline": "lineless", "shading": "basic shading", "detail": "low detail", "view": "high top-down" }, "negative": "@lavaNeg",
+      "subject": "Subject: a seamless repeating texture swatch cropped from the middle of a huge pool of molten solder, seen straight from above, for a top-down puzzle game. Bright orange-gold molten copper with a few darker cooled crust islands and small bright bubbles, clean flat shapes. Shapes run off all four edges; no chips, no traces, no edges, corners or frame of its own."
+    },
+    {
+      "id": "toybox-lava-b", "concept": "C-TOYBOX / lava tile (reseed: pixflux, all pixen lava takes came back framed)", "endpoint": "create-image-pixflux", "width": 48, "height": 48, "seed": 4313, "noBackground": false,
+      "fragments": ["explore-toybox"], "options": { "outline": "lineless", "shading": "basic shading", "detail": "low detail", "view": "high top-down" }, "negative": "@lavaNeg",
+      "subject": "Subject: a seamless repeating texture swatch cropped from the middle of a huge cartoon lava lake, seen straight from above, for a top-down puzzle game. Bright orange molten lava with a few yellow bubbles and darker red crust cracks, soft simple shapes. Shapes run off all four edges; no stones, no edges, corners or frame of its own."
+    }
+  ],
+  "outputs": []
+}
