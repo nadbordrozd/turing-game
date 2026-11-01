@@ -103,9 +103,10 @@ bead's reviewed scope; never include unrelated user changes.
 ### Tracker
 
 Beads (`bd`) holds all durable task state: no markdown TODO lists, no ad hoc
-memory files (`bd remember` for durable notes). The tracker is local (no Dolt remote yet); rerun /studio after adding a git remote to wire sync. The
-orchestrator alone claims, closes, changes dependencies and syncs
-(`bd dolt pull` at session start, `bd dolt push` after tracker changes).
+memory files (`bd remember` for durable notes). The tracker is deliberately local: it has no Dolt
+remote, so there is nothing to pull or push. Do not add one or rerun /studio
+without `--no-beads` (that would wire sync to GitHub) unless the user asks.
+The orchestrator alone claims, closes and changes dependencies.
 Never force-push the tracker; on a conflict, stop and surface it.
 
 ### Assets
