@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Turing UI comp B: Toybox desk</title>
+<meta name="viewport" content="width=1024">
+<style>
+  :root {
+    --ink: #2a2335;        /* tile outline colour */
+    --cream: #fff4dc;
+    --cream-2: #f6e3bd;
+    --tomato: #ec5b45;
+    --tomato-d: #b83a2c;
+    --sky: #5ec4ee;
+    --sky-d: #2d86b5;
+    --sun: #f6c445;
+    --sun-d: #d89a2b;
+    --mint: #a3d9b1;
+    --mint-d: #5fae7b;
+    --desk: #e6bf86;
+    --round: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+    --mono: "SF Mono", Menlo, Consolas, monospace;
+    --lift: 0 5px 0 var(--ink);
+    --soft: 0 10px 18px rgba(90, 50, 10, 0.22);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #000; }
+  #screen {
+    position: relative; width: 1024px; height: 768px; overflow: hidden; color: var(--ink);
+    font-family: var(--round);
+    background:
+      radial-gradient(ellipse at 50% 35%, rgba(255, 240, 210, 0.55), rgba(255, 240, 210, 0) 70%),
+      repeating-linear-gradient(0deg, rgba(120, 70, 20, 0) 0 125px, rgba(120, 70, 20, 0.16) 125px 128px),
+      repeating-linear-gradient(0deg, rgba(150, 95, 40, 0.05) 0 3px, rgba(150, 95, 40, 0) 3px 9px),
+      var(--desk);
+  }
+  canvas { display: block; }
+  .card {
+    position: absolute; background: var(--cream); border: 3px solid var(--ink); border-radius: 16px;
+    box-shadow: 0 5px 0 rgba(42, 35, 53, 0.9), var(--soft);
+  }
+  .tag {
+    position: absolute; top: -15px; left: 14px; padding: 5px 10px 4px; border: 3px solid var(--ink); border-radius: 10px;
+    background: var(--sun); box-shadow: 0 3px 0 var(--ink);
+  }
+  .tag.sky { background: var(--sky); }
+  .tag.tomato { background: var(--tomato); }
+  .tag.mint { background: var(--mint); }
+  .note { position: absolute; font: 10px var(--mono); color: rgba(42, 35, 53, 0.55); }
+
+  /* buttons */
+  .btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    border: 3px solid var(--ink); border-radius: 14px; background: var(--cream);
+    box-shadow: var(--lift); color: var(--ink);
+  }
+  .btn.sq { width: 58px; height: 58px; }
+  .btn.play { width: 150px; height: 70px; border-radius: 22px; background: var(--tomato); color: var(--cream); box-shadow: 0 6px 0 var(--ink), 0 10px 16px rgba(184, 58, 44, 0.35); }
+  .btn.sky { background: var(--sky); }
+  .btn.off { opacity: 0.45; }
+
+  /* header */
+  .hdr { left: 18px; top: 16px; width: 988px; height: 120px; }
+  .badge {
+    position: absolute; left: 16px; top: 16px; width: 68px; height: 68px; border-radius: 50%;
+    background: var(--sun); border: 3px solid var(--ink); box-shadow: inset 0 -6px 0 var(--sun-d);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .badge-cap { position: absolute; left: 14px; top: 90px; width: 72px; text-align: center; font: 700 10px var(--round); letter-spacing: 0.08em; color: var(--tomato-d); }
+  .crumb { position: absolute; left: 102px; top: 16px; color: var(--tomato-d); }
+  .title { position: absolute; left: 102px; top: 34px; }
+  .msg { position: absolute; left: 102px; top: 70px; width: 640px; font-size: 14.5px; line-height: 19px; font-weight: 600; color: #4a4058; }
+  .sys { position: absolute; right: 16px; top: 22px; display: flex; gap: 12px; }
+  .sys .btn { width: 88px; height: 74px; flex-direction: column; gap: 6px; border-radius: 18px; }
+
+  /* tile tray */
+  .tray { left: 18px; top: 158px; width: 128px; height: 454px; background: var(--sun); border-radius: 18px; }
+  .tray::before { content: ""; position: absolute; inset: 8px; border-radius: 12px; background: rgba(216, 154, 43, 0.35); box-shadow: inset 0 4px 0 rgba(42,35,53,0.18); }
+  .pal { position: absolute; left: 11px; top: 24px; display: grid; grid-template-columns: 50px 50px; column-gap: 0; row-gap: 2px; }
+  .pal figure { margin: 0 0 0 0; padding: 0 0 0 0; text-align: center; width: 50px; }
+  .pal .slot { width: 50px; height: 50px; border-radius: 6px; overflow: hidden; outline: 3px solid var(--ink); box-shadow: 0 5px 0 var(--ink); margin: 0 auto; }
+  .pal figure:nth-child(odd) { margin-left: 0; }
+  .pal figure:nth-child(even) { margin-left: 6px; }
+  .pal figcaption { font: 700 11px/18px var(--round); margin-top: 4px; white-space: nowrap; }
+  .pal figure.old figcaption::after { content: "old art"; display: block; margin-top: -5px; font: 9px/11px var(--mono); color: rgba(42,35,53,0.6); }
+  .bin {
+    position: absolute; left: 14px; right: 14px; bottom: 14px; height: 100px; border-radius: 14px;
+    background: var(--cream); border: 3px dashed var(--ink);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  }
+  .bin small { font: 600 10px/12px var(--round); text-align: center; color: #6a5f74; }
+
+  /* board play mat */
+  .mat { left: 162px; top: 158px; width: 482px; height: 454px; background: var(--sky); border-radius: 22px; }
+  .mat .inner { position: absolute; left: 22px; top: 8px; border: 3px solid var(--ink); border-radius: 6px; overflow: hidden; box-shadow: 0 0 0 5px rgba(255,255,255,0.35); }
+  .flag {
+    position: absolute; left: 2px; top: 12px; width: 22px; height: 50px; background: var(--tomato);
+    border: 3px solid var(--ink); border-right: 0; border-radius: 10px 0 0 10px;
+    display: flex; align-items: center; justify-content: center; z-index: 2;
+  }
+  .startcell { position: absolute; left: 25px; top: 11px; width: 54px; height: 54px; border: 3px solid var(--tomato); border-radius: 6px; z-index: 2; box-shadow: 0 0 0 2px var(--cream); }
+
+  /* transport */
+  .deck { left: 18px; top: 632px; width: 626px; height: 116px; background: var(--cream); }
+  .deck .row { position: absolute; left: 18px; right: 18px; top: 20px; display: flex; align-items: center; gap: 12px; }
+  .deck .sep { flex: 1; }
+  .speed { display: flex; align-items: center; gap: 8px; }
+  .pill { height: 50px; min-width: 64px; padding: 0 12px; border-radius: 25px; border: 3px solid var(--ink); background: var(--sun); display: flex; align-items: center; justify-content: center; box-shadow: inset 0 -5px 0 var(--sun-d); }
+  .speed-cap { position: absolute; right: 64px; bottom: 6px; font: 700 10px var(--round); letter-spacing: 0.08em; color: #6a5f74; }
+
+  /* world */
+  .cell { left: 662px; top: 158px; width: 344px; height: 372px; background: var(--tomato); border-radius: 22px; }
+  .cell .win { position: absolute; left: 14px; top: 20px; width: 310px; height: 310px; border-radius: 10px; border: 3px solid var(--ink);
+    background: #f7e7c6; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .cell .w { border-radius: 4px; overflow: hidden; }
+  .cell .note { left: 18px; bottom: 6px; color: rgba(255, 244, 220, 0.9); }
+
+  /* registers */
+  .regs { left: 662px; top: 552px; width: 132px; height: 196px; }
+  .regs .tag { left: 10px; }
+  .reg { position: absolute; left: 50%; top: 34px; transform: translateX(-50%); width: 78px; text-align: center; }
+  .reg .chip { width: 78px; height: 30px; border: 3px solid var(--ink); border-bottom: 0; border-radius: 10px 10px 0 0; background: var(--tomato); display: flex; align-items: center; justify-content: center; gap: 6px; }
+  .reg .lcd { width: 78px; height: 64px; border: 3px solid var(--ink); border-radius: 0 0 10px 10px; background: #2a2335; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 0 3px #3b3349; }
+  .regs .cap { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font: 600 10px/12px var(--round); color: #6a5f74; }
+
+  /* score */
+  .score { left: 808px; top: 552px; width: 198px; height: 196px; }
+  .sum { position: absolute; left: 14px; right: 14px; top: 32px; font: 800 14px var(--round); display: grid; grid-template-columns: 1fr auto; row-gap: 2px; }
+  .sum .tot { border-top: 3px dotted rgba(42,35,53,0.35); padding-top: 3px; margin-top: 2px; font-size: 18px; }
+  .goals { position: absolute; left: 10px; right: 10px; bottom: 12px; display: flex; justify-content: space-between; }
+  .goal { width: 54px; height: 74px; border-radius: 12px; border: 3px solid var(--ink); background: var(--mint); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 3px 0 var(--ink); }
+  .goal img { width: 34px; height: 34px; object-fit: contain; }
+  .goal span { font: 800 10px var(--round); }
+  .goal.off { background: var(--cream-2); border-style: dashed; box-shadow: none; }
+  .goal.off img { filter: grayscale(1); opacity: 0.45; }
+</style>
+</head>
+<body>
+<div id="screen">
+
+  <!-- header card -->
+  <section class="card hdr">
+    <div class="badge"><span data-px="5">3</span></div>
+    <div class="crumb" data-px="2">Tutorial track</div>
+    <div class="title" data-px="4">De revolutionibus</div>
+    <div class="msg">This simple robot can't move sideways. To move one tile to the left, it will have to first turn left and then step forward. Place turn and step instructions on the board in the right order.</div>
+    <nav class="sys">
+      <div class="btn sky"><span data-icon="help" data-scale="3"></span><span data-px="2">Help</span></div>
+      <div class="btn"><span data-icon="levels" data-scale="3"></span><span data-px="2">Levels</span></div>
+    </nav>
+  </section>
+
+  <!-- tile tray -->
+  <section class="card tray">
+    <div class="tag mint" style="z-index:1"><span data-px="2">Tiles</span></div>
+    <div class="pal">
+      <figure><div class="slot" data-tile="step 50"></div><figcaption>step</figcaption></figure>
+      <figure><div class="slot" data-tile="conveyor 50"></div><figcaption>belt</figcaption></figure>
+      <figure><div class="slot" data-tile="cw 50"></div><figcaption>turn R</figcaption></figure>
+      <figure><div class="slot" data-tile="ccw 50"></div><figcaption>turn L</figcaption></figure>
+      <figure class="old"><div class="slot" data-tile="incRed 50"></div><figcaption>red +1</figcaption></figure>
+      <figure class="old"><div class="slot" data-tile="decRed 50"></div><figcaption>red &minus;1</figcaption></figure>
+    </div>
+    <div class="bin">
+      <span data-icon="trash" data-scale="3"></span>
+      <span data-px="2">Trash</span>
+      <small>drop a tile here<br>tap: clear board</small>
+    </div>
+  </section>
+
+  <!-- play mat -->
+  <section class="card mat">
+    <div class="flag" data-icon="start" data-scale="2" data-color="#fff4dc"></div>
+    <div class="startcell"></div>
+    <div class="inner"><div id="board"></div></div>
+  </section>
+
+  <!-- transport -->
+  <section class="card deck">
+    <div class="row">
+      <div class="btn play"><span data-icon="play" data-scale="3" data-color="#fff4dc"></span><span data-px="3" data-color="#fff4dc">Run</span></div>
+      <div class="btn sq off"><span data-icon="pause" data-scale="3"></span></div>
+      <div class="btn sq"><span data-icon="step" data-scale="3"></span></div>
+      <div class="btn sq"><span data-icon="stop" data-scale="2"></span></div>
+      <div class="sep"></div>
+      <div class="speed">
+        <div class="btn sq sky"><span data-icon="slower" data-scale="3"></span></div>
+        <div class="pill"><span data-px="3">x1</span></div>
+        <div class="btn sq sky"><span data-icon="faster" data-scale="3"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- cell -->
+  <section class="card cell">
+    <div class="tag" style="z-index:1"><span data-px="2">Robot cell</span></div>
+    <div class="win"><div class="w" id="world"></div></div>
+    <div class="note">terrain: old art &middot; window fits 11x11 @ 28px</div>
+  </section>
+
+  <section class="card regs">
+    <div class="tag tomato"><span data-px="2">Counter</span></div>
+    <div class="reg">
+      <div class="chip"><span data-px="2" data-color="#fff4dc">red</span></div>
+      <div class="lcd"><span data-px="5" data-color="#ff7a63">0</span></div>
+    </div>
+    <div class="cap">one dial per<br>counter colour</div>
+  </section>
+
+  <section class="card score">
+    <div class="tag sky"><span data-px="2">Last run</span></div>
+    <div class="note" style="right:12px;top:16px">icons: old art</div>
+    <div class="sum">
+      <span>tiles</span><span>6</span>
+      <span>steps</span><span>6</span>
+      <span class="tot">total</span><span class="tot">12</span>
+    </div>
+    <div class="goals">
+      <div class="goal"><img src="../../../images/capacitor.png" alt=""><span>&lt;16</span></div>
+      <div class="goal"><img src="../../../images/integratedcircuit.png" alt=""><span>&lt;13</span></div>
+      <div class="goal off"><img src="../../../images/coil.png" alt=""><span>=8</span></div>
+    </div>
+  </section>
+</div>
+<script src="comp.js"></script>
+<script>
+  Comp.board(document.getElementById("board"), 8, 54, [
+    [0, 0, "step", "E"], [1, 0, "cw", "E"], [2, 0, "step", "E"], [3, 0, "conveyor", "S"],
+    [3, 1, "ccw", "S"], [3, 2, "step", "S"],
+  ]);
+  Comp.world(document.getElementById("world"), [".R.", "..#", "H##"], 100);
+  Comp.render(document);
+</script>
+</body>
+</html>

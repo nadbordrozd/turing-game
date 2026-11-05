@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Turing UI comp: Level selector</title>
+<meta name="viewport" content="width=1024">
+<style>
+  :root {
+    --ph: #4be98a;
+    --ph-mid: #2fb866;
+    --ph-dim: #1d6e40;
+    --glow: 0 0 5px rgba(75, 233, 138, 0.55);
+    --mono: "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #000; }
+  #screen {
+    position: relative; width: 1024px; height: 768px; overflow: hidden;
+    background: #010a05 url(../../../images/greenscreen.png) center / 1024px 768px no-repeat;
+    color: var(--ph); font-family: var(--mono);
+  }
+  canvas { display: block; }
+  .glow { filter: drop-shadow(0 0 3px rgba(75, 233, 138, 0.7)); }
+  .glass {
+    position: absolute; inset: 0; pointer-events: none; z-index: 50;
+    background:
+      repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 2px, rgba(0,0,0,0.14) 2px 3px),
+      radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 62%, rgba(0,0,0,0.5) 100%);
+  }
+  .abs { position: absolute; }
+  svg#traces { position: absolute; inset: 0; z-index: 1; }
+
+  /* nodes */
+  .node {
+    position: absolute; height: 26px; z-index: 2; border-radius: 3px;
+    display: flex; align-items: flex-start; gap: 6px; padding: 4px 7px 0;
+    font-size: 12px; line-height: 1; white-space: nowrap;
+  }
+  .node.done { border: 2px solid var(--ph-mid); background: rgba(8, 40, 22, 0.92); color: var(--ph); }
+  .node.open {
+    border: 2px solid var(--ph); background: rgba(75, 233, 138, 0.22); color: #d9ffe8; font-weight: 700;
+    box-shadow: 0 0 10px rgba(75, 233, 138, 0.55), inset 0 0 8px rgba(75, 233, 138, 0.25);
+    text-shadow: var(--glow);
+  }
+  .node.open::before { content: ""; margin-top: 1px; width: 0; height: 0; border-left: 6px solid var(--ph); border-top: 5px solid transparent; border-bottom: 5px solid transparent; flex: none; }
+  .node.locked { border: 1px dashed rgba(75, 233, 138, 0.28); color: rgba(75, 233, 138, 0.38); background: rgba(1, 10, 5, 0.9); }
+  .parts { position: absolute; left: 50%; bottom: -10px; transform: translateX(-50%); display: flex; gap: 3px; z-index: 3; }
+  .parts i { width: 17px; height: 13px; border-radius: 2px; background: #0d4a28; border: 1px solid var(--ph); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 4px rgba(75,233,138,0.5); }
+  .parts i img { width: 12px; height: 12px; object-fit: contain; filter: brightness(1.7) contrast(1.2); }
+  .parts i.no { border-color: var(--ph-dim); background: #021006; box-shadow: none; }
+  .parts i.no img { opacity: 0; }
+
+  .band { position: absolute; color: var(--ph-mid); z-index: 2; display: flex; align-items: center; gap: 8px; }
+  .band small { font-size: 10px; color: var(--ph-dim); }
+
+  /* finale */
+  .finale { position: absolute; left: 862px; top: 292px; width: 140px; height: 172px; border: 1px dashed var(--ph-dim); border-radius: 4px; z-index: 1; }
+  .finale .lbl { position: absolute; left: 7px; top: 6px; color: var(--ph-mid); }
+
+  /* header */
+  .title { left: 30px; top: 22px; }
+  .total { right: 24px; top: 18px; display: flex; align-items: center; gap: 10px; }
+  .total .box { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border: 2px solid var(--ph-dim); border-radius: 3px; background: rgba(4, 22, 12, 0.8); }
+  .total img { height: 20px; }
+  .total small { font-size: 10px; color: var(--ph-mid); line-height: 12px; text-align: right; }
+
+  /* bottom-left */
+  .legend { left: 30px; top: 488px; width: 270px; height: 150px; border: 2px solid var(--ph-dim); border-radius: 4px; background: rgba(4, 22, 12, 0.7); }
+  .legend .t { position: absolute; top: -9px; left: 10px; padding: 0 6px; background: #03130a; }
+  .legend .row { position: absolute; left: 14px; display: flex; align-items: center; gap: 12px; font-size: 11px; color: var(--ph-mid); }
+  .legend .row .node { position: relative; width: 92px; }
+  .vanity {
+    left: 30px; top: 656px; width: 270px; height: 76px; border: 3px solid var(--ph); border-radius: 4px;
+    background: rgba(75, 233, 138, 0.10); box-shadow: 0 0 12px rgba(75, 233, 138, 0.35);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; z-index: 2;
+  }
+  .vanity small { font-size: 11px; color: var(--ph-mid); }
+</style>
+</head>
+<body>
+<div id="screen">
+  <div class="abs title glow" data-px="4">Select level</div>
+  <div class="abs total">
+    <small>parts salvaged<br>new robot every 3</small>
+    <div class="box glow">
+      <img src="../../../images/greencapacitor.png" alt=""><img src="../../../images/greenintegratedcircuit.png" alt=""><img src="../../../images/greencoil.png" alt="">
+      <span id="total" data-px="3">0/135</span>
+    </div>
+  </div>
+
+  <div class="band glow" style="left:30px;top:70px"><span data-px="2">Tutorial</span></div>
+  <div class="band glow" style="left:318px;top:70px"><span data-px="2">Movement</span><small>steer, sense, escape</small></div>
+  <div class="band glow" style="left:318px;top:452px"><span data-px="2">Arithmetic</span><small>counters as numbers</small></div>
+  <div class="finale"><div class="lbl glow" data-px="2">Finale</div></div>
+
+  <svg id="traces" width="1024" height="768" viewBox="0 0 1024 768"></svg>
+  <div id="nodes"></div>
+
+  <div class="abs legend">
+    <div class="t glow" data-px="2">Key</div>
+    <div class="row" style="top:22px"><div class="node open">open</div>ready to play</div>
+    <div class="row" style="top:62px"><div class="node done" id="keydone">solved</div>parts earned: 0-3</div>
+    <div class="row" style="top:106px"><div class="node locked">locked</div>solve what feeds it</div>
+  </div>
+  <div class="abs vanity"><span class="glow" data-px="4">Vanity</span><small>credits &amp; thanks</small></div>
+
+  <div class="glass"></div>
+</div>
+<script src="comp.js"></script>
+<script>
+  // Verbatim from levels.js / levelsdata*.js: [name, required]
+  const LEVELS = [
+    ["start here", []],
+    ["chaining", ["start here"]],
+    ["De revolutionibus", ["chaining"]],
+    ["bend it", ["De revolutionibus"]],
+    ["hedge", ["bend it"]],
+    ["resistors", ["bend it"]],
+    ["more resistors", ["resistors"]],
+    ["out of reach", ["resistors"]],
+    ["stairs", ["out of reach"]],
+    ["conditionals", ["out of reach"]],
+    ["spiral", ["conditionals"]],
+    ["zigzag", ["conditionals"]],
+    ["anywhere", ["conditionals"]],
+    ["way out", ["conditionals"]],
+    ["goodwin", ["out of reach"]],
+    ["your ad here", ["out of reach"]],
+    ["hobbit:", ["anywhere"]],
+    ["tunnel", ["way out"]],
+    ["labirynth", ["tunnel"]],
+    ["++", ["conditionals"]],
+    ["--", ["++"]],
+    [":=", ["--"]],
+    ["*2", ["--"]],
+    ["+", ["--"]],
+    ["*", ["+"]],
+    ["/2", ["--"]],
+    ["!", ["*"]],
+    ["Euclid", ["+"]],
+    ["/", ["*"]],
+    ["Fibonacci", ["+"]],
+    ["Counting steps", ["*"]],
+    ["hobbit harder", ["hobbit:"]],
+    ["vertigo", ["Fibonacci", "robozzle"]],
+    ["some flag?", ["Fibonacci", "robozzle"]],
+    ["just give up", ["Fibonacci", "robozzle"]],
+    ["ring of fire", ["anywhere"]],
+    ["P", ["Z(2)"]],
+    ["warm-up", ["detector"]],
+    ["Z(2)", ["spiral"]],
+    ["for", ["*"]],
+    ["giftwrapped", ["detector"]],
+    ["x", ["detector"]],
+    ["no turn sign", ["Fibonacci", "robozzle"]],
+    ["detector", ["spiral"]],
+    ["robozzle", ["detector"]],
+  ];
+
+  // Layout: columns follow unlock depth; rows are lanes inside a track.
+  const COL = { t0: [30, 136], t1: [184, 116], c7: [318, 124], c8: [456, 124], c9: [594, 124], c10: [732, 124], c11: [870, 124] };
+  const M = [92, 130, 168, 206, 244, 282, 320, 358, 396]; // movement rows
+  const A = [474, 512, 550, 588, 626, 664, 702];          // arithmetic rows
+  const POS = {
+    "start here": ["t0", 92], "chaining": ["t0", 138], "De revolutionibus": ["t0", 184], "bend it": ["t0", 230],
+    "resistors": ["t0", 276], "out of reach": ["t0", 322], "conditionals": ["t0", 435],
+    "hedge": ["t1", 230], "more resistors": ["t1", 276], "stairs": ["t1", 322], "goodwin": ["t1", 360], "your ad here": ["t1", 398],
+    "spiral": ["c7", M[0]], "Z(2)": ["c8", M[0]], "P": ["c9", M[0]],
+    "detector": ["c8", M[1]], "robozzle": ["c9", M[1]], "warm-up": ["c9", M[2]], "giftwrapped": ["c9", M[3]], "x": ["c9", M[4]],
+    "way out": ["c7", M[5]], "tunnel": ["c8", M[5]], "labirynth": ["c9", M[5]],
+    "zigzag": ["c7", M[6]],
+    "anywhere": ["c7", M[7]], "hobbit:": ["c8", M[7]], "hobbit harder": ["c9", M[7]], "ring of fire": ["c8", M[8]],
+    "++": ["c7", A[0]], "--": ["c8", A[0]], ":=": ["c9", A[0]], "*2": ["c9", A[1]], "/2": ["c9", A[2]], "+": ["c9", A[3]],
+    "Fibonacci": ["c10", A[1]], "Euclid": ["c10", A[2]], "*": ["c10", A[3]],
+    "!": ["c11", A[3]], "/": ["c11", A[4]], "Counting steps": ["c11", A[5]], "for": ["c11", A[6]],
+    "vertigo": ["c11", 316], "some flag?": ["c11", 354], "just give up": ["c11", 392], "no turn sign": ["c11", 430],
+  };
+  const FINALE = ["vertigo", "some flag?", "just give up", "no turn sign"];
+
+  // Sample save: parts earned (0-3) for solved levels; everything else is open or locked.
+  const SOLVED = {
+    "start here": 3, "chaining": 3, "De revolutionibus": 2, "bend it": 3, "hedge": 1, "resistors": 3,
+    "more resistors": 0, "out of reach": 2, "stairs": 3, "conditionals": 3, "spiral": 2, "Z(2)": 2,
+    "way out": 3, "tunnel": 1, "zigzag": 3, "++": 3, "--": 2, "+": 1, "*2": 2,
+  };
+  const H = 26;
+  const box = {};
+  const state = {};
+  for (const [name, req] of LEVELS) {
+    if (!POS[name]) throw new Error("no position for " + name);
+    const [c, y] = POS[name];
+    const [x, w] = COL[c];
+    box[name] = { x, y, w, h: H, cx: x + w / 2, cy: y + H / 2, r: x + w, b: y + H };
+    state[name] = name in SOLVED ? "done" : req.every((r) => r in SOLVED) ? "open" : "locked";
+  }
+
+  // ---- nodes ----
+  const nodes = document.getElementById("nodes");
+  const PARTS = ["greencapacitor", "greenintegratedcircuit", "greencoil"];
+  function partsRow(n) {
+    const p = document.createElement("div");
+    p.className = "parts";
+    PARTS.forEach((src, i) => {
+      const it = document.createElement("i");
+      if (i >= n) it.className = "no";
+      const img = document.createElement("img");
+      img.src = Comp.ROOT + "images/" + src + ".png"; img.alt = "";
+      it.appendChild(img); p.appendChild(it);
+    });
+    return p;
+  }
+  let total = 0;
+  for (const [name] of LEVELS) {
+    const b = box[name], s = state[name];
+    const el = document.createElement("div");
+    el.className = "node " + s;
+    el.style.left = b.x + "px"; el.style.top = b.y + "px"; el.style.width = b.w + "px";
+    el.textContent = name;
+    el.title = name + " (" + s + ")";
+    if (s === "done") { el.appendChild(partsRow(SOLVED[name])); total += SOLVED[name]; }
+    nodes.appendChild(el);
+  }
+  document.getElementById("total").textContent = total + "/" + LEVELS.length * 3;
+  document.getElementById("keydone").appendChild(partsRow(2));
+
+  // ---- traces (PCB style: orthogonal with 45-degree chamfers) ----
+  const svg = document.getElementById("traces");
+  const NS = "http://www.w3.org/2000/svg";
+  function chamfer(raw, c = 6) {
+    // drop repeated points and collinear middles (straight edges come in as 4 points on one line)
+    const pts = raw.filter((p, i) => i === 0 || p[0] !== raw[i - 1][0] || p[1] !== raw[i - 1][1])
+      .filter((p, i, a) => i === 0 || i === a.length - 1 ||
+        (a[i - 1][0] - p[0]) * (a[i + 1][1] - p[1]) !== (a[i - 1][1] - p[1]) * (a[i + 1][0] - p[0]));
+    let d = "M" + pts[0][0] + " " + pts[0][1];
+    for (let i = 1; i < pts.length - 1; i++) {
+      const [px, py] = pts[i - 1], [x, y] = pts[i], [nx, ny] = pts[i + 1];
+      const l1 = Math.hypot(x - px, y - py), l2 = Math.hypot(nx - x, ny - y);
+      const k1 = Math.min(c, l1 / 2), k2 = Math.min(c, l2 / 2);
+      d += " L" + (x - (x - px) / l1 * k1) + " " + (y - (y - py) / l1 * k1);
+      d += " L" + (x + (nx - x) / l2 * k2) + " " + (y + (ny - y) / l2 * k2);
+    }
+    const last = pts[pts.length - 1];
+    return d + " L" + last[0] + " " + last[1];
+  }
+  const STYLE = {
+    done: { stroke: "#2fb866", width: 2, dash: null, op: 0.9 },
+    open: { stroke: "#4be98a", width: 2.5, dash: null, op: 1, glow: true },
+    locked: { stroke: "#4be98a", width: 1.5, dash: "3 4", op: 0.25 },
+  };
+  function trace(pts, kind) {
+    const s = STYLE[kind];
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("d", chamfer(pts));
+    p.setAttribute("fill", "none");
+    p.setAttribute("stroke", s.stroke);
+    p.setAttribute("stroke-width", s.width);
+    p.setAttribute("opacity", s.op);
+    if (s.dash) p.setAttribute("stroke-dasharray", s.dash);
+    if (s.glow) p.setAttribute("filter", "url(#g)");
+    svg.appendChild(p);
+  }
+  function via(x, y, kind) {
+    const c = document.createElementNS(NS, "circle");
+    c.setAttribute("cx", x); c.setAttribute("cy", y); c.setAttribute("r", 3);
+    c.setAttribute("fill", kind === "locked" ? "#0b2e1b" : "#4be98a");
+    c.setAttribute("opacity", kind === "locked" ? 0.6 : 0.9);
+    svg.appendChild(c);
+  }
+  svg.innerHTML = '<defs><filter id="g" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';
+
+  const edges = [];
+  for (const [name, req] of LEVELS) for (const r of req) if (!FINALE.includes(name)) edges.push([r, name]);
+  // draw locked first, then done, then open on top
+  const order = { locked: 0, done: 1, open: 2 };
+  edges.sort((a, b) => order[state[a[1]]] - order[state[b[1]]]);
+  for (const [p, c] of edges) {
+    const P = box[p], C = box[c], kind = state[c];
+    if (POS[p][0] === POS[c][0]) { trace([[P.cx, P.b], [C.cx, C.y]], kind); continue; }
+    const tx = C.x - 7;
+    trace([[P.r, P.cy], [tx, P.cy], [tx, C.cy], [C.x, C.cy]], kind);
+    via(P.r + 1, P.cy, kind);
+  }
+
+  // finale: robozzle AND Fibonacci -> gate -> 4 levels
+  const fin = state["vertigo"]; // all four share the same requirements
+  const g = { x: 780, y: 360, w: 40, h: 30 };
+  const inA = g.y + 8, inB = g.y + g.h - 8;
+  const R = box["robozzle"], F = box["Fibonacci"];
+  trace([[R.r, R.cy], [742, R.cy], [742, inA], [g.x, inA]], state["robozzle"] === "done" ? "done" : "locked");
+  trace([[762, F.y], [762, inB], [g.x, inB]], state["Fibonacci"] === "done" ? "done" : "locked");
+  via(R.r + 1, R.cy, "locked"); via(762, F.y - 1, "locked");
+  const out = g.y + g.h / 2;
+  for (const n of FINALE) trace([[g.x + g.w, out], [863, out], [863, box[n].cy], [box[n].x, box[n].cy]], fin);
+  const gate = document.createElementNS(NS, "path");
+  gate.setAttribute("d", `M${g.x} ${g.y} h${g.w / 2} a${g.h / 2} ${g.h / 2} 0 0 1 0 ${g.h} h${-g.w / 2} z`);
+  gate.setAttribute("fill", "#03130a"); gate.setAttribute("stroke", "#2fb866"); gate.setAttribute("stroke-width", 2);
+  svg.appendChild(gate);
+  const and = document.createElementNS(NS, "text");
+  and.setAttribute("x", g.x + 6); and.setAttribute("y", g.y + 19); and.setAttribute("fill", "#2fb866");
+  and.setAttribute("font-family", "Menlo, monospace"); and.setAttribute("font-size", "10"); and.textContent = "AND";
+  svg.appendChild(and);
+
+  Comp.render(document);
+</script>
+</body>
+</html>

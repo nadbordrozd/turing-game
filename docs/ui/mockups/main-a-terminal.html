@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Turing UI comp A: Terminal</title>
+<meta name="viewport" content="width=1024">
+<style>
+  :root {
+    --ph: #4be98a;        /* phosphor, bright */
+    --ph-mid: #2fb866;
+    --ph-dim: #1d6e40;
+    --ph-faint: rgba(75, 233, 138, 0.09);
+    --glow: 0 0 5px rgba(75, 233, 138, 0.55);
+    --bg: #010a05;
+    --red: #ff5a4f;
+    --mono: "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #000; }
+  #screen {
+    position: relative; width: 1024px; height: 768px; overflow: hidden;
+    background: var(--bg) url(../../../images/greenscreen.png) center / 1024px 768px no-repeat;
+    color: var(--ph); font-family: var(--mono);
+  }
+  canvas { display: block; }
+  .glow { filter: drop-shadow(0 0 3px rgba(75, 233, 138, 0.7)); }
+
+  /* CRT glass over everything (also over the bright displays) */
+  .glass {
+    position: absolute; inset: 0; pointer-events: none; z-index: 50;
+    background:
+      repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 2px, rgba(0,0,0,0.16) 2px 3px),
+      radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 62%, rgba(0,0,0,0.55) 100%);
+  }
+
+  /* ---------- header ---------- */
+  .crumb { position: absolute; left: 30px; top: 22px; color: var(--ph-mid); }
+  .title { position: absolute; left: 30px; top: 40px; }
+  .msg {
+    position: absolute; left: 30px; top: 82px; width: 640px;
+    font-size: 13.5px; line-height: 16px; white-space: pre; text-shadow: var(--glow);
+  }
+  .msg .prompt { color: var(--ph-mid); }
+  .cursor { display: inline-block; width: 8px; height: 13px; background: var(--ph); vertical-align: -2px; animation: blink 1s steps(1) infinite; box-shadow: var(--glow); }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .sys { position: absolute; right: 24px; top: 20px; display: flex; gap: 10px; }
+  .btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    height: 44px; padding: 0 12px; border: 2px solid var(--ph-mid); border-radius: 3px;
+    background: rgba(5, 30, 15, 0.7); color: var(--ph);
+    box-shadow: 0 0 8px rgba(75, 233, 138, 0.15), inset 0 0 10px rgba(75, 233, 138, 0.08);
+  }
+  .btn.sq { width: 56px; height: 56px; padding: 0; }
+  .btn.primary { background: var(--ph); color: #021006; border-color: var(--ph); box-shadow: 0 0 16px rgba(75, 233, 138, 0.55); }
+  .btn.ghost { opacity: 0.45; }
+
+  .status { position: absolute; right: 26px; top: 112px; display: flex; align-items: center; gap: 10px; color: var(--ph); }
+  .status .k { color: var(--ph-dim); }
+  .status .dot { width: 10px; height: 10px; background: var(--ph); box-shadow: var(--glow); animation: blink 1.2s steps(1) infinite; }
+
+  /* ---------- panels ---------- */
+  .panel {
+    position: absolute; border: 2px solid var(--ph-dim); border-radius: 4px;
+    background: rgba(4, 22, 12, 0.72);
+    box-shadow: inset 0 0 18px rgba(75, 233, 138, 0.06), 0 0 10px rgba(75, 233, 138, 0.08);
+  }
+  .legend {
+    position: absolute; top: -9px; left: 12px; padding: 0 6px; background: #03130a;
+    color: var(--ph); display: flex; gap: 8px; align-items: center;
+  }
+  .legend .sub { color: var(--ph-mid); }
+  .note { position: absolute; font-size: 10px; color: var(--ph-dim); letter-spacing: 0.04em; }
+
+  /* tiles palette */
+  .tiles { left: 24px; top: 158px; width: 124px; height: 466px; }
+  .pal { position: absolute; left: 9px; top: 22px; display: grid; grid-template-columns: 50px 50px; column-gap: 6px; row-gap: 4px; }
+  .pal figure { margin: 0; text-align: center; }
+  .pal .slot { width: 50px; height: 50px; outline: 1px solid rgba(75,233,138,0.25); outline-offset: 2px; }
+  .pal figcaption { font-size: 9.5px; line-height: 15px; color: var(--ph-mid); white-space: nowrap; }
+  .pal figure.old figcaption::after { content: "old art"; display: block; margin-top: -4px; font-size: 8px; line-height: 10px; color: var(--ph-dim); }
+  .trash {
+    position: absolute; left: 9px; right: 9px; bottom: 10px; height: 104px;
+    border: 2px dashed var(--ph-dim); border-radius: 4px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--ph-mid);
+  }
+  .trash small { font-size: 9.5px; color: var(--ph-dim); text-align: center; line-height: 12px; }
+
+  /* program board */
+  .cpu { left: 160px; top: 158px; width: 476px; height: 466px; }
+  .boardwrap { position: absolute; left: 20px; top: 14px; padding: 0; }
+  .boardwrap .bezel {
+    box-shadow: 0 0 0 3px #04140a, 0 0 0 5px var(--ph-dim), 0 0 22px 4px rgba(163, 217, 177, 0.18);
+  }
+  .start {
+    position: absolute; left: -20px; top: 4px; width: 16px; height: 46px; z-index: 2;
+    background: var(--ph); border-radius: 3px 0 0 3px; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 10px rgba(75, 233, 138, 0.6);
+  }
+  .startcell { position: absolute; left: 0; top: 0; width: 54px; height: 54px; pointer-events: none; z-index: 2;
+    box-shadow: inset 0 0 0 2px var(--ph), 0 0 10px rgba(75, 233, 138, 0.5); }
+
+  /* transport */
+  .transport { position: absolute; left: 24px; top: 640px; width: 612px; height: 106px; display: flex; align-items: center; gap: 10px; padding: 0 18px; }
+  .transport .sep { width: 2px; height: 56px; background: var(--ph-dim); margin: 0 6px; }
+  .speed { display: flex; align-items: center; gap: 6px; }
+  .speed .val { width: 64px; height: 56px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--ph-dim); border-radius: 3px; background: #021006; }
+  .tlabel { font-size: 10px; color: var(--ph-dim); position: absolute; top: 10px; }
+
+  /* world */
+  .cell { left: 652px; top: 158px; width: 348px; height: 362px; }
+  .worldbox { position: absolute; left: 7px; top: 14px; width: 330px; height: 330px; display: flex; align-items: center; justify-content: center;
+    background-image: linear-gradient(rgba(75,233,138,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(75,233,138,0.07) 1px, transparent 1px);
+    background-size: 30px 30px; border: 1px dashed rgba(75,233,138,0.18); }
+  .worldbox .w { box-shadow: 0 0 0 3px #04140a, 0 0 0 5px var(--ph-dim), 0 0 22px 4px rgba(170, 120, 255, 0.16); }
+  .robot { image-rendering: pixelated; }
+
+  /* registers + score */
+  .regs { left: 652px; top: 536px; width: 348px; height: 70px; }
+  .reg { position: absolute; left: 14px; top: 16px; display: flex; align-items: center; gap: 10px; }
+  .chip { width: 38px; height: 38px; border-radius: 3px; background: #2a0907; border: 2px solid var(--red); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(255, 90, 79, 0.35); }
+  .digits { height: 38px; min-width: 72px; padding: 0 10px; border: 2px solid #4a1712; background: #120302; display: flex; align-items: center; justify-content: flex-end; filter: drop-shadow(0 0 4px rgba(255, 90, 79, 0.75)); }
+  .regs .free { position: absolute; left: 152px; top: 16px; display: flex; gap: 8px; }
+  .regs .free span { width: 38px; height: 38px; border: 2px dashed rgba(75,233,138,0.16); border-radius: 3px; }
+
+  .score { left: 652px; top: 622px; width: 348px; height: 124px; }
+  .sum { position: absolute; left: 16px; top: 18px; display: flex; align-items: baseline; gap: 10px; }
+  .sum .k { color: var(--ph-mid); }
+  .goals { position: absolute; left: 14px; right: 14px; top: 52px; display: flex; justify-content: space-between; }
+  .goal { width: 98px; height: 58px; border: 1px solid var(--ph-dim); border-radius: 3px; display: flex; align-items: center; gap: 8px; padding: 0 8px; }
+  .goal img { width: 26px; height: 26px; object-fit: contain; filter: brightness(1.5); }
+  .goal.off img { opacity: 0.35; filter: grayscale(1); }
+  .goal.off { border-style: dashed; opacity: 0.8; }
+  .goal .t { font-size: 10px; line-height: 13px; color: var(--ph-mid); }
+  .goal.on { background: rgba(75,233,138,0.10); border-color: var(--ph-mid); }
+</style>
+</head>
+<body>
+<div id="screen">
+
+  <!-- header -->
+  <div class="crumb glow" data-px="2">Level 03 - tutorial track</div>
+  <div class="title glow" data-px="4">De revolutionibus</div>
+  <div class="msg"><span class="prompt">&gt; </span>This simple robot can't move sideways. To move one tile
+  to the left, it will have to first turn left and then
+  step forward. To achieve this, you will have to place turn
+  and step instructions on the board in the right order.<span class="cursor"></span></div>
+
+  <nav class="sys">
+    <div class="btn"><span data-icon="help" data-scale="2"></span><span class="glow" data-px="2">Help</span></div>
+    <div class="btn"><span data-icon="levels" data-scale="2"></span><span class="glow" data-px="2">Levels</span></div>
+  </nav>
+
+  <div class="status"><span class="k" data-px="2">Robot status</span><span class="dot"></span><span class="glow" data-px="2">Ready</span></div>
+
+  <!-- tile palette -->
+  <section class="panel tiles">
+    <div class="legend glow"><span data-px="2">Tiles</span></div>
+    <div class="pal">
+      <figure><div class="slot" data-tile="step 50"></div><figcaption>step</figcaption></figure>
+      <figure><div class="slot" data-tile="conveyor 50"></div><figcaption>belt</figcaption></figure>
+      <figure><div class="slot" data-tile="cw 50"></div><figcaption>turn R</figcaption></figure>
+      <figure><div class="slot" data-tile="ccw 50"></div><figcaption>turn L</figcaption></figure>
+      <figure class="old"><div class="slot" data-tile="incRed 50"></div><figcaption>red +1</figcaption></figure>
+      <figure class="old"><div class="slot" data-tile="decRed 50"></div><figcaption>red -1</figcaption></figure>
+    </div>
+    <div class="trash">
+      <span data-icon="trash" data-scale="3" class="glow"></span>
+      <span class="glow" data-px="2">Trash</span>
+      <small>drop a tile here<br>click: clear board</small>
+    </div>
+  </section>
+
+  <!-- program board -->
+  <section class="panel cpu">
+    <div class="legend glow"><span data-px="2">CPU</span><span class="sub" data-px="2">8x8</span></div>
+    <div class="boardwrap">
+      <div class="start" data-icon="start" data-scale="1" data-color="#021006"></div>
+      <div class="startcell"></div>
+      <div class="bezel" id="board"></div>
+    </div>
+  </section>
+
+  <!-- transport -->
+  <section class="transport panel">
+    <div class="btn primary" style="width:132px;height:64px"><span data-icon="play" data-scale="3" data-color="#021006"></span><span data-px="3" data-color="#021006">Run</span></div>
+    <div class="btn sq ghost"><span data-icon="pause" data-scale="3"></span></div>
+    <div class="btn sq"><span data-icon="step" data-scale="3"></span></div>
+    <div class="btn sq"><span data-icon="stop" data-scale="2"></span></div>
+    <div class="sep"></div>
+    <div class="speed">
+      <div class="btn sq"><span data-icon="slower" data-scale="3"></span></div>
+      <div class="val glow"><span data-px="3">x1</span></div>
+      <div class="btn sq"><span data-icon="faster" data-scale="3"></span></div>
+    </div>
+  </section>
+
+  <!-- robot world -->
+  <section class="panel cell">
+    <div class="legend glow"><span data-px="2">Cell</span><span class="sub" data-px="2">3x3</span></div>
+    <div class="worldbox"><div class="w" id="world"></div></div>
+    <div class="note" style="right:10px;bottom:3px">terrain: old art &middot; box fits 11x11 @ 30px</div>
+  </section>
+
+  <section class="panel regs">
+    <div class="legend glow"><span data-px="2">Registers</span></div>
+    <div class="reg">
+      <div class="chip"><span data-px="3" data-color="#ff5a4f">R</span></div>
+      <div class="digits"><span data-px="4" data-color="#ff5a4f">0</span></div>
+    </div>
+  </section>
+
+  <section class="panel score">
+    <div class="legend glow"><span data-px="2">Score</span><span class="sub" data-px="2">last run</span></div>
+    <div class="note" style="right:10px;top:5px">icons: old art</div>
+    <div class="sum glow">
+      <span class="k" data-px="2">Tiles</span><span data-px="3">6</span>
+      <span class="k" data-px="2">+ steps</span><span data-px="3">6</span>
+      <span class="k" data-px="2">=</span><span data-px="3">12</span>
+    </div>
+    <div class="goals">
+      <div class="goal on"><img src="../../../images/greencapacitor.png" alt=""><div class="t">under<br>16</div></div>
+      <div class="goal on"><img src="../../../images/greenintegratedcircuit.png" alt=""><div class="t">under<br>13</div></div>
+      <div class="goal off"><img src="../../../images/greencoil.png" alt=""><div class="t">exactly<br>8</div></div>
+    </div>
+  </section>
+
+  <div class="glass"></div>
+</div>
+<script src="comp.js"></script>
+<script>
+  // sample program: start (0,0) -> step, turn right, step, belt down, turn left, step
+  Comp.board(document.getElementById("board"), 8, 54, [
+    [0, 0, "step", "E"], [1, 0, "cw", "E"], [2, 0, "step", "E"], [3, 0, "conveyor", "S"],
+    [3, 1, "ccw", "S"], [3, 2, "step", "S"],
+  ]);
+  Comp.world(document.getElementById("world"), [".R.", "..#", "H##"], 100);
+  Comp.render(document);
+</script>
+</body>
+</html>

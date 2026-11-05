@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Turing UI mockups</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --ink: #1f1b26; --muted: #5d566a; --line: #ddd5c8; --bg: #faf6ee; --card: #fff; --accent: #c8432f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #ece7f2; --muted: #a79fb4; --line: #3a3443; --bg: #16131b; --card: #201c27; --accent: #ff7a63; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1120px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 26px; margin: 0 0 4px; }
+  h2 { font-size: 19px; margin: 0 0 8px; }
+  h3 { font-size: 16px; margin: 18px 0 6px; }
+  p.lede { color: var(--muted); margin: 0 0 24px; max-width: 760px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 20px; }
+  .comp { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+  .thumb { display: block; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 6px; border: 1px solid var(--line); position: relative; background: #000; }
+  .thumb iframe { position: absolute; left: 0; top: 0; width: 1024px; height: 768px; border: 0; transform-origin: 0 0; pointer-events: none; }
+  .comp ul { margin: 10px 0 0; padding-left: 18px; }
+  .comp li { margin: 3px 0; }
+  .tag { font-size: 12px; color: var(--muted); }
+  a { color: var(--accent); }
+  section.rec { margin-top: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { text-align: left; vertical-align: top; padding: 6px 8px; border-top: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; }
+  code { font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Turing Game UI mockups</h1>
+  <p class="lede">Static 1024&times;768 design comps for bead tg-84y.4. They use the real tile and robot PNGs; anything still in the
+    old style is labelled "old art". The tiles animate in phase on the shared 0.04&nbsp;s clock; add <code>?still</code> to a URL to freeze them.
+    These pages are not game code.</p>
+
+  <div class="grid">
+    <article class="comp">
+      <h2><a href="main-a-terminal.html">A. Main screen: Terminal</a></h2>
+      <a class="thumb" href="main-a-terminal.html"><iframe src="main-a-terminal.html?still" title="Comp A" loading="lazy" tabindex="-1"></iframe></a>
+      <ul>
+        <li><b>Idea:</b> the game's phosphor CRT (intro, selector, credits) becomes the UI chrome. Everything sits on <code>greenscreen.png</code>, with phosphor panels, pixel-font labels and a scanline glass. The Toybox board and cell glow inside it like small colour displays.</li>
+        <li><b>Hierarchy:</b> the 8&times;8 CPU (54&nbsp;px tiles) is the hero. RUN is the only filled control. The cell, registers and score sit in one column on the right.</li>
+        <li><b>Quintus:</b> the background is the existing <code>greenscreen.png</code>. Panels are flat strokes. The scanline glass is a pre-rendered transparent PNG drawn last, or it can be dropped in canvas.</li>
+      </ul>
+    </article>
+
+    <article class="comp">
+      <h2><a href="main-b-toybox.html">B. Main screen: Toybox desk</a></h2>
+      <a class="thumb" href="main-b-toybox.html"><iframe src="main-b-toybox.html?still" title="Comp B" loading="lazy" tabindex="-1"></iframe></a>
+      <ul>
+        <li><b>Idea:</b> the whole screen is a cosy workbench. Cream cards with ink outlines and toy "lift" shadows sit on it. The board is a sky-blue play mat, the cell is a tomato window, and the tiles wait in a yellow tray.</li>
+        <li><b>Hierarchy:</b> a big tomato RUN button, coloured tabs that name each area, and a level badge. The palette, outline and shadows all come from the tile art, so the chrome and the pieces read as one toy.</li>
+        <li><b>Quintus:</b> the cards, tray, mat and window are flat rounded rectangles: either one pre-rendered background per layout, or <code>Q.UI.Container</code> with radius and stroke. The body text uses a rounded system font.</li>
+      </ul>
+    </article>
+
+    <article class="comp">
+      <h2><a href="level-select.html">C. Level selector: unlock map</a></h2>
+      <a class="thumb" href="level-select.html"><iframe src="level-select.html?still" title="Level selector" loading="lazy" tabindex="-1"></iframe></a>
+      <ul>
+        <li><b>Idea:</b> keep the green CRT charm, but draw the real <code>required</code> graph as circuit traces with 45&deg; corners and vias, so the motherboard idea returns in the place it reads best.</li>
+        <li><b>Layout:</b> the tutorial runs down the left, then <i>conditionals</i> splits into a Movement track (top) and an Arithmetic track (bottom), read left to right by unlock depth. Both tracks meet at an AND gate that feeds the four finale levels, which need robozzle <i>and</i> Fibonacci.</li>
+        <li><b>States:</b> open levels are lit, glow and carry a &#9654; marker. Solved levels show 3 part slots, filled per part earned. Locked levels are dashed and dim, and the traces into them are dashed too. Vanity, the key and the parts total are always visible. All 45 levels fit with no scrolling.</li>
+        <li><b>Quintus:</b> replace each level's hand-set <code>x</code>/<code>y</code> with a <code>col</code>/<code>row</code> lane table and draw the traces from <code>required</code>. Then a new level only needs a lane.</li>
+      </ul>
+    </article>
+  </div>
+
+  <section class="rec">
+    <h2>How to build it: recommendation</h2>
+    <p><b>Use an HTML/CSS overlay for the chrome. Keep everything you drag, rotate or animate in the Quintus canvas.</b></p>
+    <ul>
+      <li><b>Canvas keeps:</b> the board tiles, palette tiles (drag source), trash (drop target), the cell, the robot, the run dot, and the start marker. That code already works with touch through <code>Q.touch</code>, and it is what animates.</li>
+      <li><b>Overlay takes:</b> the header (title and wrapped instruction text), the transport, Help and Levels, the registers, the score, the panel frames and labels, the whole level selector, and the end-level and help popups.</li>
+      <li><b>Why:</b> these comps are already HTML/CSS, so the port is close to a copy. Text wrapping, glow, rounded cards, hover, focus and keyboard access come free; in canvas each one is hand-written. The level map stays data-driven: DOM nodes plus one SVG of traces.</li>
+      <li><b>Input:</b> the overlay root has <code>pointer-events:none</code>; only its controls take events, so drags on the canvas board are untouched. The existing <code>Q.touch(Q.SPRITE_UI,[...])</code> gating needs a twin, a class on the overlay that disables the buttons during playback and popups.</li>
+      <li><b>Scaling:</b> put the canvas and the overlay in one 1024&times;768 stage <code>div</code> and scale that with a CSS transform, so both scale together. <code>quintus_touch.js</code> maps touches with <code>pageX - offsetLeft</code>, which ignores transforms: patch it to use <code>getBoundingClientRect()</code> and the scale factor (about 10 lines). Mouse <code>offsetX</code> is already transform-aware in modern browsers.</li>
+      <li><b>Scenes:</b> each <code>Q.scene</code> shows and hides its overlay panel, and <code>Q.clearStages()</code> hides them all. That is a small glue function per scene.</li>
+    </ul>
+    <table>
+      <tr><th>Option</th><th>Effort (one developer)</th><th>Notes</th></tr>
+      <tr><td>HTML/CSS overlay (recommended)</td><td>Main screen 2&ndash;3 days; selector 1&ndash;1.5 days; touch/scale patch and scene glue &frac12; day. <b>About 4&ndash;5 days.</b></td><td>The comps port almost directly. Needs browser testing of touch and resize on phones and tablets.</td></tr>
+      <tr><td>All canvas (Quintus UI)</td><td><b>About 7&ndash;9 days.</b></td><td>Needs a bitmap-font sprite (port <code>pxText</code>), a hand-made word-wrap, button sheets per state, and panel drawing. Glow and shadow are costly per frame. Accessibility is lost.</td></tr>
+    </table>
+
+    <h3>Notes and findings</h3>
+    <ul>
+      <li><b>Sample state is a composite:</b> it uses the text of <i>De revolutionibus</i> and a 3&times;3 world (robot c, obstacles, hatch), plus a red counter and red &plusmn;1 tiles so that every element appears. The real level has a 5&times;5 board and no counter. The program (step, turn R, step, belt, turn L, step) solves that world.</li>
+      <li><b>Board size:</b> boards run from 1&times;1 to 8&times;8. Draw them centred in the fixed 432&nbsp;px display: 54&nbsp;px for 8&times;8, up to 100&nbsp;px for small boards, preferring whole-number scales of 50.</li>
+      <li><b>World size:</b> worlds run from 3&times;3 to 11&times;11 (12 levels use 9&ndash;11). The cell display is a fixed box of about 310&ndash;330&nbsp;px. Suggested tile sizes are 100&nbsp;px up to 3&times;3, 50&nbsp;px up to 6&times;6, 40&nbsp;px up to 8&times;8 (8&times;8 at 40 = 320&nbsp;px), and 28&ndash;30&nbsp;px up to 11&times;11. Non-integer scales should use smoothing.</li>
+      <li><b>Palette limits:</b> no level limits how many parts you may use; the score counts parts plus steps instead. So the palette shows names, not counts, and the score panel shows the three thresholds from <code>getResult</code>.</li>
+      <li><b>Speed:</b> the old "rewind" and "fast-forward" buttons are slower and faster (<code>TuringTable.slower/faster</code>). Here they are &laquo; and &raquo; around the speed readout.</li>
+      <li><b>Trash:</b> the old trash button clears the whole board (<code>TuringTable.clear</code>). Here it is also the drop target for deleting a single tile.</li>
+      <li><b>Belt corners:</b> belts are straight on every tile, so a turn in the program flow breaks the belt (see the corner at column 4). A belt-corner variant is a candidate follow-up for the program-tiles class.</li>
+      <li><b>Still old art:</b> world terrain (purple floor, obstacles, hatch, trap), counter tiles, the start chevron, and the parts icons (capacitor, IC, coil). The robot uses <code>robot-front-c-50.png</code>.</li>
+      <li><b>Fonts:</b> the pixel labels use the 5&times;7 font from <code>tools/art/lib/font.mjs</code>, copied into <code>comp.js</code> (upper case only). Body text uses system monospace (A, C) or a rounded system font (B). No web fonts or CDNs.</li>
+    </ul>
+  </section>
+</main>
+<script>
+  // scale the live 1024x768 thumbnails to their card width
+  function fit() { document.querySelectorAll(".thumb").forEach((t) => { t.querySelector("iframe").style.transform = "scale(" + t.clientWidth / 1024 + ")"; }); }
+  addEventListener("resize", fit); fit();
+</script>
+</body>
+</html>
