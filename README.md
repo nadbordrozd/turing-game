@@ -24,8 +24,8 @@ front-end URL therefore carries `?v=<version>`:
 - the `<script src>` and `<link href>` tags in `index.html`;
 - every image, sprite-sheet JSON and sound Quintus loads (`script.js` wraps
   `Q.assetUrl`, which `lib/quintus.js` uses for all of them);
-- sounds fetched by `js/audio.js` and images the scenes set from JavaScript,
-  through `versionedUrl(url)`.
+- sounds fetched by `js/audio.js`, the music `js/music.js` streams and images
+  the scenes set from JavaScript, through `versionedUrl(url)`.
 
 The version lives only in `index.html` (`window.TURING_VERSION` and the tags).
 Set it with:

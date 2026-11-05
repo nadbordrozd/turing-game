@@ -47,7 +47,7 @@
 			callout(T.deck, portrait ? 360 : 420,
 				"These are control buttons - play, pause, next, stop, slower, faster.", portrait);
 
-			// the two header buttons, explained to their left
+			// the header buttons, explained to their left
 			var sys = T.sys.getBoundingClientRect(), a = UI.toLogical(sys.left, sys.top), z = UI.toLogical(sys.right, sys.bottom);
 			var sysR = {x: a.x, y: a.y, w: z.x - a.x, h: z.y - a.y};
 			ring(sysR);
@@ -56,7 +56,8 @@
 			hc.style.width = w + "px";
 			[["levels", "This button will take you back to level selection screen"],
 			 ["help", "You can bring back this instruction at any time by clicking here"],
-			 ["sound", "Sound effects on or off"]].forEach(function(it) {
+			 ["sound", "Sound effects on or off"],
+			 ["music", "Music on or off"]].forEach(function(it) {
 				var row = UI.el("div", "", hc);
 				row.style.display = "flex"; row.style.alignItems = "center"; row.style.gap = "10px";
 				row.style.margin = "2px 0";

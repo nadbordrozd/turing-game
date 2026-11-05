@@ -288,8 +288,8 @@ body.tg {
 .gs-sys { position: absolute; display: flex; gap: 12px; }
 .gs-sys .tb-btn { width: 88px; height: 74px; }
 .gs-sys .tb-btn.gs-sound { width: 72px; }
-.gs-portrait .gs-sys { gap: 8px; }
-.gs-portrait .gs-sys .tb-btn { width: 52px; height: 52px; padding: 0; }
+.gs-portrait .gs-sys { gap: 6px; }
+.gs-portrait .gs-sys .tb-btn { width: 46px; height: 46px; padding: 0; }
 
 .gs-cap {
   position: absolute;

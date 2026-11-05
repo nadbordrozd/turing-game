@@ -1,0 +1,41 @@
+{
+  "clockwork-puzzle": {
+    "id": "clockwork-puzzle",
+    "note": "user-supplied, made by the user for Turing (the game score); the user's own track",
+    "builtAt": "2026-11-05T19:36:16.434Z",
+    "source": {
+      "file": "Clockwork Puzzle.wav",
+      "path": "/Users/nadbor/Downloads/Clockwork Puzzle.wav",
+      "sha256": "75096004bbfe0abd4b7639038527e817a05af34ef611e61f79719755b35a4abe",
+      "bytes": 40065040,
+      "duration": 208.6,
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 2,
+      "bitrate": 1536000,
+      "lufs": -15.2,
+      "lra": 2.6,
+      "truePeak": -3.5
+    },
+    "target": {
+      "lufs": -20,
+      "truePeakCeiling": -1,
+      "gainDb": -4.8
+    },
+    "command": "ffmpeg -nostdin -v error -y -i '<source>' -map 0:a:0 -af volume=-4.8dB -c:a aac -b:a 160k -ar 48000 -ac 2 -map_metadata -1 -fflags +bitexact -flags:a +bitexact -movflags +faststart -f ipod music/clockwork-puzzle.m4a",
+    "ffmpeg": "ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+    "output": {
+      "file": "music/clockwork-puzzle.m4a",
+      "sha256": "7fe2a458bfa03e0072603519ee8bbd5a27d6a8e7704eed56a2a39d8224cb9f2e",
+      "bytes": 4348484,
+      "duration": 208.6,
+      "codec": "aac (LC)",
+      "sampleRate": 48000,
+      "channels": 2,
+      "bitrate": 165219,
+      "lufs": -20.1,
+      "lra": 2.5,
+      "truePeak": -8.2
+    }
+  }
+}

@@ -78,7 +78,7 @@ event), so each screen builds its HTML in its scene function.
 | `t.UI.button({label, px, icon, iconScale, cls, title, small, onClick, sound}, parent)` | a `<button class="tb-btn">`; `px` renders the label in the pixel font at that scale. Classes: `sq`, `sm`, `tall`, `big`, `round`, `sky`, `sun`, `mint`, `tomato`. Clicking plays `"click"` unless `sound: false`. |
 | `t.UI.tag(text, cls, parent)` | the little pixel-font label that sits on a card's top edge |
 | `t.UI.px(text, scale)` | pixel-font text (5x7 font from `tools/art/lib/font.mjs`) as inline SVG; `t.UI.pxWidth(text, scale)` measures it |
-| `t.UI.icon(name, scale)` | 9x9 pixel icon as inline SVG: `play pause step stop slower faster help levels back trash start lock close undo info sound mute check` |
+| `t.UI.icon(name, scale)` | 9x9 pixel icon as inline SVG: `play pause step stop slower faster help levels back trash start lock close undo info sound mute music music-off check` |
 | `t.UI.el(tag, cls, parent, text)`, `t.UI.place(el, {x, y, w, h})` | DOM helpers |
 | `t.UI.popup({title, body, actions, w, onClose})` | an HTML popup card with backdrop and close button |
 | `t.UI.openModal(node, {onClose})` | shows any node in the modal layer with a focus trap; Escape closes the top modal; returns `{close}` |

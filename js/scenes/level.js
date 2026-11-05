@@ -255,10 +255,10 @@
 			var num = String(this.levelNumber(level));
 			badge.appendChild(UI.px(num, num.length > 1 ? (portrait ? 3 : 4) : (portrait ? 4 : 5)));
 			var tx = 14 + badgeSize + 16;
-			var sysW = portrait ? 3 * 52 + 2 * 8 : 2 * 88 + 72 + 2 * 12;
+			var sysW = portrait ? 4 * 46 + 3 * 6 : 2 * 88 + 2 * 72 + 3 * 12;
 			var crumb = UI.el("div", "gs-crumb", el);
 			crumb.style.left = tx + "px"; crumb.style.top = "16px";
-			crumb.appendChild(UI.px(this.statusText(level), 2));
+			crumb.appendChild(UI.px(this.statusText(level, portrait), 2));
 			var titleEl = UI.el("div", "gs-title", el);
 			titleEl.style.left = tx + "px"; titleEl.style.top = "34px";
 			var room = r.w - tx - sysW - 24, name = level.name;
@@ -275,9 +275,13 @@
 				if(t.Sfx) t.Sfx.toggle();
 				GS.updateSound();
 			} }, sys);
-			if(!portrait) sys.insertBefore(snd, sys.firstChild);
-			else sys.appendChild(snd);
+			var mus = this.els.musicBtn = UI.button({ cls: "mint gs-sound" + sq, icon: "music", iconScale: 3, title: "Music on/off", onClick: function(){
+				if(t.Music) t.Music.toggle();
+				GS.updateMusic();
+			} }, sys);
+			if(!portrait) { sys.insertBefore(mus, sys.firstChild); sys.insertBefore(snd, mus); }
 			this.updateSound();
+			this.updateMusic();
 			var msg = UI.el("div", "gs-msg", el);
 			var mx = portrait ? 14 : tx, my = portrait ? 14 + badgeSize + 12 : 70;
 			msg.style.left = mx + "px"; msg.style.top = my + "px";
@@ -308,10 +312,11 @@
 			var s = t.GameSaver.loadLevelStatus(level.name);
 			return (s || s === 0) && s !== false ? Math.max(0, s - 1) : -1;
 		},
-		statusText: function(level) {
+		// short form in portrait, where it shares the row with four buttons
+		statusText: function(level, short) {
 			var p = this.bestParts(level);
 			if(p < 0) return "Not solved yet";
-			return "Solved - best " + p + " of 3 parts";
+			return short ? "Solved: " + p + "/3 parts" : "Solved - best " + p + " of 3 parts";
 		},
 
 		buildTray: function(L, ops) {
@@ -462,6 +467,18 @@
 			b.classList.toggle("mint", !muted);
 			b.setAttribute("aria-pressed", muted ? "false" : "true");
 			b.title = muted ? "Sound is off: turn it on" : "Sound is on: turn it off";
+			b.setAttribute("aria-label", b.title);
+		},
+		updateMusic: function() {
+			var b = this.els.musicBtn;
+			if(!b) return;
+			var muted = t.Music && t.Music.muted ? t.Music.muted() : true;
+			b.innerHTML = "";
+			b.appendChild(UI.icon(muted ? "music-off" : "music", 3));
+			if(!b.classList.contains("gs-sq")) b.appendChild(UI.px(muted ? "Off" : "Music", 2));
+			b.classList.toggle("mint", !muted);
+			b.setAttribute("aria-pressed", muted ? "false" : "true");
+			b.title = muted ? "Music is off: turn it on" : "Music is on: turn it off";
 			b.setAttribute("aria-label", b.title);
 		},
 		setTrashHot: function(on) { if(this.els.bin) this.els.bin.classList.toggle("hot", !!on); },

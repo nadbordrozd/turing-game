@@ -1,5 +1,7 @@
 # Sound effects
 
+(The looping game score is separate: `t.Music`, see `docs/audio/MUSIC.md`.)
+
 `js/audio.js` (loaded by `index.html` right after `oaevil.js`) exposes:
 
 ```js

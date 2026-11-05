@@ -420,6 +420,11 @@
 				LS.updateSound(snd);
 			} }, sys);
 			this.updateSound(snd);
+			var mus = UI.button({ cls: "ls-sound sm", icon: "music", iconScale: 3, title: "Music on/off", onClick: function() {
+				if(t.Music) t.Music.toggle();
+				LS.updateMusic(mus);
+			} }, sys);
+			this.updateMusic(mus);
 			UI.button({ cls: portrait ? "sm sun" : "sun", icon: "play", iconScale: 2, label: portrait ? null : "Intro", px: 2,
 				title: "Replay the intro", onClick: function() { LS.toIntro(); } }, sys);
 			UI.button({ cls: portrait ? "sm sky" : "sky", icon: "info", iconScale: 2, label: portrait ? null : "About", px: 2,
@@ -433,6 +438,16 @@
 			b.classList.toggle("mint", !muted);
 			b.setAttribute("aria-pressed", muted ? "false" : "true");
 			b.title = muted ? "Sound is off: turn it on" : "Sound is on: turn it off";
+			b.setAttribute("aria-label", b.title);
+		},
+
+		updateMusic: function(b) {
+			var muted = t.Music && t.Music.muted ? t.Music.muted() : true;
+			b.innerHTML = "";
+			b.appendChild(UI.icon(muted ? "music-off" : "music", 3));
+			b.classList.toggle("mint", !muted);
+			b.setAttribute("aria-pressed", muted ? "false" : "true");
+			b.title = muted ? "Music is off: turn it on" : "Music is on: turn it off";
 			b.setAttribute("aria-label", b.title);
 		},
 
