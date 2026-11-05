@@ -80,5 +80,5 @@ t.Levels.addLevel({
 	},
 	text : "If only there was a way to repeat with a decreasing number of steps...",
 	required : ["*"],
-	times : [100, 150, 220] // PROVISIONAL: guess (old score was by instructions)
+	times : [60, 75, 135] // calibrated: best found B = 53 steps (docs/levels/CALIBRATION.md)
 });

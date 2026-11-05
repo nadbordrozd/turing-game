@@ -64,8 +64,8 @@ Totals: 45 levels; kept 20, tightened 12, replaced 13.
 
 Scoring is now by execution time only (`t.Levels.scoreByTime` in `levels.js`):
 each level's `times: [t3, t2, t1]` are the maximum step counts for 3, 2 and 1
-parts, and `just give up` has `alwaysFull: true`. Every `times` value is marked
-`// PROVISIONAL` with its origin (old parts+moves thresholds reused as step
-caps, which is more generous, or a guess) until the calibration bead
-(tg-84y.10) plays each level. `node tools/levels/check-levels.mjs` checks the
+parts, and `just give up` has `alwaysFull: true`. The calibration bead
+(tg-84y.10) set `times` from played solutions; see
+[CALIBRATION.md](CALIBRATION.md). Levels it did not solve still carry
+`// PROVISIONAL` values. `node tools/levels/check-levels.mjs` checks the
 rules.

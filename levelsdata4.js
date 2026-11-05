@@ -95,7 +95,7 @@ t.Levels.addLevel({
 	y : 483,
 	text : "Another simple one",
 	required : ["detector"],
-	times : [105, 140, 200] // PROVISIONAL: tier 3 from old moves<106, rest guess
+	times : [95, 130, 205] // calibrated: best found B = 90 steps (docs/levels/CALIBRATION.md)
 });
 
 t.Levels.addLevel({
@@ -163,7 +163,7 @@ t.Levels.addLevel({
 	y: 533,
 	text : "X marks the spot.",
 	required : ["detector"],
-	times : [58, 80, 120] // PROVISIONAL: tier 3 from old moves<=58, rest guess
+	times : [65, 85, 135] // calibrated: best found B = 58 steps (docs/levels/CALIBRATION.md)
 });
 
 
@@ -234,7 +234,7 @@ t.Levels.addLevel({
 	y: 692,
 	text : "Easy to invent, harder to solve",
 	required : ["Fibonacci", "robozzle"],
-	times : [50, 75, 110] // PROVISIONAL: guess (old score was by instructions)
+	times : [28, 37, 60] // calibrated: best found B = 26 steps (docs/levels/CALIBRATION.md)
 });
 
 
@@ -263,7 +263,7 @@ t.Levels.addLevel({
 	y: 485,
 	text : "New conditional: this one checks whether the robot is standing on a colored tile.",
 	required : ["spiral"],
-	times : [28, 36, 45] // PROVISIONAL: from old parts+moves thresholds
+	times : [18, 24, 39] // calibrated: best found B = 17 steps (docs/levels/CALIBRATION.md)
 });
 
 t.Levels.addLevel({

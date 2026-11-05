@@ -76,7 +76,7 @@ t.Levels.addLevel({
 	y: 206,
 	text: "Just a single route - how hard could it be?",
 	required : ["way out"],
-	times : [60, 80, 120] // PROVISIONAL: guess (old score was by instructions)
+	times : [185, 245, 390] // calibrated: best found B = 173 steps (docs/levels/CALIBRATION.md)
 });
 
 
@@ -176,7 +176,7 @@ t.Levels.addLevel({
 	y : 254,
 	text: "A proper maze. Collect all eight dots to get out.",
 	required : ["tunnel"],
-	times : [120, 160, 220] // PROVISIONAL: guess (old score was by instructions)
+	times : [470, 625, 1000] // calibrated: best found B = 443 steps (docs/levels/CALIBRATION.md)
 });
 
 t.Levels.u.setTable1 = function(that){
@@ -224,7 +224,7 @@ t.Levels.addLevel({
 	},
 	x : 307,
 	y: 328,
-	times : [15, 25, 40], // PROVISIONAL: guess (old score was by instructions)
+	times : [7, 9, 14], // calibrated: best found B = 6 steps (docs/levels/CALIBRATION.md)
 	required : ["conditionals"],
 	text : "To disarm the trap, set the red lock to 5 with the Plus One tile, then head for the escape hatch."
 });
@@ -265,7 +265,7 @@ t.Levels.addLevel({
 	},
 	x : 274,
 	y: 395,
-	times : [40, 60, 90], // PROVISIONAL: guess (old score was by instructions)
+	times : [18, 24, 39], // calibrated: best found B = 17 steps (docs/levels/CALIBRATION.md)
 	required : ["++"],
 	text : "Set the red lock to 0 to clear the way, whatever number it starts on."
 });
@@ -308,7 +308,7 @@ t.Levels.addLevel({
 	},
 	x: 132,
 	y: 365,
-	times : [60, 90, 130], // PROVISIONAL: guess (old score was by instructions)
+	times : [34, 45, 75], // calibrated: best found B = 32 steps (docs/levels/CALIBRATION.md)
 	required : ["--"],
 	text : "Blue := Red. Set the blue lock to whatever number the red one starts with. Changing red along the way is fine."
 });
@@ -354,7 +354,7 @@ t.Levels.addLevel({
 	},
 	x: 427,
 	y: 406,
-	times : [50, 75, 110], // PROVISIONAL: guess (old score was by instructions)
+	times : [34, 45, 75], // calibrated: best found B = 32 steps (docs/levels/CALIBRATION.md)
 	required : ["--"],
 	text : "Blue := Red * 2. Set blue to twice the number on red."
 });
@@ -400,7 +400,7 @@ t.Levels.addLevel({
 	},
 	x : 290, 
 	y: 460,
-	times : [40, 60, 90], // PROVISIONAL: guess (old score was by instructions)
+	times : [24, 31, 50], // calibrated: best found B = 22 steps (docs/levels/CALIBRATION.md)
 	required : ["--"],
 	text : "Yellow := Red + Blue"
 });
@@ -449,7 +449,7 @@ t.Levels.addLevel({
 	x : 255,
 	y: 550,
 	turingX : 250,
-	times : [100, 150, 220], // PROVISIONAL: guess (old score was by instructions)
+	times : [85, 115, 180], // calibrated: best found B = 79 steps (docs/levels/CALIBRATION.md)
 	required : ["+"],
 	text : "Yellow = Red * Blue"
 });
@@ -493,7 +493,7 @@ t.Levels.addLevel({
 	x : 128,
 	y : 436, 
 	
-	times : [40, 60, 90], // PROVISIONAL: guess (old score was by instructions)
+	times : [25, 33, 55], // calibrated: best found B = 23 steps (docs/levels/CALIBRATION.md)
 	required : ["--"],
 	text : "Blue := Red / 2"
 });
@@ -653,7 +653,7 @@ t.Levels.addLevel({
 	x:  400,
 	y: 567,
 	required : ["*"],
-	times : [181, 199, 229] // PROVISIONAL: from old parts+moves thresholds
+	times : [125, 165, 265] // calibrated: best found B = 116 steps (docs/levels/CALIBRATION.md)
 });
 
 t.Levels.u.fibo = function(n){
@@ -714,7 +714,7 @@ t.Levels.addLevel({
 	text : "Fibonacci: 1, 1, 2, 3, 5, 8, 13... each number is the sum of the two before it. Take Red as n and put the n-th number on Blue.",
 	texty : 10,
 	required : ["+"],
-	times : [150, 220, 320] // PROVISIONAL: guess (old score was by instructions)
+	times : [115, 155, 245] // calibrated: best found B = 108 steps (docs/levels/CALIBRATION.md)
 });
 
 t.Levels.u.randInt = function(n){
@@ -753,5 +753,5 @@ t.Levels.addLevel({
 	w: 140,
 	text : "What it says on the tin",
 	required : ["*"],
-	times : [60, 90, 130] // PROVISIONAL: guess (old score was by instructions)
+	times : [75, 100, 160] // calibrated: best found B = 69 steps (docs/levels/CALIBRATION.md)
 });

@@ -128,7 +128,7 @@ t.Levels.addLevel({
 		that.setRobot(0,0,0);
 		that.set(0,1,t.Obstacles.End);
 	}, 
-	times : [3, 6, 12], // PROVISIONAL: guess (was always 3)
+	times : [2, 4, 6], // calibrated: best found B = 1 steps (docs/levels/CALIBRATION.md)
 	x : 100, 
 	y: 60,
 	text : "Help the robot escape its cell: place a Step Forward tile on its circuit board (green), then press Play."
@@ -145,7 +145,7 @@ t.Levels.addLevel({
 		that.setRobot(2,0,0);
 		that.set(2,4,t.Obstacles.End);
 	}, 
-	times : [6, 8, 13], // PROVISIONAL: from old parts+moves thresholds
+	times : [5, 7, 9], // calibrated: best found B = 4 steps (docs/levels/CALIBRATION.md)
 	x : 300,
 	y : 60,
 	required : ["start here"],
@@ -163,7 +163,7 @@ t.Levels.addLevel({
 		that.setRobot(1,0,0);
 		that.set(0,2,t.Obstacles.End);
 	}, 
-	times : [8, 12, 15], // PROVISIONAL: from old parts+moves thresholds
+	times : [5, 7, 9], // calibrated: best found B = 4 steps (docs/levels/CALIBRATION.md)
 	x: 500,
 	y: 60, 
 	w: 200, 
@@ -184,7 +184,7 @@ t.Levels.addLevel({
 		that.setRobot(2,0,0);
 		that.set(0,4,t.Obstacles.End);
 	}, 
-	times : [12, 14, 24], // PROVISIONAL: from old parts+moves thresholds
+	times : [8, 10, 16], // calibrated: best found B = 7 steps (docs/levels/CALIBRATION.md)
 	x : 700,
 	y: 60, 
 	texty : 17,
@@ -206,7 +206,7 @@ t.Levels.addLevel({
 		that.set(4,0,t.Obstacles.End);
 		that.setRobot(2,0,0);
 	}, 
-	times : [18, 20, 26], // PROVISIONAL: from old parts+moves thresholds
+	times : [11, 14, 23], // calibrated: best found B = 10 steps (docs/levels/CALIBRATION.md)
 	x : 900, 
 	y: 60,
 	required : ["bend it"],
@@ -230,7 +230,7 @@ t.Levels.addLevel({
 	}, 
 	x: 700,
 	y: 130,
-	times : [8, 12, 20], // PROVISIONAL: guess (old score was by instructions)
+	times : [7, 9, 14], // calibrated: best found B = 6 steps (docs/levels/CALIBRATION.md)
 	required : ["bend it"],
 	text : "No hatch this time: grab all four parts to win."
 });
@@ -251,7 +251,7 @@ t.Levels.addLevel({
 		that.set(3,3,t.Obstacles.Empty, 0, true);
 		that.set(0,0,t.Obstacles.Empty, 0, true);
 	}, 
-	times : [39, 46, 59], // PROVISIONAL: from old parts+moves thresholds
+	times : [23, 30, 50], // calibrated: best found B = 21 steps (docs/levels/CALIBRATION.md)
 	x: 900, 
 	y: 130,
 	w : 145,
@@ -270,7 +270,7 @@ t.Levels.addLevel({
 		that.set(4,8,t.Obstacles.End);
 		that.setRobot(4,0,0);
 	}, 
-	times : [10, 17, 31], // PROVISIONAL: from old parts+moves thresholds
+	times : [9, 12, 18], // calibrated: best found B = 8 steps (docs/levels/CALIBRATION.md)
 	x: 500, 
 	y: 130,
 	required : ["resistors"],
@@ -292,7 +292,7 @@ t.Levels.addLevel({
 		}
 		t.RobotTable.dotsRemaining = 16;
 	}, 
-	times : [35, 39, 49], // PROVISIONAL: from old parts+moves thresholds
+	times : [33, 45, 70], // calibrated: best found B = 31 steps (docs/levels/CALIBRATION.md)
 	x : 251,
 	y: 123,
 	required : ["out of reach"],
@@ -314,7 +314,7 @@ t.Levels.addLevel({
 		that.set(0,8,t.Obstacles.End);
 		that.setRobot(5,0,0);
 	},
-	times : [31, 49, 69], // PROVISIONAL: from old parts+moves thresholds
+	times : [19, 26, 45], // calibrated: best found B = 18 steps (docs/levels/CALIBRATION.md)
 	x : 510, 
 	y: 288,
 	required : ["out of reach"],
@@ -343,7 +343,7 @@ t.Levels.addLevel({
 	that.set(4, 4,t.Obstacles.End);
 		that.setRobot(8,0,3);
 	},
-	times : [115, 144, 179], // PROVISIONAL: from old parts+moves thresholds
+	times : [85, 110, 180], // calibrated: best found B = 78 steps (docs/levels/CALIBRATION.md)
 	x : 408, 
 	y: 214,
 	required : ["conditionals"],
@@ -367,7 +367,7 @@ t.Levels.addLevel({
 		that.setRobot(8,0,3);
 	},
 	required : ["conditionals"],
-	times : [107, 119, 159], // PROVISIONAL: from old parts+moves thresholds
+	times : [105, 140, 220], // calibrated: best found B = 97 steps (docs/levels/CALIBRATION.md)
 	x : 719,
 	y : 323,
 	text : "Left to right, right to left, all the way down."
@@ -389,7 +389,7 @@ t.Levels.addLevel({
 		that.setRobot(0,0,0);
 		t.RobotTable.dotsRemaining = 48;
 	},
-	times : [112, 129, 159], // PROVISIONAL: from old parts+moves thresholds
+	times : [65, 85, 135], // calibrated: best found B = 60 steps (docs/levels/CALIBRATION.md)
 	x : 803,
 	y: 382,
 	required : ["conditionals"],
@@ -416,7 +416,7 @@ t.Levels.addLevel({
 	x : 643,
 	y: 239,
 	required : ["conditionals"],
-	times : [20, 30, 45], // PROVISIONAL: guess (old score was by instructions)
+	times : [60, 80, 125], // calibrated: best found B = 55 steps (docs/levels/CALIBRATION.md)
 	text : "How would you instruct a robot to find an exit from a circular room?"
 });
 
@@ -443,7 +443,7 @@ t.Levels.addLevel({
 	x : 200,
 	y: 200,
 	required : ["out of reach"],
-	times : [53, 62, 72], // PROVISIONAL: from old parts+moves thresholds
+	times : [30, 40, 65], // calibrated: best found B = 28 steps (docs/levels/CALIBRATION.md)
 	text : "At this point you don't need tips anymore."
 });
 
@@ -480,7 +480,7 @@ t.Levels.addLevel({
 	x: 110,
 	y: 152, 
 	required : ["out of reach"],
-	times : [30, 45, 70], // PROVISIONAL: guess (old score was by instructions)
+	times : [31, 45, 70], // calibrated: best found B = 29 steps (docs/levels/CALIBRATION.md)
 	text: "Getting the hang of it yet?"
 });
 
@@ -505,6 +505,6 @@ t.Levels.addLevel({
 	x : 728,
 	y : 432,
 	required : ["anywhere"],
-	times : [60, 90, 130], // PROVISIONAL: guess (old score was by instructions)
+	times : [335, 445, 715], // calibrated: best found B = 317 steps (docs/levels/CALIBRATION.md)
 	text: "Yes, it can be done."
 });

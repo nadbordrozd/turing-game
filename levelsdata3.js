@@ -66,7 +66,7 @@ t.Levels.addLevel({
 	y: 661, 
 	"text" : "Deep breath. Don't look down.",
 	required : ["Fibonacci", "robozzle"],
-	times : [150, 220, 320] // PROVISIONAL: guess (old score was always 3)
+	times : [12, 16, 25] // calibrated: best found B = 11 steps (docs/levels/CALIBRATION.md)
 });
 
 t.Levels.addLevel({
@@ -280,7 +280,7 @@ t.Levels.addLevel({
 	y: 327,
 	text: "A ring of lava all around. Keep your circuits cool.",
 	required : ["anywhere"],
-	times : [124, 130, 155] // PROVISIONAL: from old parts+moves thresholds
+	times : [120, 160, 255] // calibrated: best found B = 113 steps (docs/levels/CALIBRATION.md)
 });
 
 
@@ -523,7 +523,7 @@ t.Levels.addLevel({
 	y: 588,
 	text: "A warm-up, quite literally. Mind the lava.",
 	required : ["detector"],
-	times : [73, 95, 122] // PROVISIONAL: from old parts+moves thresholds
+	times : [50, 65, 100] // calibrated: best found B = 44 steps (docs/levels/CALIBRATION.md)
 });
 
 t.Levels.addLevel({
