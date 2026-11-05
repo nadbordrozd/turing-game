@@ -91,129 +91,8 @@ Q.UI.Button.extend("MyButton", {
 });
 
 
-Q.Sprite.extend("DraggableTile", {
-     init: function(p) {
-       this._super(p, {sprite: p.operator.sprite, sheet: p.operator.sheet, angle: p.rotationAngle, type: Q.SPRITE_UI, z: 2});
-	   this.p.scale = 0.9;
+// Board and tray tiles are Q.ProgTile (js/ui/tiles.js); placing them is t.TileInput.
 
-		this.beingDragged = false;
-		this.parent = p.parent;
-		if(p.parent) this.p.x += p.parent.p.x;
-		if(p.parent) this.p.y += p.parent.p.y;
-		this.originalX = this.p.x;
-		this.originalY = this.p.y;
-		this.add('animation');
-		this.on('step', this, Q.syncTileAnimation);
-		this.add('touch');
-		if(p.operator.sprite){
-			this.p.sprite = p.operator.sprite;
-			this.p.sheet = p.operator.sheet;
-			this.play("default");
-		} 
-	   this.on("drag");
-       this.on("touchEnd");
-	   this.on('touch', this, 'highlight');
-
-	   this.angle = 0;
-	   this.rotate(p.rotationAngle);
-
-	   
-     },
-	 setOperator : function(operator){
-		console.log("krowa krowa krowa");
-		this.p.operator = operator;
-		//this.p.asset = operator.img;
-		if(operator.sprite) {
-		console.log(operator.sprite+"    "+operator.sheet);
-			this.p.sprite = operator.sprite;
-			this.p.sheet = operator.sheet;
-			this.play("default");
-		}
-	 },
-    drag: function(touch) {
-		if(!this.beingDragged) this.dragStart();
-       this.p.x = touch.origX + touch.dx;
-       this.p.y = touch.origY + touch.dy;
-    },
-	mousedown : function(){
-		alert("mousedown");
-	},
-	click: function(touch){
-		alert("clicked");
-	},
-	dragStart : function(){
-	//	if(t.Controls.animationIsPlaying) return;
-		//console.log("start dragging "+this.p.z);
-		t.highlighter.unhighlight();
-		if(this.toDoOnDragStart) this.toDoOnDragStart();
-		this.beingDragged = true;
-		this.p.z = 7;
-	 },
-	 rotate : function(angle){
-		this.angle += angle;
-		this.angle =(4+this.angle)%4;
-		this.p.angle = -90*this.angle;
-	 },
-	 setAngle : function(angle){
-		this.angle = angle;
-		this.p.angle = -90*angle;
-	 },
-     touchEnd: function(touch) {
-		console.log("touchend");
-		if(!this.beingDragged) return;
-		console.log('was being dragged');
-		//console.log("touch end");
-		//this.p.z=3;
-		this.beingDragged = false;
-		//for(var i in this.rotators) this.rotators[i].destroy();
-		//collided = this.stage.search(this);
-		//console.log((collided.obj===t.TuringTable.display1)+" fgh "+collided);
-		//if(collided && collided.obj===t.TuringTable.display1)
-		
-		t.TuringTable.droppedTile(this.p.operator, 
-			this.angle, this.getPosition());
-		if(this.toDoOnDragEnd) this.toDoOnDragEnd();
-		t.GameSaver.saveTuringTable();
-     },
-	getPosition : function(){
-		return[this.p.x,this.p.y];
-	},
-	highlight : function(){
-		
-		t.highlighter.unhighlight();
-		t.highlighter.highlight(this);
-		this.halo = this.stage.insert(new Q.Sprite({asset: "highlight.png", 
-			scale: this.p.scale, x : this.p.x, y: this.p.y, z: 3, type: Q.SPRITE_NONE}));
-	},
-	unhighlight : function(){
-		this.halo.destroy();
-		this.halo = false;
-	}
-	
-  });
-  
-  Q.DraggableTile.extend("SelectorTile", {
-	toDoOnDragEnd : function(touch){
-		this.p.x = this.originalX;
-		this.p.y = this.originalY; 
-	}
-  });
-  
-  Q.DraggableTile.extend("TuringTile", {
-  	 rotate : function(angle){
-		this.angle += angle;
-		this.angle =(4+this.angle)%4;
-		this.p.angle = -90*this.angle;
-		//t.TuringTable.updateTile(this.p.tablePosX, this.p.tablePosY, {angle: this.angle});
-	 },
-	toDoOnDragEnd : function(touch){
-		this.destroy();
-	},
-	toDoOnDragStart : function(touch){
-		t.TuringTable.createTile(this.p.tablePosX, this.p.tablePosY, {angle : 0, what: t.Operators.Empty});
-	}
-  });
-  
 Q.Sprite.extend('ShowTile', {		//klocek do pokazywania w helperach
      init: function(p) {
        this._super(p, {sprite : p.operator.sprite, sheet : p.operator.sheet, asset: p.operator.img, angle: p.rotationAngle, type: Q.SPRITE_UI, z: 2});
@@ -530,8 +409,8 @@ Q.UI.Container.extend("CounterPanel", {
 		var colorDict = {
 			"Pink" : "#FF00BA"
 		}
-		p.fill = "#000000";
-		this._super(p, {fill: "#000000"});
+		p.fill = "#2a2335";
+		this._super(p, {fill: "#2a2335", radius: 10});
 		var iy = 0;
 		this.counters = {};
 		for(var i in p.colors){

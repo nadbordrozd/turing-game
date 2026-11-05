@@ -1,7 +1,7 @@
 t.TuringTable = {
 	current : [0,0],
-    unitwidth : 45,
-    interval : 2,
+    unitwidth : 54,	//board pitch: tiles join edge to edge (contract with the program-tiles atlas)
+    interval : 0,
     dotheight: 4,
     dotwidth: 4,
     gameon : false,
@@ -42,16 +42,6 @@ t.TuringTable = {
 		}
 	},
 	
-	disableTouch : function(){
-		for(var i in this.display1.tiles)
-			for(var j in this.display1.tiles[i])
-				this.display1.tiles[i][j].p.type = Q.SPRITE_NONE;
-	},
-	enableTouch : function(){
-		for(var i in this.display1.tiles)
-			for(var j in this.display1.tiles[i])
-				this.display1.tiles[i][j].type = Q.SPRITE_UI;
-	},
 	resetDot : function(x,y){	
 		var wid = this.unitwidth;
         var inter = this.interval;
@@ -95,16 +85,15 @@ t.TuringTable = {
 		var totHei = (this.ymax)*(wid+inter)+inter;
 		if(content) this.table[x][y] = content;
 		else var content = this.table[x][y];
-		var tile = stage.insert(new Q.TuringTile({"x": (wid+inter)*x+inter-totWid/2+wid/2, 
-					"y": (wid+inter)*y+inter-totHei/2+wid/2, parent : this.display1,
-					desiredHeight : wid,  "stage": stage, 
-					rotationAngle : content.angle, operator: content.what,
-					tablePosX : x, tablePosY : y}));
+		// tiles live inside the board container, so moving the board moves them
+		var tile = stage.insert(new Q.ProgTile({"x": (wid+inter)*x+inter-totWid/2+wid/2,
+					"y": (wid+inter)*y+inter-totHei/2+wid/2, pitch : wid,
+					rotationAngle : content.angle, operator: content.what, z: 2,
+					tablePosX : x, tablePosY : y}), this.display1);
 		this.display1.tiles[x][y] = tile;
 		this.refreshBeltJoins();
 	},
 	clear : function(){
-		console.log(this);
 		for(var i=0; i<t.TuringTable.xmax; i++)
 			for(var j=0; j<	t.TuringTable.ymax; j++){
 				t.TuringTable.setTile(i,j, {angle : 0, what : t.Operators.Empty});
@@ -166,17 +155,16 @@ t.TuringTable = {
    
     },	
  
+	// The board is a container at (0,0); the game screen moves it into place
+	// (t.GameScreen.build) once the whole level is set up.
 	displayMe : function(stage, dimensions){
 		this.init(dimensions[0], dimensions[1]);
 		var wid = this.unitwidth;
         var inter = this.interval;
 		var totWid = (this.xmax)*(wid+inter)+inter;
 		var totHei = (this.ymax)*(wid+inter)+inter;
-		var tabX = t.Levels.currentLevel.turingX||240;
-		this.display1 = new Q.Rectangle({x: tabX, y: 450, w: totWid, h: totHei,
-						wid : this.unitwidth, interval: this.interval, color : "black"});
-		d = this.display1; 			//TODO wywalic 
-		this.display1.marmol = 1777;
+		this.display1 = new Q.Rectangle({x: 0, y: 0, w: totWid, h: totHei, type: Q.SPRITE_NONE,
+						wid : this.unitwidth, interval: this.interval, color : "#a3d9b1", sort : true});
 		var display1 = this.display1;
 		display1.tiles = new Array(this.xmax);
 		for(var i=0; i<this.xmax; i++) display1.tiles[i] = new Array(this.ymax);
@@ -184,64 +172,33 @@ t.TuringTable = {
 		for(var i=0; i<this.ymax; i++){
 			for(var j=0; j<this.xmax; j++){
 				this.createTile(j, i);
-			/*
-				var tile = new Q.TuringTile({x: (wid+inter)*j+inter-totWid/2+wid/2, 
-					y: (wid+inter)*i+inter-totHei/2+wid/2, parent : this.display1,
-					desiredHeight : wid, h: wid, w: wid, "stage": stage, 
-					rotationAngle : this.table[j][i].angle, operator: this.table[j][i].what});
-				tile.tablePosX = j;
-				tile.tablePosY = i;
-				stage.insert(tile, this.display1);
-				
-				display1.tiles[j][i] = tile;
-				*/
 			}
 		}
-		this.dot = new Q.Spark({x: (inter+wid)*this.current[0]+inter-totWid/2+wid/2, 
+		this.dot = stage.insert(new Q.Spark({x: (inter+wid)*this.current[0]+inter-totWid/2+wid/2,
 			y: (inter+wid)*this.current[1]+inter-totHei/2+wid/2, desiredHeight : wid,
-			'type': Q.SPRITE_NONE, parent:  this.display1});
-		stage.insert(this.dot);
+			'type': Q.SPRITE_NONE}), this.display1);
 		this.resetDot();
-		stage.insert(new Q.MySprite({x: (inter+wid)*this.current[0]+inter-totWid/2+wid/2, 
-			y: (inter+wid)*this.current[1]+inter-totHei/2+wid/2, desiredHeight : wid,
-			scale : 0.9,
-			'sheet' : 'startTile', "sprite" : "startTileMation", 'type': Q.SPRITE_NONE, parent:  this.display1,
-			z : 1}));
-			
-		var boundary = this.display1.getBoundary();
-		stage.insert(new Q.MyButton({sheet: "trashButton", z: 2, 
-			x:(boundary.maxX+boundary.minX)/2, 
-			y: boundary.maxY+30, scale : 0.5, onClick : function(){
-				t.TuringTable.clear();
-			}}));
 		return this.display1;
 	},
-	
-	droppedTile: function(operator, angle, position){
-		console.log(operator.name);
-		var x = false; 
-		var y = false;
+
+	// Board cell under a point in stage coordinates, or false.
+	cellAt : function(px, py, slack){
+		if(!this.display1) return false;
 		var wid = this.unitwidth + this.interval;
-		var x0 = this.display1.p.x-this.xmax*wid/2;
-		var y0 = this.display1.p.y-this.ymax*wid/2;
-		var xmax = x0+this.xmax*wid;
-		var ymax = y0+this.ymax*wid;
-		console.log("turingtable L 169");
-		if(position[0]+wid/2<x0||position[0]-wid/2>xmax||
-			position[1]+wid/2<y0||position[1]-wid/2>ymax) return false;
-		if(position[0]<=x0) x = 0; else 
-		x = Math.floor((position[0]-x0)/wid);
-		console.log("turingtable L 174");
-		if(x>=this.xmax) x = this.xmax-1; 
-		
-		if(position[1]<=y0) y = 0; else 
-		y = Math.floor((position[1]-y0)/wid);
-		if(y>=this.ymax) y = this.ymax-1; 
-		this.setTile(x,y,{what: operator, 'angle' : angle});
-		this.display1.tiles[x][y].highlight();
-		console.log("turingtable L 182");
+		var x0 = this.display1.p.x - this.display1.p.w/2;
+		var y0 = this.display1.p.y - this.display1.p.h/2;
+		var fx = (px - x0)/wid, fy = (py - y0)/wid, s = (slack||0)/wid;
+		if(fx < -s || fy < -s || fx >= this.xmax + s || fy >= this.ymax + s) return false;
+		return {x: Math.max(0, Math.min(this.xmax-1, Math.floor(fx))),
+			y: Math.max(0, Math.min(this.ymax-1, Math.floor(fy)))};
 	},
-         
+	// Centre of a board cell in stage coordinates.
+	cellCenter : function(x, y){
+		var wid = this.unitwidth + this.interval;
+		return {x: this.display1.p.x - this.display1.p.w/2 + (x+0.5)*wid,
+			y: this.display1.p.y - this.display1.p.h/2 + (y+0.5)*wid};
+	},
+
 	move : function(vec){
 		this.current[0]+=vec[0];
 		this.current[1]+=vec[1];

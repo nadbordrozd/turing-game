@@ -91,9 +91,9 @@ t.RobotTable = {
         var inter = this.interval;
 		var totWid = (this.m)*(wid+inter)+inter;
 		var totHei = (this.n)*(wid+inter)+inter;
-		var tableX = t.Levels.currentLevel.robotTableX || 700;
-		this.display1 = new Q.Rectangle({x: tableX, y: 470, w: totWid, h: totHei, 'type': Q.SPRITE_NONE,
-							color: "black", wid : this.unitwidth, interval: this.interval});
+		// at (0,0): the game screen moves and scales it into the cell window (t.GameScreen.build)
+		this.display1 = new Q.Rectangle({x: 0, y: 0, w: totWid, h: totHei, 'type': Q.SPRITE_NONE,
+							color: "#2a2335", wid : this.unitwidth, interval: this.interval});
 		rt=this.display1;								
 		this.display1.tiles = {};
 		stage.insert(this.display1);
@@ -346,12 +346,8 @@ t.RobotTable = {
 	addCounters: function(whichOnes){
 		this.counters = {};
 		for(var i in whichOnes) this.counters[whichOnes[i]] = 0;
-		var stage = this.display1.stage;
-		var wid = this.unitwidth;
-        var inter = this.interval;
-		this.counterPanel = stage.insert(new Q.CounterPanel({colors: whichOnes, "stage" : stage, 
-				x: (this.m*wid+(this.m+1)*inter)/2+20, y: 0}), 
-			this.display1);
+		// HTML dials on the game screen (js/scenes/level.js), same API as Q.CounterPanel
+		this.counterPanel = new t.CounterDials(whichOnes);
 	},
 	incrementCounter : function(i){
 		this.counters[i]++;

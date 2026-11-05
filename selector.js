@@ -1,3 +1,5 @@
+// The tile tray: which instructions a level offers, and their canvas tiles.
+// Picking, dragging and placing them is handled by t.TileInput (js/ui/tile-input.js).
 t.Selector = {
 	currentOperators : {},
 	operatorSprites : [],
@@ -31,36 +33,19 @@ t.Selector = {
 		this.addOperator(t.Operators.Conveyor);
 	},
 	basicOperators : [t.Operators.Step, t.Operators.Conveyor, t.Operators.ClockwiseRotator,t.Operators.CounterClockwiseRotator],
-	createAndInsertSelectee : function(operator, x, y, container, stage){
-		var selectee = stage.insert(new Q.SelectorTile({'x': x, 'y': y, parent: this.container, 
-			desiredHeight: 40, "stage" : stage,
-			'operator' : operator, rotationAngle : 0}));
-		this.operatorSprites.push(selectee);
-		return selectee;
+	// The tray's operators in display order.
+	operatorList : function(){
+		var list = [];
+		for(var i in this.currentOperators) list.push(this.currentOperators[i]);
+		return list;
 	},
-	displayMe : function(stage){  //'rgba(100, 20, 250, 0.5)'
+	// slots: [{cx, cy, size}] in logical px, one per operator (from the game screen layout)
+	displayMe : function(stage, slots){
 		this.operatorSprites = [];
-		this.container = stage.insert(new Q.UI.Container({
-			x:170, y: 80, w: 300, h: 100, fill : 'rgba(0, 255, 0, 0.5)', z : 1
-			}));
-		var shift = -2;
-		var vert = 0;
-		for(var i in this.currentOperators){
-					if(shift>2) {
-				shift = -2;  
-				vert+=50;
-				this.container.p.h+=50;
-			}
-			this.createAndInsertSelectee(this.currentOperators[i], shift*50, vert, this.container, stage);
-			shift++;
-
+		var ops = this.operatorList();
+		for(var i = 0; i < ops.length && i < slots.length; i++){
+			this.operatorSprites.push(stage.insert(new Q.ProgTile({x: slots[i].cx, y: slots[i].cy,
+				pitch: slots[i].size, operator: ops[i], rotationAngle: 0, z: 2})));
 		}
-		
-	},
-	disableTouch : function(){
-		for(var i in this.operatorSprites) this.operatorSprites[i].type = Q.SPRITES_NONE;
-	},
-	enableTouch : function(){
-		for(var i in this.operatorSprites) this.operatorSprites[i].type = Q.SPRITES_UI;
 	}
 }

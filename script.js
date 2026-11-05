@@ -27,28 +27,14 @@ window.addEventListener('load',function(e) {
   var Q = window.Q = Quintus().include("Sprites, Scenes, 2D, Input, Touch, UI, Anim")
 							.include("TuringScenes, TuringSprites")
                               .setup({ width: 1024, height: 768 });
+	// Toybox UI kit: responsive stage, HTML layers, devicePixelRatio canvas.
+	t.UI.init(Q);
+	t.TileInput.attach(Q.el);
 							Q.touch(Q.SPRITE_UI);
 
-							  
-							  
-
-	var krowa = $("<div></div>");
-	krowa.addClass("krowa");
-    $('canvas').append(krowa);
-	var c = $('canvas')[0];
-	context=c.getContext("2d");
 	var drawLoadBar = function(progress){
-		context.fillStyle = "#000000";
-		context.fillRect(150, 450, 724, 60);
-		context.fillStyle = "rgba(255, 255, 255, 0.3)";
-		context.fillRect(150, 450, 724, 60);
-		context.fillStyle = "#FFFFFF";
-		context.fillRect(150, 450, 724*progress, 60);
-		context.font="35px monospace";
-		context.strokeText("Loading...",420,490);
+		t.UI.loading(progress);
 	}
-	var img=document.getElementById("loadingscreen");
-	context.drawImage(img,0,0);
 	var imagesToLoad = [ "resistor1.png", "resistor2.png", "resistor3.png", 'resistor4.png','resistor5.png','sprites.json', "greenscreen.png",
 		'enemy.png', 'robot.png', 'helpKalka.png',
 		'motherboard.png',  "highlight.png",
@@ -152,6 +138,7 @@ window.addEventListener('load',function(e) {
 		// tools/art/tiles/robot-cell.mjs; lava still comes from the old atlas.
 		Q.compileSheets("tiles/robot-cell.png","robot-cell.json");
 		Q.input.keyboardControls();
+		t.UI.loaded();
 		//Q.stageScene("level selector");
 		Q.stageScene("intro");
 	}, {
