@@ -1,0 +1,1 @@
+Class (characters): one character drawn in a straight front view, facing the viewer, flat 2D like a character standing upright seen from the front. Perfectly symmetric left and right, head and face clearly visible, feet at the bottom. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character.

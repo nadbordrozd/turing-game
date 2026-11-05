@@ -1,0 +1,1 @@
+isometric, three-quarter view, perspective, side profile, top-down view, ground plate, floor, shadow, platform, scenery, multiple characters

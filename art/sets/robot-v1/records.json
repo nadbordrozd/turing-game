@@ -1,0 +1,134 @@
+{
+  "robot-front-a": {
+    "id": "robot-front-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-b1cc257e-0313-40d9-9c9a-9f219cb2359c",
+    "submittedAt": "2026-11-05T10:08:08.935Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-characters.txt",
+          "text": "Class (characters): one character drawn in a straight front view, facing the viewer, flat 2D like a character standing upright seen from the front. Perfectly symmetric left and right, head and face clearly visible, feet at the bottom. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: the player robot of a programming puzzle game: a small cute toy robot standing upright, straight front view, facing the viewer, flat 2D, like a character standing upright seen from the front, not isometric. Perfectly symmetric left and right. A big square cream head with rounded corners and a wide sky-blue visor with two friendly round eyes and a small smile, a short antenna with a yellow ball on top; a boxy tomato-red body with a cream chest panel; two short arms hanging at its sides ending in grey claw hands; two short grey legs with chunky red feet resting on the bottom edge of the canvas. Centered, fills the canvas height, transparent background."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": true,
+      "seed": 4701,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (characters): one character drawn in a straight front view, facing the viewer, flat 2D like a character standing upright seen from the front. Perfectly symmetric left and right, head and face clearly visible, feet at the bottom. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: the player robot of a programming puzzle game: a small cute toy robot standing upright, straight front view, facing the viewer, flat 2D, like a character standing upright seen from the front, not isometric. Perfectly symmetric left and right. A big square cream head with rounded corners and a wide sky-blue visor with two friendly round eyes and a small smile, a short antenna with a yellow ball on top; a boxy tomato-red body with a cream chest panel; two short arms hanging at its sides ending in grey claw hands; two short grey legs with chunky red feet resting on the bottom edge of the canvas. Centered, fills the canvas height, transparent background. Must not include: isometric, three-quarter view, perspective, side profile, top-down view, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, watermark, signature, tracks, wheels."
+    },
+    "at": "2026-11-05T10:08:08.944Z",
+    "candidates": [
+      {
+        "file": "robot-front-a-0.png",
+        "sha256": "0a1637f09e8fe6f93e4ec10acb6411747c681ccb020509d3bbc48adc29f14e0b",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  },
+  "robot-front-b": {
+    "id": "robot-front-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-7e7f2980-9c44-413c-8e82-4a8f49b70328",
+    "submittedAt": "2026-11-05T10:09:05.951Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-characters.txt",
+          "text": "Class (characters): one character drawn in a straight front view, facing the viewer, flat 2D like a character standing upright seen from the front. Perfectly symmetric left and right, head and face clearly visible, feet at the bottom. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: the player robot of a programming puzzle game: a small cute toy robot standing upright, straight front view, facing the viewer, flat 2D, like a character standing upright seen from the front, not isometric. Perfectly symmetric left and right. A big square cream head with rounded corners and a wide sky-blue visor with two friendly round eyes and a small smile, a short antenna with a yellow ball on top; a boxy tomato-red body with a cream chest panel; two short arms hanging at its sides ending in grey claw hands; two short grey legs with chunky red feet resting on the bottom edge of the canvas. Centered, fills the canvas height, transparent background."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": true,
+      "seed": 4702,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (characters): one character drawn in a straight front view, facing the viewer, flat 2D like a character standing upright seen from the front. Perfectly symmetric left and right, head and face clearly visible, feet at the bottom. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: the player robot of a programming puzzle game: a small cute toy robot standing upright, straight front view, facing the viewer, flat 2D, like a character standing upright seen from the front, not isometric. Perfectly symmetric left and right. A big square cream head with rounded corners and a wide sky-blue visor with two friendly round eyes and a small smile, a short antenna with a yellow ball on top; a boxy tomato-red body with a cream chest panel; two short arms hanging at its sides ending in grey claw hands; two short grey legs with chunky red feet resting on the bottom edge of the canvas. Centered, fills the canvas height, transparent background. Must not include: isometric, three-quarter view, perspective, side profile, top-down view, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, watermark, signature, tracks, wheels."
+    },
+    "at": "2026-11-05T10:09:05.952Z",
+    "candidates": [
+      {
+        "file": "robot-front-b-0.png",
+        "sha256": "0a6f8401d454e8082efebd726c8663e16c381a45da6b6909e0955fa04894ba7a",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  },
+  "robot-front-c": {
+    "id": "robot-front-c",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-9bb4db7c-07ff-4a2f-9ac1-716704b107fe",
+    "submittedAt": "2026-11-05T10:09:31.057Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-characters.txt",
+          "text": "Class (characters): one character drawn in a straight front view, facing the viewer, flat 2D like a character standing upright seen from the front. Perfectly symmetric left and right, head and face clearly visible, feet at the bottom. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: the player robot of a programming puzzle game: a small cute toy robot standing upright, straight front view, facing the viewer, flat 2D, like a character standing upright seen from the front, not isometric. Perfectly symmetric left and right. A big square cream head with rounded corners and a wide sky-blue visor with two friendly round eyes and a small smile, a short antenna with a yellow ball on top; a boxy tomato-red body with a cream chest panel; two short arms hanging at its sides ending in grey claw hands; two short grey legs with chunky red feet resting on the bottom edge of the canvas. Centered, fills the canvas height, transparent background."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 48
+      },
+      "no_background": true,
+      "seed": 4703,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (characters): one character drawn in a straight front view, facing the viewer, flat 2D like a character standing upright seen from the front. Perfectly symmetric left and right, head and face clearly visible, feet at the bottom. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: the player robot of a programming puzzle game: a small cute toy robot standing upright, straight front view, facing the viewer, flat 2D, like a character standing upright seen from the front, not isometric. Perfectly symmetric left and right. A big square cream head with rounded corners and a wide sky-blue visor with two friendly round eyes and a small smile, a short antenna with a yellow ball on top; a boxy tomato-red body with a cream chest panel; two short arms hanging at its sides ending in grey claw hands; two short grey legs with chunky red feet resting on the bottom edge of the canvas. Centered, fills the canvas height, transparent background. Must not include: isometric, three-quarter view, perspective, side profile, top-down view, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, watermark, signature, tracks, wheels."
+    },
+    "at": "2026-11-05T10:09:31.058Z",
+    "candidates": [
+      {
+        "file": "robot-front-c-0.png",
+        "sha256": "1ab8b435ac9657ff2a09e14f865501cbedb0d5eafaf0383ecfd161148ee7b748",
+        "width": 48,
+        "height": 48
+      }
+    ]
+  }
+}

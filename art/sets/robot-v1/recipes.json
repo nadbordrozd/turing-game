@@ -1,0 +1,28 @@
+{
+  "set": "robot-v1",
+  "bead": "tg-vy4.7",
+  "class": "characters",
+  "exploration": false,
+  "_doc": "Player robot samples in the approved Toybox direction: straight front view, symmetric, feet at the bottom edge, transparent; generated at 48x48 and padded bottom-centre to the in-game 50x50. Not wired into the game (the player sheet's death/drown frames must be redrawn to match first). See docs/art/classes/characters.md and docs/art/PIPELINE.md. Recipes are never edited after generation: add a new id (new seed) instead.",
+  "shared": {
+    "frontOpts": { "outline": "single color black outline", "detail": "low detail", "view": "side", "direction": "south" },
+    "robotSubject": "Subject: the player robot of a programming puzzle game: a small cute toy robot standing upright, straight front view, facing the viewer, flat 2D, like a character standing upright seen from the front, not isometric. Perfectly symmetric left and right. A big square cream head with rounded corners and a wide sky-blue visor with two friendly round eyes and a small smile, a short antenna with a yellow ball on top; a boxy tomato-red body with a cream chest panel; two short arms hanging at its sides ending in grey claw hands; two short grey legs with chunky red feet resting on the bottom edge of the canvas. Centered, fills the canvas height, transparent background."
+  },
+  "defaults": {
+    "endpoint": "create-image-pixen",
+    "fragments": ["style", "class-characters"],
+    "noBackground": true,
+    "options": "@frontOpts",
+    "negative": "text, letters, numbers, watermark, signature, tracks, wheels"
+  },
+  "recipes": [
+    { "id": "robot-front-a", "concept": "pixen side/south front view", "width": 48, "height": 48, "seed": 4701, "subject": "@robotSubject" },
+    { "id": "robot-front-b", "concept": "pixen side/south front view", "width": 48, "height": 48, "seed": 4702, "subject": "@robotSubject" },
+    { "id": "robot-front-c", "concept": "pixen side/south front view", "width": 48, "height": 48, "seed": 4703, "subject": "@robotSubject" }
+  ],
+  "outputs": [
+    { "path": "art/sets/robot-v1/game/robot-front-a-50.png", "from": "robot-front-a#0", "steps": [{ "op": "pad", "width": 50, "height": 50, "anchor": "bottom" }], "width": 50, "height": 50 },
+    { "path": "art/sets/robot-v1/game/robot-front-b-50.png", "from": "robot-front-b#0", "steps": [{ "op": "pad", "width": 50, "height": 50, "anchor": "bottom" }], "width": 50, "height": 50 },
+    { "path": "art/sets/robot-v1/game/robot-front-c-50.png", "from": "robot-front-c#0", "steps": [{ "op": "pad", "width": 50, "height": 50, "anchor": "bottom" }], "width": 50, "height": 50 }
+  ]
+}

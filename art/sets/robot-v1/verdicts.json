@@ -1,0 +1,17 @@
+{
+  "robot-front-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Straight front view, symmetric silhouette (mask 99.4%), big friendly eyes and smile read at 1x on light and dark, cream/red/sky-blue palette, yellow antenna bulb; mild top-left shading and widest silhouette (33 px)",
+    "at": "2026-11-05T10:10:34.409Z"
+  },
+  "robot-front-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Straight front view, mask fully symmetric, helmet head with sky-blue visor, dot eyes and mouth read at 1x; chunky boxy hands instead of claws, orange-red antenna bulb, face slightly less expressive",
+    "at": "2026-11-05T10:10:34.519Z"
+  },
+  "robot-front-c#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Straight front view, mask fully symmetric, cleanest shapes and flattest shading (rotates best), big sky-blue visor with white eyes reads at 1x; smallest figure (28x43) and the mouth is a 2 px dash",
+    "at": "2026-11-05T10:10:34.629Z"
+  }
+}
