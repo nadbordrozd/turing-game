@@ -91,7 +91,6 @@ modals trap focus and close on Escape.
 
 Canvas helpers (`js/ui/tiles.js`): `Q.ProgTile` (a program tile on a `pitch`
 grid, frame scaled to `pitch / frame width`), `Q.TileOverlay`, `Q.Dimmer`,
-`Q.ToyCard` (a Toybox card drawn in the canvas, used by the `popup` scene),
 `t.UI.drawTile(ctx, op, angle, cx, cy, size, alpha)`.
 
 ## Main game screen
@@ -107,10 +106,41 @@ Tile interaction (`js/ui/tile-input.js`): tap a tray tile to select it, then
 tap a cell to place it; or drag it onto the board (ghost and snap highlight;
 on touch the tile floats above the finger). Tap a placed tile to turn it
 clockwise (right-click: anticlockwise). Drag a placed tile to move it; drag it
-off the board or onto the trash, or long-press it, to remove it. Undo button or
+off the board or onto the trash, or long-press it, to remove it. A long press on
+a tray tile (touch) or its "?" badge opens its explainer. Undo button or
 Ctrl/Cmd+Z. Editing is locked while a program runs or is paused. Events
 `tile:select`, `tile:pick`, `tile:place`, `tile:rotate`, `tile:remove`,
 `tile:undo`, `tile:clear`, `tile:locked` are emitted for feedback hooks.
+
+## Tile explainers
+
+`js/ui/tile-explainers.js` (`t.TileExplain`, bead tg-84y.14) replaces the 2012
+`helperOptions` demos. Each tile type has an HTML card in the modal layer: a
+title tag, a looping demo in its own canvas, the key point (a pale sun strip)
+and one or two short sentences. The texts follow `operate()` in `Operators.js`.
+
+| Tile | Demo |
+| --- | --- |
+| Step, Turn right, Turn left | the tile in all four orientations, the program marker passing through each, and below each a robot window where the robot does the same thing (steps towards its feet, or turns) |
+| Belt (goto) | a 3x2 loop of belts (corners as `TuringTable.beltSheet` picks them) with the marker going round; the robot waits |
+| Wall ahead?, On a blue tile? | both outcomes side by side, with the robot's sense animation (`Q.RoboFx`) and the exit the program takes lit |
+| +1 | the marker passes through and the counter dial counts up |
+| -1 | counter at 0 (the program takes the 0 side, the dial stays 0) next to counter above 0 (it counts down and the program takes the minus side) |
+
+- `t.TileExplain.open(ops, {index, auto, fromPress})`: one page per operator,
+  with Back / Next tile and dots when there are several; `auto` adds a "New
+  tile" tag. Escape, the close button or a tap on the backdrop closes it.
+- Discoverability: a "?" badge on every tray tile (a real button, so Tab and
+  Enter work), a long press on a tray tile on touch, the "Tile guide" button in
+  the help overlay (`openAll`: every tile type on the tray), and auto-open.
+- Auto-open: `t.GameScreen.build` calls `forLevel(ops)`; tile types not in
+  localStorage `turing.tilesSeen` open on one paged card. Families: operator
+  names, with every colour's +1 as `Plus` and -1 as `Minus`. Opening a card in
+  any way marks its types as seen.
+- Landscape cards are 760 wide with the demo drawn at 1.25x; portrait cards are
+  520 wide at 1x. A layout-mode change reopens the card on the same page.
+- `prefers-reduced-motion: reduce` draws one still frame (where the marker
+  leaves, the robot's start as a ghost, the turn arrow, the lit exit).
 
 ## End-level screen
 

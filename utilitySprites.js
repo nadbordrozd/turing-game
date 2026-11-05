@@ -33,6 +33,37 @@ Q.RoboFx = {
 		if(s.kind === 'magic') return s.result ? this.colours.magic : this.colours.plain;
 		return s.result ? this.colours.wall : this.colours.clear;
 	},
+	// The program counter marker (Q.Spark, tile explainers): cream halo,
+	// sunny four-point star with an ink outline, centred on the origin.
+	drawMarker : function(ctx, size){
+		var ink = "rgb(42,35,53)";
+		var pulse = 0.5+0.5*Math.sin(Date.now()/1000*2*Math.PI*1.1);
+		var halo = size*(0.27+0.03*pulse);
+		ctx.beginPath();
+		ctx.arc(0, 0, halo, 0, 2*Math.PI);
+		ctx.fillStyle = "rgba(255,244,220,0.9)";
+		ctx.fill();
+		ctx.lineWidth = 2.5;
+		ctx.strokeStyle = ink;
+		ctx.stroke();
+		var R = size*0.22, r = size*0.085, i, th, rr;
+		ctx.beginPath();
+		for(i = 0; i < 8; i++){
+			th = i*Math.PI/4; rr = i%2 ? r : R;
+			ctx.lineTo(Math.sin(th)*rr, -Math.cos(th)*rr);
+		}
+		ctx.closePath();
+		ctx.fillStyle = "rgb(246,196,69)";
+		ctx.fill();
+		ctx.lineWidth = 2;
+		ctx.lineJoin = "round";
+		ctx.strokeStyle = ink;
+		ctx.stroke();
+		ctx.beginPath();
+		ctx.arc(0, 0, size*0.04, 0, 2*Math.PI);
+		ctx.fillStyle = "rgb(255,255,255)";
+		ctx.fill();
+	},
 	// lurch into the wall (0-0.3), squash against it (0.3-0.45), recoil with a
 	// small backwards overshoot and settle exactly where it started (1)
 	bumpPose : function(k){
@@ -233,43 +264,6 @@ Q.UI.Button.extend("MyButton", {
 
 // Board and tray tiles are Q.ProgTile (js/ui/tiles.js); placing them is t.TileInput.
 
-Q.Sprite.extend('ShowTile', {		//klocek do pokazywania w helperach
-     init: function(p) {
-       this._super(p, {sprite : p.operator.sprite, sheet : p.operator.sheet, asset: p.operator.img, angle: p.rotationAngle, type: Q.SPRITE_UI, z: 2});
-	   //this.p.scale = this.p.desiredHeight/this.asset().height;
-	    this.p.scale = 0.9;
-		this.beingDragged = false;
-		this.parent = p.parent;
-		if(p.parent) this.p.x += p.parent.p.x;
-		if(p.parent) this.p.y += p.parent.p.y;
-		this.add('animation');
-		this.on('step', this, Q.syncTileAnimation);
-		if(p.operator.sprite){
-					this.p.sprite = p.operator.sprite;
-			this.p.sheet = p.operator.sheet;
-			this.play("default");
-		}
-	   this.angle = 0;
-	   this.rotate(p.rotationAngle);
-
-	   
-     },
-	 setOperator : function(operator){
-		this.p.operator = operator;
-		this.p.asset = operator.img;
-		if(operator.sprite) {
-			this.p.sprite = operator.sprite;
-			this.p.sheet = operator.sheet;
-			this.play("default");
-		}
-	 },
-	 rotate : function(angle){
-		this.angle += angle;
-		this.angle =(4+this.angle)%4;
-		this.p.angle = -90*this.angle;
-	 }
-});
-
 // The program counter: a Toybox marker drawn in code (cream halo, sunny
 // four-point star with an ink outline, slowly turning) so it reads on the
 // mint board, on the red start tab and on every program tile. It replaces the
@@ -315,33 +309,7 @@ Q.Sprite.extend("Spark",{
 	this.callback = callback;
   },
   draw : function(ctx){
-	var size = this.p.desiredHeight || 54, ink = "rgb(42,35,53)";
-	var pulse = 0.5+0.5*Math.sin(Date.now()/1000*2*Math.PI*1.1);
-	var halo = size*(0.27+0.03*pulse);
-	ctx.beginPath();
-	ctx.arc(0, 0, halo, 0, 2*Math.PI);
-	ctx.fillStyle = "rgba(255,244,220,0.9)";
-	ctx.fill();
-	ctx.lineWidth = 2.5;
-	ctx.strokeStyle = ink;
-	ctx.stroke();
-	var R = size*0.22, r = size*0.085, i, th, rr;
-	ctx.beginPath();
-	for(i = 0; i < 8; i++){
-		th = i*Math.PI/4; rr = i%2 ? r : R;
-		ctx.lineTo(Math.sin(th)*rr, -Math.cos(th)*rr);
-	}
-	ctx.closePath();
-	ctx.fillStyle = "rgb(246,196,69)";
-	ctx.fill();
-	ctx.lineWidth = 2;
-	ctx.lineJoin = "round";
-	ctx.strokeStyle = ink;
-	ctx.stroke();
-	ctx.beginPath();
-	ctx.arc(0, 0, size*0.04, 0, 2*Math.PI);
-	ctx.fillStyle = "rgb(255,255,255)";
-	ctx.fill();
+	Q.RoboFx.drawMarker(ctx, this.p.desiredHeight || 54);
   },
   dieSlowly : function(callback){
 	console.log('krowa krowa krowa krowa');
@@ -600,69 +568,6 @@ Q.UI.Text.extend("MyText",{
 	}
 });
 
-Q.UI.Text.extend("Counter", {
-	init: function(p){
-		if(p.number!==undefined) p.label =""+p.number;
-		if(p.label===undefined) p.label = "katapulta";
-		p.family = "monospace";
-		this._super(p, {
-			
-		});
-	},
-	setLabel : function(label){
-		this.p.label = label;
-		this.p.number = undefined;
-	},
-	set : function(number){
-	console.log("taki dostalem number nic nie poradze  "+number);
-		this.p.number = number;
-		this.p.label = ""+number;
-		console.log("dlaczego taki kolo +  "+this.p.label);
-	},
-	increment : function(callback){
-		this.p.number++;
-		this.p.label = ""+this.p.number;
-		if(callback) {console.log('a jednak callback'); callback();}
-	},
-	decrement : function(callback){
-		this.p.number--;
-		this.p.label = ""+this.p.number;
-		if(callback) callback();
-	}
-});
-
-Q.UI.Container.extend("CounterPanel", {
-	init: function(p) {
-		var colorDict = {
-			"Pink" : "#FF00BA"
-		}
-		p.fill = "#2a2335";
-		this._super(p, {fill: "#2a2335", radius: 10});
-		var iy = 0;
-		this.counters = {};
-		for(var i in p.colors){
-			console.log('krowa rkowara asd as  '+this);
-			var colo = colorDict[p.colors[i]]||p.colors[i];
-			this.counters[p.colors[i]] = p.stage.insert(
-			new Q.Counter({'x' : 10, 'y' : iy , number: 0, color: colo}), this);
-			iy += 60;
-		}
-		this.fit(20);
-		maka = this;
-	},
-	setCounterLabel: function(counter, label){
-		this.counters[counter].setLabel(label);
-	},
-	set : function(color, number){
-		this.counters[color].set(number);
-	},
-	increment: function(color, callback){
-		this.counters[color].increment(callback);
-	},
-	decrement: function(color, callback){
-		this.counters[color].decrement(callback);
-	}
-});
 }
 
 

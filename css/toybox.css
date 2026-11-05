@@ -298,7 +298,22 @@ body.tg {
   white-space: nowrap;
   color: var(--ink);
 }
-.gs-info { position: absolute; width: 30px; height: 30px; min-width: 30px; min-height: 30px; padding: 0; border-radius: 50%; box-shadow: 0 3px 0 var(--ink); z-index: 2; }
+/* "?" badge on each tray tile: opens its explainer (js/ui/tile-explainers.js) */
+.tb-btn.gs-q {
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  min-width: 23px;
+  min-height: 23px;
+  padding: 0;
+  border-width: 2.5px;
+  border-radius: 50%;
+  box-shadow: 0 2px 0 var(--ink);
+  z-index: 2;
+}
+/* a bigger invisible hit area for fingers */
+.tb-btn.gs-q::before { content: ""; position: absolute; inset: -6px; }
+.tb-btn.gs-q:active { transform: translateY(2px); box-shadow: 0 0 0 var(--ink); }
 .gs-tools { position: absolute; display: flex; gap: 10px; }
 .gs-bin {
   flex: 1;
@@ -1019,3 +1034,32 @@ body.tg {
 @media (prefers-reduced-motion: reduce) {
   .tb-btn.ls-node.next { animation: none; }
 }
+
+/* =================== tile explainers (js/ui/tile-explainers.js) =================== */
+.tb-popup.tx-card { padding: 26px 20px 18px; }
+.tx-tags { position: absolute; top: -15px; left: 14px; display: flex; gap: 8px; }
+.tx-tags .tb-tag { position: static; }
+.tx-stage {
+  padding: 3px;
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  background: var(--sky);
+  box-shadow: inset 0 -5px 0 rgba(45, 134, 181, 0.45);
+  line-height: 0;
+}
+#tg-stage .tx-stage canvas { position: relative !important; display: block; z-index: auto; touch-action: auto; }
+.tx-point {
+  margin: 14px 0 8px !important;
+  padding: 8px 12px;
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  background: #ffe9a8;
+  font: 800 16px/1.3 var(--round);
+  color: var(--ink);
+}
+.tx-text { margin: 0 2px 4px !important; font: 600 15px/1.4 var(--round); color: var(--ink-2); }
+.tx-nav { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 12px; }
+.tx-nav .tb-btn { min-width: 96px; }
+.tx-dots { display: flex; gap: 6px; margin-right: auto; order: -1; }
+.tx-dots i { width: 10px; height: 10px; border: 2px solid var(--ink); border-radius: 50%; background: var(--cream-2); }
+.tx-dots i.on { background: var(--tomato); }

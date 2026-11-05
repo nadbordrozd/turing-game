@@ -4,7 +4,7 @@
 //  - tap a placed tile to turn it clockwise (right-click: anticlockwise);
 //    tapping it with the same tile selected also turns it, another tile replaces it;
 //  - drag a placed tile to move it, off the board or onto the trash to remove it;
-//    a long press removes it too;
+//    a long press removes it too; a long press on a tray tile explains it;
 //  - undo (button or Ctrl/Cmd+Z) restores the board before the last edit.
 // The board is locked while a program runs or is paused (see t.GameScreen.locked).
 // Hooks for sound/feedback: t.UI.on("tile:select" | "tile:pick" | "tile:place" |
@@ -108,7 +108,6 @@
 		select: function(op) {
 			this.selected = op;
 			this.hover = null;
-			t.GameScreen.updateSelection();
 			if(op) UI.sfx("tile-pick");
 			UI.emit("tile:select", { op: op });
 		},
@@ -152,7 +151,14 @@
 			}
 			if(e.button !== 0) return;
 			var pr = this.press = { id: e.pointerId, start: p, hit: h, touch: e.pointerType !== "mouse" };
-			if(h.kind === "cell" && h.op !== t.Operators.Empty) {
+			if(h.kind === "tray" && pr.touch && t.TileExplain) {
+				// long press on a tray tile: show how it works
+				pr.timer = setTimeout(function() {
+					if(TI.press !== pr || TI.drag) return;
+					pr.consumed = true;
+					t.TileExplain.open([h.op], { fromPress: true });
+				}, LONG_PRESS_MS);
+			} else if(h.kind === "cell" && h.op !== t.Operators.Empty) {
 				pr.timer = setTimeout(function() {
 					if(TI.press !== pr || TI.drag) return;
 					pr.consumed = true;

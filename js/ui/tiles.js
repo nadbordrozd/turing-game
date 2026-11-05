@@ -1,9 +1,7 @@
 // Canvas sprites for the Toybox game screen: program tiles on the board and in
 // the tray, the interaction overlay (selection, ghost, snap highlight, dragged
-// tile) and a Toybox card for canvas-drawn popups.
+// tile).
 TuringScenes.add(function(Q) {
-	var INK = "#2a2335", CREAM = "#fff4dc";
-
 	// Current animation frame of an operator's tile, on the shared clock that
 	// Q.syncTileAnimation uses, so every copy of a tile shows the same frame.
 	t.UI.tileFrame = function(op) {
@@ -81,30 +79,6 @@ TuringScenes.add(function(Q) {
 		draw: function(ctx) {
 			ctx.fillStyle = "rgba(42,35,53," + this.p.alpha + ")";
 			ctx.fillRect(-4000, -4000, 8000, 8000);
-		}
-	});
-
-	// Toybox card drawn in the canvas (for popups whose content is canvas sprites).
-	Q.UI.Container.extend("ToyCard", {
-		init: function(p) {
-			this._super(p);
-			// Q.UI.Container ignores a defaults argument, so set ours here
-			var d = { fill: CREAM, stroke: INK, border: 3, radius: 18 };
-			for(var k in d) if(!p || p[k] === undefined) this.p[k] = d[k];
-		},
-		draw: function(ctx) {
-			var p = this.p, x = -p.cx, y = -p.cy;
-			ctx.save();
-			ctx.fillStyle = INK;
-			roundRect(ctx, x, y + 6, p.w, p.h, p.radius);
-			ctx.fill();
-			ctx.fillStyle = p.fill;
-			roundRect(ctx, x, y, p.w, p.h, p.radius);
-			ctx.fill();
-			ctx.lineWidth = p.border;
-			ctx.strokeStyle = p.stroke;
-			ctx.stroke();
-			ctx.restore();
 		}
 	});
 });

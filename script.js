@@ -40,7 +40,7 @@ window.addEventListener('load',function(e) {
 		'sprytszyt.png','obstacle.png',
 		'tiles/program-tiles.png', 'program-tiles.json',
 		'tiles/robot-cell.png', 'robot-cell.json',
-		'robotile.png', 'strzalka.png',
+		'robotile.png',
 		"coil.png", "integratedcircuit.png", 'capacitor.png',
 		"coilBW.png", "integratedcircuitBW.png", 'capacitorBW.png',
 		"greencoil.png", "greenintegratedcircuit.png", "greencapacitor.png",

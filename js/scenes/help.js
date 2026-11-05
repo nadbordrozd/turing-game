@@ -37,7 +37,8 @@
 			[T.tray, T.mat, T.cell, T.deck].forEach(ring);
 			callout(T.tray, portrait ? 300 : Math.max(150, T.tray.w + 40),
 				"Each of these instructions makes the robot perform a simple task - like moving or turning around. " +
-				"Drag one to the CPU and press play to see the effect");
+				"Drag one to the CPU and press play to see the effect" +
+				"<br><br><span class=\"gs-hint\">Tap <b>?</b> on a tile to see how it works.</span>");
 			callout(T.mat, portrait ? 320 : Math.min(300, T.mat.w - 30),
 				"This is the robot's <b>CPU</b>. Instructions that you put here will be carried out by the robot." +
 				"<br><br><span class=\"gs-hint\">Tap a tile on the board to turn it. Drag it off the board (or press and hold) to remove it.</span>");
@@ -65,14 +66,21 @@
 			var hy = portrait ? sysR.y + sysR.h + 14 : sysR.y + (sysR.h - hc.offsetHeight) / 2;
 			UI.place(hc, {x: portrait ? 12 : sysR.x - w - 18, y: hy});
 
-			var ok = UI.button({label: "Got it", px: 3, cls: "sun big", onClick: function(){ t.HelpOverlay.close(); }}, wrap);
+			// "Got it" and the tile guide (every tile on this tray, js/ui/tile-explainers.js)
+			var row = UI.el("div", "", wrap);
+			row.style.position = "absolute";
+			row.style.display = "flex";
+			row.style.gap = "12px";
+			var tiles = UI.button({label: "Tile guide", px: 3, cls: "sky big", title: "How each tile works", onClick: function(){
+				t.HelpOverlay.close();
+				if(t.TileExplain) t.TileExplain.openAll();
+			}}, row);
+			var ok = UI.button({label: "Got it", px: 3, cls: "sun big", onClick: function(){ t.HelpOverlay.close(); }}, row);
 			ok.setAttribute("autofocus", "");
-			ok.style.position = "absolute";
-			ok.style.height = "56px";
-			var okW = 170;
-			ok.style.width = okW + "px";
+			var okW = 170, tilesW = 210, rowW = okW + 12 + tilesW;
+			[[ok, okW], [tiles, tilesW]].forEach(function(b){ b[0].style.height = "56px"; b[0].style.width = b[1] + "px"; });
 			// centred on the gap below the header, or bottom of the stage in portrait
-			UI.place(ok, portrait ? {x: (UI.w - okW) / 2, y: UI.h - 12 - 64} : {x: T.mat.x + (T.mat.w - okW) / 2, y: T.mat.y + T.mat.h - 76});
+			UI.place(row, portrait ? {x: (UI.w - rowW) / 2, y: UI.h - 12 - 64} : {x: T.mat.x + (T.mat.w - rowW) / 2, y: T.mat.y + T.mat.h - 76});
 			back.addEventListener("click", function(){ t.HelpOverlay.close(); });
 			current = UI.openModal(wrap, {onClose: function(){ current = null; }});
 		},

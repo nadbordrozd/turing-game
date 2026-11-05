@@ -44,12 +44,13 @@
 		return TITLES[op.name] || op.name;
 	}
 
-	// ---- counter dials: same API as Q.CounterPanel, drawn in HTML ----
+	// ---- counter dials: same API as the 2012 canvas Q.CounterPanel, drawn in HTML ----
 	t.CounterDials = function(colors) {
 		this.colors = colors.slice();
 		this.numbers = {}; this.labels = {}; this.els = {};
 		for(var i = 0; i < colors.length; i++) { this.numbers[colors[i]] = 0; this.labels[colors[i]] = "0"; }
 	};
+	t.CounterDials.COLORS = COLORS;
 	t.CounterDials.prototype = {
 		set: function(color, number) { this.numbers[color] = number; this.labels[color] = "" + number; this.render(color); },
 		setCounterLabel: function(color, label) { this.numbers[color] = undefined; this.labels[color] = "" + label; this.render(color); },
@@ -239,6 +240,7 @@
 			this.buildMat(L);
 			this.buildCell(L, rt);
 			this.buildScore(L, level);
+			if(t.TileExplain) t.TileExplain.forLevel(ops);
 		},
 
 		buildHeader: function(level, mode, W) {
@@ -324,11 +326,15 @@
 					UI.place(c, { x: s.x - tr.x - 8, y: s.y - tr.y + PITCH + 3, w: PITCH + 16 });
 				});
 			}
-			// "what's this?" button that follows the selected tray tile
-			var info = this.els.info = UI.button({ cls: "sky gs-info", icon: "info", iconScale: 2, title: "What does this tile do?", onClick: function(){
-				if(t.TileInput.selected) GS.showTileHelp(t.TileInput.selected);
-			} }, el);
-			info.style.display = "none";
+			// a "?" badge on each tile opens its explainer (js/ui/tile-explainers.js)
+			tr.slots.forEach(function(s, i) {
+				var op = ops[i];
+				if(!t.TileExplain || !t.TileExplain.card(op)) return;
+				var q = UI.button({ cls: "sky gs-q", label: "?", px: 2, title: "How does " + title(op) + " work?", onClick: function(){
+					t.TileExplain.open([op]);
+				} }, el);
+				UI.place(q, { x: s.x - tr.x + PITCH - 16, y: s.y - tr.y - 15 });
+			});
 			var tools = UI.place(UI.el("div", "gs-tools", el), { x: tr.tools.x - tr.x, y: tr.tools.y - tr.y, w: tr.tools.w, h: tr.tools.h });
 			if(tr.tools.column) tools.style.flexDirection = "column";
 			this.els.undo = UI.button({ cls: "gs-undo mint", icon: "undo", iconScale: 2, small: "undo", title: "Undo", onClick: function(){ t.TileInput.undo(); } }, tools);
@@ -446,17 +452,6 @@
 			this.els.undo.disabled = locked || !t.TileInput.canUndo();
 			this.els.bin.disabled = locked;
 		},
-		// Tray selection changed: move the "?" button next to the selected tile.
-		updateSelection: function() {
-			var info = this.els.info, L = this.layout;
-			if(!info || !L) return;
-			var op = t.TileInput.selected;
-			var i = op ? t.Selector.operatorList().indexOf(op) : -1;
-			if(i < 0 || !op.helperOptions) { info.style.display = "none"; return; }
-			var s = L.tray.slots[i];
-			info.style.display = "";
-			UI.place(info, { x: s.x - L.tray.x + PITCH - 14, y: s.y - L.tray.y - 14 });
-		},
 		updateSound: function() {
 			var b = this.els.soundBtn;
 			if(!b) return;
@@ -470,13 +465,6 @@
 			b.setAttribute("aria-label", b.title);
 		},
 		setTrashHot: function(on) { if(this.els.bin) this.els.bin.classList.toggle("hot", !!on); },
-
-		showTileHelp: function(op) {
-			if(!op.helperOptions) return;
-			var o = {}; for(var k in op.helperOptions) o[k] = op.helperOptions[k];
-			o.title = title(op);
-			Q.stageScene("popup", 4, o);
-		},
 
 		toLevels: function() {
 			Q.clearStages();
