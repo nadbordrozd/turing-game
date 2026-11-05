@@ -83,10 +83,10 @@ TuringScenes.add(function(Q) {
 				frame : 1,
 				stroke : finishedStroke,
 				z: 3}));
-		creditsButton.insert(new Q.UI.Text({label : "Vanity", "color" : finishedTextColor, family : "monospace", size : 35}));
+		creditsButton.insert(new Q.UI.Text({label : "About", "color" : finishedTextColor, family : "monospace", size : 35}));
 		creditsButton.on("click", function(){
 			Q.clearStages();
-			Q.stageScene("credits");
+			Q.stageScene("about");
 		});
 	}, {sort : true});
 });
