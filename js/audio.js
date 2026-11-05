@@ -9,7 +9,7 @@
 // Without Web Audio, or when a file cannot be fetched (the game opened from
 // file://), it falls back to <audio> elements; with neither it does nothing.
 //
-// The shipped mp3s are the untouched ElevenLabs takes (sfx.mjs validate checks
+// The shipped mp3s (and the user-supplied click.m4a) are the untouched ElevenLabs takes (sfx.mjs validate checks
 // their hashes), so each sound plays only its trimmed window at a gain that
 // matches loudness across the set. Those numbers are measured by
 // tools/art/sfx-levels.mjs from audio/sfx/mix.json; see docs/audio/SFX.md.
@@ -33,7 +33,7 @@
     "tile-pick": ["sounds/tile-pick.mp3", 0.2, 0.29, -11.2],
     "tile-drop": ["sounds/tile-drop.mp3", 0.085, 0.2, -1.7],
     "tile-rotate": ["sounds/tile-rotate.mp3", 0.015, 0.06, -0.3],
-    "click": ["sounds/click.mp3", 0, 0.16, -13],
+    "click": ["sounds/click.m4a", 0, null, -5.1],
     "scan": ["sounds/scan.mp3", 0, 0.45, -7.5],
     "unlock": ["sounds/unlock.mp3", 0, 0.85, -5],
     "fanfare": ["sounds/fanfare.mp3", 0, 1.68, -3.7]
@@ -178,7 +178,8 @@
   function playBuffer(name, volume) {
     var m = MIX[name];
     var start = m[1];
-    var dur = Math.max(0.01, m[2] - m[1]);
+    var toEnd = m[2] === null;
+    var dur = toEnd ? Math.max(0.01, buffers[name].duration - start) : Math.max(0.01, m[2] - m[1]);
     var level = dbToGain(m[3]) * volume;
     var at = ctx.currentTime;
     var src = ctx.createBufferSource();
@@ -187,11 +188,13 @@
     // A few ms of fade in (when the window starts mid-file) and out, so the
     // trimmed edges never click.
     var fadeIn = start > 0 ? 0.003 : 0;
-    var fadeOut = Math.min(0.03, dur * 0.2);
+    var fadeOut = toEnd ? 0 : Math.min(0.03, dur * 0.2);
     gain.gain.setValueAtTime(fadeIn ? 0 : level, at);
     if (fadeIn) gain.gain.linearRampToValueAtTime(level, at + fadeIn);
-    gain.gain.setValueAtTime(level, at + dur - fadeOut);
-    gain.gain.linearRampToValueAtTime(0, at + dur);
+    if (fadeOut) {
+      gain.gain.setValueAtTime(level, at + dur - fadeOut);
+      gain.gain.linearRampToValueAtTime(0, at + dur);
+    }
     src.connect(gain);
     gain.connect(master);
     if (voices.length >= MAX_VOICES) {
@@ -211,7 +214,8 @@
         /* already disconnected */
       }
     };
-    src.start(at, start, dur);
+    if (toEnd) src.start(at, start);
+    else src.start(at, start, dur);
     return true;
   }
 
@@ -223,7 +227,7 @@
       el.currentTime = m[1];
       var p = el.play();
       if (p && typeof p.then === "function") p.then(null, function () {});
-      global.setTimeout(function () {
+      if (m[2] !== null) global.setTimeout(function () {
         try {
           el.pause();
         } catch (e) {

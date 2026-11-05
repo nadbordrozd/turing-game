@@ -44,7 +44,7 @@ t.Sfx.names();                      // the sound names below
 | `tile-pick`   | a program tile is picked up                      | hollow plastic tock                          | 0.09 s |
 | `tile-drop`   | a program tile is dropped into place             | firm plastic clack                           | 0.12 s |
 | `tile-rotate` | a tile is rotated                                | single ratchet tick                          | 0.05 s |
-| `click`       | generic UI button                                | soft pop                                     | 0.16 s |
+| `click`       | generic UI button                                | short dry tick (user-supplied, see below)    | 0.06 s |
 | `scan`        | the conditional (wall in front?) instruction runs | two rising chirps, boop-beep                | 0.45 s |
 | `unlock`      | a robot is freed / unlocked                      | ascending bell arpeggio with sparkle         | 0.85 s |
 | `fanfare`     | first finish of the "just give up" level         | multi-note toy fanfare with drum hits        | 1.68 s |
@@ -69,6 +69,17 @@ instruction ticks stay silent; `scan` only for the conditional instruction.
   envelope for choosing a window.
 - Level hierarchy: gameplay events at the target, `fanfare` +2 dB, `scan`
   -5 dB, `dot` -7 dB, tile and UI clicks -7 to -9 dB.
+- `click` is not an ElevenLabs take: it is the user's own `ui-click-1.m4a`
+  from their pulp_wars project, shipped byte-identical as `sounds/click.m4a`
+  (AAC-LC, mono, 44.1 kHz, 5.5 KB; m4a because `decodeAudioData` and `<audio>`
+  read AAC in current Chrome, Edge, Safari and Firefox, and re-encoding to mp3
+  would only lose quality). Provenance: `records.json` entry `click#import`
+  (source path, sha256, `"imported": true`), verdict ACCEPTED, the old
+  ElevenLabs `click#1` SUPERSEDED, so `sfx.mjs validate` still checks the
+  shipped bytes. Decoded it is 0.06 s (encoder delay trimmed); played whole at
+  -5.1 dB gain: loudest 100 ms -24 LUFS (target -16, offset -8), sample peak
+  -14.4 dBFS. Before (ElevenLabs click): 0.16 s window, -13.0 dB gain, peak
+  -13.7 dBFS, loudest 100 ms -24 LUFS, segment LUFS -16.9 (now -25.5).
 
 To replace a sound: raise `takes` (or change the prompt) in
 `audio/sfx/prompts.json`, `generate --only <name>`, review, `accept`, then

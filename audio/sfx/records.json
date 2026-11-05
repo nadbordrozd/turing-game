@@ -686,5 +686,17 @@
     "file": "tile-pick-3.mp3",
     "sha256": "054eccc6fe521c5c7b912f4d8ef627e5494262044f99404d00188a3e2c28129c",
     "bytes": 8820
+  },
+  "click#import": {
+    "id": "click",
+    "n": "import",
+    "at": "2026-11-05T00:00:00.000Z",
+    "imported": true,
+    "format": "m4a (AAC-LC, mono, 44.1 kHz, 0.116 s)",
+    "source": "/Users/nadbor/projects/pulp_wars/public/assets/audio/ui-click-1.m4a",
+    "note": "user-supplied, from the user's pulp_wars project",
+    "file": "click.m4a",
+    "sha256": "2da5f8245ad2fecc651e9bc2bc10b257c70e03b1e1e8629eeafaac6d4ee1ea64",
+    "bytes": 5535
   }
 }

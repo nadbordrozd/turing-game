@@ -14,7 +14,8 @@
 //
 // audio/sfx/mix.json: { "target": -16, "ceiling": -1,
 //   "sounds": { "<id>": { "start": 0, "end": 0.3, "offsetDb": -6 } } }
-// start/end are seconds in the file (omitted: detected from the envelope).
+// start/end are seconds in the file (omitted: detected from the envelope;
+// end null: play to the end of the decoded buffer, whatever a browser decodes).
 // Loudness is the loudest 100 ms window of the K-weighted signal (BS.1770
 // filters, ungated), which tracks how loud a short effect feels better than
 // integrated LUFS does. gain = target + offsetDb - loudness, capped so the
@@ -74,7 +75,8 @@ function measure(id, spec, file) {
   let last = env.length - 1;
   while (last > 0 && env[last] < top - 50) last -= 1;
   const start = spec.start ?? Math.max(0, onset / 100 - 0.002);
-  const end = Math.min(full, spec.end ?? (last + 1) / 100 + 0.02);
+  const toEnd = spec.end === null; // "end": null plays to the end of the decoded buffer
+  const end = toEnd ? full : Math.min(full, spec.end ?? (last + 1) / 100 + 0.02);
   const seg = x.subarray(Math.floor(start * RATE), Math.ceil(end * RATE));
   let segPeak = 0;
   for (const v of seg) segPeak = Math.max(segPeak, Math.abs(v));
@@ -91,7 +93,7 @@ function measure(id, spec, file) {
   const lufsSeg = -0.691 + 10 * Math.log10(total / Math.max(1, k.length) || 1e-12);
   const want = mix.target + (spec.offsetDb ?? 0) - loud;
   const gainDb = Math.min(want, mix.ceiling - db(segPeak));
-  return { id, file: rel(file), full, start, end, peakDb: db(segPeak), loud, lufsSeg, gainDb, capped: gainDb < want };
+  return { id, file: rel(file), full, start, end, toEnd, peakDb: db(segPeak), loud, lufsSeg, gainDb, capped: gainDb < want };
 }
 
 const rel = (f) => path.relative(cfg.root, f).split(path.sep).join("/");
@@ -119,7 +121,7 @@ const block = [
   BEGIN,
   "  // name: [file, start s, end s, gain dB]; measured from the shipped files.",
   "  var MIX = {",
-  ...rows.map((r, i) => `    ${JSON.stringify(r.id)}: [${JSON.stringify(r.file)}, ${round(r.start, 3)}, ${round(r.end, 3)}, ${round(r.gainDb, 1)}]${i < rows.length - 1 ? "," : ""}`),
+  ...rows.map((r, i) => `    ${JSON.stringify(r.id)}: [${JSON.stringify(r.file)}, ${round(r.start, 3)}, ${r.toEnd ? "null" : round(r.end, 3)}, ${round(r.gainDb, 1)}]${i < rows.length - 1 ? "," : ""}`),
   "  };",
   `  ${END}`,
 ].join("\n");

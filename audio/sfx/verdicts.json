@@ -160,7 +160,7 @@
     "at": "2026-11-05T15:42:46.901Z"
   },
   "click#1": {
-    "verdict": "ACCEPTED",
+    "verdict": "SUPERSEDED",
     "notes": "single soft broadband pop, clean decay",
     "at": "2026-11-05T15:42:46.946Z"
   },
@@ -213,5 +213,10 @@
     "verdict": "REJECTED",
     "notes": "busy noisy start then a long static tail; less melodic",
     "at": "2026-11-05T15:42:47.383Z"
+  },
+  "click#import": {
+    "verdict": "ACCEPTED",
+    "notes": "user-supplied replacement (ui-click-1.m4a from the user's pulp_wars project); shipped byte-identical",
+    "at": "2026-11-05T00:00:00.000Z"
   }
 }

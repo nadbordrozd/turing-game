@@ -102,7 +102,8 @@
       "duration": 0.5,
       "influence": 0.6,
       "takes": 2,
-      "output": "sounds/click.mp3"
+      "output": "sounds/click.m4a",
+      "imported": "user-supplied, from the user's pulp_wars project (see records click#import)"
     },
     {
       "id": "scan",
