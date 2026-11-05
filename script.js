@@ -27,6 +27,11 @@ window.addEventListener('load',function(e) {
   var Q = window.Q = Quintus().include("Sprites, Scenes, 2D, Input, Touch, UI, Anim")
 							.include("TuringScenes, TuringSprites")
                               .setup({ width: 1024, height: 768 });
+	// Cache-busting: every image, sheet JSON and sound Quintus loads gets
+	// ?v=<TURING_VERSION> (index.html), so a returning browser never mixes
+	// cached old assets with new code. Asset keys stay the bare file names.
+	var rawAssetUrl = Q.assetUrl;
+	Q.assetUrl = function(base, url) { return versionedUrl(rawAssetUrl(base, url)); };
 	// Toybox UI kit: responsive stage, HTML layers, devicePixelRatio canvas.
 	t.UI.init(Q);
 	t.TileInput.attach(Q.el);

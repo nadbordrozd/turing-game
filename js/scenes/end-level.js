@@ -78,7 +78,8 @@
 
 	function assetSrc(Q, name) {
 		var a = Q.asset(name);
-		return a && a.src ? a.src : "images/" + name;
+		// a.src already carries ?v= (Q.assetUrl is versioned in script.js)
+		return a && a.src ? a.src : versionedUrl("images/" + name);
 	}
 
 	// The landscape with the robots, 1024x768 in its own coordinates.
@@ -145,7 +146,7 @@
 			var g = UI.el("div", "gs-goal" + (on ? "" : " off"), goals);
 			var img = UI.el("img", "", g);
 			img.alt = "";
-			img.src = "images/" + ICONS[i] + (on ? "" : "BW") + ".png";
+			img.src = versionedUrl("images/" + ICONS[i] + (on ? "" : "BW") + ".png");
 			var label;
 			if(level.alwaysFull) label = "any";
 			else if(tm && tm.length === 3) label = "≤" + tm[2 - i];
@@ -179,7 +180,7 @@
 		ICONS.forEach(function(n, i) {
 			var img = UI.el("img", "", icons);
 			img.alt = "";
-			img.src = "images/" + n + ".png";
+			img.src = versionedUrl("images/" + n + ".png");
 			img.style.animationDelay = (200 + i * 160) + "ms";
 		});
 		var m = UI.popup({

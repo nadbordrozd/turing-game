@@ -215,7 +215,7 @@
 		var p = UI.el("span", "ls-parts " + (cls || ""));
 		PARTS.forEach(function(pt, i) {
 			var img = UI.el("img", i < o.parts ? "" : "no", p);
-			img.src = "images/" + pt.img + ".png";
+			img.src = versionedUrl("images/" + pt.img + ".png");
 			img.alt = "";
 			img.draggable = false;
 		});
@@ -397,7 +397,7 @@
 			var icons = UI.el("span", "ls-count-ic", count);
 			PARTS.forEach(function(pt) {
 				var img = UI.el("img", "", icons);
-				img.src = "images/" + pt.img + ".png";
+				img.src = versionedUrl("images/" + pt.img + ".png");
 				img.alt = "";
 			});
 			var nums = UI.el("span", "ls-count-n", count);

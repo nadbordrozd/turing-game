@@ -94,7 +94,7 @@
     var file = MIX[name][0];
     try {
       var xhr = new XMLHttpRequest();
-      xhr.open("GET", file, true);
+      xhr.open("GET", global.versionedUrl ? global.versionedUrl(file) : file, true);
       xhr.responseType = "arraybuffer";
       xhr.onload = function () {
         if (xhr.status && (xhr.status < 200 || xhr.status >= 300)) {

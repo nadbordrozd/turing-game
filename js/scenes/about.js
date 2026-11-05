@@ -67,7 +67,7 @@ TuringScenes.add(function(Q) {
 		UI.tag("2013", "sun", side);
 		var frame = UI.el("div", "ab-photo", side);
 		var img = UI.el("img", "", frame);
-		img.src = "images/lucydesk.png";
+		img.src = versionedUrl("images/lucydesk.png");
 		img.alt = "Me at my desk in 2013, working on Turing, with baby Lucy lying in front of the keyboard.";
 		img.draggable = false;
 		UI.el("p", "ab-caption", side, "Where it all happened: Turing on the left screen, Lucy on the desk.");

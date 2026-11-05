@@ -420,7 +420,7 @@
 			for(var i = 0; i < 3; i++) {
 				var on = parts >= i + 1, g = this.els.goals[i], img = g.querySelector("img");
 				g.classList.toggle("off", !on);
-				img.src = "images/" + (on ? img.dataset.icon : bw[img.dataset.icon]) + ".png";
+				img.src = versionedUrl("images/" + (on ? img.dataset.icon : bw[img.dataset.icon]) + ".png");
 			}
 			this.els.stepsNum.textContent = run ? run.steps : "–";
 			this.els.outcome.textContent = run ? (OUTCOMES[run.end] || run.end || "") : "";

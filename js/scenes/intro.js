@@ -67,7 +67,7 @@ TuringScenes.add(function(Q) {
 		var words = UI.el("div", "in-words", card);
 		PAGES.forEach(function(text, i) {
 			var img = UI.el("img", "in-img", pic);
-			img.src = "images/intro/intro-" + (i + 1) + (portrait ? "-portrait" : "") + ".png";
+			img.src = versionedUrl("images/intro/intro-" + (i + 1) + (portrait ? "-portrait" : "") + ".png");
 			img.alt = ALT[i];
 			img.draggable = false;
 			imgs.push(img);

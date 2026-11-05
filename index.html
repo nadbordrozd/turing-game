@@ -7,66 +7,76 @@
 <title>Turing Game</title>
 <meta name="description" content="Program a robot and help it escape a series of mazes.">
 <!--  Jewish Holiday courtesy of Anonymous -->
+<script>
+// Build version, appended as ?v= to every script, stylesheet and asset URL so
+// a returning browser never mixes cached old files with new ones. Set (here and
+// on every tag below) by `node tools/bump-version.mjs`; see README.md.
+window.TURING_VERSION = "20261105-182528-f38ed74";
+window.versionedUrl = function (url) {
+  if (!url || /^(data|blob):/.test(url) || /[?&]v=/.test(url)) return url;
+  return url + (url.indexOf("?") < 0 ? "?" : "&") + "v=" + encodeURIComponent(window.TURING_VERSION);
+};
+</script>
 <!-- libs -->
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/toybox.css">
-<script src='lib/quintus.js'></script>
-<script src='lib/quintus_sprites.js'></script>
-<script src='lib/quintus_scenes.js'></script>
-<script src='lib/quintus_anim.js'></script>
-<script src='lib/quintus_2d.js'></script>
-<script src='lib/quintus_touch.js'></script>
-<script src='lib/quintus_ui.js'></script>
-<script src='lib/quintus_input.js'></script>
+<link rel="stylesheet" href="css/style.css?v=20261105-182528-f38ed74">
+<link rel="stylesheet" href="css/toybox.css?v=20261105-182528-f38ed74">
+<script src='lib/quintus.js?v=20261105-182528-f38ed74'></script>
+<script src='lib/quintus_sprites.js?v=20261105-182528-f38ed74'></script>
+<script src='lib/quintus_scenes.js?v=20261105-182528-f38ed74'></script>
+<script src='lib/quintus_anim.js?v=20261105-182528-f38ed74'></script>
+<script src='lib/quintus_2d.js?v=20261105-182528-f38ed74'></script>
+<script src='lib/quintus_touch.js?v=20261105-182528-f38ed74'></script>
+<script src='lib/quintus_ui.js?v=20261105-182528-f38ed74'></script>
+<script src='lib/quintus_input.js?v=20261105-182528-f38ed74'></script>
 
-<script type="text/javascript" src="jquery-1.7.1.min.js"></script> 
+<script type="text/javascript" src="jquery-1.7.1.min.js?v=20261105-182528-f38ed74"></script>
 
 
-<script src="program.js"></script>
-<script src="oaevil.js"></script>
-<script src="js/audio.js"></script>
-<script src="js/ui/kit.js"></script>
-<script src="js/scenes/registry.js"></script>
-<script src="queue.js"></script>
-<script src="Dequeue.js"></script>
-<script src="Storage.js"></script>
+<script src="program.js?v=20261105-182528-f38ed74"></script>
+<script src="oaevil.js?v=20261105-182528-f38ed74"></script>
+<script src="js/audio.js?v=20261105-182528-f38ed74"></script>
+<script src="js/ui/kit.js?v=20261105-182528-f38ed74"></script>
+<script src="js/scenes/registry.js?v=20261105-182528-f38ed74"></script>
+<script src="queue.js?v=20261105-182528-f38ed74"></script>
+<script src="Dequeue.js?v=20261105-182528-f38ed74"></script>
+<script src="Storage.js?v=20261105-182528-f38ed74"></script>
 
-<script src="EndLevelRobots.js"></script>
-<script src="config.js"></script>
-<script src="TuringTable.js"></script>
-<script src="RobotTable.js"></script>
-<script src="Operators.js"></script>
-<script src="selector.js"></script>
-<script src="editorselector.js"></script>
-<script src="obstacles.js"></script>
-<script src="animator.js"></script>
-<script src="controls.js"></script>
-<script src="parser.js"></script>
-<script src="levels.js"></script>
-<script src="levelsdata.js"></script>
-<script src="levelsdata3.js"></script>
-<script src="levelsdata2.js"></script>
-<script src="levelsdata4.js"></script>
-<script src="utilitySprites.js"></script>
+<script src="EndLevelRobots.js?v=20261105-182528-f38ed74"></script>
+<script src="config.js?v=20261105-182528-f38ed74"></script>
+<script src="TuringTable.js?v=20261105-182528-f38ed74"></script>
+<script src="RobotTable.js?v=20261105-182528-f38ed74"></script>
+<script src="Operators.js?v=20261105-182528-f38ed74"></script>
+<script src="selector.js?v=20261105-182528-f38ed74"></script>
+<script src="editorselector.js?v=20261105-182528-f38ed74"></script>
+<script src="obstacles.js?v=20261105-182528-f38ed74"></script>
+<script src="animator.js?v=20261105-182528-f38ed74"></script>
+<script src="controls.js?v=20261105-182528-f38ed74"></script>
+<script src="parser.js?v=20261105-182528-f38ed74"></script>
+<script src="levels.js?v=20261105-182528-f38ed74"></script>
+<script src="levelsdata.js?v=20261105-182528-f38ed74"></script>
+<script src="levelsdata3.js?v=20261105-182528-f38ed74"></script>
+<script src="levelsdata2.js?v=20261105-182528-f38ed74"></script>
+<script src="levelsdata4.js?v=20261105-182528-f38ed74"></script>
+<script src="utilitySprites.js?v=20261105-182528-f38ed74"></script>
 
 <!-- screens: one file per Quintus scene (js/scenes/), UI kit in js/ui/ -->
-<script src="js/ui/tiles.js"></script>
-<script src="js/ui/tile-input.js"></script>
-<script src="js/ui/tile-explainers.js"></script>
-<script src="js/scenes/level.js"></script>
-<script src="js/scenes/help.js"></script>
-<script src="js/scenes/level-selector.js"></script>
-<script src="js/scenes/end-level.js"></script>
-<script src="js/scenes/intro.js"></script>
-<script src="js/scenes/about.js"></script>
+<script src="js/ui/tiles.js?v=20261105-182528-f38ed74"></script>
+<script src="js/ui/tile-input.js?v=20261105-182528-f38ed74"></script>
+<script src="js/ui/tile-explainers.js?v=20261105-182528-f38ed74"></script>
+<script src="js/scenes/level.js?v=20261105-182528-f38ed74"></script>
+<script src="js/scenes/help.js?v=20261105-182528-f38ed74"></script>
+<script src="js/scenes/level-selector.js?v=20261105-182528-f38ed74"></script>
+<script src="js/scenes/end-level.js?v=20261105-182528-f38ed74"></script>
+<script src="js/scenes/intro.js?v=20261105-182528-f38ed74"></script>
+<script src="js/scenes/about.js?v=20261105-182528-f38ed74"></script>
 
 
-<script src="script.js"></script>
+<script src="script.js?v=20261105-182528-f38ed74"></script>
 
 
 <link rel="icon" 
       type="image/png" 
-      href="icon_32.png">
+      href="icon_32.png?v=20261105-182528-f38ed74">
 
 
 

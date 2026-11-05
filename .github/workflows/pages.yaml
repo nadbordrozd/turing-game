@@ -23,6 +23,8 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: actions/configure-pages@v5
+      # Cache-busting: a fresh ?v= for every deploy (see README.md).
+      - run: node tools/bump-version.mjs
       - uses: actions/upload-pages-artifact@v5
         with:
           path: .
