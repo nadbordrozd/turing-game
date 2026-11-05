@@ -22,7 +22,7 @@ CHECK_BUILD=""
 # Focused tests: the test files named for a bead are appended to this command.
 FOCUSED_TEST_CMD=""
 # Asset hygiene: hash-checked masters and derived files (zero dependencies).
-CHECK_ART="node tools/art/studio-art.mjs validate"
+CHECK_ART="node tools/art/studio-art.mjs validate && node tools/art/tiles/program-tiles.mjs --check && node tools/art/tiles/robot-cell.mjs --check && node tools/art/sfx.mjs validate"
 
 # What integrate.sh runs before publishing, in order (names of the checks above
 # plus "focused"). Add "unit" for risky work; the whole unit tier otherwise
