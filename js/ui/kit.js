@@ -126,6 +126,7 @@
     sound: ["000010000", "000110010", "111110001", "111110101", "111110101", "111110101", "111110001", "000110010", "000010000"],
     mute: ["000010000", "000110000", "111110000", "111110101", "111110010", "111110101", "111110000", "000110000", "000010000"],
     info: ["000110000", "000110000", "000000000", "001110000", "000110000", "000110000", "000110000", "000110000", "001111000"],
+    check: ["000000000", "000000011", "000000111", "000001110", "110011100", "111111000", "011110000", "001100000", "000000000"],
   };
 
   var SVGNS = "http://www.w3.org/2000/svg";
@@ -298,14 +299,27 @@
     UI.fit();
   };
 
+  // A scene declared {scroll: true} that is taller than the window at full
+  // width is fitted to the window width and the page scrolls vertically
+  // (portrait only: landscape screens always fit the window).
+  UI.scrollable = false;
+  UI.scrolling = false;
   UI.fit = function () {
     var v = viewportSize();
     var s = Math.min(v.w / UI.w, v.h / UI.h);
+    var scroll = UI.scrollable && UI.mode === "portrait" && UI.h * v.w / UI.w > v.h + 1;
+    if (scroll) s = v.w / UI.w;
     UI.scale = s;
     var st = UI.stageEl.style;
     st.transform = "scale(" + s + ")";
-    st.left = Math.round((v.w - UI.w * s) / 2) + "px";
-    st.top = Math.round((v.h - UI.h * s) / 2) + "px";
+    st.left = scroll ? "0px" : Math.round((v.w - UI.w * s) / 2) + "px";
+    st.top = scroll ? "0px" : Math.round((v.h - UI.h * s) / 2) + "px";
+    if (scroll !== UI.scrolling) {
+      UI.scrolling = scroll;
+      document.documentElement.classList.toggle("tg-scroll", scroll);
+      if (!scroll) window.scrollTo(0, 0);
+    }
+    document.body.style.height = scroll ? Math.ceil(UI.h * s) + "px" : "";
     var dpr = window.devicePixelRatio || 1;
     var k = Math.min(s * dpr, 4096 / UI.w, 4096 / UI.h);
     var bw = Math.max(1, Math.round(UI.w * k)), bh = Math.max(1, Math.round(UI.h * k));
@@ -368,9 +382,12 @@
       if (idx === 0) {
         UI.clearScreen();
         UI.base = { name: name, num: num, options: options };
+        var wasScrollable = UI.scrollable;
+        UI.scrollable = !!decl.scroll;
         var d = UI.defaultSize();
         if (!decl.responsive) d = UI.mode === "landscape" ? UI.breakpoints.legacy : d;
         if (d.w !== UI.w || d.h !== UI.h) UI.setSize(d.w, d.h);
+        else if (wasScrollable !== UI.scrollable) UI.fit();
       }
       var legacy = !decl.responsive, saveW = Q.width, saveH = Q.height;
       if (legacy) { Q.width = UI.breakpoints.legacy.w; Q.height = UI.breakpoints.legacy.h; }

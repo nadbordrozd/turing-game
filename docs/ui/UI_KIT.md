@@ -62,6 +62,10 @@ TuringScenes.add(function(Q) {          // js/scenes/<name>.js, listed in index.
   washes out the rest of the canvas.
 - `restage`: how to rebuild the screen after a mode change (default: stage
   the same scene again).
+- `scroll: true`: in portrait, a screen taller than the window (after
+  `t.UI.setSize`) is fitted to the window width and the page scrolls
+  (`t.UI.scrolling`, class `tg-scroll` on `<html>`; the canvas lets touches
+  through so a drag scrolls). Landscape screens always fit the window.
 
 Staging a scene on stage 0 clears all three HTML layers (`"screenclear"`
 event), so each screen builds its HTML in its scene function.
@@ -74,7 +78,7 @@ event), so each screen builds its HTML in its scene function.
 | `t.UI.button({label, px, icon, iconScale, cls, title, small, onClick, sound}, parent)` | a `<button class="tb-btn">`; `px` renders the label in the pixel font at that scale. Classes: `sq`, `sm`, `tall`, `big`, `round`, `sky`, `sun`, `mint`, `tomato`. Clicking plays `"click"` unless `sound: false`. |
 | `t.UI.tag(text, cls, parent)` | the little pixel-font label that sits on a card's top edge |
 | `t.UI.px(text, scale)` | pixel-font text (5x7 font from `tools/art/lib/font.mjs`) as inline SVG; `t.UI.pxWidth(text, scale)` measures it |
-| `t.UI.icon(name, scale)` | 9x9 pixel icon as inline SVG: `play pause step stop slower faster help levels back trash start lock close undo info sound mute` |
+| `t.UI.icon(name, scale)` | 9x9 pixel icon as inline SVG: `play pause step stop slower faster help levels back trash start lock close undo info sound mute check` |
 | `t.UI.el(tag, cls, parent, text)`, `t.UI.place(el, {x, y, w, h})` | DOM helpers |
 | `t.UI.popup({title, body, actions, w, onClose})` | an HTML popup card with backdrop and close button |
 | `t.UI.openModal(node, {onClose})` | shows any node in the modal layer with a focus trap; Escape closes the top modal; returns `{close}` |
@@ -131,3 +135,16 @@ every robot stays visible) above the result card.
   by the robot feedback (tg-84y.7) when the robot reaches the hatch, not here.
 - A layout-mode change restages the game screen and puts the result screen
   back without replaying the entrance.
+
+## Level selector
+
+`js/scenes/level-selector.js` (`t.LevelSelector`). Tracks are configured in
+`GROUPS` by their first level(s); every other level joins the track of its
+single requirement, and a level with several requirements goes to the Finale.
+Inside a track the child that leads to the most levels is the main path and
+the rest branch off. Landscape packs each track into a left-to-right tree
+(`ARRANGE` places the tracks; the logical size grows only if they do not fit
+1024x768); portrait shows each track as an indented list and scrolls
+(`scroll: true`). Node states: open (cream), solved (mint, parts earned),
+locked (dashed; clicking explains what opens it), and the suggested next level
+(sun, "NEXT"): the first open level in level order.

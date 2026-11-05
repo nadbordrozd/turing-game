@@ -35,7 +35,7 @@ window.addEventListener('load',function(e) {
 	var drawLoadBar = function(progress){
 		t.UI.loading(progress);
 	}
-	var imagesToLoad = [ "resistor1.png", "resistor2.png", "resistor3.png", 'resistor4.png','resistor5.png','sprites.json', "greenscreen.png",
+	var imagesToLoad = [ "resistor1.png", "resistor2.png", "resistor3.png", 'resistor4.png','resistor5.png','sprites.json',
 		'enemy.png', 'robot.png', 'helpKalka.png',
 		'motherboard.png',
 		'sprytszyt.png','obstacle.png',

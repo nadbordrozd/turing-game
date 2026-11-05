@@ -32,6 +32,10 @@ html, body {
   height: 100%;
   overflow: hidden;
 }
+/* a scene declared {scroll: true} taller than the window (kit.js UI.fit) */
+html.tg-scroll { height: auto; overflow-x: hidden; overflow-y: auto; }
+html.tg-scroll body { overflow: visible; }
+html.tg-scroll #tg-stage canvas { pointer-events: none; touch-action: auto; }
 body.tg {
   background:
     radial-gradient(ellipse at 50% 35%, rgba(255, 240, 210, 0.55), rgba(255, 240, 210, 0) 70%),
@@ -593,6 +597,7 @@ body.tg {
   .el-robot.el-drop, .el-robot.el-hop, .gs-goal.el-pop, .el-newtag, .el-whoa-parts img { animation: none; }
   .el-spark, .el-confetti { display: none; }
   .el-bar > i { transition: none; }
+}
 
 /* =================== intro storybook (js/scenes/intro.js) =================== */
 .in-root {
@@ -776,4 +781,241 @@ body.tg {
 
 @media (prefers-reduced-motion: reduce) {
   .in-img, .in-text, .in-dots i { transition: none; }
+}
+
+/* =================== level selector (js/scenes/level-selector.js) =================== */
+.ls-root { position: absolute; inset: 0; }
+.ls-measure {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+  white-space: nowrap;
+}
+.ls-name-m { font: 700 13px var(--round); }
+.ls-portrait .ls-name-m { font-size: 18px; }
+.ls-chip-m { font: 700 12px var(--round); }
+
+/* header */
+.ls-hdr-in {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 10px 0 18px;
+}
+.ls-title { margin: 0; line-height: 0; color: var(--ink); }
+.ls-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 14px 0 8px;
+  box-sizing: border-box;
+  border: 3px solid var(--ink);
+  border-radius: 22px;
+  background: var(--sun);
+  box-shadow: inset 0 -5px 0 var(--sun-d);
+}
+.ls-count-ic { display: flex; align-items: center; gap: 1px; }
+.ls-count-ic img { height: 22px; width: auto; image-rendering: pixelated; }
+.ls-count-n { display: flex; flex-direction: column; line-height: 1; }
+.ls-count-n b { font: 800 17px var(--round); }
+.ls-count-n small { font: 700 10px var(--round); color: var(--ink-2); margin-top: 1px; white-space: nowrap; }
+.ls-legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font: 700 12px var(--round);
+  color: var(--ink-3);
+  margin-left: auto;
+}
+.ls-legend > span:not(.ls-key) { margin-right: 6px; }
+.ls-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 18px;
+  box-sizing: border-box;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: #fffdf6;
+  box-shadow: 0 2px 0 var(--ink);
+  color: var(--ink);
+}
+.ls-key.solved { background: var(--mint); }
+.ls-key.locked { background: transparent; border-style: dashed; border-color: var(--ink-3); box-shadow: none; color: var(--ink-3); }
+.ls-sys { display: flex; gap: 10px; align-items: center; }
+.ls-sys .tb-btn { height: 44px; }
+.ls-hdr-in.ls-hdr-portrait {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "title sys" "count legend";
+  align-content: center;
+  gap: 12px 10px;
+  padding: 0 12px 0 16px;
+}
+.ls-hdr-portrait .ls-title { grid-area: title; }
+.ls-hdr-portrait .ls-sys { grid-area: sys; justify-self: end; gap: 8px; }
+.ls-hdr-portrait .ls-sys .tb-btn { width: 52px; height: 52px; }
+.ls-hdr-portrait .ls-count { grid-area: count; }
+.ls-hdr-portrait .ls-legend { grid-area: legend; justify-self: end; }
+
+/* track cards: a light tint of the track colour, the tag in full colour */
+.tb-card.ls-card { border-radius: 20px; }
+.tb-card.ls-sun { background: #fff0c8; }
+.tb-card.ls-sky { background: #dcf1fb; }
+.tb-card.ls-mint { background: #e2f4e6; }
+.tb-card.ls-tomato { background: #fde3dc; }
+.tb-card.ls-plum { background: #ece2f8; }
+.tb-card.ls-card-locked { background: var(--cream-2); border-style: dashed; box-shadow: none; }
+.tb-tag.plum { background: var(--plum); color: var(--cream); }
+.ls-chips { position: absolute; top: -13px; display: flex; gap: 6px; }
+.ls-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 24px;
+  padding: 0 9px 0 7px;
+  box-sizing: border-box;
+  border: 2px solid var(--ink);
+  border-radius: 9px;
+  background: var(--cream);
+  font: 700 12px var(--round);
+  color: var(--ink);
+  white-space: nowrap;
+}
+.ls-chip.ok { background: var(--mint); }
+.ls-chip.need { background: var(--cream-2); border-style: dashed; color: var(--ink-2); }
+.ls-prog { position: absolute; top: -13px; right: 14px; padding: 0 9px; }
+
+/* level nodes */
+.tb-btn.ls-node {
+  position: absolute;
+  min-width: 0;
+  min-height: 0;
+  padding: 0 10px;
+  gap: 8px;
+  border-radius: 12px;
+  background: #fffdf6;
+  box-shadow: 0 4px 0 var(--ink);
+  font: 700 13px var(--round);
+  white-space: nowrap;
+  z-index: 1;
+}
+.tb-btn.ls-node:active { top: auto; transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+.ls-name { overflow: hidden; text-overflow: ellipsis; }
+.ls-landscape .tb-btn.ls-node.solved { padding-bottom: 8px; }
+.tb-btn.ls-node.solved { background: var(--mint); }
+.tb-btn.ls-node.locked {
+  background: rgba(255, 253, 246, 0.45);
+  border-style: dashed;
+  border-color: var(--ink-3);
+  color: var(--ink-3);
+  box-shadow: none;
+  cursor: help;
+}
+.tb-btn.ls-node.locked:active { transform: none; }
+.tb-btn.ls-node.next {
+  background: var(--sun);
+  box-shadow: 0 4px 0 var(--ink), 0 0 0 6px rgba(246, 196, 69, 0.55);
+  animation: ls-bob 1.6s ease-in-out infinite;
+  z-index: 2;
+}
+@keyframes ls-bob {
+  0%, 100% { box-shadow: 0 4px 0 var(--ink), 0 0 0 4px rgba(236, 91, 69, 0.0); }
+  50% { box-shadow: 0 4px 0 var(--ink), 0 0 0 7px rgba(236, 91, 69, 0.45); }
+}
+.ls-next {
+  position: absolute;
+  left: -8px;
+  top: -13px;
+  padding: 3px 5px 2px;
+  border: 2px solid var(--ink);
+  border-radius: 7px;
+  background: var(--tomato);
+  color: var(--cream);
+  line-height: 0;
+  box-shadow: 0 2px 0 var(--ink);
+}
+.ls-lock {
+  position: absolute;
+  right: -9px;
+  top: -10px;
+  width: 22px;
+  height: 22px;
+  box-sizing: border-box;
+  border: 2px dashed var(--ink-3);
+  border-radius: 50%;
+  background: var(--cream-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-3);
+  line-height: 0;
+}
+.ls-lock .tb-icon { width: 11px; height: 11px; }
+/* parts earned: a tab hanging under the node (landscape) or inline (portrait) */
+.ls-parts {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.ls-parts img { width: auto; image-rendering: pixelated; }
+.ls-parts img.no { filter: grayscale(1); opacity: 0.32; }
+.ls-parts.tab {
+  position: absolute;
+  left: 50%;
+  bottom: -13px;
+  transform: translateX(-50%);
+  height: 20px;
+  padding: 0 4px;
+  box-sizing: border-box;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--cream);
+}
+.ls-parts.tab img { height: 14px; }
+.ls-parts.inline { margin-left: auto; gap: 4px; }
+.ls-parts.inline img { height: 24px; }
+
+/* portrait nodes: one level per row, name on the left */
+.ls-portrait .tb-btn.ls-node {
+  justify-content: flex-start;
+  padding: 0 12px 0 16px;
+  border-radius: 14px;
+  font-size: 18px;
+}
+.ls-portrait .ls-lock { position: static; margin-left: auto; width: 28px; height: 28px; }
+.ls-portrait .ls-lock .tb-icon { width: 14px; height: 14px; }
+.ls-go {
+  margin-left: auto;
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: var(--tomato);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 3px;
+}
+.ls-portrait .ls-next { left: -10px; top: -12px; }
+
+/* paths: a dark casing with a coloured core; locked paths are dashed */
+.ls-paths { position: absolute; left: 0; top: 0; overflow: visible; }
+.ls-path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.ls-path.casing { stroke: var(--ink); stroke-width: 7; }
+.ls-path.open { stroke: var(--sun); stroke-width: 3; }
+.ls-path.solved { stroke: var(--mint); stroke-width: 3; }
+.ls-path.locked { stroke: var(--ink-3); stroke-width: 2.5; stroke-dasharray: 4 5; opacity: 0.6; }
+.ls-portrait .ls-path.casing { stroke-width: 8; }
+.ls-portrait .ls-path.open, .ls-portrait .ls-path.solved { stroke-width: 4; }
+.ls-portrait .ls-path.locked { stroke-width: 3; }
+.ls-why p { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tb-btn.ls-node.next { animation: none; }
 }
