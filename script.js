@@ -36,8 +36,7 @@ window.addEventListener('load',function(e) {
 		t.UI.loading(progress);
 	}
 	var imagesToLoad = [ "resistor1.png", "resistor2.png", "resistor3.png", 'resistor4.png','resistor5.png','sprites.json',
-		'enemy.png', 'robot.png', 'helpKalka.png',
-		'motherboard.png',
+		'robot.png',
 		'sprytszyt.png','obstacle.png',
 		'tiles/program-tiles.png', 'program-tiles.json',
 		'tiles/robot-cell.png', 'robot-cell.json',
@@ -45,7 +44,7 @@ window.addEventListener('load',function(e) {
 		"coil.png", "integratedcircuit.png", 'capacitor.png',
 		"coilBW.png", "integratedcircuitBW.png", 'capacitorBW.png',
 		"greencoil.png", "greenintegratedcircuit.png", "greencapacitor.png",
-		"lucydesk.png", "greenarrow.png"
+		"lucydesk.png"
 		].concat(t.EndLevelRobots.images);
 
 	for(var i in t.Operators){
