@@ -1,13 +1,20 @@
 #!/usr/bin/env node
-// Program (instruction) tiles: conveyor belt, step, clockwise and
-// counter-clockwise rotators and the empty board tile, drawn pixel by pixel
-// in the Toybox palette. Deterministic and dependency-free; this file is the
-// source of truth for those tiles (docs/art/classes/program-tiles.md).
+// Program (instruction) tiles v2: every tile on the program board (belts,
+// corners, step, rotators, detectors, counters, empty, start), drawn as
+// anti-aliased vector shapes in the Toybox palette and pre-rendered into one
+// atlas at the 2012 game's frame counts and rates. Deterministic and
+// dependency-free; this file is the source of truth for those tiles
+// (docs/art/classes/program-tiles.md).
 //
-//   node tools/art/tiles/program-tiles.mjs            write images/tiles/program-tiles.png + data/program-tiles.json
-//   node tools/art/tiles/program-tiles.mjs --check    regenerate in memory, fail if the committed files differ
-//   node tools/art/tiles/program-tiles.mjs --review <dir> [--tag v1]
-//                                                     also write <tag>.png and <tag>-seam.png review sheets
+//   node tools/art/tiles/program-tiles.mjs [--size 54]   write images/tiles/program-tiles.png + data/program-tiles.json
+//   node tools/art/tiles/program-tiles.mjs --check       regenerate in memory, fail if the committed files differ
+//   node tools/art/tiles/program-tiles.mjs --review <dir> [--tag v2]
+//                                                        also write <tag>.png (contact) and <tag>-seam.png (board mock)
+//
+// Shapes are signed-distance functions in design units (54 per tile side).
+// Each pixel is the average of an 8x8 grid of samples wherever its corners and
+// centre disagree, so edges are smooth at any --size and sub-pixel motion
+// (belts, rotation) moves smoothly instead of in whole-pixel steps.
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -17,15 +24,24 @@ import { drawText } from "../lib/font.mjs";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 const PNG_OUT = "images/tiles/program-tiles.png";
 const JSON_OUT = "data/program-tiles.json";
+const SCRIPT_JS = "script.js";
 
-// ---------------------------------------------------------------- geometry
-export const T = 50; // tile side
-export const PERIOD = 25; // belt pattern period in px (divides T)
-export const SHIFT = 1; // px the belt moves east per frame
-export const FRAMES = { conveyor: 25, stepForward: 25, cwrotator: 50, ccwrotator: 50, emptyOperator: 1 };
-const COLS = 25; // atlas columns
+// ---------------------------------------------------------------- timing
+// From the 2012 game (git show 8a9315e:script.js). Quintus' anim step adds dt
+// twice, so a frame lasts rate/2: 0.05 gives 25 ms per frame (40 fps).
+export const RATE = 0.05;
+export const FRAME_S = RATE / 2;
+export const D = 54; // design units per tile side
+export const DEFAULT_SIZE = 54; // shipped frame size in px (board pitch 54 at scale 1)
+export const PERIOD = D / 4; // chevron spacing: four per tile, so belts join tile to tile
+export const BELT_FRAMES = 20; // frames per chevron period (original conveyor: 20 frames)
+export const ROT_DEG_PER_FRAME = 3; // original: 60 frames per loop, 3° each
+export const STEP_FRAMES = 60; // step arrows travel one tile per 60 frames (original)
+export const PULSE_FRAMES = 60; // incrementer plus pulses once per 60 frames (original fade)
+const COLS = 30; // atlas columns
 
 // ---------------------------------------------------------------- palette
+const hex = (h) => parseColour(h);
 const HEX = {
   outline: "#2a2335",
   floor: "#a3d9b1",
@@ -35,7 +51,6 @@ const HEX = {
   railMid: "#8b93a3",
   beltEdge: "#3a3f5c",
   belt: "#4a5175",
-  beltJoint: "#40466a",
   chevron: "#f6c445",
   chevronShade: "#e09b2d",
   stepLight: "#9be6f7",
@@ -47,158 +62,450 @@ const HEX = {
   ccwLight: "#fbb466",
   ccw: "#e9852c",
   ccwDark: "#b0561c",
-  hub: "#fdf1ce",
+  cream: "#fdf1ce",
+  creamDark: "#d8c49a",
+  wallLight: "#f78a72",
+  wall: "#e5533d",
+  wallDark: "#a33427",
+  paleLight: "#f4eee2",
+  pale: "#e2d9c8",
+  paleDark: "#b3a891",
+  goLight: "#8ee39c",
+  go: "#4cc25e",
+  goDark: "#2c8a43",
 };
-const C = Object.fromEntries(Object.entries(HEX).map(([k, v]) => [k, parseColour(v)]));
 export const PALETTE = HEX;
-
-// ---------------------------------------------------------------- raster helpers
-const set = (img, x, y, rgba) => {
-  if (x < 0 || y < 0 || x >= img.width || y >= img.height) return;
-  img.data.set(rgba, (y * img.width + x) * 4);
+const C = Object.fromEntries(Object.entries(HEX).map(([k, v]) => [k, hex(v)]));
+const CLEAR = [0, 0, 0, 0];
+const pal = (prefix) => ({ light: C[`${prefix}Light`], base: C[prefix], dark: C[`${prefix}Dark`] });
+const P = {
+  step: pal("step"), cw: pal("cw"), ccw: pal("ccw"), wall: pal("wall"), pale: pal("pale"), go: pal("go"),
+  cream: { light: C.cream, base: C.cream, dark: C.creamDark },
 };
-const mod = (a, n) => ((a % n) + n) % n;
 
-/** Paints `mask(x, y) -> colour|null` over a tile, with a 1 px dark outline
- *  around the shape (8-neighbourhood). `wrapX` treats x periodically so the
- *  outline is continuous across tile edges. */
-function paintShape(img, shade, { wrapX = false } = {}) {
-  const inside = (x, y) => {
-    if (y < 0 || y >= T) return false;
-    if (wrapX) x = mod(x, T);
-    else if (x < 0 || x >= T) return false;
-    return shade(x, y) !== null;
-  };
-  for (let y = 0; y < T; y += 1)
-    for (let x = 0; x < T; x += 1) {
-      const colour = shade(x, y);
-      if (colour !== null) { set(img, x, y, colour); continue; }
-      let near = false;
-      for (let dy = -1; dy <= 1 && !near; dy += 1)
-        for (let dx = -1; dx <= 1 && !near; dx += 1) if ((dx || dy) && inside(x + dx, y + dy)) near = true;
-      if (near) set(img, x, y, C.outline);
+// Counter colours. Each also has a glyph so it does not rely on hue alone.
+export const COUNTERS = {
+  Red: { glyph: "circle", light: "#f78a72", base: "#e5533d", dark: "#a33427" },
+  Blue: { glyph: "square", light: "#79aef0", base: "#3f7fdc", dark: "#2a5aa3" },
+  Green: { glyph: "triangle", light: "#7ad98b", base: "#36a852", dark: "#21753a" },
+  Purple: { glyph: "diamond", light: "#b996ec", base: "#8b5cd6", dark: "#5c3b99" },
+  Yellow: { glyph: "star", light: "#ffe07d", base: "#f5bf2a", dark: "#b8860f" },
+  Pink: { glyph: "heart", light: "#fbb0d2", base: "#f272ad", dark: "#b6457c" },
+};
+const CP = Object.fromEntries(Object.entries(COUNTERS).map(([k, v]) => [k, { light: hex(v.light), base: hex(v.base), dark: hex(v.dark) }]));
+
+// ---------------------------------------------------------------- math
+const mod = (a, n) => ((a % n) + n) % n;
+const TAU = Math.PI * 2;
+const H = D / 2; // tile centre
+
+function sdBox(px, py, bx, by) {
+  const qx = Math.abs(px) - bx, qy = Math.abs(py) - by;
+  return Math.hypot(Math.max(qx, 0), Math.max(qy, 0)) + Math.min(Math.max(qx, qy), 0);
+}
+const sdRoundBox = (px, py, bx, by, r) => sdBox(px, py, bx - r, by - r) - r;
+
+function sdSegment(px, py, ax, ay, bx, by) {
+  const pax = px - ax, pay = py - ay, bax = bx - ax, bay = by - ay;
+  const h = Math.min(1, Math.max(0, (pax * bax + pay * bay) / (bax * bax + bay * bay)));
+  return Math.hypot(pax - bax * h, pay - bay * h);
+}
+
+/** Exact signed distance to a polygon given as [x0, y0, x1, y1, ...]. */
+function sdPolygon(px, py, v) {
+  const n = v.length / 2;
+  let d = (px - v[0]) ** 2 + (py - v[1]) ** 2;
+  let s = 1;
+  for (let i = 0, j = n - 1; i < n; j = i, i += 1) {
+    const vix = v[2 * i], viy = v[2 * i + 1], vjx = v[2 * j], vjy = v[2 * j + 1];
+    const ex = vjx - vix, ey = vjy - viy, wx = px - vix, wy = py - viy;
+    const h = Math.min(1, Math.max(0, (wx * ex + wy * ey) / (ex * ex + ey * ey)));
+    const bx = wx - ex * h, by = wy - ey * h;
+    d = Math.min(d, bx * bx + by * by);
+    const c1 = py >= viy, c2 = py < vjy, c3 = ex * wy > ey * wx;
+    if ((c1 && c2 && c3) || (!c1 && !c2 && !c3)) s = -s;
+  }
+  return s * Math.sqrt(d);
+}
+
+// Glyphs, centred on 0,0, y down, about 2r across.
+function sdGlyph(kind, px, py, r) {
+  switch (kind) {
+    case "circle":
+      return Math.hypot(px, py) - r * 0.95;
+    case "square":
+      return sdRoundBox(px, py, r * 0.82, r * 0.82, r * 0.18);
+    case "diamond":
+      return (Math.abs(px) + Math.abs(py) - r * 1.12) / Math.SQRT2;
+    case "triangle": {
+      // equilateral, pointing up (IQ), y flipped and nudged so it looks centred
+      const k = Math.sqrt(3), rr = r * 1.0;
+      let x = Math.abs(px) - rr, y = -(py - r * 0.18) + rr / k;
+      if (x + k * y > 0) [x, y] = [(x - k * y) / 2, (-k * x - y) / 2];
+      x -= Math.min(Math.max(x, -2 * rr), 0);
+      return -Math.hypot(x, y) * Math.sign(y);
     }
+    case "star": {
+      // five-pointed star (IQ sdStar5), pointing up
+      const k1x = 0.809016994375, k1y = -0.587785252292, k2x = -k1x, k2y = k1y;
+      const rr = r * 1.18, rf = 0.5;
+      let x = Math.abs(px), y = -py + r * 0.06;
+      let dd = Math.max(k1x * x + k1y * y, 0);
+      x -= 2 * dd * k1x; y -= 2 * dd * k1y;
+      dd = Math.max(k2x * x + k2y * y, 0);
+      x -= 2 * dd * k2x; y -= 2 * dd * k2y;
+      x = Math.abs(x);
+      y -= rr;
+      const bax = rf * -k1y - 0, bay = rf * k1x - 1;
+      const h = Math.min(Math.max((x * bax + y * bay) / (bax * bax + bay * bay), 0), rr);
+      return Math.hypot(x - bax * h, y - bay * h) * Math.sign(y * bax - x * bay);
+    }
+    case "heart": {
+      // IQ sdHeart, unit heart spans y 0..~1.05 (y up), scaled to about 2r
+      const k = r * 1.95;
+      let x = Math.abs(px) / k, y = (-py + r * 0.98) / k;
+      let d;
+      if (y + x > 1) d = Math.hypot(x - 0.25, y - 0.75) - Math.SQRT2 / 4;
+      else {
+        const m = 0.5 * Math.max(x + y, 0);
+        d = Math.sqrt(Math.min((x - 0) ** 2 + (y - 1) ** 2, (x - m) ** 2 + (y - m) ** 2)) * Math.sign(x - y);
+      }
+      return d * k;
+    }
+    default:
+      throw new Error(`unknown glyph ${kind}`);
+  }
+}
+
+/** Toybox shading for a shape with signed distance d (design units):
+ *  1 unit dark outline outside, 1 unit dark rim inside, base fill, optional highlight. */
+function toy(d, p, highlight = false) {
+  if (d > 1) return null;
+  if (d > 0) return C.outline;
+  if (d > -1) return p.dark;
+  return highlight ? p.light : p.base;
+}
+/** Small symbols: outline and a flat fill (a rim would eat the fill). */
+function flat(d, fill) {
+  if (d > 1) return null;
+  return d > 0 ? C.outline : fill;
 }
 
 // ---------------------------------------------------------------- layers
-/** Empty board panel: flat mint with an even 1 px rim and four corner studs. */
-function floor(img) {
-  fillRect(img, 0, 0, T, T, C.floor);
-  for (let i = 0; i < T; i += 1) {
-    set(img, i, 0, C.floorRim); set(img, i, T - 1, C.floorRim);
-    set(img, 0, i, C.floorRim); set(img, T - 1, i, C.floorRim);
-  }
-  for (const [x, y] of [[3, 3], [T - 5, 3], [3, T - 5], [T - 5, T - 5]]) {
-    set(img, x, y, C.floorDot); set(img, x + 1, y, C.floorDot);
-    set(img, x, y + 1, C.floorDot); set(img, x + 1, y + 1, C.floorDot);
-  }
+/** Board panel: flat mint, 1 unit rim, four 2x2 corner studs. */
+function floorAt(x, y) {
+  if (x < 1 || y < 1 || x >= D - 1 || y >= D - 1) return C.floorRim;
+  const ex = x < H ? x : D - x, ey = y < H ? y : D - y;
+  if (ex >= 3 && ex < 5 && ey >= 3 && ey < 5) return C.floorDot;
+  return C.floor;
 }
 
-// Belt rows (symmetric about the tile centre line y = 24.5 so it survives 180°).
-export const BELT = { top: 16, bottom: 33, surfaceTop: 20, surfaceBottom: 29 };
-const CHEVRON_TIP = 14; // u position of the chevron tip within a period
+// The belt cross-section, by distance from its centre line (symmetric, so it
+// survives the game's 90° rotations).
+export const BELT_HALF = 10;
+const CHEVRON_TIP = 9; // tip position within a period at offset 0
 const CHEVRON_THICK = 4;
-
-/** The shared belt layer at a given offset (px moved east). */
-function belt(img, offset) {
-  const rows = {
-    16: C.outline, 17: C.railLight, 18: C.railMid, 19: C.outline,
-    30: C.outline, 31: C.railMid, 32: C.railLight, 33: C.outline,
-  };
-  for (let y = BELT.top; y <= BELT.bottom; y += 1)
-    for (let x = 0; x < T; x += 1) {
-      if (rows[y]) { set(img, x, y, rows[y]); continue; }
-      const r = y - BELT.surfaceTop; // 0..9
-      const d = r <= 4 ? 4 - r : r - 5; // 0 at the centre rows, 4 at the edges
-      const u = mod(x - offset, PERIOD);
-      const back = CHEVRON_TIP - d - (CHEVRON_THICK - 1);
-      const k = u - back;
-      let colour = r === 0 || r === 9 ? C.beltEdge : C.belt;
-      if (k >= 0 && k < CHEVRON_THICK) colour = k === 0 ? C.chevronShade : C.chevron;
-      else if (u === mod(CHEVRON_TIP + Math.floor(PERIOD / 2), PERIOD) && r > 0 && r < 9) colour = C.beltJoint;
-      set(img, x, y, colour);
-    }
-}
-
-/** Step: chunky blue arrows sliding east above and below the belt. */
-const ARROW = { len: 15, shaft: 8, head: 5.5, shaftHalf: 2.5, lanes: [8, 41], period: 25 };
-function stepArrows(img, offset) {
-  for (const cy of ARROW.lanes) {
-    const shade = (x, y) => {
-      const dy = y + 0.5 - (cy + 0.5);
-      const u = mod(x - offset, ARROW.period) + 0.5; // 0..25 along the arrow lane
-      const a = u - 4; // arrow starts at u = 4
-      if (a < 0 || a > ARROW.len) return null;
-      let half;
-      if (a <= ARROW.shaft) half = ARROW.shaftHalf;
-      else half = ARROW.head * (1 - (a - ARROW.shaft) / (ARROW.len - ARROW.shaft + 0.6));
-      if (Math.abs(dy) > half) return null;
-      if (Math.abs(dy) < 0.6) return C.stepLight;
-      return Math.abs(dy) > half - 1 ? C.stepDark : C.step;
-    };
-    paintShape(img, shade, { wrapX: true });
+/** Belt colour at along-coordinate u, across-coordinate v; offset = distance moved. */
+function beltAt(u, v, offset) {
+  const av = v < 0 ? -v : v;
+  if (av >= BELT_HALF) return null;
+  if (av < 5) {
+    const k = mod(CHEVRON_TIP + offset - av - u, PERIOD);
+    if (k < CHEVRON_THICK) return k >= CHEVRON_THICK - 1 ? C.chevronShade : C.chevron;
+    return av < 4 ? C.belt : C.beltEdge;
   }
+  return av < 6 ? C.outline : av < 7 ? C.railMid : av < 9 ? C.railLight : C.outline;
+}
+const beltOffset = (frame) => (mod(frame, BELT_FRAMES) * PERIOD) / BELT_FRAMES;
+
+/** Straight belt west to east across the middle. */
+const straightBelt = (off) => (x, y) => beltAt(x, y - H, off);
+
+/** Corner belt: enters through the north edge (the tile's left side when it
+ *  points east) and leaves through the east edge, a quarter circle of radius
+ *  D/2 about the north-east corner. `fromRight` mirrors it (enters from the south). */
+function cornerBelt(off, fromRight) {
+  const ARC = Math.PI / 2;
+  return (x, y) => {
+    const yy = fromRight ? D - y : y;
+    const dx = x - D, r = Math.hypot(dx, yy);
+    const v = r - H;
+    if (v <= -BELT_HALF || v >= BELT_HALF) return null;
+    const phi = Math.atan2(yy, dx); // pi at the entry, pi/2 at the exit
+    const u = ((Math.PI - phi) / ARC) * D;
+    return beltAt(u, v, off);
+  };
 }
 
-/** Rotator: two-arc circular arrow rasterised from polar geometry at `phase` radians. */
-const RING = { rc: 15.5, half: 3, headHalf: 6.5, arc: (110 * Math.PI) / 180, headLen: 8.5 };
-function rotator(img, phase, dir, colours) {
-  const [light, base, dark] = colours;
-  const shade = (x, y) => {
-    const px = x + 0.5 - T / 2;
-    const py = y + 0.5 - T / 2;
-    const r = Math.hypot(px, py);
-    // Screen angle, clockwise positive (y points down); dir = +1 cw, -1 ccw.
-    let theta = Math.atan2(py, px) * dir - phase;
-    for (let k = 0; k < 2; k += 1) {
-      const a = mod(theta - k * Math.PI, 2 * Math.PI); // 0 at the tail of arc k
-      const s = a * RING.rc; // arc length from the tail
-      const arcLen = RING.arc * RING.rc;
-      let half = -1;
-      if (s <= arcLen) half = RING.half;
-      else if (s <= arcLen + RING.headLen) half = RING.headHalf * (1 - (s - arcLen) / (RING.headLen + 0.5));
-      if (half < 0) continue;
-      const t = Math.abs(r - RING.rc);
-      if (t > half) continue;
-      if (t < 1.2) return light;
-      return t > half - 1 ? dark : base;
+/** Branch belt: in from the west, out to the north and the south. The
+ *  crossing is covered by the hub. Both halves continue the flow coordinate
+ *  from the centre, so chevrons run outwards and stay in phase with straight belts. */
+function branchBelt(off) {
+  return (x, y) => {
+    const vx = x - H;
+    if (vx > -BELT_HALF && vx < BELT_HALF) return beltAt(y < H ? D - y : y, vx, off);
+    if (x < H) return beltAt(x, y - H, off);
+    return null;
+  };
+}
+
+/** Step: one sky-blue arrow per lane per tile, above and below the belt,
+ *  sliding east one tile per STEP_FRAMES. Lanes wrap across tile edges. */
+const ARROW = [0, -3, 13, -3, 13, -7, 24, 0, 13, 7, 13, 3, 0, 3];
+const ARROW_LANES = [8.5, D - 8.5];
+const ARROW_START = 6;
+function stepArrows(frame) {
+  const shift = (mod(frame, STEP_FRAMES) * D) / STEP_FRAMES;
+  return (x, y) => {
+    for (const cy of ARROW_LANES) {
+      const b = y - cy;
+      if (b < -9 || b > 9) continue;
+      const a = mod(x - shift - ARROW_START, D);
+      const d = Math.min(sdPolygon(a, b, ARROW), sdPolygon(a - D, b, ARROW));
+      const c = toy(d, P.step, Math.abs(b) < 0.9 && a > 1.5 && a < 20);
+      if (c) return c;
     }
     return null;
   };
-  paintShape(img, shade);
 }
 
-// ---------------------------------------------------------------- tiles
-export function drawTile(name, frame) {
-  const img = blank(T, T);
-  floor(img);
-  if (name === "emptyOperator") return img;
-  const offset = (frame * SHIFT) % PERIOD;
-  belt(img, offset);
-  if (name === "stepForward") stepArrows(img, offset);
-  if (name === "cwrotator" || name === "ccwrotator") {
-    const n = FRAMES[name];
-    const phase = (frame / n) * Math.PI; // half a turn per loop (two-fold symmetric arrow)
-    const cw = name === "cwrotator";
-    rotator(img, phase, cw ? 1 : -1, cw ? [C.cwLight, C.cw, C.cwDark] : [C.ccwLight, C.ccw, C.ccwDark]);
+/** Rotator: two-arc circular arrow, two-fold symmetric, turning 3° per frame. */
+const RING = { rc: 16.7, half: 3.3, headHalf: 7, arc: (110 * Math.PI) / 180, headLen: 9.2 };
+const HEAD_K = RING.headLen / Math.hypot(RING.headLen, RING.headHalf); // flank distance correction
+function rotator(frame, cw) {
+  const dir = cw ? 1 : -1;
+  const phase = (frame * ROT_DEG_PER_FRAME * Math.PI) / 180;
+  const p = cw ? P.cw : P.ccw;
+  return (x, y) => {
+    const px = x - H, py = y - H;
+    const r = Math.hypot(px, py);
+    const t = Math.abs(r - RING.rc);
+    if (t > RING.headHalf + 1.5) return null;
+    const theta = Math.atan2(py, px) * dir - phase;
+    let d = Infinity;
+    for (let k = 0; k < 2; k += 1) {
+      const a = theta - k * Math.PI;
+      // band: angular span [0, arc] from the tail
+      const m = mod(a - RING.arc / 2 + Math.PI, TAU) - Math.PI;
+      const dBand = Math.max(t - RING.half, (Math.abs(m) - RING.arc / 2) * r);
+      // head: from the end of the band, tapering to a point
+      const hs = (mod(a - RING.arc + Math.PI, TAU) - Math.PI) * RING.rc;
+      const half = RING.headHalf * (1 - hs / RING.headLen);
+      const dHead = Math.max((t - half) * HEAD_K, (-hs * r) / RING.rc);
+      d = Math.min(d, dBand, dHead);
+    }
+    return toy(d, p, t < 1.2);
+  };
+}
+
+/** Incrementer: a chunky plus in the counter colour, pulsing gently once per
+ *  PULSE_FRAMES, with the counter's glyph in cream in the middle. */
+function incrementer(frame, colour) {
+  const p = CP[colour];
+  const glyph = COUNTERS[colour].glyph;
+  const sc = 1 - 0.1 * (1 - Math.cos((TAU * mod(frame, PULSE_FRAMES)) / PULSE_FRAMES)) / 2;
+  return (x, y) => {
+    const px = (x - H) / sc, py = (y - H) / sc;
+    if (Math.abs(px) > 21 || Math.abs(py) > 21) return null;
+    const g = flat(sdGlyph(glyph, px, py, 5.4) * sc, C.cream);
+    if (g) return g;
+    const dx = Math.min(sdRoundBox(px, py, 19, 7.5, 3), sdRoundBox(px, py, 7.5, 19, 3)) * sc;
+    return toy(dx, p, false);
+  };
+}
+
+/** Hub covering a branch tile's crossing: a disc, radius chosen so it hides the
+ *  whole belt overlap square (corner at 10·√2 from the centre). */
+const HUB_R = 13.3;
+function hub(fill, inner) {
+  return (x, y) => {
+    const px = x - H, py = y - H;
+    const d = Math.hypot(px, py) - HUB_R;
+    if (d > 1) return null;
+    if (d > -1.2) return d > 0 ? C.outline : fill.dark;
+    return inner(px, py) ?? fill.base;
+  };
+}
+
+// Corner icons on branch tiles: the north pair marks the branch taken when the
+// condition holds, the south pair the other one.
+const ICON_SPOTS = { north: [[8.5, 8.5], [D - 8.5, 8.5]], south: [[8.5, D - 8.5], [D - 8.5, D - 8.5]] };
+function icons(spots, draw) {
+  return (x, y) => {
+    for (const [cx, cy] of spots) {
+      const px = x - cx, py = y - cy;
+      if (Math.abs(px) > 9 || Math.abs(py) > 9) continue;
+      const c = draw(px, py);
+      if (c) return c;
+    }
+    return null;
+  };
+}
+
+function wallIcon(px, py, p) {
+  const d = sdRoundBox(px, py, 7, 6, 1.6);
+  if (d > 1) return null;
+  if (d > 0) return C.outline;
+  if (d > -1) return p.dark;
+  // mortar: two courses lines and staggered joints
+  const row = py < -2 ? 0 : py < 2 ? 1 : 2;
+  if (Math.abs(py + 2) < 0.5 || Math.abs(py - 2) < 0.5) return p.dark;
+  const joints = row === 1 ? [-3.5, 3.5] : [0];
+  for (const jx of joints) if (Math.abs(px - jx) < 0.5) return p.dark;
+  return py < -4 || (row === 1 && py < 0) || (row === 2 && py < 4) ? p.light : p.base;
+}
+function magicIcon(px, py, p) {
+  const d = sdRoundBox(px, py, 6.5, 6.5, 2.2);
+  if (d > 1) return null;
+  if (d > 0) return C.outline;
+  if (d > -1) return p.dark;
+  // four-point sparkle
+  const s = Math.min(Math.abs(px) / 1.3 + Math.abs(py) / 4.4, Math.abs(px) / 4.4 + Math.abs(py) / 1.3) - 1;
+  if (s < 0) return C.cream;
+  return p.base;
+}
+/** A slash across a struck-out icon. */
+function slash(px, py) {
+  const d = sdSegment(px, py, -6.5, 6.5, 6.5, -6.5) - 1.4;
+  return flat(d, C.wall);
+}
+const struck = (draw) => (px, py) => slash(px, py) ?? draw(px, py);
+
+const zeroIcon = (p) => (px, py) => flat(Math.abs(sdRoundBox(px, py, 4.4, 6.2, 4.4)) - 1.7, p.base);
+const minusIcon = (p) => (px, py) => flat(sdRoundBox(px, py, 6, 1.8, 1.4), p.base);
+
+/** Start marker beside the board: a green double chevron on transparent ground. */
+const START_CHEVRON = [0, -11, 7, -11, 16, 0, 7, 11, 0, 11, 9, 0];
+function startMarker(x, y) {
+  const py = y - H;
+  const d = Math.min(sdPolygon(x - 11.5, py, START_CHEVRON), sdPolygon(x - 25.5, py, START_CHEVRON)) - 0.8;
+  return toy(d, P.go, false);
+}
+
+// ---------------------------------------------------------------- sheets
+const stack = (...layers) => (x, y) => {
+  for (const layer of layers) {
+    const c = layer(x, y);
+    if (c) return c;
   }
+  return CLEAR;
+};
+
+function sheetList() {
+  const list = [
+    { name: "conveyor", frames: BELT_FRAMES, anim: "conveyorMations", scene: (f) => stack(straightBelt(beltOffset(f)), floorAt) },
+    { name: "conveyorFromLeft", frames: BELT_FRAMES, anim: "conveyorMations", scene: (f) => stack(cornerBelt(beltOffset(f), false), floorAt) },
+    { name: "conveyorFromRight", frames: BELT_FRAMES, anim: "conveyorMations", scene: (f) => stack(cornerBelt(beltOffset(f), true), floorAt) },
+    { name: "stepForward", frames: STEP_FRAMES, anim: "stepForwardMations", scene: (f) => stack(stepArrows(f), straightBelt(beltOffset(f)), floorAt) },
+    { name: "cwrotator", frames: 60, anim: "cwRotatorMations", scene: (f) => stack(rotator(f, true), straightBelt(beltOffset(f)), floorAt) },
+    { name: "ccwrotator", frames: 60, anim: "ccwRotatorMations", scene: (f) => stack(rotator(f, false), straightBelt(beltOffset(f)), floorAt) },
+    {
+      name: "detector", frames: BELT_FRAMES, anim: "detectorMations",
+      scene: (f) => stack(
+        icons(ICON_SPOTS.north, (px, py) => wallIcon(px, py, P.wall)),
+        icons(ICON_SPOTS.south, struck((px, py) => wallIcon(px, py, P.pale))),
+        hub(P.cream, (px, py) => toy((Math.abs(px) + Math.abs(py) - 7.5) / Math.SQRT2, P.wall, false)),
+        branchBelt(beltOffset(f)), floorAt),
+    },
+    {
+      name: "magicDetector", frames: BELT_FRAMES, anim: "magicMation",
+      scene: (f) => stack(
+        icons(ICON_SPOTS.north, (px, py) => magicIcon(px, py, P.step)),
+        icons(ICON_SPOTS.south, struck((px, py) => magicIcon(px, py, P.pale))),
+        hub(P.cream, (px, py) => toy((Math.abs(px) + Math.abs(py) - 7.5) / Math.SQRT2, P.step, false)),
+        branchBelt(beltOffset(f)), floorAt),
+    },
+  ];
+  for (const colour of Object.keys(COUNTERS))
+    list.push({
+      name: `incrementer${colour}`, frames: PULSE_FRAMES, anim: `incrementerMations${colour}`,
+      scene: (f) => stack(incrementer(f, colour), straightBelt(beltOffset(f)), floorAt),
+    });
+  for (const colour of Object.keys(COUNTERS)) {
+    const p = CP[colour];
+    const glyph = COUNTERS[colour].glyph;
+    list.push({
+      name: `decrementer${colour}`, frames: BELT_FRAMES, anim: `decrementerMations${colour}`,
+      scene: (f) => stack(
+        icons(ICON_SPOTS.north, zeroIcon(p)),
+        icons(ICON_SPOTS.south, minusIcon(p)),
+        hub(p, (px, py) => flat(sdGlyph(glyph, px, py, 6.4), C.cream)),
+        branchBelt(beltOffset(f)), floorAt),
+    });
+  }
+  list.push({ name: "emptyOperator", frames: 1, anim: "emptyMation", scene: () => stack(floorAt) });
+  list.push({ name: "startTile", frames: 1, anim: "startTileMation", scene: () => stack(startMarker) });
+  return list;
+}
+export const SHEETS = sheetList();
+const BY_NAME = Object.fromEntries(SHEETS.map((s) => [s.name, s]));
+
+// ---------------------------------------------------------------- rasteriser
+const SS = 8; // supersamples per axis on edge pixels
+
+/** Renders a scene (x, y in design units -> RGBA) into an n x n raster. */
+export function render(scene, n) {
+  const s = D / n;
+  const img = blank(n, n);
+  const G = 2 * n + 1;
+  const grid = new Array(G * G);
+  for (let j = 0; j < G; j += 1)
+    for (let i = 0; i < G; i += 1) grid[j * G + i] = scene(i * 0.5 * s, j * 0.5 * s);
+  for (let py = 0; py < n; py += 1)
+    for (let px = 0; px < n; px += 1) {
+      const at = (2 * py) * G + 2 * px;
+      const c = grid[at + G + 1];
+      let out;
+      if (grid[at] === c && grid[at + 2] === c && grid[at + 2 * G] === c && grid[at + 2 * G + 2] === c) out = c;
+      else {
+        let r = 0, g = 0, b = 0, a = 0;
+        for (let sy = 0; sy < SS; sy += 1)
+          for (let sx = 0; sx < SS; sx += 1) {
+            const q = scene((px + (sx + 0.5) / SS) * s, (py + (sy + 0.5) / SS) * s);
+            const qa = q[3];
+            r += q[0] * qa; g += q[1] * qa; b += q[2] * qa; a += qa;
+          }
+        out = a === 0 ? CLEAR : [Math.round(r / a), Math.round(g / a), Math.round(b / a), Math.round(a / (SS * SS))];
+      }
+      img.data.set(out, (py * n + px) * 4);
+    }
   return img;
 }
 
-export function buildAtlas() {
-  const order = ["conveyor", "stepForward", "cwrotator", "ccwrotator", "emptyOperator"];
+export function drawTile(name, frame, n = DEFAULT_SIZE) {
+  const sheet = BY_NAME[name];
+  if (!sheet) throw new Error(`unknown tile ${name}`);
+  return render(sheet.scene(mod(frame, sheet.frames)), n);
+}
+
+export function layoutAtlas(n) {
   const layout = {};
   let row = 0;
-  for (const name of order) {
-    const rows = Math.ceil(FRAMES[name] / COLS);
-    const w = Math.min(FRAMES[name], COLS) * T;
-    layout[name] = { sx: 0, sy: row * T, tilew: T, tileh: T, w, h: rows * T };
+  let smallX = 0, smallRow = -1;
+  for (const sheet of SHEETS) {
+    if (sheet.frames === 1) {
+      // single frames share one row
+      if (smallRow < 0 || smallX >= COLS) { smallRow = row; row += 1; smallX = 0; }
+      layout[sheet.name] = { sx: smallX * n, sy: smallRow * n, tilew: n, tileh: n, w: n, h: n };
+      smallX += 1;
+      continue;
+    }
+    const rows = Math.ceil(sheet.frames / COLS);
+    layout[sheet.name] = { sx: 0, sy: row * n, tilew: n, tileh: n, w: Math.min(sheet.frames, COLS) * n, h: rows * n };
     row += rows;
   }
-  const atlas = blank(COLS * T, row * T);
-  for (const name of order)
-    for (let f = 0; f < FRAMES[name]; f += 1)
-      composite(atlas, drawTile(name, f), layout[name].sx + (f % COLS) * T, layout[name].sy + Math.floor(f / COLS) * T);
+  return { layout, width: COLS * n, height: row * n };
+}
+
+export function buildAtlas(n = DEFAULT_SIZE) {
+  const { layout, width, height } = layoutAtlas(n);
+  const atlas = blank(width, height);
+  for (const sheet of SHEETS) {
+    const L = layout[sheet.name];
+    const cols = L.w / n;
+    for (let f = 0; f < sheet.frames; f += 1)
+      composite(atlas, drawTile(sheet.name, f, n), L.sx + (f % cols) * n, L.sy + Math.floor(f / cols) * n);
+  }
   return { atlas, json: JSON.stringify(layout, null, 2) + "\n" };
 }
 
@@ -215,152 +522,184 @@ function rotate90(src, quarterTurnsCw) {
   return out;
 }
 
-/** Rough stand-in for the canvas drawing a 50 px tile at scale 0.9 with smoothing. */
-function bilinear(src, w, h) {
-  const out = blank(w, h);
-  const fx = src.width / w, fy = src.height / h;
-  for (let y = 0; y < h; y += 1)
-    for (let x = 0; x < w; x += 1) {
-      const sx = Math.min(src.width - 1, Math.max(0, (x + 0.5) * fx - 0.5));
-      const sy = Math.min(src.height - 1, Math.max(0, (y + 0.5) * fy - 0.5));
-      const x0 = Math.floor(sx), y0 = Math.floor(sy), x1 = Math.min(src.width - 1, x0 + 1), y1 = Math.min(src.height - 1, y0 + 1);
-      const ax = sx - x0, ay = sy - y0;
-      for (let k = 0; k < 4; k += 1) {
-        const p = (xx, yy) => src.data[(yy * src.width + xx) * 4 + k];
-        const v = (p(x0, y0) * (1 - ax) + p(x1, y0) * ax) * (1 - ay) + (p(x0, y1) * (1 - ax) + p(x1, y1) * ax) * ay;
-        out.data[(y * w + x) * 4 + k] = Math.round(v);
-      }
+// Demo board (also in demo/tiles.js): [col, row, sheet, quarter turns clockwise].
+// A U-turn top left, a straight run with step, rotator and counter, a detector
+// whose branches turn east through corner belts, and more branches below.
+export const MOCK = {
+  cols: 7, rows: 5,
+  cells: [
+    [0, 0, "conveyor", 0], [1, 0, "stepForward", 0], [2, 0, "conveyorFromRight", 1],
+    [2, 1, "conveyorFromRight", 2], [1, 1, "ccwrotator", 2], [0, 1, "stepForward", 2],
+    [0, 2, "conveyor", 0], [1, 2, "stepForward", 0], [2, 2, "cwrotator", 0], [3, 2, "incrementerRed", 0], [4, 2, "detector", 0],
+    [4, 1, "conveyorFromRight", 0], [5, 1, "ccwrotator", 0], [6, 1, "conveyor", 0],
+    [4, 3, "conveyorFromLeft", 0], [5, 3, "decrementerBlue", 0],
+    [5, 2, "conveyorFromRight", 0], [6, 2, "incrementerYellow", 0],
+    [5, 4, "conveyorFromLeft", 0], [6, 4, "magicDetector", 0],
+    [0, 4, "decrementerGreen", 1], [1, 4, "incrementerPurple", 3], [2, 4, "decrementerPink", 0], [3, 4, "startTile", 0],
+  ],
+};
+function mockBoard(globalFrame, n, bg) {
+  const img = blank(MOCK.cols * n, MOCK.rows * n, bg);
+  const grid = new Map(MOCK.cells.map((c) => [`${c[0]},${c[1]}`, c]));
+  for (let j = 0; j < MOCK.rows; j += 1)
+    for (let i = 0; i < MOCK.cols; i += 1) {
+      const c = grid.get(`${i},${j}`) ?? [i, j, "emptyOperator", 0];
+      if (c[2] === "startTile") composite(img, drawTile("emptyOperator", 0, n), i * n, j * n);
+      composite(img, rotate90(drawTile(c[2], globalFrame % BY_NAME[c[2]].frames, n), c[3]), i * n, j * n);
     }
-  return out;
-}
-
-// 5×3 mock: middle row conveyor→step→cw→conveyor→ccw pointing east; column 3
-// crosses it with a conveyor (south) above and a step (south) below.
-const MOCK = [
-  [["emptyOperator", 0], ["emptyOperator", 0], ["emptyOperator", 0], ["conveyor", 1], ["emptyOperator", 0]],
-  [["conveyor", 0], ["stepForward", 0], ["cwrotator", 0], ["conveyor", 0], ["ccwrotator", 0]],
-  [["emptyOperator", 0], ["emptyOperator", 0], ["emptyOperator", 0], ["stepForward", 1], ["emptyOperator", 0]],
-];
-function mockBoard(globalFrame, game) {
-  const pitch = game ? 47 : T;
-  const size = game ? 45 : T;
-  const gap = game ? 2 : 0;
-  const img = blank(5 * pitch + gap, 3 * pitch + gap, game ? [0, 0, 0, 255] : [0, 0, 0, 0]);
-  MOCK.forEach((row, j) =>
-    row.forEach(([name, quarter], i) => {
-      let tile = rotate90(drawTile(name, globalFrame % FRAMES[name]), quarter);
-      if (game) tile = bilinear(tile, size, size);
-      composite(img, tile, gap + i * pitch, gap + j * pitch);
-    }));
   return img;
 }
 
-function label(img, text, x, y, scale = 1) {
-  drawText(img, text, x, y, parseColour("#2a2335"), scale);
-}
+const INK = parseColour("#2a2335");
+const label = (img, text, x, y, colour = INK) => drawText(img, text, x, y, colour);
 
-function contactSheet() {
-  const names = ["conveyor", "stepForward", "cwrotator", "ccwrotator", "emptyOperator"];
-  const bg = parseColour("#efe9dc");
-  const rowH = 4 * T + 24;
-  const left = 4 * (T + 4) + 16; // 1× strip, then the ×4 tiles
-  const tileBlockW = 4 * (4 * T + 8);
-  const width = Math.max(left + tileBlockW, 3 * 5 * T * 1 + 40, 2 * (5 * 47 + 2) * 2 + 40);
-  const boardH = 3 * T * 3 + 40;
-  const gameH = (3 * 47 + 2) * 2 + 40;
-  const sheet = blank(width + 20, 20 + names.length * rowH + boardH + gameH * 2 + 40, bg);
-  let y = 10;
-  for (const name of names) {
-    label(sheet, `${name} (${FRAMES[name]} f)`, 10, y);
-    const n = FRAMES[name];
-    const picks = [0, Math.floor(n / 4), Math.floor(n / 2), Math.floor((3 * n) / 4)];
-    picks.forEach((f, k) => {
-      const tile = drawTile(name, f);
-      const x = left + k * (4 * T + 8);
-      composite(sheet, tile, 10 + k * (T + 4), y + 14); // 1×
-      label(sheet, `${f}`, 10 + k * (T + 4), y + 16 + T);
-      composite(sheet, scaleNearest(tile, 4), x, y + 14); // ×4
-      label(sheet, `F${f}`, x, y + 14 + 4 * T + 2);
+function contactSheet(n) {
+  const light = parseColour("#efe9dc"), dark = parseColour("#1b1a20");
+  const picks = (frames) => (frames === 1 ? [0] : [0, Math.floor(frames / 4), Math.floor(frames / 2), Math.floor((3 * frames) / 4)]);
+  const zoom = 4;
+  const colW = 6 * (n + 4) + 2 * (zoom * n + 8) + 20;
+  const rowH = zoom * n + 26;
+  const half = Math.ceil(SHEETS.length / 2);
+  const sheet = blank(2 * colW + 30, half * rowH + 20, light);
+  SHEETS.forEach((s, idx) => {
+    const x0 = 10 + (idx < half ? 0 : colW + 10);
+    const y = 10 + (idx % half) * rowH;
+    label(sheet, `${s.name} ${s.frames}F`, x0, y);
+    const fs4 = picks(s.frames);
+    fs4.forEach((f, k) => {
+      composite(sheet, drawTile(s.name, f, n), x0 + k * (n + 4), y + 12);
+      label(sheet, `${f}`, x0 + k * (n + 4), y + 14 + n);
     });
-    y += rowH;
-  }
-  label(sheet, "BOARD MOCK X3 (FRAME 0)", 10, y);
-  composite(sheet, scaleNearest(mockBoard(0, false), 3), 10, y + 12);
-  y += boardH;
-  for (const f of [0, 12]) {
-    label(sheet, `GAME VIEW APPROX: 0.9 SCALE SMOOTHED, 2 PX GAPS, X2 (FRAME ${f})`, 10, y);
-    composite(sheet, scaleNearest(mockBoard(f, true), 2), 10, y + 12);
-    // 1× game view next to it
-    composite(sheet, mockBoard(f, true), 10 + (5 * 47 + 2) * 2 + 20, y + 12);
-    y += gameH;
-  }
+    // dark ground, frame 0
+    fillRect(sheet, x0 + 4 * (n + 4), y + 12, n + 8, n + 8, dark);
+    composite(sheet, drawTile(s.name, 0, n), x0 + 4 * (n + 4) + 4, y + 16);
+    // x4, two frames
+    [0, fs4[Math.min(1, fs4.length - 1)]].forEach((f, k) => {
+      composite(sheet, scaleNearest(drawTile(s.name, f, n), zoom), x0 + 6 * (n + 4) + k * (zoom * n + 8), y + 12);
+    });
+  });
   return sheet;
 }
 
-function seamSheet() {
-  const scale = 6;
-  const bg = parseColour("#efe9dc");
-  const pairW = 2 * T * scale;
-  const sheet = blank(pairW + 20, 4 * (T * scale + 24) + 10, bg);
-  for (let f = 0; f < 4; f += 1) {
-    const pair = blank(2 * T, T);
-    composite(pair, drawTile("conveyor", f), 0, 0);
-    composite(pair, drawTile("stepForward", f), T, 0);
-    const y = 10 + f * (T * scale + 24);
-    label(sheet, `CONVEYOR + STEP, FRAME ${f} (JOINT AT CENTRE)`, 10, y);
-    composite(sheet, scaleNearest(pair, scale), 10, y + 12);
+function seamSheet(n) {
+  const light = parseColour("#efe9dc"), dark = parseColour("#1b1a20");
+  const bw = MOCK.cols * n, bh = MOCK.rows * n;
+  const zoom = 3;
+  const sheet = blank(Math.max(2 * bw + 40, zoom * bw + 20), 3 * (bh + 24) + zoom * bh + 40, light);
+  let y = 10;
+  for (const f of [0, 7, 33]) {
+    label(sheet, `BOARD AT 1X, FRAME ${f}, ON LIGHT AND DARK`, 10, y);
+    composite(sheet, mockBoard(f, n, CLEAR), 10, y + 12);
+    fillRect(sheet, bw + 20, y + 8, bw + 16, bh + 8, dark);
+    composite(sheet, mockBoard(f, n, CLEAR), bw + 28, y + 12);
+    y += bh + 24;
   }
+  label(sheet, "BOARD AT 3X, FRAME 7 (SEAMS, CORNERS, BRANCHES)", 10, y);
+  composite(sheet, scaleNearest(mockBoard(7, n, CLEAR), zoom), 10, y + 12);
   return sheet;
 }
 
 // ---------------------------------------------------------------- self-checks
-function selfCheck() {
+const strip = (img, side) => {
+  const n = img.width, out = [];
+  for (let k = 0; k < n; k += 1) {
+    const [x, y] = side === "W" ? [0, k] : side === "E" ? [n - 1, k] : side === "N" ? [k, 0] : [k, n - 1];
+    out.push(...img.data.subarray((y * n + x) * 4, (y * n + x) * 4 + 4));
+  }
+  return out;
+};
+function stripDiff(a, b) {
+  let max = 0, sum = 0;
+  for (let i = 0; i < a.length; i += 1) {
+    const d = Math.abs(a[i] - b[i]);
+    max = Math.max(max, d);
+    sum += d;
+  }
+  return { max, mean: sum / a.length };
+}
+
+/** Parses the tile animations out of script.js: name -> { frames, rate }. */
+function scriptAnimations() {
+  const src = fs.readFileSync(path.join(ROOT, SCRIPT_JS), "utf8");
+  const vars = {};
+  for (const m of src.matchAll(/var\s+(\w+)\s*=\s*([\d.]+)\s*;/g)) vars[m[1]] = Number(m[2]);
+  const anims = {};
+  const re = /Q\.animations\(\s*['"](\w+)['"]\s*(\+\s*i\s*)?,\s*\{\s*"default"\s*:\s*\{\s*frames\s*:\s*(pom\((\d+)\)|\[[\d,\s]*\])\s*,\s*rate\s*:\s*([\w.]+)/g;
+  for (const m of src.matchAll(re)) {
+    const frames = m[4] ? Number(m[4]) : JSON.parse(m[3]).length;
+    const rate = /^[\d.]+$/.test(m[5]) ? Number(m[5]) : vars[m[5]];
+    const names = m[2] ? Object.keys(COUNTERS).map((c) => m[1] + c) : [m[1]];
+    for (const name of names) anims[name] = { frames, rate };
+  }
+  return anims;
+}
+
+function selfCheck(n) {
   const problems = [];
-  if (T % PERIOD !== 0) problems.push("belt period must divide the tile");
-  for (const name of ["conveyor", "stepForward", "cwrotator", "ccwrotator"]) {
-    if ((FRAMES[name] * SHIFT) % PERIOD !== 0) problems.push(`${name}: frames × shift must be a multiple of the period`);
-    // Belt rows of every program tile at every frame equal the conveyor's at the same global frame.
-    for (let f = 0; f < FRAMES[name]; f += 1) {
-      const a = drawTile(name, f), b = drawTile("conveyor", f % FRAMES.conveyor);
-      for (const x of [0, T - 1])
-        for (let y = BELT.top; y <= BELT.bottom; y += 1) {
-          const i = (y * T + x) * 4;
-          if (a.data[i] !== b.data[i] || a.data[i + 1] !== b.data[i + 1] || a.data[i + 2] !== b.data[i + 2]) {
-            problems.push(`${name} frame ${f}: belt edge differs from conveyor at ${x},${y}`);
-            f = FRAMES[name];
-            break;
-          }
-        }
+  if (D % PERIOD !== 0) problems.push("belt period must divide the tile");
+  const anims = scriptAnimations();
+  for (const s of SHEETS) {
+    const a = anims[s.anim];
+    if (!a) { problems.push(`${s.name}: animation ${s.anim} not found in ${SCRIPT_JS}`); continue; }
+    if (a.frames !== s.frames) problems.push(`${s.name}: ${SCRIPT_JS} ${s.anim} has ${a.frames} frames, the atlas has ${s.frames}`);
+    if (s.frames > 1 && a.rate !== RATE) problems.push(`${s.name}: ${SCRIPT_JS} ${s.anim} rate ${a.rate}, want ${RATE} (the 2012 rate)`);
+    if (s.frames > 1 && s.frames % BELT_FRAMES !== 0) problems.push(`${s.name}: frame count must be a multiple of ${BELT_FRAMES} so belts stay in phase`);
+  }
+  // Loop closure: frame N continues into frame 0 (scene at f = frames equals f = 0).
+  for (const s of SHEETS) {
+    if (s.frames === 1) continue;
+    const a = render(s.scene(s.frames), n), b = render(s.scene(0), n);
+    const d = stripDiff(a.data, b.data);
+    if (d.max > 2) problems.push(`${s.name}: loop does not close (max diff ${d.max})`);
+  }
+  // Seams: every belt opening matches the plain conveyor's at the same global
+  // frame (straight belts exactly; corners and branches within anti-aliasing).
+  const east = (f) => drawTile("conveyor", f, n);
+  const seam = [];
+  for (const f of [0, 3, 11]) {
+    const c = east(f);
+    const cS = rotate90(c, 1), cN = rotate90(c, 3); // pointing south, north
+    const want = {
+      W: strip(c, "W"), E: strip(c, "E"), Nin: strip(cS, "N"), Sin: strip(cN, "S"), Nout: strip(cN, "N"), Sout: strip(cS, "S"),
+    };
+    const checks = [];
+    // compare the belt opening only (icons and step arrows may touch other parts of an edge)
+    const band = (st) => st.slice(4 * Math.floor((H - BELT_HALF) * (n / D)), 4 * Math.ceil((H + BELT_HALF) * (n / D)));
+    const add = (name, side, got, exp) => checks.push([name, side, band(got), band(exp)]);
+    for (const s of SHEETS) {
+      if (s.frames === 1) continue;
+      const img = drawTile(s.name, f, n);
+      if (s.name === "conveyorFromLeft") { add(s.name, "N", strip(img, "N"), want.Nin); add(s.name, "E", strip(img, "E"), want.E); }
+      else if (s.name === "conveyorFromRight") { add(s.name, "S", strip(img, "S"), want.Sin); add(s.name, "E", strip(img, "E"), want.E); }
+      else if (/^(detector|magicDetector|decrementer)/.test(s.name)) {
+        add(s.name, "W", strip(img, "W"), want.W); add(s.name, "N", strip(img, "N"), want.Nout); add(s.name, "S", strip(img, "S"), want.Sout);
+      } else { add(s.name, "W", strip(img, "W"), want.W); add(s.name, "E", strip(img, "E"), want.E); }
+    }
+    for (const [name, side, got, exp] of checks) {
+      const d = stripDiff(got, exp);
+      const straight = !/FromLeft|FromRight|detector|Detector|decrementer/.test(name);
+      seam.push([name, side, d.max, d.mean]);
+      if (straight ? d.max > 0 : d.max > 64 || d.mean > 6) problems.push(`${name} frame ${f}: ${side} edge differs from the conveyor (max ${d.max}, mean ${d.mean.toFixed(2)})`);
     }
   }
-  // Seam: the belt rows are periodic in x with a period dividing the tile, so
-  // column 49 of one tile runs straight into column 0 of its east neighbour.
-  for (let f = 0; f < FRAMES.conveyor; f += 1) {
-    const c = drawTile("conveyor", f);
-    for (let y = BELT.top; y <= BELT.bottom; y += 1)
-      for (let x = 0; x + PERIOD < T; x += 1)
-        for (let k = 0; k < 4; k += 1)
-          if (c.data[(y * T + x) * 4 + k] !== c.data[(y * T + x + PERIOD) * 4 + k]) {
-            problems.push(`conveyor frame ${f}: belt not periodic at ${x},${y}`);
-            return problems;
-          }
-  }
-  return problems;
+  return { problems, seam };
 }
 
 // ---------------------------------------------------------------- main
 function main(argv) {
   const check = argv.includes("--check");
-  const reviewAt = argv.indexOf("--review");
-  const tagAt = argv.indexOf("--tag");
-  const tag = tagAt >= 0 ? argv[tagAt + 1] : "program-tiles-v1";
-  const problems = selfCheck();
+  const arg = (flag) => (argv.indexOf(flag) >= 0 ? argv[argv.indexOf(flag) + 1] : undefined);
+  const n = Number(arg("--size") ?? DEFAULT_SIZE);
+  if (!Number.isInteger(n) || n < 16) throw new Error("--size wants a whole number of px >= 16");
+  if (check && n !== DEFAULT_SIZE) throw new Error(`--check compares the shipped ${DEFAULT_SIZE} px atlas`);
+  const tag = arg("--tag") ?? "program-tiles-v2";
+  const { problems, seam } = selfCheck(n);
   if (problems.length) {
     console.error(problems.join("\n"));
     process.exit(1);
   }
-  const { atlas, json } = buildAtlas();
-  const png = encodePng(atlas);
+  const worst = seam.reduce((w, s) => (s[2] > w[2] ? s : w), ["", "", -1, 0]);
+  const { atlas, json } = buildAtlas(n);
   const pngPath = path.join(ROOT, PNG_OUT);
   const jsonPath = path.join(ROOT, JSON_OUT);
   if (check) {
@@ -372,20 +711,23 @@ function main(argv) {
       console.error(`program-tiles --check FAILED:\n  ${bad.join("\n  ")}\nRegenerate with: node tools/art/tiles/program-tiles.mjs`);
       process.exit(1);
     }
-    console.log(`program-tiles --check OK (${atlas.width}x${atlas.height}, ${pixelSha256(atlas).slice(0, 12)})`);
-  } else {
+    console.log(`program-tiles --check OK (${atlas.width}x${atlas.height}, ${pixelSha256(atlas).slice(0, 12)}; timings match ${SCRIPT_JS}; worst curved seam ${worst[0]} ${worst[1]} max ${worst[2]})`);
+  } else if (n === DEFAULT_SIZE || argv.includes("--write")) {
     fs.mkdirSync(path.dirname(pngPath), { recursive: true });
-    fs.writeFileSync(pngPath, png);
+    fs.writeFileSync(pngPath, encodePng(atlas));
     fs.writeFileSync(jsonPath, json);
-    console.log(`wrote ${PNG_OUT} (${atlas.width}x${atlas.height}) and ${JSON_OUT}`);
+    console.log(`wrote ${PNG_OUT} (${atlas.width}x${atlas.height}, ${n} px frames) and ${JSON_OUT}`);
+  } else {
+    console.log(`rendered ${atlas.width}x${atlas.height} at ${n} px (not written: pass --write to replace the shipped ${DEFAULT_SIZE} px atlas)`);
   }
-  if (reviewAt >= 0) {
-    const dir = path.resolve(argv[reviewAt + 1]);
+  const reviewDir = arg("--review");
+  if (reviewDir) {
+    const dir = path.resolve(reviewDir);
     fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, `${tag}.png`), encodePng(contactSheet()));
-    fs.writeFileSync(path.join(dir, `${tag}-seam.png`), encodePng(seamSheet()));
+    fs.writeFileSync(path.join(dir, `${tag}.png`), encodePng(contactSheet(n)));
+    fs.writeFileSync(path.join(dir, `${tag}-seam.png`), encodePng(seamSheet(n)));
     console.log(`review sheets: ${path.join(dir, `${tag}.png`)}, ${path.join(dir, `${tag}-seam.png`)}`);
   }
 }
 
-main(process.argv.slice(2));
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main(process.argv.slice(2));

@@ -34,7 +34,8 @@ for the arrow.)
 
 - Board tiles and the robot are 50×50 in the game; frame counts and sheet
   layout are set by `data/sprites.json` and the `Q.animations` table in
-  `script.js`.
+  `script.js`. Program tiles are 54×54 (board pitch 54 at scale 1, no gaps),
+  anti-aliased, and keep the 2012 frame counts and rates.
 - Program (instruction) tiles: every tile carries the same belt across its
   middle, edge to edge, so neighbouring tiles join into one continuous belt;
   the instruction symbol sits on top of the belt. Belts animate (they scroll in
@@ -54,3 +55,4 @@ for the arrow.)
 | 2026-11-05 | Animated, joinable program tiles (belt, rotators, step) are drawn by a checked-in deterministic generator, not PixelLab | user: tiles must animate and join like one long belt; PixelLab gives single stills with no seamless edges |
 | 2026-11-05 | Lava, water and ice stay as the user drew them for now | user: "maybe keep the lava as it is"; 6 failed lava takes in `explore-v1` |
 | 2026-11-05 | Robot is a straight front view, never isometric | user: "the game grid is square, not isometric diamond" |
+| 2026-11-05 | Program tiles are anti-aliased (smooth edges, sub-pixel motion), pre-rendered at the 2012 frame counts and rates (rotators 60 frames, 3° each) | user: v1 arrows "look a bit pixelated"; "the motion should be just as smooth as before" (tg-vy4.15) |

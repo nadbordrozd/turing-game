@@ -1,94 +1,129 @@
 # Program tiles asset contract
 
-Status: v1 (2026-11-05, bead tg-vy4.2). It follows the approved Toybox direction in
-[`../ART_DIRECTION.md`](../ART_DIRECTION.md).
+Status: v2 (2026-11-05, bead tg-vy4.15). It replaces v1 (tg-vy4.2) and follows the
+approved Toybox direction in [`../ART_DIRECTION.md`](../ART_DIRECTION.md), with one
+specialisation: program tiles are drawn **anti-aliased**, not as hard pixel art
+(the user found v1 "a bit pixelated"; the 2012 arrows looked smoother).
 
 ## Inventory
 
+Every tile on the program board. All are drawn by
+`tools/art/tiles/program-tiles.mjs` (no PixelLab) into
+`images/tiles/program-tiles.png` + `data/program-tiles.json`. `script.js`
+compiles that atlas after `images/sprytszyt.png`, so these names replace the
+2012 entries of the same name (the old atlas is left untouched).
+
 | Sheet name | Frames | Animation (`script.js`) | What |
 | --- | ---: | --- | --- |
-| `conveyor` | 25 | `conveyorMations` | the belt alone (GOTO) |
-| `stepForward` | 25 | `stepForwardMations` | belt + blue arrows sliding above and below |
-| `cwrotator` | 50 | `cwRotatorMations` | belt + magenta circular arrow spinning clockwise |
-| `ccwrotator` | 50 | `ccwRotatorMations` | belt + orange circular arrow spinning counter-clockwise |
+| `conveyor` | 20 | `conveyorMations` | the belt alone (GOTO) |
+| `conveyorFromLeft` | 20 | `conveyorMations` | GOTO belt entering from the tile's left side (north at angle 0) and turning to exit forward |
+| `conveyorFromRight` | 20 | `conveyorMations` | the mirror image: enters from the right side (south at angle 0) |
+| `stepForward` | 60 | `stepForwardMations` | belt + sky-blue arrows sliding above and below |
+| `cwrotator` | 60 | `cwRotatorMations` | belt + magenta two-arc arrow turning clockwise |
+| `ccwrotator` | 60 | `ccwRotatorMations` | belt + orange two-arc arrow turning counter-clockwise |
+| `detector` | 20 | `detectorMations` | branch: brick wall icons north (wall ahead), struck-out walls south |
+| `magicDetector` | 20 | `magicMation` | branch: sparkling blue tile icons north (on a blue tile), struck-out tiles south |
+| `incrementer<Colour>` | 60 | `incrementerMations<Colour>` | belt + pulsing plus in the counter colour, cream glyph in the middle |
+| `decrementer<Colour>` | 20 | `decrementerMations<Colour>` | branch: `0` rings north (counter is zero), `−` bars south (decrement), glyph hub |
 | `emptyOperator` | 1 | `emptyMation` | empty board panel |
+| `startTile` | 1 | `startTileMation` | green double chevron beside the board's entry (transparent ground) |
 
-These are drawn by `tools/art/tiles/program-tiles.mjs` (no PixelLab) into
-`images/tiles/program-tiles.png` + `data/program-tiles.json`. `script.js`
-loads both and calls a second `Q.compileSheets` after the old atlas, so these
-entries replace the same names from `images/sprytszyt.png` (which is left
-untouched). The detector, magic detector and counter tiles still come from
-the old atlas.
+`<Colour>` is Red, Blue, Green, Purple, Yellow, Pink. The game asks for
+`incrementerPurple`; the 2012 atlas spelled it `incerementerPurple`, so the
+purple incrementer had no art until v2.
+
+## Counter colours and glyphs
+
+Each counter colour has a glyph so colour is never the only cue. The glyph
+sits in cream on the incrementer's plus and on the decrementer's hub. UI that
+shows counters (the cipher locks) should use the same pairs.
+
+| Colour | Base / light / dark | Glyph |
+| --- | --- | --- |
+| Red | `#e5533d` / `#f78a72` / `#a33427` | circle |
+| Blue | `#3f7fdc` / `#79aef0` / `#2a5aa3` | square |
+| Green | `#36a852` / `#7ad98b` / `#21753a` | triangle |
+| Purple | `#8b5cd6` / `#b996ec` / `#5c3b99` | diamond |
+| Yellow | `#f5bf2a` / `#ffe07d` / `#b8860f` | star |
+| Pink | `#f272ad` / `#fbb0d2` / `#b6457c` | heart |
 
 ## Geometry
 
-- 50×50 tiles that point east at angle 0. The game rotates them in 90° steps
-  and draws them at scale 0.9 on a 47 px pitch with 2 px black gaps.
-- Everything that must survive rotation is symmetric about the centre line
-  y = 24.5. Light comes from straight above: highlights sit on the centre of a
-  shape and the rims are even. There is no directional highlight.
-- **Belt** (identical on every program tile), rows 16–33 (18 px), full width:
+- Frames are 54×54 px (`--size`, default 54), drawn by the game at scale 1 on
+  a 54 px board pitch with no gaps (contract with the UI shell). Shapes are
+  defined in design units, 54 per tile side, so other sizes scale cleanly.
+- Tiles point east at angle 0; the game rotates them in 90° steps. Everything
+  is symmetric about the centre line y = 27 and lit from straight above.
+- **Rendering:** every shape is a signed-distance function. A pixel whose
+  corners and centre agree takes that colour; any other pixel is the average
+  of 8×8 samples. Edges are anti-aliased and sub-pixel motion is smooth.
+- **Belt** (shared by every belt tile), by distance |v| from its centre line:
+  `#4a5175` belt to 4, `#3a3f5c` edge to 5, `#2a2335` outline to 6, `#8b93a3`
+  rail to 7, `#c9d0d6` rail light to 9, outline to 10 (20 px wide, rows 17–36).
+  Chevrons `#f6c445` with a `#e09b2d` trailing unit, 4 units thick, spanning
+  |v| < 5. **Period** 13.5 units: four chevrons per tile, so belts join tile to tile.
+- **Corners:** a quarter circle of radius 27 about the corner between the
+  entry and exit edges; the across coordinate is the radius, the along
+  coordinate is the angle mapped to 0–54, so chevrons stay in phase with
+  straight belts at both openings.
+- **Branches** (detector, magic detector, decrementers): a half belt in from
+  the west, a full belt north–south with chevrons running outwards, and a hub
+  disc (radius 13.3 + outline) hiding the crossing. Icons sit in the four
+  18×18 corners: the north pair marks the branch taken when the condition
+  holds, the south pair the other.
+- **Floor:** `#a3d9b1`, 1 px rim `#86c49a`, four 2×2 corner studs `#93cea5`.
+- Every symbol has a 1 unit `#2a2335` outline; larger symbols also have a
+  1 unit dark inner rim.
 
-  | Rows | Colour |
-  | --- | --- |
-  | 16, 19, 30, 33 | outline `#2a2335` |
-  | 17, 32 | rail light `#c9d0d6` |
-  | 18, 31 | rail mid `#8b93a3` |
-  | 20, 29 | belt edge `#3a3f5c` |
-  | 21–28 | belt `#4a5175` |
+## Timing (the 2012 game's, `git show 8a9315e:script.js`)
 
-  Chevrons are `#f6c445`, 4 px thick, with a `#e09b2d` trailing column, and
-  span rows 20–29 with the tip on rows 24–25. A belt joint line `#40466a`
-  sits half a period behind each tip.
-- **Period** 25 px, two chevrons per tile. The period divides 50, so column 49
-  of one tile runs straight into column 0 of the next.
-- **Motion:** 1 px east per frame, so the offset is `frame mod 25`. Each tile's
-  frame count is a multiple of 25, so frame N equals frame 0. All tiles use
-  the same belt function and offset, so a step or rotator next to a conveyor
-  reads as one belt. The generator's self-check enforces this.
-- **Speed:** `rate` is 0.08. Quintus' anim step adds dt twice, so a frame
-  lasts 0.04 s, which gives 25 px/s, the original belt's speed.
-- **Phase:** `Q.syncTileAnimation` (`utilitySprites.js`) sets each tile's
-  frame from `Date.now()`, so every tile on the board shows the same frame.
-- **Floor:** `#a3d9b1` with a 1 px rim `#86c49a` and four 2×2 corner studs
-  `#93cea5`. It sits under every program tile.
+All program tiles animate at `rate: 0.05`. Quintus' anim step adds dt twice,
+so a frame lasts rate/2 = 25 ms (40 fps). `Q.syncTileAnimation`
+(`utilitySprites.js`) reads every tile's frame from one clock, so all tiles
+show the same global frame and belts stay in phase.
 
-## Overlays
+| Motion | Frames | Per frame | Speed |
+| --- | ---: | --- | --- |
+| Belt chevrons | 20 per period | 0.675 px | 0.50 tiles/s (2012: 13 px period on 50 px tiles, 0.52 tiles/s; not seamless) |
+| Rotators | 60 per loop | 3° | 120°/s; the arrow is two-fold symmetric, so 60 frames turn it 180° and the loop closes (as in 2012) |
+| Step arrows | 60 per tile | 0.9 px | 0.67 tiles/s (2012: same) |
+| Incrementer pulse | 60 | — | scale 1 → 0.9 → 1 once per 1.5 s (2012: a 60-frame fade) |
 
-- **Step:** sky-blue arrows (`#9be6f7` centre line, `#37bfe5`, `#2786b5` rim,
-  dark outline) on the lanes centred on rows 8 and 41. Each arrow is 15 px
-  long with an 11 px head and a 5 px shaft. The period is 25 and the arrows
-  slide 1 px per frame with the belt. They wrap across tile edges, so a row
-  of step tiles forms one lane, and next to other tiles they clip at the edge.
-- **Rotators:** a two-arc circular arrow, rasterised every frame from polar
-  geometry and never from a rotated bitmap. The centre radius is 15.5 and the
-  band is 6 px wide; each arc spans 110° and ends in an 8.5 px head 13 px
-  wide. The arrow turns half a revolution per loop (it has two-fold
-  symmetry): 50 frames, 3.6° per frame, 2 s per loop. Clockwise uses
-  magenta `#f27a9b` / `#d73960` / `#9a3256` with heads leading clockwise;
-  counter-clockwise uses orange `#fbb466` / `#e9852c` / `#b0561c` with heads
-  leading counter-clockwise.
-- Every symbol has a 1 px `#2a2335` outline (8-neighbourhood).
+Every animated frame count is a multiple of 20, so frame N of any tile has
+the same belt offset as frame N mod 20 of the conveyor.
+
+## Belt joins in the game
+
+The game has no notion of corners, so `TuringTable.beltSheet` picks one from
+the neighbours: a GOTO tile fed from behind (or by nothing) is straight; fed
+only from its left or only from its right side it shows
+`conveyorFromLeft` / `conveyorFromRight`. Branch tiles feed their two side
+exits; every other tile feeds forward; the start feeds the first cell of the
+middle row. `refreshBeltJoins` runs after every board change. Only GOTO tiles
+turn corners; a step, rotator or counter entered from the side still shows a
+straight belt.
 
 ## Readability
 
-Check at 1× and in the generator's game-view approximation (0.9 scale,
-smoothed, 2 px gaps). Features are at least 2 px wide, because 1 px detail
-shimmers when the canvas downsamples.
+Check at 1× and 4× on the contact sheet, and the board mock on light and dark.
+Icons are at least 12 px; glyphs about 10 px.
 
 ## Regenerate
 
 ```sh
-node tools/art/tiles/program-tiles.mjs                 # writes the PNG + JSON
+node tools/art/tiles/program-tiles.mjs                 # writes the PNG + JSON (54 px)
 node tools/art/tiles/program-tiles.mjs --check         # fails if committed files differ
-node tools/art/tiles/program-tiles.mjs --check --review .orchestration/sheets --tag program-tiles-v1
+node tools/art/tiles/program-tiles.mjs --check --review .orchestration/sheets --tag program-tiles-v2
+node tools/art/tiles/program-tiles.mjs --size 108 --review /tmp/x   # other sizes: review only (--write to ship)
 ```
 
-If you change a frame count here, change it in `script.js` too.
+`--check` also reads `script.js` and fails if any tile's animation there has
+a different frame count or rate than the atlas.
 
 ## Acceptance
 
-- `--check` passes; the self-check covers the shared belt edges, periodicity
-  and loop closure.
-- On the contact sheet's board mock, belts join with no seam, and arrows read
-  at 1×.
+- `--check` passes: timings match `script.js`, every belt opening of every
+  tile matches the plain conveyor's (exactly for straight belts, within
+  anti-aliasing for corners and branches), and loops close.
+- On the board mock, belts join with no seam, corners and branches follow the
+  flow, and every symbol reads at 1×.

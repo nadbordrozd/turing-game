@@ -2,41 +2,177 @@
   "conveyor": {
     "sx": 0,
     "sy": 0,
-    "tilew": 50,
-    "tileh": 50,
-    "w": 1250,
-    "h": 50
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54
+  },
+  "conveyorFromLeft": {
+    "sx": 0,
+    "sy": 54,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54
+  },
+  "conveyorFromRight": {
+    "sx": 0,
+    "sy": 108,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54
   },
   "stepForward": {
     "sx": 0,
-    "sy": 50,
-    "tilew": 50,
-    "tileh": 50,
-    "w": 1250,
-    "h": 50
+    "sy": 162,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1620,
+    "h": 108
   },
   "cwrotator": {
     "sx": 0,
-    "sy": 100,
-    "tilew": 50,
-    "tileh": 50,
-    "w": 1250,
-    "h": 100
+    "sy": 270,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1620,
+    "h": 108
   },
   "ccwrotator": {
     "sx": 0,
-    "sy": 200,
-    "tilew": 50,
-    "tileh": 50,
-    "w": 1250,
-    "h": 100
+    "sy": 378,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1620,
+    "h": 108
+  },
+  "detector": {
+    "sx": 0,
+    "sy": 486,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54
+  },
+  "magicDetector": {
+    "sx": 0,
+    "sy": 540,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54
+  },
+  "incrementerRed": {
+    "sx": 0,
+    "sy": 594,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1620,
+    "h": 108
+  },
+  "incrementerBlue": {
+    "sx": 0,
+    "sy": 702,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1620,
+    "h": 108
+  },
+  "incrementerGreen": {
+    "sx": 0,
+    "sy": 810,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1620,
+    "h": 108
+  },
+  "incrementerPurple": {
+    "sx": 0,
+    "sy": 918,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1620,
+    "h": 108
+  },
+  "incrementerYellow": {
+    "sx": 0,
+    "sy": 1026,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1620,
+    "h": 108
+  },
+  "incrementerPink": {
+    "sx": 0,
+    "sy": 1134,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1620,
+    "h": 108
+  },
+  "decrementerRed": {
+    "sx": 0,
+    "sy": 1242,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54
+  },
+  "decrementerBlue": {
+    "sx": 0,
+    "sy": 1296,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54
+  },
+  "decrementerGreen": {
+    "sx": 0,
+    "sy": 1350,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54
+  },
+  "decrementerPurple": {
+    "sx": 0,
+    "sy": 1404,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54
+  },
+  "decrementerYellow": {
+    "sx": 0,
+    "sy": 1458,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54
+  },
+  "decrementerPink": {
+    "sx": 0,
+    "sy": 1512,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54
   },
   "emptyOperator": {
     "sx": 0,
-    "sy": 300,
-    "tilew": 50,
-    "tileh": 50,
-    "w": 50,
-    "h": 50
+    "sy": 1566,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 54,
+    "h": 54
+  },
+  "startTile": {
+    "sx": 54,
+    "sy": 1566,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 54,
+    "h": 54
   }
 }

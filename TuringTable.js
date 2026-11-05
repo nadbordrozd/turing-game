@@ -85,7 +85,7 @@ t.TuringTable = {
 		l.log('rota',"updated  "+ x+"  "+y+"   "+newContent);
 		for(var i in newContent)
 			this.table[x][y][i] = newContent[i];
-		
+		this.refreshBeltJoins();
 	},
 	createTile : function(x, y, content){
 		var stage = this.display1.stage;
@@ -101,6 +101,7 @@ t.TuringTable = {
 					rotationAngle : content.angle, operator: content.what,
 					tablePosX : x, tablePosY : y}));
 		this.display1.tiles[x][y] = tile;
+		this.refreshBeltJoins();
 	},
 	clear : function(){
 		console.log(this);
@@ -113,6 +114,48 @@ t.TuringTable = {
 	setTile : function(x,y, content){
 		this.styleATile(x,y,content);
 		this.table[x][y] = content;
+		this.refreshBeltJoins();
+	},
+	// Belt joins: a GOTO (conveyor) tile fed from its side shows a corner belt
+	// (sheets conveyorFromLeft / conveyorFromRight in images/tiles/program-tiles.png)
+	// so the belt follows the flow. Purely cosmetic; the rules are unchanged.
+	exitsOf : function(cell){
+		var op = cell && cell.what;
+		if(!op || op === t.Operators.Empty) return [];
+		var branch = op === t.Operators.Detector || op === t.Operators.DetectMagic ||
+			t.OperatorUtils.isDecrementer(op);
+		var dirs = branch ? [[0,-1],[0,1]] : [[1,0]];
+		return dirs.map(function(d){ return t.Operators.r(d, cell.angle||0); });
+	},
+	feeds : function(x, y, tx, ty){	//does the cell at x,y send the program to tx,ty?
+		var startY = (this.ymax-this.ymax%2)/2;
+		if(x === -1 && y === startY) return tx === 0 && ty === startY;	//the start, left of the board
+		if(x<0 || y<0 || x>=this.xmax || y>=this.ymax) return false;
+		var exits = this.exitsOf(this.table[x][y]);
+		for(var i=0; i<exits.length; i++)
+			if(x+exits[i][0] === tx && y+exits[i][1] === ty) return true;
+		return false;
+	},
+	beltSheet : function(x, y){
+		var cell = this.table[x][y];
+		if(cell.what !== t.Operators.Conveyor) return cell.what.sheet;
+		var a = cell.angle||0;
+		var f = t.Operators.r([1,0], a), l = t.Operators.r([0,-1], a), r = t.Operators.r([0,1], a);
+		if(this.feeds(x-f[0], y-f[1], x, y)) return "conveyor";
+		var fromLeft = this.feeds(x+l[0], y+l[1], x, y);
+		var fromRight = this.feeds(x+r[0], y+r[1], x, y);
+		if(fromLeft && !fromRight) return "conveyorFromLeft";
+		if(fromRight && !fromLeft) return "conveyorFromRight";
+		return "conveyor";
+	},
+	refreshBeltJoins : function(){
+		if(!this.display1 || !this.display1.tiles || !this.table) return;
+		for(var x=0; x<this.xmax; x++)
+			for(var y=0; y<this.ymax; y++){
+				var tile = this.display1.tiles[x] && this.display1.tiles[x][y];
+				var cell = this.table[x] && this.table[x][y];
+				if(tile && cell && cell.what === t.Operators.Conveyor) tile.p.sheet = this.beltSheet(x, y);
+			}
 	},
 	styleATile : function(x, y, content){
      	if(!content.angle) content.angle = 0;

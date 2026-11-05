@@ -52,17 +52,16 @@
     white-space: pre;
   }
   .readout b { color: var(--text); font-weight: 600; }
-  #bench-out { font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); white-space: pre-wrap; }
 </style>
 </head>
 <body>
-<h1>Program tiles: original vs new</h1>
+<h1>Program tiles: original vs v2</h1>
 <p class="note">
-  The same little board three times, no gameplay. A row of conveyor, step, clockwise rotator, conveyor, counter-clockwise rotator and conveyor, with a short vertical belt crossing it.<br>
-  <b>Original (2012):</b> the old pre-drawn frames from <code>images/sprytszyt.png</code> at the old speed. That is 20 or 60 frames, each shown for 0.025 s (about 40 fps), stepped the way Quintus does it.<br>
-  <b>New v1 (current build):</b> the frames now in the game, from <code>images/tiles/program-tiles.png</code>. That is 25 or 50 frames, each shown for 0.04 s (25 fps).<br>
-  <b>New, smooth (candidate):</b> the same Toybox design drawn live on every screen refresh with anti-aliased vector shapes. The arrows are rotated in code, and the belt offset comes from the clock, so the motion is as smooth as your display allows. Speeds match the original.<br>
-  At 1×, tiles are 45 px with 2 px gaps, as on the game board. The game canvas is not Retina-aware, so on a Retina screen “Canvas: game” is what the game shows. “Canvas: sharp” renders at device pixels.
+  The same little board twice, no gameplay: a U-turn, a straight run with step, rotator and counter, a detector whose branches turn through corner belts, a counter check, a magic detector, rotated counter tiles and the start marker.<br>
+  <b>Original (2012):</b> the old pre-drawn frames from <code>images/sprytszyt.png</code>, 50 px frames drawn at 0.9 scale on a 47 px pitch with 2 px gaps. It has no corner belts.<br>
+  <b>New v2 (current build):</b> the frames now in the game, from <code>images/tiles/program-tiles.png</code> (drawn by <code>tools/art/tiles/program-tiles.mjs</code>): anti-aliased, 54 px frames on a 54 px pitch, no gaps.<br>
+  Both use the 2012 timing: every frame lasts 25 ms (rate 0.05, halved by Quintus), rotators turn 3° per frame (60 frames per loop), belts run 20 frames per chevron, step arrows cross a tile in 60 frames. Both columns read the same clock, as the game does.<br>
+  The game canvas is not Retina-aware, so on a Retina screen “Canvas: game” is what the game shows. “Canvas: sharp” renders at device pixels.
 </p>
 
 <div class="controls">
@@ -72,35 +71,26 @@
     <button data-scale="4">4×</button>
   </div>
   <div class="group"><button id="play">Pause</button></div>
-  <div class="group"><button id="gaps" aria-pressed="true">Gaps on</button></div>
   <div class="group" id="res-group"><span>Canvas</span>
     <button data-res="game" aria-pressed="true">game</button>
     <button data-res="sharp">sharp</button>
   </div>
-  <div class="group"><button id="bench">Benchmark 64 tiles</button></div>
 </div>
 
 <div class="columns">
   <div class="col">
     <h2>Original (2012)</h2>
-    <div class="sub">sprytszyt.png · 20/60 frames · 0.025 s per frame</div>
+    <div class="sub">sprytszyt.png · 20/60 frames · 25 ms per frame · 45 px tiles, 2 px gaps</div>
     <div class="canvas-wrap"><canvas id="c-orig"></canvas></div>
     <div class="readout" id="r-orig">…</div>
   </div>
   <div class="col">
-    <h2>New v1 (current build)</h2>
-    <div class="sub">program-tiles.png · 25/50 frames · 0.04 s per frame</div>
-    <div class="canvas-wrap"><canvas id="c-v1"></canvas></div>
-    <div class="readout" id="r-v1">…</div>
-  </div>
-  <div class="col">
-    <h2>New, smooth (candidate)</h2>
-    <div class="sub">vector, drawn every display frame · ctx.rotate</div>
-    <div class="canvas-wrap"><canvas id="c-smooth"></canvas></div>
-    <div class="readout" id="r-smooth">…</div>
+    <h2>New v2 (current build)</h2>
+    <div class="sub">program-tiles.png · 20/60 frames · 25 ms per frame · 54 px tiles, no gaps</div>
+    <div class="canvas-wrap"><canvas id="c-v2"></canvas></div>
+    <div class="readout" id="r-v2">…</div>
   </div>
 </div>
-<p id="bench-out"></p>
 
 <script src="tiles.js"></script>
 </body>

@@ -87,22 +87,21 @@ window.addEventListener('load',function(e) {
 		"drown" : {frames: [23,24,25,26,27,28,29,30, 31], rate: 0.35,  loop:false,
 			trigger : "died"}
 	});
+	// Program tiles (tools/art/tiles/program-tiles.mjs) use the 2012 frame
+	// counts and rate: Quintus' anim step adds dt twice, so a frame lasts
+	// rate/2 = 25 ms. The generator's --check reads these lines.
 	var tempo =  0.05;
-	// Program tiles from tools/art/tiles/program-tiles.mjs: the belt moves 1 px
-	// per frame with a 25 px period. Quintus' anim step adds dt twice, so a
-	// frame lasts rate/2 s: 0.08 gives 25 px/s, the old belt's speed.
-	var beltTempo = 0.08;
 	Q.animations('conveyorMations', {
-		"default" : {frames: pom(25), rate: beltTempo, loop: true}
+		"default" : {frames: pom(20), rate: tempo, loop: true}
 	});
 	Q.animations('cwRotatorMations', {
-		"default" : {frames: pom(50), rate: beltTempo, loop: true}
+		"default" : {frames: pom(60), rate: tempo, loop: true}
 	});
 	Q.animations('ccwRotatorMations', {
-		"default" : {frames: pom(50), rate: beltTempo, loop: true}
+		"default" : {frames: pom(60), rate: tempo, loop: true}
 	});
 	Q.animations('stepForwardMations', {
-		"default" : {frames: pom(25), rate: beltTempo, loop: true}
+		"default" : {frames: pom(60), rate: tempo, loop: true}
 	});
 	Q.animations('detectorMations', {
 		"default" : {frames: pom(20), rate: tempo, loop: true}
