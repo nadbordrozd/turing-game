@@ -5,9 +5,9 @@
     "at": "2026-11-05T15:42:55.156Z"
   },
   "beat1-b#0": {
-    "verdict": "ACCEPTED",
-    "notes": "One tray, one martini with olive, top-hatted gentleman takes it; robot on-model with beat2-a/beat3-b (cream flowerpot head with red rim, sky-blue visor, eyes below, grey arms and hands); warm parlour; robot touches the left edge",
-    "at": "2026-11-05T15:42:55.308Z"
+    "verdict": "REJECTED",
+    "notes": "Superseded in v2 (tg-vy4.20) by beat1-ai: the user asked for the robot smaller than the gentleman and with a neutral face instead of a smile",
+    "at": "2026-11-05T20:05:32.512Z"
   },
   "beat1-c#0": {
     "verdict": "REJECTED",
@@ -20,9 +20,9 @@
     "at": "2026-11-05T15:42:55.611Z"
   },
   "beat2-a#0": {
-    "verdict": "ACCEPTED",
-    "notes": "Trapezoid cream head with red rim, red body, grey stick arms, chalk raised at a green chalkboard full of maths and a cone diagram, books beside; chalk glyphs are nonsense symbols, which reads fine as maths",
-    "at": "2026-11-05T15:42:55.757Z"
+    "verdict": "REJECTED",
+    "notes": "Superseded in v2 (tg-vy4.20) by beat2-c plus generated chalk: the user found the PixelLab blackboard glyphs nonsensical",
+    "at": "2026-11-05T20:05:32.556Z"
   },
   "beat3-a#0": {
     "verdict": "REJECTED",
@@ -38,5 +38,180 @@
     "verdict": "REJECTED",
     "notes": "Darker, muddier palette; all three faces sad, defiance only in the fist; reddish hands off-model",
     "at": "2026-11-05T15:42:56.207Z"
+  },
+  "beat2-c#0": {
+    "verdict": "ACCEPTED",
+    "notes": "v2 slide 2: clean uniform dark-green board (#2d3a37) for the generated chalk maths; robot on-model (cream flowerpot head with red rim, sky-blue visor, round eyes, small calm mouth, yellow-ball antenna, red body, grey segmented arms and grey hands), chalk raised, books; leaves x 125-270 and the top band free for equations",
+    "at": "2026-11-05T20:00:42.342Z"
+  },
+  "beat1-ai#0": {
+    "verdict": "ACCEPTED",
+    "notes": "v2 slide 1: robot clearly smaller (head at the gentleman's chest, he towers over it), flowerpot head with red rim, visor, calm eyes, one antenna, grey arms; ONE tray, ONE martini with olive, gentleman takes it; warm striped parlour. Mouth has a 1-px upturn at its right end, flattened by a recorded edits step in outputs[]",
+    "at": "2026-11-05T20:00:42.384Z"
+  },
+  "beat1-e#0": {
+    "verdict": "REJECTED",
+    "notes": "'fat-cat' taken literally: the gentleman is a cat; robot nearly his height and smiling",
+    "at": "2026-11-05T20:05:31.046Z"
+  },
+  "beat1-f#0": {
+    "verdict": "REJECTED",
+    "notes": "gentleman drawn as a cat and holding a second glass; robot smiling",
+    "at": "2026-11-05T20:05:31.095Z"
+  },
+  "beat1-g#0": {
+    "verdict": "REJECTED",
+    "notes": "robot as tall as the gentleman and smiling; patterned chest",
+    "at": "2026-11-05T20:05:31.139Z"
+  },
+  "beat1-h#0": {
+    "verdict": "REJECTED",
+    "notes": "robot nearly as tall as the gentleman, smiling with blush, mint-green hand",
+    "at": "2026-11-05T20:05:31.184Z"
+  },
+  "beat1-i#0": {
+    "verdict": "REJECTED",
+    "notes": "robot small but smiling, eyes inside the visor, green ear",
+    "at": "2026-11-05T20:05:31.227Z"
+  },
+  "beat1-j#0": {
+    "verdict": "REJECTED",
+    "notes": "small and neutral, but a box head (not the flowerpot), yellow ear, green shoulder, clock emblem; robot cut by the frame",
+    "at": "2026-11-05T20:05:31.272Z"
+  },
+  "beat1-k#0": {
+    "verdict": "REJECTED",
+    "notes": "robot as tall as the gentleman, open smile; he holds a second glass and the tray is empty",
+    "at": "2026-11-05T20:05:31.316Z"
+  },
+  "beat1-l#0": {
+    "verdict": "REJECTED",
+    "notes": "small and neutral, but pale-green box head, mint hands, gentleman holds a second glass",
+    "at": "2026-11-05T20:05:31.361Z"
+  },
+  "beat1-m#0": {
+    "verdict": "REJECTED",
+    "notes": "robot as tall as the gentleman, smiling box head",
+    "at": "2026-11-05T20:05:31.406Z"
+  },
+  "beat1-n#0": {
+    "verdict": "REJECTED",
+    "notes": "neutral face but robot as tall as the gentleman, mint hands, he holds a second glass",
+    "at": "2026-11-05T20:05:31.451Z"
+  },
+  "beat1-o#0": {
+    "verdict": "REJECTED",
+    "notes": "gentleman's shirt open over a bare belly; mint hands; robot shoulder-high",
+    "at": "2026-11-05T20:05:31.493Z"
+  },
+  "beat1-p#0": {
+    "verdict": "REJECTED",
+    "notes": "two martinis; robot smiling",
+    "at": "2026-11-05T20:05:31.538Z"
+  },
+  "beat1-q#0": {
+    "verdict": "REJECTED",
+    "notes": "big smile; gentleman holds a tumbler; robot not clearly smaller",
+    "at": "2026-11-05T20:05:31.581Z"
+  },
+  "beat1-r#0": {
+    "verdict": "REJECTED",
+    "notes": "gentleman takes a second glass; box head; smiling",
+    "at": "2026-11-05T20:05:31.625Z"
+  },
+  "beat1-s#0": {
+    "verdict": "REJECTED",
+    "notes": "robot hands the gentleman a second drink; smiling box head",
+    "at": "2026-11-05T20:05:31.671Z"
+  },
+  "beat1-t#0": {
+    "verdict": "REJECTED",
+    "notes": "good size and neutral face, but a second drink in the robot's other hand goes to the gentleman",
+    "at": "2026-11-05T20:05:31.714Z"
+  },
+  "beat1-u#0": {
+    "verdict": "REJECTED",
+    "notes": "box head; a second drink in the robot's hand",
+    "at": "2026-11-05T20:05:31.758Z"
+  },
+  "beat1-v#0": {
+    "verdict": "REJECTED",
+    "notes": "box head, smiling, a second drink",
+    "at": "2026-11-05T20:05:31.804Z"
+  },
+  "beat1-w#0": {
+    "verdict": "REJECTED",
+    "notes": "one drink and neutral, but a box head with a cap-like visor and the robot is about 80% of his height",
+    "at": "2026-11-05T20:05:31.848Z"
+  },
+  "beat1-x#0": {
+    "verdict": "REJECTED",
+    "notes": "mint-green hand, eyes inside a cap-like visor",
+    "at": "2026-11-05T20:05:31.894Z"
+  },
+  "beat1-y#0": {
+    "verdict": "REJECTED",
+    "notes": "neutral and he towers, but a box head with a cap visor and the robot is cut by the bottom edge",
+    "at": "2026-11-05T20:05:31.937Z"
+  },
+  "beat1-z#0": {
+    "verdict": "REJECTED",
+    "notes": "box head with a cap visor, robot nearly his height and cut by the frame",
+    "at": "2026-11-05T20:05:31.982Z"
+  },
+  "beat1-aa#0": {
+    "verdict": "REJECTED",
+    "notes": "box head, slight smile, chest emblem",
+    "at": "2026-11-05T20:05:32.026Z"
+  },
+  "beat1-ab#0": {
+    "verdict": "REJECTED",
+    "notes": "flowerpot head, small and neutral, one tray, but TWO antennae and a logo on the body",
+    "at": "2026-11-05T20:05:32.071Z"
+  },
+  "beat1-ac#0": {
+    "verdict": "REJECTED",
+    "notes": "box head, smiling",
+    "at": "2026-11-05T20:05:32.114Z"
+  },
+  "beat1-ad#0": {
+    "verdict": "REJECTED",
+    "notes": "two antennae, box head",
+    "at": "2026-11-05T20:05:32.158Z"
+  },
+  "beat1-ae#0": {
+    "verdict": "REJECTED",
+    "notes": "the gentleman holds a second tray with a second martini; slight smile",
+    "at": "2026-11-05T20:05:32.203Z"
+  },
+  "beat1-af#0": {
+    "verdict": "REJECTED",
+    "notes": "a second face drawn on the robot's body",
+    "at": "2026-11-05T20:05:32.246Z"
+  },
+  "beat1-ag#0": {
+    "verdict": "REJECTED",
+    "notes": "box head, robot cut by the frame",
+    "at": "2026-11-05T20:05:32.290Z"
+  },
+  "beat1-ah#0": {
+    "verdict": "REJECTED",
+    "notes": "mint-green face, smiling",
+    "at": "2026-11-05T20:05:32.334Z"
+  },
+  "beat1-aj#0": {
+    "verdict": "REJECTED",
+    "notes": "close second to beat1-ai, but the head reads as a box with a cap visor rather than the flowerpot",
+    "at": "2026-11-05T20:05:32.379Z"
+  },
+  "beat2-b#0": {
+    "verdict": "REJECTED",
+    "notes": "clean board, but mint-green hands (off-model) and the robot cut at the left edge",
+    "at": "2026-11-05T20:05:32.422Z"
+  },
+  "beat2-d#0": {
+    "verdict": "REJECTED",
+    "notes": "clean board, but red shoulder and elbow pads (off-model) and the books mostly hidden",
+    "at": "2026-11-05T20:05:32.467Z"
   }
 }

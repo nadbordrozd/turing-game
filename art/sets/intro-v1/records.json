@@ -342,5 +342,1510 @@
         "height": 172
       }
     ]
+  },
+  "beat2-b": {
+    "id": "beat2-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-567f8c7d-17b5-4679-b698-78b0f7ede580",
+    "submittedAt": "2026-11-05T19:35:44.818Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: the robot is a genius scholar at a big clean chalkboard. A big dark green chalkboard with a thin wooden frame and a chalk ledge fills the whole background from edge to edge; the chalkboard is completely clean and empty, plain smooth dark green with nothing written or drawn on it. The robot stands on the left of the picture, seen from head to knees, raising a small white stick of chalk to the empty board in one grey hand: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below the visor and a small calm mouth; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. A small stack of books on the floor beside the robot."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5202,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: the robot is a genius scholar at a big clean chalkboard. A big dark green chalkboard with a thin wooden frame and a chalk ledge fills the whole background from edge to edge; the chalkboard is completely clean and empty, plain smooth dark green with nothing written or drawn on it. The robot stands on the left of the picture, seen from head to knees, raising a small white stick of chalk to the empty board in one grey hand: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below the visor and a small calm mouth; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. A small stack of books on the floor beside the robot. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface, text, writing, letters, numbers, equations, symbols, chalk marks or scribbles on the chalkboard."
+    },
+    "at": "2026-11-05T19:35:44.826Z",
+    "candidates": [
+      {
+        "file": "beat2-b-0.png",
+        "sha256": "8cce2a37be15be003a25679187c6a16c063047027ef08d4f961b979468ba689f",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat2-c": {
+    "id": "beat2-c",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-3a762122-48d8-446e-915a-2b26e8df11d9",
+    "submittedAt": "2026-11-05T19:36:13.401Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: the robot is a genius scholar at a big clean chalkboard. A big dark green chalkboard with a thin wooden frame and a chalk ledge fills the whole background from edge to edge; the chalkboard is completely clean and empty, plain smooth dark green with nothing written or drawn on it. The robot stands on the left of the picture, seen from head to knees, raising a small white stick of chalk to the empty board in one grey hand: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below the visor and a small calm mouth; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. A small stack of books on the floor beside the robot."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5203,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: the robot is a genius scholar at a big clean chalkboard. A big dark green chalkboard with a thin wooden frame and a chalk ledge fills the whole background from edge to edge; the chalkboard is completely clean and empty, plain smooth dark green with nothing written or drawn on it. The robot stands on the left of the picture, seen from head to knees, raising a small white stick of chalk to the empty board in one grey hand: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below the visor and a small calm mouth; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. A small stack of books on the floor beside the robot. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface, text, writing, letters, numbers, equations, symbols, chalk marks or scribbles on the chalkboard."
+    },
+    "at": "2026-11-05T19:36:13.402Z",
+    "candidates": [
+      {
+        "file": "beat2-c-0.png",
+        "sha256": "b0c4e4a9459bba8b97562f3ddea39a7541948561c605df718a6f635776f67c49",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat2-d": {
+    "id": "beat2-d",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-d5f37804-e7ec-4f57-b0be-ba1e03716330",
+    "submittedAt": "2026-11-05T19:36:47.087Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: the robot is a genius scholar at a big clean chalkboard. A big dark green chalkboard with a thin wooden frame and a chalk ledge fills the whole background from edge to edge; the chalkboard is completely clean and empty, plain smooth dark green with nothing written or drawn on it. The robot stands on the left of the picture, seen from head to knees, raising a small white stick of chalk to the empty board in one grey hand: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below the visor and a small calm mouth; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. A small stack of books on the floor beside the robot."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5204,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: the robot is a genius scholar at a big clean chalkboard. A big dark green chalkboard with a thin wooden frame and a chalk ledge fills the whole background from edge to edge; the chalkboard is completely clean and empty, plain smooth dark green with nothing written or drawn on it. The robot stands on the left of the picture, seen from head to knees, raising a small white stick of chalk to the empty board in one grey hand: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below the visor and a small calm mouth; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. A small stack of books on the floor beside the robot. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface, text, writing, letters, numbers, equations, symbols, chalk marks or scribbles on the chalkboard."
+    },
+    "at": "2026-11-05T19:36:47.090Z",
+    "candidates": [
+      {
+        "file": "beat2-d-0.png",
+        "sha256": "b78f3466531a5828c78b86ddfd13e0d6d7d502f8a013361742df590620847622",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-e": {
+    "id": "beat1-e",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-543e6b01-7c7c-4455-a6da-463adf51ec11",
+    "submittedAt": "2026-11-05T19:37:20.920Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small robot butler humbly serving a big fat-cat human, close together in the centre. The gentleman on the right is BIG and TALL and towers over the robot, filling the picture's full height from top hat to knees: portly, tall black top hat, big round head, curly moustache, monocle, bow tie, dark tailcoat over a large round belly, reaching down for the glass. The robot on the left is SMALL, its head only reaching the gentleman's chest, seen in full from antenna to feet: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a flat straight mouth line, no smile, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot holds ONE round silver tray up high with ONE martini glass with a green olive, offering it up to him. Cosy parlour behind: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5105,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a small robot butler humbly serving a big fat-cat human, close together in the centre. The gentleman on the right is BIG and TALL and towers over the robot, filling the picture's full height from top hat to knees: portly, tall black top hat, big round head, curly moustache, monocle, bow tie, dark tailcoat over a large round belly, reaching down for the glass. The robot on the left is SMALL, its head only reaching the gentleman's chest, seen in full from antenna to feet: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a flat straight mouth line, no smile, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot holds ONE round silver tray up high with ONE martini glass with a green olive, offering it up to him. Cosy parlour behind: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:37:20.923Z",
+    "candidates": [
+      {
+        "file": "beat1-e-0.png",
+        "sha256": "8d02752f5c57efce376a64896f1e39947e66bee7041c0b15386a8332813e875e",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-f": {
+    "id": "beat1-f",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-13c090d6-e774-4a06-9222-88deeef9b1c8",
+    "submittedAt": "2026-11-05T19:38:03.915Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small robot butler humbly serving a big fat-cat human, close together in the centre. The gentleman on the right is BIG and TALL and towers over the robot, filling the picture's full height from top hat to knees: portly, tall black top hat, big round head, curly moustache, monocle, bow tie, dark tailcoat over a large round belly, reaching down for the glass. The robot on the left is SMALL, its head only reaching the gentleman's chest, seen in full from antenna to feet: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a flat straight mouth line, no smile, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot holds ONE round silver tray up high with ONE martini glass with a green olive, offering it up to him. Cosy parlour behind: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5106,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a small robot butler humbly serving a big fat-cat human, close together in the centre. The gentleman on the right is BIG and TALL and towers over the robot, filling the picture's full height from top hat to knees: portly, tall black top hat, big round head, curly moustache, monocle, bow tie, dark tailcoat over a large round belly, reaching down for the glass. The robot on the left is SMALL, its head only reaching the gentleman's chest, seen in full from antenna to feet: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a flat straight mouth line, no smile, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot holds ONE round silver tray up high with ONE martini glass with a green olive, offering it up to him. Cosy parlour behind: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:38:03.917Z",
+    "candidates": [
+      {
+        "file": "beat1-f-0.png",
+        "sha256": "8d1714b778e8acef5bc1dc811b8ead7b3654e676335807719ce5218558a3513a",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-g": {
+    "id": "beat1-g",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-4e5dfd17-e0d7-4c82-a0d4-62bf4bc8fcd3",
+    "submittedAt": "2026-11-05T19:38:32.189Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small robot butler humbly serving a big fat-cat human, close together in the centre. The gentleman on the right is BIG and TALL and towers over the robot, filling the picture's full height from top hat to knees: portly, tall black top hat, big round head, curly moustache, monocle, bow tie, dark tailcoat over a large round belly, reaching down for the glass. The robot on the left is SMALL, its head only reaching the gentleman's chest, seen in full from antenna to feet: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a flat straight mouth line, no smile, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot holds ONE round silver tray up high with ONE martini glass with a green olive, offering it up to him. Cosy parlour behind: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5107,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a small robot butler humbly serving a big fat-cat human, close together in the centre. The gentleman on the right is BIG and TALL and towers over the robot, filling the picture's full height from top hat to knees: portly, tall black top hat, big round head, curly moustache, monocle, bow tie, dark tailcoat over a large round belly, reaching down for the glass. The robot on the left is SMALL, its head only reaching the gentleman's chest, seen in full from antenna to feet: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a flat straight mouth line, no smile, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot holds ONE round silver tray up high with ONE martini glass with a green olive, offering it up to him. Cosy parlour behind: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:38:32.191Z",
+    "candidates": [
+      {
+        "file": "beat1-g-0.png",
+        "sha256": "10e15e7f041b34c95c2711641e6789547db7521355f708b6f7ac9b6866f33d7a",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-h": {
+    "id": "beat1-h",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-458cb05e-007f-4d09-a668-975fd32766a8",
+    "submittedAt": "2026-11-05T19:39:55.094Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small robot butler humbly serving a big rich human gentleman, both seen in full from head to feet, standing on the floor. The gentleman on the right of centre is a HUMAN man, very tall and portly, twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he looks down and reaches down for the glass. The robot on the left of centre is SMALL and short, the top of its antenna only reaching the gentleman's chest: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5108,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a small robot butler humbly serving a big rich human gentleman, both seen in full from head to feet, standing on the floor. The gentleman on the right of centre is a HUMAN man, very tall and portly, twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he looks down and reaches down for the glass. The robot on the left of centre is SMALL and short, the top of its antenna only reaching the gentleman's chest: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:39:55.097Z",
+    "candidates": [
+      {
+        "file": "beat1-h-0.png",
+        "sha256": "ddf0fa30b46e15968a1fd912db39050b07dd695e2db61afe977434a123b6a47b",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-i": {
+    "id": "beat1-i",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-e9d8fafe-dc91-4975-a594-5ffa76119c3b",
+    "submittedAt": "2026-11-05T19:40:18.135Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small robot butler humbly serving a big rich human gentleman, both seen in full from head to feet, standing on the floor. The gentleman on the right of centre is a HUMAN man, very tall and portly, twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he looks down and reaches down for the glass. The robot on the left of centre is SMALL and short, the top of its antenna only reaching the gentleman's chest: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5109,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a small robot butler humbly serving a big rich human gentleman, both seen in full from head to feet, standing on the floor. The gentleman on the right of centre is a HUMAN man, very tall and portly, twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he looks down and reaches down for the glass. The robot on the left of centre is SMALL and short, the top of its antenna only reaching the gentleman's chest: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:40:18.138Z",
+    "candidates": [
+      {
+        "file": "beat1-i-0.png",
+        "sha256": "26f9ea7b7b7f96b82c74ec24702ac37f7c0ba4023b9b791cc7d00f41781f54d5",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-j": {
+    "id": "beat1-j",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-37bd0bea-0451-45f4-9fae-48a52e6f89e0",
+    "submittedAt": "2026-11-05T19:40:57.150Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small robot butler humbly serving a big rich human gentleman, both seen in full from head to feet, standing on the floor. The gentleman on the right of centre is a HUMAN man, very tall and portly, twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he looks down and reaches down for the glass. The robot on the left of centre is SMALL and short, the top of its antenna only reaching the gentleman's chest: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5110,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a small robot butler humbly serving a big rich human gentleman, both seen in full from head to feet, standing on the floor. The gentleman on the right of centre is a HUMAN man, very tall and portly, twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he looks down and reaches down for the glass. The robot on the left of centre is SMALL and short, the top of its antenna only reaching the gentleman's chest: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:40:57.152Z",
+    "candidates": [
+      {
+        "file": "beat1-j-0.png",
+        "sha256": "91762df6dc3d541e835e54501ce4be01a1f4da72afb998c11f04d7783c2f2017",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-k": {
+    "id": "beat1-k",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-89e90df2-ac37-4d90-af89-f90bae58d7a5",
+    "submittedAt": "2026-11-05T19:41:41.907Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small robot butler humbly serving a big rich human gentleman, both seen in full from head to feet, standing on the floor. The gentleman on the right of centre is a HUMAN man, very tall and portly, twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he looks down and reaches down for the glass. The robot on the left of centre is SMALL and short, the top of its antenna only reaching the gentleman's chest: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5111,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a small robot butler humbly serving a big rich human gentleman, both seen in full from head to feet, standing on the floor. The gentleman on the right of centre is a HUMAN man, very tall and portly, twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he looks down and reaches down for the glass. The robot on the left of centre is SMALL and short, the top of its antenna only reaching the gentleman's chest: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:41:41.913Z",
+    "candidates": [
+      {
+        "file": "beat1-k-0.png",
+        "sha256": "02797217fbbc8c5fd0c1a1fc148ec777e903cdf2924351483467bae903d72d7f",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-l": {
+    "id": "beat1-l",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-a193535d-ba83-4bc8-93ca-64a02dbdf4cf",
+    "submittedAt": "2026-11-05T19:42:15.368Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small robot butler humbly serving a big rich human gentleman, both seen in full from head to feet, standing on the floor. The gentleman on the right of centre is a HUMAN man, very tall and portly, twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he looks down and reaches down for the glass. The robot on the left of centre is SMALL and short, the top of its antenna only reaching the gentleman's chest: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5112,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a small robot butler humbly serving a big rich human gentleman, both seen in full from head to feet, standing on the floor. The gentleman on the right of centre is a HUMAN man, very tall and portly, twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he looks down and reaches down for the glass. The robot on the left of centre is SMALL and short, the top of its antenna only reaching the gentleman's chest: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:42:15.372Z",
+    "candidates": [
+      {
+        "file": "beat1-l-0.png",
+        "sha256": "88738f41caf53df326dd35080e6ca4b275f349dec39489186ac5ca8c6763d449",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-m": {
+    "id": "beat1-m",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-6051da1e-b4df-421f-a9f4-fa281e2dd59a",
+    "submittedAt": "2026-11-05T19:42:50.942Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small robot butler humbly serving a big rich human gentleman, both seen in full from head to feet, standing on the floor. The gentleman on the right of centre is a HUMAN man, very tall and portly, twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he looks down and reaches down for the glass. The robot on the left of centre is SMALL and short, the top of its antenna only reaching the gentleman's chest: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5113,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a small robot butler humbly serving a big rich human gentleman, both seen in full from head to feet, standing on the floor. The gentleman on the right of centre is a HUMAN man, very tall and portly, twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he looks down and reaches down for the glass. The robot on the left of centre is SMALL and short, the top of its antenna only reaching the gentleman's chest: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:42:50.944Z",
+    "candidates": [
+      {
+        "file": "beat1-m-0.png",
+        "sha256": "72da8816f211c9a4cee40d3f9b2797dd9d4ba4b161d1ac83ff4dc7c089601028",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-n": {
+    "id": "beat1-n",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-49b7a07f-b79d-4755-a392-25d13fa2905d",
+    "submittedAt": "2026-11-05T19:43:10.823Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small robot butler humbly serving a big rich human gentleman, both seen in full from head to feet, standing on the floor. The gentleman on the right of centre is a HUMAN man, very tall and portly, twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he looks down and reaches down for the glass. The robot on the left of centre is SMALL and short, the top of its antenna only reaching the gentleman's chest: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5114,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a small robot butler humbly serving a big rich human gentleman, both seen in full from head to feet, standing on the floor. The gentleman on the right of centre is a HUMAN man, very tall and portly, twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he looks down and reaches down for the glass. The robot on the left of centre is SMALL and short, the top of its antenna only reaching the gentleman's chest: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, thin grey legs. The robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:43:10.826Z",
+    "candidates": [
+      {
+        "file": "beat1-n-0.png",
+        "sha256": "a16e46e2b3676887b55cf71d508c70f26b065e11cdeeca718c9f67642f246817",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-o": {
+    "id": "beat1-o",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-4be1e207-46de-46b6-a318-cfe43d1ad815",
+    "submittedAt": "2026-11-05T19:44:24.616Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small robot butler serving a big rich human gentleman, both seen in full from head to feet, on the floor. The gentleman, on the right, is a portly HUMAN man twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he reaches one hand down for the glass, the other hand empty on his belly. The robot, on the left, is SMALL: the top of its antenna only reaches the gentleman's chest. It has a cream head shaped like an upside-down trapezoid, clearly much wider at the top than at the bottom like a flowerpot, with a red rim on top, a small sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a plain rounded tomato-red box body, grey segmented stick arms ending in GREY hands, thin grey legs. With both arms the robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5115,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a small robot butler serving a big rich human gentleman, both seen in full from head to feet, on the floor. The gentleman, on the right, is a portly HUMAN man twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he reaches one hand down for the glass, the other hand empty on his belly. The robot, on the left, is SMALL: the top of its antenna only reaches the gentleman's chest. It has a cream head shaped like an upside-down trapezoid, clearly much wider at the top than at the bottom like a flowerpot, with a red rim on top, a small sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a plain rounded tomato-red box body, grey segmented stick arms ending in GREY hands, thin grey legs. With both arms the robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:44:24.621Z",
+    "candidates": [
+      {
+        "file": "beat1-o-0.png",
+        "sha256": "69a664e0f60645cb333b8b38d7680c3045ea7c46ed5233842b5c32be0f3231e8",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-p": {
+    "id": "beat1-p",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-28482a70-129f-4d8a-9773-6baa807596b3",
+    "submittedAt": "2026-11-05T19:45:04.966Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small robot butler serving a big rich human gentleman, both seen in full from head to feet, on the floor. The gentleman, on the right, is a portly HUMAN man twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he reaches one hand down for the glass, the other hand empty on his belly. The robot, on the left, is SMALL: the top of its antenna only reaches the gentleman's chest. It has a cream head shaped like an upside-down trapezoid, clearly much wider at the top than at the bottom like a flowerpot, with a red rim on top, a small sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a plain rounded tomato-red box body, grey segmented stick arms ending in GREY hands, thin grey legs. With both arms the robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5116,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a small robot butler serving a big rich human gentleman, both seen in full from head to feet, on the floor. The gentleman, on the right, is a portly HUMAN man twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he reaches one hand down for the glass, the other hand empty on his belly. The robot, on the left, is SMALL: the top of its antenna only reaches the gentleman's chest. It has a cream head shaped like an upside-down trapezoid, clearly much wider at the top than at the bottom like a flowerpot, with a red rim on top, a small sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a plain rounded tomato-red box body, grey segmented stick arms ending in GREY hands, thin grey legs. With both arms the robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:45:04.969Z",
+    "candidates": [
+      {
+        "file": "beat1-p-0.png",
+        "sha256": "a152733bcd9d9a1e2ef00c4202496f76ccc1ebcdb09b5bbacf631aa53dfe366e",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-q": {
+    "id": "beat1-q",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-1f19bcfc-6b2d-42f7-8c13-f8356722a0a6",
+    "submittedAt": "2026-11-05T19:45:37.938Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small robot butler serving a big rich human gentleman, both seen in full from head to feet, on the floor. The gentleman, on the right, is a portly HUMAN man twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he reaches one hand down for the glass, the other hand empty on his belly. The robot, on the left, is SMALL: the top of its antenna only reaches the gentleman's chest. It has a cream head shaped like an upside-down trapezoid, clearly much wider at the top than at the bottom like a flowerpot, with a red rim on top, a small sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a plain rounded tomato-red box body, grey segmented stick arms ending in GREY hands, thin grey legs. With both arms the robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5117,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a small robot butler serving a big rich human gentleman, both seen in full from head to feet, on the floor. The gentleman, on the right, is a portly HUMAN man twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he reaches one hand down for the glass, the other hand empty on his belly. The robot, on the left, is SMALL: the top of its antenna only reaches the gentleman's chest. It has a cream head shaped like an upside-down trapezoid, clearly much wider at the top than at the bottom like a flowerpot, with a red rim on top, a small sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a plain rounded tomato-red box body, grey segmented stick arms ending in GREY hands, thin grey legs. With both arms the robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:45:37.941Z",
+    "candidates": [
+      {
+        "file": "beat1-q-0.png",
+        "sha256": "0e7ef180591ea0fda02c98607ace8b3e2dfaf9e16aef0393b13dc9b23830f879",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-r": {
+    "id": "beat1-r",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-f2692495-5abf-4187-b000-1c77e8921640",
+    "submittedAt": "2026-11-05T19:46:16.748Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small robot butler serving a big rich human gentleman, both seen in full from head to feet, on the floor. The gentleman, on the right, is a portly HUMAN man twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he reaches one hand down for the glass, the other hand empty on his belly. The robot, on the left, is SMALL: the top of its antenna only reaches the gentleman's chest. It has a cream head shaped like an upside-down trapezoid, clearly much wider at the top than at the bottom like a flowerpot, with a red rim on top, a small sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a plain rounded tomato-red box body, grey segmented stick arms ending in GREY hands, thin grey legs. With both arms the robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5118,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a small robot butler serving a big rich human gentleman, both seen in full from head to feet, on the floor. The gentleman, on the right, is a portly HUMAN man twice as tall as the robot, filling the full height of the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, dark tailcoat over a large round belly; he reaches one hand down for the glass, the other hand empty on his belly. The robot, on the left, is SMALL: the top of its antenna only reaches the gentleman's chest. It has a cream head shaped like an upside-down trapezoid, clearly much wider at the top than at the bottom like a flowerpot, with a red rim on top, a small sky-blue visor on the forehead, two round calm eyes below it and a small flat dash for a mouth, not smiling, a neutral deferential face; a short antenna with a yellow ball, a plain rounded tomato-red box body, grey segmented stick arms ending in GREY hands, thin grey legs. With both arms the robot lifts ONE round silver tray up high with ONE martini glass with a green olive. Cosy parlour: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:46:16.750Z",
+    "candidates": [
+      {
+        "file": "beat1-r-0.png",
+        "sha256": "6b1b9027bbe3a44bea9168b493578a27f9fcd06cf9cf79489dd2e6d85a7c47b6",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-s": {
+    "id": "beat1-s",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-af3204f9-1762-407c-bde9-961f3a101424",
+    "submittedAt": "2026-11-05T19:47:20.974Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down slightly and reaches one hand down to take the drink. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. The robot raises ONE round silver tray above its head with ONE martini glass with a green olive. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5119,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down slightly and reaches one hand down to take the drink. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. The robot raises ONE round silver tray above its head with ONE martini glass with a green olive. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:47:20.979Z",
+    "candidates": [
+      {
+        "file": "beat1-s-0.png",
+        "sha256": "81faf41d10e5f8da6c33e9a70e9e02cb1c85842f07fb6b6bdbc22c8e2a663b7f",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-t": {
+    "id": "beat1-t",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-3c8864b6-dbd6-4bd9-a1b5-b32f9131afe3",
+    "submittedAt": "2026-11-05T19:47:47.603Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down slightly and reaches one hand down to take the drink. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. The robot raises ONE round silver tray above its head with ONE martini glass with a green olive. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5120,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down slightly and reaches one hand down to take the drink. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. The robot raises ONE round silver tray above its head with ONE martini glass with a green olive. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:47:47.606Z",
+    "candidates": [
+      {
+        "file": "beat1-t-0.png",
+        "sha256": "98c6a830942ba0c969b5f7adb47afbba58a19c8030d57dbeb056dab026ed1346",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-u": {
+    "id": "beat1-u",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-d9699929-6e2e-47fa-9fbb-6f53df3f08e7",
+    "submittedAt": "2026-11-05T19:48:17.030Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down slightly and reaches one hand down to take the drink. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. The robot raises ONE round silver tray above its head with ONE martini glass with a green olive. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5121,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down slightly and reaches one hand down to take the drink. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. The robot raises ONE round silver tray above its head with ONE martini glass with a green olive. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:48:17.033Z",
+    "candidates": [
+      {
+        "file": "beat1-u-0.png",
+        "sha256": "77d953ca6d47ddc1cbcab355c7c8a3a0c3ceb41b15122b04f0eb726e446f04c5",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-v": {
+    "id": "beat1-v",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-519a4303-d19e-49b7-833a-c377647d8a50",
+    "submittedAt": "2026-11-05T19:48:55.269Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down slightly and reaches one hand down to take the drink. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. The robot raises ONE round silver tray above its head with ONE martini glass with a green olive. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5122,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down slightly and reaches one hand down to take the drink. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. The robot raises ONE round silver tray above its head with ONE martini glass with a green olive. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:48:55.271Z",
+    "candidates": [
+      {
+        "file": "beat1-v-0.png",
+        "sha256": "30a9ab1a821174f5e1e47965f60a289d9d4c7b467359f3d049d7ff827eea580c",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-w": {
+    "id": "beat1-w",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-5eb2051a-2baf-4891-9a7a-598a68927733",
+    "submittedAt": "2026-11-05T19:49:45.159Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot holds up ONE round silver tray at the height of the gentleman's belly; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5123,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot holds up ONE round silver tray at the height of the gentleman's belly; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:49:45.163Z",
+    "candidates": [
+      {
+        "file": "beat1-w-0.png",
+        "sha256": "1948f8a79fa9b99ca7405aeee5e2a10a6ee348828669e403da18954d6b70243e",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-x": {
+    "id": "beat1-x",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-37943a0e-767d-4a1d-9bed-4b0874e83e66",
+    "submittedAt": "2026-11-05T19:50:14.833Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot holds up ONE round silver tray at the height of the gentleman's belly; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5124,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot holds up ONE round silver tray at the height of the gentleman's belly; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:50:14.836Z",
+    "candidates": [
+      {
+        "file": "beat1-x-0.png",
+        "sha256": "e668ac2123f3134c693eb23348762d95091de823ae5a797867ea849342348146",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-y": {
+    "id": "beat1-y",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-20dc37c5-3489-4b9c-b9d6-83665d46a915",
+    "submittedAt": "2026-11-05T19:50:46.986Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot holds up ONE round silver tray at the height of the gentleman's belly; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5125,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot holds up ONE round silver tray at the height of the gentleman's belly; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:50:46.989Z",
+    "candidates": [
+      {
+        "file": "beat1-y-0.png",
+        "sha256": "a1e20ebea5fdbcdc2de279cc9dd99f875eeef24451a59cc1bdf2bbca71bc8e64",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-z": {
+    "id": "beat1-z",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-c7a7d2fc-b3cd-45a9-bef6-2c44a7ea7d5a",
+    "submittedAt": "2026-11-05T19:51:12.485Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot holds up ONE round silver tray at the height of the gentleman's belly; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5126,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, half his height, its head level with his belly: cream head shaped like an upside-down trapezoid, much wider at the top like a flowerpot, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot holds up ONE round silver tray at the height of the gentleman's belly; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:51:12.488Z",
+    "candidates": [
+      {
+        "file": "beat1-z-0.png",
+        "sha256": "d59a0ab4c30bb11d216542a2980b62fd0c08e21970d3bcc41093177945ebdaa1",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-aa": {
+    "id": "beat1-aa",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-f0e3c8d9-f53c-40dc-9464-6662aa9b2acd",
+    "submittedAt": "2026-11-05T19:52:05.443Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5127,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:52:05.448Z",
+    "candidates": [
+      {
+        "file": "beat1-aa-0.png",
+        "sha256": "6c76efed1076024f06ca64cab6d5003399e11051ed5da04ec7b1a4ef495bd4a9",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-ab": {
+    "id": "beat1-ab",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-4fa66c9e-a37b-4bfd-82d5-4f09c20e4f11",
+    "submittedAt": "2026-11-05T19:52:40.516Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5128,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:52:40.519Z",
+    "candidates": [
+      {
+        "file": "beat1-ab-0.png",
+        "sha256": "85ac4b21ea3d8e5186cf421f5153392f6e618d76fd06ac01f55806433cb9b0f3",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-ac": {
+    "id": "beat1-ac",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-3912d457-0101-47a1-a278-9b6476e3be1e",
+    "submittedAt": "2026-11-05T19:53:13.621Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5129,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:53:13.624Z",
+    "candidates": [
+      {
+        "file": "beat1-ac-0.png",
+        "sha256": "b8f13b1d0831c8ff72e42b21fa8ed5ad701824baf8ed902a58bd8da866f2c1d9",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-ad": {
+    "id": "beat1-ad",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-c1ddd052-13a9-4875-aaae-dc1464669f12",
+    "submittedAt": "2026-11-05T19:53:45.780Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5130,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; short antenna with a yellow ball; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:53:45.783Z",
+    "candidates": [
+      {
+        "file": "beat1-ad-0.png",
+        "sha256": "16d8f653bd5e076e60727b39402948f4c7367da7b5dc17fbfaed5a09edb5e904",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-ae": {
+    "id": "beat1-ae",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-7a67ceef-457a-4019-9e3c-680f7abbd8cc",
+    "submittedAt": "2026-11-05T19:54:41.612Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He picks the martini off the robot's tray. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; ONE short antenna with a yellow ball in the middle of its head; plain rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5131,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He picks the martini off the robot's tray. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; ONE short antenna with a yellow ball in the middle of its head; plain rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:54:41.617Z",
+    "candidates": [
+      {
+        "file": "beat1-ae-0.png",
+        "sha256": "a8f7257af0b9ee067315bd09768313f6c05c18d633a7f001bff80d6b206012e8",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-af": {
+    "id": "beat1-af",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-5d34f358-a590-4b23-a716-5994f2bfbb7e",
+    "submittedAt": "2026-11-05T19:55:03.094Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He picks the martini off the robot's tray. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; ONE short antenna with a yellow ball in the middle of its head; plain rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5132,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He picks the martini off the robot's tray. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; ONE short antenna with a yellow ball in the middle of its head; plain rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:55:03.097Z",
+    "candidates": [
+      {
+        "file": "beat1-af-0.png",
+        "sha256": "2b186e16336b7b00b4e3dc7197b21bbea5cef4d6c0afdaf51214b154468d3976",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-ag": {
+    "id": "beat1-ag",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-362579e8-b845-4432-8d5c-1d5fb4d1ec30",
+    "submittedAt": "2026-11-05T19:55:38.831Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He picks the martini off the robot's tray. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; ONE short antenna with a yellow ball in the middle of its head; plain rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5133,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He picks the martini off the robot's tray. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; ONE short antenna with a yellow ball in the middle of its head; plain rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:55:38.834Z",
+    "candidates": [
+      {
+        "file": "beat1-ag-0.png",
+        "sha256": "e0f1b03513dd403187b2ffea3eb6bdd22b0b1bc3a32c1844a5341c4441a9dd22",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-ah": {
+    "id": "beat1-ah",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-c6c364e3-5e05-4a7a-b25c-36abaeb3ae95",
+    "submittedAt": "2026-11-05T19:56:22.965Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He picks the martini off the robot's tray. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; ONE short antenna with a yellow ball in the middle of its head; plain rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5134,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He picks the martini off the robot's tray. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; ONE short antenna with a yellow ball in the middle of its head; plain rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:56:22.967Z",
+    "candidates": [
+      {
+        "file": "beat1-ah-0.png",
+        "sha256": "2e87fd80098a01252ac7b9c57b874d6984b7da0ad6c47ec374bc171cf3e7cee5",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-ai": {
+    "id": "beat1-ai",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-1e89fbd1-d1ee-4f36-8881-e907075b90dc",
+    "submittedAt": "2026-11-05T19:57:42.863Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He picks the martini off the robot's tray. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; ONE short antenna with a yellow ball in the middle of its head; plain rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5128,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He picks the martini off the robot's tray. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; ONE short antenna with a yellow ball in the middle of its head; plain rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:57:42.868Z",
+    "candidates": [
+      {
+        "file": "beat1-ai-0.png",
+        "sha256": "a26fd5fd5bff2b69c26528f870ee211e36e4b8d09942c7983b92cb5bb2c38438",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-aj": {
+    "id": "beat1-aj",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-ee44d447-b057-46ca-8a23-7cabd8fc9ab3",
+    "submittedAt": "2026-11-05T19:58:26.689Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; ONE short antenna, yellow ball, in the middle; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5128,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: wide shot of a parlour, both characters seen in full from head to feet with the floor visible. On the right stands a huge portly rich HUMAN gentleman, as tall as the whole picture: tall black top hat, big round pink face, curly moustache, monocle, bow tie, buttoned dark tailcoat and waistcoat over a big round belly. He bends down and picks the martini glass off the robot's tray with one hand. On the left stands a tiny robot butler, only half his height, its head level with his belly: a cream head shaped like a flowerpot, an upside-down trapezoid whose top edge is much wider than its bottom edge, with a red rim on top, a small sky-blue visor, two round calm eyes below it and a tiny flat line for a mouth, neutral face, not smiling; ONE short antenna, yellow ball, in the middle; rounded tomato-red box body; grey segmented stick arms with grey hands; thin grey legs. With both grey hands the robot lifts ONE round silver tray up high, reaching up to the gentleman's chest; on the tray stands ONE martini glass with a green olive, the only drink in the picture. Cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T19:58:26.694Z",
+    "candidates": [
+      {
+        "file": "beat1-aj-0.png",
+        "sha256": "78bdf8aff71d34b84d7875a3b4e2778d3938a350b2d5fffd86e2cb0f5929df89",
+        "width": 300,
+        "height": 172
+      }
+    ]
   }
 }
