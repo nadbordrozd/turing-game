@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Program tiles demo</title>
+<link rel="icon" href="data:,">
+<style>
+  :root {
+    --bg: #1b1a20;
+    --panel: #26252d;
+    --text: #ece9e1;
+    --muted: #a9a5b3;
+    --accent: #f6c445;
+    --line: #3b3946;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 16px;
+    background: var(--bg);
+    color: var(--text);
+    font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  h1 { font-size: 18px; margin: 0 0 6px; }
+  .note { max-width: 980px; color: var(--muted); margin: 0 0 12px; }
+  .note b { color: var(--text); font-weight: 600; }
+  .controls {
+    display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center;
+    padding: 10px 12px; margin-bottom: 14px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+  }
+  .group { display: flex; gap: 4px; align-items: center; }
+  .group > span { color: var(--muted); margin-right: 4px; }
+  button {
+    font: inherit; color: var(--text); background: #34323d;
+    border: 1px solid #4a4756; border-radius: 6px; padding: 4px 10px; cursor: pointer;
+  }
+  button:hover { background: #3e3b48; }
+  button[aria-pressed="true"] { background: var(--accent); color: #2a2335; border-color: var(--accent); font-weight: 600; }
+  .columns { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+  .col {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px; max-width: 100%;
+  }
+  .col h2 { font-size: 15px; margin: 0 0 2px; }
+  .col .sub { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+  .canvas-wrap { overflow: auto; max-width: 100%; }
+  canvas { display: block; background: #000; }
+  .readout {
+    margin-top: 8px; font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted);
+    white-space: pre;
+  }
+  .readout b { color: var(--text); font-weight: 600; }
+  #bench-out { font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<h1>Program tiles: original vs new</h1>
+<p class="note">
+  The same little board three times, no gameplay. A row of conveyor, step, clockwise rotator, conveyor, counter-clockwise rotator and conveyor, with a short vertical belt crossing it.<br>
+  <b>Original (2012):</b> the old pre-drawn frames from <code>images/sprytszyt.png</code> at the old speed. That is 20 or 60 frames, each shown for 0.025 s (about 40 fps), stepped the way Quintus does it.<br>
+  <b>New v1 (current build):</b> the frames now in the game, from <code>images/tiles/program-tiles.png</code>. That is 25 or 50 frames, each shown for 0.04 s (25 fps).<br>
+  <b>New, smooth (candidate):</b> the same Toybox design drawn live on every screen refresh with anti-aliased vector shapes. The arrows are rotated in code, and the belt offset comes from the clock, so the motion is as smooth as your display allows. Speeds match the original.<br>
+  At 1×, tiles are 45 px with 2 px gaps, as on the game board. The game canvas is not Retina-aware, so on a Retina screen “Canvas: game” is what the game shows. “Canvas: sharp” renders at device pixels.
+</p>
+
+<div class="controls">
+  <div class="group" id="scale-group"><span>Scale</span>
+    <button data-scale="1" aria-pressed="true">1× game</button>
+    <button data-scale="2">2×</button>
+    <button data-scale="4">4×</button>
+  </div>
+  <div class="group"><button id="play">Pause</button></div>
+  <div class="group"><button id="gaps" aria-pressed="true">Gaps on</button></div>
+  <div class="group" id="res-group"><span>Canvas</span>
+    <button data-res="game" aria-pressed="true">game</button>
+    <button data-res="sharp">sharp</button>
+  </div>
+  <div class="group"><button id="bench">Benchmark 64 tiles</button></div>
+</div>
+
+<div class="columns">
+  <div class="col">
+    <h2>Original (2012)</h2>
+    <div class="sub">sprytszyt.png · 20/60 frames · 0.025 s per frame</div>
+    <div class="canvas-wrap"><canvas id="c-orig"></canvas></div>
+    <div class="readout" id="r-orig">…</div>
+  </div>
+  <div class="col">
+    <h2>New v1 (current build)</h2>
+    <div class="sub">program-tiles.png · 25/50 frames · 0.04 s per frame</div>
+    <div class="canvas-wrap"><canvas id="c-v1"></canvas></div>
+    <div class="readout" id="r-v1">…</div>
+  </div>
+  <div class="col">
+    <h2>New, smooth (candidate)</h2>
+    <div class="sub">vector, drawn every display frame · ctx.rotate</div>
+    <div class="canvas-wrap"><canvas id="c-smooth"></canvas></div>
+    <div class="readout" id="r-smooth">…</div>
+  </div>
+</div>
+<p id="bench-out"></p>
+
+<script src="tiles.js"></script>
+</body>
+</html>
