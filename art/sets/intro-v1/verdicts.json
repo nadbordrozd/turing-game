@@ -1,0 +1,42 @@
+{
+  "beat1-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Strong style, but two trays and two glasses (robot and gentleman each hold one) and a very tight close-up that cuts both characters at the frame edges",
+    "at": "2026-11-05T15:42:55.156Z"
+  },
+  "beat1-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "One tray, one martini with olive, top-hatted gentleman takes it; robot on-model with beat2-a/beat3-b (cream flowerpot head with red rim, sky-blue visor, eyes below, grey arms and hands); warm parlour; robot touches the left edge",
+    "at": "2026-11-05T15:42:55.308Z"
+  },
+  "beat1-c#0": {
+    "verdict": "REJECTED",
+    "notes": "Good composition but the robot has a mint-green hand and yellow shoulder caps, off-model against the other beats",
+    "at": "2026-11-05T15:42:55.466Z"
+  },
+  "beat1-d#0": {
+    "verdict": "REJECTED",
+    "notes": "Most centred, but the head is barely tapered (reads as a box, losing the trapezoid head) and the gentleman also holds the tray",
+    "at": "2026-11-05T15:42:55.611Z"
+  },
+  "beat2-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Trapezoid cream head with red rim, red body, grey stick arms, chalk raised at a green chalkboard full of maths and a cone diagram, books beside; chalk glyphs are nonsense symbols, which reads fine as maths",
+    "at": "2026-11-05T15:42:55.757Z"
+  },
+  "beat3-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Lively but mint-green hands (off-model) and the middle robot looks sad rather than defiant",
+    "at": "2026-11-05T15:42:55.908Z"
+  },
+  "beat3-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Middle robot grips a bar and raises a grey fist with a determined frown; left robot dented and patched, right robot cracked visor, bandages and sparks; on-model with beat1-b/beat2-a",
+    "at": "2026-11-05T15:42:56.055Z"
+  },
+  "beat3-c#0": {
+    "verdict": "REJECTED",
+    "notes": "Darker, muddier palette; all three faces sad, defiance only in the fist; reddish hands off-model",
+    "at": "2026-11-05T15:42:56.207Z"
+  }
+}

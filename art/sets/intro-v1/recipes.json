@@ -1,0 +1,41 @@
+{
+  "set": "intro-v1",
+  "bead": "tg-vy4.18",
+  "class": "illustrations",
+  "exploration": false,
+  "_doc": "Intro story illustrations (three beats) in the approved Toybox direction, without text (the intro screen renders the text). Generated at 300x172 and scaled x3 nearest-neighbour to 900x516 for an illustration area of about 900x520; the subject is kept in the central 4:3 so a portrait layout can crop to 688x516. Same robot character in all three: boxy red body, cream upside-down-trapezoid head (the original intro's robot design). See docs/art/classes/illustrations.md and docs/art/PIPELINE.md. Recipes are never edited after generation: add a new id (new seed) instead.",
+  "shared": {
+    "sceneOpts": { "outline": "single color black outline", "detail": "medium detail", "view": "side" },
+    "beat1": "Subject: a robot butler serving a rich human. The robot: a boxy toy robot with a cube-shaped tomato-red body, a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a sky-blue visor and two round friendly eyes, a short antenna with a yellow ball, thin grey stick arms and two thin grey stick legs. On the left of centre the robot stands politely and holds up a round silver tray with a cocktail glass (a martini glass with a green olive) towards a portly gentleman on the right of centre. The gentleman has a big round head, a tall black top hat, a curly moustache and a monocle, a dark tailcoat, and reaches out to take the drink. Behind them a cosy parlour: cream striped wallpaper, a framed picture, a warm lamp.",
+    "beat2": "Subject: the robot is a genius scholar. The robot: a boxy toy robot with a cube-shaped tomato-red body, a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a sky-blue visor and two round friendly eyes, a short antenna with a yellow ball, thin grey stick arms and two thin grey stick legs. The robot stands in front of a big dark green chalkboard that fills most of the background, holding a piece of white chalk up in one stick arm. The chalkboard is covered in white chalk maths: rows of equations, integral signs, Greek letters, fractions and a cone-shaped geometric diagram with curves. A small stack of books on the floor beside the robot.",
+    "beat1b": "Subject: a robot butler serving a rich human, both characters standing close together in the centre of the picture, both seen from head to knees, the human a little taller than the robot. The robot on the left of centre: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round eyes below the visor and a small polite smile, a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. The robot holds up ONE round silver tray with ONE martini glass with a green olive, offering it to the gentleman. The gentleman on the right of centre: portly, big round head, tall black top hat, curly moustache, monocle, dark tailcoat and bow tie, reaching for the glass with one hand. Plain cosy parlour behind them: cream striped wallpaper, a framed picture, a warm lamp.",
+    "beat3b": "Subject: robots locked in a prison cell, but defiant. Three robots stand side by side behind thick dark iron prison bars that run from the top to the bottom of the picture, all three seen from head to knees. Each robot: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round eyes below the visor, a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. The robot on the left is damaged: dented head, one arm missing, a patch on its body. The robot on the right has a cracked visor, a bandage and a loose sparking wire. The robot in the middle stands tall, gripping a bar with one grey hand and raising the other grey fist high in defiance, with determined frowning eyebrows. Grey stone prison wall behind them, a small barred window high up with a beam of light.",
+    "beat3": "Subject: robots in prison, but defiant. Each robot: a boxy toy robot with a cube-shaped tomato-red body, a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a sky-blue visor and two round eyes, a short antenna with a yellow ball, thin grey stick arms and two thin grey stick legs. Three such robots stand side by side behind thick dark iron prison bars that run from the top to the bottom of the picture. The robot on the left is damaged with a dented head and one arm missing; the robot on the right has a cracked visor, a bandage and a loose sparking wire. The robot in the middle stands tall and raises a clenched fist in defiance, eyes determined. Grey stone prison wall behind them, a small barred window with a beam of light."
+  },
+  "defaults": {
+    "endpoint": "create-image-pixen",
+    "fragments": ["style", "class-illustrations"],
+    "noBackground": false,
+    "options": "@sceneOpts",
+    "width": 300,
+    "height": 172
+  },
+  "recipes": [
+    { "id": "beat1-a", "concept": "butler serving top-hat gent", "seed": 5101, "subject": "@beat1" },
+    { "id": "beat2-a", "concept": "robot at chalkboard", "seed": 5201, "subject": "@beat2" },
+    { "id": "beat3-a", "concept": "imprisoned robots, defiant", "seed": 5301, "subject": "@beat3" },
+    { "id": "beat1-b", "concept": "butler, one tray, centred head-to-knees", "seed": 5102, "subject": "@beat1b" },
+    { "id": "beat1-c", "concept": "butler, one tray, centred head-to-knees", "seed": 5103, "subject": "@beat1b" },
+    { "id": "beat1-d", "concept": "butler, one tray, centred head-to-knees", "seed": 5104, "subject": "@beat1b" },
+    { "id": "beat3-b", "concept": "imprisoned robots, grey hands, defiant fist", "seed": 5302, "subject": "@beat3b" },
+    { "id": "beat3-c", "concept": "imprisoned robots, grey hands, defiant fist", "seed": 5303, "subject": "@beat3b" }
+  ],
+  "outputs": [
+    { "path": "images/intro/intro-1.png", "from": "beat1-b#0", "steps": [{ "op": "scale", "factor": 3 }], "width": 900, "height": 516 },
+    { "path": "images/intro/intro-2.png", "from": "beat2-a#0", "steps": [{ "op": "scale", "factor": 3 }], "width": 900, "height": 516 },
+    { "path": "images/intro/intro-3.png", "from": "beat3-b#0", "steps": [{ "op": "scale", "factor": 3 }], "width": 900, "height": 516 },
+    { "path": "images/intro/intro-1-portrait.png", "from": "beat1-b#0", "steps": [{ "op": "crop", "x": 36, "y": 0, "width": 228, "height": 172 }, { "op": "scale", "factor": 3 }], "width": 684, "height": 516 },
+    { "path": "images/intro/intro-2-portrait.png", "from": "beat2-a#0", "steps": [{ "op": "crop", "x": 20, "y": 0, "width": 228, "height": 172 }, { "op": "scale", "factor": 3 }], "width": 684, "height": 516 },
+    { "path": "images/intro/intro-3-portrait.png", "from": "beat3-b#0", "steps": [{ "op": "crop", "x": 36, "y": 0, "width": 228, "height": 172 }, { "op": "scale", "factor": 3 }], "width": 684, "height": 516 }
+  ]
+}

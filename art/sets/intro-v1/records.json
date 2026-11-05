@@ -1,0 +1,346 @@
+{
+  "beat1-a": {
+    "id": "beat1-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-2758a378-0b96-47ed-97da-b6b1acc8f065",
+    "submittedAt": "2026-11-05T15:37:55.783Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a robot butler serving a rich human. The robot: a boxy toy robot with a cube-shaped tomato-red body, a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a sky-blue visor and two round friendly eyes, a short antenna with a yellow ball, thin grey stick arms and two thin grey stick legs. On the left of centre the robot stands politely and holds up a round silver tray with a cocktail glass (a martini glass with a green olive) towards a portly gentleman on the right of centre. The gentleman has a big round head, a tall black top hat, a curly moustache and a monocle, a dark tailcoat, and reaches out to take the drink. Behind them a cosy parlour: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5101,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a robot butler serving a rich human. The robot: a boxy toy robot with a cube-shaped tomato-red body, a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a sky-blue visor and two round friendly eyes, a short antenna with a yellow ball, thin grey stick arms and two thin grey stick legs. On the left of centre the robot stands politely and holds up a round silver tray with a cocktail glass (a martini glass with a green olive) towards a portly gentleman on the right of centre. The gentleman has a big round head, a tall black top hat, a curly moustache and a monocle, a dark tailcoat, and reaches out to take the drink. Behind them a cosy parlour: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T15:37:55.787Z",
+    "candidates": [
+      {
+        "file": "beat1-a-0.png",
+        "sha256": "43e0948aa05a738ace2aae612ea492119833f2af01c6870eb8b9a384e6987251",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat2-a": {
+    "id": "beat2-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-59e00fb0-7baa-4195-b8c6-84c86369fdf0",
+    "submittedAt": "2026-11-05T15:38:28.960Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: the robot is a genius scholar. The robot: a boxy toy robot with a cube-shaped tomato-red body, a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a sky-blue visor and two round friendly eyes, a short antenna with a yellow ball, thin grey stick arms and two thin grey stick legs. The robot stands in front of a big dark green chalkboard that fills most of the background, holding a piece of white chalk up in one stick arm. The chalkboard is covered in white chalk maths: rows of equations, integral signs, Greek letters, fractions and a cone-shaped geometric diagram with curves. A small stack of books on the floor beside the robot."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5201,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: the robot is a genius scholar. The robot: a boxy toy robot with a cube-shaped tomato-red body, a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a sky-blue visor and two round friendly eyes, a short antenna with a yellow ball, thin grey stick arms and two thin grey stick legs. The robot stands in front of a big dark green chalkboard that fills most of the background, holding a piece of white chalk up in one stick arm. The chalkboard is covered in white chalk maths: rows of equations, integral signs, Greek letters, fractions and a cone-shaped geometric diagram with curves. A small stack of books on the floor beside the robot. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T15:38:28.962Z",
+    "candidates": [
+      {
+        "file": "beat2-a-0.png",
+        "sha256": "4930aeb2d3d13d27cacfd33d7212280a1bd9962fc3a32a9fc456efe871fc0caf",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat3-a": {
+    "id": "beat3-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-81657ce3-2243-4414-a219-1c513b9efa94",
+    "submittedAt": "2026-11-05T15:38:57.807Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: robots in prison, but defiant. Each robot: a boxy toy robot with a cube-shaped tomato-red body, a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a sky-blue visor and two round eyes, a short antenna with a yellow ball, thin grey stick arms and two thin grey stick legs. Three such robots stand side by side behind thick dark iron prison bars that run from the top to the bottom of the picture. The robot on the left is damaged with a dented head and one arm missing; the robot on the right has a cracked visor, a bandage and a loose sparking wire. The robot in the middle stands tall and raises a clenched fist in defiance, eyes determined. Grey stone prison wall behind them, a small barred window with a beam of light."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5301,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: robots in prison, but defiant. Each robot: a boxy toy robot with a cube-shaped tomato-red body, a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a sky-blue visor and two round eyes, a short antenna with a yellow ball, thin grey stick arms and two thin grey stick legs. Three such robots stand side by side behind thick dark iron prison bars that run from the top to the bottom of the picture. The robot on the left is damaged with a dented head and one arm missing; the robot on the right has a cracked visor, a bandage and a loose sparking wire. The robot in the middle stands tall and raises a clenched fist in defiance, eyes determined. Grey stone prison wall behind them, a small barred window with a beam of light. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T15:38:57.808Z",
+    "candidates": [
+      {
+        "file": "beat3-a-0.png",
+        "sha256": "540638ca936d3a8a5dae6ec37f47bfc4c540b1e7e689dfcd25c319a62e5f3897",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-b": {
+    "id": "beat1-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-04b0da8a-f096-46a6-80b6-e54f2ab3314b",
+    "submittedAt": "2026-11-05T15:40:14.800Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a robot butler serving a rich human, both characters standing close together in the centre of the picture, both seen from head to knees, the human a little taller than the robot. The robot on the left of centre: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round eyes below the visor and a small polite smile, a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. The robot holds up ONE round silver tray with ONE martini glass with a green olive, offering it to the gentleman. The gentleman on the right of centre: portly, big round head, tall black top hat, curly moustache, monocle, dark tailcoat and bow tie, reaching for the glass with one hand. Plain cosy parlour behind them: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5102,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a robot butler serving a rich human, both characters standing close together in the centre of the picture, both seen from head to knees, the human a little taller than the robot. The robot on the left of centre: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round eyes below the visor and a small polite smile, a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. The robot holds up ONE round silver tray with ONE martini glass with a green olive, offering it to the gentleman. The gentleman on the right of centre: portly, big round head, tall black top hat, curly moustache, monocle, dark tailcoat and bow tie, reaching for the glass with one hand. Plain cosy parlour behind them: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T15:40:14.804Z",
+    "candidates": [
+      {
+        "file": "beat1-b-0.png",
+        "sha256": "8e837c4dd4a3bab2697db24061818b7eaa432bf43791c64d28b253c26d72149b",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-c": {
+    "id": "beat1-c",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-8271b720-5a72-4a15-8d42-7fbe3ff45621",
+    "submittedAt": "2026-11-05T15:40:43.832Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a robot butler serving a rich human, both characters standing close together in the centre of the picture, both seen from head to knees, the human a little taller than the robot. The robot on the left of centre: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round eyes below the visor and a small polite smile, a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. The robot holds up ONE round silver tray with ONE martini glass with a green olive, offering it to the gentleman. The gentleman on the right of centre: portly, big round head, tall black top hat, curly moustache, monocle, dark tailcoat and bow tie, reaching for the glass with one hand. Plain cosy parlour behind them: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5103,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a robot butler serving a rich human, both characters standing close together in the centre of the picture, both seen from head to knees, the human a little taller than the robot. The robot on the left of centre: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round eyes below the visor and a small polite smile, a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. The robot holds up ONE round silver tray with ONE martini glass with a green olive, offering it to the gentleman. The gentleman on the right of centre: portly, big round head, tall black top hat, curly moustache, monocle, dark tailcoat and bow tie, reaching for the glass with one hand. Plain cosy parlour behind them: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T15:40:43.834Z",
+    "candidates": [
+      {
+        "file": "beat1-c-0.png",
+        "sha256": "7da5a25a8e27809575e0b04d1db95f9d8a5b55a04873392287133078d02991da",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat1-d": {
+    "id": "beat1-d",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-d58fed0a-1f80-4749-bfcf-c68865254152",
+    "submittedAt": "2026-11-05T15:41:10.433Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a robot butler serving a rich human, both characters standing close together in the centre of the picture, both seen from head to knees, the human a little taller than the robot. The robot on the left of centre: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round eyes below the visor and a small polite smile, a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. The robot holds up ONE round silver tray with ONE martini glass with a green olive, offering it to the gentleman. The gentleman on the right of centre: portly, big round head, tall black top hat, curly moustache, monocle, dark tailcoat and bow tie, reaching for the glass with one hand. Plain cosy parlour behind them: cream striped wallpaper, a framed picture, a warm lamp."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5104,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: a robot butler serving a rich human, both characters standing close together in the centre of the picture, both seen from head to knees, the human a little taller than the robot. The robot on the left of centre: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round eyes below the visor and a small polite smile, a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. The robot holds up ONE round silver tray with ONE martini glass with a green olive, offering it to the gentleman. The gentleman on the right of centre: portly, big round head, tall black top hat, curly moustache, monocle, dark tailcoat and bow tie, reaching for the glass with one hand. Plain cosy parlour behind them: cream striped wallpaper, a framed picture, a warm lamp. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T15:41:10.434Z",
+    "candidates": [
+      {
+        "file": "beat1-d-0.png",
+        "sha256": "644875a31188e637327c675a91199d1ea82a219084e70b59ce2e3f7231d1099e",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat3-b": {
+    "id": "beat3-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-560b3ef3-46e1-452d-8d0b-20e0fe12f8d8",
+    "submittedAt": "2026-11-05T15:41:39.890Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: robots locked in a prison cell, but defiant. Three robots stand side by side behind thick dark iron prison bars that run from the top to the bottom of the picture, all three seen from head to knees. Each robot: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round eyes below the visor, a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. The robot on the left is damaged: dented head, one arm missing, a patch on its body. The robot on the right has a cracked visor, a bandage and a loose sparking wire. The robot in the middle stands tall, gripping a bar with one grey hand and raising the other grey fist high in defiance, with determined frowning eyebrows. Grey stone prison wall behind them, a small barred window high up with a beam of light."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5302,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: robots locked in a prison cell, but defiant. Three robots stand side by side behind thick dark iron prison bars that run from the top to the bottom of the picture, all three seen from head to knees. Each robot: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round eyes below the visor, a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. The robot on the left is damaged: dented head, one arm missing, a patch on its body. The robot on the right has a cracked visor, a bandage and a loose sparking wire. The robot in the middle stands tall, gripping a bar with one grey hand and raising the other grey fist high in defiance, with determined frowning eyebrows. Grey stone prison wall behind them, a small barred window high up with a beam of light. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T15:41:39.892Z",
+    "candidates": [
+      {
+        "file": "beat3-b-0.png",
+        "sha256": "2e460952eedb3bb9e34c1c060e3cbfb9db47ca12a08bc4f440ed56add3c58232",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  },
+  "beat3-c": {
+    "id": "beat3-c",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-1c99d251-89c2-4442-bed8-387443882e01",
+    "submittedAt": "2026-11-05T15:42:06.939Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-illustrations.txt",
+          "text": "Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: robots locked in a prison cell, but defiant. Three robots stand side by side behind thick dark iron prison bars that run from the top to the bottom of the picture, all three seen from head to knees. Each robot: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round eyes below the visor, a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. The robot on the left is damaged: dented head, one arm missing, a patch on its body. The robot on the right has a cracked visor, a bandage and a loose sparking wire. The robot in the middle stands tall, gripping a bar with one grey hand and raising the other grey fist high in defiance, with determined frowning eyebrows. Grey stone prison wall behind them, a small barred window high up with a beam of light."
+        }
+      ],
+      "image_size": {
+        "width": 300,
+        "height": 172
+      },
+      "no_background": false,
+      "seed": 5303,
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (illustrations): a wide story illustration for the intro of a robot puzzle game, a flat 2D side-on scene like a page of a picture book, seen straight from the front at eye level. Big clear characters in the middle of the picture, simple uncluttered background, dark outline, two-tone shading, opaque background filling the whole canvas. Subject: robots locked in a prison cell, but defiant. Three robots stand side by side behind thick dark iron prison bars that run from the top to the bottom of the picture, all three seen from head to knees. Each robot: a boxy toy robot with a cream head shaped like an upside-down trapezoid (wider at the top, like a flowerpot) with a red rim on top, a small rectangular sky-blue visor on the forehead, two round eyes below the visor, a short antenna with a yellow ball, a rounded tomato-red box body, grey segmented stick arms with grey hands, two thin grey legs. The robot on the left is damaged: dented head, one arm missing, a patch on its body. The robot on the right has a cracked visor, a bandage and a loose sparking wire. The robot in the middle stands tall, gripping a bar with one grey hand and raising the other grey fist high in defiance, with determined frowning eyebrows. Grey stone prison wall behind them, a small barred window high up with a beam of light. Must not include: isometric, three-quarter view, top-down view, readable words, captions, speech bubbles, frame, border, watermark, signature, user interface."
+    },
+    "at": "2026-11-05T15:42:06.942Z",
+    "candidates": [
+      {
+        "file": "beat3-c-0.png",
+        "sha256": "f5b19574a0d91677a310d9c5636bfa85fa9ce3aee5e5b8f234f180a165958ced",
+        "width": 300,
+        "height": 172
+      }
+    ]
+  }
+}
