@@ -1,0 +1,36 @@
+{
+  "set": "parts-v1",
+  "bead": "tg-vy4.16",
+  "class": "parts",
+  "exploration": false,
+  "_doc": "Reward icons (the three 'stars'): capacitor, integrated circuit, coil, in the Toybox direction. Big takes are drawn at half the game size and scaled x2 by tools/art/tiles/robot-cell.mjs (which also derives the greyed BW variants); minis are their own 24 px takes cropped to the old mini sizes. See docs/art/classes/terrain.md. Recipes are never edited after generation: add a new id (new seed) instead.",
+  "shared": {
+    "opts": { "outline": "single color black outline", "detail": "low detail", "view": "side", "direction": "south" },
+    "capSubject": "Subject: an electrolytic capacitor standing upright: a chunky rounded cylinder can in sky blue with a cream stripe down one side and a slightly domed silver top, two short straight silver wire legs coming out of the bottom. Straight front view, symmetric, centred.",
+    "chipSubject": "Subject: an integrated circuit microchip seen straight from above: a rounded dark navy square chip body with a small cream dot in one corner and a tiny cute robot face printed in sunny yellow in the middle, short silver pins sticking out evenly along all four sides. Flat top-down, symmetric, centred.",
+    "coilSubject": "Subject: a toroid inductor coil seen straight from the front: a fat ring (doughnut) wrapped all around with shiny copper-orange wire windings, the cream ring core peeking through between the windings, a round hole in the middle. Straight front view, symmetric, centred.",
+    "miniNote": " Tiny icon: very simple, only the main shape and 2-3 colours, thick outline."
+  },
+  "defaults": {
+    "endpoint": "create-image-pixen",
+    "fragments": ["style", "class-parts"],
+    "noBackground": true,
+    "options": "@opts",
+    "negative": "text, letters, numbers, watermark, signature, glow, shadow, ground plate, hands, character, frame, border"
+  },
+  "recipes": [
+    { "id": "capacitor-a", "concept": "big capacitor", "width": 92, "height": 112, "seed": 5101, "subject": "@capSubject" },
+    { "id": "chip-a", "concept": "big chip", "width": 116, "height": 108, "seed": 5201, "subject": "@chipSubject" },
+    { "id": "coil-a", "concept": "big coil", "width": 116, "height": 116, "seed": 5301, "subject": "@coilSubject" },
+    { "id": "capacitor-mini-a", "concept": "mini capacitor", "width": 24, "height": 24, "seed": 5111, "subject": "Subject: a tiny icon of an electrolytic capacitor standing upright: a sky-blue rounded cylinder can with a cream stripe and a silver top, two short silver legs. Very simple, only the main shape, thick dark outline, fills the canvas height." },
+    { "id": "chip-mini-a", "concept": "mini chip", "width": 24, "height": 24, "seed": 5211, "subject": "Subject: a tiny icon of a microchip seen from above: a dark navy square with short silver pins on all four sides and one sunny yellow dot in the middle. Very simple, thick dark outline, fills the canvas." },
+    { "id": "coil-mini-a", "concept": "mini coil", "width": 24, "height": 24, "seed": 5311, "subject": "Subject: a tiny icon of a toroid coil: a fat copper-orange ring (doughnut) with a few dark wire stripes and a round hole in the middle. Very simple, thick dark outline, fills the canvas." },
+    { "id": "capacitor-mini-b", "concept": "mini capacitor, tall", "width": 24, "height": 24, "seed": 5112, "subject": "Subject: a tiny icon of an electrolytic capacitor: a tall narrow upright sky-blue cylinder, about two thirds as wide as it is tall, with a cream vertical stripe on the right and a flat silver top, two short silver legs at the bottom. Very simple, thick dark outline, fills the canvas height." },
+    { "id": "coil-mini-b", "concept": "mini coil, copper windings", "width": 24, "height": 24, "seed": 5312, "subject": "Subject: a tiny icon of a toroid coil: a fat ring with a round hole in the middle, wrapped in thick copper-orange wire windings with mint green core showing between them. Very simple, thick dark outline, fills the canvas." }
+  ],
+  "outputs": [
+    { "path": "images/greencapacitor.png", "from": "capacitor-mini-b#0", "steps": [{ "op": "crop", "x": 3, "y": 0, "width": 18, "height": 24 }], "width": 18, "height": 24 },
+    { "path": "images/greenintegratedcircuit.png", "from": "chip-mini-a#0", "steps": [{ "op": "crop", "x": 0, "y": 1, "width": 24, "height": 22 }], "width": 24, "height": 22 },
+    { "path": "images/greencoil.png", "from": "coil-mini-a#0", "width": 24, "height": 24 }
+  ]
+}

@@ -8,10 +8,24 @@ Status: draft (2026-11-05), under the approved "Toybox pixel" direction in
 
 | Asset | Native size | Where the game loads it |
 | ----- | ----------- | ----------------------- |
-| Player robot | 50×50 per frame, 40 frames in one row (2000×50) | `player` in `data/sprites.json` (`images/sprytszyt.png`, sx 0, sy 50); frame 0 is the idle robot, the rest are the death and drown animations (`playerMations` in `script.js`) |
+| Player robot | 50×50 per frame, 32 frames in one row (1600×50) | `player` in `data/robot-cell.json` (`images/tiles/robot-cell.png`, row 0), compiled after the old atlas so it replaces the old `player` sheet; frames are played by `playerMations` in `script.js` |
 
-The new robot is not wired in yet: the death and drown frames must be redrawn
-to match it first (follow-up work).
+Wired in (tg-vy4.16): `robot-v1/robot-front-c#0`, padded to 50×50 at the
+bottom. `tools/art/tiles/robot-cell.mjs` derives every frame from that master
+(hash-checked against its record), keeping the old frame indices:
+
+| Frames | Animation | What |
+| --- | --- | --- |
+| 0 | `default` | idle robot |
+| 1–4 | `toYellow` | turns yellow with a growing yellow glow; 4 is the yellow x-ray |
+| 5, 6 | `flicker` | x-ray (dark body, glowing outline, ribs and spine) in yellow / blue-white flash |
+| 7–11 | `toDead` | charring to grey; smoke puffs; X eyes on 10–11 |
+| 12–21 | `drownInLava` | tints to lava orange then deep red while shrinking, with lava bubbles; 21 is only bubbles |
+| 22 | unused | idle copy |
+| 23–31 | `drown` | tints blue while shrinking, ripple rings and rising bubbles; 31 is only ripples |
+
+The eye boxes for the X eyes are fixed at (19, 18) and (27, 18) in the 50×50
+frame; a new robot master needs them re-measured.
 
 ## Geometry
 

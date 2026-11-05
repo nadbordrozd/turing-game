@@ -1,0 +1,74 @@
+{
+  "player": {
+    "sx": 0,
+    "sy": 0,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 1600,
+    "h": 50
+  },
+  "exitHatch": {
+    "sx": 0,
+    "sy": 50,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 1050,
+    "h": 50
+  },
+  "electricTrap": {
+    "sx": 0,
+    "sy": 100,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 1050,
+    "h": 50
+  },
+  "obstacle": {
+    "sx": 0,
+    "sy": 150,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 50,
+    "h": 50
+  },
+  "wall": {
+    "sx": 50,
+    "sy": 150,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 50,
+    "h": 50
+  },
+  "corner": {
+    "sx": 100,
+    "sy": 150,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 50,
+    "h": 50
+  },
+  "deadend": {
+    "sx": 150,
+    "sy": 150,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 50,
+    "h": 50
+  },
+  "tunnel": {
+    "sx": 200,
+    "sy": 150,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 50,
+    "h": 50
+  },
+  "magicTile": {
+    "sx": 250,
+    "sy": 150,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 50,
+    "h": 50
+  }
+}

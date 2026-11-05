@@ -1,0 +1,42 @@
+{
+  "capacitor-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "chunky sky-blue can with cream stripe and silver legs; reads at 1x on light and dark; slight top dome is acceptable for an icon",
+    "at": "2026-11-05T15:45:07.309Z"
+  },
+  "chip-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "navy chip with even pins and a yellow robot face; crisp, symmetric, reads at 1x",
+    "at": "2026-11-05T15:45:07.358Z"
+  },
+  "coil-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "copper-wound toroid with mint core, symmetric ring; reads at 1x on light and dark",
+    "at": "2026-11-05T15:45:07.406Z"
+  },
+  "capacitor-mini-a#0": {
+    "verdict": "REJECTED",
+    "notes": "squat wide can reads as a bucket or pot, not the tall capacitor; too wide for the 18x24 slot",
+    "at": "2026-11-05T15:49:12.667Z"
+  },
+  "capacitor-mini-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "tall sky-blue can with cream stripe and legs matches the big icon; reads at 1x; fits 18x24",
+    "at": "2026-11-05T15:49:12.718Z"
+  },
+  "chip-mini-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "navy square with pins on four sides and a yellow centre; clearly a chip at 1x (pin colours vary, acceptable at this size)",
+    "at": "2026-11-05T15:49:12.768Z"
+  },
+  "coil-mini-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "clean copper ring with a hole; reads as the coil at 1x on light and dark",
+    "at": "2026-11-05T15:49:12.814Z"
+  },
+  "coil-mini-b#0": {
+    "verdict": "REJECTED",
+    "notes": "concentric rainbow stripes are noisy at 1x; the ring shape is lost",
+    "at": "2026-11-05T15:49:12.859Z"
+  }
+}

@@ -32,7 +32,7 @@ for the arrow.)
 
 ## 3. Geometry and resolution
 
-- Board tiles and the robot are 50×50 in the game; frame counts and sheet
+- Robot-cell tiles and the robot are 50×50 in the game; frame counts and sheet
   layout are set by `data/sprites.json` and the `Q.animations` table in
   `script.js`. Program tiles are 54×54 (board pitch 54 at scale 1, no gaps),
   anti-aliased, and keep the 2012 frame counts and rates.
@@ -41,9 +41,9 @@ for the arrow.)
   the instruction symbol sits on top of the belt. Belts animate (they scroll in
   the direction of flow) and must stay in phase across tiles. See
   `classes/program-tiles.md`.
-- Terrain: lava, water and ice keep the user's hand-drawn originals for now
-  (they join seamlessly and animate; PixelLab could not match that in
-  `explore-v1`).
+- Terrain (robot cell): a sand play-mat floor with slate-blue toy rails and
+  bricks, drawn by a checked-in generator so tiles join and read in every
+  rotation; lava keeps the user's 2012 original. See `classes/terrain.md`.
 - Robot: front view, symmetric, feet at the bottom edge (it walks towards its
   feet), transparent background; the game rotates it at runtime.
 
@@ -53,6 +53,8 @@ for the arrow.)
 | ---- | -------- | -------- |
 | 2026-11-05 | Toybox pixel is the direction | user: "keep iterating on the tiles" after `explore-v1` (`.orchestration/sheets/explore-v1.png`) |
 | 2026-11-05 | Animated, joinable program tiles (belt, rotators, step) are drawn by a checked-in deterministic generator, not PixelLab | user: tiles must animate and join like one long belt; PixelLab gives single stills with no seamless edges |
-| 2026-11-05 | Lava, water and ice stay as the user drew them for now | user: "maybe keep the lava as it is"; 6 failed lava takes in `explore-v1` |
+| 2026-11-05 | Lava, water and ice stay as the user drew them for now (water and ice superseded by the robot-cell row below; lava still stands) | user: "maybe keep the lava as it is"; 6 failed lava takes in `explore-v1` |
 | 2026-11-05 | Robot is a straight front view, never isometric | user: "the game grid is square, not isometric diamond" |
 | 2026-11-05 | Program tiles are anti-aliased (smooth edges, sub-pixel motion), pre-rendered at the 2012 frame counts and rates (rotators 60 frames, 3° each) | user: v1 arrows "look a bit pixelated"; "the motion should be just as smooth as before" (tg-vy4.15) |
+| 2026-11-05 | Robot cell redrawn (floor, walls, block, hatch, trap, magic tile, ice, water, dots) by `tools/art/tiles/robot-cell.mjs`; only lava stays original | user: "Change the look of the robot cell as well. No need to anchor to that garish purple" (tg-vy4.16) |
+| 2026-11-05 | Reward part icons are PixelLab takes (`parts-v1`); greyed variants share the colour icon's canvas size | tg-vy4.16 |

@@ -54,6 +54,7 @@ window.addEventListener('load',function(e) {
 		'motherboard.png',  "highlight.png",
 		'sprytszyt.png','obstacle.png',
 		'tiles/program-tiles.png', 'program-tiles.json',
+		'tiles/robot-cell.png', 'robot-cell.json',
 		'robotile.png', 'strzalka.png', 'levelend.png', "intro1.png", "intro2.png", "intro3.png",
 		"coil.png", "integratedcircuit.png", 'capacitor.png',
 		"coilBW.png", "integratedcircuitBW.png", 'capacitorBW.png',
@@ -147,6 +148,9 @@ window.addEventListener('load',function(e) {
 		Q.compileSheets("sprytszyt.png","sprites.json");
 		// Redrawn program tiles replace the atlas entries of the same name.
 		Q.compileSheets("tiles/program-tiles.png","program-tiles.json");
+		// Robot cell (player robot, walls, block, hatch, trap, magic tile) from
+		// tools/art/tiles/robot-cell.mjs; lava still comes from the old atlas.
+		Q.compileSheets("tiles/robot-cell.png","robot-cell.json");
 		Q.input.keyboardControls();
 		//Q.stageScene("level selector");
 		Q.stageScene("intro");

@@ -1,0 +1,354 @@
+{
+  "capacitor-a": {
+    "id": "capacitor-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-98ed0e19-218a-48d4-b869-e2130d867929",
+    "submittedAt": "2026-11-05T15:43:31.619Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-parts.txt",
+          "text": "Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: an electrolytic capacitor standing upright: a chunky rounded cylinder can in sky blue with a cream stripe down one side and a slightly domed silver top, two short straight silver wire legs coming out of the bottom. Straight front view, symmetric, centred."
+        }
+      ],
+      "image_size": {
+        "width": 92,
+        "height": 112
+      },
+      "no_background": true,
+      "seed": 5101,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part. Subject: an electrolytic capacitor standing upright: a chunky rounded cylinder can in sky blue with a cream stripe down one side and a slightly domed silver top, two short straight silver wire legs coming out of the bottom. Straight front view, symmetric, centred. Must not include: text, letters, numbers, watermark, signature, glow, shadow, ground plate, hands, character, frame, border."
+    },
+    "at": "2026-11-05T15:43:31.623Z",
+    "candidates": [
+      {
+        "file": "capacitor-a-0.png",
+        "sha256": "26c1c241209f9dc4a1ee253645079e71863da6156f1b8506882952a8029fb09e",
+        "width": 92,
+        "height": 112
+      }
+    ]
+  },
+  "chip-a": {
+    "id": "chip-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-9bac0f5d-0242-4df2-b811-77b4f273ca1e",
+    "submittedAt": "2026-11-05T15:44:12.559Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-parts.txt",
+          "text": "Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: an integrated circuit microchip seen straight from above: a rounded dark navy square chip body with a small cream dot in one corner and a tiny cute robot face printed in sunny yellow in the middle, short silver pins sticking out evenly along all four sides. Flat top-down, symmetric, centred."
+        }
+      ],
+      "image_size": {
+        "width": 116,
+        "height": 108
+      },
+      "no_background": true,
+      "seed": 5201,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part. Subject: an integrated circuit microchip seen straight from above: a rounded dark navy square chip body with a small cream dot in one corner and a tiny cute robot face printed in sunny yellow in the middle, short silver pins sticking out evenly along all four sides. Flat top-down, symmetric, centred. Must not include: text, letters, numbers, watermark, signature, glow, shadow, ground plate, hands, character, frame, border."
+    },
+    "at": "2026-11-05T15:44:12.561Z",
+    "candidates": [
+      {
+        "file": "chip-a-0.png",
+        "sha256": "0d3e9f0b4dcc1f769263633f419bbea9f5d189bb44e82bb66807adb51942b612",
+        "width": 116,
+        "height": 108
+      }
+    ]
+  },
+  "coil-a": {
+    "id": "coil-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-2b6324b7-cb70-42ff-83d1-5476c2aeb3cb",
+    "submittedAt": "2026-11-05T15:44:41.656Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-parts.txt",
+          "text": "Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a toroid inductor coil seen straight from the front: a fat ring (doughnut) wrapped all around with shiny copper-orange wire windings, the cream ring core peeking through between the windings, a round hole in the middle. Straight front view, symmetric, centred."
+        }
+      ],
+      "image_size": {
+        "width": 116,
+        "height": 116
+      },
+      "no_background": true,
+      "seed": 5301,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part. Subject: a toroid inductor coil seen straight from the front: a fat ring (doughnut) wrapped all around with shiny copper-orange wire windings, the cream ring core peeking through between the windings, a round hole in the middle. Straight front view, symmetric, centred. Must not include: text, letters, numbers, watermark, signature, glow, shadow, ground plate, hands, character, frame, border."
+    },
+    "at": "2026-11-05T15:44:41.658Z",
+    "candidates": [
+      {
+        "file": "coil-a-0.png",
+        "sha256": "1b2cbf79f7e0c39dc7be3e461ec2c886f48b2bd841f61f27f4fdcc073812b5c7",
+        "width": 116,
+        "height": 116
+      }
+    ]
+  },
+  "capacitor-mini-a": {
+    "id": "capacitor-mini-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-be264c76-ec01-430d-b9a7-b82c6cbe3f63",
+    "submittedAt": "2026-11-05T15:45:59.182Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-parts.txt",
+          "text": "Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a tiny icon of an electrolytic capacitor standing upright: a sky-blue rounded cylinder can with a cream stripe and a silver top, two short silver legs. Very simple, only the main shape, thick dark outline, fills the canvas height."
+        }
+      ],
+      "image_size": {
+        "width": 24,
+        "height": 24
+      },
+      "no_background": true,
+      "seed": 5111,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part. Subject: a tiny icon of an electrolytic capacitor standing upright: a sky-blue rounded cylinder can with a cream stripe and a silver top, two short silver legs. Very simple, only the main shape, thick dark outline, fills the canvas height. Must not include: text, letters, numbers, watermark, signature, glow, shadow, ground plate, hands, character, frame, border."
+    },
+    "at": "2026-11-05T15:45:59.185Z",
+    "candidates": [
+      {
+        "file": "capacitor-mini-a-0.png",
+        "sha256": "435b35c9c7870348fbebffe6d8217542c79bccf518952d902a122b82fb5dda01",
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  "chip-mini-a": {
+    "id": "chip-mini-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-396dabdc-3788-42b6-b0e2-c528c234ff02",
+    "submittedAt": "2026-11-05T15:46:47.227Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-parts.txt",
+          "text": "Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a tiny icon of a microchip seen from above: a dark navy square with short silver pins on all four sides and one sunny yellow dot in the middle. Very simple, thick dark outline, fills the canvas."
+        }
+      ],
+      "image_size": {
+        "width": 24,
+        "height": 24
+      },
+      "no_background": true,
+      "seed": 5211,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part. Subject: a tiny icon of a microchip seen from above: a dark navy square with short silver pins on all four sides and one sunny yellow dot in the middle. Very simple, thick dark outline, fills the canvas. Must not include: text, letters, numbers, watermark, signature, glow, shadow, ground plate, hands, character, frame, border."
+    },
+    "at": "2026-11-05T15:46:47.229Z",
+    "candidates": [
+      {
+        "file": "chip-mini-a-0.png",
+        "sha256": "b5f51507524cc07901870ea2c04155e3a75dd1e59b5420e24ad438d85477e615",
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  "coil-mini-a": {
+    "id": "coil-mini-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-9b5859ff-1366-490f-ac3c-58209e790db2",
+    "submittedAt": "2026-11-05T15:47:07.705Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-parts.txt",
+          "text": "Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a tiny icon of a toroid coil: a fat copper-orange ring (doughnut) with a few dark wire stripes and a round hole in the middle. Very simple, thick dark outline, fills the canvas."
+        }
+      ],
+      "image_size": {
+        "width": 24,
+        "height": 24
+      },
+      "no_background": true,
+      "seed": 5311,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part. Subject: a tiny icon of a toroid coil: a fat copper-orange ring (doughnut) with a few dark wire stripes and a round hole in the middle. Very simple, thick dark outline, fills the canvas. Must not include: text, letters, numbers, watermark, signature, glow, shadow, ground plate, hands, character, frame, border."
+    },
+    "at": "2026-11-05T15:47:07.706Z",
+    "candidates": [
+      {
+        "file": "coil-mini-a-0.png",
+        "sha256": "d267ab7a1d6a3a797542a7120f3898e060f95274545891934f23518089e39dc8",
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  "capacitor-mini-b": {
+    "id": "capacitor-mini-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-c9b66885-84b6-448d-9985-8c55b2f7cf8d",
+    "submittedAt": "2026-11-05T15:48:11.366Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-parts.txt",
+          "text": "Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a tiny icon of an electrolytic capacitor: a tall narrow upright sky-blue cylinder, about two thirds as wide as it is tall, with a cream vertical stripe on the right and a flat silver top, two short silver legs at the bottom. Very simple, thick dark outline, fills the canvas height."
+        }
+      ],
+      "image_size": {
+        "width": 24,
+        "height": 24
+      },
+      "no_background": true,
+      "seed": 5112,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part. Subject: a tiny icon of an electrolytic capacitor: a tall narrow upright sky-blue cylinder, about two thirds as wide as it is tall, with a cream vertical stripe on the right and a flat silver top, two short silver legs at the bottom. Very simple, thick dark outline, fills the canvas height. Must not include: text, letters, numbers, watermark, signature, glow, shadow, ground plate, hands, character, frame, border."
+    },
+    "at": "2026-11-05T15:48:11.369Z",
+    "candidates": [
+      {
+        "file": "capacitor-mini-b-0.png",
+        "sha256": "59740817204a117e1f920e3e7d57ef50d74cc4591e50e17016b6ddfc93104d12",
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  "coil-mini-b": {
+    "id": "coil-mini-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-21a4782b-e5a0-4ba7-a34f-0553e56cf1eb",
+    "submittedAt": "2026-11-05T15:48:57.081Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-parts.txt",
+          "text": "Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a tiny icon of a toroid coil: a fat ring with a round hole in the middle, wrapped in thick copper-orange wire windings with mint green core showing between them. Very simple, thick dark outline, fills the canvas."
+        }
+      ],
+      "image_size": {
+        "width": 24,
+        "height": 24
+      },
+      "no_background": true,
+      "seed": 5312,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (parts icons): one electronic part drawn as a chunky toy sticker icon, straight-on flat 2D view, centred, filling most of the canvas. Big clear shapes, dark outline, two-tone shading lit from straight above, transparent background with nothing around the part. Subject: a tiny icon of a toroid coil: a fat ring with a round hole in the middle, wrapped in thick copper-orange wire windings with mint green core showing between them. Very simple, thick dark outline, fills the canvas. Must not include: text, letters, numbers, watermark, signature, glow, shadow, ground plate, hands, character, frame, border."
+    },
+    "at": "2026-11-05T15:48:57.083Z",
+    "candidates": [
+      {
+        "file": "coil-mini-b-0.png",
+        "sha256": "a1b2308f8f698edf355ecaaed82033b7ded9ca7f10bb62b424c5f74204a837e5",
+        "width": 24,
+        "height": 24
+      }
+    ]
+  }
+}
