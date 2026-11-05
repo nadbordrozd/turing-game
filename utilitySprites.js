@@ -413,6 +413,7 @@ Q.Sprite.extend("MySprite",{
   }
  });
 
+var PlayerRobo_baseRates = {};
 Q.Sprite.extend("PlayerRobo",{
   // the init constructor is called on creation
   init: function(p) {
@@ -431,8 +432,25 @@ Q.Sprite.extend("PlayerRobo",{
     });
 	playerkurna = this;
 	if(p.parent){ this.p.x+=p.parent.p.x; this.p.y+=p.parent.p.y;}
+	// Death animations follow the playback speed: before the animation
+	// component steps (listeners run in registration order), stretch the
+	// current animation's frame rate by the speed factor. At x1 the factor is
+	// 1, so the authored rates are unchanged.
+	this.on("step", this, "scaleDeathRate");
 	this.add("animation");
 	this.on("died", this, "diedCallback");
+  },
+  deathRateFactor : function(){
+	var f = (t.TuringTable && t.TuringTable.stepTimeFactor) || 1;
+	return Math.max(1/8, Math.min(4, f));		//sane clamps: x8 .. 1/4
+  },
+  scaleDeathRate : function(){
+	var name = this.p.animation;
+	if(!name || name === "default") return;
+	var anim = Q.animation(this.p.sprite, name);
+	if(!anim) return;
+	PlayerRobo_baseRates[name] = PlayerRobo_baseRates[name] || anim.rate;
+	anim.rate = PlayerRobo_baseRates[name]*this.deathRateFactor();
   },
   diedCallback : function(){
 		if(this.todoAfterDeath) this.todoAfterDeath();
@@ -469,6 +487,7 @@ Q.Sprite.extend("PlayerRobo",{
 	this.deltaY = false;
 	this.callback = false;
 	this.fx = null;
+	this.todoAfterDeath = null;		//a reset mid-death must not fire the old 'fail'
   },
   rotate : function(deltaAngle, time, callback){
 	this.deltaAngle = deltaAngle;
