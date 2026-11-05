@@ -1,0 +1,690 @@
+{
+  "bump#0": {
+    "id": "bump",
+    "n": 0,
+    "at": "2026-11-05T15:37:38.867Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a single soft cartoon clunk of a small plastic toy robot bumping into a wooden block, short rubbery boing, light and playful, no reverb",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "bump-0.mp3",
+    "sha256": "8334f95f79119e93e19f54d4cd3a7f6f957d86a8ee914dbecfd959eaa4e8cca9",
+    "bytes": 8820
+  },
+  "bump#1": {
+    "id": "bump",
+    "n": 1,
+    "at": "2026-11-05T15:37:40.835Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a single soft cartoon clunk of a small plastic toy robot bumping into a wooden block, short rubbery boing, light and playful, no reverb",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "bump-1.mp3",
+    "sha256": "2509c8aee2ee6e8b27bd2d0e408d789749a18122e862aebcb888590675876391",
+    "bytes": 8820
+  },
+  "zap#0": {
+    "id": "zap",
+    "n": 0,
+    "at": "2026-11-05T15:37:48.110Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a short cartoon electric zap and crackle, a little toy robot getting a harmless buzzy shock, playful, bright, no voice",
+      "duration_seconds": 0.7,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "zap-0.mp3",
+    "sha256": "7a39fae632ff04816942e5378fe4ae1bc0535046c3e5eea763962179d947c70f",
+    "bytes": 12163
+  },
+  "zap#1": {
+    "id": "zap",
+    "n": 1,
+    "at": "2026-11-05T15:37:49.711Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a short cartoon electric zap and crackle, a little toy robot getting a harmless buzzy shock, playful, bright, no voice",
+      "duration_seconds": 0.7,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "zap-1.mp3",
+    "sha256": "f4fdae5f929c8eccad3ccb9938b732d1a1089df2a175d64f6ae208a169992b72",
+    "bytes": 12163
+  },
+  "drown#0": {
+    "id": "drown",
+    "n": 0,
+    "at": "2026-11-05T15:37:51.835Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a cartoon bloop and bubbly gurgle as a small toy sinks into water, playful and light, short",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "drown-0.mp3",
+    "sha256": "eb5745721da1d3cbbdb34c873ec4ec1509144d6def8f4856dfdffd6298fd08df",
+    "bytes": 13835
+  },
+  "drown#1": {
+    "id": "drown",
+    "n": 1,
+    "at": "2026-11-05T15:37:53.763Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a cartoon bloop and bubbly gurgle as a small toy sinks into water, playful and light, short",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "drown-1.mp3",
+    "sha256": "ed3fb640f1a11aee000230f403df9e55c3bb386677d42fc4b7cf911f66e1f772",
+    "bytes": 13835
+  },
+  "lava#0": {
+    "id": "lava",
+    "n": 0,
+    "at": "2026-11-05T15:37:55.737Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a short cartoon sizzle and hiss, a small toy touching a hot plate, quick fizzle out, playful not scary",
+      "duration_seconds": 0.7,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "lava-0.mp3",
+    "sha256": "cc3f1a06ec09e3882053700743450eda40ca0177857b71d12b718a1fdde86c26",
+    "bytes": 12163
+  },
+  "lava#1": {
+    "id": "lava",
+    "n": 1,
+    "at": "2026-11-05T15:37:57.878Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a short cartoon sizzle and hiss, a small toy touching a hot plate, quick fizzle out, playful not scary",
+      "duration_seconds": 0.7,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "lava-1.mp3",
+    "sha256": "99132db8d829fee1901e3387b2376f86f1926edbcff9a8bd847aa7f9dc34ea9d",
+    "bytes": 12163
+  },
+  "ice#0": {
+    "id": "ice",
+    "n": 0,
+    "at": "2026-11-05T15:37:59.357Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a short crisp cartoon ice crack followed by a quick falling whistle, a toy dropping through thin ice, light and playful",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "ice-0.mp3",
+    "sha256": "6e6ecd80123815089e1fd522ebfcfcd52b0e90a0a16613608811d80b1cf0674f",
+    "bytes": 13835
+  },
+  "ice#1": {
+    "id": "ice",
+    "n": 1,
+    "at": "2026-11-05T15:38:01.496Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a short crisp cartoon ice crack followed by a quick falling whistle, a toy dropping through thin ice, light and playful",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "ice-1.mp3",
+    "sha256": "47373a6dec03544bff8462dfab196e54e729686f9669f12eb97457ac036075ef",
+    "bytes": 13835
+  },
+  "pickup#0": {
+    "id": "pickup",
+    "n": 0,
+    "at": "2026-11-05T15:38:02.903Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a short sparkly rising blip, video game item pickup chime, bright toy glockenspiel twinkle",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "pickup-0.mp3",
+    "sha256": "aa0ca1f5207d17edeaa4f512a3fc0e028ef2825890184ac5d71e50bbfdc6510f",
+    "bytes": 8820
+  },
+  "pickup#1": {
+    "id": "pickup",
+    "n": 1,
+    "at": "2026-11-05T15:38:04.429Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a short sparkly rising blip, video game item pickup chime, bright toy glockenspiel twinkle",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "pickup-1.mp3",
+    "sha256": "90aa537cf7dd5bdb97c42b41d019f8db895e98d395c6961f30235439c9cfb79c",
+    "bytes": 8820
+  },
+  "dot#0": {
+    "id": "dot",
+    "n": 0,
+    "at": "2026-11-05T15:38:06.037Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a single tiny soft pop, like a small bubble popping, very short cute video game sound",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "dot-0.mp3",
+    "sha256": "1b59b79ae6262867d81c26fe3d68c9f2b02e42d7d0e98a171914dba0d3a37381",
+    "bytes": 8820
+  },
+  "dot#1": {
+    "id": "dot",
+    "n": 1,
+    "at": "2026-11-05T15:38:07.649Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a single tiny soft pop, like a small bubble popping, very short cute video game sound",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "dot-1.mp3",
+    "sha256": "40e38ebdd82878fe07ae4121acebe5d903c532c4ef9dfead4dacbf448fc98c72",
+    "bytes": 8820
+  },
+  "exit#0": {
+    "id": "exit",
+    "n": 0,
+    "at": "2026-11-05T15:38:09.257Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a short happy three note jingle on a toy xylophone, level complete, cheerful and bright, ends cleanly",
+      "duration_seconds": 1.2,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "exit-0.mp3",
+    "sha256": "06941b0ef68a88d1b225764d9814a4d0aa1321c562cf052450c06c451dea4f27",
+    "bytes": 20105
+  },
+  "exit#1": {
+    "id": "exit",
+    "n": 1,
+    "at": "2026-11-05T15:38:11.095Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a short happy three note jingle on a toy xylophone, level complete, cheerful and bright, ends cleanly",
+      "duration_seconds": 1.2,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "exit-1.mp3",
+    "sha256": "82151e7ef3c5ddf8f74350b7000bf18ba66e7676680ac6d30ab5dc41c6f980ac",
+    "bytes": 20105
+  },
+  "fail#0": {
+    "id": "fail",
+    "n": 0,
+    "at": "2026-11-05T15:38:13.400Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a short sad descending three note blip on a toy synth, cartoon wah wah, gentle not harsh",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "fail-0.mp3",
+    "sha256": "13325abcda1ed882d4f28548b5b9c5ff8cfbf319898985d1f998d1f6f4e92fda",
+    "bytes": 13835
+  },
+  "fail#1": {
+    "id": "fail",
+    "n": 1,
+    "at": "2026-11-05T15:38:15.824Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a short sad descending three note blip on a toy synth, cartoon wah wah, gentle not harsh",
+      "duration_seconds": 0.8,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "fail-1.mp3",
+    "sha256": "6eb70633d4983bc645bad6c4066fad8aed69f214f34dc33e4a471c87d6d9c04f",
+    "bytes": 13835
+  },
+  "tile-pick#0": {
+    "id": "tile-pick",
+    "n": 0,
+    "at": "2026-11-05T15:38:17.548Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a single soft plastic click of picking up a small toy tile from a table, very short and quiet",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "tile-pick-0.mp3",
+    "sha256": "8af5e8e03df0009202f160b64276bc1384a4df18f83e5f4637b890fbcc4f1f9b",
+    "bytes": 8820
+  },
+  "tile-pick#1": {
+    "id": "tile-pick",
+    "n": 1,
+    "at": "2026-11-05T15:38:19.014Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a single soft plastic click of picking up a small toy tile from a table, very short and quiet",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "tile-pick-1.mp3",
+    "sha256": "a8cfdea720a165ab70de08565988d316e8ea2f036083bc032863545975256aed",
+    "bytes": 8820
+  },
+  "tile-drop#0": {
+    "id": "tile-drop",
+    "n": 0,
+    "at": "2026-11-05T15:38:21.135Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a single soft plastic clack of snapping a small toy tile into place on a board, very short, satisfying",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "tile-drop-0.mp3",
+    "sha256": "f7ea5f6cfbbec7572b1030de23242d007b9b6ca8dca83d605a465c39a9917374",
+    "bytes": 8820
+  },
+  "tile-drop#1": {
+    "id": "tile-drop",
+    "n": 1,
+    "at": "2026-11-05T15:38:23.382Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a single soft plastic clack of snapping a small toy tile into place on a board, very short, satisfying",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "tile-drop-1.mp3",
+    "sha256": "b8657109b5b44dda80e1739cc20ae53dc9b2bdc292c23bcf77ee1dc6c0d3e070",
+    "bytes": 8820
+  },
+  "tile-rotate#0": {
+    "id": "tile-rotate",
+    "n": 0,
+    "at": "2026-11-05T15:38:25.298Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a single tiny mechanical tick, like a toy dial turning one notch, very short and crisp",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "tile-rotate-0.mp3",
+    "sha256": "2477850996fa0489245400ac275e2d1e5146060c9cbf79644a83918dec30c0cd",
+    "bytes": 8820
+  },
+  "tile-rotate#1": {
+    "id": "tile-rotate",
+    "n": 1,
+    "at": "2026-11-05T15:38:26.706Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a single tiny mechanical tick, like a toy dial turning one notch, very short and crisp",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "tile-rotate-1.mp3",
+    "sha256": "d9b9300bfe1cccfa5d7fdf06484742aa4783d950741f48a0bd6eca6ca0e5848e",
+    "bytes": 8820
+  },
+  "click#0": {
+    "id": "click",
+    "n": 0,
+    "at": "2026-11-05T15:38:28.018Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a single soft clean user interface button click, short muted pop, toy-like, very short",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "click-0.mp3",
+    "sha256": "1668979be506cd64fdedf6f51da9f9e0d5a258c20245633d390eae9eb76197c4",
+    "bytes": 8820
+  },
+  "click#1": {
+    "id": "click",
+    "n": 1,
+    "at": "2026-11-05T15:38:29.607Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a single soft clean user interface button click, short muted pop, toy-like, very short",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "click-1.mp3",
+    "sha256": "157ffd66a79d553e8df028704a6bed46261eec530301f32363c805144989d424",
+    "bytes": 8820
+  },
+  "scan#0": {
+    "id": "scan",
+    "n": 0,
+    "at": "2026-11-05T15:38:31.868Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a short cute robot scanner chirp, quick rising electronic beep-boop of a toy robot sensor scanning ahead",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "scan-0.mp3",
+    "sha256": "6898825ccc4b0a492336fdf4fe28eeb8e937503037ea69948b9978616c00bbee",
+    "bytes": 8820
+  },
+  "scan#1": {
+    "id": "scan",
+    "n": 1,
+    "at": "2026-11-05T15:38:34.379Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a short cute robot scanner chirp, quick rising electronic beep-boop of a toy robot sensor scanning ahead",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "scan-1.mp3",
+    "sha256": "0e838056609a27a67a0fbc008e7c12cb3aae77865358289212c7162be0f88621",
+    "bytes": 8820
+  },
+  "unlock#0": {
+    "id": "unlock",
+    "n": 0,
+    "at": "2026-11-05T15:38:35.829Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a cheery bright chime, a toy robot being freed and powering up, sparkly ascending bell arpeggio, short",
+      "duration_seconds": 1,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "unlock-0.mp3",
+    "sha256": "356ddf0610cdaa039f779cb5c9ad4c709c632e35c1094afce9c1a6c1f2355010",
+    "bytes": 17179
+  },
+  "unlock#1": {
+    "id": "unlock",
+    "n": 1,
+    "at": "2026-11-05T15:38:37.522Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a cheery bright chime, a toy robot being freed and powering up, sparkly ascending bell arpeggio, short",
+      "duration_seconds": 1,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "unlock-1.mp3",
+    "sha256": "98dc8cd4eaaff15e6b36dbf50fec215f8500b4ed67f1fde40ad935cf0f5d2d95",
+    "bytes": 17179
+  },
+  "fanfare#0": {
+    "id": "fanfare",
+    "n": 0,
+    "at": "2026-11-05T15:38:39.147Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a joyful celebratory toy fanfare, playful trumpets and xylophone with a little drum roll and sparkle, triumphant cartoon victory, ends with a clean final note",
+      "duration_seconds": 2,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "fanfare-0.mp3",
+    "sha256": "4f0055c638f3ca984b1b53e2169d48382b60d3d707e1260d26f0c94b66a64ec7",
+    "bytes": 33061
+  },
+  "fanfare#1": {
+    "id": "fanfare",
+    "n": 1,
+    "at": "2026-11-05T15:38:40.854Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a joyful celebratory toy fanfare, playful trumpets and xylophone with a little drum roll and sparkle, triumphant cartoon victory, ends with a clean final note",
+      "duration_seconds": 2,
+      "prompt_influence": 0.6,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "fanfare-1.mp3",
+    "sha256": "23f1d61901e9c045ad8c4a92962bd110184f9a1f37c074b634a867046e30f9db",
+    "bytes": 33061
+  },
+  "exit#2": {
+    "id": "exit",
+    "n": 2,
+    "at": "2026-11-05T15:40:47.831Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "video game level complete jingle, quick rising three note arpeggio on a bright toy xylophone, do mi sol, cheerful, short, clean ending",
+      "duration_seconds": 1,
+      "prompt_influence": 0.8,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "exit-2.mp3",
+    "sha256": "d07af3e09dfd21d8592627bfaf378777787ff61369e855480ac61bf3d8f5295a",
+    "bytes": 17179
+  },
+  "exit#3": {
+    "id": "exit",
+    "n": 3,
+    "at": "2026-11-05T15:40:49.332Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "video game level complete jingle, quick rising three note arpeggio on a bright toy xylophone, do mi sol, cheerful, short, clean ending",
+      "duration_seconds": 1,
+      "prompt_influence": 0.8,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "exit-3.mp3",
+    "sha256": "a8eef6b93b937ba6f99c99298f256fb64a0d695a8f6c4183e60828c24541901d",
+    "bytes": 17179
+  },
+  "exit#4": {
+    "id": "exit",
+    "n": 4,
+    "at": "2026-11-05T15:40:51.357Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "video game level complete jingle, quick rising three note arpeggio on a bright toy xylophone, do mi sol, cheerful, short, clean ending",
+      "duration_seconds": 1,
+      "prompt_influence": 0.8,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "exit-4.mp3",
+    "sha256": "c14157603ffec3811967837f462dfe750d4e2e5c4878641e18d8164aecd8490c",
+    "bytes": 17179
+  },
+  "fail#2": {
+    "id": "fail",
+    "n": 2,
+    "at": "2026-11-05T15:40:53.185Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "video game failure sound effect, three descending bloops on a soft toy synthesizer, cartoon wah wah wah, gentle and short",
+      "duration_seconds": 1,
+      "prompt_influence": 0.8,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "fail-2.mp3",
+    "sha256": "30cf7ce5068b31f7584da3b4d7212637e4e9ad1678bb28ba79ee0abc9a3341e6",
+    "bytes": 17179
+  },
+  "fail#3": {
+    "id": "fail",
+    "n": 3,
+    "at": "2026-11-05T15:40:55.191Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "video game failure sound effect, three descending bloops on a soft toy synthesizer, cartoon wah wah wah, gentle and short",
+      "duration_seconds": 1,
+      "prompt_influence": 0.8,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "fail-3.mp3",
+    "sha256": "f94e8c136258c728007aa11821a7b051c17a9fba3d774d8c1f1bb9c2220043e2",
+    "bytes": 17179
+  },
+  "fail#4": {
+    "id": "fail",
+    "n": 4,
+    "at": "2026-11-05T15:40:56.736Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "video game failure sound effect, three descending bloops on a soft toy synthesizer, cartoon wah wah wah, gentle and short",
+      "duration_seconds": 1,
+      "prompt_influence": 0.8,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "fail-4.mp3",
+    "sha256": "09336a1135bdce8cad27ad880a96860860e80d83f96305f91b23e3a04d0fdaad",
+    "bytes": 17179
+  },
+  "unlock#2": {
+    "id": "unlock",
+    "n": 2,
+    "at": "2026-11-05T15:40:58.732Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "video game unlock sound, quick ascending sparkly bell arpeggio with a cheerful little robot power-up beep, bright toy chime, short",
+      "duration_seconds": 1,
+      "prompt_influence": 0.8,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "unlock-2.mp3",
+    "sha256": "e15a4f7385e017be2195dd7787248904df2c4dea592016103ce89c08e1b3a08f",
+    "bytes": 17179
+  },
+  "unlock#3": {
+    "id": "unlock",
+    "n": 3,
+    "at": "2026-11-05T15:41:00.270Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "video game unlock sound, quick ascending sparkly bell arpeggio with a cheerful little robot power-up beep, bright toy chime, short",
+      "duration_seconds": 1,
+      "prompt_influence": 0.8,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "unlock-3.mp3",
+    "sha256": "3c361e31a9754bca08552fb81789413dc673a9cf88efc97705cbb3b99f0e8167",
+    "bytes": 17179
+  },
+  "unlock#4": {
+    "id": "unlock",
+    "n": 4,
+    "at": "2026-11-05T15:41:02.271Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "video game unlock sound, quick ascending sparkly bell arpeggio with a cheerful little robot power-up beep, bright toy chime, short",
+      "duration_seconds": 1,
+      "prompt_influence": 0.8,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "unlock-4.mp3",
+    "sha256": "e097ad489d26a9e4e2caf56073bfd81c1ac1b9253ff97e4babccfaa3ca78efd8",
+    "bytes": 17179
+  },
+  "tile-pick#2": {
+    "id": "tile-pick",
+    "n": 2,
+    "at": "2026-11-05T15:41:46.912Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a single light hollow plastic tock, a small toy building block lifted off a wooden table, one short clean click, close up, no rattle",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.75,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "tile-pick-2.mp3",
+    "sha256": "d45ee245f7aed9bd937d6235f24e6ba2749b91bb8bdebbdffba0e6dee27ba479",
+    "bytes": 8820
+  },
+  "tile-pick#3": {
+    "id": "tile-pick",
+    "n": 3,
+    "at": "2026-11-05T15:41:48.513Z",
+    "format": "mp3_44100_128",
+    "request": {
+      "text": "a single light hollow plastic tock, a small toy building block lifted off a wooden table, one short clean click, close up, no rattle",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.75,
+      "loop": false,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    "file": "tile-pick-3.mp3",
+    "sha256": "054eccc6fe521c5c7b912f4d8ef627e5494262044f99404d00188a3e2c28129c",
+    "bytes": 8820
+  }
+}

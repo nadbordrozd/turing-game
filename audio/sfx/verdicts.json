@@ -1,0 +1,217 @@
+{
+  "bump#1": {
+    "verdict": "ACCEPTED",
+    "notes": "single low thump with a short falling boing; clean tail by 0.31s",
+    "at": "2026-11-05T15:42:45.548Z"
+  },
+  "bump#0": {
+    "verdict": "REJECTED",
+    "notes": "three scattered weak taps, -31 LUFS, no single clunk",
+    "at": "2026-11-05T15:42:45.594Z"
+  },
+  "zap#1": {
+    "verdict": "ACCEPTED",
+    "notes": "bright crackle burst then short buzzy hum, ends 0.35s; playful not harsh",
+    "at": "2026-11-05T15:42:45.641Z"
+  },
+  "zap#0": {
+    "verdict": "REJECTED",
+    "notes": "clipped crackle (true peak +2 dBTP), longer harsh tail",
+    "at": "2026-11-05T15:42:45.685Z"
+  },
+  "drown#1": {
+    "verdict": "ACCEPTED",
+    "notes": "four quick rising bloops, bubbly gurgle, done by 0.5s",
+    "at": "2026-11-05T15:42:45.729Z"
+  },
+  "drown#0": {
+    "verdict": "REJECTED",
+    "notes": "same bloop idea but six bloops and longer; drown-1 is tighter",
+    "at": "2026-11-05T15:42:45.772Z"
+  },
+  "lava#0": {
+    "verdict": "ACCEPTED",
+    "notes": "short bright sizzle that fades out by 0.55s",
+    "at": "2026-11-05T15:42:45.816Z"
+  },
+  "lava#1": {
+    "verdict": "REJECTED",
+    "notes": "similar sizzle but runs to the end of the clip, less of a fizzle-out",
+    "at": "2026-11-05T15:42:45.858Z"
+  },
+  "ice#0": {
+    "verdict": "ACCEPTED",
+    "notes": "crisp crack then a smooth falling whistle, reads as crack-and-fall",
+    "at": "2026-11-05T15:42:45.902Z"
+  },
+  "ice#1": {
+    "verdict": "REJECTED",
+    "notes": "crack, gap, then a very loud noisy whistle (-4.6 LUFS, clipped)",
+    "at": "2026-11-05T15:42:45.944Z"
+  },
+  "pickup#0": {
+    "verdict": "ACCEPTED",
+    "notes": "fast rising sparkly glissando, ends cleanly at 0.39s",
+    "at": "2026-11-05T15:42:45.989Z"
+  },
+  "pickup#1": {
+    "verdict": "REJECTED",
+    "notes": "rising sweep buried in noise, runs to the clip end",
+    "at": "2026-11-05T15:42:46.033Z"
+  },
+  "dot#1": {
+    "verdict": "ACCEPTED",
+    "notes": "clean soft pop; played trimmed to the first pop (second pop cut in the mix)",
+    "at": "2026-11-05T15:42:46.077Z"
+  },
+  "dot#0": {
+    "verdict": "REJECTED",
+    "notes": "two overlapping pops with a smeared tail",
+    "at": "2026-11-05T15:42:46.120Z"
+  },
+  "exit#3": {
+    "verdict": "ACCEPTED",
+    "notes": "rising stepped xylophone arpeggio resolving on a held note: a real little jingle",
+    "at": "2026-11-05T15:42:46.163Z"
+  },
+  "exit#0": {
+    "verdict": "REJECTED",
+    "notes": "one sustained ding, no melody",
+    "at": "2026-11-05T15:42:46.207Z"
+  },
+  "exit#1": {
+    "verdict": "REJECTED",
+    "notes": "two static tones, no melody",
+    "at": "2026-11-05T15:42:46.250Z"
+  },
+  "exit#2": {
+    "verdict": "REJECTED",
+    "notes": "two static tones after a click, no melody",
+    "at": "2026-11-05T15:42:46.295Z"
+  },
+  "exit#4": {
+    "verdict": "REJECTED",
+    "notes": "two static tones, quiet (-29 LUFS), no melody",
+    "at": "2026-11-05T15:42:46.339Z"
+  },
+  "fail#2": {
+    "verdict": "ACCEPTED",
+    "notes": "wobbly wah-wah that steps down to a low blip, sad but gentle, done by 0.4s",
+    "at": "2026-11-05T15:42:46.385Z"
+  },
+  "fail#0": {
+    "verdict": "REJECTED",
+    "notes": "static chord, no descent",
+    "at": "2026-11-05T15:42:46.428Z"
+  },
+  "fail#1": {
+    "verdict": "REJECTED",
+    "notes": "static buzzy chord, clipped, no descent",
+    "at": "2026-11-05T15:42:46.472Z"
+  },
+  "fail#3": {
+    "verdict": "REJECTED",
+    "notes": "long wobble that barely descends, 0.75s",
+    "at": "2026-11-05T15:42:46.515Z"
+  },
+  "fail#4": {
+    "verdict": "REJECTED",
+    "notes": "wah-wah wobble without a clear downward step, 0.72s",
+    "at": "2026-11-05T15:42:46.559Z"
+  },
+  "tile-pick#3": {
+    "verdict": "ACCEPTED",
+    "notes": "single hollow plastic tock; played trimmed to the main click",
+    "at": "2026-11-05T15:42:46.602Z"
+  },
+  "tile-pick#0": {
+    "verdict": "REJECTED",
+    "notes": "two faint ticks at -47 LUFS",
+    "at": "2026-11-05T15:42:46.645Z"
+  },
+  "tile-pick#1": {
+    "verdict": "REJECTED",
+    "notes": "faint rattle, not one click",
+    "at": "2026-11-05T15:42:46.687Z"
+  },
+  "tile-pick#2": {
+    "verdict": "REJECTED",
+    "notes": "barely audible tick at -44 LUFS",
+    "at": "2026-11-05T15:42:46.729Z"
+  },
+  "tile-drop#0": {
+    "verdict": "ACCEPTED",
+    "notes": "one firm clack at 0.1s; played trimmed to that click",
+    "at": "2026-11-05T15:42:46.773Z"
+  },
+  "tile-drop#1": {
+    "verdict": "REJECTED",
+    "notes": "almost silent (-42 LUFS)",
+    "at": "2026-11-05T15:42:46.815Z"
+  },
+  "tile-rotate#1": {
+    "verdict": "ACCEPTED",
+    "notes": "even ratchet ticks; played trimmed to the first tick",
+    "at": "2026-11-05T15:42:46.858Z"
+  },
+  "tile-rotate#0": {
+    "verdict": "REJECTED",
+    "notes": "irregular ratchet ticks; take 1 has a cleaner first tick",
+    "at": "2026-11-05T15:42:46.901Z"
+  },
+  "click#1": {
+    "verdict": "ACCEPTED",
+    "notes": "single soft broadband pop, clean decay",
+    "at": "2026-11-05T15:42:46.946Z"
+  },
+  "click#0": {
+    "verdict": "REJECTED",
+    "notes": "pop plus a stray click at the clip end",
+    "at": "2026-11-05T15:42:46.991Z"
+  },
+  "scan#1": {
+    "verdict": "ACCEPTED",
+    "notes": "two rising chirps (boop-beep), clearly a little scanner",
+    "at": "2026-11-05T15:42:47.036Z"
+  },
+  "scan#0": {
+    "verdict": "REJECTED",
+    "notes": "single rising tone, fine but take 1 reads more as a robot sensor",
+    "at": "2026-11-05T15:42:47.079Z"
+  },
+  "unlock#2": {
+    "verdict": "ACCEPTED",
+    "notes": "ascending three-step bell arpeggio with sparkle, cheerful, done by 0.72s",
+    "at": "2026-11-05T15:42:47.123Z"
+  },
+  "unlock#0": {
+    "verdict": "REJECTED",
+    "notes": "static bell chord, no arpeggio",
+    "at": "2026-11-05T15:42:47.167Z"
+  },
+  "unlock#1": {
+    "verdict": "REJECTED",
+    "notes": "sparkle then static tone, no arpeggio",
+    "at": "2026-11-05T15:42:47.209Z"
+  },
+  "unlock#3": {
+    "verdict": "REJECTED",
+    "notes": "static chord, quiet (-24 LUFS)",
+    "at": "2026-11-05T15:42:47.254Z"
+  },
+  "unlock#4": {
+    "verdict": "REJECTED",
+    "notes": "mostly static chord after a short blip",
+    "at": "2026-11-05T15:42:47.297Z"
+  },
+  "fanfare#0": {
+    "verdict": "ACCEPTED",
+    "notes": "clear multi-note toy fanfare with drum hits, triumphant, final note fades by 1.65s",
+    "at": "2026-11-05T15:42:47.341Z"
+  },
+  "fanfare#1": {
+    "verdict": "REJECTED",
+    "notes": "busy noisy start then a long static tail; less melodic",
+    "at": "2026-11-05T15:42:47.383Z"
+  }
+}

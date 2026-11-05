@@ -1,0 +1,132 @@
+{
+  "sounds": [
+    {
+      "id": "bump",
+      "prompt": "a single soft cartoon clunk of a small plastic toy robot bumping into a wooden block, short rubbery boing, light and playful, no reverb",
+      "duration": 0.5,
+      "influence": 0.6,
+      "takes": 2,
+      "output": "sounds/bump.mp3"
+    },
+    {
+      "id": "zap",
+      "prompt": "a short cartoon electric zap and crackle, a little toy robot getting a harmless buzzy shock, playful, bright, no voice",
+      "duration": 0.7,
+      "influence": 0.6,
+      "takes": 2,
+      "output": "sounds/zap.mp3"
+    },
+    {
+      "id": "drown",
+      "prompt": "a cartoon bloop and bubbly gurgle as a small toy sinks into water, playful and light, short",
+      "duration": 0.8,
+      "influence": 0.6,
+      "takes": 2,
+      "output": "sounds/drown.mp3"
+    },
+    {
+      "id": "lava",
+      "prompt": "a short cartoon sizzle and hiss, a small toy touching a hot plate, quick fizzle out, playful not scary",
+      "duration": 0.7,
+      "influence": 0.6,
+      "takes": 2,
+      "output": "sounds/lava.mp3"
+    },
+    {
+      "id": "ice",
+      "prompt": "a short crisp cartoon ice crack followed by a quick falling whistle, a toy dropping through thin ice, light and playful",
+      "duration": 0.8,
+      "influence": 0.6,
+      "takes": 2,
+      "output": "sounds/ice.mp3"
+    },
+    {
+      "id": "pickup",
+      "prompt": "a short sparkly rising blip, video game item pickup chime, bright toy glockenspiel twinkle",
+      "duration": 0.5,
+      "influence": 0.6,
+      "takes": 2,
+      "output": "sounds/pickup.mp3"
+    },
+    {
+      "id": "dot",
+      "prompt": "a single tiny soft pop, like a small bubble popping, very short cute video game sound",
+      "duration": 0.5,
+      "influence": 0.6,
+      "takes": 2,
+      "output": "sounds/dot.mp3"
+    },
+    {
+      "id": "exit",
+      "prompt": "video game level complete jingle, quick rising three note arpeggio on a bright toy xylophone, do mi sol, cheerful, short, clean ending",
+      "duration": 1,
+      "influence": 0.8,
+      "takes": 5,
+      "output": "sounds/exit.mp3"
+    },
+    {
+      "id": "fail",
+      "prompt": "video game failure sound effect, three descending bloops on a soft toy synthesizer, cartoon wah wah wah, gentle and short",
+      "duration": 1,
+      "influence": 0.8,
+      "takes": 5,
+      "output": "sounds/fail.mp3"
+    },
+    {
+      "id": "tile-pick",
+      "prompt": "a single light hollow plastic tock, a small toy building block lifted off a wooden table, one short clean click, close up, no rattle",
+      "duration": 0.5,
+      "influence": 0.75,
+      "takes": 4,
+      "output": "sounds/tile-pick.mp3"
+    },
+    {
+      "id": "tile-drop",
+      "prompt": "a single soft plastic clack of snapping a small toy tile into place on a board, very short, satisfying",
+      "duration": 0.5,
+      "influence": 0.6,
+      "takes": 2,
+      "output": "sounds/tile-drop.mp3"
+    },
+    {
+      "id": "tile-rotate",
+      "prompt": "a single tiny mechanical tick, like a toy dial turning one notch, very short and crisp",
+      "duration": 0.5,
+      "influence": 0.6,
+      "takes": 2,
+      "output": "sounds/tile-rotate.mp3"
+    },
+    {
+      "id": "click",
+      "prompt": "a single soft clean user interface button click, short muted pop, toy-like, very short",
+      "duration": 0.5,
+      "influence": 0.6,
+      "takes": 2,
+      "output": "sounds/click.mp3"
+    },
+    {
+      "id": "scan",
+      "prompt": "a short cute robot scanner chirp, quick rising electronic beep-boop of a toy robot sensor scanning ahead",
+      "duration": 0.5,
+      "influence": 0.6,
+      "takes": 2,
+      "output": "sounds/scan.mp3"
+    },
+    {
+      "id": "unlock",
+      "prompt": "video game unlock sound, quick ascending sparkly bell arpeggio with a cheerful little robot power-up beep, bright toy chime, short",
+      "duration": 1,
+      "influence": 0.8,
+      "takes": 5,
+      "output": "sounds/unlock.mp3"
+    },
+    {
+      "id": "fanfare",
+      "prompt": "a joyful celebratory toy fanfare, playful trumpets and xylophone with a little drum roll and sparkle, triumphant cartoon victory, ends with a clean final note",
+      "duration": 2,
+      "influence": 0.6,
+      "takes": 2,
+      "output": "sounds/fanfare.mp3"
+    }
+  ]
+}

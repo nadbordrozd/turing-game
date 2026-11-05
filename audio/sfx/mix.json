@@ -1,0 +1,23 @@
+{
+  "target": -16,
+  "ceiling": -1,
+  "notes": "Play windows (seconds in the shipped file) and loudness offsets relative to target. UI and tile clicks sit 8 dB under the gameplay events; the fanfare sits a little above. Picked from `node tools/art/sfx-levels.mjs --envelope <id>`.",
+  "sounds": {
+    "bump": { "start": 0, "end": 0.36, "offsetDb": 0 },
+    "zap": { "start": 0, "end": 0.4, "offsetDb": -1 },
+    "drown": { "start": 0, "end": 0.6, "offsetDb": 0 },
+    "lava": { "start": 0, "end": 0.58, "offsetDb": -2 },
+    "ice": { "start": 0, "end": 0.8, "offsetDb": 0 },
+    "pickup": { "start": 0, "end": 0.42, "offsetDb": 0 },
+    "dot": { "start": 0.005, "end": 0.085, "offsetDb": -7 },
+    "exit": { "start": 0, "end": 0.95, "offsetDb": 0 },
+    "fail": { "start": 0, "end": 0.48, "offsetDb": -2 },
+    "tile-pick": { "start": 0.2, "end": 0.29, "offsetDb": -8 },
+    "tile-drop": { "start": 0.085, "end": 0.2, "offsetDb": -7 },
+    "tile-rotate": { "start": 0.015, "end": 0.06, "offsetDb": -9 },
+    "click": { "start": 0, "end": 0.16, "offsetDb": -8 },
+    "scan": { "start": 0, "end": 0.45, "offsetDb": -5 },
+    "unlock": { "start": 0, "end": 0.85, "offsetDb": 0 },
+    "fanfare": { "start": 0, "end": 1.68, "offsetDb": 2 }
+  }
+}
