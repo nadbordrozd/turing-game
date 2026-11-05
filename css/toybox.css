@@ -424,6 +424,176 @@ body.tg {
 .gs-score.mini .gs-steps .out { margin: 0 0 0 4px; }
 .gs-hint { font: 600 12px/15px var(--round); color: var(--ink-3); }
 
+/* =================== end-level screen (js/scenes/end-level.js) =================== */
+.el-screen {
+  position: absolute;
+  isolation: isolate;
+  overflow: hidden;
+  pointer-events: auto;
+  background: var(--desk);
+  color: var(--ink);
+}
+.el-land {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1024px;
+  height: 768px;
+  transform-origin: 0 0;
+}
+.el-land img { display: block; image-rendering: pixelated; image-rendering: crisp-edges; }
+.el-bg { position: absolute; left: 0; top: 0; width: 1024px; height: 768px; }
+.el-robot { position: absolute; }
+.el-robot img { width: 100%; height: 100%; }
+.el-frame {
+  position: absolute;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 3px solid var(--ink);
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
+  background: #9fd3df;
+}
+
+.el-card {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 28px 22px 18px;
+  background: var(--cream);
+  border: 3px solid var(--ink);
+  border-radius: 18px;
+  box-shadow: 0 6px 0 var(--ink), 0 16px 30px rgba(20, 10, 30, 0.3);
+  z-index: 100;
+}
+.el-head { line-height: 0; color: var(--ink); }
+.el-sub { margin-top: 8px; font: 600 15px/20px var(--round); color: var(--ink-2); }
+.el-stats { display: flex; align-items: center; gap: 16px; margin-top: 12px; }
+.el-steps { min-width: 120px; }
+.el-steps .num { font-size: 44px; }
+.el-steps .best { font: 700 12px var(--round); color: var(--ink-3); margin-top: 4px; white-space: nowrap; }
+.el-goals { margin-left: auto; gap: 10px; }
+.el-goals .gs-goal { width: 70px; height: 80px; }
+.el-goals .gs-goal img { width: 40px; height: 40px; }
+.el-goals .gs-goal span { font-size: 12px; }
+
+.el-freed { margin-top: 12px; }
+.el-freed-top { display: flex; align-items: baseline; gap: 10px; font: 700 15px var(--round); }
+.el-freed-lbl b { font-weight: 800; font-size: 18px; }
+.el-gain {
+  margin-left: auto;
+  padding: 2px 10px;
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  background: var(--sun);
+  font: 800 12px var(--round);
+  box-shadow: 0 2px 0 var(--ink);
+}
+.el-bar { height: 18px; margin-top: 8px; border-radius: 10px; }
+.el-bar > i { background: var(--mint-d); box-shadow: inset 0 -4px 0 #3f8a5b; transition: width 0.9s cubic-bezier(.3, 1.4, .5, 1); }
+
+.el-actions { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+.el-actions .tb-btn { height: 56px; padding: 0 16px; }
+.el-actions .el-next { margin-left: auto; height: 66px; padding: 0 24px; font-size: 18px; }
+.el-actions .el-primary { margin-left: auto; }
+.el-portrait .el-actions { flex-wrap: wrap; }
+.el-portrait .el-actions .el-next { order: -1; flex: 1 1 100%; margin-left: 0; height: 70px; font-size: 20px; }
+.el-portrait .el-actions .el-back, .el-portrait .el-actions .el-sel { flex: 1 1 0; }
+.el-portrait .el-actions .el-primary { margin-left: 0; }
+.el-portrait .el-sub { font-size: 16px; }
+
+/* entrance: the main robot hops, freed robots drop in with a sparkle */
+.el-robot.el-wait { opacity: 0; }
+.el-robot.el-drop { animation: el-drop 0.62s cubic-bezier(.3, .0, .6, 1) both; transform-origin: 50% 100%; }
+@keyframes el-drop {
+  0% { opacity: 0; transform: translateY(-150px) scale(0.9, 1.1); }
+  55% { opacity: 1; transform: translateY(0) scale(1.12, 0.86); }
+  72% { transform: translateY(-16px) scale(0.96, 1.05); }
+  88% { transform: translateY(0) scale(1.04, 0.96); }
+  100% { transform: none; }
+}
+.el-robot.el-hop { animation: el-hop 0.9s ease-out 0.15s both; transform-origin: 50% 100%; }
+@keyframes el-hop {
+  0% { transform: none; }
+  15% { transform: scale(1.06, 0.92); }
+  40% { transform: translateY(-34px) scale(0.96, 1.05); }
+  65% { transform: translateY(0) scale(1.08, 0.9); }
+  82% { transform: translateY(-8px); }
+  100% { transform: none; }
+}
+.el-spark { position: absolute; width: 0; height: 0; pointer-events: none; }
+.el-spark i {
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  width: 10px;
+  height: 10px;
+  background: var(--sun);
+  box-shadow: 0 0 0 2px var(--ink);
+  animation: el-spark 0.8s ease-out both;
+}
+.el-spark i:nth-child(3n+1) { background: var(--cream); }
+.el-spark i:nth-child(3n+2) { background: var(--sky); width: 8px; height: 8px; }
+@keyframes el-spark {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.4) rotate(0); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1) rotate(90deg); }
+}
+.el-newtag {
+  position: absolute;
+  padding: 4px 8px 3px;
+  border: 3px solid var(--ink);
+  border-radius: 9px;
+  background: var(--sun);
+  box-shadow: 0 3px 0 var(--ink);
+  line-height: 0;
+  animation: el-pop 0.4s cubic-bezier(.3, 1.6, .5, 1) both;
+}
+.gs-goal.el-pop { animation: el-pop 0.45s cubic-bezier(.3, 1.6, .5, 1) both; }
+@keyframes el-pop {
+  0% { transform: scale(0.3); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
+
+/* 'just give up' first-finish celebration */
+.el-whoa { text-align: center; }
+.el-whoa-title { display: flex; flex-direction: column; align-items: center; gap: 10px; color: var(--tomato-d); margin: 4px 0 14px; }
+.el-whoa p { font-size: 17px; }
+.el-whoa-parts { display: flex; justify-content: center; gap: 18px; margin-top: 6px; }
+.el-whoa-parts img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  animation: el-bounce 0.9s cubic-bezier(.3, 1.6, .5, 1) both;
+}
+@keyframes el-bounce {
+  0% { transform: translateY(-40px) scale(0.3); opacity: 0; }
+  60% { transform: translateY(4px) scale(1.1); opacity: 1; }
+  100% { transform: none; }
+}
+.el-whoa-box .tb-actions { justify-content: center; }
+.el-whoa-box .el-yay { min-width: 140px; height: 56px; font-size: 18px; }
+.el-confetti { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.el-confetti i {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 16px;
+  border: 2px solid var(--ink);
+  border-radius: 2px;
+  animation: el-fall 1.8s ease-in both;
+}
+@keyframes el-fall {
+  0% { transform: translateY(0) rotate(0); opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateY(900px) rotate(var(--rot)); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .el-robot.el-drop, .el-robot.el-hop, .gs-goal.el-pop, .el-newtag, .el-whoa-parts img { animation: none; }
+  .el-spark, .el-confetti { display: none; }
+  .el-bar > i { transition: none; }
+
 /* =================== intro storybook (js/scenes/intro.js) =================== */
 .in-root {
   position: absolute;

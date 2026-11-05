@@ -34,13 +34,14 @@ layout.robots.forEach(([id, x, ground, lift = 0], i) => {
 recipes.outputs = outputs;
 fs.writeFileSync(recipesFile, JSON.stringify(recipes, null, 2) + "\n");
 const pad = (s, n) => (s + " ".repeat(n)).slice(0, n);
-const lines = rows.map((r, i) => `  [${pad(`"freed/${r.name}",`, 24)}${String(r.x).padStart(4)}, ${String(r.y).padStart(3)}, ${r.z}], // ${i === 0 ? "main robot, shown from 3 points" : `unlocked at ${3 * i + 3} points`}: ${r.id} (${r.w}x${r.h})`);
+const lines = rows.map((r, i) => `  [${pad(`"freed/${r.name}",`, 24)}${String(r.x).padStart(4)}, ${String(r.y).padStart(3)}, ${r.z}], // ${i === 0 ? "main robot, always shown" : `freed at ${3 * i} points`}: ${r.id} (${r.w}x${r.h})`);
 lines[lines.length - 1] = lines[lines.length - 1].replace("],", "] ");
 const js = `// End-level screen: the robots freed so far stand beside the main robot on
-// the landscape. One robot per 3 points: entry i shows from 3*i+3 points
-// (TuringScenes.js 'endLevel'). Entry 0 is the main robot (the player robot's
-// design). Each entry is [image, x, y, z]: x/y are the sprite centre in the
-// 1024x768 screen, z the draw order (farther back = higher on screen = lower z).
+// the landscape (js/scenes/end-level.js, t.EndLevel.freed). Entry 0 is the
+// main robot (the player robot's design) and is always shown; one more robot
+// per 3 points: entry i (i >= 1) is freed at 3*i points. Each entry is
+// [image, x, y, z]: x/y are the sprite centre in the 1024x768 screen, z the
+// draw order (farther back = higher on screen = lower z).
 // Original Toybox robots from art/sets/freed-v1 (bead tg-vy4.17); placement
 // preview: node tools/art/freed-layout.mjs (regenerates this file), then
 // node tools/art/freed-preview.mjs <out.png> [--count N]

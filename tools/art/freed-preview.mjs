@@ -6,7 +6,7 @@
 //
 //   node tools/art/freed-preview.mjs <out.png> [--count N] [--scale S] [--bg images/freed/landscape.png]
 //
-// --count N draws only the first N robots (what a player with 3N points sees).
+// --count N draws only the first N robots (what a player with 3(N-1) points sees).
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";

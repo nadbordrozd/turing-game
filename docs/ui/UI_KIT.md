@@ -57,7 +57,7 @@ TuringScenes.add(function(Q) {          // js/scenes/<name>.js, listed in index.
   `t.UI.mode`. Without it the scene is treated as legacy 1024x768 and, in
   portrait, fitted into the canvas with a Quintus stage viewport (touch
   still maps correctly).
-- `covers: true`: an overlay scene on stage > 0 drawn entirely in the canvas
+- `covers: true`: an overlay scene on stage > 0 that hides the screen below
   (for example `endLevel`). The kit hides the HTML layers while it is shown and
   washes out the rest of the canvas.
 - `restage`: how to rebuild the screen after a mode change (default: stage
@@ -107,3 +107,27 @@ off the board or onto the trash, or long-press it, to remove it. Undo button or
 Ctrl/Cmd+Z. Editing is locked while a program runs or is paused. Events
 `tile:select`, `tile:pick`, `tile:place`, `tile:rotate`, `tile:remove`,
 `tile:undo`, `tile:clear`, `tile:locked` are emitted for feedback hooks.
+
+## End-level screen
+
+`js/scenes/end-level.js` (`t.EndLevel`), staged on stage 2 after a victory
+with `{result, totalSteps, totalParts}` (`totalParts` is ignored). It is all
+HTML in the modal layer (`.el-*` in `css/toybox.css`); the stage only keeps tile
+input locked. Landscape: the 1024x768 meadow fills the screen and the result
+card sits in the sky. Portrait: the meadow in a framed card (whole width, so
+every robot stays visible) above the result card.
+
+- Saves `result + 1` as the level status, then compares points (sum of
+  statuses) before and after: robots freed by this finish drop in with a
+  sparkle, a "New!" tag and the `unlock` sound; the main robot hops. Entry 0
+  is always shown, entry i from `3 * i` points (`t.EndLevel.freed`).
+- Card: level tag, title by parts, a hint with the next step target, steps,
+  the three parts with their `level.times` targets, "N / 32 robots freed" with
+  a bar, and Back to board (also Escape), Level select, Next level (the next
+  playable level in order; hidden when there is none).
+- A level with `alwaysFull` (`just give up`) shows a celebration popup with
+  the `fanfare` sound the first time it is finished on this device
+  (localStorage `turing.celebrated.<level name>`). The `exit` sound is played
+  by the robot feedback (tg-84y.7) when the robot reaches the hatch, not here.
+- A layout-mode change restages the game screen and puts the result screen
+  back without replaying the entrance.

@@ -73,7 +73,9 @@ frame; a new robot master needs them re-measured.
 ## Freed robots (end-level screen)
 
 Set `art/sets/freed-v1` (bead tg-vy4.17). The end-level screen shows one
-freed robot per 3 points beside the main robot, on a Toybox landscape.
+freed robot per 3 points beside the main robot, on a Toybox landscape. The
+main robot (entry 0) is always shown; entry i is freed at 3*i points (points
+are the sum of saved level statuses, parts + 1 per finished level).
 
 - **Originals only.** No robot may copy or resemble a film, TV or game
   robot, and no such name appears in a prompt. Each recipe describes a
