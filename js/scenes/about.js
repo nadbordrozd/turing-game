@@ -5,7 +5,7 @@
 TuringScenes.add(function(Q) {
 	var UI = t.UI;
 	var EMAIL = "nadbordrozd@gmail.com";
-	var PROJECTS = "https://github.com/nadbordrozd";
+	var PROJECTS = "https://nadbordrozd.github.io/projects/";
 	var THANKS = [
 		["Pascal Rettig", ", creator of the Quintus game engine, who answered all my questions quickly and expertly."],
 		["Nicholas Feinberg", ", whose brilliant Manufactoria inspired me to make Turing. Go and play it now!"],
@@ -73,7 +73,7 @@ TuringScenes.add(function(Q) {
 		UI.el("p", "ab-caption", side, "Where it all happened: Turing on the left screen, Lucy on the desk.");
 		var links = UI.el("div", "ab-links", side);
 		linkButton({href: "mailto:" + EMAIL, label: "Email me", small: EMAIL, cls: "sun"}, links);
-		linkButton({href: PROJECTS, label: "My other projects", small: "github.com/nadbordrozd", cls: "mint", newTab: true}, links);
+		linkButton({href: PROJECTS, label: "My other projects", small: "nadbordrozd.github.io/projects", cls: "mint", newTab: true}, links);
 
 		// the words
 		var text = UI.el("div", "tb-card ab-text", root);
