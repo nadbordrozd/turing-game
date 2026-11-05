@@ -53,22 +53,44 @@ t.Controls = {
 			while(tt.stepForward().ultimateEnd===undefined){noste++;}
 		}
 
+		// Levels with start variants: play every variant; stop at the first
+		// one that fails (that one is animated). When all win, the run is
+		// scored on the WORST variant (most steps; lowest index on a tie),
+		// whatever variant ran before, and that variant is replayed so the
+		// animation, "Last run" and the end card all show the scored number.
 		var playAlternativesVirtually = function(){
-			t.Levels.currentLevel.setRobotTable(t.Levels);
+			var lev = t.Levels.currentLevel;
+			lev.setRobotTable(t.Levels);
 			var noal = t.Levels.numberOfAlternatives();
 			var counter = 0;
 			var lost = false;
+			var worst = -1, worstSteps = -1;
 			controls.stepsShown = 0;
+			tt.variantSteps = [];
 			while(noal>counter&&!lost){
 				counter++;
 				t.Levels.nextAlternative();
 				tt.resetDot();
-				t.Levels.currentLevel.setRobotTable(t.Levels);
+				lev.setRobotTable(t.Levels);
+				tt.totalSteps = undefined;
 
 				while(tt.stepForward().ultimateEnd===undefined){}
 				if(tt.steps.peekLast().ultimateEnd!=="victory") lost = true;
+				else {
+					tt.variantSteps[lev.current] = tt.totalSteps;
+					if(tt.totalSteps>worstSteps || (tt.totalSteps===worstSteps && lev.current<worst)){
+						worstSteps = tt.totalSteps;
+						worst = lev.current;
+					}
+				}
 			}
-			if(t.Levels.currentLevel.beforePlayInit) t.Levels.currentLevel.beforePlayInit();
+			if(!lost && worst!==lev.current){
+				lev.current = worst;
+				tt.resetDot();
+				lev.setRobotTable(t.Levels);
+				while(tt.stepForward().ultimateEnd===undefined){}
+			}
+			if(lev.beforePlayInit) lev.beforePlayInit();
 		}
 
 		var playFunction = 	function(){

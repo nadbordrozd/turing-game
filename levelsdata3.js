@@ -24,7 +24,7 @@ t.Levels.addLevel({
 	w: 130,
 	text : "I'm not sure about this one myself",
 	required : ["hobbit:"],
-	times : [250, 350, 499] // PROVISIONAL: tier 1 from old moves<500, rest guess
+	times : [345, 460, 740] // calibrated: best found B = 327 steps (docs/levels/CALIBRATION.md)
 });
 
 
@@ -106,7 +106,7 @@ t.Levels.addLevel({
 	robotTableX : 725,
 	text: "A triple loop is in order... or is it?",
 	required : ["Fibonacci", "robozzle"],
-	times : [150, 220, 320] // PROVISIONAL: guess (old score was by instructions)
+	times : [175, 235, 375] // calibrated: best found B = 166 steps (docs/levels/CALIBRATION.md)
 });
 
 t.Levels.addLevel({
@@ -422,7 +422,7 @@ t.Levels.addLevel({
 	y : 287,
 	text : "Plenty of dots, plenty of lava. Choose your route wisely.",
 	required : ["Z(2)"],
-	times : [357, 400, 460] // PROVISIONAL: from old parts+moves thresholds
+	times : [480, 640, 1030] // calibrated: best found B = 457 steps (docs/levels/CALIBRATION.md)
 });
 
 
@@ -661,5 +661,5 @@ t.Levels.addLevel({
 	y: 257,
 	text : "No dots this time, just a long, twisty walk past the lava.",
 	required : ["spiral"],
-	times : [80, 120, 180] // PROVISIONAL: guess (old score was by instructions)
+	times : [90, 120, 190] // calibrated: best found B = 83 steps (docs/levels/CALIBRATION.md)
 });

@@ -150,25 +150,29 @@ export function pressRun(game) {
 }
 
 // Play a program. For levels with start variants the game plays every
-// variant and reports the steps of the one played last, which depends on
-// level.current (left over from earlier runs); so run once from each possible
-// starting `current` and report the maximum the game could show.
+// variant and scores the worst one (most steps), whatever variant ran before
+// (controls.js playAlternativesVirtually). To prove that, the program is run
+// once from each possible starting `current`; every run must report the same
+// steps. `perVariant` lists the steps of each variant (game's variantSteps).
 export function play(name, rows) {
   const game = loadGame();
   const level = openLevel(game, name);
   placeGrid(game, rows);
   const n = level.alternatives ? level.alternatives.length : 1;
   const runs = [];
+  let perVariant = null;
   for (let k = 0; k < n; k++) {
     if (level.alternatives) level.current = k;
     const r = pressRun(game);
     r.current = k;
+    if (level.alternatives && r.won) perVariant = game.t.TuringTable.variantSteps.slice();
     runs.push(r);
   }
   const won = runs.every((r) => r.won);
-  const steps = won ? Math.max(...runs.map((r) => r.steps)) : null;
+  const steps = won ? runs[0].steps : null;
+  const deterministic = !won || runs.every((r) => r.steps === steps);
   return {
-    won, steps, variants: n, runs,
+    won, steps, variants: n, runs, perVariant, deterministic,
     score: won ? level.getResult(0, steps) : null,
     ends: [...new Set(runs.map((r) => r.end))],
   };

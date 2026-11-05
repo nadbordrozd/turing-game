@@ -343,7 +343,7 @@ t.Levels.addLevel({
 	that.set(4, 4,t.Obstacles.End);
 		that.setRobot(8,0,3);
 	},
-	times : [85, 110, 180], // calibrated: best found B = 78 steps (docs/levels/CALIBRATION.md)
+	times : [75, 100, 160], // calibrated: best found B = 70 steps (docs/levels/CALIBRATION.md)
 	x : 408, 
 	y: 214,
 	required : ["conditionals"],
@@ -359,7 +359,7 @@ t.Levels.addLevel({
 		for(var i=8; i>0; i--){that.set(i,5,t.Obstacles.Obstacle);}
 		for(var i=0; i<8; i++){that.set(i,7,t.Obstacles.Obstacle);}
 		
-		that.setRobot(8,0,3);
+		this.setRobotTable(that);
 		t.Selector.setDefaultOperators();
 	},
 	setRobotTable: function(that){
@@ -367,7 +367,7 @@ t.Levels.addLevel({
 		that.setRobot(8,0,3);
 	},
 	required : ["conditionals"],
-	times : [105, 140, 220], // calibrated: best found B = 97 steps (docs/levels/CALIBRATION.md)
+	times : [60, 80, 130], // calibrated: best found B = 56 steps (docs/levels/CALIBRATION.md)
 	x : 719,
 	y : 323,
 	text : "Left to right, right to left, all the way down."
@@ -505,6 +505,6 @@ t.Levels.addLevel({
 	x : 728,
 	y : 432,
 	required : ["anywhere"],
-	times : [335, 445, 715], // calibrated: best found B = 317 steps (docs/levels/CALIBRATION.md)
+	times : [185, 245, 390], // calibrated: best found B = 173 steps (docs/levels/CALIBRATION.md)
 	text: "Yes, it can be done."
 });

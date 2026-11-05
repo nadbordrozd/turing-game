@@ -80,5 +80,5 @@ t.Levels.addLevel({
 	},
 	text : "If only there was a way to repeat with a decreasing number of steps...",
 	required : ["*"],
-	times : [60, 75, 135] // calibrated: best found B = 53 steps (docs/levels/CALIBRATION.md)
+	times : [60, 75, 240] // calibrated: best found B = 53 steps; t1 widened for the counter-loop program (216 steps) (docs/levels/CALIBRATION.md)
 });

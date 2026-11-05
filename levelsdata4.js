@@ -404,5 +404,5 @@ t.Levels.addLevel({
 	y: 539,
 	text : "Borrowed with admiration from robozzle.com - it has plenty more puzzles like this one.",
 	required : ["detector"],
-	times : [80, 120, 180] // PROVISIONAL: guess (old score was by instructions)
+	times : [555, 740, 1190] // calibrated: best found B = 527 steps (docs/levels/CALIBRATION.md)
 });

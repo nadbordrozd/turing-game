@@ -1,470 +1,650 @@
 {
- "start here": {
-  "steps": 1,
-  "variants": 1,
-  "solution": "One Step tile.",
-  "grid": [
-   "s>"
-  ]
- },
- "chaining": {
-  "steps": 4,
-  "variants": 1,
-  "solution": "Four Step tiles in a row.",
-  "grid": [
-   ". . . .",
-   ". . . .",
-   "s> s> s> s>",
-   ". . . ."
-  ]
- },
- "De revolutionibus": {
-  "steps": 4,
-  "variants": 1,
-  "solution": "Step, step, turn right, step.",
-  "grid": [
-   ". . . . .",
-   ". . . . .",
-   "s> s> cw> s> .",
-   ". . . . .",
-   ". . . . ."
-  ]
- },
- "bend it": {
-  "steps": 7,
-  "variants": 1,
-  "solution": "Straight line: 4 steps, turn right, 2 steps, bent along the board.",
-  "grid": [
-   ". . . . s>",
-   ". . . . s^",
-   "s> s> s> s> cw^",
-   ". . . . .",
-   ". . . . ."
-  ]
- },
- "hedge": {
-  "steps": 10,
-  "variants": 1,
-  "solution": "Straight line: 3 steps, left, 2 steps, left, 3 steps.",
-  "grid": [
-   ". s> s< s< cc<",
-   ". . . . s^",
-   "s> s> s> cc> s^",
-   ". . . . .",
-   ". . . . ."
-  ]
- },
- "resistors": {
-  "steps": 6,
-  "variants": 1,
-  "solution": "Straight line around the 2x2 block of parts.",
-  "grid": [
-   ". . . . .",
-   ". . . . s>",
-   "s> s> cc> s> cc^",
-   ". . . . .",
-   ". . . . ."
-  ]
- },
- "more resistors": {
-  "steps": 21,
-  "variants": 1,
-  "solution": "21-tile straight line (shortest walk found by BFS) snaked over the board.",
-  "grid": [
-   ". . cw> s> cwv",
-   ". . s^ cw< sv",
-   "s> s> s> s^ sv",
-   "sv s< s< cc< s<",
-   "cc> s> s> s> s>"
-  ]
- },
- "out of reach": {
-  "steps": 8,
-  "variants": 1,
-  "solution": "Two Step tiles pointing at each other: a loop of steps.",
-  "grid": [
-   "sv",
-   "s^"
-  ]
- },
- "stairs": {
-  "steps": 31,
-  "variants": 1,
-  "solution": "A 4-tile loop: step, left, step, right.",
-  "grid": [
-   "cwv s< .",
-   "s> cc^ .",
-   ". . ."
-  ]
- },
- "your ad here": {
-  "steps": 29,
-  "variants": 1,
-  "solution": "An 8-tile loop: 3 steps, left, step, right, step, left.",
-  "grid": [
-   ". . . .",
-   "ccv s< cw< s<",
-   "s> s> s> cc^",
-   ". . . ."
-  ]
- },
- "goodwin": {
-  "steps": 28,
-  "variants": 1,
-  "solution": "Prefix SSSRSR, then an 8-tile loop SSSSLSRR (the dots repeat with 4-fold symmetry); 28 = shortest walk.",
-  "grid": [
-   "ccv s< s< s<",
-   "s> cw> cw> s^",
-   "s> s> sv cw^",
-   ". . cw> s^"
-  ]
- },
- "conditionals": {
-  "steps": 18,
-  "variants": 1,
-  "solution": "Found by local search: a 3-step loop guarded by a wall detector; on a wall, turn right and run 3 extra steps on the way back into the loop.",
-  "grid": [
-   "s> sv cc^",
-   "s^ dv cwv",
-   "s^ s< s<"
-  ]
- },
- "for": {
-  "steps": 53,
-  "variants": 1,
-  "solution": "53-tile straight line (shortest walk) snaked over the 8x8 board; no counters needed.",
-  "grid": [
-   "s> s> s> s> s> cc> s> sv",
-   "s^ sv s< s< s< s< cc< sv",
-   "cc^ s> s> s> cc> sv s^ sv",
-   "s^ s< s< s< s< s< s^ sv",
-   "s> s> s> s> s> s> s^ ccv",
-   "sv s< s< cc< s< s< s< s<",
-   "cc> s> s> cc> s> . . .",
-   ". . . . . . . ."
-  ]
- },
- "vertigo": {
-  "steps": 11,
-  "variants": 1,
-  "solution": "Found by local search: step, turn left, a 6-step loop east along row 1 with a wall detector at its foot; it ends at the hatch in 11 steps (shortest walk is 10).",
-  "grid": [
-   "cc> s> sv",
-   "s> cc^ sv",
-   "d< s< s<"
-  ]
- },
- "detector": {
-  "steps": 17,
-  "variants": 1,
-  "solution": "Found by local search: colour-detector loop.",
-  "grid": [
-   "sv cw< s<",
-   "s> dm> s^",
-   ". s> s^"
-  ]
- },
- "no turn sign": {
-  "steps": 26,
-  "variants": 1,
-  "solution": "A 12-tile loop S S L S S S S L S S S L (found by enumerating prefix+loop programs).",
-  "grid": [
-   "sv s< sv s<",
-   "ccv s^ cc< s^",
-   "s> s> cc> s^",
-   ". . . ."
-  ]
- },
- "++": {
-  "steps": 6,
-  "variants": 1,
-  "solution": "Five Plus Red tiles, then a step.",
-  "grid": [
-   ". . . . . . . .",
-   ". . . . . . . .",
-   ". . . . . . . .",
-   ". . . . . . . .",
-   "pRed> pRed> pRed> pRed> pRed> s> . .",
-   ". . . . . . . .",
-   ". . . . . . . .",
-   ". . . . . . . ."
-  ]
- },
- "--": {
-  "steps": 17,
-  "variants": 4,
-  "solution": "Two Minus Red tiles pointing at each other (1 step per decrement); either one steps out when Red is 0. Steps = Red + 2.",
-  "grid": [
-   ". . . . . . . .",
-   ". . . . . . . .",
-   ". . . . . . . .",
-   "s> . . . . . . .",
-   "mRed> . . . . . . .",
-   "mRed< . . . . . . .",
-   "s> . . . . . . .",
-   ". . . . . . . ."
-  ]
- },
- ":=": {
-  "steps": 32,
-  "variants": 5,
-  "solution": "2-tile loop Minus Red / Plus Blue; step out when Red is 0. Steps = 2*Red + 2.",
-  "grid": [
-   ". . . . . . . .",
-   ". . . . . . . .",
-   ". . . . . . . .",
-   "s> . . . . . . .",
-   "mRed> . . . . . . .",
-   "pBlue^ . . . . . . .",
-   ". . . . . . . .",
-   ". . . . . . . ."
-  ]
- },
- "*2": {
-  "steps": 32,
-  "variants": 4,
-  "solution": "6-tile loop: (Minus Red, Plus Blue, Plus Blue) twice; either Minus Red steps out at 0. Steps = 3*Red + 2.",
-  "grid": [
-   ". . . . . . . .",
-   ". . . . . . . .",
-   ". . s> . . . . .",
-   "pBlue> pBlue> mRed> . . . . .",
-   "mRed< pBlue< pBlue< . . . . .",
-   "s> . . . . . . .",
-   ". . . . . . . .",
-   ". . . . . . . ."
-  ]
- },
- "+": {
-  "steps": 22,
-  "variants": 5,
-  "solution": "Loop Minus Red / Plus Yellow, a goto, then loop Minus Blue / Plus Yellow, step. Steps = 2*(Red+Blue) + 4.",
-  "grid": [
-   ". . . . . . . .",
-   ". . . . . . . .",
-   ". . . . . . . .",
-   "pYellowv . . . . . . .",
-   "mRed< s> . . . . . .",
-   "C> mBlue> . . . . . .",
-   ". pYellow^ . . . . . .",
-   ". . . . . . . ."
-  ]
- },
- "/2": {
-  "steps": 23,
-  "variants": 4,
-  "solution": "6-tile loop: (Minus Red, Minus Red, Plus Blue) twice; Red is even so only the first Minus of each pair can find 0. Steps = 1.5*Red + 2.",
-  "grid": [
-   ". . . . . . . .",
-   ". . . . . . . .",
-   ". . s> . . . . .",
-   "mRed^ pBlue> mRed> . . . . .",
-   "mRed< pBlue< mRedv . . . . .",
-   "s> . . . . . . .",
-   ". . . . . . . .",
-   ". . . . . . . ."
-  ]
- },
- "spiral": {
-  "steps": 78,
-  "variants": 1,
-  "solution": "Wall follower (go until wall, turn left) with multi-step blocks, polished by local search.",
-  "grid": [
-   "sv s< C^ C> cwv",
-   "sv s^ cc< s> dv",
-   "s> s> d> s< .",
-   "d> s> s> s^ cc<",
-   "C> . . cwv s^"
-  ]
- },
- "warm-up": {
-  "steps": 44,
-  "variants": 1,
-  "solution": "Three steps to the centre, then a 12-tile loop R S S S S S R R S S S S: each lap turns right at the centre, runs out to an arm end (the fifth step bumps the edge), turns round and runs back.",
-  "grid": [
-   "cwv cw< s< s< s<",
-   "s> s> s> sv s^",
-   "s> s> s> cw> s^",
-   ". . . . .",
-   ". . . . ."
-  ]
- },
- "anywhere": {
-  "steps": 60,
-  "variants": 1,
-  "solution": "An 18-tile loop that snakes two columns per lap (S x6, L, S, L, S x6, R, S, R); every step is a robot action (48 moves + 12 turns).",
-  "grid": [
-   "sv s< s< s< s< cc<",
-   "s> cwv . . . s^",
-   "cwv s< . . . cc^",
-   "s> s> s> s> s> s^",
-   ". . . . . .",
-   ". . . . . ."
-  ]
- },
- "way out": {
-  "steps": 55,
-  "variants": 1,
-  "solution": "Three steps to the bottom tip, then a 14-tile loop (bump, turn round, staircase S R S L S R S L S R S) that walks one quarter of the diamond per lap.",
-  "grid": [
-   ". sv cw< s< cc< s<",
-   ". cc> s> cwv . cw^",
-   ". . . sv . s^",
-   "s> s> s> s> cw> cw^",
-   ". . . . . .",
-   ". . . . . ."
-  ]
- },
- "tunnel": {
-  "steps": 173,
-  "variants": 1,
-  "solution": "Corridor follower (step; at a wall turn left, else right), polished by local search.",
-  "grid": [
-   ". . cc< d< s^",
-   "cwv s> C< C^ cw<",
-   "s> cc> s> ccv s^",
-   "cc> d^ sv sv C<",
-   "cw< cw^ s< cw< cw^"
-  ]
- },
- "labirynth": {
-  "steps": 443,
-  "variants": 1,
-  "solution": "Right-hand wall follower, polished by local search.",
-  "grid": [
-   "cw> . C> C> cwv sv",
-   "cc^ sv . sv d^ ccv",
-   "s> cwv d> cc^ C^ .",
-   "s^ Cv dv cc< d< cc<",
-   "s< s> cw^ d< C< ccv",
-   "dv cwv ccv C^ . C^"
-  ]
- },
- "Counting steps": {
-  "steps": 69,
-  "variants": 1,
-  "solution": "First leg: wall-detector loop that counts its steps with Plus Red; second leg: Minus Red loop spends the count; third leg: plain step loop to the hatch (polished by local search).",
-  "grid": [
-   "s> mRedv cc> sv",
-   "cwv cc^ C^ s^",
-   "s> d> C< C<",
-   "C> s> pRed^ C^"
-  ]
- },
- "zigzag": {
-  "steps": 97,
-  "variants": 1,
-  "solution": "Corridor follower (step until wall; turn left, or right twice if left is blocked), polished by local search.",
-  "grid": [
-   "Cv C> d^ cc< cw<",
-   "s> sv C< d^ C>",
-   "sv s< ccv . .",
-   "cc> d< s< dv s^",
-   "cw> cw> s^ d^ Cv"
-  ]
- },
- "x": {
-  "steps": 58,
-  "variants": 1,
-  "solution": "Found by local search from an empty board: colour-detector loop.",
-  "grid": [
-   "cw> sv dmv s>",
-   "dm^ sv s< dm<",
-   "s^ dm^ cw^ ccv",
-   "cw> s> C^ ."
-  ]
- },
- "*": {
-  "steps": 79,
-  "variants": 5,
-  "solution": "Outer loop on Blue; inner 4-tile loops move Red into Yellow+Pink, then Pink into Yellow+Red on the next pass (no copy-back).",
-  "grid": [
-   ". . . . . . . .",
-   ". . . . . . . .",
-   "Cv C< C< . . . . .",
-   "Cv s> C^ C< . . . .",
-   "C> mBlue> mBlue^ mPink> C< . . .",
-   "pYellowv mRedv C^ pYellow> pRed^ . . .",
-   "pPink> C^ . . . . . .",
-   ". . . . . . . ."
-  ]
- },
- "/": {
-  "steps": 116,
-  "variants": 5,
-  "solution": "Repeated subtraction: each pass checks Red (stop at 0), then moves the divisor between Blue and Pink while taking one from Red per unit (4-tile loops), and adds one to Yellow.",
-  "grid": [
-   ". . . . . . . .",
-   ". . . . . . . .",
-   ". . . . Cv pBlue< . .",
-   "s> Cv C< pYellow< mPink^ mRed< . .",
-   "mRed> C< . mPink^ pBlue^ . . .",
-   "mBlue> pYellow> C> mRed< . . . .",
-   "pPink> mBlue> C< s> . . . .",
-   ". mRed^ pPink^ . . . . ."
-  ]
- },
- "hobbit:": {
-  "steps": 317,
-  "variants": 1,
-  "solution": "Two steps, then a 10-tile loop S S S R S S L S S L (found by enumerating prefix+loop programs); laps sweep the pillar grid diagonally.",
-  "grid": [
-   ". sv cc< s< s<",
-   ". s> ccv . cw^",
-   "s> s> s> s> s^",
-   ". . . . .",
-   ". . . . ."
-  ]
- },
- "just give up": {
-  "steps": 243,
-  "variants": 1,
-  "solution": "A 10-tile loop S S S L S S L S S L (found by enumerating prefix+loop programs); one-sided walls and bumps steer it through all five parts.",
-  "grid": [
-   ". . . . . .",
-   ". . . . . .",
-   "ccv s< s< cc< s< .",
-   "s> s> s> cc> s^ .",
-   ". . . . . .",
-   ". . . . . ."
-  ]
- },
- "ring of fire": {
-  "steps": 113,
-  "variants": 1,
-  "solution": "Found by local search from an empty board: wall-detector loop that circles inside the lava ring.",
-  "grid": [
-   "C> cc> cw^ d^",
-   ". ccv dv ccv",
-   "d^ Cv s^ ccv",
-   "ccv s> cw^ s<"
-  ]
- },
- "giftwrapped": {
-  "steps": 90,
-  "variants": 1,
-  "solution": "Found by local search from an empty board: wall and colour detectors steer it round the ribbon.",
-  "grid": [
-   "d< . dm< s> C<",
-   "cwv s> dmv cc> sv",
-   "cc> cc^ . cc> sv",
-   "dv cc^ dmv dm> s<",
-   "dv . s^ C< C>"
-  ]
- },
- "Fibonacci": {
-  "steps": 108,
-  "variants": 5,
-  "solution": "Blue := 1, then Red-1 phases that rotate the largest of Blue/Yellow/Pink into the other two (4-tile loops); when Red runs out, move the result into Blue (clearing it first if needed) and step.",
-  "grid": [
-   ". . . . . . . s>",
-   ". . pYellowv pBlue< . C> mBluev mPink>",
-   ". . C> mPink< mRedv C> C^ pBlue^",
-   ". . s> Cv C^ Cv pBlue<  .",
-   "pBlue> mRed^ mRed> C< C^ mYellow^ pPink^ .",
-   ". pYellowv mBluev C> C> mRed< . .",
-   ". pPink> C^ . s> mYellow^ pBlue< .",
-   ". . . . . . . ."
-  ]
- }
+  "start here": {
+    "steps": 1,
+    "variants": 1,
+    "solution": "One Step tile.",
+    "grid": [
+      "s>"
+    ]
+  },
+  "chaining": {
+    "steps": 4,
+    "variants": 1,
+    "solution": "Four Step tiles in a row.",
+    "grid": [
+      ". . . .",
+      ". . . .",
+      "s> s> s> s>",
+      ". . . ."
+    ]
+  },
+  "De revolutionibus": {
+    "steps": 4,
+    "variants": 1,
+    "solution": "Step, step, turn right, step.",
+    "grid": [
+      ". . . . .",
+      ". . . . .",
+      "s> s> cw> s> .",
+      ". . . . .",
+      ". . . . ."
+    ]
+  },
+  "bend it": {
+    "steps": 7,
+    "variants": 1,
+    "solution": "Straight line: 4 steps, turn right, 2 steps, bent along the board.",
+    "grid": [
+      ". . . . s>",
+      ". . . . s^",
+      "s> s> s> s> cw^",
+      ". . . . .",
+      ". . . . ."
+    ]
+  },
+  "hedge": {
+    "steps": 10,
+    "variants": 1,
+    "solution": "Straight line: 3 steps, left, 2 steps, left, 3 steps.",
+    "grid": [
+      ". s> s< s< cc<",
+      ". . . . s^",
+      "s> s> s> cc> s^",
+      ". . . . .",
+      ". . . . ."
+    ]
+  },
+  "resistors": {
+    "steps": 6,
+    "variants": 1,
+    "solution": "Straight line around the 2x2 block of parts.",
+    "grid": [
+      ". . . . .",
+      ". . . . s>",
+      "s> s> cc> s> cc^",
+      ". . . . .",
+      ". . . . ."
+    ]
+  },
+  "more resistors": {
+    "steps": 21,
+    "variants": 1,
+    "solution": "21-tile straight line (shortest walk found by BFS) snaked over the board.",
+    "grid": [
+      ". . cw> s> cwv",
+      ". . s^ cw< sv",
+      "s> s> s> s^ sv",
+      "sv s< s< cc< s<",
+      "cc> s> s> s> s>"
+    ]
+  },
+  "out of reach": {
+    "steps": 8,
+    "variants": 1,
+    "solution": "Two Step tiles pointing at each other: a loop of steps.",
+    "grid": [
+      "sv",
+      "s^"
+    ]
+  },
+  "stairs": {
+    "steps": 31,
+    "variants": 1,
+    "solution": "A 4-tile loop: step, left, step, right.",
+    "grid": [
+      "cwv s< .",
+      "s> cc^ .",
+      ". . ."
+    ]
+  },
+  "your ad here": {
+    "steps": 29,
+    "variants": 1,
+    "solution": "An 8-tile loop: 3 steps, left, step, right, step, left.",
+    "grid": [
+      ". . . .",
+      "ccv s< cw< s<",
+      "s> s> s> cc^",
+      ". . . ."
+    ]
+  },
+  "goodwin": {
+    "steps": 28,
+    "variants": 1,
+    "solution": "Prefix SSSRSR, then an 8-tile loop SSSSLSRR (the dots repeat with 4-fold symmetry); 28 = shortest walk.",
+    "grid": [
+      "ccv s< s< s<",
+      "s> cw> cw> s^",
+      "s> s> sv cw^",
+      ". . cw> s^"
+    ]
+  },
+  "conditionals": {
+    "steps": 18,
+    "variants": 1,
+    "solution": "Found by local search: a 3-step loop guarded by a wall detector; on a wall, turn right and run 3 extra steps on the way back into the loop.",
+    "grid": [
+      "s> sv cc^",
+      "s^ dv cwv",
+      "s^ s< s<"
+    ]
+  },
+  "for": {
+    "steps": 53,
+    "variants": 1,
+    "solution": "53-tile straight line (shortest walk) snaked over the 8x8 board; no counters needed.",
+    "grid": [
+      "s> s> s> s> s> cc> s> sv",
+      "s^ sv s< s< s< s< cc< sv",
+      "cc^ s> s> s> cc> sv s^ sv",
+      "s^ s< s< s< s< s< s^ sv",
+      "s> s> s> s> s> s> s^ ccv",
+      "sv s< s< cc< s< s< s< s<",
+      "cc> s> s> cc> s> . . .",
+      ". . . . . . . ."
+    ],
+    "alt": [
+      {
+        "steps": 216,
+        "parts": 1,
+        "solution": "The hinted counter-loop program: walk Red steps while moving Red into Blue (4-tile loop), turn left, drop one, walk Blue steps moving it back into Red, turn left, drop one, repeat. 216 steps, 1 part.",
+        "grid": [
+          ". . . . . . . .",
+          ". . . . . . . .",
+          ". C> C> Cv mRedv cc< . .",
+          "C> C^ sv mRedv ccv C^ . .",
+          "C^ . pBlue> C^ mBlue^ mBlue> C< .",
+          ". . . . . s> pRed^ .",
+          ". . . . . . . .",
+          ". . . . . . . ."
+        ]
+      }
+    ]
+  },
+  "vertigo": {
+    "steps": 11,
+    "variants": 1,
+    "solution": "Found by local search: step, turn left, a 6-step loop east along row 1 with a wall detector at its foot; it ends at the hatch in 11 steps (shortest walk is 10).",
+    "grid": [
+      "cc> s> sv",
+      "s> cc^ sv",
+      "d< s< s<"
+    ]
+  },
+  "detector": {
+    "steps": 17,
+    "variants": 1,
+    "solution": "Found by local search: colour-detector loop.",
+    "grid": [
+      "sv cw< s<",
+      "s> dm> s^",
+      ". s> s^"
+    ]
+  },
+  "no turn sign": {
+    "steps": 26,
+    "variants": 1,
+    "solution": "A 12-tile loop S S L S S S S L S S S L (found by enumerating prefix+loop programs).",
+    "grid": [
+      "sv s< sv s<",
+      "ccv s^ cc< s^",
+      "s> s> cc> s^",
+      ". . . ."
+    ]
+  },
+  "++": {
+    "steps": 6,
+    "variants": 1,
+    "solution": "Five Plus Red tiles, then a step.",
+    "grid": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      "pRed> pRed> pRed> pRed> pRed> s> . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . ."
+    ]
+  },
+  "--": {
+    "steps": 17,
+    "variants": 4,
+    "solution": "Two Minus Red tiles pointing at each other (1 step per decrement); either one steps out when Red is 0. Steps = Red + 2.",
+    "grid": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      "s> . . . . . . .",
+      "mRed> . . . . . . .",
+      "mRed< . . . . . . .",
+      "s> . . . . . . .",
+      ". . . . . . . ."
+    ],
+    "perVariant": [
+      7,
+      4,
+      3,
+      17
+    ]
+  },
+  ":=": {
+    "steps": 32,
+    "variants": 5,
+    "solution": "2-tile loop Minus Red / Plus Blue; step out when Red is 0. Steps = 2*Red + 2.",
+    "grid": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      "s> . . . . . . .",
+      "mRed> . . . . . . .",
+      "pBlue^ . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . ."
+    ],
+    "perVariant": [
+      22,
+      10,
+      14,
+      6,
+      32
+    ]
+  },
+  "*2": {
+    "steps": 32,
+    "variants": 4,
+    "solution": "6-tile loop: (Minus Red, Plus Blue, Plus Blue) twice; either Minus Red steps out at 0. Steps = 3*Red + 2.",
+    "grid": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . s> . . . . .",
+      "pBlue> pBlue> mRed> . . . . .",
+      "mRed< pBlue< pBlue< . . . . .",
+      "s> . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . ."
+    ],
+    "perVariant": [
+      11,
+      17,
+      23,
+      32
+    ]
+  },
+  "+": {
+    "steps": 22,
+    "variants": 5,
+    "solution": "Loop Minus Red / Plus Yellow, a goto, then loop Minus Blue / Plus Yellow, step. Steps = 2*(Red+Blue) + 4.",
+    "grid": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      "pYellowv . . . . . . .",
+      "mRed< s> . . . . . .",
+      "C> mBlue> . . . . . .",
+      ". pYellow^ . . . . . .",
+      ". . . . . . . ."
+    ],
+    "perVariant": [
+      16,
+      16,
+      14,
+      14,
+      22
+    ]
+  },
+  "/2": {
+    "steps": 23,
+    "variants": 4,
+    "solution": "6-tile loop: (Minus Red, Minus Red, Plus Blue) twice; Red is even so only the first Minus of each pair can find 0. Steps = 1.5*Red + 2.",
+    "grid": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . s> . . . . .",
+      "mRed^ pBlue> mRed> . . . . .",
+      "mRed< pBlue< mRedv . . . . .",
+      "s> . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . ."
+    ],
+    "perVariant": [
+      11,
+      8,
+      17,
+      23
+    ]
+  },
+  "spiral": {
+    "steps": 70,
+    "variants": 1,
+    "solution": "Found by enumerating detector policies: 4 steps; if a wall is ahead turn left, else 4 more steps and turn left.",
+    "grid": [
+      ". . . . .",
+      "s> s> sv . .",
+      "s^ cc< d^ sv .",
+      "cc^ s< s< s< .",
+      ". . . . ."
+    ]
+  },
+  "warm-up": {
+    "steps": 44,
+    "variants": 1,
+    "solution": "Three steps to the centre, then a 12-tile loop R S S S S S R R S S S S: each lap turns right at the centre, runs out to an arm end (the fifth step bumps the edge), turns round and runs back.",
+    "grid": [
+      "cwv cw< s< s< s<",
+      "s> s> s> sv s^",
+      "s> s> s> cw> s^",
+      ". . . . .",
+      ". . . . ."
+    ]
+  },
+  "anywhere": {
+    "steps": 60,
+    "variants": 1,
+    "solution": "An 18-tile loop that snakes two columns per lap (S x6, L, S, L, S x6, R, S, R); every step is a robot action (48 moves + 12 turns).",
+    "grid": [
+      "sv s< s< s< s< cc<",
+      "s> cwv . . . s^",
+      "cwv s< . . . cc^",
+      "s> s> s> s> s> s^",
+      ". . . . . .",
+      ". . . . . ."
+    ]
+  },
+  "way out": {
+    "steps": 55,
+    "variants": 1,
+    "solution": "Three steps to the bottom tip, then a 14-tile loop (bump, turn round, staircase S R S L S R S L S R S) that walks one quarter of the diamond per lap.",
+    "grid": [
+      ". sv cw< s< cc< s<",
+      ". cc> s> cwv . cw^",
+      ". . . sv . s^",
+      "s> s> s> s> cw> cw^",
+      ". . . . . .",
+      ". . . . . ."
+    ]
+  },
+  "tunnel": {
+    "steps": 159,
+    "variants": 1,
+    "solution": "Corridor follower (step; at a wall turn left, else right), polished by local search.",
+    "grid": [
+      "cw> cw> sv s> s^",
+      "d> cw< d^ sv cw^",
+      "s> d> s^ d< cwv",
+      "s< s^ C^ cc< d>",
+      "C< s< cw> cc< Cv"
+    ]
+  },
+  "labirynth": {
+    "steps": 338,
+    "variants": 1,
+    "solution": "Left-hand wall follower as a 6-tile loop (two copies of: wall ahead? turn right : step, turn left), polished by local search.",
+    "grid": [
+      "C^ s< . . cw< sv",
+      "cw> d^ sv d> d> d^",
+      "cwv cc^ ccv cw< cw< d^",
+      "sv s^ sv C^ C> cw^",
+      "sv d< cw< s< cw< cc>",
+      "s> cc^ cc^ cc^ C< C<"
+    ]
+  },
+  "Counting steps": {
+    "steps": 69,
+    "variants": 1,
+    "solution": "First leg: wall-detector loop that counts its steps with Plus Red; second leg: Minus Red loop spends the count; third leg: plain step loop to the hatch (polished by local search).",
+    "grid": [
+      "s> mRedv cc> sv",
+      "cwv cc^ C^ s^",
+      "s> d> C< C<",
+      "C> s> pRed^ C^"
+    ]
+  },
+  "zigzag": {
+    "steps": 56,
+    "variants": 1,
+    "solution": "The shortest walk as a 24-tile loop: 8 steps, left, 2 steps, left, 8 steps, right, 2 steps, right. 56 = shortest walk.",
+    "grid": [
+      "cc> s> s> cc> sv",
+      "s^ s< s< s< sv",
+      "s> s> s> s^ sv",
+      "cw^ cwv s< sv s<",
+      "s^ s< s^ s< ."
+    ]
+  },
+  "x": {
+    "steps": 58,
+    "variants": 1,
+    "solution": "Found by local search from an empty board: colour-detector loop.",
+    "grid": [
+      "cw> sv dmv s>",
+      "dm^ sv s< dm<",
+      "s^ dm^ cw^ ccv",
+      "cw> s> C^ ."
+    ]
+  },
+  "*": {
+    "steps": 60,
+    "variants": 5,
+    "solution": "Outer loop on Blue; 6-tile unrolled inner loops move Red into Yellow+Pink, then Pink into Yellow+Red on the next pass (3 steps per unit instead of 4).",
+    "grid": [
+      "C> C> C> C> C> Cv . .",
+      "C^ . . . s> Cv . .",
+      "C^ pPinkv pYellow< mRedv mBlue> C< . .",
+      "C^ mRed^ pYellow> pPink^ Cv . . .",
+      "C> mBlue< . . Cv . . .",
+      "C^ s> pRedv pYellow< mPinkv Cv . .",
+      "C^ C< mPink^ pYellow> pRed^ Cv . .",
+      "C^ C< C< C< C< C< . ."
+    ],
+    "perVariant": [
+      55,
+      42,
+      35,
+      60,
+      55
+    ]
+  },
+  "/": {
+    "steps": 98,
+    "variants": 5,
+    "solution": "Repeated subtraction as before (each pass checks Red, moves the divisor between Blue and Pink taking one from Red per unit, adds one to Yellow), with the transfer loops unrolled to 6 tiles (3 steps per unit instead of 4).",
+    "grid": [
+      "C> C> C> C> Cv s> . .",
+      "C^ pPinkv mRedv mBluev pYellow> mRed> . .",
+      "C^ mBlue^ mRed^ pPink^ pBluev mPinkv . .",
+      "mBlue^ pPink^ . . Cv . . .",
+      "mRed< pYellow< . . Cv . . .",
+      "s> C^ pBluev mRedv mPinkv Cv . .",
+      ". C^ mPink^ mRed^ pBlue^ Cv . .",
+      ". C^ C< C< C< C< . ."
+    ],
+    "perVariant": [
+      98,
+      42,
+      26,
+      78,
+      60
+    ]
+  },
+  "hobbit:": {
+    "steps": 173,
+    "variants": 1,
+    "solution": "Detector policy from enumeration (4 steps; wall ahead? R S S : S L L S L), then polished by local search.",
+    "grid": [
+      "sv s> dv Cv C>",
+      "s> sv s< s< cc<",
+      "s^ s> s> s> d>",
+      ". s^ cw< cwv s<",
+      "s^ C< s^ cw< ."
+    ]
+  },
+  "just give up": {
+    "steps": 243,
+    "variants": 1,
+    "solution": "A 10-tile loop S S S L S S L S S L (found by enumerating prefix+loop programs); one-sided walls and bumps steer it through all five parts.",
+    "grid": [
+      ". . . . . .",
+      ". . . . . .",
+      "ccv s< s< cc< s< .",
+      "s> s> s> cc> s^ .",
+      ". . . . . .",
+      ". . . . . ."
+    ]
+  },
+  "ring of fire": {
+    "steps": 113,
+    "variants": 1,
+    "solution": "Found by local search from an empty board: wall-detector loop that circles inside the lava ring.",
+    "grid": [
+      "C> cc> cw^ d^",
+      ". ccv dv ccv",
+      "d^ Cv s^ ccv",
+      "ccv s> cw^ s<"
+    ]
+  },
+  "giftwrapped": {
+    "steps": 90,
+    "variants": 1,
+    "solution": "Found by local search from an empty board: wall and colour detectors steer it round the ribbon.",
+    "grid": [
+      "d< . dm< s> C<",
+      "cwv s> dmv cc> sv",
+      "cc> cc^ . cc> sv",
+      "dv cc^ dmv dm> s<",
+      "dv . s^ C< C>"
+    ]
+  },
+  "Fibonacci": {
+    "steps": 108,
+    "variants": 5,
+    "solution": "Blue := 1, then Red-1 phases that rotate the largest of Blue/Yellow/Pink into the other two (4-tile loops); when Red runs out, move the result into Blue (clearing it first if needed) and step.",
+    "grid": [
+      ". . . . . . . s>",
+      ". . pYellowv pBlue< . C> mBluev mPink>",
+      ". . C> mPink< mRedv C> C^ pBlue^",
+      ". . s> Cv C^ Cv pBlue<  .",
+      "pBlue> mRed^ mRed> C< C^ mYellow^ pPink^ .",
+      ". pYellowv mBluev C> C> mRed< . .",
+      ". pPink> C^ . s> mYellow^ pBlue< .",
+      ". . . . . . . ."
+    ],
+    "perVariant": [
+      108,
+      30,
+      32,
+      59,
+      102
+    ]
+  },
+  "Euclid": {
+    "steps": 162,
+    "variants": 5,
+    "solution": "Subtractive Euclid with fixed roles: a 6-tile loop (two copies of: Minus Red, Minus Blue, Plus Yellow) runs Red and Blue down together while Yellow counts. When Red runs out (Blue not yet), Blue's extra decrement is undone and Yellow is moved into Red; when Blue runs out, Yellow is moved into Blue and the loop resumes after its Minus Red. When both run out together, Yellow holds the gcd: step.",
+    "grid": [
+      ". . . . . . . .",
+      ". . . . . . . pRedv",
+      ". pBlue> mYellowv Cv s> mBlue^ pBlue> mYellow<",
+      ". . C^ mBlue^ pYellow> mRed> C< C<",
+      "C> C> C> mRed< pYellow< mBluev Cv .",
+      ". mYellow> pBlue< mBluev s> C^ mYellow^ pBlue<",
+      ". pRed^ . . . . . .",
+      ". . . . . . . ."
+    ],
+    "perVariant": [
+      70,
+      106,
+      162,
+      110,
+      52
+    ]
+  },
+  "!": {
+    "steps": 673,
+    "variants": 5,
+    "solution": "General factorial: Blue := 1, k := Red - 2 (Red = 1 steps out at once). Each stage moves Blue into Yellow, then for every unit of Yellow adds 2 + k to Blue (two Plus Blue tiles, then a 4-tile loop that moves k between Red and Pink adding one each time); k := k - 1 and the next stage, until k runs out. Not specialised to the five variants.",
+    "grid": [
+      ". . . . . . . .",
+      ". . . s> . . . .",
+      "mRed^ C> C> mRed> . pYellowv . .",
+      "C^ pBluev pPink< C> C> mBlue< mRedv s>",
+      "pBlue^ C> mRed< pBlue< pBlue< mYellowv C^ .",
+      ". Cv mYellow^ pBlue> pBlue> mPink> C< .",
+      "s> mPink^ mBlue> . . pRed> pBlue^ .",
+      ". . pYellow^ . . . . ."
+    ],
+    "perVariant": [
+      147,
+      45,
+      19,
+      7,
+      673
+    ]
+  },
+  "some flag?": {
+    "steps": 166,
+    "variants": 1,
+    "solution": "Turn left, then a 42-tile loop (41 actions and a goto): it covers one 5x5 quadrant along an Euler path of its corridor lattice (one corridor doubled) and crosses the cracked ice into the next quadrant. The quadrants are 90-degree rotations of each other, so the same loop sweeps all four; the first quadrant is finished on the fifth lap.",
+    "grid": [
+      ". . . . cc> s> s> ccv",
+      ". . . . s^ s< cc< sv",
+      ". . . . . . s^ sv",
+      ". . . . . . s^ sv",
+      "cc> s> s> cw> s> s> cw^ sv",
+      "cw> C^ sv s< cw< s< s< cw<",
+      "s^ s< s> s> cw> s> s> ccv",
+      ". cw^ s< s< s< s< s< s<"
+    ]
+  },
+  "robozzle": {
+    "steps": 527,
+    "variants": 1,
+    "solution": "Colour-detector policy found by enumeration: S L S S; on a coloured tile? L S S R : L S L S S.",
+    "grid": [
+      "sv cc< s< cc<",
+      "sv s> s> dm<",
+      "s> cc^ sv cc<",
+      "C^ cw< s< ."
+    ]
+  },
+  "Z(2)": {
+    "steps": 83,
+    "variants": 1,
+    "solution": "Found by local search from an empty board, then polished by local search seeded with that result (shortest walk 54).",
+    "grid": [
+      "C< cw> cwv cwv d> cc^",
+      "cc> d> sv cc> s> cwv",
+      "d> s> s> d> cwv d>",
+      "s^ cw< sv s< cw< s<",
+      "ccv s^ dv cc^ s< C^",
+      "s< . dv cc< cc< cc<"
+    ]
+  },
+  "P": {
+    "steps": 457,
+    "variants": 1,
+    "solution": "Found by local search from an empty board, then polished by local search seeded with that result.",
+    "grid": [
+      "ccv C< ccv cc^ s^ dv",
+      "s> dm< C> dm> . dmv",
+      "dm^ s^ dm^ s< cw< s<",
+      "sv cc> sv dv cw> C^",
+      "sv s^ cw> dm< cc< s<",
+      "cc> s^ s^ cw< C^ cw^"
+    ]
+  },
+  "hobbit harder": {
+    "steps": 327,
+    "variants": 1,
+    "solution": "Found by local search from an empty board (a detector-policy enumeration finds 462), then polished by local search seeded with that result.",
+    "grid": [
+      "C^ s> dv cc> d^ sv dv",
+      ". s^ dv cwv sv cw< .",
+      "dv s^ cc^ sv dv ccv .",
+      "sv s^ s^ cw< s< cc< s<",
+      "s> s^ cc< cc^ s> cw< d<",
+      ". cwv s> s< . cc< .",
+      "d< dv . C^ cc< cc> ccv"
+    ]
+  }
 }

@@ -76,7 +76,7 @@ t.Levels.addLevel({
 	y: 206,
 	text: "Just a single route - how hard could it be?",
 	required : ["way out"],
-	times : [185, 245, 390] // calibrated: best found B = 173 steps (docs/levels/CALIBRATION.md)
+	times : [170, 225, 360] // calibrated: best found B = 159 steps (docs/levels/CALIBRATION.md)
 });
 
 
@@ -176,7 +176,7 @@ t.Levels.addLevel({
 	y : 254,
 	text: "A proper maze. Collect all eight dots to get out.",
 	required : ["tunnel"],
-	times : [470, 625, 1000] // calibrated: best found B = 443 steps (docs/levels/CALIBRATION.md)
+	times : [355, 475, 765] // calibrated: best found B = 338 steps (docs/levels/CALIBRATION.md)
 });
 
 t.Levels.u.setTable1 = function(that){
@@ -449,7 +449,7 @@ t.Levels.addLevel({
 	x : 255,
 	y: 550,
 	turingX : 250,
-	times : [85, 115, 180], // calibrated: best found B = 79 steps (docs/levels/CALIBRATION.md)
+	times : [65, 85, 135], // calibrated: best found B = 60 steps (docs/levels/CALIBRATION.md)
 	required : ["+"],
 	text : "Yellow = Red * Blue"
 });
@@ -545,7 +545,7 @@ t.Levels.addLevel({
 	},
 	x : 400,
 	y: 628,
-	times : [600, 900, 1400], // PROVISIONAL: guess (old score was always 3)
+	times : [710, 945, 1515], // calibrated: best found B = 673 steps (docs/levels/CALIBRATION.md)
 	required : ["*"],
 	text : "Blue := Red! (factorial)"
 });
@@ -602,7 +602,7 @@ t.Levels.addLevel({
 	},
 	x : 113, 
 	y: 527,
-	times : [150, 220, 320], // PROVISIONAL: guess (old score was by instructions)
+	times : [175, 230, 365], // calibrated: best found B = 162 steps (docs/levels/CALIBRATION.md)
 	required : ["+"],
 	text : "Yellow := gcd(Blue, Red) (greatest common divisor)"
 });
@@ -653,7 +653,7 @@ t.Levels.addLevel({
 	x:  400,
 	y: 567,
 	required : ["*"],
-	times : [125, 165, 265] // calibrated: best found B = 116 steps (docs/levels/CALIBRATION.md)
+	times : [105, 140, 225] // calibrated: best found B = 98 steps (docs/levels/CALIBRATION.md)
 });
 
 t.Levels.u.fibo = function(n){

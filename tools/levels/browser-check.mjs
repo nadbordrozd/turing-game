@@ -73,10 +73,13 @@ try {
       return out;
     })()`);
     const won = res.every((r) => r.end === 'victory');
+    // the game scores the worst variant whatever variant ran before, so every
+    // run (one per starting variant) must report the same steps
     const worst = won ? Math.max(...res.map((r) => r.steps)) : null;
-    const ok = won && worst === sol.steps;
+    const same = won && res.every((r) => r.steps === worst);
+    const ok = won && same && worst === sol.steps;
     if (!ok) code = 1;
-    console.log(`${ok ? 'ok  ' : 'DIFF'} ${name}: browser ${won ? worst : res.map((r) => r.end).join(',')} steps, harness ${sol.steps}${res.length > 1 ? ' per-variant ' + JSON.stringify(res.map((r) => r.steps)) : ''}`);
+    console.log(`${ok ? 'ok  ' : 'DIFF'} ${name}: browser ${won ? worst : res.map((r) => r.end).join(',')} steps, harness ${sol.steps}${res.length > 1 ? ' runs from each starting variant ' + JSON.stringify(res.map((r) => r.steps)) : ''}`);
   }
 } catch (e) { console.error(e); code = 1; }
 finally { try { ws && ws.close(); } catch {} proc.kill(); }
