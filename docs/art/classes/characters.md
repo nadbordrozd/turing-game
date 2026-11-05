@@ -72,38 +72,78 @@ frame; a new robot master needs them re-measured.
 
 ## Freed robots (end-level screen)
 
-Set `art/sets/freed-v1` (bead tg-vy4.17). The end-level screen shows one
-freed robot per 3 points beside the main robot, on a Toybox landscape. The
-main robot (entry 0) is always shown; entry i is freed at 3*i points (points
-are the sum of saved level statuses, parts + 1 per finished level).
+Sets `art/sets/freed-v2` (bead tg-vy4.21, the 30 character robots) and
+`art/sets/freed-v1` (bead tg-vy4.17: the main robot `hero-a`, `giant-c`,
+`helper-c` and the landscape). The end-level screen shows one freed robot per
+3 points beside the main robot, on a Toybox landscape. The main robot (entry
+0) is always shown; entry i is freed at 3*i points (points are the sum of
+saved level statuses, parts + 1 per finished level).
 
+- **Every robot is SOMETHING** (v2, user: "make them be something"). Each
+  one is a recognisable character with one strong idea and a silhouette that
+  reads at small size, like the 2012 crowd's range (kaiju mech, replicant,
+  kid in a costume, rover, toy dog). A take that reads as "a box with a face"
+  is a reject. The user liked v1's big blue robot with the white heart
+  (`giant-c`) and is fine with the drawer robot (`helper-c`); both stay.
 - **Originals only.** No robot may copy or resemble a film, TV or game
-  robot, and no such name appears in a prompt. Each recipe describes a
-  generic toy idea (cube on wheels, spider, stilt walker, kettle, rocket...).
-- **Varied shapes and sizes.** Silhouettes differ (wheels, tracks, legs,
-  springs, hovering); the canvas size sets the robot's size in the crowd.
-  Generate at 32-96 px (Pixen sides multiples of 4, square below 32), crop
-  to the alpha bounds and scale ×2 nearest, so every robot shares one
-  on-screen pixel size (2 screen px per art px).
-- **View.** Straight front view as for the player robot; symmetry is
-  preferred but not required (one-armed props such as a watering can are
-  fine). Transparent, no ground plate or shadow.
+  robot, and no such name appears in a prompt; lookalike takes are rejected
+  (`rover-b`: binocular eyes on a mast was too close to a famous film robot).
+- **v2 concepts** (unlock order): 1 kid in a cardboard robot costume,
+  2 wind-up tin puppy, 3 beetle think-tank, 4 planetary rover, 5 synthetic
+  gentlewoman (almost-human android), 6 typewriter-head scribe, 7 deep-sea
+  diver, 8 atomic-age housemaid, 9 arcade-cabinet walker, 10 ladybug
+  micro-drone (floats, smallest), 11 chef, 12 firefighter, 13 `giant-c`,
+  14 octopus submarine, 15 mime, 16 steam automaton gentleman, 17 hot-air
+  balloon bot (floats), 18 owl sentinel, 19 walking greenhouse, 20 lunar
+  lander, 21 `helper-c`, 22 lacquered samurai, 23 one-man-band, 24 snow-plough,
+  25 tin knight, 26 carnival fortune teller, 27 satellite (floats),
+  28 punch-card mainframe, 29 clay golem, 30 sumo, 31 excavator, 32 kaiju mech
+  (tallest, the finale, towering at the back).
+- **Prompt.** Fragments `style` + `class-freed` (a front-view robot
+  character, "one strong, instantly recognisable idea with a distinctive
+  silhouette"; symmetry is not demanded, so props and poses work). The
+  subject names the idea first, then the shape, the two or three props that
+  make it that thing, colours from the palette, the pose and "on the bottom
+  edge". Concrete props carry the idea (colander helmet and dryer-hose arms,
+  reel-to-reel eyes and ticker tape, typewriter keys as teeth with a paper
+  crest).
+- **Varied shapes and sizes.** The canvas size sets the robot's size in the
+  crowd: 24 px (ladybug) to 96×128 (kaiju). Crop to the alpha bounds and
+  scale ×2 nearest, so every robot shares one on-screen pixel size (2 screen
+  px per art px).
+- **View.** Straight front view as for the player robot; transparent, no
+  ground plate or shadow. A mild three-quarter tilt is tolerated on boxy
+  machines when four takes could not remove it (arcade, mainframe, rover).
 - **Entry 0 is the main robot**: the player robot's design (cream head,
   sky-blue visor, red body) drawn large. The others follow in unlock order.
 - **Placement** (`EndLevelRobots.js`, `[asset, x, y, z]`, x/y = sprite
   centre): earlier unlocks stand closest to the main robot; the crowd grows
-  outward; robots farther back stand higher and get a lower z. Positions live
-  in `art/sets/freed-v1/layout.json`; `node tools/art/freed-layout.mjs`
-  rewrites the outputs and `EndLevelRobots.js`, then bake. Preview with
+  outward in rows (front, middle, back, far back); robots farther back stand
+  higher and get a lower z; floaters (ladybug, balloon, satellite) sit in the
+  open air above the crowd but below the top-third result card; `giant-c`
+  and `helper-c` keep their front-left spots. Positions live in
+  `art/sets/freed-v1/layout.json` (`"freed-v2:<id>"` for a v2 robot);
+  `node tools/art/freed-layout.mjs` rewrites the outputs of both sets and
+  `EndLevelRobots.js`, then `node tools/art/studio-art.mjs bake`. Preview with
   `node tools/art/freed-preview.mjs <out.png> [--count N] [--scale 2]`.
 - **Landscape** (`images/freed/landscape.png`, 1024×768): Pixen 512×416
   opaque (`landscape-i`), top 512×384 kept (drops most of the soil strip
   Pixen draws along the bottom), scaled ×2. The prompt must not mention
   robots or characters (Pixen then draws them); the top third is open sky
   for the result card. 2 of 9 landscape takes were usable.
-- **What worked / did not** (`freed-v1`, 33 accepted of 50 robot takes):
-  organic concepts (bird, mushroom, cloud, kettle, umbrella, bug) came back
-  as plain creatures or children until the subject said "clearly a machine
-  made of painted metal with bolts" and gave a visor or screen face; boxy
-  bodies drift to three-quarter view unless the subject says "seen exactly
-  from the front, flat 2D drawing with no depth".
+- **What worked / did not** (`freed-v2`, 30 accepted of 45 takes): 22 of 30
+  first takes were usable. Vehicles and cabinets (rover, excavator,
+  snow-plough, mainframe) drift to isometric or three-quarter view; "drawn
+  as a flat front elevation like a sticker, seen exactly from the front at
+  eye level, no side or top surfaces visible" fixed the plough and the
+  excavator, and "standing upright like a character" with a windshield face
+  gave the best excavator. Human-adjacent ideas (sumo, mime, puppy) came back
+  as a human or a plain animal until the subject said "clearly a machine made
+  of painted metal with bolts and seams" and gave a screen or visor face
+  (same lesson as `freed-v1`). "The feet stand on nothing" did not stop one
+  ground line under a wide stance (`sumo-b`); a reroll did. 32 px was too
+  small for the puppy (muddle); 40 px read.
+- **freed-v1** (33 accepted of 50 takes) is kept for history; only `hero-a`,
+  `giant-c` and `helper-c` are still shown. Its lessons: boxy bodies drift to
+  three-quarter unless "seen exactly from the front, flat 2D drawing with no
+  depth"; organic concepts need "clearly a machine".

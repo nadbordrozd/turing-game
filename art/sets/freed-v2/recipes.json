@@ -1,0 +1,959 @@
+{
+  "set": "freed-v2",
+  "bead": "tg-vy4.21",
+  "class": "characters",
+  "_doc": "End-level screen v2: 30 freed robots, each a recognisable CHARACTER with one strong idea and a distinct silhouette (concepts in bead tg-vy4.21), in the Toybox pixel style of freed-v1. Original designs only: no film, TV or game robot is named in a prompt and lookalikes are rejected. The main robot (hero-a), giant-c and helper-c stay in freed-v1; art/sets/freed-v1/layout.json places both sets (freed-v2 entries are written 'freed-v2:<id>') and tools/art/freed-layout.mjs writes the outputs of both. Canvas size sets the robot's size in the crowd (cropped to alpha, scaled x2). Recipes are never edited after generation: add a new id (new seed) instead.",
+  "shared": {
+    "frontOpts": {
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south"
+    }
+  },
+  "defaults": {
+    "endpoint": "create-image-pixen",
+    "fragments": [
+      "style",
+      "class-freed"
+    ],
+    "noBackground": true,
+    "options": "@frontOpts",
+    "negative": "text, letters, numbers, logo, watermark, signature, frame, border"
+  },
+  "recipes": [
+    {
+      "id": "kaiju-a",
+      "concept": "kaiju mech",
+      "width": 96,
+      "height": 128,
+      "seed": 8001,
+      "subject": "Subject: a towering kaiju robot: a giant armoured reptile-shaped mech monster standing upright on two thick legs, seen exactly from the front. A heavy dinosaur-like metal head with a jutting jaw of square metal teeth and two narrow glowing yellow eyes; a row of tall jagged steel-blue radiator-fin plates rising behind its head and shoulders like dorsal spikes; broad slate-grey and dark-green armour plates with rivets; a glowing orange furnace grille in the middle of its chest; short clawed metal arms held up in front; thick stomping legs with three-toed clawed feet on the bottom edge; the stubby tip of its tail showing beside one leg. Mighty but toy-like. Fills the canvas height."
+    },
+    {
+      "id": "android-a",
+      "concept": "synthetic gentlewoman",
+      "width": 40,
+      "height": 80,
+      "seed": 8002,
+      "subject": "Subject: an elegant synthetic android woman who looks almost human, standing straight and calm, seen exactly from the front. A pale porcelain-white face with a fine dark seam line along the jaw and down the neck, sleek short black bob hair, one eye softly glowing sky-blue and the other a plain dark eye, a long belted tan trench coat with a high turned-up collar reaching below the knees, hands in the coat pockets, slim dark trousers and black boots on the bottom edge. Quiet and mysterious. Tall and slim, fills the canvas height."
+    },
+    {
+      "id": "beetle-a",
+      "concept": "beetle think-tank",
+      "width": 56,
+      "height": 48,
+      "seed": 8003,
+      "subject": "Subject: a curious beetle-shaped walker robot, seen exactly from the front. A big round sunny-orange beetle shell body with a seam down the middle and rivets, three round black camera-lens eyes in a triangle on its rounded cream front face, two small grey grabber arms with pincers under the face, and four sturdy jointed grey legs spread wide to the left and right, each ending in a small black wheel touching the bottom edge. Leaning a little to one side as if peering at something. Wide and low."
+    },
+    {
+      "id": "costume-a",
+      "concept": "kid in a cardboard robot costume",
+      "width": 40,
+      "height": 56,
+      "seed": 8004,
+      "subject": "Subject: a small child dressed up in a homemade robot costume, seen exactly from the front. The body is a brown cardboard box with crooked hand-drawn buttons and dials in red and blue felt-tip pen, the arms are silver bendy dryer-hose tubes ending in yellow rubber gloves, a dented silver kitchen colander worn as a helmet with a bent wire coat-hanger antenna on top, the child's round rosy face with a big proud grin under the colander, short legs in grey tights and red sneakers on the bottom edge. Funny and proud."
+    },
+    {
+      "id": "rover-a",
+      "concept": "planetary rover",
+      "width": 64,
+      "height": 56,
+      "seed": 8005,
+      "subject": "Subject: a planetary exploration rover robot, seen exactly from the front. A flat white-and-gold box body with a wide dark-blue solar-panel deck on top, six chunky ribbed grey wheels on bent rocker-bogie suspension struts spread out to the left and right, the wheels resting on the bottom edge and smeared with rusty red dust, a tall thin camera mast rising from the middle topped by a small boxy head with two big round camera lenses as eyes, and a small round dish antenna on a stalk. Endearing, like a lonely explorer."
+    },
+    {
+      "id": "puppy-a",
+      "concept": "wind-up tin puppy",
+      "width": 32,
+      "height": 32,
+      "seed": 8006,
+      "subject": "Subject: a wind-up tin toy robot puppy sitting and facing the viewer. Made of painted tin, cream with tomato-red patches, rivets and seams; a round head with big round black button eyes and a black nose, two long floppy hinged metal ears hanging down, a red collar with a yellow bell, a big brass wind-up key sticking up from its back, short stubby legs, a coiled spring tail curling up to one side. Clearly a toy machine."
+    },
+    {
+      "id": "diver-a",
+      "concept": "deep-sea diver",
+      "width": 48,
+      "height": 64,
+      "seed": 8007,
+      "subject": "Subject: a deep-sea diving robot, seen exactly from the front. A big round polished brass diving-helmet head with one large round glass porthole as its face showing two small glowing sky-blue eyes inside, bolts around the porthole and a brass collar; a chunky grey canvas suit body with a brass chest plate; a black air hose looping from the side of the helmet down to a yellow air tank on its back; thick gloved hands; two heavy dark lead boots on the bottom edge. Heavy, slow and friendly."
+    },
+    {
+      "id": "maid-a",
+      "concept": "atomic-age housemaid",
+      "width": 40,
+      "height": 64,
+      "seed": 8008,
+      "subject": "Subject: a 1950s atomic-age housemaid robot, seen exactly from the front. A clear glass bubble-dome head with a small mint-green face inside with two round eyes, a little antenna with a red ball on top of the dome; a shiny mint-green cone-shaped body that narrows toward the bottom like a skirt, a white frilly lace apron on the front, a cream collar; two thin bendy arms, one holding a pink feather duster up high; a single round black wheel at the very bottom on the bottom edge. Retro, prim and cheerful."
+    },
+    {
+      "id": "steam-a",
+      "concept": "steam automaton gentleman",
+      "width": 48,
+      "height": 72,
+      "seed": 8009,
+      "subject": "Subject: a Victorian steam automaton gentleman, seen exactly from the front. A tall black stovepipe top hat that is also a chimney, puffing a small cream steam cloud from its top; a round polished brass head with a big round monocle lens over one eye and a curled brass moustache; a dark-red waistcoat body with a round glass window in the chest showing brass gears and cogs inside, a gold pocket-watch chain; thin brass arms with white gloves, one hand on a black cane; thin legs in grey striped trousers with brass shoes on the bottom edge. Dignified and old-fashioned."
+    },
+    {
+      "id": "samurai-a",
+      "concept": "lacquered samurai mech",
+      "width": 56,
+      "height": 72,
+      "seed": 8010,
+      "subject": "Subject: a samurai warrior robot in lacquered armour, seen exactly from the front. A helmet with a big golden crescent-moon crest on the front and wide flared neck guards; a black face mask with a single glowing yellow horizontal visor slit; layered glossy tomato-red lacquer armour plates laced with cream cord on its shoulders, chest and skirt; a wooden practice sword held upright in front of its chest in both hands; armoured legs in a wide stance with black sandal feet on the bottom edge. Calm and proud."
+    },
+    {
+      "id": "lander-a",
+      "concept": "lunar lander",
+      "width": 56,
+      "height": 56,
+      "seed": 8011,
+      "subject": "Subject: a small lunar lander robot, seen exactly from the front. A crinkled gold-foil wrapped octagonal body; a small dark square window as its face with two round glowing sky-blue eyes; a little round white dish antenna and a thin whip antenna on top; small grey thruster nozzles on each side; four long spindly silver lander legs angled out to the left and right with round flat footpads resting on the bottom edge. Light and delicate, it looks like it could hop."
+    },
+    {
+      "id": "arcade-a",
+      "concept": "arcade-cabinet walker",
+      "width": 40,
+      "height": 64,
+      "seed": 8012,
+      "subject": "Subject: a walking arcade-cabinet robot, seen exactly from the front. Its whole body is an upright retro arcade game cabinet painted sky-blue with tomato-red side stripes; the screen near the top is its face, glowing dark green with a big blocky pixel smile and two square pixel eyes; below the screen a control panel with a red ball joystick sticking out like a nose and two round yellow buttons; a glowing orange coin slot below as its mouth; two short metal arms at the sides; two short metal legs with chunky sneakers on the bottom edge."
+    },
+    {
+      "id": "mainframe-a",
+      "concept": "punch-card mainframe",
+      "width": 64,
+      "height": 80,
+      "seed": 8013,
+      "subject": "Subject: a fridge-sized vintage mainframe computer robot on caster wheels, seen exactly from the front. A tall cream-and-grey metal cabinet; at the top two big round reel-to-reel tape spools side by side are its eyes; below them a panel of small blinking red, yellow and green lamps and a row of chunky switches; a slot in its belly spilling a long curling strip of white ticker tape; two short accordion-hose arms at its sides; four small black caster wheels on the bottom edge. Clunky, wise and old."
+    },
+    {
+      "id": "typist-a",
+      "concept": "typewriter-head scribe",
+      "width": 36,
+      "height": 56,
+      "seed": 8014,
+      "subject": "Subject: a slim robot whose head is an old-fashioned typewriter, seen exactly from the front. The head is a black-and-cream vintage typewriter: rows of little round cream keys form a toothy grin, two round glowing eyes sit above the keys, a blank white sheet of paper sticks straight up out of the top of the head like a crest, and a silver carriage-return lever pokes out on one side like an ear; a thin sky-blue metal body with a red bow tie; two thin arms; two thin legs with neat brown shoes on the bottom edge. Bookish and eager."
+    },
+    {
+      "id": "fire-a",
+      "concept": "firefighter bot",
+      "width": 48,
+      "height": 64,
+      "seed": 8015,
+      "subject": "Subject: a firefighter robot, seen exactly from the front. A bright tomato-red metal body with yellow reflective stripes; a classic yellow firefighter helmet with a wide back brim on its round head; a sky-blue visor face with two round eyes; a thick cream fire hose coiled around its body and over one shoulder, one arm ending in a big brass hose nozzle, the other in a black mitten; a folded silver ladder strapped upright on its back, sticking up above both shoulders; sturdy black boots on the bottom edge. Brave and ready."
+    },
+    {
+      "id": "chef-a",
+      "concept": "chef bot",
+      "width": 40,
+      "height": 72,
+      "seed": 8016,
+      "subject": "Subject: a chef robot, seen exactly from the front. A very tall puffy white chef's toque on a round cream head with a sky-blue visor face, two round eyes and a curly painted black moustache; a round white chef-jacket body with a red neckerchief and a white apron; a round window in its belly showing a small pot of soup with steam rising; one arm ending in a silver whisk, the other in a spatula; short legs with black clogs on the bottom edge. Jolly."
+    },
+    {
+      "id": "band-a",
+      "concept": "one-man-band",
+      "width": 56,
+      "height": 64,
+      "seed": 8017,
+      "subject": "Subject: a one-man-band robot, seen exactly from the front. A round sky-blue head with two round eyes and a silver harmonica held in a wire rack in front of its mouth; a big tomato-red bass drum with a cream drumhead strapped to its back, showing behind both shoulders; its body is a squeezed red-and-cream accordion bellows with pleats and two rows of little buttons, both hands holding the sides of the accordion; small brass cymbals fixed on both knees; short legs with yellow shoes on the bottom edge. Noisy and joyful."
+    },
+    {
+      "id": "greenhouse-a",
+      "concept": "walking greenhouse",
+      "width": 48,
+      "height": 64,
+      "seed": 8018,
+      "subject": "Subject: a walking greenhouse robot, seen exactly from the front. Its body is a big clear glass dome with thin mint-green metal frame lines, and inside the dome grows a little round leafy green tree with a brown trunk in a pot of soil; two small round glowing eyes on a cream metal band around the base of the dome; one arm is a yellow watering can, the other a thin metal arm; instead of feet it stands on twisting wooden roots spreading out on the bottom edge. Gentle and green."
+    },
+    {
+      "id": "octosub-a",
+      "concept": "octopus submarine",
+      "width": 56,
+      "height": 56,
+      "seed": 8019,
+      "subject": "Subject: an octopus submarine robot, seen exactly from the front. A round sunny-yellow bathysphere body like a diving ball with rivets; one big round porthole window in the middle showing two friendly glowing eyes inside, two small portholes beside it; a periscope sticking up from the top with a little lens; eight segmented metal tentacle arms curling out to both sides and down to the bottom edge, with suction-cup dots. Playful."
+    },
+    {
+      "id": "ladybug-a",
+      "concept": "ladybug micro-drone",
+      "width": 24,
+      "height": 24,
+      "seed": 8020,
+      "subject": "Subject: a tiny ladybug drone robot hovering in the air, seen exactly from the front. A small round tomato-red metal shell with black spots, split open in the middle with two clear see-through wings buzzing out to the sides, a little black head with two big round glowing sky-blue eyes and two tiny antennae with yellow tips. Very small and cute, floating."
+    },
+    {
+      "id": "owl-a",
+      "concept": "owl sentinel",
+      "width": 40,
+      "height": 56,
+      "seed": 8021,
+      "subject": "Subject: an owl-shaped sentinel robot perched upright, seen exactly from the front. A round body covered in overlapping riveted metal feather plates in warm brown and cream; two pointed ear-tuft plates on top of its head; two huge round brass telescope-lens eyes with glowing sky-blue centres and zoom rings; a small yellow metal beak; folded metal wings at its sides; two clawed yellow metal feet on the bottom edge. Watchful and wise."
+    },
+    {
+      "id": "golem-a",
+      "concept": "clay golem",
+      "width": 72,
+      "height": 88,
+      "seed": 8022,
+      "subject": "Subject: a clay golem robot, seen exactly from the front. A huge chunky body built from stacked terracotta-orange clay bricks with a few cracks, bound with shiny brass bands and rivets around the chest, arms and legs; a small blocky head with two deep glowing sky-blue eye holes and one carved glowing rune mark on its forehead; massive blocky brick arms hanging down with big square fists; short thick brick legs with flat square feet on the bottom edge. Ancient, strong and gentle."
+    },
+    {
+      "id": "balloon-a",
+      "concept": "hot-air balloon bot",
+      "width": 40,
+      "height": 64,
+      "seed": 8023,
+      "subject": "Subject: a little robot riding under a hot-air balloon, floating in the air, seen exactly from the front. A big round patched hot-air balloon on top, sewn from tomato-red, sunny-yellow and sky-blue panels with a few cream patches and stitches; ropes hanging down to a small wicker basket that is the robot's body; a round cream robot head with a sky-blue visor and two round eyes peeking over the basket rim; two small arms each holding a little brown sandbag. Nothing below the basket."
+    },
+    {
+      "id": "sumo-a",
+      "concept": "sumo bot",
+      "width": 80,
+      "height": 80,
+      "seed": 8024,
+      "subject": "Subject: a sumo wrestler robot, seen exactly from the front. A huge round heavy cream metal body shaped like a giant ball with rivets; a small round head with two determined eyes and a black topknot-shaped antenna on top; a thick tomato-red belt plate wrapped around its middle with stiff tassel strips hanging in front; short thick arms held out wide with open palms; two short fat bent legs in a wide low stance with flat feet planted on the bottom edge. Massive and immovable."
+    },
+    {
+      "id": "plough-a",
+      "concept": "snow-plough bot",
+      "width": 56,
+      "height": 48,
+      "seed": 8025,
+      "subject": "Subject: a snow-plough robot, seen exactly from the front. A squat sky-blue boxy cab body with a wide windshield face showing two round eyes; a flashing yellow-orange beacon light on top; a cosy red-and-cream striped knitted scarf wrapped around its neck with the ends fluttering; two short arms; a huge wide curved orange plough blade across the bottom front, wider than the body, with a little white snow on it; black caterpillar tracks under it on the bottom edge. Determined."
+    },
+    {
+      "id": "mime-a",
+      "concept": "mime android",
+      "width": 32,
+      "height": 56,
+      "seed": 8026,
+      "subject": "Subject: a mime robot performing, seen exactly from the front. A slim robot with a smooth white oval face, two dark oval eyes, a small black teardrop under one eye and a small red mouth; a black beret tilted on its head; a black-and-white horizontally striped body; red braces; both white-gloved hands raised with palms pressed flat against an invisible wall in front of it; slim black trousers and black shoes on the bottom edge. Theatrical."
+    },
+    {
+      "id": "excavator-a",
+      "concept": "excavator",
+      "width": 96,
+      "height": 80,
+      "seed": 8027,
+      "subject": "Subject: an excavator robot, seen exactly from the front. A sunny-yellow tracked digging machine: wide black caterpillar tracks along the bottom edge; a square yellow cab as its head with a big windshield face showing two round eyes and a wiper blade; a white hard hat on top of the cab; one big yellow hydraulic arm rising up on one side, bent at the elbow with a silver piston, holding a toothed digging bucket raised high above its head. Hard-working and proud."
+    },
+    {
+      "id": "satellite-a",
+      "concept": "satellite",
+      "width": 80,
+      "height": 40,
+      "seed": 8028,
+      "subject": "Subject: a satellite robot floating in the air, seen exactly from the front. A small gold-foil cube body in the middle; its face is a round white radio dish with two round eyes and a little antenna sticking out from its centre; two very long wings of dark-blue solar panels with a grid of cells stretching far out to the left and right; tiny cream puffs of thruster gas from small nozzles on its corners. Nothing below it."
+    },
+    {
+      "id": "knight-a",
+      "concept": "tin knight",
+      "width": 48,
+      "height": 72,
+      "seed": 8029,
+      "subject": "Subject: a tin knight automaton, seen exactly from the front. A full suit of polished silver plate armour; a rounded great helm whose narrow visor slit glows sky-blue, with a red plume on top; a round-shouldered breastplate; one arm holding a tall lance upright with a little red-and-yellow pennant flag at its tip; the other arm holding a mint-green kite shield decorated with a gold circuit-board pattern of lines and dots; armoured legs with pointed metal shoes on the bottom edge. Noble and a bit clanky."
+    },
+    {
+      "id": "fortune-a",
+      "concept": "carnival fortune teller",
+      "width": 48,
+      "height": 72,
+      "seed": 8030,
+      "subject": "Subject: a carnival fortune-teller robot in a booth on wheels, seen exactly from the front. A tall narrow wooden booth painted tomato-red with gold trim and a glass window across its upper half; behind the glass the robot's upper body: a purple turban with a jewel, a cream mechanical face with two glowing eyes and a thin moustache, one metal hand resting on a glowing sky-blue crystal ball; below the window a small slot with a cream fortune card sticking out; four small wheels on the bottom edge. Mysterious and showy."
+    },
+    {
+      "id": "rover-b",
+      "concept": "planetary rover",
+      "width": 64,
+      "height": 56,
+      "seed": 8101,
+      "subject": "Subject: a planetary exploration rover robot drawn as a flat front elevation, like a toy seen exactly from the front at eye level, no top surface visible. A wide low white-and-gold body box; on each side three chunky grey ribbed wheels stacked side by side under bent rocker struts, so six wheels show in a row along the bottom edge, smeared with rusty red dust; a tall thin white camera mast rising from the middle of the body, topped by a small boxy head with two big round black camera lenses as eyes looking at the viewer; a small round dish antenna on a stalk beside the mast; a dark-blue solar panel edge along the top of the body. Endearing, like a lonely explorer. Transparent background, nothing under the wheels."
+    },
+    {
+      "id": "puppy-b",
+      "concept": "wind-up tin puppy",
+      "width": 40,
+      "height": 40,
+      "seed": 8102,
+      "subject": "Subject: a wind-up tin toy robot puppy sitting upright and facing the viewer, like a little dog sitting for a treat. Made of painted cream tin with tomato-red ears and rivets along its seams; a big round cream head with two big round black eyes, a black button nose and a happy open mouth; two long floppy red metal ears hanging down on both sides with hinges; a red collar with a round yellow bell; a big brass wind-up key with a round handle sticking up behind its back; two front legs straight down and two short back legs folded; a coiled silver spring tail curling up at one side. Clearly a little toy dog machine."
+    },
+    {
+      "id": "beetle-b",
+      "concept": "beetle think-tank",
+      "width": 56,
+      "height": 48,
+      "seed": 8103,
+      "subject": "Subject: a curious beetle-shaped walker robot drawn as a flat front elevation, seen exactly from the front at eye level. A big round sunny-orange metal beetle-shell dome body with a seam down the middle and rivets; on the front of the dome a sky-blue metal face plate with three round glowing camera-lens eyes arranged in a triangle, one big on top and two smaller below; two small grey grabber arms with pincers under the face; four long jointed grey metal legs splayed out wide to the left and right like a spider, each leg ending in a small black wheel touching the bottom edge, with empty space under the body. Clearly a machine. Head tilted a little as if peering at something."
+    },
+    {
+      "id": "sumo-b",
+      "concept": "sumo bot",
+      "width": 80,
+      "height": 80,
+      "seed": 8104,
+      "subject": "Subject: a sumo wrestler robot, clearly a machine made of painted metal with bolts and seams, seen exactly from the front. A huge round cream metal ball-shaped body like a giant boiler with rivets around it; a small round metal head with a dark sky-blue screen face showing two determined glowing eyes, and a black topknot-shaped knob antenna on top; a thick tomato-red metal belt plate wrapped around its middle with stiff red tassel strips hanging in front; short thick segmented metal arms held out wide with big round mitt hands; two short fat bent metal legs in a wide low stance with flat feet planted on the bottom edge. Massive and immovable, no skin, no human face."
+    },
+    {
+      "id": "plough-b",
+      "concept": "snow-plough bot",
+      "width": 56,
+      "height": 48,
+      "seed": 8105,
+      "subject": "Subject: a snow-plough robot drawn as a flat front elevation, seen exactly from the front at eye level, perfectly symmetric, no side or top surfaces visible. A squat sky-blue cab body with a wide windshield face showing two round eyes; a yellow-orange beacon light on top; a red-and-cream striped knitted scarf around its neck with one end fluttering; two short arms; a huge wide curved orange plough blade straight across the bottom front, wider than the body, with a little white snow on its top edge; two black caterpillar tracks visible under each end of the blade on the bottom edge. Determined."
+    },
+    {
+      "id": "band-b",
+      "concept": "one-man-band",
+      "width": 56,
+      "height": 64,
+      "seed": 8106,
+      "subject": "Subject: a one-man-band robot standing still, seen exactly from the front, symmetric. A round cream metal head with a sky-blue visor showing two round happy eyes; a silver harmonica held in a wire rack in front of its mouth; a big tomato-red bass drum with a cream drumhead strapped on its back, showing as a big red circle behind its head and shoulders; its body is a red-and-cream accordion bellows with vertical pleats, both hands holding the accordion ends; two small round brass cymbals strapped to its knees; short metal legs with yellow shoes on the bottom edge. Clearly a machine, cheerful."
+    },
+    {
+      "id": "mime-b",
+      "concept": "mime android",
+      "width": 32,
+      "height": 56,
+      "seed": 8107,
+      "subject": "Subject: a mime robot, clearly a machine made of painted metal with bolts and seams, seen exactly from the front. A smooth white metal egg-shaped head with two black oval eyes, a small black teardrop under one eye and a tiny red mouth, a black beret on top; a slim metal body painted with black and white horizontal stripes; thin jointed metal arms raised with both white-gloved hands held up flat at shoulder height, palms out, as if pressing on an invisible glass wall; thin black metal legs and black shoes on the bottom edge. Theatrical."
+    },
+    {
+      "id": "excavator-b",
+      "concept": "excavator",
+      "width": 96,
+      "height": 80,
+      "seed": 8108,
+      "subject": "Subject: an excavator robot drawn as a flat front elevation like a sticker, seen exactly from the front at eye level, no side or top surfaces visible. Two black caterpillar tracks side by side along the bottom edge, seen end-on as two dark rounded blocks; above them a square sunny-yellow cab as its head with a flat windshield face showing two round eyes and one wiper blade; a white hard hat on top of the cab; one big yellow hydraulic arm rising straight up from beside the cab and bending over at the top with a silver piston, holding a toothed digging bucket raised high above its head. Hard-working and proud."
+    },
+    {
+      "id": "excavator-c",
+      "concept": "excavator",
+      "width": 96,
+      "height": 80,
+      "seed": 8109,
+      "subject": "Subject: a cheerful excavator robot standing upright like a character, flat 2D, seen exactly from the front. Its body is a square sunny-yellow driver's cab with a big flat windshield as its face showing two round eyes and a smile, a white hard hat on top, an orange beacon light; it stands on two short black caterpillar tracks, one under each side, on the bottom edge; its right arm is a long yellow hydraulic boom with a silver piston, raised high and bent at the elbow, ending in a big toothed digging bucket above its head; its left arm is a short grey arm with a mitt hand. Proud and strong."
+    },
+    {
+      "id": "rover-c",
+      "concept": "planetary rover",
+      "width": 64,
+      "height": 56,
+      "seed": 8110,
+      "subject": "Subject: a planetary rover robot drawn as a flat front elevation like a sticker, seen exactly from the front at eye level, no top surface visible, perfectly symmetric. A wide low white-and-gold box body; on each side two chunky grey ribbed wheels on bent rocker struts, the wheels standing on the bottom edge and dusted rusty red; a tall thin white mast rising from the middle of the body topped by one wide flat camera box with a row of three small square dark lenses; a small round dish antenna on a short stalk on one side; a thin dark-blue solar-panel strip along the top edge of the body. A lonely explorer."
+    },
+    {
+      "id": "rover-d",
+      "concept": "planetary rover",
+      "width": 64,
+      "height": 48,
+      "seed": 8111,
+      "subject": "Subject: a planetary rover robot, flat 2D, seen exactly from the front, like a toy car facing the viewer. A wide flat dark-blue solar panel wing on top like a table top; under it a white-and-gold body box with a small dark visor face showing two small glowing sky-blue eyes; six chunky grey wheels, three on each side, spread wide on bent rocker legs with their bottoms on the bottom edge, dusted rusty red; a thin whip antenna and a little round dish antenna sticking up from the panel. A lonely explorer, symmetric."
+    },
+    {
+      "id": "mainframe-b",
+      "concept": "punch-card mainframe",
+      "width": 64,
+      "height": 80,
+      "seed": 8112,
+      "subject": "Subject: a vintage mainframe computer robot drawn as a flat front elevation like a sticker, seen exactly from the front at eye level, only the front panel visible, no side or top surfaces. A tall cream-and-grey metal cabinet like a fridge; at the top two big round reel-to-reel tape spools side by side as its eyes; below them a panel of small red, yellow and green lamps and a row of chunky switches like a mouth; a slot in its belly with a long curling strip of white ticker tape spilling down; two bendy grey accordion-hose arms at its sides; four small black caster wheels on the bottom edge. Clunky, wise and old."
+    },
+    {
+      "id": "puppy-c",
+      "concept": "wind-up tin puppy",
+      "width": 40,
+      "height": 40,
+      "seed": 8113,
+      "subject": "Subject: a little robot puppy toy made of tin, clearly a machine made of painted metal with bolts and seams, sitting and facing the viewer. A boxy cream metal head with a rounded square snout, a dark sky-blue screen visor with two round glowing eyes, a black bolt nose; two floppy tomato-red metal ears on hinges; a cylinder cream metal body with a red collar and yellow bell; a big brass wind-up key sticking out of its side; four short metal tube legs with round feet; a springy coiled metal tail. A toy robot dog."
+    },
+    {
+      "id": "puppy-d",
+      "concept": "wind-up tin puppy",
+      "width": 40,
+      "height": 32,
+      "seed": 8114,
+      "subject": "Subject: a wind-up tin robot puppy, clearly a toy machine made of painted sheet metal with rivets, seen exactly from the front, sitting. A round tomato-red metal head with two big round glowing sky-blue lamp eyes and a black bolt nose, two long floppy cream metal ears with hinges at the top; a small cream tin body with red stripes; a big brass wind-up key on top of its back; four stubby metal legs ending in small black wheels; a coiled spring tail sticking up. A toy robot dog."
+    },
+    {
+      "id": "sumo-c",
+      "concept": "sumo bot",
+      "width": 80,
+      "height": 80,
+      "seed": 8115,
+      "subject": "Subject: a sumo wrestler robot, clearly a machine made of bright painted metal with bolts and seams, seen exactly from the front, symmetric. A huge round cream metal ball-shaped body like a giant boiler with a ring of rivets; a small round sky-blue metal head with a dark screen face showing two determined glowing eyes, and a round black topknot knob on top; a thick tomato-red metal belt plate around its middle with stiff red tassel strips hanging in front; short thick sky-blue segmented metal arms held out wide with big round mitt hands; two short fat bent sky-blue metal legs in a wide low stance with flat feet. The feet stand on nothing; transparent below them. Massive and immovable."
+    }
+  ],
+  "outputs": [
+    {
+      "path": "images/freed/robot-01.png",
+      "from": "costume-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 2,
+          "y": 0,
+          "width": 36,
+          "height": 52
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 72,
+      "height": 104
+    },
+    {
+      "path": "images/freed/robot-02.png",
+      "from": "puppy-c#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 5,
+          "y": 4,
+          "width": 29,
+          "height": 33
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 58,
+      "height": 66
+    },
+    {
+      "path": "images/freed/robot-03.png",
+      "from": "beetle-b#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 4,
+          "y": 3,
+          "width": 48,
+          "height": 41
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 96,
+      "height": 82
+    },
+    {
+      "path": "images/freed/robot-04.png",
+      "from": "rover-c#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 7,
+          "y": 5,
+          "width": 50,
+          "height": 47
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 100,
+      "height": 94
+    },
+    {
+      "path": "images/freed/robot-05.png",
+      "from": "android-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 6,
+          "y": 5,
+          "width": 28,
+          "height": 71
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 56,
+      "height": 142
+    },
+    {
+      "path": "images/freed/robot-06.png",
+      "from": "typist-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 4,
+          "y": 2,
+          "width": 29,
+          "height": 51
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 58,
+      "height": 102
+    },
+    {
+      "path": "images/freed/robot-07.png",
+      "from": "diver-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 1,
+          "y": 0,
+          "width": 44,
+          "height": 63
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 88,
+      "height": 126
+    },
+    {
+      "path": "images/freed/robot-08.png",
+      "from": "maid-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 2,
+          "y": 2,
+          "width": 38,
+          "height": 57
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 76,
+      "height": 114
+    },
+    {
+      "path": "images/freed/robot-09.png",
+      "from": "arcade-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 3,
+          "y": 1,
+          "width": 34,
+          "height": 61
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 68,
+      "height": 122
+    },
+    {
+      "path": "images/freed/robot-10.png",
+      "from": "ladybug-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 2,
+          "y": 5,
+          "width": 21,
+          "height": 15
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 42,
+      "height": 30
+    },
+    {
+      "path": "images/freed/robot-11.png",
+      "from": "chef-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 0,
+          "y": 2,
+          "width": 39,
+          "height": 67
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 78,
+      "height": 134
+    },
+    {
+      "path": "images/freed/robot-12.png",
+      "from": "fire-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 2,
+          "y": 1,
+          "width": 42,
+          "height": 61
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 84,
+      "height": 122
+    },
+    {
+      "path": "images/freed/robot-14.png",
+      "from": "octosub-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 2,
+          "y": 4,
+          "width": 52,
+          "height": 46
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 104,
+      "height": 92
+    },
+    {
+      "path": "images/freed/robot-15.png",
+      "from": "mime-b#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 0,
+          "y": 1,
+          "width": 32,
+          "height": 54
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 64,
+      "height": 108
+    },
+    {
+      "path": "images/freed/robot-16.png",
+      "from": "steam-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 5,
+          "y": 5,
+          "width": 35,
+          "height": 61
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 70,
+      "height": 122
+    },
+    {
+      "path": "images/freed/robot-17.png",
+      "from": "balloon-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 3,
+          "y": 1,
+          "width": 33,
+          "height": 60
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 66,
+      "height": 120
+    },
+    {
+      "path": "images/freed/robot-18.png",
+      "from": "owl-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 2,
+          "y": 4,
+          "width": 36,
+          "height": 47
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 72,
+      "height": 94
+    },
+    {
+      "path": "images/freed/robot-19.png",
+      "from": "greenhouse-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 0,
+          "y": 5,
+          "width": 44,
+          "height": 53
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 88,
+      "height": 106
+    },
+    {
+      "path": "images/freed/robot-20.png",
+      "from": "lander-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 3,
+          "y": 4,
+          "width": 49,
+          "height": 48
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 98,
+      "height": 96
+    },
+    {
+      "path": "images/freed/robot-22.png",
+      "from": "samurai-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 9,
+          "y": 2,
+          "width": 43,
+          "height": 68
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 86,
+      "height": 136
+    },
+    {
+      "path": "images/freed/robot-23.png",
+      "from": "band-b#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 3,
+          "y": 0,
+          "width": 50,
+          "height": 64
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 100,
+      "height": 128
+    },
+    {
+      "path": "images/freed/robot-24.png",
+      "from": "plough-b#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 9,
+          "y": 2,
+          "width": 40,
+          "height": 44
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 80,
+      "height": 88
+    },
+    {
+      "path": "images/freed/robot-25.png",
+      "from": "knight-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 1,
+          "y": 1,
+          "width": 45,
+          "height": 67
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 90,
+      "height": 134
+    },
+    {
+      "path": "images/freed/robot-26.png",
+      "from": "fortune-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 4,
+          "y": 2,
+          "width": 38,
+          "height": 68
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 76,
+      "height": 136
+    },
+    {
+      "path": "images/freed/robot-27.png",
+      "from": "satellite-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 16,
+          "y": 4,
+          "width": 49,
+          "height": 34
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 98,
+      "height": 68
+    },
+    {
+      "path": "images/freed/robot-28.png",
+      "from": "mainframe-b#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 6,
+          "y": 8,
+          "width": 48,
+          "height": 66
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 96,
+      "height": 132
+    },
+    {
+      "path": "images/freed/robot-29.png",
+      "from": "golem-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 5,
+          "y": 10,
+          "width": 63,
+          "height": 71
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 126,
+      "height": 142
+    },
+    {
+      "path": "images/freed/robot-30.png",
+      "from": "sumo-c#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 4,
+          "y": 6,
+          "width": 72,
+          "height": 67
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 144,
+      "height": 134
+    },
+    {
+      "path": "images/freed/robot-31.png",
+      "from": "excavator-c#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 14,
+          "y": 8,
+          "width": 70,
+          "height": 64
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 140,
+      "height": 128
+    },
+    {
+      "path": "images/freed/robot-32.png",
+      "from": "kaiju-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 2,
+          "y": 5,
+          "width": 93,
+          "height": 120
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 186,
+      "height": 240
+    }
+  ],
+  "exploration": false
+}

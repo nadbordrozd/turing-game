@@ -1,0 +1,1982 @@
+{
+  "kaiju-a": {
+    "id": "kaiju-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-c6dce2de-90d4-4d71-b738-e5b6aced873a",
+    "submittedAt": "2026-11-05T20:53:19.963Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a towering kaiju robot: a giant armoured reptile-shaped mech monster standing upright on two thick legs, seen exactly from the front. A heavy dinosaur-like metal head with a jutting jaw of square metal teeth and two narrow glowing yellow eyes; a row of tall jagged steel-blue radiator-fin plates rising behind its head and shoulders like dorsal spikes; broad slate-grey and dark-green armour plates with rivets; a glowing orange furnace grille in the middle of its chest; short clawed metal arms held up in front; thick stomping legs with three-toed clawed feet on the bottom edge; the stubby tip of its tail showing beside one leg. Mighty but toy-like. Fills the canvas height."
+        }
+      ],
+      "image_size": {
+        "width": 96,
+        "height": 128
+      },
+      "no_background": true,
+      "seed": 8001,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a towering kaiju robot: a giant armoured reptile-shaped mech monster standing upright on two thick legs, seen exactly from the front. A heavy dinosaur-like metal head with a jutting jaw of square metal teeth and two narrow glowing yellow eyes; a row of tall jagged steel-blue radiator-fin plates rising behind its head and shoulders like dorsal spikes; broad slate-grey and dark-green armour plates with rivets; a glowing orange furnace grille in the middle of its chest; short clawed metal arms held up in front; thick stomping legs with three-toed clawed feet on the bottom edge; the stubby tip of its tail showing beside one leg. Mighty but toy-like. Fills the canvas height. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:53:19.973Z",
+    "candidates": [
+      {
+        "file": "kaiju-a-0.png",
+        "sha256": "facb21c3f9db75e3a9dda0f31719b4cc315c5116d3d6fd7faaaf23f71eb87e43",
+        "width": 96,
+        "height": 128
+      }
+    ]
+  },
+  "costume-a": {
+    "id": "costume-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-3b7b50b4-7abc-42b5-a9a7-6bb32c83cd63",
+    "submittedAt": "2026-11-05T20:54:06.528Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small child dressed up in a homemade robot costume, seen exactly from the front. The body is a brown cardboard box with crooked hand-drawn buttons and dials in red and blue felt-tip pen, the arms are silver bendy dryer-hose tubes ending in yellow rubber gloves, a dented silver kitchen colander worn as a helmet with a bent wire coat-hanger antenna on top, the child's round rosy face with a big proud grin under the colander, short legs in grey tights and red sneakers on the bottom edge. Funny and proud."
+        }
+      ],
+      "image_size": {
+        "width": 40,
+        "height": 56
+      },
+      "no_background": true,
+      "seed": 8004,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a small child dressed up in a homemade robot costume, seen exactly from the front. The body is a brown cardboard box with crooked hand-drawn buttons and dials in red and blue felt-tip pen, the arms are silver bendy dryer-hose tubes ending in yellow rubber gloves, a dented silver kitchen colander worn as a helmet with a bent wire coat-hanger antenna on top, the child's round rosy face with a big proud grin under the colander, short legs in grey tights and red sneakers on the bottom edge. Funny and proud. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:54:06.529Z",
+    "candidates": [
+      {
+        "file": "costume-a-0.png",
+        "sha256": "14718917c2248ccf65ffc93e51dab1a767d706cb3e5d0129240e9a0eaa4e1118",
+        "width": 40,
+        "height": 56
+      }
+    ]
+  },
+  "rover-a": {
+    "id": "rover-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-9749176a-5ccc-4b79-b989-2615f5a1fb5c",
+    "submittedAt": "2026-11-05T20:55:09.419Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a planetary exploration rover robot, seen exactly from the front. A flat white-and-gold box body with a wide dark-blue solar-panel deck on top, six chunky ribbed grey wheels on bent rocker-bogie suspension struts spread out to the left and right, the wheels resting on the bottom edge and smeared with rusty red dust, a tall thin camera mast rising from the middle topped by a small boxy head with two big round camera lenses as eyes, and a small round dish antenna on a stalk. Endearing, like a lonely explorer."
+        }
+      ],
+      "image_size": {
+        "width": 64,
+        "height": 56
+      },
+      "no_background": true,
+      "seed": 8005,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a planetary exploration rover robot, seen exactly from the front. A flat white-and-gold box body with a wide dark-blue solar-panel deck on top, six chunky ribbed grey wheels on bent rocker-bogie suspension struts spread out to the left and right, the wheels resting on the bottom edge and smeared with rusty red dust, a tall thin camera mast rising from the middle topped by a small boxy head with two big round camera lenses as eyes, and a small round dish antenna on a stalk. Endearing, like a lonely explorer. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:55:09.422Z",
+    "candidates": [
+      {
+        "file": "rover-a-0.png",
+        "sha256": "29a1f0d3346df40e05988d406b9c435238c8825d9cfefb88bddb2320361da126",
+        "width": 64,
+        "height": 56
+      }
+    ]
+  },
+  "puppy-a": {
+    "id": "puppy-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-b4f0dfbc-18a6-4591-8ca5-3b75e47485e3",
+    "submittedAt": "2026-11-05T20:55:44.644Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a wind-up tin toy robot puppy sitting and facing the viewer. Made of painted tin, cream with tomato-red patches, rivets and seams; a round head with big round black button eyes and a black nose, two long floppy hinged metal ears hanging down, a red collar with a yellow bell, a big brass wind-up key sticking up from its back, short stubby legs, a coiled spring tail curling up to one side. Clearly a toy machine."
+        }
+      ],
+      "image_size": {
+        "width": 32,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 8006,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a wind-up tin toy robot puppy sitting and facing the viewer. Made of painted tin, cream with tomato-red patches, rivets and seams; a round head with big round black button eyes and a black nose, two long floppy hinged metal ears hanging down, a red collar with a yellow bell, a big brass wind-up key sticking up from its back, short stubby legs, a coiled spring tail curling up to one side. Clearly a toy machine. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:55:44.647Z",
+    "candidates": [
+      {
+        "file": "puppy-a-0.png",
+        "sha256": "935b4e6d2f6b1944c2f56d8aa4c3f4d4ff7841ae92d6aa21539fd8fdb8b755ff",
+        "width": 32,
+        "height": 32
+      }
+    ]
+  },
+  "maid-a": {
+    "id": "maid-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-81c45d99-a253-4449-ba1f-ba2451fd853d",
+    "submittedAt": "2026-11-05T20:56:08.593Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a 1950s atomic-age housemaid robot, seen exactly from the front. A clear glass bubble-dome head with a small mint-green face inside with two round eyes, a little antenna with a red ball on top of the dome; a shiny mint-green cone-shaped body that narrows toward the bottom like a skirt, a white frilly lace apron on the front, a cream collar; two thin bendy arms, one holding a pink feather duster up high; a single round black wheel at the very bottom on the bottom edge. Retro, prim and cheerful."
+        }
+      ],
+      "image_size": {
+        "width": 40,
+        "height": 64
+      },
+      "no_background": true,
+      "seed": 8008,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a 1950s atomic-age housemaid robot, seen exactly from the front. A clear glass bubble-dome head with a small mint-green face inside with two round eyes, a little antenna with a red ball on top of the dome; a shiny mint-green cone-shaped body that narrows toward the bottom like a skirt, a white frilly lace apron on the front, a cream collar; two thin bendy arms, one holding a pink feather duster up high; a single round black wheel at the very bottom on the bottom edge. Retro, prim and cheerful. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:56:08.595Z",
+    "candidates": [
+      {
+        "file": "maid-a-0.png",
+        "sha256": "5f7f3f6442430de582a4635d8b8145a268b284b53709db76dbdacc21806e299f",
+        "width": 40,
+        "height": 64
+      }
+    ]
+  },
+  "octosub-a": {
+    "id": "octosub-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-bc461f33-9795-4822-acac-87681276a2f3",
+    "submittedAt": "2026-11-05T20:56:44.754Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: an octopus submarine robot, seen exactly from the front. A round sunny-yellow bathysphere body like a diving ball with rivets; one big round porthole window in the middle showing two friendly glowing eyes inside, two small portholes beside it; a periscope sticking up from the top with a little lens; eight segmented metal tentacle arms curling out to both sides and down to the bottom edge, with suction-cup dots. Playful."
+        }
+      ],
+      "image_size": {
+        "width": 56,
+        "height": 56
+      },
+      "no_background": true,
+      "seed": 8019,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: an octopus submarine robot, seen exactly from the front. A round sunny-yellow bathysphere body like a diving ball with rivets; one big round porthole window in the middle showing two friendly glowing eyes inside, two small portholes beside it; a periscope sticking up from the top with a little lens; eight segmented metal tentacle arms curling out to both sides and down to the bottom edge, with suction-cup dots. Playful. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:56:44.756Z",
+    "candidates": [
+      {
+        "file": "octosub-a-0.png",
+        "sha256": "cba4b32e9c03b317bc217bcb0113a0c0262397ed80baff7289101346a77ddeba",
+        "width": 56,
+        "height": 56
+      }
+    ]
+  },
+  "balloon-a": {
+    "id": "balloon-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-fe18a040-2879-42cd-bc63-013263bdaa5e",
+    "submittedAt": "2026-11-05T20:57:50.091Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a little robot riding under a hot-air balloon, floating in the air, seen exactly from the front. A big round patched hot-air balloon on top, sewn from tomato-red, sunny-yellow and sky-blue panels with a few cream patches and stitches; ropes hanging down to a small wicker basket that is the robot's body; a round cream robot head with a sky-blue visor and two round eyes peeking over the basket rim; two small arms each holding a little brown sandbag. Nothing below the basket."
+        }
+      ],
+      "image_size": {
+        "width": 40,
+        "height": 64
+      },
+      "no_background": true,
+      "seed": 8023,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a little robot riding under a hot-air balloon, floating in the air, seen exactly from the front. A big round patched hot-air balloon on top, sewn from tomato-red, sunny-yellow and sky-blue panels with a few cream patches and stitches; ropes hanging down to a small wicker basket that is the robot's body; a round cream robot head with a sky-blue visor and two round eyes peeking over the basket rim; two small arms each holding a little brown sandbag. Nothing below the basket. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:57:50.095Z",
+    "candidates": [
+      {
+        "file": "balloon-a-0.png",
+        "sha256": "7e783be8395d1b087b12a57a3e4cb16beb8c9d63a1e8b32a086f0231e5dc8a5b",
+        "width": 40,
+        "height": 64
+      }
+    ]
+  },
+  "android-a": {
+    "id": "android-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-6d4d905d-727d-468f-8c50-c0f40a62a99d",
+    "submittedAt": "2026-11-05T20:57:55.372Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: an elegant synthetic android woman who looks almost human, standing straight and calm, seen exactly from the front. A pale porcelain-white face with a fine dark seam line along the jaw and down the neck, sleek short black bob hair, one eye softly glowing sky-blue and the other a plain dark eye, a long belted tan trench coat with a high turned-up collar reaching below the knees, hands in the coat pockets, slim dark trousers and black boots on the bottom edge. Quiet and mysterious. Tall and slim, fills the canvas height."
+        }
+      ],
+      "image_size": {
+        "width": 40,
+        "height": 80
+      },
+      "no_background": true,
+      "seed": 8002,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: an elegant synthetic android woman who looks almost human, standing straight and calm, seen exactly from the front. A pale porcelain-white face with a fine dark seam line along the jaw and down the neck, sleek short black bob hair, one eye softly glowing sky-blue and the other a plain dark eye, a long belted tan trench coat with a high turned-up collar reaching below the knees, hands in the coat pockets, slim dark trousers and black boots on the bottom edge. Quiet and mysterious. Tall and slim, fills the canvas height. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:57:55.375Z",
+    "candidates": [
+      {
+        "file": "android-a-0.png",
+        "sha256": "6490b5f8c65856aa5862d457a685c7289aee6dd967415b6ca9739d82e852b7aa",
+        "width": 40,
+        "height": 80
+      }
+    ]
+  },
+  "typist-a": {
+    "id": "typist-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-8049857a-aa9f-44f0-8154-c2e819581b34",
+    "submittedAt": "2026-11-05T20:58:09.650Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a slim robot whose head is an old-fashioned typewriter, seen exactly from the front. The head is a black-and-cream vintage typewriter: rows of little round cream keys form a toothy grin, two round glowing eyes sit above the keys, a blank white sheet of paper sticks straight up out of the top of the head like a crest, and a silver carriage-return lever pokes out on one side like an ear; a thin sky-blue metal body with a red bow tie; two thin arms; two thin legs with neat brown shoes on the bottom edge. Bookish and eager."
+        }
+      ],
+      "image_size": {
+        "width": 36,
+        "height": 56
+      },
+      "no_background": true,
+      "seed": 8014,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a slim robot whose head is an old-fashioned typewriter, seen exactly from the front. The head is a black-and-cream vintage typewriter: rows of little round cream keys form a toothy grin, two round glowing eyes sit above the keys, a blank white sheet of paper sticks straight up out of the top of the head like a crest, and a silver carriage-return lever pokes out on one side like an ear; a thin sky-blue metal body with a red bow tie; two thin arms; two thin legs with neat brown shoes on the bottom edge. Bookish and eager. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:58:09.653Z",
+    "candidates": [
+      {
+        "file": "typist-a-0.png",
+        "sha256": "475f72d70804becbc6bb6cf9b1807c1ee545b0d977a2e247e04c3500840edc6e",
+        "width": 36,
+        "height": 56
+      }
+    ]
+  },
+  "beetle-a": {
+    "id": "beetle-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-1c7139c0-de49-424c-bb78-e8698f7699de",
+    "submittedAt": "2026-11-05T20:58:38.449Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a curious beetle-shaped walker robot, seen exactly from the front. A big round sunny-orange beetle shell body with a seam down the middle and rivets, three round black camera-lens eyes in a triangle on its rounded cream front face, two small grey grabber arms with pincers under the face, and four sturdy jointed grey legs spread wide to the left and right, each ending in a small black wheel touching the bottom edge. Leaning a little to one side as if peering at something. Wide and low."
+        }
+      ],
+      "image_size": {
+        "width": 56,
+        "height": 48
+      },
+      "no_background": true,
+      "seed": 8003,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a curious beetle-shaped walker robot, seen exactly from the front. A big round sunny-orange beetle shell body with a seam down the middle and rivets, three round black camera-lens eyes in a triangle on its rounded cream front face, two small grey grabber arms with pincers under the face, and four sturdy jointed grey legs spread wide to the left and right, each ending in a small black wheel touching the bottom edge. Leaning a little to one side as if peering at something. Wide and low. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:58:38.451Z",
+    "candidates": [
+      {
+        "file": "beetle-a-0.png",
+        "sha256": "b9211e17ca658afb6506aff91604f0b7b8825d41b74eac8abb8a56de78626615",
+        "width": 56,
+        "height": 48
+      }
+    ]
+  },
+  "fire-a": {
+    "id": "fire-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-a41ef4fd-93d0-4864-b1ec-f20a8f80fabb",
+    "submittedAt": "2026-11-05T20:58:49.786Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a firefighter robot, seen exactly from the front. A bright tomato-red metal body with yellow reflective stripes; a classic yellow firefighter helmet with a wide back brim on its round head; a sky-blue visor face with two round eyes; a thick cream fire hose coiled around its body and over one shoulder, one arm ending in a big brass hose nozzle, the other in a black mitten; a folded silver ladder strapped upright on its back, sticking up above both shoulders; sturdy black boots on the bottom edge. Brave and ready."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 64
+      },
+      "no_background": true,
+      "seed": 8015,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a firefighter robot, seen exactly from the front. A bright tomato-red metal body with yellow reflective stripes; a classic yellow firefighter helmet with a wide back brim on its round head; a sky-blue visor face with two round eyes; a thick cream fire hose coiled around its body and over one shoulder, one arm ending in a big brass hose nozzle, the other in a black mitten; a folded silver ladder strapped upright on its back, sticking up above both shoulders; sturdy black boots on the bottom edge. Brave and ready. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:58:49.788Z",
+    "candidates": [
+      {
+        "file": "fire-a-0.png",
+        "sha256": "c3f7a3b1f4471c531953d3773f33c6a02bc29954788c56b20b8d757d241b3606",
+        "width": 48,
+        "height": 64
+      }
+    ]
+  },
+  "sumo-a": {
+    "id": "sumo-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-d5f0f444-85d0-4875-9236-2e9617c29832",
+    "submittedAt": "2026-11-05T20:59:04.728Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a sumo wrestler robot, seen exactly from the front. A huge round heavy cream metal body shaped like a giant ball with rivets; a small round head with two determined eyes and a black topknot-shaped antenna on top; a thick tomato-red belt plate wrapped around its middle with stiff tassel strips hanging in front; short thick arms held out wide with open palms; two short fat bent legs in a wide low stance with flat feet planted on the bottom edge. Massive and immovable."
+        }
+      ],
+      "image_size": {
+        "width": 80,
+        "height": 80
+      },
+      "no_background": true,
+      "seed": 8024,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a sumo wrestler robot, seen exactly from the front. A huge round heavy cream metal body shaped like a giant ball with rivets; a small round head with two determined eyes and a black topknot-shaped antenna on top; a thick tomato-red belt plate wrapped around its middle with stiff tassel strips hanging in front; short thick arms held out wide with open palms; two short fat bent legs in a wide low stance with flat feet planted on the bottom edge. Massive and immovable. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:59:04.730Z",
+    "candidates": [
+      {
+        "file": "sumo-a-0.png",
+        "sha256": "890e57c9ecfbf82a123304616b36505cdaef86a9edf22d6d4949f3cbdeccac81",
+        "width": 80,
+        "height": 80
+      }
+    ]
+  },
+  "diver-a": {
+    "id": "diver-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-5ca7800c-e938-418c-ba65-f8d52a2a3dda",
+    "submittedAt": "2026-11-05T20:59:21.311Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a deep-sea diving robot, seen exactly from the front. A big round polished brass diving-helmet head with one large round glass porthole as its face showing two small glowing sky-blue eyes inside, bolts around the porthole and a brass collar; a chunky grey canvas suit body with a brass chest plate; a black air hose looping from the side of the helmet down to a yellow air tank on its back; thick gloved hands; two heavy dark lead boots on the bottom edge. Heavy, slow and friendly."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 64
+      },
+      "no_background": true,
+      "seed": 8007,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a deep-sea diving robot, seen exactly from the front. A big round polished brass diving-helmet head with one large round glass porthole as its face showing two small glowing sky-blue eyes inside, bolts around the porthole and a brass collar; a chunky grey canvas suit body with a brass chest plate; a black air hose looping from the side of the helmet down to a yellow air tank on its back; thick gloved hands; two heavy dark lead boots on the bottom edge. Heavy, slow and friendly. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:59:21.313Z",
+    "candidates": [
+      {
+        "file": "diver-a-0.png",
+        "sha256": "c52412ba19e1af5fdb0c5b09ab36ddfe2f9263c49acebfda53458a12c9639863",
+        "width": 48,
+        "height": 64
+      }
+    ]
+  },
+  "chef-a": {
+    "id": "chef-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-eeb31a18-feeb-4318-af0e-a6615714fd3c",
+    "submittedAt": "2026-11-05T20:59:31.563Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a chef robot, seen exactly from the front. A very tall puffy white chef's toque on a round cream head with a sky-blue visor face, two round eyes and a curly painted black moustache; a round white chef-jacket body with a red neckerchief and a white apron; a round window in its belly showing a small pot of soup with steam rising; one arm ending in a silver whisk, the other in a spatula; short legs with black clogs on the bottom edge. Jolly."
+        }
+      ],
+      "image_size": {
+        "width": 40,
+        "height": 72
+      },
+      "no_background": true,
+      "seed": 8016,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a chef robot, seen exactly from the front. A very tall puffy white chef's toque on a round cream head with a sky-blue visor face, two round eyes and a curly painted black moustache; a round white chef-jacket body with a red neckerchief and a white apron; a round window in its belly showing a small pot of soup with steam rising; one arm ending in a silver whisk, the other in a spatula; short legs with black clogs on the bottom edge. Jolly. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:59:31.566Z",
+    "candidates": [
+      {
+        "file": "chef-a-0.png",
+        "sha256": "2fd4d5434e6d5bf96419dbb95b12ee1ff5772741dbccd0db1742fdccdd58e039",
+        "width": 40,
+        "height": 72
+      }
+    ]
+  },
+  "plough-a": {
+    "id": "plough-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-dbe80ee6-3a67-4922-9834-3f9e5367f51e",
+    "submittedAt": "2026-11-05T20:59:42.610Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a snow-plough robot, seen exactly from the front. A squat sky-blue boxy cab body with a wide windshield face showing two round eyes; a flashing yellow-orange beacon light on top; a cosy red-and-cream striped knitted scarf wrapped around its neck with the ends fluttering; two short arms; a huge wide curved orange plough blade across the bottom front, wider than the body, with a little white snow on it; black caterpillar tracks under it on the bottom edge. Determined."
+        }
+      ],
+      "image_size": {
+        "width": 56,
+        "height": 48
+      },
+      "no_background": true,
+      "seed": 8025,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a snow-plough robot, seen exactly from the front. A squat sky-blue boxy cab body with a wide windshield face showing two round eyes; a flashing yellow-orange beacon light on top; a cosy red-and-cream striped knitted scarf wrapped around its neck with the ends fluttering; two short arms; a huge wide curved orange plough blade across the bottom front, wider than the body, with a little white snow on it; black caterpillar tracks under it on the bottom edge. Determined. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T20:59:42.612Z",
+    "candidates": [
+      {
+        "file": "plough-a-0.png",
+        "sha256": "c0979846702aabc1ae1514cb17e90df3b0243a0f7c26108db7512fe1c35307b9",
+        "width": 56,
+        "height": 48
+      }
+    ]
+  },
+  "band-a": {
+    "id": "band-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-014995b2-eee8-474d-99be-37feebd4178c",
+    "submittedAt": "2026-11-05T21:00:00.647Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a one-man-band robot, seen exactly from the front. A round sky-blue head with two round eyes and a silver harmonica held in a wire rack in front of its mouth; a big tomato-red bass drum with a cream drumhead strapped to its back, showing behind both shoulders; its body is a squeezed red-and-cream accordion bellows with pleats and two rows of little buttons, both hands holding the sides of the accordion; small brass cymbals fixed on both knees; short legs with yellow shoes on the bottom edge. Noisy and joyful."
+        }
+      ],
+      "image_size": {
+        "width": 56,
+        "height": 64
+      },
+      "no_background": true,
+      "seed": 8017,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a one-man-band robot, seen exactly from the front. A round sky-blue head with two round eyes and a silver harmonica held in a wire rack in front of its mouth; a big tomato-red bass drum with a cream drumhead strapped to its back, showing behind both shoulders; its body is a squeezed red-and-cream accordion bellows with pleats and two rows of little buttons, both hands holding the sides of the accordion; small brass cymbals fixed on both knees; short legs with yellow shoes on the bottom edge. Noisy and joyful. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:00:00.650Z",
+    "candidates": [
+      {
+        "file": "band-a-0.png",
+        "sha256": "a6f840f1eed23d2a0c67340b30ad99d162ed83aeb7433d196fffc00dc415eedb",
+        "width": 56,
+        "height": 64
+      }
+    ]
+  },
+  "steam-a": {
+    "id": "steam-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-9d37c413-ce65-4879-ae5c-1def7774ab0c",
+    "submittedAt": "2026-11-05T21:00:01.293Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a Victorian steam automaton gentleman, seen exactly from the front. A tall black stovepipe top hat that is also a chimney, puffing a small cream steam cloud from its top; a round polished brass head with a big round monocle lens over one eye and a curled brass moustache; a dark-red waistcoat body with a round glass window in the chest showing brass gears and cogs inside, a gold pocket-watch chain; thin brass arms with white gloves, one hand on a black cane; thin legs in grey striped trousers with brass shoes on the bottom edge. Dignified and old-fashioned."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 72
+      },
+      "no_background": true,
+      "seed": 8009,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a Victorian steam automaton gentleman, seen exactly from the front. A tall black stovepipe top hat that is also a chimney, puffing a small cream steam cloud from its top; a round polished brass head with a big round monocle lens over one eye and a curled brass moustache; a dark-red waistcoat body with a round glass window in the chest showing brass gears and cogs inside, a gold pocket-watch chain; thin brass arms with white gloves, one hand on a black cane; thin legs in grey striped trousers with brass shoes on the bottom edge. Dignified and old-fashioned. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:00:01.296Z",
+    "candidates": [
+      {
+        "file": "steam-a-0.png",
+        "sha256": "c61c4f2bf092adc63a878f6f4ffc73f2851acfd14cc8e1abf521b37b5a638bf8",
+        "width": 48,
+        "height": 72
+      }
+    ]
+  },
+  "mime-a": {
+    "id": "mime-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-582b4e94-cfbc-4a22-ad09-cf8910b83c6e",
+    "submittedAt": "2026-11-05T21:00:13.955Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a mime robot performing, seen exactly from the front. A slim robot with a smooth white oval face, two dark oval eyes, a small black teardrop under one eye and a small red mouth; a black beret tilted on its head; a black-and-white horizontally striped body; red braces; both white-gloved hands raised with palms pressed flat against an invisible wall in front of it; slim black trousers and black shoes on the bottom edge. Theatrical."
+        }
+      ],
+      "image_size": {
+        "width": 32,
+        "height": 56
+      },
+      "no_background": true,
+      "seed": 8026,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a mime robot performing, seen exactly from the front. A slim robot with a smooth white oval face, two dark oval eyes, a small black teardrop under one eye and a small red mouth; a black beret tilted on its head; a black-and-white horizontally striped body; red braces; both white-gloved hands raised with palms pressed flat against an invisible wall in front of it; slim black trousers and black shoes on the bottom edge. Theatrical. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:00:13.957Z",
+    "candidates": [
+      {
+        "file": "mime-a-0.png",
+        "sha256": "4656b04ebcd7662c32fd547eb1001418631d8c0383cec089bb58c8891c6a0be8",
+        "width": 32,
+        "height": 56
+      }
+    ]
+  },
+  "greenhouse-a": {
+    "id": "greenhouse-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-143a3676-50a8-456d-ba74-60530e97145c",
+    "submittedAt": "2026-11-05T21:00:24.275Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a walking greenhouse robot, seen exactly from the front. Its body is a big clear glass dome with thin mint-green metal frame lines, and inside the dome grows a little round leafy green tree with a brown trunk in a pot of soil; two small round glowing eyes on a cream metal band around the base of the dome; one arm is a yellow watering can, the other a thin metal arm; instead of feet it stands on twisting wooden roots spreading out on the bottom edge. Gentle and green."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 64
+      },
+      "no_background": true,
+      "seed": 8018,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a walking greenhouse robot, seen exactly from the front. Its body is a big clear glass dome with thin mint-green metal frame lines, and inside the dome grows a little round leafy green tree with a brown trunk in a pot of soil; two small round glowing eyes on a cream metal band around the base of the dome; one arm is a yellow watering can, the other a thin metal arm; instead of feet it stands on twisting wooden roots spreading out on the bottom edge. Gentle and green. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:00:24.278Z",
+    "candidates": [
+      {
+        "file": "greenhouse-a-0.png",
+        "sha256": "1fb4e5d843821d441d000cebfae0f932e6fd5f74a9a740e3b125d50c4fa983ca",
+        "width": 48,
+        "height": 64
+      }
+    ]
+  },
+  "samurai-a": {
+    "id": "samurai-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-f74f606c-955f-4bf5-a718-f3f920ddfff5",
+    "submittedAt": "2026-11-05T21:00:42.408Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a samurai warrior robot in lacquered armour, seen exactly from the front. A helmet with a big golden crescent-moon crest on the front and wide flared neck guards; a black face mask with a single glowing yellow horizontal visor slit; layered glossy tomato-red lacquer armour plates laced with cream cord on its shoulders, chest and skirt; a wooden practice sword held upright in front of its chest in both hands; armoured legs in a wide stance with black sandal feet on the bottom edge. Calm and proud."
+        }
+      ],
+      "image_size": {
+        "width": 56,
+        "height": 72
+      },
+      "no_background": true,
+      "seed": 8010,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a samurai warrior robot in lacquered armour, seen exactly from the front. A helmet with a big golden crescent-moon crest on the front and wide flared neck guards; a black face mask with a single glowing yellow horizontal visor slit; layered glossy tomato-red lacquer armour plates laced with cream cord on its shoulders, chest and skirt; a wooden practice sword held upright in front of its chest in both hands; armoured legs in a wide stance with black sandal feet on the bottom edge. Calm and proud. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:00:42.411Z",
+    "candidates": [
+      {
+        "file": "samurai-a-0.png",
+        "sha256": "2ef90daae0e2a3f8bb54784750dfba573a1e512ffaee99ef9b28e7abdf4c922c",
+        "width": 56,
+        "height": 72
+      }
+    ]
+  },
+  "ladybug-a": {
+    "id": "ladybug-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-e1f977d5-459d-47bc-bdb2-d6b72ce998ed",
+    "submittedAt": "2026-11-05T21:00:46.766Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a tiny ladybug drone robot hovering in the air, seen exactly from the front. A small round tomato-red metal shell with black spots, split open in the middle with two clear see-through wings buzzing out to the sides, a little black head with two big round glowing sky-blue eyes and two tiny antennae with yellow tips. Very small and cute, floating."
+        }
+      ],
+      "image_size": {
+        "width": 24,
+        "height": 24
+      },
+      "no_background": true,
+      "seed": 8020,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a tiny ladybug drone robot hovering in the air, seen exactly from the front. A small round tomato-red metal shell with black spots, split open in the middle with two clear see-through wings buzzing out to the sides, a little black head with two big round glowing sky-blue eyes and two tiny antennae with yellow tips. Very small and cute, floating. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:00:46.769Z",
+    "candidates": [
+      {
+        "file": "ladybug-a-0.png",
+        "sha256": "6d7906a711d1e3e427883be1e63ca1128631dea031bdb0c330b3dc6b96433c68",
+        "width": 24,
+        "height": 24
+      }
+    ]
+  },
+  "excavator-a": {
+    "id": "excavator-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-a5a77586-c524-4715-bfcc-cade68bd6355",
+    "submittedAt": "2026-11-05T21:01:02.812Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: an excavator robot, seen exactly from the front. A sunny-yellow tracked digging machine: wide black caterpillar tracks along the bottom edge; a square yellow cab as its head with a big windshield face showing two round eyes and a wiper blade; a white hard hat on top of the cab; one big yellow hydraulic arm rising up on one side, bent at the elbow with a silver piston, holding a toothed digging bucket raised high above its head. Hard-working and proud."
+        }
+      ],
+      "image_size": {
+        "width": 96,
+        "height": 80
+      },
+      "no_background": true,
+      "seed": 8027,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: an excavator robot, seen exactly from the front. A sunny-yellow tracked digging machine: wide black caterpillar tracks along the bottom edge; a square yellow cab as its head with a big windshield face showing two round eyes and a wiper blade; a white hard hat on top of the cab; one big yellow hydraulic arm rising up on one side, bent at the elbow with a silver piston, holding a toothed digging bucket raised high above its head. Hard-working and proud. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:01:02.813Z",
+    "candidates": [
+      {
+        "file": "excavator-a-0.png",
+        "sha256": "d84a6e725ae81f552cdee282f9bdf1686e5fe02b0d962b6422c0dc6e455a3c8e",
+        "width": 96,
+        "height": 80
+      }
+    ]
+  },
+  "owl-a": {
+    "id": "owl-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-1100f18d-51f2-4386-ab7e-57b1e2bc48e4",
+    "submittedAt": "2026-11-05T21:01:15.302Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: an owl-shaped sentinel robot perched upright, seen exactly from the front. A round body covered in overlapping riveted metal feather plates in warm brown and cream; two pointed ear-tuft plates on top of its head; two huge round brass telescope-lens eyes with glowing sky-blue centres and zoom rings; a small yellow metal beak; folded metal wings at its sides; two clawed yellow metal feet on the bottom edge. Watchful and wise."
+        }
+      ],
+      "image_size": {
+        "width": 40,
+        "height": 56
+      },
+      "no_background": true,
+      "seed": 8021,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: an owl-shaped sentinel robot perched upright, seen exactly from the front. A round body covered in overlapping riveted metal feather plates in warm brown and cream; two pointed ear-tuft plates on top of its head; two huge round brass telescope-lens eyes with glowing sky-blue centres and zoom rings; a small yellow metal beak; folded metal wings at its sides; two clawed yellow metal feet on the bottom edge. Watchful and wise. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:01:15.304Z",
+    "candidates": [
+      {
+        "file": "owl-a-0.png",
+        "sha256": "f3ef414427d7911c1a613622a68f1b7add1e3e710d0df0e5a74df32468edd54a",
+        "width": 40,
+        "height": 56
+      }
+    ]
+  },
+  "lander-a": {
+    "id": "lander-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-28eb8ce9-9c00-4ed8-8438-1d5ab91d7329",
+    "submittedAt": "2026-11-05T21:01:19.836Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a small lunar lander robot, seen exactly from the front. A crinkled gold-foil wrapped octagonal body; a small dark square window as its face with two round glowing sky-blue eyes; a little round white dish antenna and a thin whip antenna on top; small grey thruster nozzles on each side; four long spindly silver lander legs angled out to the left and right with round flat footpads resting on the bottom edge. Light and delicate, it looks like it could hop."
+        }
+      ],
+      "image_size": {
+        "width": 56,
+        "height": 56
+      },
+      "no_background": true,
+      "seed": 8011,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a small lunar lander robot, seen exactly from the front. A crinkled gold-foil wrapped octagonal body; a small dark square window as its face with two round glowing sky-blue eyes; a little round white dish antenna and a thin whip antenna on top; small grey thruster nozzles on each side; four long spindly silver lander legs angled out to the left and right with round flat footpads resting on the bottom edge. Light and delicate, it looks like it could hop. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:01:19.839Z",
+    "candidates": [
+      {
+        "file": "lander-a-0.png",
+        "sha256": "c92e0628beac0685fdca37867ebd2997ced73ed6e95187f64511cf8965fc9248",
+        "width": 56,
+        "height": 56
+      }
+    ]
+  },
+  "satellite-a": {
+    "id": "satellite-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-484e9ce9-1fca-45b2-9112-c1daf6417111",
+    "submittedAt": "2026-11-05T21:01:44.216Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a satellite robot floating in the air, seen exactly from the front. A small gold-foil cube body in the middle; its face is a round white radio dish with two round eyes and a little antenna sticking out from its centre; two very long wings of dark-blue solar panels with a grid of cells stretching far out to the left and right; tiny cream puffs of thruster gas from small nozzles on its corners. Nothing below it."
+        }
+      ],
+      "image_size": {
+        "width": 80,
+        "height": 40
+      },
+      "no_background": true,
+      "seed": 8028,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a satellite robot floating in the air, seen exactly from the front. A small gold-foil cube body in the middle; its face is a round white radio dish with two round eyes and a little antenna sticking out from its centre; two very long wings of dark-blue solar panels with a grid of cells stretching far out to the left and right; tiny cream puffs of thruster gas from small nozzles on its corners. Nothing below it. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:01:44.218Z",
+    "candidates": [
+      {
+        "file": "satellite-a-0.png",
+        "sha256": "819022d81b293e5601910f8ca9c99d3676f86db336f59e424e202541e216437f",
+        "width": 80,
+        "height": 40
+      }
+    ]
+  },
+  "arcade-a": {
+    "id": "arcade-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-eafbd627-975d-4682-83fb-49ce0ec67165",
+    "submittedAt": "2026-11-05T21:01:55.022Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a walking arcade-cabinet robot, seen exactly from the front. Its whole body is an upright retro arcade game cabinet painted sky-blue with tomato-red side stripes; the screen near the top is its face, glowing dark green with a big blocky pixel smile and two square pixel eyes; below the screen a control panel with a red ball joystick sticking out like a nose and two round yellow buttons; a glowing orange coin slot below as its mouth; two short metal arms at the sides; two short metal legs with chunky sneakers on the bottom edge."
+        }
+      ],
+      "image_size": {
+        "width": 40,
+        "height": 64
+      },
+      "no_background": true,
+      "seed": 8012,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a walking arcade-cabinet robot, seen exactly from the front. Its whole body is an upright retro arcade game cabinet painted sky-blue with tomato-red side stripes; the screen near the top is its face, glowing dark green with a big blocky pixel smile and two square pixel eyes; below the screen a control panel with a red ball joystick sticking out like a nose and two round yellow buttons; a glowing orange coin slot below as its mouth; two short metal arms at the sides; two short metal legs with chunky sneakers on the bottom edge. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:01:55.025Z",
+    "candidates": [
+      {
+        "file": "arcade-a-0.png",
+        "sha256": "3334f964e3e34fbe36c0345fe33b12caf085e22c6051aa31ca5031b4440c2d19",
+        "width": 40,
+        "height": 64
+      }
+    ]
+  },
+  "golem-a": {
+    "id": "golem-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-20f5ce3d-04a2-4d40-aa82-dd8ffacc028e",
+    "submittedAt": "2026-11-05T21:02:08.135Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a clay golem robot, seen exactly from the front. A huge chunky body built from stacked terracotta-orange clay bricks with a few cracks, bound with shiny brass bands and rivets around the chest, arms and legs; a small blocky head with two deep glowing sky-blue eye holes and one carved glowing rune mark on its forehead; massive blocky brick arms hanging down with big square fists; short thick brick legs with flat square feet on the bottom edge. Ancient, strong and gentle."
+        }
+      ],
+      "image_size": {
+        "width": 72,
+        "height": 88
+      },
+      "no_background": true,
+      "seed": 8022,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a clay golem robot, seen exactly from the front. A huge chunky body built from stacked terracotta-orange clay bricks with a few cracks, bound with shiny brass bands and rivets around the chest, arms and legs; a small blocky head with two deep glowing sky-blue eye holes and one carved glowing rune mark on its forehead; massive blocky brick arms hanging down with big square fists; short thick brick legs with flat square feet on the bottom edge. Ancient, strong and gentle. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:02:08.138Z",
+    "candidates": [
+      {
+        "file": "golem-a-0.png",
+        "sha256": "d652580d3acd0ebe583012da5df17474bccbf4d22bedbb95b3ad0e6636a8bf29",
+        "width": 72,
+        "height": 88
+      }
+    ]
+  },
+  "beetle-b": {
+    "id": "beetle-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-9e7e6984-2aef-46d9-8ad7-7f8f09397a4b",
+    "submittedAt": "2026-11-05T21:02:12.908Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a curious beetle-shaped walker robot drawn as a flat front elevation, seen exactly from the front at eye level. A big round sunny-orange metal beetle-shell dome body with a seam down the middle and rivets; on the front of the dome a sky-blue metal face plate with three round glowing camera-lens eyes arranged in a triangle, one big on top and two smaller below; two small grey grabber arms with pincers under the face; four long jointed grey metal legs splayed out wide to the left and right like a spider, each leg ending in a small black wheel touching the bottom edge, with empty space under the body. Clearly a machine. Head tilted a little as if peering at something."
+        }
+      ],
+      "image_size": {
+        "width": 56,
+        "height": 48
+      },
+      "no_background": true,
+      "seed": 8103,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a curious beetle-shaped walker robot drawn as a flat front elevation, seen exactly from the front at eye level. A big round sunny-orange metal beetle-shell dome body with a seam down the middle and rivets; on the front of the dome a sky-blue metal face plate with three round glowing camera-lens eyes arranged in a triangle, one big on top and two smaller below; two small grey grabber arms with pincers under the face; four long jointed grey metal legs splayed out wide to the left and right like a spider, each leg ending in a small black wheel touching the bottom edge, with empty space under the body. Clearly a machine. Head tilted a little as if peering at something. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:02:12.912Z",
+    "candidates": [
+      {
+        "file": "beetle-b-0.png",
+        "sha256": "82320d665696c57a130d274f11c11dcd109e1f03a44649591d27dbaf0769dee1",
+        "width": 56,
+        "height": 48
+      }
+    ]
+  },
+  "knight-a": {
+    "id": "knight-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-68443001-536c-4b31-976a-5823328415e6",
+    "submittedAt": "2026-11-05T21:02:15.851Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a tin knight automaton, seen exactly from the front. A full suit of polished silver plate armour; a rounded great helm whose narrow visor slit glows sky-blue, with a red plume on top; a round-shouldered breastplate; one arm holding a tall lance upright with a little red-and-yellow pennant flag at its tip; the other arm holding a mint-green kite shield decorated with a gold circuit-board pattern of lines and dots; armoured legs with pointed metal shoes on the bottom edge. Noble and a bit clanky."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 72
+      },
+      "no_background": true,
+      "seed": 8029,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a tin knight automaton, seen exactly from the front. A full suit of polished silver plate armour; a rounded great helm whose narrow visor slit glows sky-blue, with a red plume on top; a round-shouldered breastplate; one arm holding a tall lance upright with a little red-and-yellow pennant flag at its tip; the other arm holding a mint-green kite shield decorated with a gold circuit-board pattern of lines and dots; armoured legs with pointed metal shoes on the bottom edge. Noble and a bit clanky. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:02:15.853Z",
+    "candidates": [
+      {
+        "file": "knight-a-0.png",
+        "sha256": "0e377028af0f06032fdd17f5b6e6a06750786e1665d2c7bfbd756c3c5e32501b",
+        "width": 48,
+        "height": 72
+      }
+    ]
+  },
+  "mainframe-a": {
+    "id": "mainframe-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-a6f6543d-d05d-4ce8-83c0-0eed4752d00a",
+    "submittedAt": "2026-11-05T21:02:31.584Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a fridge-sized vintage mainframe computer robot on caster wheels, seen exactly from the front. A tall cream-and-grey metal cabinet; at the top two big round reel-to-reel tape spools side by side are its eyes; below them a panel of small blinking red, yellow and green lamps and a row of chunky switches; a slot in its belly spilling a long curling strip of white ticker tape; two short accordion-hose arms at its sides; four small black caster wheels on the bottom edge. Clunky, wise and old."
+        }
+      ],
+      "image_size": {
+        "width": 64,
+        "height": 80
+      },
+      "no_background": true,
+      "seed": 8013,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a fridge-sized vintage mainframe computer robot on caster wheels, seen exactly from the front. A tall cream-and-grey metal cabinet; at the top two big round reel-to-reel tape spools side by side are its eyes; below them a panel of small blinking red, yellow and green lamps and a row of chunky switches; a slot in its belly spilling a long curling strip of white ticker tape; two short accordion-hose arms at its sides; four small black caster wheels on the bottom edge. Clunky, wise and old. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:02:31.587Z",
+    "candidates": [
+      {
+        "file": "mainframe-a-0.png",
+        "sha256": "973a4edb460919b811e379818844d2826ad9b7bc2003e20618bd073e8780a615",
+        "width": 64,
+        "height": 80
+      }
+    ]
+  },
+  "puppy-b": {
+    "id": "puppy-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-2cdf1429-36ed-45b5-a95d-6b4848aea534",
+    "submittedAt": "2026-11-05T21:02:40.596Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a wind-up tin toy robot puppy sitting upright and facing the viewer, like a little dog sitting for a treat. Made of painted cream tin with tomato-red ears and rivets along its seams; a big round cream head with two big round black eyes, a black button nose and a happy open mouth; two long floppy red metal ears hanging down on both sides with hinges; a red collar with a round yellow bell; a big brass wind-up key with a round handle sticking up behind its back; two front legs straight down and two short back legs folded; a coiled silver spring tail curling up at one side. Clearly a little toy dog machine."
+        }
+      ],
+      "image_size": {
+        "width": 40,
+        "height": 40
+      },
+      "no_background": true,
+      "seed": 8102,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a wind-up tin toy robot puppy sitting upright and facing the viewer, like a little dog sitting for a treat. Made of painted cream tin with tomato-red ears and rivets along its seams; a big round cream head with two big round black eyes, a black button nose and a happy open mouth; two long floppy red metal ears hanging down on both sides with hinges; a red collar with a round yellow bell; a big brass wind-up key with a round handle sticking up behind its back; two front legs straight down and two short back legs folded; a coiled silver spring tail curling up at one side. Clearly a little toy dog machine. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:02:40.599Z",
+    "candidates": [
+      {
+        "file": "puppy-b-0.png",
+        "sha256": "f6889ff63e95429719f4c5423dd4f13a13d0bdb71d00094329afa886e32bd767",
+        "width": 40,
+        "height": 40
+      }
+    ]
+  },
+  "fortune-a": {
+    "id": "fortune-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-d8dab9df-e615-4fa6-ad2d-699bb386bc75",
+    "submittedAt": "2026-11-05T21:02:50.212Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a carnival fortune-teller robot in a booth on wheels, seen exactly from the front. A tall narrow wooden booth painted tomato-red with gold trim and a glass window across its upper half; behind the glass the robot's upper body: a purple turban with a jewel, a cream mechanical face with two glowing eyes and a thin moustache, one metal hand resting on a glowing sky-blue crystal ball; below the window a small slot with a cream fortune card sticking out; four small wheels on the bottom edge. Mysterious and showy."
+        }
+      ],
+      "image_size": {
+        "width": 48,
+        "height": 72
+      },
+      "no_background": true,
+      "seed": 8030,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a carnival fortune-teller robot in a booth on wheels, seen exactly from the front. A tall narrow wooden booth painted tomato-red with gold trim and a glass window across its upper half; behind the glass the robot's upper body: a purple turban with a jewel, a cream mechanical face with two glowing eyes and a thin moustache, one metal hand resting on a glowing sky-blue crystal ball; below the window a small slot with a cream fortune card sticking out; four small wheels on the bottom edge. Mysterious and showy. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:02:50.215Z",
+    "candidates": [
+      {
+        "file": "fortune-a-0.png",
+        "sha256": "b135210d5625bd78e2110feea07e4117753f330478fc7dc3876bbbd79b10922f",
+        "width": 48,
+        "height": 72
+      }
+    ]
+  },
+  "sumo-b": {
+    "id": "sumo-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-982b3b5e-6680-41ae-8d86-7a32a32ee3d4",
+    "submittedAt": "2026-11-05T21:02:54.242Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a sumo wrestler robot, clearly a machine made of painted metal with bolts and seams, seen exactly from the front. A huge round cream metal ball-shaped body like a giant boiler with rivets around it; a small round metal head with a dark sky-blue screen face showing two determined glowing eyes, and a black topknot-shaped knob antenna on top; a thick tomato-red metal belt plate wrapped around its middle with stiff red tassel strips hanging in front; short thick segmented metal arms held out wide with big round mitt hands; two short fat bent metal legs in a wide low stance with flat feet planted on the bottom edge. Massive and immovable, no skin, no human face."
+        }
+      ],
+      "image_size": {
+        "width": 80,
+        "height": 80
+      },
+      "no_background": true,
+      "seed": 8104,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a sumo wrestler robot, clearly a machine made of painted metal with bolts and seams, seen exactly from the front. A huge round cream metal ball-shaped body like a giant boiler with rivets around it; a small round metal head with a dark sky-blue screen face showing two determined glowing eyes, and a black topknot-shaped knob antenna on top; a thick tomato-red metal belt plate wrapped around its middle with stiff red tassel strips hanging in front; short thick segmented metal arms held out wide with big round mitt hands; two short fat bent metal legs in a wide low stance with flat feet planted on the bottom edge. Massive and immovable, no skin, no human face. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:02:54.245Z",
+    "candidates": [
+      {
+        "file": "sumo-b-0.png",
+        "sha256": "637e594828cfde7e697f77f4a3e5cabf47f492b431511cf556ef2ae882fd6915",
+        "width": 80,
+        "height": 80
+      }
+    ]
+  },
+  "rover-b": {
+    "id": "rover-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-f81f42e4-b260-40d6-bfaa-8d5990d11809",
+    "submittedAt": "2026-11-05T21:03:10.704Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a planetary exploration rover robot drawn as a flat front elevation, like a toy seen exactly from the front at eye level, no top surface visible. A wide low white-and-gold body box; on each side three chunky grey ribbed wheels stacked side by side under bent rocker struts, so six wheels show in a row along the bottom edge, smeared with rusty red dust; a tall thin white camera mast rising from the middle of the body, topped by a small boxy head with two big round black camera lenses as eyes looking at the viewer; a small round dish antenna on a stalk beside the mast; a dark-blue solar panel edge along the top of the body. Endearing, like a lonely explorer. Transparent background, nothing under the wheels."
+        }
+      ],
+      "image_size": {
+        "width": 64,
+        "height": 56
+      },
+      "no_background": true,
+      "seed": 8101,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a planetary exploration rover robot drawn as a flat front elevation, like a toy seen exactly from the front at eye level, no top surface visible. A wide low white-and-gold body box; on each side three chunky grey ribbed wheels stacked side by side under bent rocker struts, so six wheels show in a row along the bottom edge, smeared with rusty red dust; a tall thin white camera mast rising from the middle of the body, topped by a small boxy head with two big round black camera lenses as eyes looking at the viewer; a small round dish antenna on a stalk beside the mast; a dark-blue solar panel edge along the top of the body. Endearing, like a lonely explorer. Transparent background, nothing under the wheels. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:03:10.706Z",
+    "candidates": [
+      {
+        "file": "rover-b-0.png",
+        "sha256": "514dac93658d092dbf2a2ff93ac809fa0c502083f4db120373d9040004565777",
+        "width": 64,
+        "height": 56
+      }
+    ]
+  },
+  "plough-b": {
+    "id": "plough-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-5afdb6cb-8e40-425f-adb3-f09456f498af",
+    "submittedAt": "2026-11-05T21:03:39.401Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a snow-plough robot drawn as a flat front elevation, seen exactly from the front at eye level, perfectly symmetric, no side or top surfaces visible. A squat sky-blue cab body with a wide windshield face showing two round eyes; a yellow-orange beacon light on top; a red-and-cream striped knitted scarf around its neck with one end fluttering; two short arms; a huge wide curved orange plough blade straight across the bottom front, wider than the body, with a little white snow on its top edge; two black caterpillar tracks visible under each end of the blade on the bottom edge. Determined."
+        }
+      ],
+      "image_size": {
+        "width": 56,
+        "height": 48
+      },
+      "no_background": true,
+      "seed": 8105,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a snow-plough robot drawn as a flat front elevation, seen exactly from the front at eye level, perfectly symmetric, no side or top surfaces visible. A squat sky-blue cab body with a wide windshield face showing two round eyes; a yellow-orange beacon light on top; a red-and-cream striped knitted scarf around its neck with one end fluttering; two short arms; a huge wide curved orange plough blade straight across the bottom front, wider than the body, with a little white snow on its top edge; two black caterpillar tracks visible under each end of the blade on the bottom edge. Determined. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:03:39.403Z",
+    "candidates": [
+      {
+        "file": "plough-b-0.png",
+        "sha256": "ce39b452191a62d39e3eda8f3422458772c6fb1acff7f7a8b8205b434b33fae1",
+        "width": 56,
+        "height": 48
+      }
+    ]
+  },
+  "band-b": {
+    "id": "band-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-4d37082c-7f17-4a9f-bc08-e216ae47b0d9",
+    "submittedAt": "2026-11-05T21:04:03.732Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a one-man-band robot standing still, seen exactly from the front, symmetric. A round cream metal head with a sky-blue visor showing two round happy eyes; a silver harmonica held in a wire rack in front of its mouth; a big tomato-red bass drum with a cream drumhead strapped on its back, showing as a big red circle behind its head and shoulders; its body is a red-and-cream accordion bellows with vertical pleats, both hands holding the accordion ends; two small round brass cymbals strapped to its knees; short metal legs with yellow shoes on the bottom edge. Clearly a machine, cheerful."
+        }
+      ],
+      "image_size": {
+        "width": 56,
+        "height": 64
+      },
+      "no_background": true,
+      "seed": 8106,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a one-man-band robot standing still, seen exactly from the front, symmetric. A round cream metal head with a sky-blue visor showing two round happy eyes; a silver harmonica held in a wire rack in front of its mouth; a big tomato-red bass drum with a cream drumhead strapped on its back, showing as a big red circle behind its head and shoulders; its body is a red-and-cream accordion bellows with vertical pleats, both hands holding the accordion ends; two small round brass cymbals strapped to its knees; short metal legs with yellow shoes on the bottom edge. Clearly a machine, cheerful. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:04:03.734Z",
+    "candidates": [
+      {
+        "file": "band-b-0.png",
+        "sha256": "3b387d842da02136974e21bcbb529a73933937b791a75bbd0dbabb832de333ac",
+        "width": 56,
+        "height": 64
+      }
+    ]
+  },
+  "mime-b": {
+    "id": "mime-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-ddccd82a-ff65-4f50-a63b-3ffdbb914cbc",
+    "submittedAt": "2026-11-05T21:04:31.801Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a mime robot, clearly a machine made of painted metal with bolts and seams, seen exactly from the front. A smooth white metal egg-shaped head with two black oval eyes, a small black teardrop under one eye and a tiny red mouth, a black beret on top; a slim metal body painted with black and white horizontal stripes; thin jointed metal arms raised with both white-gloved hands held up flat at shoulder height, palms out, as if pressing on an invisible glass wall; thin black metal legs and black shoes on the bottom edge. Theatrical."
+        }
+      ],
+      "image_size": {
+        "width": 32,
+        "height": 56
+      },
+      "no_background": true,
+      "seed": 8107,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a mime robot, clearly a machine made of painted metal with bolts and seams, seen exactly from the front. A smooth white metal egg-shaped head with two black oval eyes, a small black teardrop under one eye and a tiny red mouth, a black beret on top; a slim metal body painted with black and white horizontal stripes; thin jointed metal arms raised with both white-gloved hands held up flat at shoulder height, palms out, as if pressing on an invisible glass wall; thin black metal legs and black shoes on the bottom edge. Theatrical. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:04:31.804Z",
+    "candidates": [
+      {
+        "file": "mime-b-0.png",
+        "sha256": "69a37029b2b1f8a0d9604449b8ad1ca020bf0f9c36b189529395723a06b12482",
+        "width": 32,
+        "height": 56
+      }
+    ]
+  },
+  "excavator-b": {
+    "id": "excavator-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-889888ed-dc2f-488d-962d-9023c1acdae1",
+    "submittedAt": "2026-11-05T21:05:15.534Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: an excavator robot drawn as a flat front elevation like a sticker, seen exactly from the front at eye level, no side or top surfaces visible. Two black caterpillar tracks side by side along the bottom edge, seen end-on as two dark rounded blocks; above them a square sunny-yellow cab as its head with a flat windshield face showing two round eyes and one wiper blade; a white hard hat on top of the cab; one big yellow hydraulic arm rising straight up from beside the cab and bending over at the top with a silver piston, holding a toothed digging bucket raised high above its head. Hard-working and proud."
+        }
+      ],
+      "image_size": {
+        "width": 96,
+        "height": 80
+      },
+      "no_background": true,
+      "seed": 8108,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: an excavator robot drawn as a flat front elevation like a sticker, seen exactly from the front at eye level, no side or top surfaces visible. Two black caterpillar tracks side by side along the bottom edge, seen end-on as two dark rounded blocks; above them a square sunny-yellow cab as its head with a flat windshield face showing two round eyes and one wiper blade; a white hard hat on top of the cab; one big yellow hydraulic arm rising straight up from beside the cab and bending over at the top with a silver piston, holding a toothed digging bucket raised high above its head. Hard-working and proud. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:05:15.538Z",
+    "candidates": [
+      {
+        "file": "excavator-b-0.png",
+        "sha256": "e5c8fbd7219a9c4843b7dd82b2b294c9a8bfa0b5fc0ef50def3fa78394b42943",
+        "width": 96,
+        "height": 80
+      }
+    ]
+  },
+  "mainframe-b": {
+    "id": "mainframe-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-b2a05040-96e6-4d57-bffc-f32c67215d7d",
+    "submittedAt": "2026-11-05T21:05:23.932Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a vintage mainframe computer robot drawn as a flat front elevation like a sticker, seen exactly from the front at eye level, only the front panel visible, no side or top surfaces. A tall cream-and-grey metal cabinet like a fridge; at the top two big round reel-to-reel tape spools side by side as its eyes; below them a panel of small red, yellow and green lamps and a row of chunky switches like a mouth; a slot in its belly with a long curling strip of white ticker tape spilling down; two bendy grey accordion-hose arms at its sides; four small black caster wheels on the bottom edge. Clunky, wise and old."
+        }
+      ],
+      "image_size": {
+        "width": 64,
+        "height": 80
+      },
+      "no_background": true,
+      "seed": 8112,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a vintage mainframe computer robot drawn as a flat front elevation like a sticker, seen exactly from the front at eye level, only the front panel visible, no side or top surfaces. A tall cream-and-grey metal cabinet like a fridge; at the top two big round reel-to-reel tape spools side by side as its eyes; below them a panel of small red, yellow and green lamps and a row of chunky switches like a mouth; a slot in its belly with a long curling strip of white ticker tape spilling down; two bendy grey accordion-hose arms at its sides; four small black caster wheels on the bottom edge. Clunky, wise and old. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:05:23.936Z",
+    "candidates": [
+      {
+        "file": "mainframe-b-0.png",
+        "sha256": "5c9a0ef3e8dd916a3041f0bfa3d4619fe6e7f49b801c2d3cba39782ab5026441",
+        "width": 64,
+        "height": 80
+      }
+    ]
+  },
+  "sumo-c": {
+    "id": "sumo-c",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-89b66f05-6d52-4938-837d-b01bb6b1db50",
+    "submittedAt": "2026-11-05T21:05:55.473Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a sumo wrestler robot, clearly a machine made of bright painted metal with bolts and seams, seen exactly from the front, symmetric. A huge round cream metal ball-shaped body like a giant boiler with a ring of rivets; a small round sky-blue metal head with a dark screen face showing two determined glowing eyes, and a round black topknot knob on top; a thick tomato-red metal belt plate around its middle with stiff red tassel strips hanging in front; short thick sky-blue segmented metal arms held out wide with big round mitt hands; two short fat bent sky-blue metal legs in a wide low stance with flat feet. The feet stand on nothing; transparent below them. Massive and immovable."
+        }
+      ],
+      "image_size": {
+        "width": 80,
+        "height": 80
+      },
+      "no_background": true,
+      "seed": 8115,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a sumo wrestler robot, clearly a machine made of bright painted metal with bolts and seams, seen exactly from the front, symmetric. A huge round cream metal ball-shaped body like a giant boiler with a ring of rivets; a small round sky-blue metal head with a dark screen face showing two determined glowing eyes, and a round black topknot knob on top; a thick tomato-red metal belt plate around its middle with stiff red tassel strips hanging in front; short thick sky-blue segmented metal arms held out wide with big round mitt hands; two short fat bent sky-blue metal legs in a wide low stance with flat feet. The feet stand on nothing; transparent below them. Massive and immovable. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:05:55.477Z",
+    "candidates": [
+      {
+        "file": "sumo-c-0.png",
+        "sha256": "6bd2a4057d2e3598973da81daf8e87aaa716258b27aad6238b2bc89e89a5d113",
+        "width": 80,
+        "height": 80
+      }
+    ]
+  },
+  "puppy-c": {
+    "id": "puppy-c",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-b475247c-c52a-40ef-a342-f0ffc8bd0ed3",
+    "submittedAt": "2026-11-05T21:05:57.392Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a little robot puppy toy made of tin, clearly a machine made of painted metal with bolts and seams, sitting and facing the viewer. A boxy cream metal head with a rounded square snout, a dark sky-blue screen visor with two round glowing eyes, a black bolt nose; two floppy tomato-red metal ears on hinges; a cylinder cream metal body with a red collar and yellow bell; a big brass wind-up key sticking out of its side; four short metal tube legs with round feet; a springy coiled metal tail. A toy robot dog."
+        }
+      ],
+      "image_size": {
+        "width": 40,
+        "height": 40
+      },
+      "no_background": true,
+      "seed": 8113,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a little robot puppy toy made of tin, clearly a machine made of painted metal with bolts and seams, sitting and facing the viewer. A boxy cream metal head with a rounded square snout, a dark sky-blue screen visor with two round glowing eyes, a black bolt nose; two floppy tomato-red metal ears on hinges; a cylinder cream metal body with a red collar and yellow bell; a big brass wind-up key sticking out of its side; four short metal tube legs with round feet; a springy coiled metal tail. A toy robot dog. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:05:57.395Z",
+    "candidates": [
+      {
+        "file": "puppy-c-0.png",
+        "sha256": "87839e8ac5887151d6707d20652ca8d27031c15288603daf10859fd4f5e52d44",
+        "width": 40,
+        "height": 40
+      }
+    ]
+  },
+  "excavator-c": {
+    "id": "excavator-c",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-55e4f737-be77-4efd-9f7a-e509f145cd95",
+    "submittedAt": "2026-11-05T21:06:13.146Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a cheerful excavator robot standing upright like a character, flat 2D, seen exactly from the front. Its body is a square sunny-yellow driver's cab with a big flat windshield as its face showing two round eyes and a smile, a white hard hat on top, an orange beacon light; it stands on two short black caterpillar tracks, one under each side, on the bottom edge; its right arm is a long yellow hydraulic boom with a silver piston, raised high and bent at the elbow, ending in a big toothed digging bucket above its head; its left arm is a short grey arm with a mitt hand. Proud and strong."
+        }
+      ],
+      "image_size": {
+        "width": 96,
+        "height": 80
+      },
+      "no_background": true,
+      "seed": 8109,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a cheerful excavator robot standing upright like a character, flat 2D, seen exactly from the front. Its body is a square sunny-yellow driver's cab with a big flat windshield as its face showing two round eyes and a smile, a white hard hat on top, an orange beacon light; it stands on two short black caterpillar tracks, one under each side, on the bottom edge; its right arm is a long yellow hydraulic boom with a silver piston, raised high and bent at the elbow, ending in a big toothed digging bucket above its head; its left arm is a short grey arm with a mitt hand. Proud and strong. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:06:13.148Z",
+    "candidates": [
+      {
+        "file": "excavator-c-0.png",
+        "sha256": "bfec727718f188b8de8ac0444d54223cf6a7db04e27f1172a67686640ea5f555",
+        "width": 96,
+        "height": 80
+      }
+    ]
+  },
+  "puppy-d": {
+    "id": "puppy-d",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-ed7bb056-f2bc-404c-951d-425c6dd491aa",
+    "submittedAt": "2026-11-05T21:06:16.049Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a wind-up tin robot puppy, clearly a toy machine made of painted sheet metal with rivets, seen exactly from the front, sitting. A round tomato-red metal head with two big round glowing sky-blue lamp eyes and a black bolt nose, two long floppy cream metal ears with hinges at the top; a small cream tin body with red stripes; a big brass wind-up key on top of its back; four stubby metal legs ending in small black wheels; a coiled spring tail sticking up. A toy robot dog."
+        }
+      ],
+      "image_size": {
+        "width": 40,
+        "height": 32
+      },
+      "no_background": true,
+      "seed": 8114,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a wind-up tin robot puppy, clearly a toy machine made of painted sheet metal with rivets, seen exactly from the front, sitting. A round tomato-red metal head with two big round glowing sky-blue lamp eyes and a black bolt nose, two long floppy cream metal ears with hinges at the top; a small cream tin body with red stripes; a big brass wind-up key on top of its back; four stubby metal legs ending in small black wheels; a coiled spring tail sticking up. A toy robot dog. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:06:16.052Z",
+    "candidates": [
+      {
+        "file": "puppy-d-0.png",
+        "sha256": "c9e053a6c8bb8e6d714d36b8c728269a56f36b756e1ce8321cae37350bd9a84c",
+        "width": 40,
+        "height": 32
+      }
+    ]
+  },
+  "rover-c": {
+    "id": "rover-c",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-811373e4-5ef6-48ff-8c8c-ff636b5466fa",
+    "submittedAt": "2026-11-05T21:08:09.817Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a planetary rover robot drawn as a flat front elevation like a sticker, seen exactly from the front at eye level, no top surface visible, perfectly symmetric. A wide low white-and-gold box body; on each side two chunky grey ribbed wheels on bent rocker struts, the wheels standing on the bottom edge and dusted rusty red; a tall thin white mast rising from the middle of the body topped by one wide flat camera box with a row of three small square dark lenses; a small round dish antenna on a short stalk on one side; a thin dark-blue solar-panel strip along the top edge of the body. A lonely explorer."
+        }
+      ],
+      "image_size": {
+        "width": 64,
+        "height": 56
+      },
+      "no_background": true,
+      "seed": 8110,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a planetary rover robot drawn as a flat front elevation like a sticker, seen exactly from the front at eye level, no top surface visible, perfectly symmetric. A wide low white-and-gold box body; on each side two chunky grey ribbed wheels on bent rocker struts, the wheels standing on the bottom edge and dusted rusty red; a tall thin white mast rising from the middle of the body topped by one wide flat camera box with a row of three small square dark lenses; a small round dish antenna on a short stalk on one side; a thin dark-blue solar-panel strip along the top edge of the body. A lonely explorer. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:08:09.820Z",
+    "candidates": [
+      {
+        "file": "rover-c-0.png",
+        "sha256": "27e6981e082144581805ee2c876a6b086d0325f282fc9c1188ec917146370923",
+        "width": 64,
+        "height": 56
+      }
+    ]
+  },
+  "rover-d": {
+    "id": "rover-d",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-49631495-48cb-4fbc-bc6b-263c9898e692",
+    "submittedAt": "2026-11-05T21:08:43.696Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/style.txt",
+          "text": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective."
+        },
+        {
+          "source": "fragments/class-freed.txt",
+          "text": "Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a planetary rover robot, flat 2D, seen exactly from the front, like a toy car facing the viewer. A wide flat dark-blue solar panel wing on top like a table top; under it a white-and-gold body box with a small dark visor face showing two small glowing sky-blue eyes; six chunky grey wheels, three on each side, spread wide on bent rocker legs with their bottoms on the bottom edge, dusted rusty red; a thin whip antenna and a little round dish antenna sticking up from the panel. A lonely explorer, symmetric."
+        }
+      ],
+      "image_size": {
+        "width": 64,
+        "height": 48
+      },
+      "no_background": true,
+      "seed": 8111,
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south",
+      "description": "Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective. Class (freed robot): one robot character standing alone, drawn in a straight front view, facing the viewer, flat 2D, seen exactly from the front with no depth. It is one strong, instantly recognisable idea with a distinctive silhouette that reads at small size. Dark outline, two-tone shading lit from straight above, transparent background with nothing around the character. Subject: a planetary rover robot, flat 2D, seen exactly from the front, like a toy car facing the viewer. A wide flat dark-blue solar panel wing on top like a table top; under it a white-and-gold body box with a small dark visor face showing two small glowing sky-blue eyes; six chunky grey wheels, three on each side, spread wide on bent rocker legs with their bottoms on the bottom edge, dusted rusty red; a thin whip antenna and a little round dish antenna sticking up from the panel. A lonely explorer, symmetric. Must not include: isometric, three-quarter view, perspective, ground plate, floor, shadow, platform, scenery, multiple characters, text, letters, numbers, logo, watermark, signature, frame, border."
+    },
+    "at": "2026-11-05T21:08:43.698Z",
+    "candidates": [
+      {
+        "file": "rover-d-0.png",
+        "sha256": "3e28024010daba3ea2c9b20204e47ad845304b9e8b8c5fc297eba31b4e901dc0",
+        "width": 64,
+        "height": 48
+      }
+    ]
+  }
+}

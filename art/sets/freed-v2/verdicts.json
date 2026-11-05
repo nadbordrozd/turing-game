@@ -1,0 +1,227 @@
+{
+  "kaiju-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "strong kaiju silhouette: dorsal fins, furnace chest, stubby tail; tallest of the crowd; a generic armoured kaiju mech, not a copy of a named robot",
+    "at": "2026-11-05T20:57:17.961Z"
+  },
+  "costume-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "reads as a kid in a cardboard-box costume: colander helmet, hanger antenna, hose arms, felt-tip buttons",
+    "at": "2026-11-05T20:57:18.003Z"
+  },
+  "maid-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "bubble dome, mint dress with apron, feather duster, single wheel: clear retro housemaid",
+    "at": "2026-11-05T20:57:18.046Z"
+  },
+  "octosub-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "bathysphere with porthole face, periscope and tentacles reads at 1x; red-orange rather than yellow but on palette",
+    "at": "2026-11-05T20:57:18.088Z"
+  },
+  "rover-a#0": {
+    "verdict": "REJECTED",
+    "notes": "three-quarter top view with a dark ground shadow plate under the wheels",
+    "at": "2026-11-05T20:57:18.130Z"
+  },
+  "puppy-a#0": {
+    "verdict": "REJECTED",
+    "notes": "muddled at 32 px: does not read as a dog; ears and key merge into a blob",
+    "at": "2026-11-05T20:57:18.171Z"
+  },
+  "balloon-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "patched balloon, wicker-basket body and visor head: clear floating silhouette, reads at 1x",
+    "at": "2026-11-05T21:01:20.744Z"
+  },
+  "android-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "the almost-human android idea: trench coat, porcelain face, one glowing sky-blue eye; not a copy of any film character",
+    "at": "2026-11-05T21:01:20.787Z"
+  },
+  "beetle-a#0": {
+    "verdict": "REJECTED",
+    "notes": "no legs or wheels, sits on a dark plate; cream face reads as a skull",
+    "at": "2026-11-05T21:01:20.830Z"
+  },
+  "diver-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "brass helmet with porthole eyes, air hose, lead boots: instantly a deep-sea diver",
+    "at": "2026-11-05T21:01:20.872Z"
+  },
+  "steam-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "top hat, monocle, moustache and gear-window chest read as a clockwork gentleman; steam puff came out as a lamp on a stick, minor",
+    "at": "2026-11-05T21:01:20.915Z"
+  },
+  "sumo-a#0": {
+    "verdict": "REJECTED",
+    "notes": "reads as a human sumo wrestler (skin, belly), not a machine",
+    "at": "2026-11-05T21:01:20.957Z"
+  },
+  "typist-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "typewriter head with paper crest and key grin: one strong idea, very readable",
+    "at": "2026-11-05T21:01:21.000Z"
+  },
+  "fire-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "helmet, hose coil, nozzle hand and ladder: clear firefighter",
+    "at": "2026-11-05T21:01:21.045Z"
+  },
+  "chef-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "toque, moustache visor, apron and soup-pot belly: clear chef",
+    "at": "2026-11-05T21:01:21.088Z"
+  },
+  "plough-a#0": {
+    "verdict": "REJECTED",
+    "notes": "isometric three-quarter view",
+    "at": "2026-11-05T21:01:21.129Z"
+  },
+  "band-a#0": {
+    "verdict": "REJECTED",
+    "notes": "walking three-quarter pose, no harmonica or cymbals; toothy face reads as a fish monster",
+    "at": "2026-11-05T21:01:21.172Z"
+  },
+  "mime-a#0": {
+    "verdict": "REJECTED",
+    "notes": "reads as a human mime, not a robot; hands are not on an invisible wall",
+    "at": "2026-11-05T21:01:21.213Z"
+  },
+  "greenhouse-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "glass dome with a tree inside, watering can and root feet: distinct and charming",
+    "at": "2026-11-05T21:01:21.255Z"
+  },
+  "samurai-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "crescent-crest helmet, visor slit, red lacquer plates and wooden sword: clear samurai, front view",
+    "at": "2026-11-05T21:03:55.458Z"
+  },
+  "excavator-a#0": {
+    "verdict": "REJECTED",
+    "notes": "isometric three-quarter view",
+    "at": "2026-11-05T21:03:55.501Z"
+  },
+  "lander-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "gold-foil pod on spindly footpad legs with a window face: clear lunar lander, front view",
+    "at": "2026-11-05T21:03:55.543Z"
+  },
+  "arcade-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "arcade cabinet with pixel-smile screen, joystick and coin slot reads instantly; mild three-quarter tilt, acceptable",
+    "at": "2026-11-05T21:03:55.585Z"
+  },
+  "mainframe-a#0": {
+    "verdict": "REJECTED",
+    "notes": "three-quarter view with the top of the cabinet showing",
+    "at": "2026-11-05T21:03:55.626Z"
+  },
+  "rover-b#0": {
+    "verdict": "REJECTED",
+    "notes": "still three-quarter; binocular head on a mast is too close to a famous film robot",
+    "at": "2026-11-05T21:03:55.668Z"
+  },
+  "ladybug-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "tiny spotted shell with wings and glowing eyes: smallest robot, reads at 1x",
+    "at": "2026-11-05T21:03:55.711Z"
+  },
+  "owl-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "telescope-lens eyes, ear tufts and feather plates: distinct owl silhouette",
+    "at": "2026-11-05T21:03:55.753Z"
+  },
+  "golem-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "terracotta brick body with brass bands and glowing eyes: heavy golem silhouette",
+    "at": "2026-11-05T21:03:55.797Z"
+  },
+  "puppy-b#0": {
+    "verdict": "REJECTED",
+    "notes": "reads as a plain cartoon dog, not a tin wind-up robot toy",
+    "at": "2026-11-05T21:03:55.839Z"
+  },
+  "satellite-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "solar-panel wings and dish: unmistakable satellite; tilted diagonal suits a floating robot",
+    "at": "2026-11-05T21:03:55.881Z"
+  },
+  "knight-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "great helm with glowing slit, plume, lance pennant and circuit shield: excellent",
+    "at": "2026-11-05T21:03:55.923Z"
+  },
+  "fortune-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "booth with turbaned fortune teller, crystal ball and card slot: clear carnival automaton",
+    "at": "2026-11-05T21:03:55.964Z"
+  },
+  "beetle-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "orange beetle-shell dome, three-lens blue face plate and splayed legs: curious beetle walker, front view",
+    "at": "2026-11-05T21:04:48.510Z"
+  },
+  "sumo-b#0": {
+    "verdict": "REJECTED",
+    "notes": "dark ground line drawn under the feet; muddy brown-green colours",
+    "at": "2026-11-05T21:04:48.553Z"
+  },
+  "plough-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "flat front view: beacon, scarf, windshield face, big orange plough blade with snow",
+    "at": "2026-11-05T21:04:48.595Z"
+  },
+  "band-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "big red bass-drum disc behind, accordion body, cymbal knees: a one-man-band with a distinct round silhouette",
+    "at": "2026-11-05T21:04:48.639Z"
+  },
+  "mime-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "white face, striped body, gloved palms up against an invisible wall: reads as a mime; metal-tube limbs keep it a robot",
+    "at": "2026-11-05T21:04:48.682Z"
+  },
+  "mainframe-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "reel-to-reel eyes, lamp panel and ticker tape read instantly; mild three-quarter tilt, the clearest of two takes",
+    "at": "2026-11-05T21:08:39.129Z"
+  },
+  "sumo-c#0": {
+    "verdict": "ACCEPTED",
+    "notes": "boiler-ball body, topknot knob, red belt with tassels, wide stance: a sumo machine, front view",
+    "at": "2026-11-05T21:08:39.173Z"
+  },
+  "puppy-c#0": {
+    "verdict": "ACCEPTED",
+    "notes": "boxy tin puppy with visor eyes, hinged red ears, collar and wind-up key: reads as a toy robot dog",
+    "at": "2026-11-05T21:08:39.215Z"
+  },
+  "puppy-d#0": {
+    "verdict": "REJECTED",
+    "notes": "reads as an organic puppy or rabbit, the tin and key are lost",
+    "at": "2026-11-05T21:08:39.257Z"
+  },
+  "excavator-b#0": {
+    "verdict": "REJECTED",
+    "notes": "front view works but the robot is small in its canvas and the bucket is a dark blob; excavator-c is clearer",
+    "at": "2026-11-05T21:09:01.343Z"
+  },
+  "excavator-c#0": {
+    "verdict": "ACCEPTED",
+    "notes": "front view: windshield face with a smile, hard hat, beacon, raised boom with bucket over its head, tracks",
+    "at": "2026-11-05T21:09:01.386Z"
+  },
+  "rover-c#0": {
+    "verdict": "ACCEPTED",
+    "notes": "six wheels on rocker struts, solar deck and a three-lens camera mast: a planetary rover; mild three-quarter tilt that four takes could not remove",
+    "at": "2026-11-05T21:09:01.428Z"
+  },
+  "rover-d#0": {
+    "verdict": "REJECTED",
+    "notes": "three-quarter view; solar wings read as a table top",
+    "at": "2026-11-05T21:09:01.469Z"
+  }
+}
