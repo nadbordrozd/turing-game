@@ -69,3 +69,39 @@ frame; a new robot master needs them re-measured.
 - No ground plate, shadow or semi-transparent pixels.
 - Reviewed on the contact sheet (native and ×4, light and dark) and on a
   rotation sheet (0/90/180/270 on a mid-grey 50×50 tile).
+
+## Freed robots (end-level screen)
+
+Set `art/sets/freed-v1` (bead tg-vy4.17). The end-level screen shows one
+freed robot per 3 points beside the main robot, on a Toybox landscape.
+
+- **Originals only.** No robot may copy or resemble a film, TV or game
+  robot, and no such name appears in a prompt. Each recipe describes a
+  generic toy idea (cube on wheels, spider, stilt walker, kettle, rocket...).
+- **Varied shapes and sizes.** Silhouettes differ (wheels, tracks, legs,
+  springs, hovering); the canvas size sets the robot's size in the crowd.
+  Generate at 32-96 px (Pixen sides multiples of 4, square below 32), crop
+  to the alpha bounds and scale ×2 nearest, so every robot shares one
+  on-screen pixel size (2 screen px per art px).
+- **View.** Straight front view as for the player robot; symmetry is
+  preferred but not required (one-armed props such as a watering can are
+  fine). Transparent, no ground plate or shadow.
+- **Entry 0 is the main robot**: the player robot's design (cream head,
+  sky-blue visor, red body) drawn large. The others follow in unlock order.
+- **Placement** (`EndLevelRobots.js`, `[asset, x, y, z]`, x/y = sprite
+  centre): earlier unlocks stand closest to the main robot; the crowd grows
+  outward; robots farther back stand higher and get a lower z. Positions live
+  in `art/sets/freed-v1/layout.json`; `node tools/art/freed-layout.mjs`
+  rewrites the outputs and `EndLevelRobots.js`, then bake. Preview with
+  `node tools/art/freed-preview.mjs <out.png> [--count N] [--scale 2]`.
+- **Landscape** (`images/freed/landscape.png`, 1024×768): Pixen 512×416
+  opaque (`landscape-i`), top 512×384 kept (drops most of the soil strip
+  Pixen draws along the bottom), scaled ×2. The prompt must not mention
+  robots or characters (Pixen then draws them); the top third is open sky
+  for the result card. 2 of 9 landscape takes were usable.
+- **What worked / did not** (`freed-v1`, 33 accepted of 50 robot takes):
+  organic concepts (bird, mushroom, cloud, kettle, umbrella, bug) came back
+  as plain creatures or children until the subject said "clearly a machine
+  made of painted metal with bolts" and gave a visor or screen face; boxy
+  bodies drift to three-quarter view unless the subject says "seen exactly
+  from the front, flat 2D drawing with no depth".

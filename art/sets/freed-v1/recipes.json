@@ -1,0 +1,1209 @@
+{
+  "set": "freed-v1",
+  "bead": "tg-vy4.17",
+  "class": "characters",
+  "exploration": false,
+  "_doc": "End-level screen: original freed robots (not copies or lookalikes of any film, TV or game robot; no such names in prompts) of varied shapes and sizes, plus the Toybox landscape they gather on. Robots are generated small, cropped to their alpha bounds and scaled x2 (nearest) so every robot shares one on-screen pixel size; the canvas size sets how big a robot is in the crowd. The landscape is 512x384 scaled x2 to 1024x768. Placement lives in EndLevelRobots.js. See docs/art/classes/characters.md and docs/art/PIPELINE.md. Recipes are never edited after generation: add a new id (new seed) instead.",
+  "shared": {
+    "frontOpts": {
+      "outline": "single color black outline",
+      "detail": "low detail",
+      "view": "side",
+      "direction": "south"
+    },
+    "sceneOpts": {
+      "outline": "single color black outline",
+      "detail": "medium detail",
+      "view": "side"
+    },
+    "landscapeSubject2": "Subject: a wide empty background scene for a game's victory screen, seen straight from the side like a flat 2D side-scrolling game backdrop. A calm sunny countryside with nobody in it. The top third is open pale sky-blue sky with two or three small soft cream clouds and nothing else. In the middle band, far rolling mint-green hills with a few round toy-like trees on the far left and far right. The whole bottom half is one wide flat grassy meadow reaching down to the bottom edge, with a few small yellow and red flowers and pebbles near the left and right edges and a large open empty lawn in the middle. Gentle, cosy and uncluttered.",
+    "landscapeSubject3": "Subject: a wide empty background scene for a game's victory screen, seen straight from the side like a flat 2D side-scrolling game backdrop. A bright, sunny, cheerful countryside with nobody in it. The top third is clear bright sky-blue sky with two or three small soft cream clouds and nothing else. Just above the middle, far rolling bright mint-green hills with a few round toy-like trees on the far left and far right. From the middle of the picture down to the very bottom edge, one wide flat bright green grassy meadow with a few small yellow and red flowers and pebbles near the left and right edges and a large open empty lawn in the middle. The grass continues past the bottom edge.",
+    "landscapeSubject": "Subject: a wide background scene for a game's victory screen, seen straight from the side like a flat 2D platformer backdrop. A calm sunny countryside where friendly toy robots gather (the robots are not drawn). The top third is open pale sky-blue sky with two or three small soft cream clouds and nothing else. Below it, far rolling mint-green hills with a few round toy-like trees, then a wide flat grassy meadow that fills the whole bottom half, with a soft sandy path, small yellow and red flowers and a few pebbles near the edges, plenty of open empty grass in the middle. Gentle, cosy and uncluttered."
+  },
+  "defaults": {
+    "endpoint": "create-image-pixen",
+    "fragments": [
+      "style",
+      "class-characters"
+    ],
+    "noBackground": true,
+    "options": "@frontOpts",
+    "negative": "text, letters, numbers, logo, watermark, signature, ground plate, shadow, multiple robots, human"
+  },
+  "recipes": [
+    {
+      "id": "hero-a",
+      "concept": "main robot (the player robot, big)",
+      "width": 64,
+      "height": 96,
+      "seed": 7101,
+      "subject": "Subject: a cute toy robot, the hero of a programming puzzle game, standing upright, straight front view, facing the viewer, flat 2D, not isometric. A big square cream head with rounded corners and a wide sky-blue visor with two friendly round eyes and a small smile, a short antenna with a yellow ball on top; a boxy tomato-red body with a cream chest panel and three small buttons; two arms hanging at its sides ending in grey claw hands; two short grey legs with chunky red feet resting on the bottom edge of the canvas. Centered, fills the canvas height, transparent background."
+    },
+    {
+      "id": "wheelcube-a",
+      "concept": "tiny wheeled cube",
+      "width": 32,
+      "height": 32,
+      "seed": 7102,
+      "subject": "Subject: a tiny toy robot, straight front view, facing the viewer, flat 2D. A small sunny-yellow cube body with one big round friendly eye in the middle and a tiny antenna, sitting on two small black wheels at the bottom. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "spider-a",
+      "concept": "spider walker",
+      "width": 80,
+      "height": 56,
+      "seed": 7103,
+      "subject": "Subject: a toy spider robot, straight front view, facing the viewer, flat 2D. A round tomato-red dome body with two big round white eyes and a cream face plate, standing on six thin grey jointed legs spread out left and right like a friendly spider, the leg tips resting on the bottom edge. Symmetric left and right. Centered, transparent background."
+    },
+    {
+      "id": "stilts-a",
+      "concept": "tall stilt walker",
+      "width": 48,
+      "height": 96,
+      "seed": 7104,
+      "subject": "Subject: a tall thin toy robot on very long stilt legs, straight front view, facing the viewer, flat 2D. A small round mint-green head with a cream face, two dot eyes and a smile, a short slim mint-green body with a yellow belt, two thin arms, and two very long thin grey legs with small round feet resting on the bottom edge of the canvas. Centered, fills the canvas height, transparent background."
+    },
+    {
+      "id": "landscape-a",
+      "concept": "meadow landscape",
+      "width": 512,
+      "height": 384,
+      "seed": 7201,
+      "fragments": [
+        "style"
+      ],
+      "noBackground": false,
+      "options": "@sceneOpts",
+      "negative": "text, letters, numbers, logo, watermark, robots, characters, people, animals, frame, border, isometric, perspective grid",
+      "subject": "@landscapeSubject"
+    },
+    {
+      "id": "landscape-b",
+      "concept": "meadow landscape",
+      "width": 512,
+      "height": 384,
+      "seed": 7202,
+      "fragments": [
+        "style"
+      ],
+      "noBackground": false,
+      "options": "@sceneOpts",
+      "negative": "text, letters, numbers, logo, watermark, robots, characters, people, animals, frame, border, isometric, perspective grid",
+      "subject": "@landscapeSubject"
+    },
+    {
+      "id": "landscape-c",
+      "concept": "meadow landscape, no figures",
+      "width": 512,
+      "height": 384,
+      "seed": 7203,
+      "fragments": [
+        "style"
+      ],
+      "noBackground": false,
+      "options": "@sceneOpts",
+      "negative": "text, letters, numbers, logo, watermark, robots, characters, people, animals, frame, border, isometric, perspective grid, soil cross-section",
+      "subject": "@landscapeSubject2"
+    },
+    {
+      "id": "landscape-d",
+      "concept": "meadow landscape, no figures",
+      "width": 512,
+      "height": 384,
+      "seed": 7204,
+      "fragments": [
+        "style"
+      ],
+      "noBackground": false,
+      "options": "@sceneOpts",
+      "negative": "text, letters, numbers, logo, watermark, robots, characters, people, animals, frame, border, isometric, perspective grid, soil cross-section",
+      "subject": "@landscapeSubject2"
+    },
+    {
+      "id": "landscape-e",
+      "concept": "bright meadow, taller canvas (crop the bottom 32 px)",
+      "width": 512,
+      "height": 416,
+      "seed": 7205,
+      "fragments": [
+        "style"
+      ],
+      "noBackground": false,
+      "options": "@sceneOpts",
+      "negative": "text, letters, numbers, logo, watermark, robots, characters, people, animals, frame, border, isometric, perspective grid, soil cross-section, dirt strip, grey sky",
+      "subject": "@landscapeSubject3"
+    },
+    {
+      "id": "landscape-f",
+      "concept": "bright meadow, taller canvas (crop the bottom 32 px)",
+      "width": 512,
+      "height": 416,
+      "seed": 7206,
+      "fragments": [
+        "style"
+      ],
+      "noBackground": false,
+      "options": "@sceneOpts",
+      "negative": "text, letters, numbers, logo, watermark, robots, characters, people, animals, frame, border, isometric, perspective grid, soil cross-section, dirt strip, grey sky",
+      "subject": "@landscapeSubject3"
+    },
+    {
+      "id": "jelly-a",
+      "concept": "jellyfish hover bot",
+      "width": 40,
+      "height": 56,
+      "seed": 7117,
+      "subject": "Subject: a hovering toy robot shaped like a jellyfish, straight front view, facing the viewer, flat 2D. A round sky-blue glass dome head with two happy eyes and a cream rim, and five short bendy grey cable tentacles with yellow tips dangling below it, floating. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "dish-a",
+      "concept": "satellite-dish head",
+      "width": 48,
+      "height": 64,
+      "seed": 7118,
+      "subject": "Subject: a toy robot with a round satellite dish for a head, straight front view, facing the viewer, flat 2D. A cream dish head with a small yellow antenna tip in its centre and two round eyes below it on a small sky-blue face box, a square tomato-red body with a cream panel, two short arms, and two short legs with chunky feet on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "pogo-a",
+      "concept": "pogo spring",
+      "width": 32,
+      "height": 64,
+      "seed": 7119,
+      "subject": "Subject: a small toy robot bouncing on a big coiled spring instead of legs, straight front view, facing the viewer, flat 2D. A round sunny-yellow head with a sky-blue visor and two eyes, a small yellow body with two tiny arms raised happily, and one tall grey coil spring below the body ending in a small red foot on the bottom edge. Centered, fills the canvas height, transparent background."
+    },
+    {
+      "id": "gardener-a",
+      "concept": "gardener with watering can",
+      "width": 48,
+      "height": 48,
+      "seed": 7120,
+      "subject": "Subject: a small gardening toy robot, straight front view, facing the viewer, flat 2D. A rounded mint-green body and head in one piece with two round eyes and a smile, a little straw-yellow sun hat on top, one arm holding a small tomato-red watering can, and two short legs with round feet on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "walker4-a",
+      "concept": "four-legged table walker",
+      "width": 64,
+      "height": 48,
+      "seed": 7121,
+      "subject": "Subject: a four-legged toy walker robot, straight front view, facing the viewer, flat 2D. A wide flat cream box body like a small table with a row of colourful buttons, a short periscope on top ending in one round sky-blue eye, and four straight grey legs with round red feet on the bottom edge. Symmetric left and right. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "bird-a",
+      "concept": "bird-like walker",
+      "width": 40,
+      "height": 56,
+      "seed": 7122,
+      "subject": "Subject: a toy robot shaped like a small round bird, straight front view, facing the viewer, flat 2D. A plump sky-blue round body with a cream belly, two big round eyes, a small yellow beak, two little metal wing flaps at its sides, a tiny tuft antenna, and two thin grey legs with yellow three-toed feet on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "headphones-a",
+      "concept": "music bot with headphones",
+      "width": 48,
+      "height": 56,
+      "seed": 7123,
+      "subject": "Subject: a cheerful toy music robot, straight front view, facing the viewer, flat 2D. A wide rounded cream head with two closed happy eyes and a smile, wearing big tomato-red headphones, a small sky-blue body with a round speaker grille on the chest, two short arms, and two short legs with chunky feet on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "tank-a",
+      "concept": "little tank with flag",
+      "width": 48,
+      "height": 32,
+      "seed": 7124,
+      "subject": "Subject: a tiny toy robot on two small caterpillar tracks, straight front view, facing the viewer, flat 2D. A low rounded mint-green body with two round eyes and a smile, a short thin antenna with a small yellow flag, and two dark grey tracks on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "lantern-a",
+      "concept": "hovering lantern",
+      "width": 32,
+      "height": 40,
+      "seed": 7125,
+      "subject": "Subject: a tiny hovering toy robot shaped like a lantern, straight front view, facing the viewer, flat 2D. A small cream metal frame with a carry ring on top, a warm sunny-yellow glowing glass body with two dark dot eyes and a smile, and a tiny propeller below, floating. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "bug-a",
+      "concept": "tiny beetle bot",
+      "width": 32,
+      "height": 32,
+      "seed": 7126,
+      "subject": "Subject: a tiny beetle toy robot, straight front view, facing the viewer, flat 2D. A round tomato-red shell with cream dots, two big round eyes, two curly antennas, and four tiny grey legs on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "kettle-a",
+      "concept": "kettle bot",
+      "width": 40,
+      "height": 40,
+      "seed": 7127,
+      "subject": "Subject: a small toy robot shaped like a round tea kettle, straight front view, facing the viewer, flat 2D. A round sky-blue kettle body with a cream lid knob on top, a friendly face with two round eyes and rosy cheeks, a small spout on one side and a handle on the other, and two tiny feet on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "cart-a",
+      "concept": "cart bot",
+      "width": 48,
+      "height": 36,
+      "seed": 7128,
+      "subject": "Subject: a small toy robot shaped like a little cart, straight front view, facing the viewer, flat 2D. A sunny-yellow open box body with a friendly face of two round eyes on its front, two short arms holding the rim, and two round black wheels on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "mailbox-a",
+      "concept": "mailbox bot",
+      "width": 32,
+      "height": 48,
+      "seed": 7129,
+      "subject": "Subject: a small toy robot shaped like a mailbox, straight front view, facing the viewer, flat 2D. A tomato-red rounded-top box body with a cream envelope slot as its mouth and two round eyes above it, a small yellow flag on top, two tiny arms, and two short legs on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "umbrella-a",
+      "concept": "umbrella-hat bot",
+      "width": 32,
+      "height": 48,
+      "seed": 7130,
+      "subject": "Subject: a small toy robot wearing a little umbrella as a hat, straight front view, facing the viewer, flat 2D. A small mint-green and cream striped umbrella on top, a round cream head with two dot eyes and a smile, a small sky-blue body, two tiny arms, and two short legs with red boots on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "trike-a",
+      "concept": "tricycle bot",
+      "width": 40,
+      "height": 40,
+      "seed": 7131,
+      "subject": "Subject: a small toy robot with three wheels, straight front view, facing the viewer, flat 2D. A round sunny-yellow head with a sky-blue visor and two eyes, a small tomato-red body, two short arms, and three small black wheels on the bottom edge, one in the middle front and two at the sides. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "cloud-a",
+      "concept": "cloud hover bot",
+      "width": 48,
+      "height": 32,
+      "seed": 7132,
+      "subject": "Subject: a small hovering toy robot shaped like a puffy cloud, straight front view, facing the viewer, flat 2D. A soft cream and white cloud-shaped body with two round eyes and a smile, a tiny sky-blue propeller on top and two little stubby arms, floating. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "lighthouse-a",
+      "concept": "tall lamp-head bot",
+      "width": 32,
+      "height": 64,
+      "seed": 7133,
+      "subject": "Subject: a tall slim toy robot shaped like a little lighthouse, straight front view, facing the viewer, flat 2D. A round glass lamp head glowing sunny yellow with two dark dot eyes, a small red roof cap on top, a tall cream and tomato-red striped tube body, two thin arms, and two short legs on the bottom edge. Centered, fills the canvas height, transparent background."
+    },
+    {
+      "id": "accordion-a",
+      "concept": "telescopic-neck bot",
+      "width": 32,
+      "height": 64,
+      "seed": 7134,
+      "subject": "Subject: a toy robot with a very long extending accordion neck, straight front view, facing the viewer, flat 2D. A small round sky-blue head with two big round eyes on top of a tall grey zig-zag accordion neck, a small boxy sunny-yellow body with two tiny arms, and two short legs with round feet on the bottom edge. Centered, fills the canvas height, transparent background."
+    },
+    {
+      "id": "landscape-g",
+      "concept": "meadow landscape, taller canvas (crop the bottom 32 px)",
+      "width": 512,
+      "height": 416,
+      "seed": 7207,
+      "fragments": [
+        "style"
+      ],
+      "noBackground": false,
+      "options": "@sceneOpts",
+      "negative": "text, letters, numbers, logo, watermark, robots, characters, people, animals, frame, border, isometric, perspective grid, soil cross-section",
+      "subject": "@landscapeSubject2"
+    },
+    {
+      "id": "landscape-h",
+      "concept": "meadow landscape, taller canvas (crop the bottom 32 px)",
+      "width": 512,
+      "height": 416,
+      "seed": 7208,
+      "fragments": [
+        "style"
+      ],
+      "noBackground": false,
+      "options": "@sceneOpts",
+      "negative": "text, letters, numbers, logo, watermark, robots, characters, people, animals, frame, border, isometric, perspective grid, soil cross-section",
+      "subject": "@landscapeSubject2"
+    },
+    {
+      "id": "landscape-i",
+      "concept": "meadow landscape, taller canvas (crop the bottom 32 px)",
+      "width": 512,
+      "height": 416,
+      "seed": 7209,
+      "fragments": [
+        "style"
+      ],
+      "noBackground": false,
+      "options": "@sceneOpts",
+      "negative": "text, letters, numbers, logo, watermark, robots, characters, people, animals, frame, border, isometric, perspective grid, soil cross-section",
+      "subject": "@landscapeSubject2"
+    },
+    {
+      "id": "stilts-c",
+      "concept": "tall stilt walker",
+      "width": 40,
+      "height": 88,
+      "seed": 7140,
+      "subject": "Subject: a tall toy robot on very long telescopic stilt legs, straight front view, facing the viewer, flat 2D. A small boxy mint-green robot head with a short antenna, a sky-blue visor with two round eyes, a small square mint-green body with a yellow button, two short arms with round grey hands, and two very long thin grey metal stilt legs with bolts at the knees and small red feet. The feet touch the bottom edge with nothing under them, no shadow. Centered, fills the canvas height, transparent background."
+    },
+    {
+      "id": "giant-b",
+      "concept": "big strong friendly giant",
+      "width": 96,
+      "height": 96,
+      "seed": 7141,
+      "subject": "Subject: a big strong but gentle toy robot, straight front view, facing the viewer, flat 2D. A small round sky-blue helmet head with a wide cream visor showing two kind round black eyes and a happy smile, sitting low between huge rounded sky-blue shoulders, a wide barrel chest with a cream heart-shaped panel, two very large long arms with big round grey fists hanging down to its knees, and two short thick legs with wide yellow feet on the bottom edge. Cheerful, friendly, smiling. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "helper-b",
+      "concept": "boxy helper on wheels",
+      "width": 56,
+      "height": 72,
+      "seed": 7142,
+      "subject": "Subject: a boxy household helper toy robot, straight front view, facing the viewer, flat 2D, seen exactly from the front. A tall cream rectangular metal body with two small drawers and yellow knobs, a square tomato-red robot head with a sky-blue screen face showing two round eyes and a smile and a short antenna, two thin bendy grey arms at its sides, and two small black wheels at the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "mushroom-b",
+      "concept": "mushroom-cap robot",
+      "width": 40,
+      "height": 48,
+      "seed": 7143,
+      "subject": "Subject: a little machine robot wearing a big round metal dome hat shaped like a mushroom cap, straight front view, facing the viewer, flat 2D. The dome hat is mint green with yellow rivets; under it a grey metal face plate with a sky-blue visor and two round eyes, a small boxy grey metal body with bolts and a red button, two short metal arms, and two stubby metal feet on the bottom edge. Clearly a robot made of painted metal. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "gardener-b",
+      "concept": "gardener robot with watering can",
+      "width": 48,
+      "height": 48,
+      "seed": 7144,
+      "subject": "Subject: a small gardening toy robot, straight front view, facing the viewer, flat 2D. Clearly a machine made of painted metal with bolts: a square mint-green metal head with a sky-blue visor and two round eyes, a short antenna with a little green leaf on top, a boxy cream metal body, one metal arm holding a small tomato-red watering can, and two short metal legs with round feet on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "walker4-b",
+      "concept": "four-legged walker",
+      "width": 64,
+      "height": 48,
+      "seed": 7145,
+      "subject": "Subject: a four-legged toy walker robot seen exactly from the front, flat 2D, no perspective, like a flat drawing. A wide rounded sunny-yellow metal body with a big dark visor showing two round friendly eyes, a short antenna on top, and four short jointed grey legs with round red feet standing in a row on the bottom edge, two on each side. Symmetric left and right. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "bird-b",
+      "concept": "bird-like robot",
+      "width": 40,
+      "height": 56,
+      "seed": 7146,
+      "subject": "Subject: a small bird-shaped toy robot, straight front view, facing the viewer, flat 2D. Clearly a machine made of painted metal with bolts and seams: a round sky-blue metal body, a sky-blue visor with two round eyes, a small yellow metal beak, a short antenna, two small hinged metal wing plates at its sides, and two thin grey metal legs with yellow three-toed feet on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "headphones-b",
+      "concept": "music robot with headphones",
+      "width": 48,
+      "height": 56,
+      "seed": 7147,
+      "subject": "Subject: a cheerful music toy robot, straight front view, facing the viewer, flat 2D. Clearly a machine: a boxy cream metal robot head with a dark screen face showing two happy curved eyes, wearing big tomato-red headphones with an antenna, a square sky-blue metal body with a round speaker grille and two dials, two short metal arms, and two short metal legs with chunky feet on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "bug-b",
+      "concept": "tiny beetle bot",
+      "width": 32,
+      "height": 32,
+      "seed": 7148,
+      "subject": "Subject: a tiny beetle-shaped toy robot, straight front view, facing the viewer, flat 2D. A round tomato-red metal shell with yellow rivets, a small grey metal face with two glowing sky-blue round eyes, two thin metal antennas with yellow balls, and four tiny grey metal legs on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "kettle-b",
+      "concept": "kettle robot",
+      "width": 40,
+      "height": 40,
+      "seed": 7149,
+      "subject": "Subject: a small toy robot shaped like a round tea kettle, straight front view, facing the viewer, flat 2D. Clearly a robot: a round sky-blue metal kettle body with rivets, a small dark screen face with two glowing round eyes, a short antenna on the lid, a spout on one side and a handle on the other, two little metal arms and two short metal legs on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "cart-b",
+      "concept": "wagon robot",
+      "width": 48,
+      "height": 36,
+      "seed": 7150,
+      "subject": "Subject: a small wagon-shaped toy robot, straight front view, facing the viewer, flat 2D. One single wide sunny-yellow metal box body with a dark visor face showing two round eyes and a smile, a short antenna with a red ball, and two round black wheels on the bottom edge. Only one robot. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "umbrella-b",
+      "concept": "robot with umbrella hat",
+      "width": 32,
+      "height": 48,
+      "seed": 7151,
+      "subject": "Subject: a small toy robot with a little umbrella fixed on top of its head like a hat, straight front view, facing the viewer, flat 2D. Clearly a machine: a small striped mint-green umbrella, a square grey metal robot head with a sky-blue visor and two round eyes, a boxy cream metal body with a red button, two thin metal arms, and two short metal legs with red feet on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "cloud-b",
+      "concept": "hovering saucer robot",
+      "width": 48,
+      "height": 32,
+      "seed": 7152,
+      "subject": "Subject: a small hovering toy robot shaped like a flying saucer, straight front view, facing the viewer, flat 2D. A wide flat cream metal disc body with a ring of small yellow lights, a sky-blue glass dome on top with two round friendly eyes inside, and two tiny stubby metal arms, floating. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "giant-c",
+      "concept": "big strong friendly giant",
+      "width": 96,
+      "height": 96,
+      "seed": 7160,
+      "subject": "Subject: a big strong but gentle toy robot, seen exactly from the front, flat 2D drawing with no depth. A small square sky-blue metal head with a dark screen face showing two happy glowing eyes and a smile, a short antenna, sitting low between huge rounded sky-blue metal shoulders with bolts, a wide barrel chest with a cream heart-shaped panel, two very large long metal arms with big round grey fists hanging down to its knees, and two short thick metal legs with wide yellow feet on the bottom edge. Clearly a machine, no human face. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "helper-c",
+      "concept": "boxy helper on wheels",
+      "width": 56,
+      "height": 72,
+      "seed": 7161,
+      "subject": "Subject: a boxy household helper toy robot, seen exactly from the front, flat 2D drawing with no depth, only the front face of each box is visible. A tall cream rectangular metal body with two drawers and yellow knobs, a square tomato-red robot head with a sky-blue screen face showing two round eyes and a smile and a short antenna, two thin bendy grey arms hanging at its sides, and two small black wheels at the bottom edge. Symmetric left and right. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "gardener-c",
+      "concept": "gardener robot with watering can",
+      "width": 48,
+      "height": 48,
+      "seed": 7162,
+      "subject": "Subject: a small gardening toy robot, seen exactly from the front, flat 2D drawing with no depth. A round mint-green metal head with a sky-blue visor and two round eyes, a short antenna with a little green leaf on top, a round cream metal body with bolts, two short metal arms, one holding a small tomato-red watering can, and two short metal legs with round yellow feet on the bottom edge. Bright clean colours. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "stilts-b",
+      "concept": "tall stilt walker",
+      "width": 40,
+      "height": 88,
+      "seed": 7105,
+      "subject": "Subject: a tall toy robot on very long telescopic stilt legs, straight front view, facing the viewer, flat 2D. A small boxy mint-green robot head with a short antenna, a sky-blue visor with two round eyes, a small square mint-green body with a yellow button, two short arms with round grey hands, and two very long thin grey metal stilt legs with bolts at the knees and small red feet resting on the bottom edge of the canvas. Centered, fills the canvas height, transparent background."
+    },
+    {
+      "id": "drone-a",
+      "concept": "round hovering drone",
+      "width": 48,
+      "height": 48,
+      "seed": 7106,
+      "subject": "Subject: a round hovering toy drone robot, straight front view, facing the viewer, flat 2D. A sky-blue ball body with a cream face band and two big friendly round eyes, a small yellow propeller on a short mast on top, two tiny stubby arms, and no legs, floating. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "helper-a",
+      "concept": "boxy helper on wheels",
+      "width": 56,
+      "height": 72,
+      "seed": 7107,
+      "subject": "Subject: a boxy household helper toy robot, straight front view, facing the viewer, flat 2D. A cream rectangular body like a little cupboard with two small drawers and yellow knobs, a wide flat tomato-red head with two round eyes and a smile, two bendy grey arms holding a small feather duster, and four small black wheels at the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "digger-a",
+      "concept": "tracked digger",
+      "width": 80,
+      "height": 64,
+      "seed": 7108,
+      "subject": "Subject: a chunky digging toy robot on caterpillar tracks, straight front view, facing the viewer, flat 2D. A wide sunny-yellow body with a dark wide visor showing two round eyes, two short arms each ending in a small grey scoop shovel held out to the sides, a little orange warning light on top, and two wide dark grey caterpillar tracks at the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "unicycle-a",
+      "concept": "dome on one wheel",
+      "width": 40,
+      "height": 56,
+      "seed": 7109,
+      "subject": "Subject: a small toy robot balancing on one big wheel, straight front view, facing the viewer, flat 2D. A round mint-green dome head with one wide sky-blue eye visor, a small cream body, two thin arms held out for balance, and one big black wheel with a yellow hub at the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "tvhead-a",
+      "concept": "tv-head walker",
+      "width": 48,
+      "height": 64,
+      "seed": 7110,
+      "subject": "Subject: a toy robot whose head is a small old television set, straight front view, facing the viewer, flat 2D. The tomato-red TV head has a light sky-blue screen showing a simple happy face and two small antennas on top; a cream box body with a dial, two short arms, and two short legs with chunky feet on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "crab-a",
+      "concept": "crab walker",
+      "width": 72,
+      "height": 48,
+      "seed": 7111,
+      "subject": "Subject: a toy crab robot, straight front view, facing the viewer, flat 2D. A wide flat tomato-red oval shell body with two eyes on short stalks, two big chunky cream pincer claws raised at the sides, and four short grey legs on the bottom edge. Symmetric left and right. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "giant-a",
+      "concept": "big strong friendly giant",
+      "width": 96,
+      "height": 96,
+      "seed": 7112,
+      "subject": "Subject: a big strong but gentle toy robot, straight front view, facing the viewer, flat 2D. A small round sky-blue head with two kind round eyes sitting low between huge rounded shoulders, a wide barrel chest in sky blue with a cream heart-shaped panel, two very large long arms with big round grey fists hanging down to its knees, and two short thick legs with wide feet on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "snowman-a",
+      "concept": "stacked spheres",
+      "width": 40,
+      "height": 64,
+      "seed": 7113,
+      "subject": "Subject: a toy robot made of three stacked balls, straight front view, facing the viewer, flat 2D. A small cream ball head with two dot eyes and a little yellow antenna, a middle sunny-yellow ball body with two thin bendy arms, and a big bottom mint-green ball that it rolls on, touching the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "mushroom-a",
+      "concept": "mushroom cap",
+      "width": 40,
+      "height": 48,
+      "seed": 7114,
+      "subject": "Subject: a little toy robot shaped like a mushroom, straight front view, facing the viewer, flat 2D. A wide round tomato-red cap with cream spots as its head, a short cream stalk body with a friendly face (two round eyes and a smile), two tiny arms, and two stubby feet on the bottom edge. Centered, fills the canvas, transparent background."
+    },
+    {
+      "id": "rocket-a",
+      "concept": "rocket standing on fins",
+      "width": 32,
+      "height": 72,
+      "seed": 7115,
+      "subject": "Subject: a toy robot shaped like a small rocket standing upright, straight front view, facing the viewer, flat 2D. A pointed tomato-red nose cone on top, a cream tube body with one round sky-blue porthole window showing two eyes, two tiny arms, and three red fins at the bottom resting on the bottom edge. Centered, fills the canvas height, transparent background."
+    },
+    {
+      "id": "windup-a",
+      "concept": "clockwork wind-up toy",
+      "width": 48,
+      "height": 56,
+      "seed": 7116,
+      "subject": "Subject: an old-fashioned tin wind-up toy robot, straight front view, facing the viewer, flat 2D. A square sky-blue tin head with round yellow eyes and a grille mouth, a rectangular tomato-red tin body with rivets and a cream dial, a big brass wind-up key sticking out of its side, two short arms, and two square feet on the bottom edge. Centered, fills the canvas, transparent background."
+    }
+  ],
+  "outputs": [
+    {
+      "path": "images/freed/landscape.png",
+      "from": "landscape-i#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 0,
+          "y": 0,
+          "width": 512,
+          "height": 384
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "path": "images/freed/robot-00.png",
+      "from": "hero-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 3,
+          "y": 6,
+          "width": 58,
+          "height": 81
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 116,
+      "height": 162
+    },
+    {
+      "path": "images/freed/robot-01.png",
+      "from": "wheelcube-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 5,
+          "y": 4,
+          "width": 22,
+          "height": 21
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 44,
+      "height": 42
+    },
+    {
+      "path": "images/freed/robot-02.png",
+      "from": "spider-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 12,
+          "y": 6,
+          "width": 52,
+          "height": 42
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 104,
+      "height": 84
+    },
+    {
+      "path": "images/freed/robot-03.png",
+      "from": "drone-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 5,
+          "y": 4,
+          "width": 38,
+          "height": 40
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 76,
+      "height": 80
+    },
+    {
+      "path": "images/freed/robot-04.png",
+      "from": "tvhead-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 1,
+          "y": 1,
+          "width": 45,
+          "height": 56
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 90,
+      "height": 112
+    },
+    {
+      "path": "images/freed/robot-05.png",
+      "from": "digger-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 9,
+          "y": 2,
+          "width": 61,
+          "height": 59
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 122,
+      "height": 118
+    },
+    {
+      "path": "images/freed/robot-06.png",
+      "from": "unicycle-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 2,
+          "y": 0,
+          "width": 36,
+          "height": 56
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 72,
+      "height": 112
+    },
+    {
+      "path": "images/freed/robot-07.png",
+      "from": "crab-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 9,
+          "y": 10,
+          "width": 52,
+          "height": 33
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 104,
+      "height": 66
+    },
+    {
+      "path": "images/freed/robot-08.png",
+      "from": "snowman-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 63
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 80,
+      "height": 126
+    },
+    {
+      "path": "images/freed/robot-09.png",
+      "from": "stilts-c#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 4,
+          "y": 2,
+          "width": 31,
+          "height": 83
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 62,
+      "height": 166
+    },
+    {
+      "path": "images/freed/robot-10.png",
+      "from": "windup-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 3,
+          "y": 2,
+          "width": 44,
+          "height": 51
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 88,
+      "height": 102
+    },
+    {
+      "path": "images/freed/robot-11.png",
+      "from": "dish-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 3,
+          "y": 4,
+          "width": 42,
+          "height": 54
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 84,
+      "height": 108
+    },
+    {
+      "path": "images/freed/robot-12.png",
+      "from": "rocket-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 0,
+          "y": 4,
+          "width": 32,
+          "height": 64
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 64,
+      "height": 128
+    },
+    {
+      "path": "images/freed/robot-13.png",
+      "from": "giant-c#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 10,
+          "y": 3,
+          "width": 76,
+          "height": 88
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 152,
+      "height": 176
+    },
+    {
+      "path": "images/freed/robot-14.png",
+      "from": "jelly-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 4,
+          "y": 8,
+          "width": 32,
+          "height": 40
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 64,
+      "height": 80
+    },
+    {
+      "path": "images/freed/robot-15.png",
+      "from": "pogo-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 0,
+          "y": 0,
+          "width": 31,
+          "height": 64
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 62,
+      "height": 128
+    },
+    {
+      "path": "images/freed/robot-16.png",
+      "from": "headphones-b#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 6,
+          "y": 0,
+          "width": 35,
+          "height": 55
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 70,
+      "height": 110
+    },
+    {
+      "path": "images/freed/robot-17.png",
+      "from": "walker4-b#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 5,
+          "y": 0,
+          "width": 53,
+          "height": 47
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 106,
+      "height": 94
+    },
+    {
+      "path": "images/freed/robot-18.png",
+      "from": "bird-b#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 2,
+          "y": 1,
+          "width": 36,
+          "height": 54
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 72,
+      "height": 108
+    },
+    {
+      "path": "images/freed/robot-19.png",
+      "from": "mailbox-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 0,
+          "y": 1,
+          "width": 32,
+          "height": 46
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 64,
+      "height": 92
+    },
+    {
+      "path": "images/freed/robot-20.png",
+      "from": "mushroom-b#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 4,
+          "y": 3,
+          "width": 32,
+          "height": 42
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 64,
+      "height": 84
+    },
+    {
+      "path": "images/freed/robot-21.png",
+      "from": "helper-c#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 5,
+          "y": 2,
+          "width": 45,
+          "height": 64
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 90,
+      "height": 128
+    },
+    {
+      "path": "images/freed/robot-22.png",
+      "from": "gardener-c#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 4,
+          "y": 1,
+          "width": 37,
+          "height": 45
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 74,
+      "height": 90
+    },
+    {
+      "path": "images/freed/robot-23.png",
+      "from": "accordion-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 0,
+          "y": 1,
+          "width": 31,
+          "height": 62
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 62,
+      "height": 124
+    },
+    {
+      "path": "images/freed/robot-24.png",
+      "from": "lighthouse-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 1,
+          "y": 2,
+          "width": 30,
+          "height": 58
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 60,
+      "height": 116
+    },
+    {
+      "path": "images/freed/robot-25.png",
+      "from": "kettle-b#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 0,
+          "y": 2,
+          "width": 39,
+          "height": 35
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 78,
+      "height": 70
+    },
+    {
+      "path": "images/freed/robot-26.png",
+      "from": "umbrella-b#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 3,
+          "y": 0,
+          "width": 26,
+          "height": 47
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 52,
+      "height": 94
+    },
+    {
+      "path": "images/freed/robot-27.png",
+      "from": "cart-b#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 8,
+          "y": 1,
+          "width": 32,
+          "height": 33
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 64,
+      "height": 66
+    },
+    {
+      "path": "images/freed/robot-28.png",
+      "from": "tank-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 5,
+          "y": 1,
+          "width": 32,
+          "height": 30
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 64,
+      "height": 60
+    },
+    {
+      "path": "images/freed/robot-29.png",
+      "from": "trike-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 5,
+          "y": 4,
+          "width": 30,
+          "height": 32
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 60,
+      "height": 64
+    },
+    {
+      "path": "images/freed/robot-30.png",
+      "from": "bug-b#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 1,
+          "y": 1,
+          "width": 30,
+          "height": 30
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 60,
+      "height": 60
+    },
+    {
+      "path": "images/freed/robot-31.png",
+      "from": "cloud-b#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 7,
+          "y": 3,
+          "width": 33,
+          "height": 26
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 66,
+      "height": 52
+    },
+    {
+      "path": "images/freed/robot-32.png",
+      "from": "lantern-a#0",
+      "steps": [
+        {
+          "op": "crop",
+          "x": 5,
+          "y": 3,
+          "width": 21,
+          "height": 32
+        },
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 42,
+      "height": 64
+    }
+  ]
+}

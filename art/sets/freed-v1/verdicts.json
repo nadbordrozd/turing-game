@@ -1,0 +1,297 @@
+{
+  "hero-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Main robot: same design as the player robot (cream head, sky-blue visor, red body, claw hands), straight front, symmetric, face reads at 1x on light and dark",
+    "at": "2026-11-05T15:44:36.526Z"
+  },
+  "wheelcube-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Tiny one-eyed yellow cube on wheels; clear silhouette at 32 px, reads on light and dark",
+    "at": "2026-11-05T15:44:36.574Z"
+  },
+  "spider-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Red dome spider on six grey legs, symmetric front view, big eyes read at 1x; distinct wide low silhouette",
+    "at": "2026-11-05T15:44:36.621Z"
+  },
+  "stilts-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Skeletal humanoid with a skull-like face; reads as a person more than a toy robot",
+    "at": "2026-11-05T15:44:36.666Z"
+  },
+  "landscape-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Drew a crowd of robots (subject mentioned them) and a platformer soil cut at the bottom",
+    "at": "2026-11-05T15:44:36.710Z"
+  },
+  "landscape-b#0": {
+    "verdict": "REJECTED",
+    "notes": "Drew robots in the sky and on the ground (subject mentioned them); no empty sky for UI",
+    "at": "2026-11-05T15:44:36.754Z"
+  },
+  "drone-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Sky-blue ball drone with yellow propeller and big eyes; clean, reads at 1x on light and dark",
+    "at": "2026-11-05T15:57:35.174Z"
+  },
+  "digger-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Yellow tracked digger with scoop arms and dark visor eyes; strong wide silhouette, reads at 1x",
+    "at": "2026-11-05T15:57:35.243Z"
+  },
+  "unicycle-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "One-eyed dome robot balancing on a big wheel, arms out; distinctive tall-thin silhouette",
+    "at": "2026-11-05T15:57:35.295Z"
+  },
+  "tvhead-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Red TV-set head with a happy face on screen, cream body, chunky feet; clear robot read",
+    "at": "2026-11-05T15:57:35.342Z"
+  },
+  "crab-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Red crab robot with raised cream claws and eye stalks; wide low silhouette; claws read a little like horns but fine",
+    "at": "2026-11-05T15:57:35.388Z"
+  },
+  "snowman-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Three stacked balls (cream helmet head, yellow body, mint base); distinctive, reads on light and dark",
+    "at": "2026-11-05T15:57:35.434Z"
+  },
+  "dish-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Satellite-dish head on a boxy red and teal robot; clear and original",
+    "at": "2026-11-05T15:57:35.481Z"
+  },
+  "pogo-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Yellow visor robot on a tall coil spring; distinctive narrow silhouette",
+    "at": "2026-11-05T15:57:35.526Z"
+  },
+  "rocket-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Red-nosed cream rocket on three fins with a face in the porthole; clean shapes",
+    "at": "2026-11-05T15:57:35.571Z"
+  },
+  "windup-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Generic tin wind-up toy robot with brass key; palette on-style, reads at 1x",
+    "at": "2026-11-05T15:57:35.616Z"
+  },
+  "jelly-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Sky-blue dome hover bot with dangling cable tentacles; symmetric, cute, reads at 1x",
+    "at": "2026-11-05T15:57:35.660Z"
+  },
+  "tank-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Tiny mint tank bot with yellow flag; small low silhouette for the back row",
+    "at": "2026-11-05T15:57:35.705Z"
+  },
+  "lantern-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Tiny hovering lantern bot with glowing yellow face; clean, symmetric",
+    "at": "2026-11-05T15:57:35.748Z"
+  },
+  "mailbox-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Red mailbox robot with envelope mouth and yellow flag; clear and original",
+    "at": "2026-11-05T15:57:35.794Z"
+  },
+  "trike-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Rounded helmet bot on three wheels; reads as a small vehicle robot",
+    "at": "2026-11-05T15:57:35.842Z"
+  },
+  "lighthouse-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Striped lighthouse robot with glowing lamp face; tall slim back-row silhouette",
+    "at": "2026-11-05T15:57:35.893Z"
+  },
+  "accordion-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Blue head on a long grey accordion neck over a yellow body; distinctive",
+    "at": "2026-11-05T15:57:35.941Z"
+  },
+  "stilts-b#0": {
+    "verdict": "REJECTED",
+    "notes": "Opaque dark shadow blob baked under the feet",
+    "at": "2026-11-05T15:57:35.987Z"
+  },
+  "helper-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Drawn in three-quarter top view with a big lid; face unclear",
+    "at": "2026-11-05T15:57:36.030Z"
+  },
+  "giant-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Red eyes and stitched mouth read as menacing, not gentle",
+    "at": "2026-11-05T15:57:36.074Z"
+  },
+  "mushroom-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Reads as a mushroom creature, not a robot; too close to a well-known game mushroom character",
+    "at": "2026-11-05T15:57:36.118Z"
+  },
+  "gardener-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Green creature with a hat; reads as a goblin, not a robot",
+    "at": "2026-11-05T15:57:36.161Z"
+  },
+  "walker4-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Table body drawn in isometric perspective",
+    "at": "2026-11-05T15:57:36.205Z"
+  },
+  "bird-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Reads as a plain bird; no robot cues",
+    "at": "2026-11-05T15:57:36.248Z"
+  },
+  "headphones-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Reads as a baby with headphones, not a robot",
+    "at": "2026-11-05T15:57:36.292Z"
+  },
+  "bug-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Human-like face with hair on a ladybug; creepy, not a robot",
+    "at": "2026-11-05T15:57:36.336Z"
+  },
+  "kettle-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Plain teapot with a face; no robot cues",
+    "at": "2026-11-05T15:57:36.378Z"
+  },
+  "cart-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Muddled: a robot riding a cart, two faces, unclear silhouette",
+    "at": "2026-11-05T15:57:36.424Z"
+  },
+  "umbrella-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Reads as a child under an umbrella, not a robot",
+    "at": "2026-11-05T15:57:36.468Z"
+  },
+  "cloud-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Reads as an onion or dumpling creature, not a robot",
+    "at": "2026-11-05T15:57:36.512Z"
+  },
+  "walker4-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Round yellow body with visor face on six little red-footed legs; flat front view, symmetric, reads at 1x",
+    "at": "2026-11-05T16:05:24.870Z"
+  },
+  "bird-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Sky-blue metal bird robot with visor, beak and antenna; clearly a machine, reads at 1x",
+    "at": "2026-11-05T16:05:24.916Z"
+  },
+  "headphones-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Screen-face music robot with red headphones and speaker chest; clean, symmetric",
+    "at": "2026-11-05T16:05:24.959Z"
+  },
+  "bug-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Red riveted beetle bot with glowing blue eyes; small rounded silhouette for the back row",
+    "at": "2026-11-05T16:05:25.004Z"
+  },
+  "kettle-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Sky-blue riveted kettle robot with screen face and spout; reads as an appliance robot",
+    "at": "2026-11-05T16:05:25.048Z"
+  },
+  "cart-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Orange box robot on two wheels with visor and smile; simple and clear",
+    "at": "2026-11-05T16:05:25.092Z"
+  },
+  "umbrella-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Grey box robot with a mint umbrella hat; reads at 1x, fine for the back row",
+    "at": "2026-11-05T16:05:25.138Z"
+  },
+  "cloud-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Small saucer bot with blue dome and yellow lights; hovering silhouette",
+    "at": "2026-11-05T16:05:25.182Z"
+  },
+  "stilts-c#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Tall stilt robot with boxy mint head and visor, bolts at the knees, no shadow; tall thin silhouette",
+    "at": "2026-11-05T16:05:25.227Z"
+  },
+  "mushroom-b#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Small robot under a mint dome cap with rivets, visor and grey body; clearly a machine",
+    "at": "2026-11-05T16:05:25.271Z"
+  },
+  "landscape-i#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Bright empty meadow: open sky and clouds on top, hills, framing trees left and right, big open lawn; crop the top 512x384 (drops most of the soil strip)",
+    "at": "2026-11-05T16:05:25.317Z"
+  },
+  "landscape-c#0": {
+    "verdict": "REJECTED",
+    "notes": "A giant toy-box character in the middle of the meadow",
+    "at": "2026-11-05T16:05:25.363Z"
+  },
+  "landscape-d#0": {
+    "verdict": "REJECTED",
+    "notes": "Usable but muted grey sky and olive grass, and a soil strip along the bottom where the front row stands",
+    "at": "2026-11-05T16:05:25.409Z"
+  },
+  "landscape-e#0": {
+    "verdict": "REJECTED",
+    "notes": "A teddy bear under the tree and a garland of icons across the sky",
+    "at": "2026-11-05T16:05:25.456Z"
+  },
+  "landscape-f#0": {
+    "verdict": "REJECTED",
+    "notes": "Platformer level with a title, robots and a stone pit",
+    "at": "2026-11-05T16:05:25.501Z"
+  },
+  "landscape-g#0": {
+    "verdict": "REJECTED",
+    "notes": "Rows of toy characters and letters floating in the sky",
+    "at": "2026-11-05T16:05:25.548Z"
+  },
+  "landscape-h#0": {
+    "verdict": "REJECTED",
+    "notes": "Empty and calm but grey banded sky and a wide soil strip; landscape-i is brighter",
+    "at": "2026-11-05T16:05:25.592Z"
+  },
+  "gardener-b#0": {
+    "verdict": "REJECTED",
+    "notes": "Three-quarter view with muddy colours",
+    "at": "2026-11-05T16:05:25.637Z"
+  },
+  "giant-b#0": {
+    "verdict": "REJECTED",
+    "notes": "A human face inside the helmet; reads as a person in a suit",
+    "at": "2026-11-05T16:05:25.681Z"
+  },
+  "helper-b#0": {
+    "verdict": "REJECTED",
+    "notes": "Drawn in three-quarter view (side faces of the boxes visible)",
+    "at": "2026-11-05T16:05:25.732Z"
+  },
+  "giant-c#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Big sky-blue robot with screen face, heart chest, huge grey arms and yellow feet; friendly, flat front, symmetric",
+    "at": "2026-11-05T16:07:49.094Z"
+  },
+  "helper-c#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Red screen-head helper with a cream two-drawer body on wheels; flat front view, symmetric, reads at 1x",
+    "at": "2026-11-05T16:07:49.156Z"
+  },
+  "gardener-c#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Mint-domed visor robot with a leaf antenna holding a red watering can; flat front, clearly a machine",
+    "at": "2026-11-05T16:07:49.218Z"
+  }
+}
