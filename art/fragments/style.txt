@@ -1,1 +1,1 @@
-Style: (awaiting the user's approved art direction; when docs/art/ART_DIRECTION.md section 1 is approved, put the same paragraph here).
+Style: chunky, friendly pixel art like a cosy toy box: a bright but not neon palette (warm tomato red, sky blue, sunny yellow, mint green, cream), soft two-tone shading, rounded cartoon shapes with a dark outline, big clear shapes and few details, readable at a glance at 50 px. Flat, straight-on view only: never isometric, never three-quarter, no perspective.
