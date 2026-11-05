@@ -74,7 +74,27 @@ t.Levels = {
 		*/
 	},
 	
+	// Scoring is by execution time (steps) only; the number of instruction
+	// tiles used does not count. level.times = [t3, t2, t1] holds the maximum
+	// step counts that earn 3, 2 and 1 parts; any slower finish earns 0.
+	// level.alwaysFull = true gives 3 parts for any finish.
+	scoreByTime : function(level, moves){
+		if(level.alwaysFull) return 3;
+		var tm = level.times;
+		if(!tm) return 3;
+		if(moves<=tm[0]) return 3;
+		if(moves<=tm[1]) return 2;
+		if(moves<=tm[2]) return 1;
+		return 0;
+	},
+
+	// Called as level.getResult(parts, moves); parts is ignored.
+	defaultGetResult : function(parts, moves){
+		return t.Levels.scoreByTime(this, moves);
+	},
+
 	addLevel : function(level){
+		level.getResult = this.defaultGetResult;
 		this.levels[level.name] = level;
 		var lehe = $("<p>"+level.name+"</p>");
 		level.label = lehe;
@@ -108,15 +128,10 @@ t.Levels.addLevel({
 		that.setRobot(0,0,0);
 		that.set(0,1,t.Obstacles.End);
 	}, 
-	getResult : function(parts, moves){
-		return 3;
-	},
+	times : [3, 6, 12], // PROVISIONAL: guess (was always 3)
 	x : 100, 
 	y: 60,
-	text : "Program the robot to help it escape from its cell.\n"+
-		   "Place the Step Forward instruction on the robot's\n"+
-		   "circuit board (green) to make it move to the\n"+
-		   "escape hatch. Press \"play\" when you are done.\n"
+	text : "Help the robot escape its cell: place a Step Forward tile on its circuit board (green), then press Play."
 });
 
 t.Levels.addLevel({
@@ -130,20 +145,11 @@ t.Levels.addLevel({
 		that.setRobot(2,0,0);
 		that.set(2,4,t.Obstacles.End);
 	}, 
-	getResult : function(parts, moves){
-		var su = parts+moves;
-		if(su===6) return 3;
-		else if(su<9) return 2;
-		else if(su<14) return 1;
-		else return 0;
-	}, 
+	times : [6, 8, 13], // PROVISIONAL: from old parts+moves thresholds
 	x : 300,
 	y : 60,
 	required : ["start here"],
-	text: "This time a single step won't do. You can make the\n"+
-		  "robot move multiple times by placing instructions \n"+
-		  "one after another so that the program passes \n"+
-		  "through each of them.\n"
+	text: "One step won't do this time. Place several instructions in a row and the program runs through each of them in turn."
 });
 
 t.Levels.addLevel({
@@ -157,21 +163,12 @@ t.Levels.addLevel({
 		that.setRobot(1,0,0);
 		that.set(0,2,t.Obstacles.End);
 	}, 
-	getResult : function(parts, moves){
-		var su = parts+moves;
-		if(su===8) return 3;
-		else if(su<13) return 2;
-		else if(su<16) return 1;
-		else return 0;
-	},
+	times : [8, 12, 15], // PROVISIONAL: from old parts+moves thresholds
 	x: 500,
 	y: 60, 
 	w: 200, 
 	required : ["chaining"],
-	text: "This simple robot can't move sideways. To move one tile\n"+
-		  "to the left, it will have to first turn left and then\n"+
-		  "step forward. To achieve this, you will have to place turn\n"+
-		  "and step instructions on the board in the right order.\n"
+	text: "This robot can't move sideways. To go left it has to turn left first, then step forward."
 });
 
 
@@ -187,21 +184,12 @@ t.Levels.addLevel({
 		that.setRobot(2,0,0);
 		that.set(0,4,t.Obstacles.End);
 	}, 
-	getResult : function(parts, moves){
-		var su = parts+moves;
-		if(su<=12) return 3;
-		else if(su<15) return 2;
-		else if(su<25) return 1;
-		else return 0;
-	},
+	times : [12, 14, 24], // PROVISIONAL: from old parts+moves thresholds
 	x : 700,
 	y: 60, 
 	texty : 17,
 	required : ["De revolutionibus"],
-	text: "Don't put all your instructions in single line. Use the\n"+
-		  "whole board. Black arrowheads on an instruction tile\n"+
-		  "indicate, where the program will flow next. By rotating\n"+
-		  "the tile you can make it take any path you want."
+	text: "Use the whole board: the black arrowheads on a tile show where the program goes next. Rotate a tile to change its path."
 });
 
 t.Levels.addLevel({
@@ -218,19 +206,11 @@ t.Levels.addLevel({
 		that.set(4,0,t.Obstacles.End);
 		that.setRobot(2,0,0);
 	}, 
-	getResult : function(parts, moves){
-		var su = parts+moves;
-		if(su<=18) return 3;
-		else if(su<21) return 2;
-		else if(su<27) return 1;
-		else return 0;
-	},
+	times : [18, 20, 26], // PROVISIONAL: from old parts+moves thresholds
 	x : 900, 
 	y: 60,
 	required : ["bend it"],
-	text : "Try to finish levels using as few instructions and\n"+
-		   "as few steps as possible to get better scores and\n"+
-		   "rescue more robots!\n"
+	text : "The faster the robot gets out, the better your score - and the more robots you rescue."
 });
 
 t.Levels.addLevel({
@@ -250,16 +230,9 @@ t.Levels.addLevel({
 	}, 
 	x: 700,
 	y: 130,
-	getResult : function(parts, moves){	
-		var su = parts+moves;
-		if(parts<=3) return 3;
-		else if(parts<=6) return 2;
-		else if(su<=parts<=9) return 1;
-		else return 0;
-	},
+	times : [8, 12, 20], // PROVISIONAL: guess (old score was by instructions)
 	required : ["bend it"],
-	text : "Collect all the scattered parts to\n"+
-		   "macgyver yourself out of this one."
+	text : "No hatch this time: grab all four parts to win."
 });
 
 t.Levels.addLevel({
@@ -278,19 +251,12 @@ t.Levels.addLevel({
 		that.set(3,3,t.Obstacles.Empty, 0, true);
 		that.set(0,0,t.Obstacles.Empty, 0, true);
 	}, 
-	getResult : function(parts, moves){	
-		var su = parts+moves;
-		if(su<=39) return 3;
-		else if(su<47) return 2;
-		else if(su<60) return 1;
-		else return 0;
-	},
+	times : [39, 46, 59], // PROVISIONAL: from old parts+moves thresholds
 	x: 900, 
 	y: 130,
 	w : 145,
 	required : ["resistors"],
-	text : "Choose your path carefully if you want to\n"+
-		   "fit all the instruction tiles on the board."
+	text : "Choose your path carefully if you want to fit all the instruction tiles on the board."
 });
 
 t.Levels.addLevel({
@@ -304,19 +270,11 @@ t.Levels.addLevel({
 		that.set(4,8,t.Obstacles.End);
 		that.setRobot(4,0,0);
 	}, 
-	getResult : function(parts, moves){  10
-		var su = parts+moves;
-		if(su<=10) return 3;
-		else if(su<18) return 2;
-		else if(su<32) return 1;
-		else return 0;
-	},
+	times : [10, 17, 31], // PROVISIONAL: from old parts+moves thresholds
 	x: 500, 
 	y: 130,
 	required : ["resistors"],
-	text : "You don't have to do long, repetitive\n"+
-		   "tasks manually - that's what programs\n"+
-		   "are for. Just loop the instructions"
+	text : "Long, repetitive walks are what programs are for. Point the flow back to an earlier tile to make a loop."
 });
 
 t.Levels.addLevel({
@@ -334,17 +292,11 @@ t.Levels.addLevel({
 		}
 		t.RobotTable.dotsRemaining = 16;
 	}, 
-	getResult : function(parts, moves){
-		var su = parts+moves;
-		if(su<=35) return 3;
-		else if(su<40) return 2;
-		else if(su<50) return 1;
-		else return 0;
-	},
+	times : [35, 39, 49], // PROVISIONAL: from old parts+moves thresholds
 	x : 251,
 	y: 123,
 	required : ["out of reach"],
-	text : "Go on - loop it. Loop like the wind!"
+	text : "Step, turn, step, turn... sounds like a job for a loop."
 });
 
 t.Levels.addLevel({
@@ -362,20 +314,11 @@ t.Levels.addLevel({
 		that.set(0,8,t.Obstacles.End);
 		that.setRobot(5,0,0);
 	},
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(su<=31) return 3;
-		else if(su<50) return 2;
-		else if(su<70) return 1;
-		else return 0;
-	}, 
+	times : [31, 49, 69], // PROVISIONAL: from old parts+moves thresholds
 	x : 510, 
 	y: 288,
 	required : ["out of reach"],
-	text : "Conditional instruction lets the robot do one thing\n"+
-		   "in case there's a wall in front of it or another -\n"+
-		   "if there's not. With it you can effectively tell the\n"+
-		   "robot to \"go forward\" until you hit a wall."
+	text : "The conditional tile does one thing if there's a wall in front of the robot and another if there isn't - perfect for \"go until you hit a wall\"."
 	
 });
 
@@ -400,13 +343,7 @@ t.Levels.addLevel({
 	that.set(4, 4,t.Obstacles.End);
 		that.setRobot(8,0,3);
 	},
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(su<=115) return 3;
-		else if(su<145) return 2;
-		else if(su<180) return 1;
-		else return 0;
-	},
+	times : [115, 144, 179], // PROVISIONAL: from old parts+moves thresholds
 	x : 408, 
 	y: 214,
 	required : ["conditionals"],
@@ -430,19 +367,10 @@ t.Levels.addLevel({
 		that.setRobot(8,0,3);
 	},
 	required : ["conditionals"],
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(su<=107) return 3;
-		else if(su<120) return 2;
-		else if(su<160) return 1;
-		else return 0;
-	},
+	times : [107, 119, 159], // PROVISIONAL: from old parts+moves thresholds
 	x : 719,
 	y : 323,
-	text : "ERROR exec.FunctionTask: create function:\n"+
-			"java.lang.ClassNotFoundException: turing.RoboAnimator\n"+
-			"at java.net.URLClassLoader$1.run(URLClassLoader.java:366)\n"+
-			"... just kiddin"
+	text : "Left to right, right to left, all the way down."
 });
 
 
@@ -461,18 +389,11 @@ t.Levels.addLevel({
 		that.setRobot(0,0,0);
 		t.RobotTable.dotsRemaining = 48;
 	},
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(su<=112) return 3;
-		else if(su<130) return 2;
-		else if(su<160) return 1;
-		else return 0;
-	},
+	times : [112, 129, 159], // PROVISIONAL: from old parts+moves thresholds
 	x : 803,
 	y: 382,
 	required : ["conditionals"],
-	text: "Go on - eat the dots. Like the\n"+
-		  "gluttonous little robo-pacman you are."
+	text: "A dot on every tile. Leave no tile unvisited."
 });
 
 
@@ -495,15 +416,8 @@ t.Levels.addLevel({
 	x : 643,
 	y: 239,
 	required : ["conditionals"],
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(parts<=11) return 3;
-		else if(parts<16) return 2;
-		else if(su<23) return 1;
-		else return 0;
-	}, 
-	text : "How would you instruct a robot to find\n"+
-		   "an exit from a circular room?"
+	times : [20, 30, 45], // PROVISIONAL: guess (old score was by instructions)
+	text : "How would you instruct a robot to find an exit from a circular room?"
 });
 
 
@@ -529,15 +443,8 @@ t.Levels.addLevel({
 	x : 200,
 	y: 200,
 	required : ["out of reach"],
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(su<=53) return 3;
-		else if(su<63) return 2;
-		else if(su<73) return 1;
-		else return 0;
-	}, 
-	text : "At this point you don't need\n"+
-		   "tips anymore."
+	times : [53, 62, 72], // PROVISIONAL: from old parts+moves thresholds
+	text : "At this point you don't need tips anymore."
 });
 
 t.Levels.addLevel({
@@ -573,13 +480,7 @@ t.Levels.addLevel({
 	x: 110,
 	y: 152, 
 	required : ["out of reach"],
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(parts<=8) return 3;
-		else if(parts<12) return 2;
-		else if(parts<16) return 1;
-		else return 0;
-	},
+	times : [30, 45, 70], // PROVISIONAL: guess (old score was by instructions)
 	text: "Getting the hang of it yet?"
 });
 
@@ -604,12 +505,6 @@ t.Levels.addLevel({
 	x : 728,
 	y : 432,
 	required : ["anywhere"],
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(parts<=15) return 3;
-		else if(parts<25) return 2;
-		else if(parts<30) return 1;
-		else return 0;
-	},
+	times : [60, 90, 130], // PROVISIONAL: guess (old score was by instructions)
 	text: "Yes, it can be done."
 });

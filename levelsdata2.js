@@ -78,14 +78,7 @@ t.Levels.addLevel({
 		t.RobotTable.setCounter("Blue", 0);
 		t.RobotTable.setCounterLabel("Blue", 0);
 	},
-	text : "If only there was a way to repeat\n"+
-		   "with a decreasing number of steps...",
+	text : "If only there was a way to repeat with a decreasing number of steps...",
 	required : ["*"],
-	getResult : function(parts, moves){
-		var su = parts+moves;
-		if(parts<10) return 3;
-		else if(parts<13) return 2;
-		else if(su<20) return 1;
-		else return 0;
-	}
+	times : [100, 150, 220] // PROVISIONAL: guess (old score was by instructions)
 });

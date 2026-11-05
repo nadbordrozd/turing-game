@@ -93,15 +93,9 @@ t.Levels.addLevel({
 	},
 	x: 877,
 	y : 483,
-	text : "Another simple one", 
+	text : "Another simple one",
 	required : ["detector"],
-	getResult : function(parts, moves){	
-		var suma = parts+moves;
-		if(parts<9||moves<106)return 3;
-		if(parts<=15) return 2;
-		if(parts<=20) return 1;
-		return 0;
-	}
+	times : [105, 140, 200] // PROVISIONAL: tier 3 from old moves<106, rest guess
 });
 
 t.Levels.addLevel({
@@ -167,16 +161,9 @@ t.Levels.addLevel({
 	},
 	x : 882,
 	y: 533,
-	text : "Some of the levels at robozzle.com are\n"+
-		   "really ingenious - check them out",
+	text : "X marks the spot.",
 	required : ["detector"],
-	getResult : function(parts, moves){ 
-		var suma = parts+moves;
-		if(parts<=5||moves<=58) return 3;
-		if(parts<=12) return 2;
-		if(parts<=16) return 1;
-		return 0;
-	}
+	times : [58, 80, 120] // PROVISIONAL: tier 3 from old moves<=58, rest guess
 });
 
 
@@ -245,15 +232,9 @@ t.Levels.addLevel({
 	},
 	x : 562, 
 	y: 692,
-	text : "Easy to invent, harder to solve", 
+	text : "Easy to invent, harder to solve",
 	required : ["Fibonacci", "robozzle"],
-	getResult : function(parts, moves){ 
-		var suma = parts+moves;
-		if(parts<=6)return 3;
-		if(parts<=11) return 2;
-		if(parts<=16) return 1;
-		return 0;
-	}
+	times : [50, 75, 110] // PROVISIONAL: guess (old score was by instructions)
 });
 
 
@@ -280,17 +261,9 @@ t.Levels.addLevel({
 	},
 	x : 687,
 	y: 485,
-	text : "New conditional instruction:\n"+
-	       "this one checks whether the robot\n"+
-		   "stands on a special colored tile.",
+	text : "New conditional: this one checks whether the robot is standing on a colored tile.",
 	required : ["spiral"],
-	getResult : function(parts, moves){ 
-		var suma = parts+moves;
-		if(suma<=28)return 3;
-		if(suma<=36) return 2;
-		if(suma<=45) return 1;
-		return 0;
-	}
+	times : [28, 36, 45] // PROVISIONAL: from old parts+moves thresholds
 });
 
 t.Levels.addLevel({
@@ -429,15 +402,7 @@ t.Levels.addLevel({
 	},
 	x : 586,
 	y: 539,
-	text : "This level was shamelessly ripped off\n"+
-		   "of robozzle.com. And they have metric\n"+
-		   "shitload more of this stuff - check it out.", 
+	text : "Borrowed with admiration from robozzle.com - it has plenty more puzzles like this one.",
 	required : ["detector"],
-	getResult : function(parts, moves){ 
-		var suma = parts+moves;
-		if(parts<=5)return 3;
-		if(parts<=10) return 2;
-		if(parts<=15) return 1;
-		return 0;
-	}
+	times : [80, 120, 180] // PROVISIONAL: guess (old score was by instructions)
 });

@@ -24,12 +24,7 @@ t.Levels.addLevel({
 	w: 130,
 	text : "I'm not sure about this one myself",
 	required : ["hobbit:"],
-	getResult : function(parts, moves){
-		if(parts<=27) return 3; else 
-		if(parts<=40) return 2; else 
-		if(moves<500) return 1; else
-		return 0;
-	}
+	times : [250, 350, 499] // PROVISIONAL: tier 1 from old moves<500, rest guess
 });
 
 
@@ -69,13 +64,9 @@ t.Levels.addLevel({
 	},
 	x: 711, 
 	y: 661, 
-	"text" : "If you've made it this far, you are the kind of\n"+
-	         "person who would get addicted to projecteuler.net.\n"+
-			 "Try it - it's an awesome addiction.",
+	"text" : "Deep breath. Don't look down.",
 	required : ["Fibonacci", "robozzle"],
-	getResult : function(parts, moves){ 
-		return 3;
-	}
+	times : [150, 220, 320] // PROVISIONAL: guess (old score was always 3)
 });
 
 t.Levels.addLevel({
@@ -113,16 +104,9 @@ t.Levels.addLevel({
 	x : 863, 
 	y: 622,
 	robotTableX : 725,
-	text: "A triple loop is in order\n"+
-		  "...\n"+
-		  "or is it?",
+	text: "A triple loop is in order... or is it?",
 	required : ["Fibonacci", "robozzle"],
-	getResult : function(parts, moves){ //TODO
-		if(parts<19) return 3; else
-		if(parts<30) return 2; else 
-		if(parts<40) return 1; else 
-		return 0;
-	}
+	times : [150, 220, 320] // PROVISIONAL: guess (old score was by instructions)
 });
 
 t.Levels.addLevel({
@@ -194,9 +178,8 @@ t.Levels.addLevel({
 	},
 	x : 841,
 	y: 693,
-	getResult : function(parts, moves){
-		return 3;
-	},
+	alwaysFull : true, // any finish scores full marks
+	times : [5000, 5000, 5000], // unused: alwaysFull overrides
 	required : ["Fibonacci", "robozzle"],
 	text : "Go on. No one will blame you."
 });
@@ -295,15 +278,9 @@ t.Levels.addLevel({
 	},
 	x : 909, 
 	y: 327,
-	text: "Don't fall into",
+	text: "A ring of lava all around. Keep your circuits cool.",
 	required : ["anywhere"],
-	getResult : function(parts, moves){ 
-		var suma = parts+moves;
-		if(suma<=124)return 3;
-		if(suma<=130) return 2;
-		if(suma<=155) return 1;
-		return 0;
-	}
+	times : [124, 130, 155] // PROVISIONAL: from old parts+moves thresholds
 });
 
 
@@ -443,15 +420,9 @@ t.Levels.addLevel({
 	},
 	x : 140,
 	y : 287,
-	text : "As opposed to C and T",
+	text : "Plenty of dots, plenty of lava. Choose your route wisely.",
 	required : ["Z(2)"],
-	getResult : function(parts, moves){ 
-		var suma = parts+moves;
-		if(suma<=357)return 3;
-		if(suma<=400) return 2;
-		if(suma<=460) return 1;
-		return 0;
-	}
+	times : [357, 400, 460] // PROVISIONAL: from old parts+moves thresholds
 });
 
 
@@ -550,17 +521,9 @@ t.Levels.addLevel({
 	},
 	x: 730,
 	y: 588,
-	text: "The only reason for this description is\n"+
-	      "- javascript insists on treating an\n"+
-		  "empty string as a falsy value",
+	text: "A warm-up, quite literally. Mind the lava.",
 	required : ["detector"],
-	getResult : function(parts, moves){ 
-		var suma = parts+moves;
-		if(suma<=73)return 3;
-		if(suma<=95) return 2;
-		if(suma<=122) return 1;
-		return 0;
-	}
+	times : [73, 95, 122] // PROVISIONAL: from old parts+moves thresholds
 });
 
 t.Levels.addLevel({
@@ -696,13 +659,7 @@ t.Levels.addLevel({
 	},
 	x : 284,
 	y: 257,
-	text : "The simplest non-trivial group",
+	text : "No dots this time, just a long, twisty walk past the lava.",
 	required : ["spiral"],
-	getResult : function(parts, moves){ 
-		var suma = parts+moves;
-		if(parts<=7)return 3;
-		if(parts<=10) return 2;
-		if(parts<=16) return 1;
-		return 0;
-	}
+	times : [80, 120, 180] // PROVISIONAL: guess (old score was by instructions)
 });

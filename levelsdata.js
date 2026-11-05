@@ -74,15 +74,9 @@ t.Levels.addLevel({
 	},
 	x : 778,
 	y: 206,
-	text: "Just a single route - how hard\n"+
-		  "could it be?",
+	text: "Just a single route - how hard could it be?",
 	required : ["way out"],
-	getResult : function(parts, moves){ 	
-		if(parts<=9) return 3;
-		else if(parts<13) return 2;
-		else if(parts<20) return 1;
-		else return 0;
-	}
+	times : [60, 80, 120] // PROVISIONAL: guess (old score was by instructions)
 });
 
 
@@ -180,17 +174,9 @@ t.Levels.addLevel({
 	},
 	x: 900,
 	y : 254,
-	text: "How sweet would it be to have the digging wand\n"+
-	      "from ADOM right now? Come to think of it - \n"+
-		  "- being able to program your ADOM character\n"+
-		  "would be even better.",
+	text: "A proper maze. Collect all eight dots to get out.",
 	required : ["tunnel"],
-	getResult : function(parts, moves){ 	
-		if(parts<=12) return 3;
-		else if(parts<17) return 2;
-		else if(parts<22) return 1;
-		else return 0;
-	}
+	times : [120, 160, 220] // PROVISIONAL: guess (old score was by instructions)
 });
 
 t.Levels.u.setTable1 = function(that){
@@ -238,18 +224,9 @@ t.Levels.addLevel({
 	},
 	x : 307,
 	y: 328,
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(parts<=6) return 3;
-		else if(parts<8) return 2;
-		else if(parts<10) return 1;
-		else return 0;
-	}, 
+	times : [15, 25, 40], // PROVISIONAL: guess (old score was by instructions)
 	required : ["conditionals"],
-	text : "To disarm the trap, set the red cipher lock to 5\n"+
-		   "using the Plus One instruction. Once the lock\n"+
-		   "is set, the trap will turn off and you will be \n"+
-		   "able to move to the escape hatch"  
+	text : "To disarm the trap, set the red lock to 5 with the Plus One tile, then head for the escape hatch."
 });
 
 t.Levels.addLevel({
@@ -288,17 +265,9 @@ t.Levels.addLevel({
 	},
 	x : 274,
 	y: 395,
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(parts<=3) return 3;
-		else if(parts<6) return 2;
-		else if(parts<9) return 1;
-		else return 0;
-	},
+	times : [40, 60, 90], // PROVISIONAL: guess (old score was by instructions)
 	required : ["++"],
-	text : "Red=0 clears the way. You must set the lock\n"+
-		   "to 0, no matter what number it shows at the\n"+
-		   "beginning."
+	text : "Set the red lock to 0 to clear the way, whatever number it starts on."
 });
 
 t.Levels.addLevel({
@@ -339,17 +308,9 @@ t.Levels.addLevel({
 	},
 	x: 132,
 	y: 365,
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(parts<=3) return 3;
-		else if(parts<6) return 2;
-		else if(parts<9) return 1;
-		else return 0;
-	},
+	times : [60, 90, 130], // PROVISIONAL: guess (old score was by instructions)
 	required : ["--"],
-	text : "Blue := Red. I.e. set the blue lock to\n"+
-		   "whatever number the red one comes with.\n"+
-		   "Feel free to modify the red lock's number."
+	text : "Blue := Red. Set the blue lock to whatever number the red one starts with. Changing red along the way is fine."
 });
 
 
@@ -393,16 +354,9 @@ t.Levels.addLevel({
 	},
 	x: 427,
 	y: 406,
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(parts<=5) return 3;
-		else if(parts<8) return 2;
-		else if(parts<10) return 1;
-		else return 0;
-	},
+	times : [50, 75, 110], // PROVISIONAL: guess (old score was by instructions)
 	required : ["--"],
-	text : "Blue = Red*2. Set the blue to twice the\n"+
-	       "number on the red one."
+	text : "Blue := Red * 2. Set blue to twice the number on red."
 });
 
 t.Levels.addLevel({
@@ -446,13 +400,7 @@ t.Levels.addLevel({
 	},
 	x : 290, 
 	y: 460,
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(parts<=6) return 3;
-		else if(parts<10) return 2;
-		else if(parts<14) return 1;
-		else return 0;
-	},
+	times : [40, 60, 90], // PROVISIONAL: guess (old score was by instructions)
 	required : ["--"],
 	text : "Yellow := Red + Blue"
 });
@@ -501,13 +449,7 @@ t.Levels.addLevel({
 	x : 255,
 	y: 550,
 	turingX : 250,
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(parts<=8) return 3;
-		else if(parts<12) return 2;
-		else if(parts<20) return 1;
-		else return 0;
-	},
+	times : [100, 150, 220], // PROVISIONAL: guess (old score was by instructions)
 	required : ["+"],
 	text : "Yellow = Red * Blue"
 });
@@ -551,15 +493,9 @@ t.Levels.addLevel({
 	x : 128,
 	y : 436, 
 	
-	getResult : function(parts, moves){ 	
-		var su = parts+moves;
-		if(parts<=5) return 3;
-		else if(parts<10) return 2;
-		else if(parts<14) return 1;
-		else return 0;
-	}, 
+	times : [40, 60, 90], // PROVISIONAL: guess (old score was by instructions)
 	required : ["--"],
-	text : "Blue := Red / 2" 
+	text : "Blue := Red / 2"
 });
 
 
@@ -609,12 +545,9 @@ t.Levels.addLevel({
 	},
 	x : 400,
 	y: 628,
-	getResult : function(parts, moves){ 		
-		var su = parts+moves;			//TODO lepsze liczby
-		return 3;
-	},
+	times : [600, 900, 1400], // PROVISIONAL: guess (old score was always 3)
 	required : ["*"],
-	text : "Blue := Red!   (factorial)"
+	text : "Blue := Red! (factorial)"
 });
 
 t.Levels.u.gcd = function(a,b){
@@ -669,15 +602,9 @@ t.Levels.addLevel({
 	},
 	x : 113, 
 	y: 527,
-	getResult : function(parts, moves){ 		
-		var su = parts+moves;			
-		if(parts<=13) return 3;
-		else if(parts<20) return 2;
-		else if(parts<30) return 1;
-		else return 0;
-	},
+	times : [150, 220, 320], // PROVISIONAL: guess (old score was by instructions)
 	required : ["+"],
-	text : "Yellow := gcd(Blue, Red)  (greatest common divisor)"
+	text : "Yellow := gcd(Blue, Red) (greatest common divisor)"
 });
 
 t.Levels.addLevel({
@@ -726,13 +653,7 @@ t.Levels.addLevel({
 	x:  400,
 	y: 567,
 	required : ["*"],
-	getResult : function(parts, moves){ 		
-		var su = parts+moves;			
-		if(su<=181) return 3;
-		else if(su<200) return 2;
-		else if(parts<230) return 1;
-		else return 0;
-	}
+	times : [181, 199, 229] // PROVISIONAL: from old parts+moves thresholds
 });
 
 t.Levels.u.fibo = function(n){
@@ -790,19 +711,10 @@ t.Levels.addLevel({
 	},
 	x : 443, 
 	y: 500,
-	text : "First Fibonacci number is 1, second - also 1. Every\n"+
-		   "following Fibonacci number is the sum of the previous\n"+
-		   "two. The sequence goes 1, 1, 2, 3, 5, 8, 13, 21,... \n"+
-		   "Take Red as n and output n-th Fibonacci number on Blue", 
+	text : "Fibonacci: 1, 1, 2, 3, 5, 8, 13... each number is the sum of the two before it. Take Red as n and put the n-th number on Blue.",
 	texty : 10,
 	required : ["+"],
-	getResult : function(parts, moves){ 		
-		var su = parts+moves;			
-		if(parts<=11) return 3;
-		else if(parts<15) return 2;
-		else if(parts<20) return 1;
-		else return 0;
-	}
+	times : [150, 220, 320] // PROVISIONAL: guess (old score was by instructions)
 });
 
 t.Levels.u.randInt = function(n){
@@ -841,11 +753,5 @@ t.Levels.addLevel({
 	w: 140,
 	text : "What it says on the tin",
 	required : ["*"],
-	getResult : function(parts, moves){
-		var su = parts+moves;
-		if(parts<11) return 3;
-		else if(parts<15) return 2;
-		else if(su<20) return 1;
-		else return 0;
-	}
+	times : [60, 90, 130] // PROVISIONAL: guess (old score was by instructions)
 });
