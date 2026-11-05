@@ -68,7 +68,6 @@ t.RobotTable = {
 	},
         
 	swapTile : function(x, y, oldContent, newContent){
-		console.error("swap swap swap swap");
 		this.table[x][y] = newContent;
 	},
 	
@@ -190,6 +189,7 @@ t.RobotTable = {
 		this.robo.p.angle = -angle*90;
 		this.robo.p.scale = 1;
 		this.robo.reset();
+		t.RobotSfx.runStart();
 	},
 
 	animateMove : function(vec, callback){
@@ -208,10 +208,12 @@ t.RobotTable = {
 	animateDecrement : function(color, callback){
 		this.counterPanel.decrement(color, callback);
 	},
-	animateEatDot : function(coor, callback){
+	animateEatDot : function(coor, callback, lastOne){
+		t.RobotSfx.play(lastOne ? 'pickup' : 'dot');
 		this.display1.tiles[coor[1]][coor[0]].removeDot(callback);
 	}, 
 	animateVictory : function(callback){
+		t.RobotSfx.play('exit');
 		if(this.table[this.position[0]][this.position[1]].what!==t.Obstacles.End)
 			this.robo.disappear(callback);
 		else 
@@ -227,19 +229,31 @@ t.RobotTable = {
 	},
 	animateWait : function(){console.error('wainting');},
 	animateDrown : function(callback){
-		this.robo.drown(callback);
+		t.RobotSfx.play('drown');
+		this.robo.drown(t.RobotSfx.failAfter(callback));
 	},
 	animateWallBump : function(dir, callback){
+		t.RobotSfx.play('bump');
 		this.robo.wallBump(dir, t.TuringTable.stepTime, callback);
+	},
+	animateSense : function(sense, callback){	//sense = {kind: 'wall'|'magic', result: bool}
+		t.RobotSfx.play('scan');
+		this.robo.sense(sense, t.TuringTable.stepTime, callback);
 	},
 
 	animateDrownInLava : function(callback){
-		this.robo.drownInLava(callback);
+		t.RobotSfx.play('lava');
+		this.robo.drownInLava(t.RobotSfx.failAfter(callback));
 	},
 	animateElectrocute : function(callback){
-		this.robo.electrocute(callback);
+		t.RobotSfx.play('zap');
+		this.robo.electrocute(t.RobotSfx.failAfter(callback));
 	},
 	animateSwapTile : function(x, y, oldContent, newContent, callback){
+		var what = newContent && newContent.what;
+		if(what === t.Obstacles.CrackedIce) t.RobotSfx.play('ice', {volume : 0.5});	//cracks
+		else if(what === t.Obstacles.Water) t.RobotSfx.play('ice');	//breaks
+		else if(what === t.Obstacles.End) t.RobotSfx.play('unlock');	//trap disarmed
 		this.styleATile(x,y,newContent);
 		callback();
 	},
@@ -375,4 +389,32 @@ t.RobotTable = {
 	
 }
 
-
+// Gameplay sounds (names in docs/audio/SFX.md). Plain steps and turns are
+// silent. Sounds that can repeat every step are spaced out at fast playback
+// speeds; 'fail' plays at most once per run (setRobot starts a run).
+t.RobotSfx = {
+	minGap : {scan : 0.25, bump : 0.12, dot : 0.06},	//seconds of real time
+	volume : {scan : 0.7},
+	last : {},
+	failed : false,
+	play : function(name, opts){
+		var now = Date.now()/1000;
+		if(this.minGap[name] && this.last[name] && now-this.last[name] < this.minGap[name]) return false;
+		this.last[name] = now;
+		if(!opts && this.volume[name]) opts = {volume : this.volume[name]};
+		if(!t.Sfx || !t.Sfx.play) return false;
+		return t.Sfx.play(name, opts);
+	},
+	runStart : function(){ this.failed = false; },
+	fail : function(){
+		if(this.failed) return;
+		this.failed = true;
+		this.play('fail');
+	},
+	failAfter : function(callback){		//wraps a death animation's callback
+		return function(){
+			t.RobotSfx.fail();
+			if(callback) callback();
+		};
+	}
+};

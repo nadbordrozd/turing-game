@@ -205,7 +205,6 @@ t.TuringTable = {
 	},
     
 	saveNumberOfStepsAndParts : function(){
-		l.err("error", "asfsdfasfdasfS");
 		//throw("skad");
 		this.totalSteps = this.steps.length;
 		var parts = 0;
@@ -228,6 +227,7 @@ t.TuringTable = {
 			  ateAScrew : true
 			  wallBump : [int, int]
 			  wallDetect : true
+			  sense : {kind : 'wall'|'magic', result : bool}	(detector tiles; animation only)
 			
 			  increment : color
 			  decrement : color
@@ -305,7 +305,8 @@ t.TuringTable = {
 		if(step.roboMotion) t.RobotTable.animateMove(step.roboMotion, this.callbackCallbacker(callback));
 		if(step.wallBump) t.RobotTable.animateWallBump(step.wallBump, this.callbackCallbacker(callback));
 		if(step.roboTation) t.RobotTable.animateRotate(step.roboTation, this.callbackCallbacker(callback));
-		if(step.dotEaten) t.RobotTable.animateEatDot(step.dotEaten, this.callbackCallbacker(callback));
+		if(step.sense) t.RobotTable.animateSense(step.sense, this.callbackCallbacker(callback));
+		if(step.dotEaten) t.RobotTable.animateEatDot(step.dotEaten, this.callbackCallbacker(callback), step.end === 'victory');
 		//if(step.end) this.animateEnd(this.callbackCallbacker(callback), step.end);
 		if(step.ultimateEnd) this.animateEnd(this.callbackCallbacker(callback), step.ultimateEnd);
 		//if(step.end) this.howItEnded = step.end;
@@ -331,8 +332,7 @@ t.TuringTable = {
 		t.TuringTable.dot.dieSlowly(callback);
 	},
 	animateEnd : function(callback, end){
-		if(end==="idle") t.TuringTable.animateIdle(callback); else 
-		if(end==="stepLimit") t.TuringTable.animateIdle(callback); else 
+		if(end==="idle"||end==="stepLimit") { t.RobotSfx.fail(); t.TuringTable.animateIdle(callback); } else 
 		if(end==='victory') t.RobotTable.animateVictory(callback); else
 		if(end==='lava') t.RobotTable.animateDrownInLava(callback); else
 		if(end==="drowned") t.RobotTable.animateDrown(callback);

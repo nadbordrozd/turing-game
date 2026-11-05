@@ -18,8 +18,15 @@ t.Sfx.names();                      // the sound names below
   no-ops, as are unknown names and calls while muted.
 - Without Web Audio, or when the mp3s cannot be fetched (page opened from
   `file://`), it falls back to `<audio>` elements; with neither it does nothing.
-- Nothing calls `play` yet: gameplay and UI hooks belong to the robot-feedback
-  bead (tg-84y.7).
+- UI sounds (`click`, `tile-*`) are played by `js/ui` (tg-84y.5). Gameplay
+  sounds go through `t.RobotSfx` in `RobotTable.js` (tg-84y.7): `bump`, `scan`
+  (detector tiles, at 0.7), `zap`/`drown`/`lava` when the death starts, `fail`
+  once per run (after a death animation, or when the program stops without
+  escaping), `dot` per part and `pickup` for the last one, `exit`, `ice`
+  (0.5 when ice cracks, full when it breaks) and `unlock` when a trap turns
+  into the exit hatch. Steps and turns are silent. `scan`, `bump` and `dot`
+  are spaced at least 0.25 / 0.12 / 0.06 s apart so fast playback does not
+  turn into a buzz.
 
 ## Names
 

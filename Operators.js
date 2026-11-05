@@ -161,7 +161,9 @@ t.Operators.Detector = {
 	name: "Detector",
 	shortname : "d", 
     operate : function(angle, step){
-		if(t.RobotTable.isObstacleInFront()){
+		var blocked = t.RobotTable.isObstacleInFront();
+		step.sense = {kind : 'wall', result : blocked};	//drives the sensing animation only
+		if(blocked){
 			step.turingMotion = t.Operators.r([0,-1],angle);
 			t.TuringTable.move(t.Operators.r([0,-1],angle));
 		} else {
@@ -226,7 +228,9 @@ t.Operators.DetectMagic = {
 	sheet : "magicDetector", 
     operate : function(angle, step){
 		var aux = {};
-		if(t.RobotTable.isMagic()){
+		var magic = t.RobotTable.isMagic();
+		step.sense = {kind : 'magic', result : magic};	//drives the sensing animation only
+		if(magic){
 			step.turingMotion = t.Operators.r([0,-1],angle);
 			t.TuringTable.move(t.Operators.r([0,-1],angle));
 		} else {

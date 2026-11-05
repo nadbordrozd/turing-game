@@ -37,7 +37,7 @@ window.addEventListener('load',function(e) {
 	}
 	var imagesToLoad = [ "resistor1.png", "resistor2.png", "resistor3.png", 'resistor4.png','resistor5.png','sprites.json', "greenscreen.png",
 		'enemy.png', 'robot.png', 'helpKalka.png',
-		'motherboard.png',  "highlight.png",
+		'motherboard.png',
 		'sprytszyt.png','obstacle.png',
 		'tiles/program-tiles.png', 'program-tiles.json',
 		'tiles/robot-cell.png', 'robot-cell.json',
