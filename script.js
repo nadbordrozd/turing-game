@@ -53,6 +53,7 @@ window.addEventListener('load',function(e) {
 		'enemy.png', 'robot.png', 'helpKalka.png',
 		'motherboard.png',  "highlight.png",
 		'sprytszyt.png','obstacle.png',
+		'tiles/program-tiles.png', 'program-tiles.json',
 		'robotile.png', 'strzalka.png', 'levelend.png', "intro1.png", "intro2.png", "intro3.png",
 		"coil.png", "integratedcircuit.png", 'capacitor.png',
 		"coilBW.png", "integratedcircuitBW.png", 'capacitorBW.png',
@@ -87,17 +88,21 @@ window.addEventListener('load',function(e) {
 			trigger : "died"}
 	});
 	var tempo =  0.05;
+	// Program tiles from tools/art/tiles/program-tiles.mjs: the belt moves 1 px
+	// per frame with a 25 px period. Quintus' anim step adds dt twice, so a
+	// frame lasts rate/2 s: 0.08 gives 25 px/s, the old belt's speed.
+	var beltTempo = 0.08;
 	Q.animations('conveyorMations', {
-		"default" : {frames: pom(20), rate: tempo, loop: true}
+		"default" : {frames: pom(25), rate: beltTempo, loop: true}
 	});
 	Q.animations('cwRotatorMations', {
-		"default" : {frames: pom(60), rate: tempo, loop: true}
+		"default" : {frames: pom(50), rate: beltTempo, loop: true}
 	});
 	Q.animations('ccwRotatorMations', {
-		"default" : {frames: pom(60), rate: tempo, loop: true}
+		"default" : {frames: pom(50), rate: beltTempo, loop: true}
 	});
 	Q.animations('stepForwardMations', {
-		"default" : {frames: pom(60), rate: tempo, loop: true}
+		"default" : {frames: pom(25), rate: beltTempo, loop: true}
 	});
 	Q.animations('detectorMations', {
 		"default" : {frames: pom(20), rate: tempo, loop: true}
@@ -141,6 +146,8 @@ window.addEventListener('load',function(e) {
 		console.log('loadimages');
 		// this will create the sprite sheet lava
 		Q.compileSheets("sprytszyt.png","sprites.json");
+		// Redrawn program tiles replace the atlas entries of the same name.
+		Q.compileSheets("tiles/program-tiles.png","program-tiles.json");
 		Q.input.keyboardControls();
 		//Q.stageScene("level selector");
 		Q.stageScene("intro");

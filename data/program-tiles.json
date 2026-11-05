@@ -1,0 +1,42 @@
+{
+  "conveyor": {
+    "sx": 0,
+    "sy": 0,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 1250,
+    "h": 50
+  },
+  "stepForward": {
+    "sx": 0,
+    "sy": 50,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 1250,
+    "h": 50
+  },
+  "cwrotator": {
+    "sx": 0,
+    "sy": 100,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 1250,
+    "h": 100
+  },
+  "ccwrotator": {
+    "sx": 0,
+    "sy": 200,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 1250,
+    "h": 100
+  },
+  "emptyOperator": {
+    "sx": 0,
+    "sy": 300,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 50,
+    "h": 50
+  }
+}

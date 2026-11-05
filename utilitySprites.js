@@ -2,6 +2,17 @@
 
 //init function to be called after Quintus instance is created
 ;Quintus.TuringSprites = function(Q) {
+// Looping tile animations read their frame from one shared clock instead of
+// the time since each tile was created, so neighbouring belts stay in phase.
+// Quintus' anim step adds dt twice, so a frame lasts rate/2 s; keep that speed.
+Q.syncTileAnimation = function(){
+	var p = this.p;
+	var anim = p.animation && Q.animation(p.sprite, p.animation);
+	if(!anim || !anim.rate || anim.loop === false || anim.next) return;
+	var i = Math.floor(Date.now() / (500 * anim.rate)) % anim.frames.length;
+	p.animationFrame = i;
+	p.frame = anim.frames[i];
+};
 Q.Sprite.extend("Rectangle",{
   init: function(p) {
     this._super(p,{
@@ -92,6 +103,7 @@ Q.Sprite.extend("DraggableTile", {
 		this.originalX = this.p.x;
 		this.originalY = this.p.y;
 		this.add('animation');
+		this.on('step', this, Q.syncTileAnimation);
 		this.add('touch');
 		if(p.operator.sprite){
 			this.p.sprite = p.operator.sprite;
@@ -212,6 +224,7 @@ Q.Sprite.extend('ShowTile', {		//klocek do pokazywania w helperach
 		if(p.parent) this.p.x += p.parent.p.x;
 		if(p.parent) this.p.y += p.parent.p.y;
 		this.add('animation');
+		this.on('step', this, Q.syncTileAnimation);
 		if(p.operator.sprite){
 					this.p.sprite = p.operator.sprite;
 			this.p.sheet = p.operator.sheet;
