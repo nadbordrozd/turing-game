@@ -31,7 +31,6 @@ Where images are referenced (file: references):
 
 | File | Size | Bytes | Alpha | Content box | Used in | Proposed class |
 | --- | --- | ---: | --- | --- | --- | --- |
-| `icon_32.png` | 32x32 | 3950 | yes | 32x32 | `index.html:69` | ui-icons |
 | `images/capacitor.png` | 191x232 | 2537 | yes | 132x204 | `art/sets/parts-v1/recipes.json:6`, `art/sets/parts-v1/recipes.json:9`, `art/sets/parts-v1/recipes.json:22` +34 | unclassified |
 | `images/capacitorBW.png` | 191x232 | 2153 | yes | 124x196 | `data/sprites.json:394`, `js/scenes/level.js:419`, `script.js:45` | unclassified |
 | `images/coil.png` | 239x242 | 5746 | yes | 196x194 | `art/sets/parts-v1/recipes.json:34`, `docs/ui/mockups/level-select.html:86`, `docs/ui/mockups/main-a-terminal.html:224` +3 | unclassified |
@@ -109,7 +108,8 @@ Where images are referenced (file: references):
 | Rewards | `capacitor`, `integratedcircuit`, `coil` (+`BW`, +`green*` minis) | Still the 2012 photo-real parts; used by level, selector and end-level. |
 | Legacy atlas | `images/sprytszyt.png` + `data/sprites.json` | Still loaded for animations and the demo page (`demo/tiles.js`). |
 | Loose 2012 tiles | `ice`, `crackedIce`, `water`, `obstacle`, `robotile`, `robot`, `resistor1-5` | Referenced by `obstacles.js`, `utilitySprites.js`. `robotile` is the robot-cell floor (written by `tools/art/tiles/robot-cell.mjs`) and is also drawn by the tile explainers. |
-| Other | `images/lucydesk.png` (About photo), `icon_32.png` (favicon) | Keep. |
+| Icons | `images/icons/favicon-{16,32,48}.png`, `apple-touch-icon.png`, `icon-{192,512}.png` | Toybox favicon (player robot head on a tomato tile); built by `tools/art/favicon.mjs` (`--check`); replaced the 2012 `icon_32.png`. |
+| Other | `images/lucydesk.png` (About photo) | Keep. |
 | Sounds | `sounds/*.mp3` | ElevenLabs effects; recipes and records in `audio/sfx/`. |
 | Masters | `art/` | PixelLab masters, recipes, records; never delete. |
 

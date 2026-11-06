@@ -147,3 +147,15 @@ saved level statuses, parts + 1 per finished level).
   `giant-c` and `helper-c` are still shown. Its lessons: boxy bodies drift to
   three-quarter unless "seen exactly from the front, flat 2D drawing with no
   depth"; organic concepts need "clearly a machine".
+
+## Favicon and home-screen icons
+
+`tools/art/favicon.mjs` (bead tg-vy4.22; `--check` is in `CHECK_ART`) builds
+`images/icons/` from `robot-v1/robot-front-c#0`: the player robot's head on a
+rounded `--tomato` tile, so it reads on light and dark tabs. The 32 px icon is
+the master's head at 1× (its native pixels) on an `--ink`-rimmed tile; the
+16 px icon is hand-drawn in the master's colours (a downscale does not read at
+16) on a rimless tile; 48 is the 16 ×3, 192 and 512 are the 32 ×6 and ×16, and
+the 180 px `apple-touch-icon` is a full-bleed version (no corners or
+transparency; iOS masks it) ×5. `index.html` links them with `sizes` and
+`?v=` like every other asset.
