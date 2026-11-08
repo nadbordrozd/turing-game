@@ -16,16 +16,26 @@
     conveyor: 20, stepForward: 60, cwrotator: 60, ccwrotator: 60, detector: 20, magicDetector: 20,
     emptyOperator: 1, startTile: 1,
   };
-  var V2_FRAMES = {
-    conveyor: 20, conveyorFromLeft: 20, conveyorFromRight: 20, stepForward: 60, cwrotator: 60, ccwrotator: 60,
-    detector: 20, magicDetector: 20, emptyOperator: 1, startTile: 1,
-  };
+  // v2 tiles are layered (tools/art/tiles/program-tiles.mjs TILES): a belt
+  // underlay for the join (LINE / BRANCH sheets by join key) and a symbol on
+  // top, each at the global frame mod its own length (json[sheet].frames).
+  var LINE = { B: "conveyor", L: "conveyorFromLeft", R: "conveyorFromRight" };
+  var V2_SYMBOL = { stepForward: "stepForwardSymbol", cwrotator: "cwrotatorSymbol", ccwrotator: "ccwrotatorSymbol",
+    detector: "detectorSymbol", magicDetector: "magicDetectorSymbol" };
+  var BRANCH = { detector: 1, magicDetector: 1 };
   ["Red", "Blue", "Green", "Purple", "Yellow", "Pink"].forEach(function (c) {
     ORIG_FRAMES["incrementer" + c] = 60; ORIG_FRAMES["decrementer" + c] = 20;
-    V2_FRAMES["incrementer" + c] = 60; V2_FRAMES["decrementer" + c] = 20;
+    V2_SYMBOL["incrementer" + c] = "incrementer" + c + "Symbol"; V2_SYMBOL["decrementer" + c] = "decrementer" + c + "Symbol";
+    BRANCH["decrementer" + c] = 1;
   });
-  // The 2012 atlas has no corner belts, and spells one incrementer differently.
-  var ORIG_NAME = { conveyorFromLeft: "conveyor", conveyorFromRight: "conveyor", incrementerPurple: "incerementerPurple" };
+  function v2Layers(tile, key) {
+    if (tile === "emptyOperator" || tile === "startTile") return [tile];
+    var under = BRANCH[tile] ? "branch" : LINE[key || "B"];
+    var sym = tile === "stepForward" ? { L: "stepForwardSymbolSouth", R: "stepForwardSymbolNorth" }[key] || V2_SYMBOL[tile] : V2_SYMBOL[tile];
+    return sym ? [under, sym] : [under];
+  }
+  // The 2012 atlas spells one incrementer differently.
+  var ORIG_NAME = { incrementerPurple: "incerementerPurple" };
 
   // Measured speeds (tile widths per second, and degrees per second).
   var SPEEDS = {
@@ -33,18 +43,19 @@
     v2: { belt: 0.25 / (20 * 0.025), rot: 3 / 0.025, step: 1 / (60 * 0.025) },
   };
 
-  // The board from tools/art/tiles/program-tiles.mjs (MOCK): [col, row, sheet, quarter turns clockwise].
-  // The game picks the corner sheets itself (TuringTable.beltSheet) from what feeds each GOTO tile.
+  // The board from tools/art/tiles/program-tiles.mjs (MOCK): [col, row, tile, quarter turns clockwise,
+  // join key]. The game picks the joins itself (TuringTable.beltSheet) from what feeds each tile;
+  // the keys here are the ones program-tiles.mjs joinKey derives for this board.
   var COLS = 7, ROWS = 5;
   var CELLS = [
-    [0, 0, "conveyor", 0], [1, 0, "stepForward", 0], [2, 0, "conveyorFromRight", 1],
-    [2, 1, "conveyorFromRight", 2], [1, 1, "ccwrotator", 2], [0, 1, "stepForward", 2],
+    [0, 0, "conveyor", 0], [1, 0, "stepForward", 0], [2, 0, "conveyor", 1, "R"],
+    [2, 1, "conveyor", 2, "R"], [1, 1, "ccwrotator", 2], [0, 1, "stepForward", 2],
     [0, 2, "conveyor", 0], [1, 2, "stepForward", 0], [2, 2, "cwrotator", 0], [3, 2, "incrementerRed", 0], [4, 2, "detector", 0],
-    [4, 1, "conveyorFromRight", 0], [5, 1, "ccwrotator", 0], [6, 1, "conveyor", 0],
-    [4, 3, "conveyorFromLeft", 0], [5, 3, "decrementerBlue", 0],
-    [5, 2, "conveyorFromRight", 0], [6, 2, "incrementerYellow", 0],
-    [5, 4, "conveyorFromLeft", 0], [6, 4, "magicDetector", 0],
-    [0, 4, "decrementerGreen", 1], [1, 4, "incrementerPurple", 3], [2, 4, "decrementerPink", 0], [3, 4, "startTile", 0],
+    [4, 1, "conveyor", 0, "R"], [5, 1, "ccwrotator", 0], [6, 1, "conveyor", 0],
+    [4, 3, "conveyor", 0, "L"], [5, 3, "decrementerBlue", 0],
+    [5, 2, "conveyor", 0, "R"], [6, 2, "incrementerYellow", 0],
+    [5, 4, "conveyor", 0, "L"], [6, 4, "magicDetector", 0],
+    [0, 4, "decrementerGreen", 1], [1, 4, "incrementerPurple", 3, "L"], [2, 4, "decrementerPink", 0], [3, 4, "startTile", 0],
   ];
   var GRID = (function () {
     var g = [];
@@ -57,7 +68,7 @@
   var assets = {};
   var columns = [
     { id: "orig", tile: 45, pitch: 47, gap: 2, s: 0.9, frames: ORIG_FRAMES, img: "origImg", json: "origJson", bg: "#000" },
-    { id: "v2", tile: 54, pitch: 54, gap: 0, s: 1, frames: V2_FRAMES, img: "v2Img", json: "v2Json", bg: "#a3d9b1" },
+    { id: "v2", tile: 54, pitch: 54, gap: 0, s: 1, img: "v2Img", json: "v2Json", bg: "#a3d9b1" },
   ];
 
   function size(c) {
@@ -103,9 +114,15 @@
       GRID.forEach(function (cell) {
         var cx = (c.gap + cell[0] * c.pitch + c.tile / 2) * k;
         var cy = (c.gap + cell[1] * c.pitch + c.tile / 2) * k;
-        var name = c.id === "orig" ? ORIG_NAME[cell[2]] || cell[2] : cell[2];
-        if (name === "startTile") drawTile(ctx, img, json.emptyOperator, 0, cx, cy, c.s * k, 0);
-        drawTile(ctx, img, json[name], total % c.frames[name], cx, cy, c.s * k, cell[3]);
+        if (cell[2] === "startTile") drawTile(ctx, img, json.emptyOperator, 0, cx, cy, c.s * k, 0);
+        if (c.id === "orig") {
+          var name = ORIG_NAME[cell[2]] || cell[2];
+          drawTile(ctx, img, json[name], total % ORIG_FRAMES[cell[2]], cx, cy, c.s * k, cell[3]);
+        } else {
+          v2Layers(cell[2], cell[4]).forEach(function (s) {
+            drawTile(ctx, img, json[s], total % json[s].frames, cx, cy, c.s * k, cell[3]);
+          });
+        }
       });
     });
     return total;

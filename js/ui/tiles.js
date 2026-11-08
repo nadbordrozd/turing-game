@@ -11,17 +11,28 @@ TuringScenes.add(function(Q) {
 		return anim.frames[Math.floor(Date.now() / (500 * anim.rate)) % anim.frames.length];
 	};
 
+	// Frames in an atlas sheet (data/program-tiles.json records them).
+	function sheetFrames(s) { return s.frames || s.cols * Math.max(1, Math.round(s.h / s.tileh)); }
+	// Draws a tile's layers at global animation frame `frame`: the belt
+	// underlay, then the symbol (if any), each at frame mod its own length.
+	t.UI.drawLayers = function(ctx, under, symbol, frame, x, y) {
+		under.draw(ctx, x, y, frame % sheetFrames(under));
+		if(symbol) symbol.draw(ctx, x, y, frame % sheetFrames(symbol));
+	};
+
 	// Draw an operator's tile centred on (cx, cy), `size` logical px wide;
-	// `sheet` overrides op.sheet (a belt's corner sheets share its animation).
+	// `sheet` overrides op.sheet with the belt underlay of a join
+	// (TuringTable.beltSheet); the symbol follows it (OperatorUtils.symbolSheet).
 	t.UI.drawTile = function(ctx, op, angle, cx, cy, size, alpha, sheet) {
 		var s = Q.sheet(sheet || op.sheet);
 		if(!s) return;
+		var sym = t.OperatorUtils.symbolSheet(op, sheet || op.sheet);
 		ctx.save();
 		if(alpha !== undefined) ctx.globalAlpha *= alpha;
 		ctx.translate(cx, cy);
 		ctx.rotate(-(angle || 0) * Math.PI / 2);
 		ctx.scale(size / s.tilew, size / s.tileh);
-		s.draw(ctx, -s.tilew / 2, -s.tileh / 2, t.UI.tileFrame(op));
+		t.UI.drawLayers(ctx, s, sym && Q.sheet(sym), t.UI.tileFrame(op), -s.tilew / 2, -s.tileh / 2);
 		ctx.restore();
 	};
 
@@ -49,13 +60,23 @@ TuringScenes.add(function(Q) {
 		},
 		setOperator: function(op) {
 			this.p.operator = op;
-			this.p.sheet = op.sheet;
+			this.setBelt(op.sheet);
 			this.p.sprite = op.sprite;
 			var s = Q.sheet(op.sheet);
 			this.p.w = s.tilew; this.p.h = s.tileh;
 			this.p.cx = s.tilew / 2; this.p.cy = s.tileh / 2;
 			this.p.scale = this.p.pitch / s.tilew;
 			this.play("default");
+		},
+		// The belt underlay for this tile's join, and the symbol drawn over it.
+		setBelt: function(sheet) {
+			this.p.sheet = sheet;
+			this.p.symbol = t.OperatorUtils.symbolSheet(this.p.operator, sheet);
+		},
+		draw: function(ctx) {
+			var p = this.p, s = Q.sheet(p.sheet);
+			if(!s) return;
+			t.UI.drawLayers(ctx, s, p.symbol && Q.sheet(p.symbol), p.frame || 0, -p.cx, -p.cy);
 		},
 		setAngle: function(angle) {
 			this.angle = ((angle % 4) + 4) % 4;

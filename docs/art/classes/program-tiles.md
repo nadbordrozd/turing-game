@@ -13,24 +13,53 @@ Every tile on the program board. All are drawn by
 compiles that atlas after `images/sprytszyt.png`, so these names replace the
 2012 entries of the same name (the old atlas is left untouched).
 
-| Sheet name | Frames | Animation (`script.js`) | What |
-| --- | ---: | --- | --- |
-| `conveyor` | 20 | `conveyorMations` | the belt alone (GOTO) |
-| `conveyorFromLeft` | 20 | `conveyorMations` | GOTO belt entering from the tile's left side (north at angle 0) and turning to exit forward |
-| `conveyorFromRight` | 20 | `conveyorMations` | the mirror image: enters from the right side (south at angle 0) |
-| `stepForward` | 60 | `stepForwardMations` | belt + sky-blue arrows sliding above and below |
-| `cwrotator` | 60 | `cwRotatorMations` | belt + magenta two-arc arrow turning clockwise |
-| `ccwrotator` | 60 | `ccwRotatorMations` | belt + orange two-arc arrow turning counter-clockwise |
-| `detector` | 20 | `detectorMations` | branch: brick wall icons north (wall ahead), struck-out walls south |
-| `magicDetector` | 20 | `magicMation` | branch: sparkling blue tile icons north (on a blue tile), struck-out tiles south |
-| `incrementer<Colour>` | 60 | `incrementerMations<Colour>` | belt + pulsing plus in the counter colour, cream glyph in the middle |
-| `decrementer<Colour>` | 20 | `decrementerMations<Colour>` | branch: `0` rings north (counter is zero), `−` bars south (decrement), glyph hub |
-| `emptyOperator` | 1 | `emptyMation` | empty board panel |
-| `startTile` | 1 | `startTileMation` | green double chevron beside the board's entry (transparent ground) |
+Since tg-di9 every belt tile is drawn in **two layers**: a belt underlay
+(floor + belt, opaque) chosen by the tile's join, and the tile's symbol on
+transparent ground on top, both at the same global frame (each modulo its own
+length). This lets a step, rotator or counter bend and merge exactly like a
+plain belt without an atlas sheet per tile and per join. `Operators.js` gives
+each operator `sheet` (its default underlay), `belt` (`"line"` or `"branch"`),
+`symbol`, and for the step `symbolFor` (symbol per underlay);
+`ProgTile.draw` and `t.UI.drawTile` (`js/ui/tiles.js`) draw the layers.
 
-`<Colour>` is Red, Blue, Green, Purple, Yellow, Pink. The game asks for
-`incrementerPurple`; the 2012 atlas spelled it `incerementerPurple`, so the
-purple incrementer had no art until v2.
+Belt underlays. Keys name the fed inputs with the tile pointing east:
+**B** behind (west), **L** left (north), **R** right (south); branch tiles
+**W** behind, **E** far side.
+
+| Sheet name | Key | Frames | Animation | What |
+| --- | --- | ---: | --- | --- |
+| `conveyor` | B | 20 | `conveyorMations` | straight belt (also the default when nothing feeds the tile) |
+| `conveyorFromLeft` | L | 20 | `conveyorMations` | corner: enters from the left side and turns to exit forward |
+| `conveyorFromRight` | R | 20 | `conveyorMations` | the mirror image: enters from the right side |
+| `conveyorFromBoth` | LR | 20 | `conveyorMations` | T: both side arcs meet on the centre line and exit forward |
+| `conveyorJoinLeft` | BL | 20 | `conveyorMations` | straight belt with the left arc merging into it |
+| `conveyorJoinRight` | BR | 20 | `conveyorMations` | straight belt with the right arc merging into it |
+| `conveyorJoinBoth` | BLR | 20 | `conveyorMations` | straight belt with both arcs merging |
+| `branch` | W | 20 | `detectorMations` | half belt in from the west, full belt north–south running outwards |
+| `branchFromFar` | E | 20 | `detectorMations` | a half belt in from the east (far side) instead |
+| `branchFromBoth` | WE | 20 | `detectorMations` | both half belts |
+
+Symbols (transparent ground):
+
+| Sheet name | Frames | Animation | What |
+| --- | ---: | --- | --- |
+| `stepForwardSymbol` | 60 | `stepForwardMations` | sky-blue arrows sliding in both side lanes (joins B) |
+| `stepForwardSymbolSouth` / `…North` | 60 | `stepForwardMations` | one lane only: a left (right) arc takes the other lane (joins L, BL / R, BR) |
+| `stepForwardSymbolInline` | 60 | `stepForwardMations` | both lanes taken (LR, BLR): one arrow on the centre line in the west half, nudging forward |
+| `cwrotatorSymbol`, `ccwrotatorSymbol` | 60 | `cwRotatorMations`, `ccwRotatorMations` | two-arc arrow turning, magenta / orange |
+| `incrementer<Colour>Symbol` | 60 | `incrementerMations<Colour>` | pulsing plus in the counter colour, cream glyph |
+| `detectorSymbol` | 1 | `detectorMations` | hub + brick wall icons north, struck-out walls south |
+| `magicDetectorSymbol` | 1 | `magicMation` | hub + sparkling blue tile icons north, struck-out tiles south |
+| `decrementer<Colour>Symbol` | 1 | `decrementerMations<Colour>` | glyph hub, `0` rings north, `−` bars south |
+
+Whole tiles: `emptyOperator` (1 frame, `emptyMation`, the empty board panel)
+and `startTile` (1 frame, `startTileMation`, green double chevron beside the
+board's entry, transparent ground).
+
+`<Colour>` is Red, Blue, Green, Purple, Yellow, Pink. The old composite
+sheets (`stepForward`, `cwrotator`, `incrementerRed`, `detector`, …) are no
+longer in this atlas; only the 2012 atlas still has entries of those names.
+Each layout entry in `data/program-tiles.json` records its `frames`.
 
 ## Counter colours and glyphs
 
@@ -68,6 +97,17 @@ shows counters (the cipher locks) should use the same pairs.
   four on a straight tile). The arc's centre line is 42.4 units long, so
   chevrons keep their spacing and speed through the bend within 5%, and both
   openings sit on a whole period, in phase with straight belts.
+- **T and merges:** every join uses the same two quarter circles. In a T
+  each point shows the arc whose centre line is nearer; on y = 27 both arcs
+  have the same along and across coordinates, so the seam is continuous and
+  the two inner rails close into a Y. With a behind input, side arcs tuck
+  under the straight main line, which is drawn on top (its rails stay whole).
+- **Symbols over joins:** rotators and pluses sit centred over the belt as
+  before, so arcs pass under them like the straight belt does. The step's
+  arrows sit beside the belt, so they keep only the lanes no arc runs through;
+  with both lanes taken a single arrow rides the centre line in the west half,
+  stopping short of a T's arcs. `--check` proves the step never touches a
+  side arc and that no symbol covers a belt opening its joins use.
 - **Branches** (detector, magic detector, decrementers): a half belt in from
   the west, a full belt north–south with chevrons running outwards, and a hub
   disc (radius 13.3 + outline) hiding the crossing. Icons sit in the four
@@ -96,22 +136,25 @@ the same belt offset as frame N mod 20 of the conveyor.
 
 ## Belt joins in the game
 
-The game has no notion of corners, so `TuringTable.beltSheet` picks one from
-the neighbours: a GOTO tile fed from behind (or by nothing) is straight; fed
-only from its left or only from its right side it shows
-`conveyorFromLeft` / `conveyorFromRight`. Branch tiles feed their two side
-exits; every other tile feeds forward; the start feeds the first cell of the
-middle row. `refreshBeltJoins` runs after every board change. Only GOTO tiles
-turn corners; a step, rotator or counter entered from the side still shows a
-straight belt.
+The game has no notion of corners, so `TuringTable.beltSheet` picks the
+underlay from the neighbours. For every single-exit tile (GOTO, step,
+rotators, incrementers) it collects which of behind, left and right feed it
+(none counts as behind) and looks the set up in `TuringTable.LINE_SHEETS`;
+for branch tiles (detectors, decrementers) it checks behind and the far side
+(`BRANCH_SHEETS`). Branch tiles feed their two side exits; every other tile
+feeds forward; the start feeds the first cell of the middle row.
+`refreshBeltJoins` runs after every board change (load, drop, rotate, clear)
+and sets each tile's underlay and symbol (`ProgTile.setBelt`).
 
 While a tile is dragged or hovered over a cell, `TuringTable.previewJoins`
-gives the sheets the drop would produce: the ghost shows its own join, and a
-neighbouring belt that would bend or straighten is drawn that way under it.
-During a run the program-counter marker follows a bent belt's curve
-(`TuringTable.flowPath`, `Q.Spark.follow`): it rests at the middle of the arc
-instead of the tile centre. All of this is display only; the rules, step
-counts and scores are unchanged.
+gives the underlays the drop would produce: the ghost shows its own join, and
+a neighbouring belt tile that would change is drawn that way under it. The
+explainer's belt loop uses `TuringTable.lineSheet`. During a run the
+program-counter marker follows the arc it actually travels
+(`TuringTable.bendsAt`, `flowPath`, `Q.Spark.follow`): entering through a
+side opening it runs along that side's arc and rests at its middle; entering
+from behind it goes straight to the centre, even where side arcs merge in.
+All of this is display only; the rules, step counts and scores are unchanged.
 
 ## Readability
 
@@ -128,12 +171,16 @@ node tools/art/tiles/program-tiles.mjs --size 108 --review /tmp/x   # other size
 ```
 
 `--check` also reads `script.js` and fails if any tile's animation there has
-a different frame count or rate than the atlas.
+a different frame count or rate than the atlas. `--review` writes the atlas
+contact sheet, the board mock (`-seam`), a merges board (`-merges`: T,
+merges, side-fed step, turn and counter, a far-side branch feed) and every
+join of every tile at 3× (`-variants`).
 
 ## Acceptance
 
 - `--check` passes: timings match `script.js`, every belt opening of every
-  tile matches the plain conveyor's (exactly for straight belts, within
-  anti-aliasing for corners and branches), and loops close.
+  underlay matches the plain conveyor's (exactly for straight belts, within
+  anti-aliasing for arcs and branches), loops close, symbols leave the
+  openings their joins use clear, and the step's arrows never touch an arc.
 - On the board mock, belts join with no seam, corners and branches follow the
   flow, and every symbol reads at 1×.

@@ -105,9 +105,20 @@ t.TuringTable = {
 		this.table[x][y] = content;
 		this.refreshBeltJoins();
 	},
-	// Belt joins: a GOTO (conveyor) tile fed from its side shows a corner belt
-	// (sheets conveyorFromLeft / conveyorFromRight in images/tiles/program-tiles.png)
-	// so the belt follows the flow. Purely cosmetic; the rules are unchanged.
+	// Belt joins: every belt tile shows the belt its neighbours make, so the
+	// belt follows the flow. A single-exit tile (GOTO, step, rotators, +1) is
+	// described by which of behind / left / right feed it (nothing feeding it
+	// counts as behind): one side alone is a corner, both sides a T, a side
+	// with behind a merge into the straight belt. A branch tile (detectors, -1)
+	// also takes a stub from its far side. The tile's symbol is drawn over that
+	// underlay (Operators.js; tools/art/tiles/program-tiles.mjs draws both).
+	// Purely cosmetic; the rules are unchanged.
+	LINE_SHEETS : {B: "conveyor", L: "conveyorFromLeft", R: "conveyorFromRight", LR: "conveyorFromBoth",
+		BL: "conveyorJoinLeft", BR: "conveyorJoinRight", BLR: "conveyorJoinBoth"},
+	BRANCH_SHEETS : {W: "branch", E: "branchFromFar", WE: "branchFromBoth"},
+	lineSheet : function(behind, left, right){	//underlay of a single-exit tile fed from these sides
+		return this.LINE_SHEETS[(behind ? "B" : "") + (left ? "L" : "") + (right ? "R" : "") || "B"];
+	},
 	exitsOf : function(cell){
 		var op = cell && cell.what;
 		if(!op || op === t.Operators.Empty) return [];
@@ -126,16 +137,16 @@ t.TuringTable = {
 		return false;
 	},
 	beltSheet : function(x, y){
-		var cell = this.table[x][y];
-		if(cell.what !== t.Operators.Conveyor) return cell.what.sheet;
+		var cell = this.table[x][y], op = cell.what;
+		if(!op.belt) return op.sheet;
 		var a = cell.angle||0;
 		var f = t.Operators.r([1,0], a), l = t.Operators.r([0,-1], a), r = t.Operators.r([0,1], a);
-		if(this.feeds(x-f[0], y-f[1], x, y)) return "conveyor";
-		var fromLeft = this.feeds(x+l[0], y+l[1], x, y);
-		var fromRight = this.feeds(x+r[0], y+r[1], x, y);
-		if(fromLeft && !fromRight) return "conveyorFromLeft";
-		if(fromRight && !fromLeft) return "conveyorFromRight";
-		return "conveyor";
+		var behind = this.feeds(x-f[0], y-f[1], x, y);
+		if(op.belt === "branch"){
+			var far = this.feeds(x+f[0], y+f[1], x, y);
+			return this.BRANCH_SHEETS[(behind ? "W" : "") + (far ? "E" : "") || "W"];
+		}
+		return this.lineSheet(behind, this.feeds(x+l[0], y+l[1], x, y), this.feeds(x+r[0], y+r[1], x, y));
 	},
 	refreshBeltJoins : function(){
 		if(!this.display1 || !this.display1.tiles || !this.table) return;
@@ -143,12 +154,12 @@ t.TuringTable = {
 			for(var y=0; y<this.ymax; y++){
 				var tile = this.display1.tiles[x] && this.display1.tiles[x][y];
 				var cell = this.table[x] && this.table[x][y];
-				if(tile && cell && cell.what === t.Operators.Conveyor) tile.p.sheet = this.beltSheet(x, y);
+				if(tile && cell && cell.what.belt) tile.setBelt(this.beltSheet(x, y));
 			}
 	},
 	// Drag/hover preview: the belt sheets that cell x,y and its neighbours would
 	// show if x,y held `content`. Returns [{x, y, what, angle, sheet}] for x,y
-	// itself and for each neighbouring belt whose sheet would change.
+	// itself and for each neighbouring belt tile whose underlay would change.
 	previewJoins : function(x, y, content){
 		var old = this.table[x][y], out = [];
 		this.table[x][y] = content;
@@ -159,31 +170,37 @@ t.TuringTable = {
 				if(nx<0 || ny<0 || nx>=this.xmax || ny>=this.ymax) continue;
 				var cell = this.table[nx][ny], sheet = this.beltSheet(nx, ny);
 				var tile = this.display1.tiles[nx] && this.display1.tiles[nx][ny];
-				if(i === 0 || (cell.what === t.Operators.Conveyor && tile && tile.p.sheet !== sheet))
+				if(i === 0 || (cell.what.belt && tile && tile.p.sheet !== sheet))
 					out.push({x: nx, y: ny, what: cell.what, angle: cell.angle||0, sheet: sheet});
 			}
 		} finally { this.table[x][y] = old; }
 		return out;
 	},
-	// The quarter circle a bent belt at x,y shows, in board-local px, or null
-	// when it is straight: at(s) runs from the side opening (s=0) to the exit (s=1).
-	bendAt : function(x, y){
-		if(x<0 || y<0 || x>=this.xmax || y>=this.ymax) return null;
+	// The side arcs the belt at x,y shows, in board-local px (none when it is
+	// straight or a branch): quarter circles from a side opening (at(0)) to the
+	// exit (at(1)). A corner has one, a T or a three-way merge two.
+	bendsAt : function(x, y){
+		if(x<0 || y<0 || x>=this.xmax || y>=this.ymax) return [];
 		var tile = this.display1.tiles[x] && this.display1.tiles[x][y], cell = this.table[x][y];
-		if(!tile || cell.what !== t.Operators.Conveyor) return null;
-		var sheet = tile.p.sheet;
-		if(sheet !== "conveyorFromLeft" && sheet !== "conveyorFromRight") return null;
-		var a = cell.angle||0, half = (this.unitwidth+this.interval)/2;
-		var f = t.Operators.r([1,0], a), sd = t.Operators.r(sheet === "conveyorFromLeft" ? [0,-1] : [0,1], a);
-		var c = this.cellLocal(x, y), k = {x: c.x+(f[0]+sd[0])*half, y: c.y+(f[1]+sd[1])*half};
-		return {
-			entry: {x: c.x+sd[0]*half, y: c.y+sd[1]*half}, exit: {x: c.x+f[0]*half, y: c.y+f[1]*half},
-			len: Math.PI*half/2,
-			at: function(s){
-				var p = Math.cos(s*Math.PI/2), q = Math.sin(s*Math.PI/2);
-				return {x: k.x-(f[0]*p+sd[0]*q)*half, y: k.y-(f[1]*p+sd[1]*q)*half};
-			}
+		if(!tile || cell.what.belt !== "line") return [];
+		var key = "";
+		for(var k in this.LINE_SHEETS) if(this.LINE_SHEETS[k] === tile.p.sheet) key = k;
+		var a = cell.angle||0, half = (this.unitwidth+this.interval)/2, c = this.cellLocal(x, y);
+		var f = t.Operators.r([1,0], a), out = [];
+		var arc = function(sd){
+			var k = {x: c.x+(f[0]+sd[0])*half, y: c.y+(f[1]+sd[1])*half};
+			return {
+				entry: {x: c.x+sd[0]*half, y: c.y+sd[1]*half}, exit: {x: c.x+f[0]*half, y: c.y+f[1]*half},
+				len: Math.PI*half/2,
+				at: function(s){
+					var p = Math.cos(s*Math.PI/2), q = Math.sin(s*Math.PI/2);
+					return {x: k.x-(f[0]*p+sd[0]*q)*half, y: k.y-(f[1]*p+sd[1]*q)*half};
+				}
+			};
 		};
+		if(key.indexOf("L") >= 0) out.push(arc(t.Operators.r([0,-1], a)));
+		if(key.indexOf("R") >= 0) out.push(arc(t.Operators.r([0,1], a)));
+		return out;
 	},
 	cellLocal : function(x, y){	//centre of a cell in board-local px (the dot's frame)
 		var wid = this.unitwidth, inter = this.interval;
@@ -191,9 +208,12 @@ t.TuringTable = {
 			y: (wid+inter)*y+inter-((this.ymax)*(wid+inter)+inter)/2+wid/2};
 	},
 	// The marker's route for one move by `vector` from where it stands: through
-	// the shared edge, along a bent belt's curve on either side when the edge is
-	// one of that belt's openings (a bend's resting point is the middle of its
-	// curve). Null when both halves are straight (the plain centre-to-centre move).
+	// the shared edge, along the arc it actually travels on either side. Into a
+	// tile, that is the arc whose side opening is the shared edge (a belt fed
+	// from behind is entered straight, even where side arcs merge into it); out
+	// of a tile, the arc whose middle the marker rests on (an arc's resting
+	// point is its middle). Null when both halves are straight (the plain
+	// centre-to-centre move).
 	flowPath : function(vector){
 		var pitch = this.unitwidth+this.interval, d = this.dot.p;
 		var o = this.cellLocal(0, 0);
@@ -201,15 +221,19 @@ t.TuringTable = {
 		var a = this.cellLocal(sx, sy), b = this.cellLocal(sx+vector[0], sy+vector[1]);
 		var e = {x: (a.x+b.x)/2, y: (a.y+b.y)/2};
 		var near = function(p, q){ return Math.abs(p.x-q.x) < 1 && Math.abs(p.y-q.y) < 1; };
-		var leg = function(bend, from){	//curve from the bend's middle to its opening `from`, or null
-			if(!bend) return null;
-			if(near(bend.entry, from)) return {s0: 0.5, s1: 0, len: bend.len/2, bend: bend};
-			if(near(bend.exit, from)) return {s0: 0.5, s1: 1, len: bend.len/2, bend: bend};
+		var pick = function(bends, test){
+			for(var i=0; i<bends.length; i++) if(test(bends[i])) return bends[i];
 			return null;
 		};
-		var out = leg(this.bendAt(sx, sy), e);
-		if(out && !near({x: d.x, y: d.y}, out.bend.at(0.5))) out = null;
-		var inn = leg(this.bendAt(sx+vector[0], sy+vector[1]), e);
+		var leg = function(bend){	//curve from the bend's middle to the shared edge, or null
+			return bend && {s0: 0.5, s1: near(bend.entry, e) ? 0 : 1, len: bend.len/2, bend: bend};
+		};
+		var out = leg(pick(this.bendsAt(sx, sy), function(bd){
+			return near({x: d.x, y: d.y}, bd.at(0.5)) && (near(bd.exit, e) || near(bd.entry, e));
+		}));
+		var ahead = this.bendsAt(sx+vector[0], sy+vector[1]);
+		var inn = leg(pick(ahead, function(bd){ return near(bd.entry, e); }) ||
+			pick(ahead, function(bd){ return near(bd.exit, e); }));
 		if(!out && !inn) return null;
 		var start = {x: d.x, y: d.y}, end = inn ? inn.bend.at(0.5) : b;
 		var l1 = out ? out.len : Math.hypot(e.x-start.x, e.y-start.y);

@@ -5,7 +5,8 @@
     "tilew": 54,
     "tileh": 54,
     "w": 1080,
-    "h": 54
+    "h": 54,
+    "frames": 20
   },
   "conveyorFromLeft": {
     "sx": 0,
@@ -13,7 +14,8 @@
     "tilew": 54,
     "tileh": 54,
     "w": 1080,
-    "h": 54
+    "h": 54,
+    "frames": 20
   },
   "conveyorFromRight": {
     "sx": 0,
@@ -21,158 +23,268 @@
     "tilew": 54,
     "tileh": 54,
     "w": 1080,
-    "h": 54
+    "h": 54,
+    "frames": 20
   },
-  "stepForward": {
+  "conveyorFromBoth": {
     "sx": 0,
     "sy": 162,
     "tilew": 54,
     "tileh": 54,
-    "w": 1620,
-    "h": 108
+    "w": 1080,
+    "h": 54,
+    "frames": 20
   },
-  "cwrotator": {
+  "conveyorJoinLeft": {
+    "sx": 0,
+    "sy": 216,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54,
+    "frames": 20
+  },
+  "conveyorJoinRight": {
     "sx": 0,
     "sy": 270,
     "tilew": 54,
     "tileh": 54,
-    "w": 1620,
-    "h": 108
+    "w": 1080,
+    "h": 54,
+    "frames": 20
   },
-  "ccwrotator": {
+  "conveyorJoinBoth": {
+    "sx": 0,
+    "sy": 324,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54,
+    "frames": 20
+  },
+  "branch": {
     "sx": 0,
     "sy": 378,
     "tilew": 54,
     "tileh": 54,
-    "w": 1620,
-    "h": 108
+    "w": 1080,
+    "h": 54,
+    "frames": 20
   },
-  "detector": {
+  "branchFromFar": {
+    "sx": 0,
+    "sy": 432,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54,
+    "frames": 20
+  },
+  "branchFromBoth": {
     "sx": 0,
     "sy": 486,
     "tilew": 54,
     "tileh": 54,
     "w": 1080,
-    "h": 54
+    "h": 54,
+    "frames": 20
   },
-  "magicDetector": {
+  "stepForwardSymbol": {
     "sx": 0,
     "sy": 540,
     "tilew": 54,
     "tileh": 54,
-    "w": 1080,
-    "h": 54
+    "w": 1620,
+    "h": 108,
+    "frames": 60
   },
-  "incrementerRed": {
+  "stepForwardSymbolNorth": {
     "sx": 0,
-    "sy": 594,
+    "sy": 648,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
-    "h": 108
+    "h": 108,
+    "frames": 60
   },
-  "incrementerBlue": {
+  "stepForwardSymbolSouth": {
     "sx": 0,
-    "sy": 702,
+    "sy": 756,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
-    "h": 108
+    "h": 108,
+    "frames": 60
   },
-  "incrementerGreen": {
+  "stepForwardSymbolInline": {
     "sx": 0,
-    "sy": 810,
+    "sy": 864,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
-    "h": 108
+    "h": 108,
+    "frames": 60
   },
-  "incrementerPurple": {
+  "cwrotatorSymbol": {
     "sx": 0,
-    "sy": 918,
+    "sy": 972,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
-    "h": 108
+    "h": 108,
+    "frames": 60
   },
-  "incrementerYellow": {
+  "ccwrotatorSymbol": {
     "sx": 0,
-    "sy": 1026,
+    "sy": 1080,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
-    "h": 108
+    "h": 108,
+    "frames": 60
   },
-  "incrementerPink": {
+  "incrementerRedSymbol": {
     "sx": 0,
-    "sy": 1134,
+    "sy": 1188,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
-    "h": 108
+    "h": 108,
+    "frames": 60
   },
-  "decrementerRed": {
-    "sx": 0,
-    "sy": 1242,
-    "tilew": 54,
-    "tileh": 54,
-    "w": 1080,
-    "h": 54
-  },
-  "decrementerBlue": {
+  "incrementerBlueSymbol": {
     "sx": 0,
     "sy": 1296,
     "tilew": 54,
     "tileh": 54,
-    "w": 1080,
-    "h": 54
+    "w": 1620,
+    "h": 108,
+    "frames": 60
   },
-  "decrementerGreen": {
-    "sx": 0,
-    "sy": 1350,
-    "tilew": 54,
-    "tileh": 54,
-    "w": 1080,
-    "h": 54
-  },
-  "decrementerPurple": {
+  "incrementerGreenSymbol": {
     "sx": 0,
     "sy": 1404,
     "tilew": 54,
     "tileh": 54,
-    "w": 1080,
-    "h": 54
+    "w": 1620,
+    "h": 108,
+    "frames": 60
   },
-  "decrementerYellow": {
-    "sx": 0,
-    "sy": 1458,
-    "tilew": 54,
-    "tileh": 54,
-    "w": 1080,
-    "h": 54
-  },
-  "decrementerPink": {
+  "incrementerPurpleSymbol": {
     "sx": 0,
     "sy": 1512,
     "tilew": 54,
     "tileh": 54,
-    "w": 1080,
-    "h": 54
+    "w": 1620,
+    "h": 108,
+    "frames": 60
+  },
+  "incrementerYellowSymbol": {
+    "sx": 0,
+    "sy": 1620,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1620,
+    "h": 108,
+    "frames": 60
+  },
+  "incrementerPinkSymbol": {
+    "sx": 0,
+    "sy": 1728,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1620,
+    "h": 108,
+    "frames": 60
+  },
+  "detectorSymbol": {
+    "sx": 0,
+    "sy": 1836,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 54,
+    "h": 54,
+    "frames": 1
+  },
+  "magicDetectorSymbol": {
+    "sx": 54,
+    "sy": 1836,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 54,
+    "h": 54,
+    "frames": 1
+  },
+  "decrementerRedSymbol": {
+    "sx": 108,
+    "sy": 1836,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 54,
+    "h": 54,
+    "frames": 1
+  },
+  "decrementerBlueSymbol": {
+    "sx": 162,
+    "sy": 1836,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 54,
+    "h": 54,
+    "frames": 1
+  },
+  "decrementerGreenSymbol": {
+    "sx": 216,
+    "sy": 1836,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 54,
+    "h": 54,
+    "frames": 1
+  },
+  "decrementerPurpleSymbol": {
+    "sx": 270,
+    "sy": 1836,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 54,
+    "h": 54,
+    "frames": 1
+  },
+  "decrementerYellowSymbol": {
+    "sx": 324,
+    "sy": 1836,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 54,
+    "h": 54,
+    "frames": 1
+  },
+  "decrementerPinkSymbol": {
+    "sx": 378,
+    "sy": 1836,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 54,
+    "h": 54,
+    "frames": 1
   },
   "emptyOperator": {
-    "sx": 0,
-    "sy": 1566,
+    "sx": 432,
+    "sy": 1836,
     "tilew": 54,
     "tileh": 54,
     "w": 54,
-    "h": 54
+    "h": 54,
+    "frames": 1
   },
   "startTile": {
-    "sx": 54,
-    "sy": 1566,
+    "sx": 486,
+    "sy": 1836,
     "tilew": 54,
     "tileh": 54,
     "w": 54,
-    "h": 54
+    "h": 54,
+    "frames": 1
   }
 }

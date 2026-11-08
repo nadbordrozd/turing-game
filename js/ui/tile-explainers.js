@@ -121,9 +121,10 @@
 		rr(ctx, x - 1.5, y - 1.5, w + 3, h + 3, 5); ctx.stroke();
 		ctx.restore();
 	}
+	// `sheet`: the belt underlay of a join (TuringTable.lineSheet); the tile's
+	// symbol is drawn over it
 	function drawTile(ctx, op, angle, cx, cy, sheet) {
-		var o = sheet ? { sheet: sheet, sprite: op.sprite } : op;
-		t.UI.drawTile(ctx, o, angle, cx, cy, P);
+		t.UI.drawTile(ctx, op, angle, cx, cy, P, undefined, sheet);
 	}
 	function drawMarker(ctx, x, y, alpha, T) {
 		if(alpha <= 0) return;
@@ -335,7 +336,7 @@
 		var sheets = path.map(function(p, i) {
 			var prev = path[(i + path.length - 1) % path.length];
 			var m = t.Operators.r(dirOf(prev[2]), -p[2]);	// incoming motion, in the tile's own frame
-			return m[1] > 0 ? "conveyorFromLeft" : m[1] < 0 ? "conveyorFromRight" : "conveyor";
+			return t.TuringTable.lineSheet(m[1] === 0, m[1] > 0, m[1] < 0);
 		});
 		var HOP = 0.62, MOVE = 0.48;
 		function centre(i) { var p = path[i % path.length]; return { x: bx + p[0] * P + P / 2, y: by + p[1] * P + P / 2 }; }

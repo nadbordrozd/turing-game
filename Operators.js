@@ -14,9 +14,16 @@ t.Operators.r = function(vec, angle){
 }
 
 //by default (angle = 0) all operators point east or [1,0]
+// Display: a belt tile is drawn in two layers (images/tiles/program-tiles.png,
+// tools/art/tiles/program-tiles.mjs): `sheet` is its default belt underlay,
+// which TuringTable.beltSheet swaps for the join its neighbours make
+// (belt: "line" for single-exit tiles, "branch" for detectors and
+// decrementers), and `symbol` is drawn on top; `symbolFor` overrides the
+// symbol per underlay. Display only: the rules ignore these fields.
 t.Operators.Conveyor = {
 	sprite: "conveyorMations",
 	sheet: "conveyor",
+	belt: "line",
 	name: "Conveyor",
 	shortname : "C",
     operate : function(angle, step){
@@ -29,7 +36,9 @@ t.Operators.Conveyor = {
 t.Operators.ClockwiseRotator = {
     //img : "cwrotator.png",
 	sprite: "cwRotatorMations",
-	sheet: "cwrotator",
+	sheet: "conveyor",
+	belt: "line",
+	symbol: "cwrotatorSymbol",
 	name : "ClockwiseRotator",
 	shortname : "cw",
 	operate : function(angle, step){
@@ -43,7 +52,9 @@ t.Operators.ClockwiseRotator = {
 t.Operators.CounterClockwiseRotator = {
   //  img : "ccwrotator.png",
 	sprite: "ccwRotatorMations",
-	sheet: "ccwrotator",
+	sheet: "conveyor",
+	belt: "line",
+	symbol: "ccwrotatorSymbol",
 	name: "CounterClockwiseRotator",
 	shortname : "cc",
 	operate : function(angle, step){
@@ -57,7 +68,13 @@ t.Operators.CounterClockwiseRotator = {
 t.Operators.Step = {
   //  img : "step.png",
 	sprite: "stepForwardMations",
-	sheet: "stepForward",
+	sheet: "conveyor",
+	belt: "line",
+	symbol: "stepForwardSymbol",
+	// the arrows keep to the side lanes no arc runs through
+	symbolFor: {conveyorFromLeft: "stepForwardSymbolSouth", conveyorJoinLeft: "stepForwardSymbolSouth",
+		conveyorFromRight: "stepForwardSymbolNorth", conveyorJoinRight: "stepForwardSymbolNorth",
+		conveyorFromBoth: "stepForwardSymbolInline", conveyorJoinBoth: "stepForwardSymbolInline"},
 	name : "Step", 
 	shortname : "s",
     operate : function(angle, step){
@@ -84,7 +101,9 @@ t.Operators.Empty = {
 t.Operators.Detector = {
   //  img : "detector.png",
 	sprite: "detectorMations",
-	sheet: "detector",
+	sheet: "branch",
+	belt: "branch",
+	symbol: "detectorSymbol",
 	name: "Detector",
 	shortname : "d", 
     operate : function(angle, step){
@@ -106,7 +125,9 @@ t.Operators.DetectMagic = {
 	name: "DetectMagic",
 	shortname : "dm",
 	sprite : "magicMation", 
-	sheet : "magicDetector", 
+	sheet : "branch",
+	belt : "branch",
+	symbol : "magicDetectorSymbol",
     operate : function(angle, step){
 		var aux = {};
 		var magic = t.RobotTable.isMagic();
@@ -138,13 +159,17 @@ for(var i in t.OperatorUtils.colors){
 			}
 		}(i),
 		sprite : "incrementerMations"+i,
-		sheet : "incrementer"+i
+		sheet : "conveyor",
+		belt : "line",
+		symbol : "incrementer"+i+"Symbol"
 	}
 	t.Operators["Plus"+i] = t.OperatorUtils.colors[i].incrementer;
 	
 	t.OperatorUtils.colors[i].decrementer = {
 		sprite : "decrementerMations"+i,
-		sheet : "decrementer"+i,
+		sheet : "branch",
+		belt : "branch",
+		symbol : "decrementer"+i+"Symbol",
 		//img : "minus"+i+".png",
 		name : "Minus"+i,
 		shortname : "m"+i,
@@ -168,6 +193,12 @@ for(var i in t.OperatorUtils.colors){
 		
 	}
 	t.Operators["Minus"+i] = t.OperatorUtils.colors[i].decrementer;
+}
+
+// The symbol layer drawn over `beltSheet` (an underlay sheet name), or null.
+t.OperatorUtils.symbolSheet = function(operator, beltSheet){
+	if(!operator) return null;
+	return (operator.symbolFor && operator.symbolFor[beltSheet]) || operator.symbol || null;
 }
 
 t.OperatorUtils.isDecrementer = function(operator){
