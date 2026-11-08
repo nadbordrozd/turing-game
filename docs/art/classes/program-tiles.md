@@ -47,7 +47,7 @@ Symbols (transparent ground):
 | `stepForwardSymbolSouth` / `…North` | 60 | `stepForwardMations` | one lane only: a left (right) arc takes the other lane (joins L, BL / R, BR) |
 | `stepForwardSymbolInline` | 60 | `stepForwardMations` | both lanes taken (LR, BLR): one arrow on the centre line in the west half, nudging forward |
 | `cwrotatorSymbol`, `ccwrotatorSymbol` | 60 | `cwRotatorMations`, `ccwRotatorMations` | two-arc arrow turning, magenta / orange |
-| `incrementer<Colour>Symbol` | 60 | `incrementerMations<Colour>` | pulsing plus in the counter colour, cream glyph |
+| `incrementer<Colour>Symbol` | 60 | `incrementerMations<Colour>` | pulsing plus in the counter colour, cream glyph; sized so joins show between its arms |
 | `detectorSymbol` | 1 | `detectorMations` | hub + brick wall icons north, struck-out walls south |
 | `magicDetectorSymbol` | 1 | `magicMation` | hub + sparkling blue tile icons north, struck-out tiles south |
 | `decrementer<Colour>Symbol` | 1 | `decrementerMations<Colour>` | glyph hub, `0` rings north, `−` bars south |
@@ -108,6 +108,18 @@ shows counters (the cipher locks) should use the same pairs.
   with both lanes taken a single arrow rides the centre line in the west half,
   stopping short of a T's arcs. `--check` proves the step never touches a
   side arc and that no symbol covers a belt opening its joins use.
+- **Incrementer plus** (tg-y68): arm half-length 14, arm half-width 6,
+  corner radius 2.5, glyph radius 4.6, plus the 1 unit outline (`PLUS` in
+  the generator). It was 19 / 7.5 / 3 / 5.4 in v2: that plus spanned 40 of
+  54 units and hid most of a corner or merge belt, so in the L, R, T and
+  merge joins only the tile edges showed belt. Now it spans 30 units, about
+  the decrementer hub's 28.6, so the two read as a pair (same colour, glyph
+  and footprint); a corner's chevrons run in the gap between two arms and a
+  T's arcs show all the way to the centre line. Arms and glyph shrink
+  together: half-width 6 is the slimmest that keeps the glyph (about 9 px
+  at 54 px, 6 CSS px on a 375 px phone) clear of the arm's dark rim; 5.5
+  with glyph 4.3 was tried and the square, triangle and heart touched the
+  rim. The pulse is unchanged (scale 1 → 0.9 → 1).
 - **Branches** (detector, magic detector, decrementers): a half belt in from
   the west, a full belt north–south with chevrons running outwards, and a hub
   disc (radius 13.3 + outline) hiding the crossing. Icons sit in the four
@@ -159,7 +171,7 @@ All of this is display only; the rules, step counts and scores are unchanged.
 ## Readability
 
 Check at 1× and 4× on the contact sheet, and the board mock on light and dark.
-Icons are at least 12 px; glyphs about 10 px.
+Icons are at least 12 px; glyphs about 9 px on the incrementer plus and 12 px on the decrementer hub (at 54 px).
 
 ## Regenerate
 

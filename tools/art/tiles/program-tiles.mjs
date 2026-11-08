@@ -347,18 +347,23 @@ function rotator(frame, cw) {
   };
 }
 
-/** Incrementer: a chunky plus in the counter colour, pulsing gently once per
- *  PULSE_FRAMES, with the counter's glyph in cream in the middle. */
+/** Incrementer: a plus in the counter colour, pulsing gently once per
+ *  PULSE_FRAMES, with the counter's glyph in cream in the middle. Sized
+ *  (tg-y68) so a corner or merge belt shows between its arms: arm half-length
+ *  PLUS.arm, arm half-width PLUS.half, glyph radius PLUS.glyph (v2: 19, 7.5,
+ *  5.4), so its reach about matches the decrementer's hub (HUB_R). */
+export const PLUS = { arm: 14, half: 6, round: 2.5, glyph: 4.6 };
 function incrementer(frame, colour) {
   const p = CP[colour];
   const glyph = COUNTERS[colour].glyph;
   const sc = 1 - 0.1 * (1 - Math.cos((TAU * mod(frame, PULSE_FRAMES)) / PULSE_FRAMES)) / 2;
+  const reach = PLUS.arm + 2;
   return (x, y) => {
     const px = (x - H) / sc, py = (y - H) / sc;
-    if (Math.abs(px) > 21 || Math.abs(py) > 21) return null;
-    const g = flat(sdGlyph(glyph, px, py, 5.4) * sc, C.cream);
+    if (Math.abs(px) > reach || Math.abs(py) > reach) return null;
+    const g = flat(sdGlyph(glyph, px, py, PLUS.glyph) * sc, C.cream);
     if (g) return g;
-    const dx = Math.min(sdRoundBox(px, py, 19, 7.5, 3), sdRoundBox(px, py, 7.5, 19, 3)) * sc;
+    const dx = Math.min(sdRoundBox(px, py, PLUS.arm, PLUS.half, PLUS.round), sdRoundBox(px, py, PLUS.half, PLUS.arm, PLUS.round)) * sc;
     return toy(dx, p, false);
   };
 }
