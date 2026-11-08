@@ -15,8 +15,9 @@ t.Operators.r = function(vec, angle){
 
 //by default (angle = 0) all operators point east or [1,0]
 // Display: a belt tile is drawn in two layers (images/tiles/program-tiles.png,
-// tools/art/tiles/program-tiles.mjs): `sheet` is its default belt underlay,
-// which TuringTable.beltSheet swaps for the join its neighbours make
+// tools/art/tiles/program-tiles.mjs): `sheet` is its default belt underlay
+// (the unfed one: a straight belt, or a branch's outgoing belts with no
+// incoming stub), which TuringTable.beltSheet swaps for the join its neighbours make
 // (belt: "line" for single-exit tiles, "branch" for detectors and
 // decrementers), and `symbol` is drawn on top; `symbolFor` overrides the
 // symbol per underlay. Display only: the rules ignore these fields.
@@ -101,7 +102,7 @@ t.Operators.Empty = {
 t.Operators.Detector = {
   //  img : "detector.png",
 	sprite: "detectorMations",
-	sheet: "branch",
+	sheet: "branchBare",
 	belt: "branch",
 	symbol: "detectorSymbol",
 	name: "Detector",
@@ -125,7 +126,7 @@ t.Operators.DetectMagic = {
 	name: "DetectMagic",
 	shortname : "dm",
 	sprite : "magicMation", 
-	sheet : "branch",
+	sheet : "branchBare",
 	belt : "branch",
 	symbol : "magicDetectorSymbol",
     operate : function(angle, step){
@@ -167,7 +168,7 @@ for(var i in t.OperatorUtils.colors){
 	
 	t.OperatorUtils.colors[i].decrementer = {
 		sprite : "decrementerMations"+i,
-		sheet : "branch",
+		sheet : "branchBare",
 		belt : "branch",
 		symbol : "decrementer"+i+"Symbol",
 		//img : "minus"+i+".png",

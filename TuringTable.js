@@ -110,12 +110,14 @@ t.TuringTable = {
 	// described by which of behind / left / right feed it (nothing feeding it
 	// counts as behind): one side alone is a corner, both sides a T, a side
 	// with behind a merge into the straight belt. A branch tile (detectors, -1)
-	// also takes a stub from its far side. The tile's symbol is drawn over that
+	// always shows its two outgoing belts and takes an incoming stub only from
+	// a side that feeds it: behind (W), the far side (E), both, or none (""),
+	// tg-amy. The tile's symbol is drawn over that
 	// underlay (Operators.js; tools/art/tiles/program-tiles.mjs draws both).
 	// Purely cosmetic; the rules are unchanged.
 	LINE_SHEETS : {B: "conveyor", L: "conveyorFromLeft", R: "conveyorFromRight", LR: "conveyorFromBoth",
 		BL: "conveyorJoinLeft", BR: "conveyorJoinRight", BLR: "conveyorJoinBoth"},
-	BRANCH_SHEETS : {W: "branch", E: "branchFromFar", WE: "branchFromBoth"},
+	BRANCH_SHEETS : {"": "branchBare", W: "branch", E: "branchFromFar", WE: "branchFromBoth"},
 	lineSheet : function(behind, left, right){	//underlay of a single-exit tile fed from these sides
 		return this.LINE_SHEETS[(behind ? "B" : "") + (left ? "L" : "") + (right ? "R" : "") || "B"];
 	},
@@ -144,7 +146,7 @@ t.TuringTable = {
 		var behind = this.feeds(x-f[0], y-f[1], x, y);
 		if(op.belt === "branch"){
 			var far = this.feeds(x+f[0], y+f[1], x, y);
-			return this.BRANCH_SHEETS[(behind ? "W" : "") + (far ? "E" : "") || "W"];
+			return this.BRANCH_SHEETS[(behind ? "W" : "") + (far ? "E" : "")];
 		}
 		return this.lineSheet(behind, this.feeds(x+l[0], y+l[1], x, y), this.feeds(x+r[0], y+r[1], x, y));
 	},

@@ -20,6 +20,9 @@
   // underlay for the join (LINE / BRANCH sheets by join key) and a symbol on
   // top, each at the global frame mod its own length (json[sheet].frames).
   var LINE = { B: "conveyor", L: "conveyorFromLeft", R: "conveyorFromRight" };
+  // Branch tiles always show their two outgoing belts; an incoming stub only
+  // from a fed side ("" none, W behind, E far side, WE both; tg-amy).
+  var BRANCH_SHEETS = { "": "branchBare", W: "branch", E: "branchFromFar", WE: "branchFromBoth" };
   var V2_SYMBOL = { stepForward: "stepForwardSymbol", cwrotator: "cwrotatorSymbol", ccwrotator: "ccwrotatorSymbol",
     detector: "detectorSymbol", magicDetector: "magicDetectorSymbol" };
   var BRANCH = { detector: 1, magicDetector: 1 };
@@ -30,7 +33,7 @@
   });
   function v2Layers(tile, key) {
     if (tile === "emptyOperator" || tile === "startTile") return [tile];
-    var under = BRANCH[tile] ? "branch" : LINE[key || "B"];
+    var under = BRANCH[tile] ? BRANCH_SHEETS[key || ""] : LINE[key || "B"];
     var sym = tile === "stepForward" ? { L: "stepForwardSymbolSouth", R: "stepForwardSymbolNorth" }[key] || V2_SYMBOL[tile] : V2_SYMBOL[tile];
     return sym ? [under, sym] : [under];
   }
@@ -50,11 +53,11 @@
   var CELLS = [
     [0, 0, "conveyor", 0], [1, 0, "stepForward", 0], [2, 0, "conveyor", 1, "R"],
     [2, 1, "conveyor", 2, "R"], [1, 1, "ccwrotator", 2], [0, 1, "stepForward", 2],
-    [0, 2, "conveyor", 0], [1, 2, "stepForward", 0], [2, 2, "cwrotator", 0], [3, 2, "incrementerRed", 0], [4, 2, "detector", 0],
+    [0, 2, "conveyor", 0], [1, 2, "stepForward", 0], [2, 2, "cwrotator", 0], [3, 2, "incrementerRed", 0], [4, 2, "detector", 0, "W"],
     [4, 1, "conveyor", 0, "R"], [5, 1, "ccwrotator", 0], [6, 1, "conveyor", 0],
-    [4, 3, "conveyor", 0, "L"], [5, 3, "decrementerBlue", 0],
+    [4, 3, "conveyor", 0, "L"], [5, 3, "decrementerBlue", 0, "W"],
     [5, 2, "conveyor", 0, "R"], [6, 2, "incrementerYellow", 0],
-    [5, 4, "conveyor", 0, "L"], [6, 4, "magicDetector", 0],
+    [5, 4, "conveyor", 0, "L"], [6, 4, "magicDetector", 0, "W"],
     [0, 4, "decrementerGreen", 1], [1, 4, "incrementerPurple", 3, "L"], [2, 4, "decrementerPink", 0], [3, 4, "startTile", 0],
   ];
   var GRID = (function () {

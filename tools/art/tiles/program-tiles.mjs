@@ -261,13 +261,16 @@ function lineBelt(off, inputs) {
   };
 }
 
-/** Branch belt: in from the west, out to the north and the south. The
- *  crossing is covered by the hub. Both halves continue the flow coordinate
- *  from the centre, so chevrons run outwards and stay in phase with straight
- *  belts. inputs: "W" (behind, the usual entry), "E" (the far side: a stub
- *  whose chevrons run west into the hub) or "WE". */
-export const BRANCH_INPUTS = ["W", "E", "WE"];
-function branchBelt(off, inputs = "W") {
+/** Branch belt: out to the north and the south, always; in from a side only
+ *  when that side is fed (tg-amy). The outgoing belt is one full north-south
+ *  belt whose two halves continue the flow coordinate from the centre, so
+ *  chevrons run outwards from under the hub (which covers the centre and any
+ *  crossing) and stay in phase with straight belts. inputs: "" (nothing feeds
+ *  it: the outgoing belts alone), "W" (behind, the usual entry: a stub whose
+ *  chevrons run east into the hub), "E" (the far side: a stub whose chevrons
+ *  run west into the hub) or "WE". */
+export const BRANCH_INPUTS = ["", "W", "E", "WE"];
+function branchBelt(off, inputs = "") {
   const W = inputs.includes("W"), E = inputs.includes("E");
   return (x, y) => {
     const vx = x - H;
@@ -457,7 +460,7 @@ export const LINE_SHEETS = {
   B: "conveyor", L: "conveyorFromLeft", R: "conveyorFromRight", LR: "conveyorFromBoth",
   BL: "conveyorJoinLeft", BR: "conveyorJoinRight", BLR: "conveyorJoinBoth",
 };
-export const BRANCH_SHEETS = { W: "branch", E: "branchFromFar", WE: "branchFromBoth" };
+export const BRANCH_SHEETS = { "": "branchBare", W: "branch", E: "branchFromFar", WE: "branchFromBoth" };
 // The step's arrows keep the side lanes that no arc runs through.
 export const STEP_SYMBOLS = {
   B: "stepForwardSymbol", L: "stepForwardSymbolSouth", BL: "stepForwardSymbolSouth",
@@ -519,13 +522,14 @@ export const SHEETS = sheetList();
 const BY_NAME = Object.fromEntries(SHEETS.map((s) => [s.name, s]));
 
 /** The atlas sheets a tile is drawn with, for a join key (LINE_SHEETS or
- *  BRANCH_SHEETS key; default the plain one): [underlay, symbol or null]. */
+ *  BRANCH_SHEETS key; default the unfed one: "B" for a line, "" for a
+ *  branch): [underlay, symbol or null]. */
 export function tileLayers(tile, key) {
   const t = TILES[tile];
   if (!t) throw new Error(`unknown tile ${tile}`);
   if (t.sheet) return [t.sheet, null];
   const table = t.belt === "line" ? LINE_SHEETS : BRANCH_SHEETS;
-  const k = key ?? (t.belt === "line" ? "B" : "W");
+  const k = key ?? (t.belt === "line" ? "B" : "");
   if (!table[k]) throw new Error(`${tile}: no ${t.belt} join ${k}`);
   return [table[k], t.symbol ? t.symbol(k) : null];
 }
@@ -663,6 +667,19 @@ export const MERGES = {
     [6, 4, "stepForward", 3], [6, 5, "conveyor", 3], [5, 5, "conveyor", 0], [7, 5, "conveyor", 2], [6, 3, "conveyor", 3],
   ],
 };
+// BRANCHES (tg-amy): conditionals in each join, left to right: a detector fed
+// by nothing (outgoing belts only), a magic detector fed from behind, a
+// decrementer fed from its far side, a decrementer fed from both. Their exits
+// carry on as belts (corners or straight).
+export const BRANCHES = {
+  cols: 11, rows: 3,
+  cells: [
+    [0, 1, "detector", 0], [0, 0, "conveyor", 0], [0, 2, "conveyor", 0],
+    [2, 1, "conveyor", 0], [3, 1, "magicDetector", 0], [3, 0, "conveyor", 0], [3, 2, "conveyor", 0],
+    [5, 1, "decrementerRed", 0], [6, 1, "conveyor", 2], [5, 0, "conveyor", 2], [5, 2, "conveyor", 2],
+    [8, 1, "conveyor", 0], [9, 1, "decrementerBlue", 0], [10, 1, "conveyor", 2], [9, 0, "conveyor", 3], [9, 2, "conveyor", 1],
+  ],
+};
 const DIRS = [[1, 0], [0, 1], [-1, 0], [0, -1]]; // quarter turns clockwise: E, S, W, N
 function exitsOf(c) {
   const t = c && TILES[c[2]];
@@ -679,7 +696,7 @@ export function joinKey(board, c) {
     return exitsOf(from).some((e) => e[0] === -d[0] && e[1] === -d[1]);
   };
   const f = DIRS[c[3]], b = [-f[0], -f[1]], l = DIRS[(c[3] + 3) % 4], r = DIRS[(c[3] + 1) % 4];
-  if (t.belt === "branch") return (feeds(b) ? "W" : "") + (feeds(f) ? "E" : "") || "W";
+  if (t.belt === "branch") return (feeds(b) ? "W" : "") + (feeds(f) ? "E" : "");
   return (feeds(b) ? "B" : "") + (feeds(l) ? "L" : "") + (feeds(r) ? "R" : "") || "B";
 }
 function mockBoard(board, globalFrame, n, bg) {
@@ -727,12 +744,13 @@ function contactSheet(n) {
 
 /** Every join of every belt tile as the game composes it (underlay + symbol),
  *  at `zoom`, frame `frame`, with the 1x tile beside each. */
-const KEY_LABEL = { B: "BEHIND", L: "LEFT", R: "RIGHT", LR: "LEFT+RIGHT (T)", BL: "BEHIND+LEFT", BR: "BEHIND+RIGHT", BLR: "ALL THREE", W: "BEHIND", E: "FAR SIDE", WE: "BEHIND+FAR" };
-function variantSheet(n, zoom = 3, frame = 7) {
+const KEY_LABEL = { B: "BEHIND", L: "LEFT", R: "RIGHT", LR: "LEFT+RIGHT (T)", BL: "BEHIND+LEFT", BR: "BEHIND+RIGHT", BLR: "ALL THREE", "": "NOT FED", W: "BEHIND", E: "FAR SIDE", WE: "BEHIND+FAR" };
+function variantSheet(n, zoom = 3, frame = 7, belt = null) {
   const light = parseColour("#efe9dc");
-  const tiles = Object.keys(TILES).filter((t) => TILES[t].belt);
+  const tiles = Object.keys(TILES).filter((t) => TILES[t].belt && (!belt || TILES[t].belt === belt));
   const cell = zoom * n + 14, rowH = zoom * n + 30, left = 150;
-  const sheet = blank(left + LINE_INPUTS.length * cell + 10, 30 + tiles.length * rowH, light);
+  const cols = belt === "branch" ? BRANCH_INPUTS.length : LINE_INPUTS.length;
+  const sheet = blank(left + cols * cell + 10, 30 + tiles.length * rowH, light);
   label(sheet, `EVERY BELT JOIN PER TILE, ${zoom}X, FRAME ${frame} (TILE POINTS EAST; LEFT = NORTH)`, 10, 8);
   tiles.forEach((t, j) => {
     const y = 26 + j * rowH;
@@ -864,6 +882,24 @@ function selfCheck(n) {
       if (exact ? d.max > 0 : d.max > 64 || d.mean > 6) problems.push(`${name} frame ${f}: ${side} edge differs from the conveyor (max ${d.max}, mean ${d.mean.toFixed(2)})`);
     }
   }
+  // A branch's unfed sides show bare floor (tg-amy): no stub without a feeder.
+  // Checked over the whole unfed half, west or east of the outgoing belt.
+  const floor = drawSheet("emptyOperator", 0, n);
+  for (const [k, name] of Object.entries(BRANCH_SHEETS))
+    for (const f of [0, 7])
+      for (const side of ["W", "E"]) {
+        if (k.includes(side)) continue;
+        const img = drawSheet(name, f, n);
+        let diff = 0;
+        for (let y = 0; y < n; y += 1)
+          for (let x = 0; x < n; x += 1) {
+            const fx = (x + 0.5) * (D / n);
+            if (side === "W" ? fx >= H - BELT_HALF - 1.5 : fx <= H + BELT_HALF + 1.5) continue;
+            const i = (y * n + x) * 4;
+            for (let c = 0; c < 4; c += 1) diff = Math.max(diff, Math.abs(img.data[i + c] - floor.data[i + c]));
+          }
+        if (diff > 0) problems.push(`${name} frame ${f}: unfed ${side} side is not bare floor (max diff ${diff})`);
+      }
   // Symbols leave the belt band of every opening of the joins they are drawn
   // with clear (an anti-aliased outline sliver of alpha <= 16 is tolerated),
   // so the underlay's seams show.
@@ -939,7 +975,7 @@ function main(argv) {
       process.exit(1);
     }
     console.log(`program-tiles --check OK (${atlas.width}x${atlas.height}, ${pixelSha256(atlas).slice(0, 12)}; timings match ${SCRIPT_JS}; ` +
-      `${seam.length} belt openings, worst curved seam ${worst[0]} ${worst[1]} max ${worst[2]}; step arrows clear of side arcs in ${collisions.length} joins)`);
+      `${seam.length} belt openings, unfed branch sides bare, worst curved seam ${worst[0]} ${worst[1]} max ${worst[2]}; step arrows clear of side arcs in ${collisions.length} joins)`);
   } else if (n === DEFAULT_SIZE || argv.includes("--write")) {
     fs.mkdirSync(path.dirname(pngPath), { recursive: true });
     fs.writeFileSync(pngPath, encodePng(atlas));
@@ -956,7 +992,10 @@ function main(argv) {
     fs.writeFileSync(path.join(dir, `${tag}-seam.png`), encodePng(seamSheet(n)));
     fs.writeFileSync(path.join(dir, `${tag}-merges.png`), encodePng(seamSheet(n, MERGES, "T, MERGES, SIDE-FED STEP, TURN AND COUNTER")));
     fs.writeFileSync(path.join(dir, `${tag}-variants.png`), encodePng(variantSheet(n)));
-    console.log(`review sheets in ${dir}: ${tag}.png (atlas), ${tag}-seam.png, ${tag}-merges.png, ${tag}-variants.png`);
+    fs.writeFileSync(path.join(dir, `${tag}-branches.png`), encodePng(seamSheet(n, BRANCHES, "BRANCHES: NOT FED, BEHIND, FAR SIDE, BOTH")));
+    fs.writeFileSync(path.join(dir, `${tag}-branch-variants.png`), encodePng(variantSheet(n, 3, 7, "branch")));
+    console.log(`review sheets in ${dir}: ${tag}.png (atlas), ${tag}-seam.png, ${tag}-merges.png, ${tag}-variants.png, ` +
+      `${tag}-branches.png, ${tag}-branch-variants.png`);
   }
 }
 

@@ -121,8 +121,9 @@
 		rr(ctx, x - 1.5, y - 1.5, w + 3, h + 3, 5); ctx.stroke();
 		ctx.restore();
 	}
-	// `sheet`: the belt underlay of a join (TuringTable.lineSheet); the tile's
-	// symbol is drawn over it
+	// `sheet`: the belt underlay of a join (TuringTable.lineSheet or
+	// BRANCH_SHEETS; default op.sheet, the unfed one); the tile's symbol is
+	// drawn over it
 	function drawTile(ctx, op, angle, cx, cy, sheet) {
 		t.UI.drawTile(ctx, op, angle, cx, cy, P, undefined, sheet);
 	}
@@ -381,7 +382,9 @@
 				var cont = P + 28 + sideW, tx = px + (pw - cont) / 2 + P / 2;
 				var sx = tx + P / 2 + 28 + sideW / 2;
 				drawBoard(ctx, tx - P / 2, cy - P / 2, P, P);
-				drawTile(ctx, op, 0, tx, cy);
+				// the marker comes in from behind, so the tile shows that incoming
+				// stub (TuringTable.BRANCH_SHEETS; unfed, a branch has none)
+				drawTile(ctx, op, 0, tx, cy, t.TuringTable.BRANCH_SHEETS.W);
 				var out = yes ? [0, -1] : [0, 1];	// at angle 0 the "yes" exit is north
 				var lit = still || (u > 1.6 && u < 3.1);
 				drawExit(ctx, tx, cy - P / 2 - 14, [0, -1], lit && yes);

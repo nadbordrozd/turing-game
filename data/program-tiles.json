@@ -62,7 +62,7 @@
     "h": 54,
     "frames": 20
   },
-  "branch": {
+  "branchBare": {
     "sx": 0,
     "sy": 378,
     "tilew": 54,
@@ -71,7 +71,7 @@
     "h": 54,
     "frames": 20
   },
-  "branchFromFar": {
+  "branch": {
     "sx": 0,
     "sy": 432,
     "tilew": 54,
@@ -80,7 +80,7 @@
     "h": 54,
     "frames": 20
   },
-  "branchFromBoth": {
+  "branchFromFar": {
     "sx": 0,
     "sy": 486,
     "tilew": 54,
@@ -89,9 +89,18 @@
     "h": 54,
     "frames": 20
   },
-  "stepForwardSymbol": {
+  "branchFromBoth": {
     "sx": 0,
     "sy": 540,
+    "tilew": 54,
+    "tileh": 54,
+    "w": 1080,
+    "h": 54,
+    "frames": 20
+  },
+  "stepForwardSymbol": {
+    "sx": 0,
+    "sy": 594,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
@@ -100,7 +109,7 @@
   },
   "stepForwardSymbolNorth": {
     "sx": 0,
-    "sy": 648,
+    "sy": 702,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
@@ -109,7 +118,7 @@
   },
   "stepForwardSymbolSouth": {
     "sx": 0,
-    "sy": 756,
+    "sy": 810,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
@@ -118,7 +127,7 @@
   },
   "stepForwardSymbolInline": {
     "sx": 0,
-    "sy": 864,
+    "sy": 918,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
@@ -127,7 +136,7 @@
   },
   "cwrotatorSymbol": {
     "sx": 0,
-    "sy": 972,
+    "sy": 1026,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
@@ -136,7 +145,7 @@
   },
   "ccwrotatorSymbol": {
     "sx": 0,
-    "sy": 1080,
+    "sy": 1134,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
@@ -145,7 +154,7 @@
   },
   "incrementerRedSymbol": {
     "sx": 0,
-    "sy": 1188,
+    "sy": 1242,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
@@ -154,7 +163,7 @@
   },
   "incrementerBlueSymbol": {
     "sx": 0,
-    "sy": 1296,
+    "sy": 1350,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
@@ -163,7 +172,7 @@
   },
   "incrementerGreenSymbol": {
     "sx": 0,
-    "sy": 1404,
+    "sy": 1458,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
@@ -172,7 +181,7 @@
   },
   "incrementerPurpleSymbol": {
     "sx": 0,
-    "sy": 1512,
+    "sy": 1566,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
@@ -181,7 +190,7 @@
   },
   "incrementerYellowSymbol": {
     "sx": 0,
-    "sy": 1620,
+    "sy": 1674,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
@@ -190,7 +199,7 @@
   },
   "incrementerPinkSymbol": {
     "sx": 0,
-    "sy": 1728,
+    "sy": 1782,
     "tilew": 54,
     "tileh": 54,
     "w": 1620,
@@ -199,7 +208,7 @@
   },
   "detectorSymbol": {
     "sx": 0,
-    "sy": 1836,
+    "sy": 1890,
     "tilew": 54,
     "tileh": 54,
     "w": 54,
@@ -208,7 +217,7 @@
   },
   "magicDetectorSymbol": {
     "sx": 54,
-    "sy": 1836,
+    "sy": 1890,
     "tilew": 54,
     "tileh": 54,
     "w": 54,
@@ -217,7 +226,7 @@
   },
   "decrementerRedSymbol": {
     "sx": 108,
-    "sy": 1836,
+    "sy": 1890,
     "tilew": 54,
     "tileh": 54,
     "w": 54,
@@ -226,7 +235,7 @@
   },
   "decrementerBlueSymbol": {
     "sx": 162,
-    "sy": 1836,
+    "sy": 1890,
     "tilew": 54,
     "tileh": 54,
     "w": 54,
@@ -235,7 +244,7 @@
   },
   "decrementerGreenSymbol": {
     "sx": 216,
-    "sy": 1836,
+    "sy": 1890,
     "tilew": 54,
     "tileh": 54,
     "w": 54,
@@ -244,7 +253,7 @@
   },
   "decrementerPurpleSymbol": {
     "sx": 270,
-    "sy": 1836,
+    "sy": 1890,
     "tilew": 54,
     "tileh": 54,
     "w": 54,
@@ -253,7 +262,7 @@
   },
   "decrementerYellowSymbol": {
     "sx": 324,
-    "sy": 1836,
+    "sy": 1890,
     "tilew": 54,
     "tileh": 54,
     "w": 54,
@@ -262,7 +271,7 @@
   },
   "decrementerPinkSymbol": {
     "sx": 378,
-    "sy": 1836,
+    "sy": 1890,
     "tilew": 54,
     "tileh": 54,
     "w": 54,
@@ -271,7 +280,7 @@
   },
   "emptyOperator": {
     "sx": 432,
-    "sy": 1836,
+    "sy": 1890,
     "tilew": 54,
     "tileh": 54,
     "w": 54,
@@ -280,7 +289,7 @@
   },
   "startTile": {
     "sx": 486,
-    "sy": 1836,
+    "sy": 1890,
     "tilew": 54,
     "tileh": 54,
     "w": 54,

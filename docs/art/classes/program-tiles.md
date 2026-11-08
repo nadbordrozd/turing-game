@@ -24,7 +24,7 @@ each operator `sheet` (its default underlay), `belt` (`"line"` or `"branch"`),
 
 Belt underlays. Keys name the fed inputs with the tile pointing east:
 **B** behind (west), **L** left (north), **R** right (south); branch tiles
-**W** behind, **E** far side.
+**W** behind, **E** far side, and the empty key when neither feeds them.
 
 | Sheet name | Key | Frames | Animation | What |
 | --- | --- | ---: | --- | --- |
@@ -35,7 +35,8 @@ Belt underlays. Keys name the fed inputs with the tile pointing east:
 | `conveyorJoinLeft` | BL | 20 | `conveyorMations` | straight belt with the left arc merging into it |
 | `conveyorJoinRight` | BR | 20 | `conveyorMations` | straight belt with the right arc merging into it |
 | `conveyorJoinBoth` | BLR | 20 | `conveyorMations` | straight belt with both arcs merging |
-| `branch` | W | 20 | `detectorMations` | half belt in from the west, full belt north–south running outwards |
+| `branchBare` | (none) | 20 | `detectorMations` | the outgoing belts alone: a full belt north–south running outwards from under the hub, no incoming stub (nothing feeds the tile; also the default) |
+| `branch` | W | 20 | `detectorMations` | the same plus a half belt in from the west (behind) |
 | `branchFromFar` | E | 20 | `detectorMations` | a half belt in from the east (far side) instead |
 | `branchFromBoth` | WE | 20 | `detectorMations` | both half belts |
 
@@ -120,11 +121,16 @@ shows counters (the cipher locks) should use the same pairs.
   at 54 px, 6 CSS px on a 375 px phone) clear of the arm's dark rim; 5.5
   with glyph 4.3 was tried and the square, triangle and heart touched the
   rim. The pulse is unchanged (scale 1 → 0.9 → 1).
-- **Branches** (detector, magic detector, decrementers): a half belt in from
-  the west, a full belt north–south with chevrons running outwards, and a hub
-  disc (radius 13.3 + outline) hiding the crossing. Icons sit in the four
-  18×18 corners: the north pair marks the branch taken when the condition
-  holds, the south pair the other.
+- **Branches** (detector, magic detector, decrementers): a full belt
+  north–south with chevrons running outwards from the centre, always, and a
+  hub disc (radius 13.3 + outline) over the centre. Since tg-amy the incoming
+  belt is not part of the tile: a half belt in from the west (behind) or the
+  east (far side) appears only when that side feeds the tile, and with
+  neither the outgoing belts stand alone (`branchBare`). Both outgoing halves
+  start at the centre line under the hub, so they look the same with or
+  without a stub, and an unfed side is plain floor (`--check` proves it).
+  Icons sit in the four 18×18 corners: the north pair marks the branch taken
+  when the condition holds, the south pair the other.
 - **Floor:** `#a3d9b1`, 1 px rim `#86c49a`, four 2×2 corner studs `#93cea5`.
 - Every symbol has a 1 unit `#2a2335` outline; larger symbols also have a
   1 unit dark inner rim.
@@ -153,19 +159,28 @@ underlay from the neighbours. For every single-exit tile (GOTO, step,
 rotators, incrementers) it collects which of behind, left and right feed it
 (none counts as behind) and looks the set up in `TuringTable.LINE_SHEETS`;
 for branch tiles (detectors, decrementers) it checks behind and the far side
-(`BRANCH_SHEETS`). Branch tiles feed their two side exits; every other tile
-feeds forward; the start feeds the first cell of the middle row.
+(`BRANCH_SHEETS`): each one that feeds the tile adds its incoming stub, and
+with neither the tile shows only its outgoing belts (none does *not* count
+as behind here, unlike single-exit tiles). A tile pointing into a branch's
+outgoing side gets no stub: only behind and the far side have one. Branch
+tiles feed their two side exits; every other tile feeds forward; the start
+feeds the first cell of the middle row. `Operators.js` gives branch tiles the
+unfed `branchBare` as `sheet`, so the tray and the tile under the finger show
+no stub either.
 `refreshBeltJoins` runs after every board change (load, drop, rotate, clear)
 and sets each tile's underlay and symbol (`ProgTile.setBelt`).
 
 While a tile is dragged or hovered over a cell, `TuringTable.previewJoins`
 gives the underlays the drop would produce: the ghost shows its own join, and
 a neighbouring belt tile that would change is drawn that way under it. The
-explainer's belt loop uses `TuringTable.lineSheet`. During a run the
+explainer's belt loop uses `TuringTable.lineSheet`, and its branch demos
+`BRANCH_SHEETS.W` (the marker comes in from behind). During a run the
 program-counter marker follows the arc it actually travels
 (`TuringTable.bendsAt`, `flowPath`, `Q.Spark.follow`): entering through a
 side opening it runs along that side's arc and rests at its middle; entering
 from behind it goes straight to the centre, even where side arcs merge in.
+At a branch tile the marker always moves straight, centre to edge, so it
+does not depend on which stubs are drawn.
 All of this is display only; the rules, step counts and scores are unchanged.
 
 ## Readability
@@ -185,14 +200,17 @@ node tools/art/tiles/program-tiles.mjs --size 108 --review /tmp/x   # other size
 `--check` also reads `script.js` and fails if any tile's animation there has
 a different frame count or rate than the atlas. `--review` writes the atlas
 contact sheet, the board mock (`-seam`), a merges board (`-merges`: T,
-merges, side-fed step, turn and counter, a far-side branch feed) and every
-join of every tile at 3× (`-variants`).
+merges, side-fed step, turn and counter, a far-side branch feed), a branches
+board (`-branches`: conditionals fed by nothing, from behind, from the far
+side and from both) and every join of every tile at 3× (`-variants`; branch
+tiles alone in `-branch-variants`).
 
 ## Acceptance
 
 - `--check` passes: timings match `script.js`, every belt opening of every
   underlay matches the plain conveyor's (exactly for straight belts, within
   anti-aliasing for arcs and branches), loops close, symbols leave the
-  openings their joins use clear, and the step's arrows never touch an arc.
+  openings their joins use clear, the step's arrows never touch an arc, and
+  a branch's unfed sides are bare floor.
 - On the board mock, belts join with no seam, corners and branches follow the
   flow, and every symbol reads at 1×.
