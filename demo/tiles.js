@@ -93,9 +93,10 @@
 
   /** One frame as Quintus draws it: centre, rotate, scale, drawImage at -size/2. */
   function drawTile(ctx, img, sheet, frame, cx, cy, s, quarter) {
-    var cols = sheet.w / sheet.tilew;
-    var fx = (frame % cols) * sheet.tilew + (sheet.sx || 0);
-    var fy = Math.floor(frame / cols) * sheet.tileh + (sheet.sy || 0);
+    var sp = sheet.spacing || 0; // px between frame rects (the atlas gutter)
+    var cols = sheet.cols || Math.floor((sheet.w + sp) / (sheet.tilew + sp));
+    var fx = (frame % cols) * (sheet.tilew + sp) + (sheet.sx || 0);
+    var fy = Math.floor(frame / cols) * (sheet.tileh + sp) + (sheet.sy || 0);
     ctx.save();
     ctx.translate(cx, cy);
     if (quarter) ctx.rotate((quarter * Math.PI) / 2);

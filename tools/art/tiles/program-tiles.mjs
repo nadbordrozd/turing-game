@@ -13,7 +13,8 @@
 //                                                        <tag>-merges.png (board mocks), <tag>-variants.png (every join, 3x)
 //
 // Belt tiles are two atlas layers (see TILES below): a belt underlay chosen by
-// the tile's join, and the tile's symbol on transparent ground.
+// the tile's join, and the tile's symbol on transparent ground. Atlas frames
+// are spaced apart, each with an edge-extruded gutter (see GUTTER).
 //
 // Shapes are signed-distance functions in design units (54 per tile side).
 // Each pixel is the average of an 8x8 grid of samples wherever its corners and
@@ -586,7 +587,19 @@ export function drawTile(tile, frame, n = DEFAULT_SIZE, key) {
   return out;
 }
 
+// Every frame sits in its own cell with a GUTTER px border that repeats the
+// frame's edge pixels (edge extrusion). The game draws tiles at non-integer
+// scales with smoothing on, and the browser's bilinear filter reads up to a
+// texel past a frame's source rect: with frames packed edge to edge it pulled
+// in the neighbouring animation frame (or the transparent atlas margin) and
+// drew a faint line at tile edges that changed with the animation (tg-oyv).
+// Layout entries keep the exact frame rect (sx, sy, tilew, tileh) and add the
+// columns and the spacing between frame rects (2 * GUTTER); Quintus'
+// SpriteSheet steps by tilew + spacing (lib/quintus_sprites.js).
+export const GUTTER = 2;
+
 export function layoutAtlas(n) {
+  const pitch = n + 2 * GUTTER, spacing = 2 * GUTTER;
   const layout = {};
   let row = 0;
   let smallX = 0, smallRow = -1;
@@ -594,15 +607,32 @@ export function layoutAtlas(n) {
     if (sheet.frames === 1) {
       // single frames share one row
       if (smallRow < 0 || smallX >= COLS) { smallRow = row; row += 1; smallX = 0; }
-      layout[sheet.name] = { sx: smallX * n, sy: smallRow * n, tilew: n, tileh: n, w: n, h: n, frames: 1 };
+      layout[sheet.name] = { sx: smallX * pitch + GUTTER, sy: smallRow * pitch + GUTTER, tilew: n, tileh: n, w: n, h: n, cols: 1, spacing, frames: 1 };
       smallX += 1;
       continue;
     }
-    const rows = Math.ceil(sheet.frames / COLS);
-    layout[sheet.name] = { sx: 0, sy: row * n, tilew: n, tileh: n, w: Math.min(sheet.frames, COLS) * n, h: rows * n, frames: sheet.frames };
+    const cols = Math.min(sheet.frames, COLS), rows = Math.ceil(sheet.frames / COLS);
+    layout[sheet.name] = { sx: GUTTER, sy: row * pitch + GUTTER, tilew: n, tileh: n, w: cols * pitch - spacing, h: rows * pitch - spacing, cols, spacing, frames: sheet.frames };
     row += rows;
   }
-  return { layout, width: COLS * n, height: row * n };
+  return { layout, width: COLS * pitch, height: row * pitch };
+}
+
+/** Frame `f`'s source rect origin, computed as Quintus' SpriteSheet.fx/fy do. */
+export function frameOrigin(L, f) {
+  const sp = L.spacing || 0;
+  const cols = L.cols || Math.floor((L.w + sp) / (L.tilew + sp));
+  return [(f % cols) * (L.tilew + sp) + L.sx, Math.floor(f / cols) * (L.tileh + sp) + L.sy];
+}
+
+/** Copies a frame into dst at (left, top) and extrudes its edge pixels g px outwards. */
+function putExtruded(dst, src, left, top, g) {
+  for (let y = -g; y < src.height + g; y += 1)
+    for (let x = -g; x < src.width + g; x += 1) {
+      const sx = Math.min(src.width - 1, Math.max(0, x)), sy = Math.min(src.height - 1, Math.max(0, y));
+      const s = (sy * src.width + sx) * 4;
+      dst.data.set(src.data.subarray(s, s + 4), ((top + y) * dst.width + left + x) * 4);
+    }
 }
 
 export function buildAtlas(n = DEFAULT_SIZE) {
@@ -610,11 +640,43 @@ export function buildAtlas(n = DEFAULT_SIZE) {
   const atlas = blank(width, height);
   for (const sheet of SHEETS) {
     const L = layout[sheet.name];
-    const cols = L.w / n;
-    for (let f = 0; f < sheet.frames; f += 1)
-      composite(atlas, drawSheet(sheet.name, f, n), L.sx + (f % cols) * n, L.sy + Math.floor(f / cols) * n);
+    for (let f = 0; f < sheet.frames; f += 1) putExtruded(atlas, drawSheet(sheet.name, f, n), ...frameOrigin(L, f), GUTTER);
   }
-  return { atlas, json: JSON.stringify(layout, null, 2) + "\n" };
+  return { atlas, layout, json: JSON.stringify(layout, null, 2) + "\n" };
+}
+
+/** The atlas contract (tg-oyv): every frame read at its layout rect with
+ *  Quintus' maths is the rendered frame, and the GUTTER px around the rect
+ *  repeat its edge pixels, so filtering past the rect never reaches another
+ *  frame or the transparent margin. */
+export function atlasProblems(atlas, layout, n = DEFAULT_SIZE) {
+  const problems = [];
+  const px = (img, x, y) => { const i = (y * img.width + x) * 4; return img.data.subarray(i, i + 4); };
+  const same = (a, b) => a[0] === b[0] && a[1] === b[1] && a[2] === b[2] && a[3] === b[3];
+  for (const sheet of SHEETS) {
+    const L = layout[sheet.name];
+    if (!L) { problems.push(`${sheet.name}: missing from the layout`); continue; }
+    if (L.tilew !== n || L.tileh !== n) problems.push(`${sheet.name}: frame ${L.tilew}x${L.tileh}, want ${n}x${n}`);
+    if ((L.spacing || 0) < 2 * GUTTER) problems.push(`${sheet.name}: spacing ${L.spacing || 0} leaves no ${GUTTER} px gutter`);
+    for (let f = 0; f < sheet.frames; f += 1) {
+      const frame = drawSheet(sheet.name, f, n), [ox, oy] = frameOrigin(L, f);
+      if (ox < GUTTER || oy < GUTTER || ox + n + GUTTER > atlas.width || oy + n + GUTTER > atlas.height) {
+        problems.push(`${sheet.name} frame ${f}: rect at ${ox},${oy} has no room for its gutter`);
+        continue;
+      }
+      let frameBad = 0, gutterBad = 0;
+      for (let y = -GUTTER; y < n + GUTTER; y += 1)
+        for (let x = -GUTTER; x < n + GUTTER; x += 1) {
+          const want = px(frame, Math.min(n - 1, Math.max(0, x)), Math.min(n - 1, Math.max(0, y)));
+          if (same(px(atlas, ox + x, oy + y), want)) continue;
+          if (x >= 0 && y >= 0 && x < n && y < n) frameBad += 1;
+          else gutterBad += 1;
+        }
+      if (frameBad) problems.push(`${sheet.name} frame ${f}: ${frameBad} px at its rect differ from the frame`);
+      if (gutterBad) problems.push(`${sheet.name} frame ${f}: ${gutterBad} gutter px do not repeat the frame's edge`);
+    }
+  }
+  return problems;
 }
 
 // ---------------------------------------------------------------- review sheets
@@ -962,19 +1024,31 @@ function main(argv) {
     process.exit(1);
   }
   const worst = seam.reduce((w, s) => (s[2] > w[2] ? s : w), ["", "", -1, 0]);
-  const { atlas, json } = buildAtlas(n);
+  const { atlas, layout, json } = buildAtlas(n);
+  const atlasBad = atlasProblems(atlas, layout, n);
+  if (atlasBad.length) {
+    console.error(atlasBad.slice(0, 20).join("\n"));
+    process.exit(1);
+  }
   const pngPath = path.join(ROOT, PNG_OUT);
   const jsonPath = path.join(ROOT, JSON_OUT);
   if (check) {
     const bad = [];
     if (!fs.existsSync(pngPath)) bad.push(`${PNG_OUT} missing`);
-    else if (pixelSha256(decodePng(fs.readFileSync(pngPath))) !== pixelSha256(atlas)) bad.push(`${PNG_OUT} differs from the generator`);
+    else {
+      const shipped = decodePng(fs.readFileSync(pngPath));
+      if (pixelSha256(shipped) !== pixelSha256(atlas)) bad.push(`${PNG_OUT} differs from the generator`);
+      // the shipped pair itself: every frame at its JSON rect, its edges extruded into the gutter
+      let shippedLayout = null;
+      try { shippedLayout = JSON.parse(fs.readFileSync(jsonPath, "utf8")); } catch {}
+      if (shippedLayout) bad.push(...atlasProblems(shipped, shippedLayout, n).slice(0, 10).map((p) => `${PNG_OUT}: ${p}`));
+    }
     if (!fs.existsSync(jsonPath) || fs.readFileSync(jsonPath, "utf8") !== json) bad.push(`${JSON_OUT} differs from the generator`);
     if (bad.length) {
       console.error(`program-tiles --check FAILED:\n  ${bad.join("\n  ")}\nRegenerate with: node tools/art/tiles/program-tiles.mjs`);
       process.exit(1);
     }
-    console.log(`program-tiles --check OK (${atlas.width}x${atlas.height}, ${pixelSha256(atlas).slice(0, 12)}; timings match ${SCRIPT_JS}; ` +
+    console.log(`program-tiles --check OK (${atlas.width}x${atlas.height}, ${pixelSha256(atlas).slice(0, 12)}; timings match ${SCRIPT_JS}; frame edges extruded into a ${GUTTER} px gutter; ` +
       `${seam.length} belt openings, unfed branch sides bare, worst curved seam ${worst[0]} ${worst[1]} max ${worst[2]}; step arrows clear of side arcs in ${collisions.length} joins)`);
   } else if (n === DEFAULT_SIZE || argv.includes("--write")) {
     fs.mkdirSync(path.dirname(pngPath), { recursive: true });

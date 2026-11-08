@@ -82,6 +82,15 @@ shows counters (the cipher locks) should use the same pairs.
 - Frames are 54×54 px (`--size`, default 54), drawn by the game at scale 1 on
   a 54 px board pitch with no gaps (contract with the UI shell). Shapes are
   defined in design units, 54 per tile side, so other sizes scale cleanly.
+- **Atlas gutter (tg-oyv):** frames are not packed edge to edge. Each frame
+  has a 2 px border that repeats its edge pixels, and layout entries record
+  `cols` and `spacing` (4 px between frame rects; Quintus' `SpriteSheet`
+  steps by `tilew + spacing`). The game scales tiles by non-integer factors
+  with smoothing on, and bilinear filtering reads past a frame's rect: packed
+  edge to edge, that pulled in the next animation frame and drew a faint line
+  at tile edges that changed with the animation. The game also snaps each
+  tile to whole device pixels (`t.UI.drawLayers`), so neighbouring tiles meet
+  without a half-covered pixel letting the board show through the seam.
 - Tiles point east at angle 0; the game rotates them in 90° steps. Everything
   is symmetric about the centre line y = 27 and lit from straight above.
 - **Rendering:** every shape is a signed-distance function. A pixel whose
@@ -210,7 +219,9 @@ tiles alone in `-branch-variants`).
 - `--check` passes: timings match `script.js`, every belt opening of every
   underlay matches the plain conveyor's (exactly for straight belts, within
   anti-aliasing for arcs and branches), loops close, symbols leave the
-  openings their joins use clear, the step's arrows never touch an arc, and
-  a branch's unfed sides are bare floor.
+  openings their joins use clear, the step's arrows never touch an arc,
+  a branch's unfed sides are bare floor, and in the shipped PNG every frame
+  sits at its JSON rect (Quintus' frame maths) with its edge pixels
+  repeated in the 2 px gutter around it.
 - On the board mock, belts join with no seam, corners and branches follow the
   flow, and every symbol reads at 1×.

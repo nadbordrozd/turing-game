@@ -13,11 +13,33 @@ TuringScenes.add(function(Q) {
 
 	// Frames in an atlas sheet (data/program-tiles.json records them).
 	function sheetFrames(s) { return s.frames || s.cols * Math.max(1, Math.round(s.h / s.tileh)); }
+	// Stretches the current transform by a fraction of a device pixel so the
+	// w x h rect at (x, y) lands on whole device pixels (tg-oyv). The board is
+	// drawn at non-integer scales (window fit x devicePixelRatio); a tile edge
+	// that falls inside a device pixel is anti-aliased, and two half-covered
+	// edges let the board show through as a faint line along the seam. Only
+	// quarter-turn transforms are snapped; anything else is left as it is.
+	function snapToPixels(ctx, x, y, w, h) {
+		if(!ctx.getTransform || !window.DOMMatrix) return;
+		var m = ctx.getTransform(), e = 1e-6;
+		if(!((Math.abs(m.b) < e && Math.abs(m.c) < e) || (Math.abs(m.a) < e && Math.abs(m.d) < e))) return;
+		var p = m.transformPoint(new DOMPoint(x, y)), q = m.transformPoint(new DOMPoint(x + w, y + h));
+		var x0 = Math.min(p.x, q.x), x1 = Math.max(p.x, q.x), y0 = Math.min(p.y, q.y), y1 = Math.max(p.y, q.y);
+		var X0 = Math.round(x0), X1 = Math.round(x1), Y0 = Math.round(y0), Y1 = Math.round(y1);
+		if(X1 <= X0 || Y1 <= Y0) return;
+		var kx = (X1 - X0) / (x1 - x0), ky = (Y1 - Y0) / (y1 - y0);
+		ctx.setTransform(new DOMMatrix([kx, 0, 0, ky, X0 - kx * x0, Y0 - ky * y0]).multiply(m));
+	}
+
 	// Draws a tile's layers at global animation frame `frame`: the belt
-	// underlay, then the symbol (if any), each at frame mod its own length.
+	// underlay, then the symbol (if any), each at frame mod its own length,
+	// both on the same whole-device-pixel rect.
 	t.UI.drawLayers = function(ctx, under, symbol, frame, x, y) {
+		ctx.save();
+		snapToPixels(ctx, Math.floor(x), Math.floor(y), under.tilew, under.tileh);
 		under.draw(ctx, x, y, frame % sheetFrames(under));
 		if(symbol) symbol.draw(ctx, x, y, frame % sheetFrames(symbol));
+		ctx.restore();
 	};
 
 	// Draw an operator's tile centred on (cx, cy), `size` logical px wide;
