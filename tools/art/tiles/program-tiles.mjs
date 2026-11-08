@@ -223,7 +223,12 @@ const straightBelt = (off) => (x, y) => beltAt(x, y - H, off);
 
 /** Corner belt: enters through the north edge (the tile's left side when it
  *  points east) and leaves through the east edge, a quarter circle of radius
- *  D/2 about the north-east corner. `fromRight` mirrors it (enters from the south). */
+ *  D/2 about the north-east corner. `fromRight` mirrors it (enters from the south).
+ *  The arc's centre line is (pi/2)(D/2) = 42.4 units long, so it carries
+ *  CORNER_PERIODS = 3 chevrons (40.5 units) instead of a straight tile's four:
+ *  chevrons keep their spacing and speed through the bend (within 5%), and
+ *  both openings still sit on a whole period, in phase with straight belts. */
+export const CORNER_PERIODS = 3;
 function cornerBelt(off, fromRight) {
   const ARC = Math.PI / 2;
   return (x, y) => {
@@ -232,7 +237,7 @@ function cornerBelt(off, fromRight) {
     const v = r - H;
     if (v <= -BELT_HALF || v >= BELT_HALF) return null;
     const phi = Math.atan2(yy, dx); // pi at the entry, pi/2 at the exit
-    const u = ((Math.PI - phi) / ARC) * D;
+    const u = ((Math.PI - phi) / ARC) * CORNER_PERIODS * PERIOD;
     return beltAt(u, v, off);
   };
 }

@@ -251,11 +251,18 @@
 			if(cell && op) {
 				var cc = tt.cellCenter(cell.x, cell.y);
 				var angle = d ? d.angle : (tt.table[cell.x][cell.y].what === op ? tt.table[cell.x][cell.y].angle - 1 : 0);
+				// belt joins as they would be after the drop: the ghost itself and
+				// any neighbouring belt that would bend or straighten
+				var joins = tt.previewJoins(cell.x, cell.y, { what: op, angle: ((angle % 4) + 4) % 4 });
+				for(var j = 1; j < joins.length; j++) {
+					var nc = tt.cellCenter(joins[j].x, joins[j].y);
+					t.UI.drawTile(ctx, joins[j].what, joins[j].angle, nc.x, nc.y, P, 1, joins[j].sheet);
+				}
 				ctx.save();
 				ctx.fillStyle = "rgba(255,244,220,0.55)";
 				ctx.fillRect(cc.x - P / 2, cc.y - P / 2, P, P);
 				ctx.restore();
-				t.UI.drawTile(ctx, op, angle, cc.x, cc.y, P, 0.6);
+				t.UI.drawTile(ctx, op, angle, cc.x, cc.y, P, 0.6, joins[0].sheet);
 				ring(ctx, cc.x - P / 2, cc.y - P / 2, P, "#2a2335");
 			}
 			if(d) {

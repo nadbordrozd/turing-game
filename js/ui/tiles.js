@@ -11,9 +11,10 @@ TuringScenes.add(function(Q) {
 		return anim.frames[Math.floor(Date.now() / (500 * anim.rate)) % anim.frames.length];
 	};
 
-	// Draw an operator's tile centred on (cx, cy), `size` logical px wide.
-	t.UI.drawTile = function(ctx, op, angle, cx, cy, size, alpha) {
-		var s = Q.sheet(op.sheet);
+	// Draw an operator's tile centred on (cx, cy), `size` logical px wide;
+	// `sheet` overrides op.sheet (a belt's corner sheets share its animation).
+	t.UI.drawTile = function(ctx, op, angle, cx, cy, size, alpha, sheet) {
+		var s = Q.sheet(sheet || op.sheet);
 		if(!s) return;
 		ctx.save();
 		if(alpha !== undefined) ctx.globalAlpha *= alpha;

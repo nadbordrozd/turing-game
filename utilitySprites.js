@@ -301,11 +301,21 @@ Q.Sprite.extend("Spark",{
 	this.p.vx = deltaX/time;
 	this.p.vy = deltaY/time;
 	this.callback = callback;
+	this.path = null;
+  },
+  // Moves along `path` ({len, at(distance) -> {x, y}}, from t.TuringTable.flowPath)
+  // at constant speed for `time` seconds, then calls back once.
+  follow : function(path, time, callback){
+	this.deltaX = this.deltaY = false;
+	this.path = path;
+	this.pathT = 0;
+	this.pathTime = time;
+	this.callback = callback;
   },
   rotate : function(deltaAngle, time, callback){
 	this.deltaAngle = deltaAngle;
-	this.targetAngle = this.p.angle + deltaAngle; 
-	this.p.angularVel = deltaAngle/time; 
+	this.targetAngle = this.p.angle + deltaAngle;
+	this.p.angularVel = deltaAngle/time;
 	this.callback = callback;
   },
   draw : function(ctx){
@@ -326,7 +336,18 @@ Q.Sprite.extend("Spark",{
 			this.deltaOpacity = 0;
 		}
 	}
-	this.p.angle += this.p.angularVel*dt; 
+	this.p.angle += this.p.angularVel*dt;
+	if(this.path){
+		this.pathT += dt;
+		var k = this.pathTime > 0 ? Math.min(1, this.pathT/this.pathTime) : 1;
+		var pt = this.path.at(k*this.path.len);
+		this.p.x = pt.x;
+		this.p.y = pt.y;
+		if(k >= 1){
+			this.path = null;
+			if(typeof this.callback === "function") this.callback();
+		}
+	}
 	if(this.deltaX){
 		this.deltaX -= this.p.vx*dt;
 		if(this.deltaX*this.p.vx>0)
@@ -353,6 +374,7 @@ Q.Sprite.extend("Spark",{
   },
   
   setPos : function(x, y){
+	this.path = null;
 	this.p.x = x;
 	this.p.y=y;
 	if(this.p.parent){ this.p.x+=this.p.parent.p.x; this.p.y+=this.p.parent.p.y;}

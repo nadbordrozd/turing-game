@@ -64,8 +64,10 @@ shows counters (the cipher locks) should use the same pairs.
   |v| < 5. **Period** 13.5 units: four chevrons per tile, so belts join tile to tile.
 - **Corners:** a quarter circle of radius 27 about the corner between the
   entry and exit edges; the across coordinate is the radius, the along
-  coordinate is the angle mapped to 0–54, so chevrons stay in phase with
-  straight belts at both openings.
+  coordinate is the angle mapped to 0–40.5 (three chevron periods, against
+  four on a straight tile). The arc's centre line is 42.4 units long, so
+  chevrons keep their spacing and speed through the bend within 5%, and both
+  openings sit on a whole period, in phase with straight belts.
 - **Branches** (detector, magic detector, decrementers): a half belt in from
   the west, a full belt north–south with chevrons running outwards, and a hub
   disc (radius 13.3 + outline) hiding the crossing. Icons sit in the four
@@ -102,6 +104,14 @@ exits; every other tile feeds forward; the start feeds the first cell of the
 middle row. `refreshBeltJoins` runs after every board change. Only GOTO tiles
 turn corners; a step, rotator or counter entered from the side still shows a
 straight belt.
+
+While a tile is dragged or hovered over a cell, `TuringTable.previewJoins`
+gives the sheets the drop would produce: the ghost shows its own join, and a
+neighbouring belt that would bend or straighten is drawn that way under it.
+During a run the program-counter marker follows a bent belt's curve
+(`TuringTable.flowPath`, `Q.Spark.follow`): it rests at the middle of the arc
+instead of the tile centre. All of this is display only; the rules, step
+counts and scores are unchanged.
 
 ## Readability
 
