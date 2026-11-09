@@ -8,7 +8,7 @@ Status: draft (2026-11-05), under the approved "Toybox pixel" direction in
 
 | Asset | Native size | Where the game loads it |
 | ----- | ----------- | ----------------------- |
-| Player robot | 50×50 per frame, 32 frames in one row (1600×50) | `player` in `data/robot-cell.json` (`images/tiles/robot-cell.png`, row 0), compiled after the old atlas so it replaces the old `player` sheet; frames are played by `playerMations` in `script.js` |
+| Player robot | 50×50 per frame, 32 frames in one row, on a 60 px pitch (extruded gutter, tg-iex) | `player` in `data/robot-cell.json` (`images/tiles/robot-cell.png`, row 0), compiled after the old atlas so it replaces the old `player` sheet; frames are played by `playerMations` in `script.js` |
 
 Wired in (tg-vy4.16): `robot-v1/robot-front-c#0`, padded to 50×50 at the
 bottom. `tools/art/tiles/robot-cell.mjs` derives every frame from that master

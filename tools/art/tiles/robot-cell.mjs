@@ -6,7 +6,10 @@
 // are derived from accepted PixelLab masters (hash-checked against their
 // records). Deterministic and dependency-free; this file is the source of truth
 // for those game files (docs/art/classes/terrain.md). Lava is not drawn here:
-// it stays the original 2012 art in images/sprytszyt.png.
+// it stays the original 2012 art in images/sprytszyt.png, whose lava frames
+// are copied byte for byte into the robot-cell atlas. Atlas frames are spaced
+// apart, each with an edge-extruded gutter (see GUTTER); --check also verifies
+// the shipped PNG + JSON pair against that contract.
 //
 //   node tools/art/tiles/robot-cell.mjs            write every game file below
 //   node tools/art/tiles/robot-cell.mjs --check    regenerate in memory, fail if a committed file differs
@@ -697,28 +700,142 @@ function glowAny(src, colours) {
 }
 
 // ---------------------------------------------------------------- outputs
-export function buildAtlas() {
+// Every frame sits in its own PITCH x PITCH cell, at offset GUTTER, and the
+// rest of the cell repeats the frame's edge pixels (edge extrusion), as in the
+// program tiles (tg-oyv). The robot window is drawn at worldScale x the
+// canvas' device-pixel scale, rarely a whole number, with smoothing on, and the
+// browser's filter reads past a frame's source rect: packed edge to edge, a
+// wall pulled in its atlas neighbour's dark outline and a hatch, trap, robot or
+// lava frame its next animation frame, a faint line at the cell's edge
+// (tg-iex). Bilinear filtering reads one texel past the rect, which a 2 px
+// gutter already covers (measured clean down to 0.3x). The gutter is 4 px and
+// frame rects start on a 4 px grid (PITCH and GUTTER are multiples of 4) as a
+// margin for renderers that downscale through mipmaps (level-2 texels are 4x4
+// blocks on a 4 px grid): down to quarter size no filter tap leaves the cell.
+// Layout entries keep the exact frame rect (sx, sy, tilew, tileh) and add the
+// columns, the frame count and the spacing between frame rects (PITCH - T);
+// Quintus' SpriteSheet steps by tilew + spacing (lib/quintus_sprites.js).
+export const GUTTER = 4;
+export const PITCH = 60;
+const SHEET_ROWS = [["player", FRAMES.player], ["exitHatch", FRAMES.exitHatch], ["electricTrap", FRAMES.electricTrap]];
+// Lava is the user's 2012 art (images/sprytszyt.png, sheet `lava` in
+// data/sprites.json). Its frames are copied here byte for byte, only repacked
+// with the gutter; robot-cell.json's `lava` entry overrides the old one.
+const LAVA_SOURCE = "images/sprytszyt.png";
+const LAVA_SOURCE_JSON = "data/sprites.json";
+
+export function layoutAtlas() {
+  const spacing = PITCH - T;
   const layout = {};
-  const rows = [["player", FRAMES.player], ["exitHatch", FRAMES.exitHatch], ["electricTrap", FRAMES.electricTrap]];
-  let y = 0;
-  for (const [name, n] of rows) {
-    layout[name] = { sx: 0, sy: y, tilew: T, tileh: T, w: n * T, h: T };
-    y += T;
+  let row = 0;
+  for (const [name, n] of SHEET_ROWS) {
+    layout[name] = { sx: GUTTER, sy: row * PITCH + GUTTER, tilew: T, tileh: T, w: n * PITCH - spacing, h: T, cols: n, spacing, frames: n };
+    row += 1;
   }
-  SINGLES.forEach((name, i) => { layout[name] = { sx: i * T, sy: y, tilew: T, tileh: T, w: T, h: T }; });
-  y += T;
-  const atlas = blank(COLS * T, y);
-  robotFrames().forEach((f, i) => composite(atlas, f, i * T, layout.player.sy));
-  for (const name of ["exitHatch", "electricTrap"])
-    for (let f = 0; f < FRAMES[name]; f += 1) composite(atlas, drawTerrain(name, f), f * T, layout[name].sy);
-  for (const name of SINGLES) composite(atlas, drawTerrain(name), layout[name].sx, layout[name].sy);
-  return { atlas, json: JSON.stringify(layout, null, 2) + "\n" };
+  SINGLES.forEach((name, i) => {
+    layout[name] = { sx: i * PITCH + GUTTER, sy: row * PITCH + GUTTER, tilew: T, tileh: T, w: T, h: T, cols: 1, spacing, frames: 1 };
+  });
+  row += 1;
+  const lavaN = lavaSourceFrames().length, lavaRows = Math.ceil(lavaN / COLS);
+  layout.lava = { sx: GUTTER, sy: row * PITCH + GUTTER, tilew: T, tileh: T, w: Math.min(lavaN, COLS) * PITCH - spacing, h: lavaRows * PITCH - spacing,
+    cols: Math.min(lavaN, COLS), spacing, frames: lavaN };
+  row += lavaRows;
+  return { layout, width: COLS * PITCH, height: row * PITCH };
+}
+
+/** Frame `f`'s source rect origin, computed as Quintus' SpriteSheet.fx/fy do. */
+export function frameOrigin(L, f) {
+  const sp = L.spacing || 0;
+  const cols = L.cols || Math.floor((L.w + sp) / (L.tilew + sp));
+  return [(f % cols) * (L.tilew + sp) + L.sx, Math.floor(f / cols) * (L.tileh + sp) + L.sy];
+}
+
+let lavaCache = null;
+/** The 2012 lava frames, exactly as the old atlas holds them. */
+export function lavaSourceFrames() {
+  if (lavaCache) return lavaCache;
+  const src = decodePng(fs.readFileSync(path.join(ROOT, LAVA_SOURCE)));
+  const L = JSON.parse(fs.readFileSync(path.join(ROOT, LAVA_SOURCE_JSON), "utf8")).lava;
+  const sx = L.sx || 0, sy = L.sy || 0, cols = L.cols || Math.floor(L.w / L.tilew), n = cols * Math.round(L.h / L.tileh);
+  if (L.tilew !== T || L.tileh !== T) throw new Error(`${LAVA_SOURCE_JSON} lava frames are ${L.tilew}x${L.tileh}, want ${T}x${T}`);
+  lavaCache = Array.from({ length: n }, (_, f) => crop(src, sx + (f % cols) * T, sy + Math.floor(f / cols) * T, T, T));
+  return lavaCache;
+}
+
+/** Every atlas frame as a T x T raster, by sheet name. */
+function atlasFrames() {
+  const flat = (src) => { const f = blank(T, T); composite(f, src, 0, 0); return f; };
+  const frames = { player: robotFrames().map(flat) };
+  for (const name of ["exitHatch", "electricTrap"]) frames[name] = Array.from({ length: FRAMES[name] }, (_, f) => flat(drawTerrain(name, f)));
+  for (const name of SINGLES) frames[name] = [flat(drawTerrain(name))];
+  frames.lava = lavaSourceFrames();
+  return frames;
+}
+
+// The extruded cell around a frame, relative to its rect: [-GUTTER, T + RIGHT).
+const RIGHT = PITCH - T - GUTTER;
+
+/** Copies a frame into dst at (left, top) and fills the rest of its cell with its edge pixels. */
+function putExtruded(dst, src, left, top) {
+  for (let y = -GUTTER; y < T + RIGHT; y += 1)
+    for (let x = -GUTTER; x < T + RIGHT; x += 1) {
+      const sx = Math.min(T - 1, Math.max(0, x)), sy = Math.min(T - 1, Math.max(0, y));
+      const s = (sy * src.width + sx) * 4;
+      dst.data.set(src.data.subarray(s, s + 4), ((top + y) * dst.width + left + x) * 4);
+    }
+}
+
+export function buildAtlas() {
+  const { layout, width, height } = layoutAtlas();
+  const atlas = blank(width, height);
+  const frames = atlasFrames();
+  for (const [name, list] of Object.entries(frames)) list.forEach((fr, f) => putExtruded(atlas, fr, ...frameOrigin(layout[name], f)));
+  return { atlas, layout, frames, json: JSON.stringify(layout, null, 2) + "\n" };
+}
+
+/** The atlas contract (tg-iex): every frame read at its layout rect with
+ *  Quintus' maths is the frame (lava: byte for byte the 2012 frame), the rect
+ *  starts on the 4 px mipmap grid, and the rest of its cell, at least GUTTER
+ *  px on every side, repeats its edge pixels, so filtering past the rect never
+ *  reaches another frame or the transparent margin. */
+export function atlasProblems(atlas, layout, frames = atlasFrames()) {
+  const problems = [];
+  const px = (img, x, y) => { const i = (y * img.width + x) * 4; return img.data.subarray(i, i + 4); };
+  const same = (a, b) => a[0] === b[0] && a[1] === b[1] && a[2] === b[2] && a[3] === b[3];
+  for (const [name, list] of Object.entries(frames)) {
+    const L = layout[name];
+    if (!L) { problems.push(`${name}: missing from the layout`); continue; }
+    if (L.tilew !== T || L.tileh !== T) problems.push(`${name}: frame ${L.tilew}x${L.tileh}, want ${T}x${T}`);
+    if ((L.spacing || 0) !== PITCH - T) problems.push(`${name}: spacing ${L.spacing || 0}, want ${PITCH - T} (a ${PITCH} px pitch)`);
+    if ((L.frames || 0) !== list.length) problems.push(`${name}: layout says ${L.frames} frames, the generator has ${list.length}`);
+    list.forEach((frame, f) => {
+      const [ox, oy] = frameOrigin(L, f);
+      if (ox % 4 || oy % 4) problems.push(`${name} frame ${f}: rect at ${ox},${oy} is off the 4 px mipmap grid`);
+      if (ox < GUTTER || oy < GUTTER || ox + T + RIGHT > atlas.width || oy + T + RIGHT > atlas.height) {
+        problems.push(`${name} frame ${f}: rect at ${ox},${oy} has no room for its gutter`);
+        return;
+      }
+      let frameBad = 0, gutterBad = 0;
+      for (let y = -GUTTER; y < T + RIGHT; y += 1)
+        for (let x = -GUTTER; x < T + RIGHT; x += 1) {
+          const want = px(frame, Math.min(T - 1, Math.max(0, x)), Math.min(T - 1, Math.max(0, y)));
+          if (same(px(atlas, ox + x, oy + y), want)) continue;
+          if (x >= 0 && y >= 0 && x < T && y < T) frameBad += 1;
+          else gutterBad += 1;
+        }
+      if (frameBad) problems.push(`${name} frame ${f}: ${frameBad} px at its rect differ from the frame`);
+      if (gutterBad) problems.push(`${name} frame ${f}: ${gutterBad} gutter px do not repeat the frame's edge`);
+    });
+  }
+  return problems;
 }
 
 /** Every file this generator owns: path -> raster (plus the atlas JSON). */
 export function buildFiles() {
   const files = {};
-  const { atlas, json } = buildAtlas();
+  const { atlas, layout, frames, json } = buildAtlas();
+  const atlasBad = atlasProblems(atlas, layout, frames);
+  if (atlasBad.length) throw new Error(`robot-cell atlas:\n  ${atlasBad.slice(0, 20).join("\n  ")}`);
   files[ATLAS_PNG] = atlas;
   files["images/robotile.png"] = drawTerrain("floor");
   files["images/obstacle.png"] = drawTerrain("obstacle");
@@ -727,7 +844,7 @@ export function buildFiles() {
   files["images/water.png"] = drawTerrain("water");
   for (const [file, w, h, a, body, bands] of RESISTORS) files[`images/${file}`] = resistor(w, h, a, body, bands);
   for (const [file, take, w, h, grey] of ICONS) files[`images/${file}`] = partIcon(take, w, h, grey);
-  return { files, json };
+  return { files, json, frames };
 }
 
 // ---------------------------------------------------------------- review
@@ -948,7 +1065,7 @@ function main(argv) {
   const reviewAt = argv.indexOf("--review");
   const tagAt = argv.indexOf("--tag");
   const tag = tagAt >= 0 ? argv[tagAt + 1] : "robot-cell-v1";
-  const { files, json } = buildFiles();
+  const { files, json, frames } = buildFiles();
   const bad = [];
   for (const [rel, raster] of Object.entries(files)) {
     const full = path.join(ROOT, rel);
@@ -965,11 +1082,17 @@ function main(argv) {
   const jsonPath = path.join(ROOT, ATLAS_JSON);
   if (check) {
     if (!fs.existsSync(jsonPath) || fs.readFileSync(jsonPath, "utf8") !== json) bad.push(`${ATLAS_JSON} differs from the generator`);
+    // the shipped pair itself: every frame at its JSON rect, its edges extruded into the gutter
+    let shippedLayout = null;
+    try { shippedLayout = JSON.parse(fs.readFileSync(jsonPath, "utf8")); } catch {}
+    const pngPath = path.join(ROOT, ATLAS_PNG);
+    if (shippedLayout && fs.existsSync(pngPath))
+      bad.push(...atlasProblems(decodePng(fs.readFileSync(pngPath)), shippedLayout, frames).slice(0, 10).map((p) => `${ATLAS_PNG}: ${p}`));
     if (bad.length) {
       console.error(`robot-cell --check FAILED:\n  ${bad.join("\n  ")}\nRegenerate with: node tools/art/tiles/robot-cell.mjs`);
       process.exit(1);
     }
-    console.log(`robot-cell --check OK (${Object.keys(files).length + 1} files)`);
+    console.log(`robot-cell --check OK (${Object.keys(files).length + 1} files; atlas frames on a ${PITCH} px pitch, edges extruded >= ${GUTTER} px, lava byte-identical to ${LAVA_SOURCE})`);
   } else {
     fs.writeFileSync(jsonPath, json);
   }

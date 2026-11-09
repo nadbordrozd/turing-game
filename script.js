@@ -139,7 +139,9 @@ window.addEventListener('load',function(e) {
 		// Redrawn program tiles replace the atlas entries of the same name.
 		Q.compileSheets("tiles/program-tiles.png","program-tiles.json");
 		// Robot cell (player robot, walls, block, hatch, trap, magic tile) from
-		// tools/art/tiles/robot-cell.mjs; lava still comes from the old atlas.
+		// tools/art/tiles/robot-cell.mjs. Lava is still the 2012 art: its frames
+		// are copied byte for byte from the old atlas into this one, repacked
+		// with an extruded gutter (tg-iex), so this `lava` replaces the old one.
 		Q.compileSheets("tiles/robot-cell.png","robot-cell.json");
 		Q.input.keyboardControls();
 		t.UI.loaded();

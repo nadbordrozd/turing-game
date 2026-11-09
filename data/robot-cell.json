@@ -1,74 +1,112 @@
 {
   "player": {
-    "sx": 0,
-    "sy": 0,
+    "sx": 4,
+    "sy": 4,
     "tilew": 50,
     "tileh": 50,
-    "w": 1600,
-    "h": 50
+    "w": 1910,
+    "h": 50,
+    "cols": 32,
+    "spacing": 10,
+    "frames": 32
   },
   "exitHatch": {
-    "sx": 0,
-    "sy": 50,
+    "sx": 4,
+    "sy": 64,
     "tilew": 50,
     "tileh": 50,
-    "w": 1050,
-    "h": 50
+    "w": 1250,
+    "h": 50,
+    "cols": 21,
+    "spacing": 10,
+    "frames": 21
   },
   "electricTrap": {
-    "sx": 0,
-    "sy": 100,
+    "sx": 4,
+    "sy": 124,
     "tilew": 50,
     "tileh": 50,
-    "w": 1050,
-    "h": 50
+    "w": 1250,
+    "h": 50,
+    "cols": 21,
+    "spacing": 10,
+    "frames": 21
   },
   "obstacle": {
-    "sx": 0,
-    "sy": 150,
+    "sx": 4,
+    "sy": 184,
     "tilew": 50,
     "tileh": 50,
     "w": 50,
-    "h": 50
+    "h": 50,
+    "cols": 1,
+    "spacing": 10,
+    "frames": 1
   },
   "wall": {
-    "sx": 50,
-    "sy": 150,
+    "sx": 64,
+    "sy": 184,
     "tilew": 50,
     "tileh": 50,
     "w": 50,
-    "h": 50
+    "h": 50,
+    "cols": 1,
+    "spacing": 10,
+    "frames": 1
   },
   "corner": {
-    "sx": 100,
-    "sy": 150,
+    "sx": 124,
+    "sy": 184,
     "tilew": 50,
     "tileh": 50,
     "w": 50,
-    "h": 50
+    "h": 50,
+    "cols": 1,
+    "spacing": 10,
+    "frames": 1
   },
   "deadend": {
-    "sx": 150,
-    "sy": 150,
+    "sx": 184,
+    "sy": 184,
     "tilew": 50,
     "tileh": 50,
     "w": 50,
-    "h": 50
+    "h": 50,
+    "cols": 1,
+    "spacing": 10,
+    "frames": 1
   },
   "tunnel": {
-    "sx": 200,
-    "sy": 150,
+    "sx": 244,
+    "sy": 184,
     "tilew": 50,
     "tileh": 50,
     "w": 50,
-    "h": 50
+    "h": 50,
+    "cols": 1,
+    "spacing": 10,
+    "frames": 1
   },
   "magicTile": {
-    "sx": 250,
-    "sy": 150,
+    "sx": 304,
+    "sy": 184,
     "tilew": 50,
     "tileh": 50,
     "w": 50,
-    "h": 50
+    "h": 50,
+    "cols": 1,
+    "spacing": 10,
+    "frames": 1
+  },
+  "lava": {
+    "sx": 4,
+    "sy": 244,
+    "tilew": 50,
+    "tileh": 50,
+    "w": 1910,
+    "h": 110,
+    "cols": 32,
+    "spacing": 10,
+    "frames": 40
   }
 }

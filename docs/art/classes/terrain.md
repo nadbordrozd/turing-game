@@ -24,7 +24,7 @@ after `images/sprytszyt.png`, so these names replace the old atlas entries
 | floor | `images/robotile.png` | 1 | sand play-mat panel |
 | ice, cracked ice, water | `images/ice.png`, `crackedIce.png`, `water.png` | 1 | pale ice with pinwheel glints; the same with cracks and a hole; deep blue with crests |
 | dots | `images/resistor1.png` .. `resistor5.png` | 1 | toy resistors (pastel body, three bands, silver leads) at five angles, old canvas sizes |
-| lava | old atlas `lava` | 40 | **unchanged** (2012 art) |
+| `lava` | atlas (frames copied byte for byte from the old atlas `lava` in `images/sprytszyt.png`) | 40 | **unchanged** 2012 art, only repacked with the gutter (tg-iex) |
 
 Not redrawn: `startTile` (no level uses it), `spark` (program-side help
 animation), and the unused `*Mini` and big icon sheets in `data/sprites.json`.
@@ -33,6 +33,21 @@ animation), and the unused `*Mini` and big icon sheets in `data/sprites.json`.
 
 - 50×50 tiles, drawn by the game at scale 1 on a 52 px pitch over a black
   rectangle, so there are 2 px black gaps between tiles.
+- **Atlas gutter (tg-iex, as tg-oyv for the program tiles):** atlas frames
+  are not packed edge to edge. Each frame sits in a 60 px cell at offset 4,
+  and the rest of the cell (4 px before, 6 px after) repeats its edge pixels;
+  layout entries record `cols`, `frames` and `spacing` (10 px between frame
+  rects; Quintus' `SpriteSheet` steps by `tilew + spacing`). The robot window
+  is drawn at `worldScale` × the canvas' device-pixel scale with smoothing on,
+  and filtering reads past a frame's rect: packed edge to edge, a wall pulled
+  in its atlas neighbour's outline and a hatch, trap, robot or lava frame its
+  next frame, a faint line at the cell's edge. Bilinear filtering reads one
+  texel past the rect (a 2 px gutter measured clean down to 0.3×); frame rects
+  also start on a 4 px grid with at least 4 px of extrusion as a margin for
+  renderers that downscale through mipmaps (level 2: 4×4 blocks), so no filter
+  tap leaves the frame's cell down to quarter size. The game also snaps each static cell (`Q.RobotTableTile`) to
+  whole device pixels (`t.UI.snapToPixels`), so cell edges are crisp against
+  the gaps; the robot, which moves and turns between cells, is not snapped.
 - Levels rotate walls, ice, lava and even floor tiles (`angle`, sometimes
   random), so every tile reads the same in all four rotations: light comes from
   straight above, rims are even, and ice glints are a four-fold pinwheel.
@@ -85,7 +100,7 @@ on a 24 px coil gave noisy concentric stripes.
 
 ```sh
 node tools/art/tiles/robot-cell.mjs                    # writes every file above
-node tools/art/tiles/robot-cell.mjs --check            # fails if a committed file differs
+node tools/art/tiles/robot-cell.mjs --check            # fails if a committed file differs, an atlas frame lacks its gutter or lava differs from sprytszyt.png
 node tools/art/tiles/robot-cell.mjs --check --review .orchestration/sheets --tag robot-cell-v1
 ```
 

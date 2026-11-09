@@ -230,6 +230,17 @@ Q.Sprite.extend("RobotTableTile", {
 	finishedCallback : function(){
 		if(this.postAnimationCallback) this.postAnimationCallback();
 	},
+	// A cell never moves, so it is drawn on whole device pixels (tg-iex): the
+	// window is scaled by worldScale x the canvas' device-pixel scale, and a
+	// cell edge inside a device pixel blends with the dark gap, a soft line on
+	// one side of the cell. Children (resistor dots) set their own transform.
+	draw : function(ctx){
+		var p = this.p;
+		ctx.save();
+		if(t.UI && t.UI.snapToPixels) t.UI.snapToPixels(ctx, Math.floor(-p.cx), Math.floor(-p.cy), p.w, p.h);
+		this._super(ctx);
+		ctx.restore();
+	},
 	playAnimation : function(animation, callback){
 		this.postAnimationCallback = callback;
 		this.play(animation);

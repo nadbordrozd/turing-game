@@ -30,6 +30,8 @@ TuringScenes.add(function(Q) {
 		var kx = (X1 - X0) / (x1 - x0), ky = (Y1 - Y0) / (y1 - y0);
 		ctx.setTransform(new DOMMatrix([kx, 0, 0, ky, X0 - kx * x0, Y0 - ky * y0]).multiply(m));
 	}
+	// also used by the robot window's static cells (Q.RobotTableTile, tg-iex)
+	t.UI.snapToPixels = snapToPixels;
 
 	// Draws a tile's layers at global animation frame `frame`: the belt
 	// underlay, then the symbol (if any), each at frame mod its own length,
