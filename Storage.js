@@ -151,6 +151,11 @@ t.GameSaver = new function(){
 	this.reset = function(){
 		t.Storage.ls.clear();
 	}
+	// Debug unlock (tg-2oq): ?unlock in the URL opens every level for this page
+	// load only. Nothing is written to storage; drop the parameter to get the
+	// real lock state back. Solved levels, parts and scores are unchanged.
+	this.debugUnlock = /[?&]unlock(?:[=&#]|$)/.test(window.location.search);
+	if(this.debugUnlock) console.info("turing: debug unlock is on (?unlock): every level is open; saved progress is untouched");
 }()
 
 /*

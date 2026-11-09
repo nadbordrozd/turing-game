@@ -57,7 +57,7 @@
 		});
 		names.forEach(function(n) {
 			var o = N[n];
-			o.open = !o.solved && o.req.every(function(r) { return N[r].solved; });
+			o.open = !o.solved && (t.GameSaver.debugUnlock || o.req.every(function(r) { return N[r].solved; }));
 			o.state = o.solved ? "solved" : o.open ? "open" : "locked";
 			o.req.forEach(function(r) { N[r].users.push(n); });
 		});

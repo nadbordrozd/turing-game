@@ -28,7 +28,7 @@
 		},
 		available: function(level) {
 			var req = level.required;
-			if(!req) return true;
+			if(!req || t.GameSaver.debugUnlock) return true;
 			for(var i in req) {
 				var s = t.GameSaver.loadLevelStatus(req[i]);
 				if(s === false || s === undefined || s === null) return false;
