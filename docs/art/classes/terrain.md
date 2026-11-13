@@ -115,3 +115,24 @@ labirynth, ring of fire; `-levels2`: some flag?, just give up, P).
 - On the level mocks and in the browser, rails line up across tiles, lava sits
   next to the floor without a seam colour clash, and the robot reads in all four
   rotations.
+
+## Retro skin (tg-wtv.2)
+
+`node tools/art/tiles/robot-cell.mjs --style retro` draws the robot window in
+the "retro hacker chic" look (epic tg-wtv), code-drawn (no PixelLab, no
+masters): `images/retro/tiles/robot-cell.png` + `data/retro/robot-cell.json`
+(same sheets, frame counts, 60 px pitch, 4 px gutters and rects as Toybox;
+`--check` requires the JSON to be identical) and, under the same names in
+`images/retro/`, `robotile.png`, `obstacle.png`, `ice.png`, `crackedIce.png`,
+`water.png` and `resistor1-5.png` (the window's separately loaded images).
+Signed-distance shapes supersampled 4×4: a dim grid floor; walls as a bright
+2 px line with a dim inner line, ending cleanly at corners; the block a
+wireframe crate; the hatch a ring with an iris of spiral seams opening to an
+amber rim; the trap the dim hatch with amber lightning (Toybox's random
+draws); ice and cracked ice cyan line work; dots as amber capsule outlines;
+lava a flickering red-amber diagonal hatch over the 2012 lava's 40 frames.
+The robot is a vector robot with the Toybox frame set and meanings (idle;
+1-6 electrocution to an amber x-ray and an inverted flash; 7-11 ash and X
+eyes; 12-21 sinking in lava; 23-31 drowning), eyes where `Q.RoboFx.eyes`
+expects them. `--check` covers both styles and builds retro twice
+(determinism); `--style retro --review <dir>` writes the retro review sheets.

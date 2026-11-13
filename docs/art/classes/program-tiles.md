@@ -225,3 +225,24 @@ tiles alone in `-branch-variants`).
   repeated in the 2 px gutter around it.
 - On the board mock, belts join with no seam, corners and branches follow the
   flow, and every symbol reads at 1×.
+
+## Retro skin (tg-wtv.2)
+
+`node tools/art/tiles/program-tiles.mjs --style retro` draws the same
+sheets, frame counts, timings, joins and atlas layout in the "retro hacker
+chic" look (epic tg-wtv) into `images/retro/tiles/program-tiles.png` +
+`data/retro/program-tiles.json`; the game swaps only the URLs
+(`js/skins/retro-atlases.js`). Phosphor line art on near-black: a dim tile
+rim with brighter corner ticks; belts as two thin rails with thin bright
+chevrons at the Toybox chevron positions, so they stay continuous and in
+phase through corners, Ts and merges (where a side arc merges, the main
+line's rail opens and the arc's chevrons fade out before it); symbols as
+outline glyphs with a dark fill and a soft, quantised glow (step bright
+phosphor, turn right phosphor green, turn left amber; detector diamond amber,
+magic cyan, struck-out icons dim with an amber slash). Counters keep their
+glyphs and become tinted phosphor (Red `#ff5c50`, Blue `#58a6ff`, Green
+`#a6ff3c`, Purple `#c08aff`, Yellow `#ffe45a`, Pink `#ff78d4`). Strokes of
+symbols that sit near arcs or openings are inset, so they reach no further
+than Toybox's outlines. `--check` runs every self-check above on both styles,
+re-renders frames fresh (determinism) and requires the retro layout JSON to
+equal Toybox's; `--style retro --review <dir>` writes the retro review sheets.

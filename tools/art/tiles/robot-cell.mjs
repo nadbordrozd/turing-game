@@ -11,8 +11,12 @@
 // apart, each with an edge-extruded gutter (see GUTTER); --check also verifies
 // the shipped PNG + JSON pair against that contract.
 //
-//   node tools/art/tiles/robot-cell.mjs            write every game file below
-//   node tools/art/tiles/robot-cell.mjs --check    regenerate in memory, fail if a committed file differs
+//   node tools/art/tiles/robot-cell.mjs [--style toybox|retro|all]
+//                                                  write every game file below (default toybox; retro: the
+//                                                  same names under images/retro/ and data/retro/)
+//   node tools/art/tiles/robot-cell.mjs --check    regenerate both styles in memory, fail if a committed file
+//                                                  differs, a second retro build differs, or the retro layout
+//                                                  differs from toybox
 //   node tools/art/tiles/robot-cell.mjs --review <dir> [--tag robot-cell-v1]
 //                                                  also write review sheets (frames, icons, level mocks)
 import fs from "node:fs";
@@ -699,6 +703,448 @@ function glowAny(src, colours) {
   return out;
 }
 
+// ---------------------------------------------------------------- retro style (tg-wtv.2)
+// "Retro hacker chic" (epic tg-wtv): phosphor line art on near-black, drawn
+// here as signed-distance shapes, supersampled RSS x RSS per pixel, with thin
+// 1-2 px lines and a soft glow. No PixelLab and no masters: the robot is a
+// code-drawn vector robot with the Toybox frame set (FRAMES.player, same
+// meaning per frame) and lava a code-drawn flickering red-amber hatch with the
+// 2012 lava's frame count. Same sheets, frames and layout as Toybox, so the
+// game swaps only the URLs (STYLE_FILES).
+export const RETRO = {
+  bg: "#050b07",
+  grid: "#0f2c18",
+  gridTick: "#1f6a38",
+  phosphor: "#33ff66",
+  bright: "#c8ffd6",
+  dim: "#1d7a3e",
+  faint: "#123f22",
+  fill: "#07130b",
+  amber: "#ffb43a",
+  amberBright: "#ffe7a8",
+  magic: "#55f0ff",
+  ice: "#7fdcff",
+  iceGround: "#04121a",
+  waterGround: "#03141a",
+  water: "#2f9fd6",
+  lavaGround: "#120403",
+  lavaRed: "#ff3a1a",
+  lavaDeep: "#4a0f05",
+  ash: "#5f7366",
+  ashLight: "#a9b8ad",
+  xrayFill: "#2a1a04",
+  flash: "#eafff2",
+};
+const RX = Object.fromEntries(Object.entries(RETRO).map(([k, v]) => [k, parseColour(v)]));
+const rgbMix = (a, b, t) => [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t), 255];
+const withAlpha = (c, a) => [c[0], c[1], c[2], Math.max(0, Math.min(255, Math.round(255 * a)))];
+
+const RSS = 4; // supersamples per axis
+/** Renders scene(x, y) -> RGBA|null (x, y in px) into a w x h raster, RSS x RSS samples per pixel. */
+function renderAA(scene, w = T, h = T) {
+  const img = blank(w, h);
+  for (let py = 0; py < h; py += 1)
+    for (let px = 0; px < w; px += 1) {
+      let r = 0, g = 0, b = 0, a = 0;
+      for (let sy = 0; sy < RSS; sy += 1)
+        for (let sx = 0; sx < RSS; sx += 1) {
+          const q = scene(px + (sx + 0.5) / RSS, py + (sy + 0.5) / RSS);
+          if (!q || !q[3]) continue;
+          r += q[0] * q[3]; g += q[1] * q[3]; b += q[2] * q[3]; a += q[3];
+        }
+      if (a) img.data.set([Math.round(r / a), Math.round(g / a), Math.round(b / a), Math.round(a / (RSS * RSS))], (py * w + px) * 4);
+    }
+  return img;
+}
+/** `top` over `bottom`, alpha-blended per sample. */
+const overScene = (top, bottom) => (x, y) => {
+  const c = top(x, y);
+  if (!c || c[3] === 0) return bottom(x, y);
+  if (c[3] === 255) return c;
+  const d = bottom(x, y);
+  if (!d || d[3] === 0) return c;
+  const a = c[3] / 255, da = d[3] / 255, oa = a + da * (1 - a);
+  return [0, 1, 2].map((k) => Math.round((c[k] * a + d[k] * da * (1 - a)) / oa)).concat(Math.round(oa * 255));
+};
+
+// SDF primitives (px units)
+const sdCircle = (x, y, cx, cy, r) => Math.hypot(x - cx, y - cy) - r;
+function sdRBox(x, y, cx, cy, hx, hy, r = 0) {
+  const qx = Math.abs(x - cx) - hx + r, qy = Math.abs(y - cy) - hy + r;
+  return Math.hypot(Math.max(qx, 0), Math.max(qy, 0)) + Math.min(Math.max(qx, qy), 0) - r;
+}
+function sdSeg(x, y, ax, ay, bx, by) {
+  const pax = x - ax, pay = y - ay, bax = bx - ax, bay = by - ay;
+  const h = Math.min(1, Math.max(0, (pax * bax + pay * bay) / (bax * bax + bay * bay || 1)));
+  return Math.hypot(pax - bax * h, pay - bay * h);
+}
+function sdPolyline(x, y, pts) {
+  let d = Infinity;
+  for (let i = 0; i + 1 < pts.length; i += 1) d = Math.min(d, sdSeg(x, y, ...pts[i], ...pts[i + 1]));
+  return d;
+}
+
+/** A drawing of parts, top first. Each part: { sd(x, y), mode, half, ink,
+ *  fill, glow, reach, peak }. mode "outline": a 2*half stroke on the shape's
+ *  edge and `fill` inside (null: whatever is underneath); "stroke": a 2*half
+ *  line along a centre line (sd is the unsigned distance to it); "solid": the
+ *  shape filled. The first part covering a point wins; elsewhere the strongest
+ *  glow of any part shows. */
+function shapes(parts) {
+  return (x, y) => {
+    let glowA = 0, glowC = null;
+    for (const p of parts) {
+      const sd = p.sd(x, y);
+      let edge;
+      if (p.mode === "solid") {
+        if (sd <= 0) return p.ink;
+        edge = sd;
+      } else if (p.mode === "stroke") {
+        edge = sd - p.half;
+        if (edge <= 0) return p.ink;
+      } else {
+        edge = Math.abs(sd) - p.half;
+        if (edge <= 0) return p.ink;
+        if (sd < 0) return p.fill;
+      }
+      if (edge < p.reach) {
+        const a = p.peak * (1 - edge / p.reach) ** 2;
+        if (a > glowA) { glowA = a; glowC = p.glow ?? p.ink; }
+      }
+    }
+    return glowA > 0.004 ? withAlpha(glowC, glowA) : null;
+  };
+}
+const part = (sd, mode, ink, extra = {}) => ({ sd, mode, ink, half: 0.6, fill: RX.fill, reach: 2.5, peak: 0.4, ...extra });
+
+// ---- retro terrain
+/** Floor: near-black, a dim 1 px rim, brighter corner ticks. */
+function retroFloor(x, y) {
+  if (x < 1 || y < 1 || x >= T - 1 || y >= T - 1) {
+    const ex = Math.min(x, T - x), ey = Math.min(y, T - y);
+    return ex < 5 && ey < 5 ? RX.gridTick : RX.grid;
+  }
+  return RX.bg;
+}
+
+// Walls: a bright 2 px line 3.5 px in from the wall's edge and a dim 1 px line
+// inside it. Each line ends where it meets a perpendicular wall line of the
+// same tile (clean corners); otherwise it runs to the tile edge, so walls join
+// their neighbours across the gap.
+const WALL_LINES = [{ at: 3.5, half: 1, ink: "phosphor", reach: 3, peak: 0.5 }, { at: 7.5, half: 0.5, ink: "dim", reach: 1.5, peak: 0.3 }];
+function retroWalls(sides) {
+  const parts = [];
+  for (const L of WALL_LINES) {
+    const pos = { E: T - L.at, W: L.at, N: L.at, S: T - L.at };
+    for (const s of sides) {
+      const vertical = s === "E" || s === "W";
+      let lo = 0, hi = T;
+      for (const o of sides) {
+        if ((o === "E" || o === "W") === vertical) continue;
+        if (o === "N" || o === "W") lo = pos[o];
+        else hi = pos[o];
+      }
+      const c = pos[s];
+      const sd = vertical ? (x, y) => sdSeg(x, y, c, lo, c, hi) : (x, y) => sdSeg(x, y, lo, c, hi, c);
+      parts.push(part(sd, "stroke", RX[L.ink], { half: L.half, reach: L.reach, peak: L.peak }));
+    }
+  }
+  return overScene(shapes(parts), retroFloor);
+}
+
+/** Block: a wireframe crate, a bright rounded square with a dim inner square and dim diagonals. */
+function retroBlock() {
+  const outer = (x, y) => sdRBox(x, y, 25, 25, 21.5, 21.5, 3);
+  const inner = (x, y) => sdRBox(x, y, 25, 25, 15, 15, 1);
+  const crate = (x, y) => {
+    if (outer(x, y) > 0) return retroFloor(x, y);
+    const di = inner(x, y);
+    if (Math.abs(di) < 0.5) return RX.dim;
+    if (di < 0 && Math.min(Math.abs(x - y), Math.abs(x + y - T)) / Math.SQRT2 < 0.5) return RX.faint;
+    return RX.fill;
+  };
+  return overScene(shapes([part(outer, "outline", RX.phosphor, { half: 0.9, reach: 3, peak: 0.5, fill: null })]), crate);
+}
+
+function retroMagicTile() {
+  const astroid = (x, y) => (Math.sqrt(Math.abs(x - 25)) + Math.sqrt(Math.abs(y - 25)) - Math.sqrt(12)) * 2.2;
+  return overScene(shapes([
+    part(astroid, "solid", RX.magic, { reach: 3, peak: 0.55 }),
+    part((x, y) => sdRBox(x, y, 25, 25, 17, 17, 5), "outline", RX.magic, { half: 0.7, reach: 2.5, peak: 0.45, fill: rgbMix(RX.bg, RX.magic, 0.06) }),
+  ]), retroFloor);
+}
+
+/** The hatch: outer ring with bolts, an iris of spiral blade seams, an aperture
+ *  opening as `open` goes 0..1 (amber rim), turning by `rot`. off: the
+ *  trapped hatch, all dim. */
+function retroHatch(open, rot, off = false) {
+  const c0 = 25, R = 21.5, RIM = 17;
+  const aperture = open * (RIM - 0.5);
+  const ink = off ? RX.dim : RX.phosphor, seam = off ? RX.faint : RX.dim;
+  const ring = shapes([
+    ...Array.from({ length: 8 }, (_, k) => {
+      const a = (k * Math.PI) / 4 + Math.PI / 8;
+      return part((x, y) => sdCircle(x, y, c0 + 19.3 * Math.cos(a), c0 + 19.3 * Math.sin(a), 0.9), "solid", seam, { reach: 1 });
+    }),
+    part((x, y) => Math.abs(Math.hypot(x - c0, y - c0) - R), "stroke", ink, { half: 0.75, reach: 2.5, peak: 0.45 }),
+    part((x, y) => Math.abs(Math.hypot(x - c0, y - c0) - RIM), "stroke", ink, { half: 0.5, reach: 1.5, peak: 0.3 }),
+    ...(open > 0.02 ? [part((x, y) => Math.abs(Math.hypot(x - c0, y - c0) - aperture), "stroke", RX.amber, { half: 0.7, reach: 2.5, peak: 0.5 })] : []),
+  ]);
+  const iris = (x, y) => {
+    const px = x - c0, py = y - c0, r = Math.hypot(px, py);
+    if (r > RIM) return retroFloor(x, y);
+    if (r < aperture) {
+      // the open shaft: black, a faint ring deeper down
+      return open > 0.3 && Math.abs(r - aperture * 0.55) < 0.5 ? rgbMix([0, 0, 0, 255], RX.phosphor, 0.25) : [0, 0, 0, 255];
+    }
+    const phi = ((Math.atan2(py, px) + rot) / (2 * Math.PI)) * 6 + r / 7;
+    const frac = mod(phi, 1);
+    const dist = Math.min(frac, 1 - frac) * ((2 * Math.PI * Math.max(r, 1)) / 6);
+    if (dist < 0.55) return seam;
+    return dist < 1.6 ? rgbMix(RX.fill, seam, 0.35) : RX.fill;
+  };
+  return overScene(ring, iris);
+}
+
+/** The trap's lightning as polylines (the Toybox trap's random draws). */
+function trapBolts(frame) {
+  const rand = rng(9001 + frame * 7919);
+  const arcs = 2 + Math.floor(rand() * 2);
+  const bolts = [];
+  for (let a = 0; a < arcs; a += 1) {
+    const a0 = rand() * Math.PI * 2;
+    const a1 = a0 + Math.PI * (0.55 + rand() * 0.8);
+    const r0 = 18 + rand() * 3, r1 = 18 + rand() * 3;
+    let pts = [[25 + r0 * Math.cos(a0), 25 + r0 * Math.sin(a0)], [25 + r1 * Math.cos(a1), 25 + r1 * Math.sin(a1)]];
+    let disp = 7;
+    for (let level = 0; level < 4; level += 1) {
+      const next = [pts[0]];
+      for (let i = 0; i + 1 < pts.length; i += 1) {
+        const [x0, y0] = pts[i], [x1, y1] = pts[i + 1];
+        const mx = (x0 + x1) / 2, my = (y0 + y1) / 2;
+        const len = Math.hypot(x1 - x0, y1 - y0) || 1;
+        const o = (rand() * 2 - 1) * disp;
+        next.push([mx + (-(y1 - y0) / len) * o, my + ((x1 - x0) / len) * o], pts[i + 1]);
+      }
+      pts = next;
+      disp /= 2;
+    }
+    bolts.push(pts.map(([x, y]) => [Math.min(T - 2, Math.max(2, x)), Math.min(T - 2, Math.max(2, y))]));
+  }
+  const sparks = [];
+  for (let s = 0; s < 3; s += 1) sparks.push([6.5 + Math.floor(rand() * 38), 6.5 + Math.floor(rand() * 38)]);
+  return { bolts, sparks };
+}
+function retroTrap(frame) {
+  const { bolts, sparks } = trapBolts(frame);
+  const parts = [];
+  for (const pts of bolts) parts.push(part((x, y) => sdPolyline(x, y, pts), "stroke", RX.amberBright, { half: 0.55, reach: 3.2, peak: 0.75, glow: RX.amber }));
+  for (const [sx, sy] of sparks)
+    parts.push(part((x, y) => Math.min(sdSeg(x, y, sx - 1.8, sy, sx + 1.8, sy), sdSeg(x, y, sx, sy - 1.8, sx, sy + 1.8)), "stroke", RX.amberBright,
+      { half: 0.5, reach: 2, peak: 0.6, glow: RX.amber }));
+  return overScene(shapes(parts), retroHatch(0, 0, true));
+}
+
+/** Ice: an icy dark panel with a cyan rim and four glints in a pinwheel (same in every rotation). */
+const ICE_GLINTS = [0, 1, 2, 3].map((q) => {
+  const turn = ([x, y]) => { let px = x, py = y; for (let k = 0; k < q; k += 1) [px, py] = [T - py, px]; return [px, py]; };
+  return [turn([8.5, 18.5]), turn([17.5, 9.5])];
+});
+function iceGround(x, y) {
+  return x < 1 || y < 1 || x >= T - 1 || y >= T - 1 ? rgbMix(RX.iceGround, RX.ice, 0.25) : RX.iceGround;
+}
+function iceParts() {
+  return [
+    ...ICE_GLINTS.map(([a, b]) => part((x, y) => sdSeg(x, y, ...a, ...b), "stroke", RX.ice, { half: 0.55, reach: 2.2, peak: 0.4 })),
+    part((x, y) => sdRBox(x, y, 25, 25, 22.5, 22.5, 2), "outline", rgbMix(RX.iceGround, RX.ice, 0.55), { half: 0.5, reach: 1.5, peak: 0.25, fill: null }),
+  ];
+}
+const retroIce = () => overScene(shapes(iceParts()), iceGround);
+/** The Toybox crack paths (same random draws). */
+function crackPaths() {
+  const rand = rng(4242);
+  const ends = [[24, 1], [48, 20], [30, 48], [1, 30], [44, 43], [5, 6]];
+  const c0 = [24.5, 24.5];
+  return ends.map((end) => {
+    const pts = [c0];
+    for (let s = 1; s <= 4; s += 1) {
+      const t = s / 4, j = s === 4 ? 0 : (rand() * 2 - 1) * 4;
+      pts.push([c0[0] + (end[0] + 0.5 - c0[0]) * t + j, c0[1] + (end[1] + 0.5 - c0[1]) * t - j]);
+    }
+    return pts;
+  });
+}
+function retroCrackedIce() {
+  return overScene(shapes([
+    part((x, y) => sdCircle(x, y, 24.5, 24.5, 3.2), "outline", RX.bright, { half: 0.6, fill: RX.waterGround, reach: 2.5, peak: 0.5, glow: RX.ice }),
+    ...crackPaths().map((pts) => part((x, y) => sdPolyline(x, y, pts), "stroke", RX.bright, { half: 0.5, reach: 2.4, peak: 0.45, glow: RX.ice })),
+    ...iceParts(),
+  ]), iceGround);
+}
+/** Water: dark blue-green with wave crests on a 25 px lattice (neighbours join up). */
+function retroWater() {
+  const crests = [[6, 6], [31, 6], [18, 18], [43, 18], [6, 31], [31, 31], [18, 43], [43, 43]];
+  const wave = (cx, cy) => (x, y) => {
+    const dx = x - (cx + 0.5);
+    if (Math.abs(dx) > 5) return Math.hypot(Math.abs(dx) - 5, y - (cy + 1.7));
+    return Math.abs(y - (cy + 0.5 - 1.2 * Math.cos((dx / 5) * Math.PI)));
+  };
+  return overScene(shapes(crests.map(([cx, cy]) => part(wave(cx, cy), "stroke", RX.water, { half: 0.55, reach: 2, peak: 0.4 }))), () => RX.waterGround);
+}
+
+/** Lava: a flickering red-amber hatch. Bright diagonals (x + y) drift one
+ *  10 px period over the loop; a static dark cross-hatch (x - y); the heat
+ *  (red to amber, glow) flickers in a pattern that repeats every tile and
+ *  every loop. */
+function retroLava(frame, frames) {
+  const P = 10, shift = (frame * P) / frames, tw = (2 * Math.PI * frame) / frames;
+  return (x, y) => {
+    const u = mod(x + y - shift, P), du = Math.min(u, P - u) / Math.SQRT2;
+    const v = mod(x - y, P), dv = Math.min(v, P - v) / Math.SQRT2;
+    const heat = 0.5 + 0.5 * Math.sin(2 * tw + (2 * Math.PI * x) / T + (4 * Math.PI * y) / T) * Math.cos(3 * tw - (2 * Math.PI * (x - 2 * y)) / T);
+    const h2 = heat * heat;
+    const hot = rgbMix(RX.lavaDeep, rgbMix(RX.lavaRed, RX.amber, h2), 0.35 + 0.65 * heat);
+    const e = du - 0.6;
+    if (e <= 0) return rgbMix(hot, RX.amberBright, Math.max(0, heat - 0.85) * 3);
+    const glow = e < 2.5 ? (0.12 + 0.3 * h2) * (1 - e / 2.5) ** 2 : 0;
+    return rgbMix(dv < 0.4 ? RX.lavaDeep : RX.lavaGround, hot, glow);
+  };
+}
+
+// ---- retro resistors (dots): an amber capsule outline on thin leads, three band ticks
+const RETRO_BAND = { "#e8574a": "#ff5c50", "#2f7cc6": "#58a6ff", "#f6c445": "#ffe45a", "#2a2335": "#c8ffd6", "#9a3256": "#ff78d4", "#3c8f6a": "#33ff66" };
+function retroResistor(w, h, angleDeg, bandHex) {
+  const a = (angleDeg * Math.PI) / 180, ux = Math.cos(a), uy = Math.sin(a);
+  const cx = w / 2, cy = h / 2;
+  const LEAD = 20, BODY = 8.5, RAD = 4.6;
+  const along = (x, y) => (x - cx) * ux + (y - cy) * uy;
+  const across = (x, y) => -(x - cx) * uy + (y - cy) * ux;
+  const capsule = (x, y) => { const t = along(x, y); return Math.hypot(t - Math.max(-BODY, Math.min(BODY, t)), across(x, y)) - RAD; };
+  const bands = bandHex.map((b, i) => part((x, y) => Math.hypot(along(x, y) - (-4.5 + i * 4), Math.max(Math.abs(across(x, y)) - (RAD - 1.8), 0)),
+    "stroke", parseColour(RETRO_BAND[b] ?? RETRO.bright), { half: 0.6, reach: 1.2, peak: 0.3 }));
+  return renderAA(shapes([
+    ...bands,
+    part(capsule, "outline", RX.amber, { half: 0.6, reach: 2.4, peak: 0.45 }),
+    part((x, y) => Math.hypot(Math.max(Math.abs(along(x, y)) - LEAD, 0), across(x, y)), "stroke", RX.dim, { half: 0.5, reach: 1.5, peak: 0.3 }),
+  ]), w, h);
+}
+
+// ---- the retro robot: a vector robot, front view like the Toybox one: eyes
+// where Q.RoboFx.eyes expects them (4 px either side of the centre, 5.5 px
+// above it), antenna up, feet down.
+const EYE_C = [[21, 19.5], [29, 19.5]];
+/** ink: { line, eye, accent, detail, fill, glow, reach, peak } -> parts, top
+ *  first. opt.xEyes: dead eyes; opt.ribs: the x-ray skeleton. */
+function robotParts(ink, opt = {}) {
+  const P = (sd, mode, colour, extra) => part(sd, mode, colour, { fill: ink.fill, glow: ink.glow, reach: ink.reach ?? 2.5, peak: ink.peak ?? 0.4, ...extra });
+  const parts = [];
+  if (opt.xEyes)
+    for (const [ex, ey] of EYE_C)
+      parts.push(P((x, y) => Math.min(sdSeg(x, y, ex - 1.8, ey - 1.8, ex + 1.8, ey + 1.8), sdSeg(x, y, ex - 1.8, ey + 1.8, ex + 1.8, ey - 1.8)), "stroke", ink.eye, { half: 0.55 }));
+  else for (const [ex, ey] of EYE_C) parts.push(P((x, y) => sdCircle(x, y, ex, ey, 1.9), "solid", ink.eye));
+  parts.push(P((x, y) => sdSeg(x, y, 22.5, 23.2, 27.5, 23.2), "stroke", ink.detail, { half: 0.45, reach: 1 }));
+  parts.push(P((x, y) => sdCircle(x, y, 25, 4.6, 1.7), "solid", ink.accent));
+  if (opt.ribs) {
+    for (const ry of [29.5, 32, 34.5]) parts.push(P((x, y) => sdSeg(x, y, 20.5, ry, 29.5, ry), "stroke", ink.line, { half: 0.45, reach: 1 }));
+    parts.push(P((x, y) => sdSeg(x, y, 25, 28, 25, 36.5), "stroke", ink.line, { half: 0.5, reach: 1 }));
+  } else {
+    parts.push(P((x, y) => sdCircle(x, y, 25, 31.2, 1.6), "solid", ink.accent));
+    parts.push(P((x, y) => sdSeg(x, y, 21.5, 35.2, 28.5, 35.2), "stroke", ink.detail, { half: 0.45, reach: 1 }));
+  }
+  parts.push(P((x, y) => sdRBox(x, y, 25, 17.5, 9, 6.5, 2.5), "outline", ink.line, { half: 0.65 }));
+  parts.push(P((x, y) => sdRBox(x, y, 25, 32.5, 7.5, 6, 2), "outline", ink.line, { half: 0.65 }));
+  parts.push(P((x, y) => sdSeg(x, y, 25, 6.3, 25, 11), "stroke", ink.line, { half: 0.55 }));
+  parts.push(P((x, y) => sdSeg(x, y, 25, 24, 25, 26.5), "stroke", ink.line, { half: 0.6 }));
+  for (const s of [-1, 1]) {
+    parts.push(P((x, y) => sdCircle(x, y, 25 + s * 11.3, 36.2, 1.5), "outline", ink.line, { half: 0.55 }));
+    parts.push(P((x, y) => sdSeg(x, y, 25 + s * 7.5, 29.5, 25 + s * 11, 34.6), "stroke", ink.line, { half: 0.6 }));
+    parts.push(P((x, y) => sdRBox(x, y, 25 + s * 4, 43.6, 2.6, 1.4, 0.8), "outline", ink.line, { half: 0.55 }));
+    parts.push(P((x, y) => sdSeg(x, y, 25 + s * 3.5, 38.5, 25 + s * 3.5, 42.2), "stroke", ink.line, { half: 0.6 }));
+  }
+  return parts;
+}
+const ROBOT_INK = { line: RX.phosphor, eye: RX.bright, accent: RX.amber, detail: RX.dim, fill: RX.fill, glow: RX.phosphor };
+const inkMix = (ink, to, t, extra = {}) => ({
+  line: rgbMix(ink.line, to, t), eye: rgbMix(ink.eye, to, t * 0.6), accent: rgbMix(ink.accent, to, t), detail: rgbMix(ink.detail, to, t),
+  fill: ink.fill, glow: rgbMix(ink.glow, to, t), ...extra,
+});
+/** A scene scaled by s about (24.5, 26.5), as the Toybox shrink (s = 0: gone). */
+const scaled = (scene, s, cx = 24.5, cy = 26.5) => (s <= 0 ? () => null : (x, y) => scene(cx + (x - cx) / s, cy + (y - cy) / s));
+
+/** The 32 player frames, same meaning per frame as robotFrames(). */
+export function retroRobotFrames() {
+  const robot = (ink, opt) => shapes(robotParts(ink, opt));
+  const scenes = [];
+  scenes[0] = robot(ROBOT_INK);
+  // 1-4 electrocution starts: lines and glow turn amber and the glow grows; 4 x-ray
+  for (let k = 1; k <= 3; k += 1) scenes[k] = robot(inkMix(ROBOT_INK, RX.amber, k * 0.28, { reach: 2.5 + k * 0.6, peak: 0.4 + k * 0.1 }));
+  const xray = { line: RX.amberBright, eye: RX.amberBright, accent: RX.amberBright, detail: RX.amber, fill: RX.xrayFill, glow: RX.amber, reach: 4, peak: 0.7 };
+  scenes[4] = robot(xray, { ribs: true });
+  // 5, 6 flicker: amber x-ray / inverted flash
+  scenes[5] = robot({ ...xray, reach: 5, peak: 0.85 }, { ribs: true });
+  scenes[6] = robot({ line: RX.bg, eye: RX.bg, accent: RX.bg, detail: RX.dim, fill: RX.flash, glow: RX.magic, reach: 4.5, peak: 0.8 }, { ribs: true });
+  // 7-11 to dead: lines cool to ash, smoke rings drift up, X eyes
+  const ash = (t, extra) => inkMix(ROBOT_INK, RX.ash, t, { eye: rgbMix(RX.bright, RX.ash, t), accent: rgbMix(RX.amber, RX.ash, t), ...extra });
+  const smoke = (rings) => shapes(rings.map(([cx, cy, r]) => part((x, y) => Math.abs(sdCircle(x, y, cx, cy, r)), "stroke", RX.ashLight, { half: 0.5, reach: 1.5, peak: 0.3 })));
+  scenes[7] = robot(ash(0.45, { glow: RX.magic, reach: 3, peak: 0.5 }));
+  scenes[8] = robot(ash(0.7));
+  scenes[9] = overScene(smoke([[30.5, 6.5, 2.5]]), robot(ash(0.9)));
+  scenes[10] = overScene(smoke([[31.5, 4.5, 3], [19.5, 7.5, 2]]), robot(ash(1, { eye: RX.ashLight }), { xEyes: true }));
+  scenes[11] = overScene(smoke([[33.5, 3.5, 2.5]]), robot(ash(1, { eye: RX.ashLight }), { xEyes: true }));
+  // 12-21 sink into lava: lines go amber then red, the robot shrinks, amber bubbles
+  const lavaScale = [1, 0.94, 0.86, 0.78, 0.7, 0.61, 0.52, 0.42, 0.3, 0];
+  for (let k = 0; k < 10; k += 1) {
+    const t = Math.min(1, k / 4);
+    const body = scaled(robot(inkMix(ROBOT_INK, k < 5 ? RX.amber : RX.lavaRed, t)), lavaScale[k]);
+    const rand = rng(700 + k);
+    const bubbles = [];
+    for (let b = 0, nb = k === 0 ? 0 : 2 + (k % 3); b < nb; b += 1) {
+      const a = rand() * Math.PI * 2, r = 9 + rand() * 12;
+      const bx = 25 + r * Math.cos(a), by = 26.5 + r * Math.sin(a), br = 1.2 + rand() * 1.6;
+      bubbles.push(part((x, y) => sdCircle(x, y, bx, by, br), "outline", RX.amberBright,
+        { half: 0.5, fill: rgbMix(RX.lavaGround, RX.amber, 0.25), glow: RX.amber, reach: 2, peak: 0.5 }));
+    }
+    scenes[12 + k] = overScene(shapes(bubbles), body);
+  }
+  // 22 is not used by any animation: the idle robot, as in Toybox
+  scenes[22] = scenes[0];
+  // 23-31 drown: lines go blue, the robot shrinks, ripples spread, bubbles rise
+  const waterScale = [0.97, 0.9, 0.82, 0.72, 0.62, 0.5, 0.38, 0.24, 0];
+  for (let k = 0; k < 9; k += 1) {
+    const t = Math.min(1, (k + 1) / 5);
+    const body = scaled(robot(inkMix(ROBOT_INK, RX.water, t * 0.85)), waterScale[k]);
+    const rings = [13 + k * 1.3, ...(k >= 3 ? [6 + (k - 3) * 1.5] : [])];
+    const ringScene = shapes(rings.map((r, i) => part((x, y) => Math.abs(sdCircle(x, y, 25, 27, r)), "stroke", i ? RX.ice : RX.bright,
+      { half: 0.5, reach: 1.8, peak: 0.35, glow: RX.ice })));
+    const rand = rng(800 + k);
+    const bubbles = [];
+    for (let b = 0; b < 3; b += 1) {
+      const bx = 12.5 + rand() * 26, by = 40.5 - ((k * 4 + b * 13) % 34), br = 1.4 + rand() * 1.2;
+      bubbles.push(part((x, y) => sdCircle(x, y, bx, by, br), "outline", RX.bright, { half: 0.45, fill: rgbMix(RX.waterGround, RX.ice, 0.2), glow: RX.ice, reach: 1.5, peak: 0.4 }));
+    }
+    scenes[23 + k] = overScene(shapes(bubbles), overScene(body, ringScene));
+  }
+  return scenes.map((s) => renderAA(s));
+}
+
+/** Retro terrain by the same names as drawTerrain, plus "lava". */
+export function drawRetroTerrain(name, frame = 0) {
+  if (name === "floor") return renderAA(retroFloor);
+  if (name === "obstacle") return renderAA(retroBlock());
+  if (SIDES[name]) return renderAA(retroWalls(SIDES[name]));
+  if (name === "magicTile") return renderAA(retroMagicTile());
+  if (name === "exitHatch") {
+    const t = frame / (FRAMES.exitHatch - 1), eased = t * t * (3 - 2 * t);
+    return renderAA(retroHatch(eased, eased * 1.4));
+  }
+  if (name === "electricTrap") return renderAA(retroTrap(frame));
+  if (name === "ice") return renderAA(retroIce());
+  if (name === "crackedIce") return renderAA(retroCrackedIce());
+  if (name === "water") return renderAA(retroWater());
+  if (name === "lava") return renderAA(retroLava(frame, lavaSourceFrames().length));
+  throw new Error(`unknown retro terrain ${name}`);
+}
+
 // ---------------------------------------------------------------- outputs
 // Every frame sits in its own PITCH x PITCH cell, at offset GUTTER, and the
 // rest of the cell repeats the frame's edge pixels (edge extrusion), as in the
@@ -762,13 +1208,27 @@ export function lavaSourceFrames() {
   return lavaCache;
 }
 
+export const STYLES = ["toybox", "retro"];
+// Shipped files per style; retro keeps the same names under images/retro/ and data/retro/.
+export const STYLE_FILES = {
+  toybox: { atlas: ATLAS_PNG, json: ATLAS_JSON, dir: "images/" },
+  retro: { atlas: "images/retro/tiles/robot-cell.png", json: "data/retro/robot-cell.json", dir: "images/retro/" },
+};
+const checkStyle = (style) => {
+  if (!STYLE_FILES[style]) throw new Error(`unknown style ${style} (want ${STYLES.join(" or ")})`);
+  return style;
+};
+const terrainFor = (style) => (checkStyle(style) === "retro" ? drawRetroTerrain : drawTerrain);
+
 /** Every atlas frame as a T x T raster, by sheet name. */
-function atlasFrames() {
+function atlasFrames(style = "toybox") {
   const flat = (src) => { const f = blank(T, T); composite(f, src, 0, 0); return f; };
-  const frames = { player: robotFrames().map(flat) };
-  for (const name of ["exitHatch", "electricTrap"]) frames[name] = Array.from({ length: FRAMES[name] }, (_, f) => flat(drawTerrain(name, f)));
-  for (const name of SINGLES) frames[name] = [flat(drawTerrain(name))];
-  frames.lava = lavaSourceFrames();
+  const terrain = terrainFor(style);
+  const frames = { player: (style === "retro" ? retroRobotFrames() : robotFrames()).map(flat) };
+  for (const name of ["exitHatch", "electricTrap"]) frames[name] = Array.from({ length: FRAMES[name] }, (_, f) => flat(terrain(name, f)));
+  for (const name of SINGLES) frames[name] = [flat(terrain(name))];
+  // Toybox lava is the 2012 art, byte for byte; retro lava is code-drawn with its frame count.
+  frames.lava = style === "retro" ? lavaSourceFrames().map((_, f) => flat(drawRetroTerrain("lava", f))) : lavaSourceFrames();
   return frames;
 }
 
@@ -785,10 +1245,10 @@ function putExtruded(dst, src, left, top) {
     }
 }
 
-export function buildAtlas() {
+export function buildAtlas(style = "toybox") {
   const { layout, width, height } = layoutAtlas();
   const atlas = blank(width, height);
-  const frames = atlasFrames();
+  const frames = atlasFrames(style);
   for (const [name, list] of Object.entries(frames)) list.forEach((fr, f) => putExtruded(atlas, fr, ...frameOrigin(layout[name], f)));
   return { atlas, layout, frames, json: JSON.stringify(layout, null, 2) + "\n" };
 }
@@ -831,11 +1291,24 @@ export function atlasProblems(atlas, layout, frames = atlasFrames()) {
 }
 
 /** Every file this generator owns: path -> raster (plus the atlas JSON). */
-export function buildFiles() {
+export function buildFiles(style = "toybox") {
   const files = {};
-  const { atlas, layout, frames, json } = buildAtlas();
+  const { atlas, layout, frames, json } = buildAtlas(style);
   const atlasBad = atlasProblems(atlas, layout, frames);
-  if (atlasBad.length) throw new Error(`robot-cell atlas:\n  ${atlasBad.slice(0, 20).join("\n  ")}`);
+  if (atlasBad.length) throw new Error(`robot-cell ${style} atlas:\n  ${atlasBad.slice(0, 20).join("\n  ")}`);
+  if (style === "retro") {
+    // The robot window's other images (obstacles.js, script.js, utilitySprites.js
+    // addDot), same names under images/retro/. Part icons are UI, not the window.
+    const { atlas: A, dir } = STYLE_FILES.retro;
+    files[A] = atlas;
+    files[`${dir}robotile.png`] = drawRetroTerrain("floor");
+    files[`${dir}obstacle.png`] = drawRetroTerrain("obstacle");
+    files[`${dir}ice.png`] = drawRetroTerrain("ice");
+    files[`${dir}crackedIce.png`] = drawRetroTerrain("crackedIce");
+    files[`${dir}water.png`] = drawRetroTerrain("water");
+    for (const [file, w, h, a, , bands] of RESISTORS) files[`${dir}${file}`] = retroResistor(w, h, a, bands);
+    return { files, json, frames };
+  }
   files[ATLAS_PNG] = atlas;
   files["images/robotile.png"] = drawTerrain("floor");
   files["images/obstacle.png"] = drawTerrain("obstacle");
@@ -853,7 +1326,13 @@ function label(img, text, x, y, colour = "#2a2335", scale = 1) {
 }
 
 let lavaFrames = null;
-function lavaFrame(f) {
+const retroLavaFrames = new Map();
+function lavaFrame(f, style = "toybox") {
+  if (style === "retro") {
+    const k = f % lavaSourceFrames().length;
+    if (!retroLavaFrames.has(k)) retroLavaFrames.set(k, drawRetroTerrain("lava", k));
+    return retroLavaFrames.get(k);
+  }
   if (!lavaFrames) {
     const src = decodePng(fs.readFileSync(path.join(ROOT, "images/sprytszyt.png")));
     lavaFrames = [];
@@ -897,32 +1376,37 @@ function loadLevel(name) {
 }
 
 const TILE_FOR = { Empty: "floor", Obstacle: "obstacle", DeadEnd: "deadend", Wall: "wall", Corner: "corner", Tunnel: "tunnel", Ice: "ice", CrackedIce: "crackedIce", Water: "water", Dif: "magicTile" };
-function cellImage(what, frame) {
-  if (what === "Lava") return lavaFrame(frame);
-  if (what === "End") return drawTerrain("exitHatch", 0);
-  if (what === "TrappedChest") return drawTerrain("electricTrap", frame % FRAMES.electricTrap);
-  return drawTerrain(TILE_FOR[what] ?? "floor");
+const terrainCache = new Map();
+function cellImage(what, frame, style = "toybox") {
+  if (what === "Lava") return lavaFrame(frame, style);
+  const [name, f] = what === "End" ? ["exitHatch", 0] : what === "TrappedChest" ? ["electricTrap", frame % FRAMES.electricTrap] : [TILE_FOR[what] ?? "floor", 0];
+  const id = `${style}/${name}/${f}`;
+  if (!terrainCache.has(id)) terrainCache.set(id, terrainFor(style)(name, f));
+  return terrainCache.get(id);
 }
-let dotCache = null;
-function dot(i) {
-  if (!dotCache) dotCache = RESISTORS.map(([, w, h, a, b, bands]) => resistor(w, h, a, b, bands));
-  return dotCache[i % dotCache.length];
+const dotCache = {};
+function dot(i, style = "toybox") {
+  if (!dotCache[style])
+    dotCache[style] = RESISTORS.map(([, w, h, a, b, bands]) => (style === "retro" ? retroResistor(w, h, a, bands) : resistor(w, h, a, b, bands)));
+  return dotCache[style][i % RESISTORS.length];
 }
 
 /** The robot table as the game draws it: 50 px tiles, 2 px black gaps. */
-export function levelMock(name, frame = 0, robotFrame = 0) {
+const robotCache = {};
+const playerFrames = (style) => (robotCache[style] ??= style === "retro" ? retroRobotFrames() : robotFrames());
+export function levelMock(name, frame = 0, robotFrame = 0, style = "toybox") {
   const { cells, size, robot } = loadLevel(name);
   const [m, n] = [size[0], size[1]];
   const img = blank(m * 52 + 2, n * 52 + 2, [0, 0, 0, 255]);
-  const frames = robotFrames();
+  const frames = playerFrames(style);
   let k = 0;
   for (let y = 0; y < n; y += 1)
     for (let x = 0; x < m; x += 1) {
       const c = cells[`${x},${y}`] ?? { what: "Empty", angle: 0 };
-      let tile = rotate90(cellImage(c.what, frame), -c.angle);
+      let tile = rotate90(cellImage(c.what, frame, style), -c.angle);
       if (c.dot) {
         tile = clone(tile);
-        const d = dot(k++);
+        const d = dot(k++, style);
         composite(tile, d, Math.round((T - d.width) / 2), Math.round((T - d.height) / 2));
       }
       composite(img, tile, 2 + x * 52, 2 + y * 52);
@@ -932,15 +1416,23 @@ export function levelMock(name, frame = 0, robotFrame = 0) {
   return img;
 }
 
-function framesSheet() {
-  const bgL = parseColour("#efe9dc");
-  const groups = [["player", FRAMES.player, (f) => robotFrames()[f]], ["exitHatch", 21, (f) => drawTerrain("exitHatch", f)], ["electricTrap", 21, (f) => drawTerrain("electricTrap", f)]];
+// Review grounds per style: the sheet's ground, a dark ground and the label ink.
+const REVIEW = {
+  toybox: { bg: "#efe9dc", dark: "#1e2126", ink: "#2a2335" },
+  retro: { bg: RETRO.bg, dark: "#000000", ink: RETRO.phosphor },
+};
+
+function framesSheet(style = "toybox") {
+  const { bg, dark: darkHex, ink } = REVIEW[style];
+  const drawTerrain = terrainFor(style);
+  const robots = playerFrames(style);
+  const groups = [["player", FRAMES.player, (f) => robots[f]], ["exitHatch", 21, (f) => drawTerrain("exitHatch", f)], ["electricTrap", 21, (f) => drawTerrain("electricTrap", f)]];
   const singles = ["floor", ...SINGLES, "ice", "crackedIce", "water"];
   const scale = 3;
   const W = 16 * (T * scale + 4) + 20;
-  const sheet = blank(W, 2400, bgL);
+  const sheet = blank(W, 2400, parseColour(bg));
+  const label = (img, text, x, y) => drawText(img, text, x, y, parseColour(ink));
   let y = 10;
-  const robots = robotFrames();
   for (const [name, n, fn] of groups) {
     label(sheet, `${name} (${n} frames) 1X ON FLOOR AND DARK, THEN X3`, 10, y);
     y += 12;
@@ -950,7 +1442,7 @@ function framesSheet() {
       const a = name === "player" ? clone(onFloor) : fr;
       if (name === "player") composite(a, fr, 0, 0);
       composite(sheet, a, 10 + f * 54, y);
-      const dark = blank(T, T, parseColour("#1e2126"));
+      const dark = blank(T, T, parseColour(darkHex));
       composite(dark, fr, 0, 0);
       composite(sheet, dark, 10 + f * 54, y + 54);
       label(sheet, `${f}`, 10 + f * 54, y + 108);
@@ -960,7 +1452,7 @@ function framesSheet() {
       const col = f % 16, row = Math.floor(f / 16);
       const a = name === "player" ? clone(drawTerrain(name === "player" ? (f >= 12 && f <= 21 ? "floor" : "floor") : "floor")) : fn(f);
       if (name === "player") {
-        const bg = f >= 12 && f <= 21 ? lavaFrame(f) : f >= 23 ? drawTerrain("water") : drawTerrain("floor");
+        const bg = f >= 12 && f <= 21 ? lavaFrame(f, style) : f >= 23 ? drawTerrain("water") : drawTerrain("floor");
         composite(a, bg, 0, 0);
         composite(a, robots[f], 0, 0);
       }
@@ -996,7 +1488,7 @@ function framesSheet() {
   }
   RESISTORS.forEach(([, w, h, an, b, bands], i) => {
     const a = clone(drawTerrain("floor"));
-    const d = resistor(w, h, an, b, bands);
+    const d = style === "retro" ? retroResistor(w, h, an, bands) : resistor(w, h, an, b, bands);
     composite(a, d, Math.round((T - w) / 2), Math.round((T - h) / 2));
     composite(sheet, scaleNearest(a, 2), 440 + i * 104, y);
   });
@@ -1044,14 +1536,14 @@ function iconSheet() {
   return sheet;
 }
 
-function levelSheet(names) {
-  const mocks = names.map((n) => [n, levelMock(n, 0, 0), levelMock(n, 7, 0)]);
+function levelSheet(names, style = "toybox") {
+  const mocks = names.map((n) => [n, levelMock(n, 0, 0, style), levelMock(n, 7, 0, style)]);
   const W = Math.max(...mocks.map(([, a]) => a.width * 2)) + mocks.reduce((s, [, a]) => s + a.width + 20, 0) + 40;
   const H = mocks.reduce((s, [, a]) => s + a.height * 2 + 30, 10);
-  const sheet = blank(W, H, parseColour("#efe9dc"));
+  const sheet = blank(W, H, parseColour(REVIEW[style].bg));
   let y = 10;
   for (const [n, a] of mocks) {
-    label(sheet, `${n.toUpperCase()} AT 1X AND X2 (GAME LAYOUT: 50 PX TILES, 2 PX BLACK GAPS)`, 10, y);
+    label(sheet, `${n.toUpperCase()} AT 1X AND X2 (GAME LAYOUT: 50 PX TILES, 2 PX BLACK GAPS)`, 10, y, REVIEW[style].ink);
     composite(sheet, a, 10, y + 12);
     composite(sheet, scaleNearest(a, 2), a.width + 30, y + 12);
     y += a.height * 2 + 30;
@@ -1062,51 +1554,82 @@ function levelSheet(names) {
 // ---------------------------------------------------------------- main
 function main(argv) {
   const check = argv.includes("--check");
-  const reviewAt = argv.indexOf("--review");
-  const tagAt = argv.indexOf("--tag");
-  const tag = tagAt >= 0 ? argv[tagAt + 1] : "robot-cell-v1";
-  const { files, json, frames } = buildFiles();
+  const at = (flag) => (argv.indexOf(flag) >= 0 ? argv[argv.indexOf(flag) + 1] : undefined);
+  const styleArg = at("--style") ?? (check ? "all" : "toybox");
+  const styles = styleArg === "all" ? STYLES : [checkStyle(styleArg)];
+  const built = Object.fromEntries(styles.map((st) => [st, buildFiles(st)]));
   const bad = [];
-  for (const [rel, raster] of Object.entries(files)) {
-    const full = path.join(ROOT, rel);
+  for (const style of styles) {
+    const { files, json, frames } = built[style];
+    for (const [rel, raster] of Object.entries(files)) {
+      const full = path.join(ROOT, rel);
+      if (check) {
+        if (!fs.existsSync(full)) bad.push(`${rel} missing`);
+        else if (pixelSha256(decodePng(fs.readFileSync(full))) !== pixelSha256(raster)) bad.push(`${rel} differs from the generator`);
+      } else {
+        fs.mkdirSync(path.dirname(full), { recursive: true });
+        let same = false;
+        try { same = pixelSha256(decodePng(fs.readFileSync(full))) === pixelSha256(raster); } catch {}
+        if (!same) { fs.writeFileSync(full, encodePng(raster)); console.log(`wrote ${rel} (${raster.width}x${raster.height})`); }
+      }
+    }
+    const { atlas: PNG, json: JSON_FILE } = STYLE_FILES[style];
+    const jsonPath = path.join(ROOT, JSON_FILE);
     if (check) {
-      if (!fs.existsSync(full)) bad.push(`${rel} missing`);
-      else if (pixelSha256(decodePng(fs.readFileSync(full))) !== pixelSha256(raster)) bad.push(`${rel} differs from the generator`);
+      if (!fs.existsSync(jsonPath) || fs.readFileSync(jsonPath, "utf8") !== json) bad.push(`${JSON_FILE} differs from the generator`);
+      // the shipped pair itself: every frame at its JSON rect, its edges extruded into the gutter
+      let shippedLayout = null;
+      try { shippedLayout = JSON.parse(fs.readFileSync(jsonPath, "utf8")); } catch {}
+      const pngPath = path.join(ROOT, PNG);
+      if (shippedLayout && fs.existsSync(pngPath))
+        bad.push(...atlasProblems(decodePng(fs.readFileSync(pngPath)), shippedLayout, frames).slice(0, 10).map((p) => `${PNG}: ${p}`));
     } else {
-      fs.mkdirSync(path.dirname(full), { recursive: true });
-      let same = false;
-      try { same = pixelSha256(decodePng(fs.readFileSync(full))) === pixelSha256(raster); } catch {}
-      if (!same) { fs.writeFileSync(full, encodePng(raster)); console.log(`wrote ${rel} (${raster.width}x${raster.height})`); }
+      fs.mkdirSync(path.dirname(jsonPath), { recursive: true });
+      fs.writeFileSync(jsonPath, json);
     }
   }
-  const jsonPath = path.join(ROOT, ATLAS_JSON);
+  if (check && built.retro) {
+    // Determinism: a second, independent build of every retro file is identical.
+    const again = buildFiles("retro");
+    for (const [rel, raster] of Object.entries(built.retro.files))
+      if (pixelSha256(again.files[rel]) !== pixelSha256(raster)) bad.push(`${rel}: a second build differs (not deterministic)`);
+    // Parity: same sheets, frame counts, pitch, gutters and rects as Toybox,
+    // so the game swaps only the URLs; the window's other images keep their sizes.
+    if (built.toybox) {
+      if (built.retro.json !== built.toybox.json) bad.push(`${STYLE_FILES.retro.json} layout differs from ${STYLE_FILES.toybox.json}`);
+      const tA = built.toybox.files[STYLE_FILES.toybox.atlas], rA = built.retro.files[STYLE_FILES.retro.atlas];
+      if (tA.width !== rA.width || tA.height !== rA.height) bad.push("retro robot-cell atlas size differs from toybox");
+      for (const [rel, raster] of Object.entries(built.retro.files)) {
+        const twin = built.toybox.files[rel.replace(STYLE_FILES.retro.dir, STYLE_FILES.toybox.dir)];
+        if (rel !== STYLE_FILES.retro.atlas && (!twin || twin.width !== raster.width || twin.height !== raster.height))
+          bad.push(`${rel}: no toybox twin of the same size`);
+      }
+    }
+  }
   if (check) {
-    if (!fs.existsSync(jsonPath) || fs.readFileSync(jsonPath, "utf8") !== json) bad.push(`${ATLAS_JSON} differs from the generator`);
-    // the shipped pair itself: every frame at its JSON rect, its edges extruded into the gutter
-    let shippedLayout = null;
-    try { shippedLayout = JSON.parse(fs.readFileSync(jsonPath, "utf8")); } catch {}
-    const pngPath = path.join(ROOT, ATLAS_PNG);
-    if (shippedLayout && fs.existsSync(pngPath))
-      bad.push(...atlasProblems(decodePng(fs.readFileSync(pngPath)), shippedLayout, frames).slice(0, 10).map((p) => `${ATLAS_PNG}: ${p}`));
     if (bad.length) {
-      console.error(`robot-cell --check FAILED:\n  ${bad.join("\n  ")}\nRegenerate with: node tools/art/tiles/robot-cell.mjs`);
+      console.error(`robot-cell --check FAILED:\n  ${bad.join("\n  ")}\nRegenerate with: node tools/art/tiles/robot-cell.mjs --style all`);
       process.exit(1);
     }
-    console.log(`robot-cell --check OK (${Object.keys(files).length + 1} files; atlas frames on a ${PITCH} px pitch, edges extruded >= ${GUTTER} px, lava byte-identical to ${LAVA_SOURCE})`);
-  } else {
-    fs.writeFileSync(jsonPath, json);
+    for (const style of styles)
+      console.log(`robot-cell --check OK [${style}] (${Object.keys(built[style].files).length + 1} files; atlas frames on a ${PITCH} px pitch, edges extruded >= ${GUTTER} px` +
+        (style === "toybox" ? `, lava byte-identical to ${LAVA_SOURCE})` : "; deterministic; layout identical to toybox)"));
   }
-  if (reviewAt >= 0) {
-    const dir = path.resolve(argv[reviewAt + 1]);
+  const reviewDir = at("--review");
+  if (reviewDir) {
+    const dir = path.resolve(reviewDir);
     fs.mkdirSync(dir, { recursive: true });
-    const out = {
-      [`${tag}-frames.png`]: framesSheet(),
-      [`${tag}-icons.png`]: iconSheet(),
-      [`${tag}-levels.png`]: levelSheet(["tunnel", "labirynth", "ring of fire"]),
-      [`${tag}-levels2.png`]: levelSheet(["some flag?", "just give up", "P"]),
-    };
-    for (const [name, img] of Object.entries(out)) fs.writeFileSync(path.join(dir, name), encodePng(img));
-    console.log(`review sheets in ${dir}: ${Object.keys(out).join(", ")}`);
+    for (const style of styles) {
+      const tag = at("--tag") ?? (style === "toybox" ? "robot-cell-v1" : "robot-cell-retro");
+      const out = {
+        [`${tag}-frames.png`]: framesSheet(style),
+        ...(style === "toybox" ? { [`${tag}-icons.png`]: iconSheet() } : {}),
+        [`${tag}-levels.png`]: levelSheet(["tunnel", "labirynth", "ring of fire"], style),
+        [`${tag}-levels2.png`]: levelSheet(["some flag?", "just give up", "P"], style),
+      };
+      for (const [name, img] of Object.entries(out)) fs.writeFileSync(path.join(dir, name), encodePng(img));
+      console.log(`review sheets in ${dir}: ${Object.keys(out).join(", ")}`);
+    }
   }
 }
 
