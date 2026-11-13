@@ -145,8 +145,12 @@ window.addEventListener('load',function(e) {
 		Q.compileSheets("tiles/robot-cell.png","robot-cell.json");
 		Q.input.keyboardControls();
 		t.UI.loaded();
-		//Q.stageScene("level selector");
-		Q.stageScene("intro");
+		// first launch: choose the look first (the intro differs per skin);
+		// after a look change, back to the screen it was made from
+		var back = t.Skin.takeReturn();
+		if(!t.Skin.chosen) Q.stageScene("skin chooser");
+		else if(back && Q.scenes[back]) Q.stageScene(back);
+		else Q.stageScene("intro");
 	}, {
 			progressCallback: function(loaded,total) {
 				//var element = document.getElementById("loading_progress");

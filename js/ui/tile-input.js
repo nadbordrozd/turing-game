@@ -245,7 +245,7 @@
 			var ops = t.Selector.operatorList();
 			if(this.selected) {
 				var i = ops.indexOf(this.selected);
-				if(i >= 0) ring(ctx, L.tray.slots[i].x, L.tray.slots[i].y, P, "#ec5b45");
+				if(i >= 0) ring(ctx, L.tray.slots[i].x, L.tray.slots[i].y, P, t.Skin.color("tomato"));
 			}
 			var d = this.drag, cell = d ? d.target : this.hover, op = d ? d.op : this.selected;
 			if(cell && op) {
@@ -259,16 +259,16 @@
 					t.UI.drawTile(ctx, joins[j].what, joins[j].angle, nc.x, nc.y, P, 1, joins[j].sheet);
 				}
 				ctx.save();
-				ctx.fillStyle = "rgba(255,244,220,0.55)";
+				ctx.fillStyle = t.Skin.color("dropWash");
 				ctx.fillRect(cc.x - P / 2, cc.y - P / 2, P, P);
 				ctx.restore();
 				t.UI.drawTile(ctx, op, angle, cc.x, cc.y, P, 0.6, joins[0].sheet);
-				ring(ctx, cc.x - P / 2, cc.y - P / 2, P, "#2a2335");
+				ring(ctx, cc.x - P / 2, cc.y - P / 2, P, t.Skin.color("ink"));
 			}
 			if(d) {
 				var x = d.p.x, y = d.p.y + d.dy;
 				ctx.save();
-				ctx.shadowColor = "rgba(42,35,53,0.35)";
+				ctx.shadowColor = t.Skin.color("dragShadow");
 				ctx.shadowBlur = 10;
 				ctx.shadowOffsetY = 6;
 				t.UI.drawTile(ctx, d.op, d.angle, x, y, P * 1.12, d.overTrash ? 0.5 : 0.95);
@@ -297,7 +297,7 @@
 		t.UI.roundRect(ctx, x - 3, y - 3, size + 6, size + 6, 7);
 		ctx.stroke();
 		ctx.lineWidth = 2;
-		ctx.strokeStyle = "#fff4dc";
+		ctx.strokeStyle = t.Skin.color("cream");
 		t.UI.roundRect(ctx, x - 6, y - 6, size + 12, size + 12, 9);
 		ctx.stroke();
 		ctx.restore();

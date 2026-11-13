@@ -18,9 +18,11 @@
 	var UI = t.UI;
 	var P = 54;					// program tile pitch (board contract)
 	var RS = 52;				// robot cell pitch: 50 px tile + 2 px grout (RobotTable)
-	var INK = "#2a2335", CREAM = "#fff4dc", SUN = "#f6c445", MINT = "#a3d9b1";
-	var WIN = "#f7e7c6";		// robot window (.gs-win)
-	var FONT = '800 13px ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif';
+	// colours and type come from the skin (js/skin.js tokens)
+	var S = t.Skin;
+	var INK = S.color("ink"), CASING = S.color("casing"), CREAM = S.color("cream"), SUN = S.color("sun"), MINT = S.color("board");
+	var WIN = S.color("window");		// robot window (.gs-win)
+	var FONT = S.font('800 13px ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif');
 	var SEEN_KEY = "turing.tilesSeen";
 	var Q = null;
 
@@ -113,7 +115,7 @@
 	// a patch of program board (mint, ink frame, as .gs-board-frame)
 	function drawBoard(ctx, x, y, w, h) {
 		ctx.save();
-		ctx.fillStyle = "rgba(255,255,255,0.35)";
+		ctx.fillStyle = S.color("boardHalo");
 		rr(ctx, x - 8, y - 8, w + 16, h + 16, 10); ctx.fill();
 		ctx.fillStyle = MINT;
 		rr(ctx, x - 3, y - 3, w + 6, h + 6, 6); ctx.fill();
@@ -156,7 +158,7 @@
 		ctx.fillStyle = WIN;
 		rr(ctx, x0 - pad, y0 - pad, gw + 2 * pad, gh + 2 * pad, 10); ctx.fill();
 		ctx.lineWidth = 3; ctx.strokeStyle = INK; ctx.stroke();
-		ctx.fillStyle = INK;
+		ctx.fillStyle = S.color("lcd");	// grout between the cells
 		ctx.fillRect(x0, y0, gw, gh);
 		var floor = Q.asset("robotile.png");
 		for(var i = 0; i < cols; i++) for(var j = 0; j < rows; j++) {
@@ -191,7 +193,7 @@
 		ctx.globalAlpha *= alpha;
 		ctx.lineCap = "round";
 		for(var pass = 0; pass < 2; pass++) {
-			ctx.strokeStyle = pass ? SUN : INK;
+			ctx.strokeStyle = pass ? SUN : CASING;
 			ctx.lineWidth = pass ? 3 : 7;
 			ctx.beginPath();
 			ctx.arc(x, y, r, a0, a1, dir < 0);
@@ -203,7 +205,7 @@
 		ctx.rotate(tang);
 		ctx.beginPath();
 		ctx.moveTo(7, 0); ctx.lineTo(-5, -7); ctx.lineTo(-5, 7); ctx.closePath();
-		ctx.fillStyle = SUN; ctx.strokeStyle = INK; ctx.lineWidth = 2;
+		ctx.fillStyle = SUN; ctx.strokeStyle = CASING; ctx.lineWidth = 2;
 		ctx.lineJoin = "round";
 		ctx.fill(); ctx.stroke();
 		ctx.restore();
@@ -218,9 +220,9 @@
 		ctx.lineJoin = "round";
 		if(lit) {
 			ctx.fillStyle = SUN; ctx.fill();
-			ctx.lineWidth = 2.5; ctx.strokeStyle = INK; ctx.stroke();
+			ctx.lineWidth = 2.5; ctx.strokeStyle = CASING; ctx.stroke();
 		} else {
-			ctx.lineWidth = 2; ctx.strokeStyle = "rgba(42,35,53,0.35)"; ctx.stroke();
+			ctx.lineWidth = 2; ctx.strokeStyle = S.color("exitOff"); ctx.stroke();
 		}
 		ctx.restore();
 	}
@@ -241,10 +243,10 @@
 		ctx.fillStyle = col.chip;
 		rr(ctx, x, y, w, ch + 10, 10); ctx.fill();
 		ctx.lineWidth = 3; ctx.strokeStyle = INK; ctx.stroke();
-		ctx.fillStyle = INK;
+		ctx.fillStyle = S.color("lcd");
 		rr(ctx, x, y + ch, w, lh + 3, 10); ctx.fill();
 		ctx.lineWidth = 3; ctx.strokeStyle = INK; ctx.stroke();
-		ctx.strokeStyle = "#3b3349"; ctx.lineWidth = 3;
+		ctx.strokeStyle = S.color("lcdBezel"); ctx.lineWidth = 3;
 		rr(ctx, x + 4.5, y + ch + 4.5, w - 9, lh - 6, 6); ctx.stroke();
 		if(flash > 0) {
 			ctx.globalAlpha = flash;
@@ -252,17 +254,17 @@
 			rr(ctx, x - 5, y - 5, w + 10, ch + lh + 13, 13); ctx.stroke();
 			ctx.globalAlpha = 1;
 		}
-		ctx.font = '800 12px ui-rounded, "Arial Rounded MT Bold", "Trebuchet MS", sans-serif';
+		ctx.font = S.font('800 12px ui-rounded, "Arial Rounded MT Bold", "Trebuchet MS", sans-serif');
 		ctx.textAlign = "center"; ctx.textBaseline = "middle";
-		ctx.fillStyle = CREAM;
+		ctx.fillStyle = col.text || CREAM;
 		ctx.fillText(colour.toLowerCase(), x + w / 2, y + ch / 2 + 2);
-		ctx.font = '800 20px "SF Mono", Menlo, Consolas, monospace';
+		ctx.font = S.font('800 20px "SF Mono", Menlo, Consolas, monospace');
 		ctx.fillStyle = col.lcd;
 		ctx.fillText(String(value), x + w / 2, y + ch + lh / 2 + 1);
 		if(pop && pop.a > 0) {		// "+1" / "-1" floating up from the dial
 			ctx.globalAlpha = pop.a;
-			ctx.font = '800 18px ui-rounded, "Arial Rounded MT Bold", "Trebuchet MS", sans-serif';
-			ctx.lineWidth = 4; ctx.strokeStyle = INK; ctx.lineJoin = "round";
+			ctx.font = S.font('800 18px ui-rounded, "Arial Rounded MT Bold", "Trebuchet MS", sans-serif');
+			ctx.lineWidth = 4; ctx.strokeStyle = CASING; ctx.lineJoin = "round";
 			ctx.textAlign = "left";
 			ctx.strokeText(pop.text, x + w + 7, y + 12 - pop.dy);
 			ctx.fillStyle = SUN;
@@ -272,7 +274,7 @@
 	}
 	function panelBg(ctx, x, y, w, h) {
 		ctx.save();
-		ctx.fillStyle = "rgba(255,244,220,0.32)";
+		ctx.fillStyle = S.color("panelWash");
 		rr(ctx, x, y, w, h, 14); ctx.fill();
 		ctx.restore();
 	}
@@ -411,7 +413,7 @@
 					var sense = { kind: kind, result: yes };
 					drawRobot(ctx, c0.x, c0.y, 0, 1, k > 0 && k < 1 ? { kind: "sense", k: k, s: sense } : null);
 				}
-				var col = lit ? INK : "rgba(42,35,53,0.7)";
+				var col = lit ? INK : S.color("labelOff");
 				drawLabel(ctx, c.labels[i], px + pw / 2, H - 18, col);
 			});
 		} };

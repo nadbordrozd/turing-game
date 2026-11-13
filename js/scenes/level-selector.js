@@ -262,6 +262,7 @@
 
 		toIntro: function() { Q.clearStages(); Q.stageScene("intro"); },
 		toAbout: function() { Q.clearStages(); Q.stageScene(Q.scenes.about ? "about" : "credits"); },
+		toLook: function() { Q.clearStages(); Q.stageScene("skin chooser", 0, { back: "level selector" }); },
 
 		build: function() {
 			var portrait = UI.mode === "portrait";
@@ -425,10 +426,15 @@
 				LS.updateMusic(mus);
 			} }, sys);
 			this.updateMusic(mus);
-			UI.button({ cls: portrait ? "sm sun" : "sun", icon: "play", iconScale: 2, label: portrait ? null : "Intro", px: 2,
+			// Intro is icon-only (as in portrait) so the Look switch fits the landscape header
+			UI.button({ cls: "sm sun", icon: "play", iconScale: 2,
 				title: "Replay the intro", onClick: function() { LS.toIntro(); } }, sys);
 			UI.button({ cls: portrait ? "sm sky" : "sky", icon: "info", iconScale: 2, label: portrait ? null : "About", px: 2,
 				title: "About Turing", onClick: function() { LS.toAbout(); } }, sys);
+			// the look switch (js/scenes/skin-chooser.js)
+			// icon only: the header has no room for another label
+			UI.button({ cls: "sm mint sk-look", icon: "look", iconScale: 3,
+				title: "Change the look (now " + t.Skin.names[t.Skin.id] + ")", onClick: function() { LS.toLook(); } }, sys);
 		},
 
 		updateSound: function(b) {

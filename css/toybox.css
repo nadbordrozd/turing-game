@@ -909,8 +909,9 @@ body.tg {
   padding: 0 12px 0 16px;
 }
 .ls-hdr-portrait .ls-title { grid-area: title; }
-.ls-hdr-portrait .ls-sys { grid-area: sys; justify-self: end; gap: 8px; }
-.ls-hdr-portrait .ls-sys .tb-btn { width: 52px; height: 52px; }
+.ls-hdr-portrait .ls-sys { grid-area: sys; justify-self: end; gap: 6px; }
+/* five buttons (with the Look switch) share the row with the title */
+.ls-hdr-portrait .ls-sys .tb-btn { width: 46px; height: 52px; }
 .ls-hdr-portrait .ls-count { grid-area: count; }
 .ls-hdr-portrait .ls-legend { grid-area: legend; justify-self: end; }
 
@@ -1101,3 +1102,184 @@ body.tg {
 .tx-dots { display: flex; gap: 6px; margin-right: auto; order: -1; }
 .tx-dots i { width: 10px; height: 10px; border: 2px solid var(--ink); border-radius: 50%; background: var(--cream-2); }
 .tx-dots i.on { background: var(--tomato); }
+
+/* =================== look chooser (js/scenes/skin-chooser.js) ===================
+   The page chrome follows the current skin; each card always shows its own
+   look (fixed colours), so both previews read side by side in either skin. */
+.sk-root {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 34px 32px 30px;
+  gap: 14px;
+}
+.sk-portrait { padding: 22px 16px 26px; gap: 12px; }
+.sk-head { display: flex; align-items: center; gap: 16px; width: 100%; min-height: 58px; }
+.sk-back { height: 58px; padding: 0 16px 0 12px; }
+.sk-title { flex: 1; margin: 0; text-align: center; line-height: 0; color: var(--ink); }
+.sk-spacer { width: 112px; }
+.sk-portrait .sk-spacer { width: 44px; }
+.sk-sub { margin: 0 0 12px; font: 600 16px/1.35 var(--round); color: var(--ink-2); text-align: center; }
+.sk-cards { display: flex; gap: 40px; justify-content: center; }
+.sk-portrait .sk-cards { flex-direction: column; gap: 24px; width: 100%; }
+.sk-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  width: 440px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 18px 18px 20px;
+  cursor: pointer;
+  text-align: left;
+  pointer-events: auto;
+  position: relative;
+  top: 0;
+  transition: top 0.08s, box-shadow 0.08s, transform 0.12s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.sk-portrait .sk-card { width: 100%; padding: 14px 14px 16px; gap: 12px; }
+.sk-card:focus { outline: none; }
+.sk-card:focus-visible { outline: 4px solid #2d86b5; outline-offset: 5px; }
+.sk-text { display: flex; flex-direction: column; gap: 8px; }
+.sk-name { line-height: 0; }
+.sk-blurb { font: 600 15px/1.35 var(--round); }
+.sk-go { line-height: 0; align-self: flex-start; padding: 7px 10px; margin-top: 4px; }
+.sk-portrait .sk-blurb { font-size: 14px; }
+
+/* the toybox card: cream, chunky ink, a tomato button */
+.sk-toybox {
+  background: #fff4dc;
+  border: 3px solid #2a2335;
+  border-radius: 20px;
+  box-shadow: 0 6px 0 #2a2335, 0 12px 20px rgba(90, 50, 10, 0.22);
+  color: #2a2335;
+  font-family: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+  text-shadow: none;
+}
+.sk-toybox:hover { transform: translateY(-2px); }
+.sk-toybox:active { top: 4px; box-shadow: 0 2px 0 #2a2335; }
+.sk-toybox .sk-blurb { color: #4a4058; font-family: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; }
+.sk-toybox .sk-name svg { filter: none; }
+.sk-toybox .sk-go { background: #ec5b45; color: #fff4dc; border: 3px solid #2a2335; border-radius: 12px; box-shadow: 0 3px 0 #2a2335; }
+/* the retro card: black glass, phosphor green, an amber prompt */
+.sk-retro {
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.28) 0 1px, rgba(0, 0, 0, 0) 1px 3px),
+    radial-gradient(ellipse at 50% 40%, #0a1d10, #020604 75%);
+  border: 1px solid #33ff66;
+  border-radius: 2px;
+  box-shadow: 0 0 0 4px #020604, 0 0 22px rgba(51, 255, 102, 0.35);
+  color: #33ff66;
+  font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+  text-shadow: 0 0 4px rgba(51, 255, 102, 0.6);
+}
+.sk-retro:hover { box-shadow: 0 0 0 4px #020604, 0 0 30px rgba(51, 255, 102, 0.55); }
+.sk-retro:active { top: 2px; }
+.sk-retro .sk-name svg { filter: drop-shadow(0 0 3px rgba(51, 255, 102, 0.7)); }
+.sk-retro .sk-blurb { color: #2bd957; font-weight: 500; font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; }
+.sk-retro .sk-go { color: #ffb000; border: 1px solid #ffb000; filter: drop-shadow(0 0 3px rgba(255, 176, 0, 0.6)); }
+.sk-current .sk-go { opacity: 0.75; }
+
+/* mini game screen, drawn with boxes (percentages of a 16:10 frame) */
+.sk-pv { position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; flex: none; box-sizing: border-box; }
+.sk-portrait .sk-pv { aspect-ratio: 16 / 8; }
+.sk-pv i, .sk-pv div { position: absolute; display: block; box-sizing: border-box; }
+.sk-pv-hdr { left: 3%; top: 4%; width: 94%; height: 14%; }
+.sk-pv-badge { left: 2%; top: 14%; width: 7.5%; height: 72%; }
+.sk-portrait .sk-pv-badge { width: 6%; }
+.sk-pv-line { left: 12%; top: 26%; width: 40%; height: 18%; }
+.sk-pv-line.short { top: 58%; width: 24%; }
+.sk-pv-tray { left: 3%; top: 22%; width: 15%; height: 54%; }
+.sk-pv-tile { width: 36%; height: 17%; }
+.sk-pv-tile:nth-child(odd) { left: 10%; }
+.sk-pv-tile:nth-child(even) { left: 54%; }
+.sk-pv-tile:nth-child(1), .sk-pv-tile:nth-child(2) { top: 10%; }
+.sk-pv-tile:nth-child(3), .sk-pv-tile:nth-child(4) { top: 33%; }
+.sk-pv-tile:nth-child(5), .sk-pv-tile:nth-child(6) { top: 56%; }
+.sk-pv-mat { left: 20.5%; top: 22%; width: 48%; height: 54%; }
+.sk-pv-board { left: 50%; top: 50%; height: 82%; aspect-ratio: 1; transform: translate(-50%, -50%); }
+.sk-pv-belt { width: 16.66%; height: 16.66%; }
+.sk-pv-marker { left: 18%; top: 52%; width: 10%; height: 10%; transform: rotate(45deg); }
+.sk-pv-cell { left: 71%; top: 22%; width: 26%; height: 54%; }
+.sk-pv-win { left: 12%; top: 10%; width: 76%; height: 52%; }
+.sk-pv-robot { left: 36%; top: 26%; width: 28%; height: 46%; }
+.sk-pv-dials { left: 10%; top: 70%; width: 80%; height: 22%; }
+.sk-pv-dial { top: 0; width: 44%; height: 100%; }
+.sk-pv-dial.red { left: 0; }
+.sk-pv-dial.blue { right: 0; }
+.sk-pv-deck { left: 3%; top: 80%; width: 94%; height: 16%; }
+.sk-pv-run { left: 2%; top: 16%; width: 20%; height: 68%; }
+.sk-pv-key { top: 16%; width: 7%; height: 68%; }
+.sk-pv-key:nth-child(2) { left: 26%; }
+.sk-pv-key:nth-child(3) { left: 35%; }
+.sk-pv-key:nth-child(4) { left: 44%; }
+
+.sk-toybox .sk-pv { background: #e6bf86; border: 2px solid #2a2335; border-radius: 10px; }
+.sk-toybox .sk-pv-hdr, .sk-toybox .sk-pv-deck { background: #fff4dc; border: 2px solid #2a2335; border-radius: 6px; }
+.sk-toybox .sk-pv-badge { background: #f6c445; border: 2px solid #2a2335; border-radius: 50%; }
+.sk-toybox .sk-pv-line { background: #2a2335; border-radius: 3px; }
+.sk-toybox .sk-pv-line.short { background: #6a5f74; }
+.sk-toybox .sk-pv-tray { background: #f6c445; border: 2px solid #2a2335; border-radius: 6px; }
+.sk-toybox .sk-pv-tile { background: #a3d9b1; border: 2px solid #2a2335; border-radius: 3px; }
+.sk-toybox .sk-pv-tile:nth-child(3) { background: #ec5b45; }
+.sk-toybox .sk-pv-tile:nth-child(6) { background: #5ec4ee; }
+.sk-toybox .sk-pv-mat { background: #5ec4ee; border: 2px solid #2a2335; border-radius: 8px; }
+.sk-toybox .sk-pv-board {
+  background: repeating-linear-gradient(90deg, rgba(42, 35, 53, 0.12) 0 1px, transparent 1px 16.66%),
+    repeating-linear-gradient(0deg, rgba(42, 35, 53, 0.12) 0 1px, transparent 1px 16.66%), #a3d9b1;
+  border: 2px solid #2a2335;
+}
+.sk-toybox .sk-pv-belt { background: #4a4058; border: 1px solid #2a2335; }
+.sk-toybox .sk-pv-belt::after { content: ""; position: absolute; inset: 35% 20%; background: #f6c445; }
+.sk-toybox .sk-pv-marker { background: #f6c445; border: 2px solid #2a2335; }
+.sk-toybox .sk-pv-cell { background: #ec5b45; border: 2px solid #2a2335; border-radius: 8px; }
+.sk-toybox .sk-pv-win { background: #f7e7c6; border: 2px solid #2a2335; border-radius: 4px; }
+.sk-toybox .sk-pv-robot { background: #5ec4ee; border: 2px solid #2a2335; border-radius: 4px; }
+.sk-toybox .sk-pv-dial { background: #2a2335; border-radius: 4px; border-top: 5px solid #ec5b45; }
+.sk-toybox .sk-pv-dial.blue { border-top-color: #2d86b5; }
+.sk-toybox .sk-pv-run { background: #ec5b45; border: 2px solid #2a2335; border-radius: 6px; }
+.sk-toybox .sk-pv-key { background: #fff4dc; border: 2px solid #2a2335; border-radius: 4px; }
+
+.sk-retro .sk-pv { background: #020604; border: 1px solid #1a9c40; }
+.sk-retro .sk-pv-hdr, .sk-retro .sk-pv-deck, .sk-retro .sk-pv-tray, .sk-retro .sk-pv-mat, .sk-retro .sk-pv-cell { border: 1px solid #1a9c40; }
+.sk-retro .sk-pv-badge { border: 1px solid #33ff66; }
+.sk-retro .sk-pv-line { background: #33ff66; box-shadow: 0 0 4px rgba(51, 255, 102, 0.8); height: 12%; }
+.sk-retro .sk-pv-line.short { background: #1a9c40; box-shadow: none; }
+.sk-retro .sk-pv-tile { border: 1px solid #33ff66; }
+.sk-retro .sk-pv-tile:nth-child(3) { border-color: #ff5c4d; }
+.sk-retro .sk-pv-tile:nth-child(6) { border-color: #4cc8ff; }
+.sk-retro .sk-pv-board {
+  background: repeating-linear-gradient(90deg, rgba(51, 255, 102, 0.22) 0 1px, transparent 1px 16.66%),
+    repeating-linear-gradient(0deg, rgba(51, 255, 102, 0.22) 0 1px, transparent 1px 16.66%), #071a0d;
+  border: 1px solid #33ff66;
+}
+.sk-retro .sk-pv-belt { border: 1px solid #33ff66; background: rgba(51, 255, 102, 0.12); }
+.sk-retro .sk-pv-belt::after { content: ""; position: absolute; inset: 42% 18%; background: #33ff66; }
+.sk-retro .sk-pv-marker { background: #ffb000; box-shadow: 0 0 6px #ffb000; }
+.sk-retro .sk-pv-win { border: 1px solid #33ff66; }
+.sk-retro .sk-pv-robot { border: 1px solid #b6ffc8; box-shadow: 0 0 5px rgba(51, 255, 102, 0.7); }
+.sk-retro .sk-pv-dial { border: 1px solid #ff5c4d; box-shadow: inset 0 0 6px rgba(255, 92, 77, 0.5); }
+.sk-retro .sk-pv-dial.blue { border-color: #4cc8ff; box-shadow: inset 0 0 6px rgba(76, 200, 255, 0.5); }
+.sk-retro .sk-pv-run { border: 1px solid #ffb000; box-shadow: 0 0 5px rgba(255, 176, 0, 0.6); }
+.sk-retro .sk-pv-key { border: 1px solid #1a9c40; }
+.sk-retro .sk-pv::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.35) 0 1px, rgba(0, 0, 0, 0) 1px 3px);
+  pointer-events: none;
+}
+
+/* the Look switch in About (js/scenes/about.js) */
+.ab-look { margin-top: 14px; }
+.ab-look .tb-btn { width: 100%; height: 48px; }
+@media (prefers-reduced-motion: reduce) {
+  .sk-card { transition: none; }
+  .sk-toybox:hover { transform: none; }
+}

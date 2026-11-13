@@ -17,11 +17,8 @@
 		Step: "Step forward", Conveyor: "Belt (goto)", ClockwiseRotator: "Turn right",
 		CounterClockwiseRotator: "Turn left", Detector: "Wall ahead?", DetectMagic: "On a blue tile?"
 	};
-	var COLORS = {
-		Red: { chip: "#ec5b45", lcd: "#ff7a63" }, Blue: { chip: "#2d86b5", lcd: "#7fd6f7" },
-		Green: { chip: "#5fae7b", lcd: "#a3d9b1" }, Purple: { chip: "#9b6bd6", lcd: "#c9a6f2" },
-		Yellow: { chip: "#d89a2b", lcd: "#f6c445" }, Pink: { chip: "#e0607f", lcd: "#f7a3bd" }
-	};
+	// counter colours carry game meaning; each skin tints them its own way (js/skin.js)
+	var COLORS = t.Skin.token("counters");
 	var OUTCOMES = {
 		victory: "escaped!", idle: "program ended", stepLimit: "ran out of steps",
 		lava: "fell in the lava", drowned: "fell in the water", electro: "got zapped"
@@ -97,6 +94,7 @@
 				d.setAttribute("aria-label", c + " counter");
 				var chip = UI.el("div", "chip", d, c.toLowerCase());
 				chip.style.background = col.chip;
+				if(col.text) chip.style.color = col.text;
 				var lcd = UI.el("div", "lcd", d);
 				lcd.style.color = col.lcd;
 				UI.el("div", "ok", d).appendChild(UI.icon("check", 2));

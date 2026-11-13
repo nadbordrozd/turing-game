@@ -1,4 +1,4 @@
-t = {};
+t = window.t || {}; // js/skin.js may have made it already
 
 function selectText(element) {
     var doc = document

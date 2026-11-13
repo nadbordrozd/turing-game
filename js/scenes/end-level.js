@@ -212,7 +212,7 @@
 		});
 		m.box.classList.add("el-whoa-box");
 		var confetti = UI.el("div", "el-confetti", m.node);
-		var colors = ["#ec5b45", "#5ec4ee", "#f6c445", "#a3d9b1", "#9b6bd6", "#f27a9b"];
+		var colors = t.Skin.token("confetti");
 		for(var i = 0; i < 36; i++) {
 			var c = UI.el("i", "", confetti);
 			c.style.left = Math.round((i * 37 + 11) % 100) + "%";

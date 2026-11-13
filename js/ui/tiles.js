@@ -123,7 +123,7 @@ TuringScenes.add(function(Q) {
 			this._super(p, { type: Q.SPRITE_NONE, z: -100, x: 0, y: 0, w: 1, h: 1, cx: 0, cy: 0, alpha: 0.55 });
 		},
 		draw: function(ctx) {
-			ctx.fillStyle = "rgba(42,35,53," + this.p.alpha + ")";
+			ctx.fillStyle = "rgba(" + t.Skin.rgb("dim") + "," + this.p.alpha + ")";
 			ctx.fillRect(-4000, -4000, 8000, 8000);
 		}
 	});

@@ -4,7 +4,8 @@ The shared screen shell for every Turing screen (bead tg-84y.5). Code:
 `js/ui/kit.js` (stage, layouts, builders), `css/toybox.css` (tokens and
 components), `js/ui/tiles.js` (canvas sprites), `js/ui/tile-input.js` (tile
 interaction). The look follows `docs/ui/mockups/main-b-toybox.html` and
-`docs/art/ART_DIRECTION.md`; there is no CRT or green-screen styling.
+`docs/art/ART_DIRECTION.md`. The same kit also wears a second skin, retro
+(green-on-black terminal); see "Skins" below.
 
 ## Stage and layers
 
@@ -178,3 +179,36 @@ the rest branch off. Landscape packs each track into a left-to-right tree
 (`scroll: true`). Node states: open (cream), solved (mint, parts earned),
 locked (dashed; clicking explains what opens it), and the suggested next level
 (sun, "NEXT"): the first open level in level order.
+
+## Skins
+
+Two looks share one layout: `toybox` (default) and `retro` (epic tg-wtv).
+`js/skin.js` loads first in `index.html`, right after the version script, and
+sets `<html data-skin="toybox|retro">` before the first paint.
+
+| Call | Does |
+| --- | --- |
+| `t.Skin.id` | the look for this page load (`localStorage["turing.skin"]`, default `toybox`; `?skin=retro` or `?skin=toybox` forces one for one load without saving) |
+| `t.Skin.chosen` | true once the player picked a look (or `?skin=` is set); false shows the chooser first |
+| `t.Skin.set(id, {returnTo})` | saves the look; reloads when it changes (returns true), else returns false. `returnTo`: the scene to open after the reload (`t.Skin.takeReturn()` in `script.js`) |
+| `t.Skin.register(id, map)` | adds asset variants: `{"images/a.png": "images/retro/a.png"}`; a key ending in `/` maps a folder |
+| `t.Skin.variants` | `{toybox: {}, retro: {}}`, plain objects keyed by the path `Q.assetUrl` / `versionedUrl` see, without `?v=` |
+| `t.Skin.asset(url)` | `url` mapped through this skin's variants (query kept). `window.versionedUrl` (and so `Q.assetUrl`) applies it to every asset |
+| `t.Skin.token(name)` / `color(name)` / `rgb(name)` | canvas and inline-JS colours (`ink`, `casing`, `sun`, `board`, `window`, `lcd`, `counters`, `confetti`, ...); `rgb` gives `"r,g,b"` for `rgba()` |
+| `t.Skin.font(css)` | a canvas font string in this skin's type (toybox: unchanged) |
+
+CSS: toybox tokens are on `:root` in `css/toybox.css`; `css/retro.css`
+re-points them under `:root[data-skin="retro"]` and changes shapes (1 px
+lines, square corners, bracketed buttons, glow, scanlines; no flicker under
+`prefers-reduced-motion`). Every retro rule is scoped, so toybox renders
+exactly as before. Canvas code takes its colours from `t.Skin` tokens, kept in
+step with the CSS. Asset variants go in `js/skin-variants.js` (or a file
+under `js/skins/` that registers its own table). Retro art lives under
+`images/retro/` and `data/retro/`.
+
+The look chooser (`js/scenes/skin-chooser.js`, scene `"skin chooser"`) is the
+first screen on first launch, before the intro, and the target of the Look
+buttons in the level selector header and About (`{back: "level selector"}` /
+`{back: "about"}`). `node tools/ui/skin-shots.mjs` screenshots every screen
+in one skin (muted, frozen clock), diffs two shot folders and builds a
+contact sheet.

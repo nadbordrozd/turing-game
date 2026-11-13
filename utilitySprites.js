@@ -19,8 +19,8 @@ Q.syncTileAnimation = function(){
 // towards the feet = the way the robot faces on the board) at progress k in
 // 0..1 of the effect. Eye centres are measured on robot-cell frame 0.
 Q.RoboFx = {
-	ink : "42,35,53",			//Toybox palette (css/toybox.css)
-	sun : "246,196,69",
+	ink : t.Skin.rgb("casing"),		//skin palette (js/skin.js tokens, css/toybox.css)
+	sun : t.Skin.rgb("sun"),
 	colours : {wall : "236,91,69", clear : "88,214,141", magic : "79,180,255", plain : "255,241,201"},
 	eyes : [[-4, -5.5], [4, -5.5]],
 	rgba : function(c, a){ return "rgba(" + c + "," + a + ")"; },
@@ -36,15 +36,15 @@ Q.RoboFx = {
 	// The program counter marker (Q.Spark, tile explainers): cream halo,
 	// sunny four-point star with an ink outline, centred on the origin.
 	drawMarker : function(ctx, size){
-		var ink = "rgb(42,35,53)";
+		var S = t.Skin;
 		var pulse = 0.5+0.5*Math.sin(Date.now()/1000*2*Math.PI*1.1);
 		var halo = size*(0.27+0.03*pulse);
 		ctx.beginPath();
 		ctx.arc(0, 0, halo, 0, 2*Math.PI);
-		ctx.fillStyle = "rgba(255,244,220,0.9)";
+		ctx.fillStyle = S.color("markerHalo");
 		ctx.fill();
 		ctx.lineWidth = 2.5;
-		ctx.strokeStyle = ink;
+		ctx.strokeStyle = S.color("markerLine");
 		ctx.stroke();
 		var R = size*0.22, r = size*0.085, i, th, rr;
 		ctx.beginPath();
@@ -53,15 +53,15 @@ Q.RoboFx = {
 			ctx.lineTo(Math.sin(th)*rr, -Math.cos(th)*rr);
 		}
 		ctx.closePath();
-		ctx.fillStyle = "rgb(246,196,69)";
+		ctx.fillStyle = S.color("markerStar");
 		ctx.fill();
 		ctx.lineWidth = 2;
 		ctx.lineJoin = "round";
-		ctx.strokeStyle = ink;
+		ctx.strokeStyle = S.color("markerStarLine");
 		ctx.stroke();
 		ctx.beginPath();
 		ctx.arc(0, 0, size*0.04, 0, 2*Math.PI);
-		ctx.fillStyle = "rgb(255,255,255)";
+		ctx.fillStyle = S.color("markerDot");
 		ctx.fill();
 	},
 	// lurch into the wall (0-0.3), squash against it (0.3-0.45), recoil with a

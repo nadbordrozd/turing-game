@@ -74,6 +74,14 @@ TuringScenes.add(function(Q) {
 		var links = UI.el("div", "ab-links", side);
 		linkButton({href: "mailto:" + EMAIL, label: "Email me", small: EMAIL, cls: "sun"}, links);
 		linkButton({href: PROJECTS, label: "My other projects", small: "nadbordrozd.github.io/projects", cls: "mint", newTab: true}, links);
+		// the look switch (js/scenes/skin-chooser.js)
+		var look = UI.el("div", "ab-look", side);
+		UI.button({icon: "look", iconScale: 2, label: "Look: " + t.Skin.names[t.Skin.id], cls: "sk-look",
+			title: "Change the look (now " + t.Skin.names[t.Skin.id] + ")", onClick: function() {
+				active = false;
+				Q.clearStages();
+				Q.stageScene("skin chooser", 0, {back: "about"});
+			}}, look);
 
 		// the words
 		var text = UI.el("div", "tb-card ab-text", root);
