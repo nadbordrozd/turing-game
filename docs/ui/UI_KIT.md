@@ -194,7 +194,7 @@ sets `<html data-skin="toybox|retro">` before the first paint.
 | `t.Skin.register(id, map)` | adds asset variants: `{"images/a.png": "images/retro/a.png"}`; a key ending in `/` maps a folder |
 | `t.Skin.variants` | `{toybox: {}, retro: {}}`, plain objects keyed by the path `Q.assetUrl` / `versionedUrl` see, without `?v=` |
 | `t.Skin.asset(url)` | `url` mapped through this skin's variants (query kept). `window.versionedUrl` (and so `Q.assetUrl`) applies it to every asset |
-| `t.Skin.token(name)` / `color(name)` / `rgb(name)` | canvas and inline-JS colours (`ink`, `casing`, `sun`, `board`, `window`, `lcd`, `counters`, `confetti`, ...); `rgb` gives `"r,g,b"` for `rgba()` |
+| `t.Skin.token(name)` / `color(name)` / `rgb(name)` | canvas and inline-JS colours (`ink`, `casing`, `sun`, `board`, `window`, `lcd`, `counters`, `confetti`, `music` (the score's track list, docs/audio/MUSIC.md), ...); `rgb` gives `"r,g,b"` for `rgba()` |
 | `t.Skin.font(css)` | a canvas font string in this skin's type (toybox: unchanged) |
 
 CSS: toybox tokens are on `:root` in `css/toybox.css`; `css/retro.css`

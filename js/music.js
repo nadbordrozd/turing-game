@@ -1,14 +1,18 @@
 // Game score: t.Music.play(), stop(), muted(), setMuted(bool), toggle(),
-// load(), duck(seconds), volume (0..1, get/set).
+// load(), duck(seconds), playing(), tracks(), track(), volume (0..1, get/set).
 //
-// One looping <audio> element streams music/clockwork-puzzle.m4a (versioned
-// URL), so the 208 s track is never decoded into memory. It starts on the
-// first click, tap or key press (browsers block autoplay before one) with a
-// 1.5 s fade-in and then plays across every screen: nothing in the scenes
-// touches it, so scene changes never restart it. It pauses while the tab is
-// hidden and fades back in when it is visible again. The mute and volume are
-// kept in localStorage, separate from the sound effects ("turing.music.*").
-// While muted the file is not even downloaded (load() fetches it anyway).
+// The tracks come from the skin (t.Skin.token("music"): toybox
+// music/clockwork-puzzle.m4a, retro music/hypnotic-loop.m4a then
+// music/terminal-bleeps.m4a). One <audio> element streams the current track
+// (versioned URL), so a track is never decoded into memory. A single track
+// loops; several play in turn forever, each `ended` moving the element to the
+// next file (only the current file is fetched). It starts on the first click,
+// tap or key press (browsers block autoplay before one) with a 1.5 s fade-in
+// and then plays across every screen: nothing in the scenes touches it, so
+// scene changes never restart it. It pauses while the tab is hidden and fades
+// back in when it is visible again. The mute and volume are kept in
+// localStorage, separate from the sound effects ("turing.music.*"). While
+// muted the file is not even downloaded (load() fetches it anyway).
 // t.Sfx 'fanfare' ducks the music for its length. iOS ignores element volume,
 // so there the track plays at its file level (normalised to -20 LUFS, see
 // docs/audio/MUSIC.md) without fades. Loaded right after js/audio.js.
@@ -16,7 +20,8 @@
   "use strict";
 
   var t = (global.t = global.t || {});
-  var SRC = "music/clockwork-puzzle.m4a";
+  var DEFAULT_TRACKS = ["music/clockwork-puzzle.m4a"];
+  var TRACKS = playlist();
   var MUTE_KEY = "turing.music.muted";
   var VOLUME_KEY = "turing.music.volume";
   var DEFAULT_VOLUME = 0.7; // about -3 dB: the score sits under the effects
@@ -35,6 +40,25 @@
   var duckGain = 1, duckUntil = 0;
   var timer = null;
   var pending = null; // play() promise in flight
+  var track = 0; // index into TRACKS
+  var stale = false; // the element still holds the track before `track`
+
+  // the skin's track list (js/skin.js loads first); the toybox score otherwise
+  function playlist() {
+    var list = null;
+    try {
+      list = t.Skin && t.Skin.token ? t.Skin.token("music") : null;
+    } catch (e) {
+      list = null;
+    }
+    var out = [];
+    if (list && list.length) for (var i = 0; i < list.length; i += 1) if (typeof list[i] === "string" && list[i]) out.push(list[i]);
+    return out.length ? out : DEFAULT_TRACKS.slice();
+  }
+
+  function url(path) {
+    return global.versionedUrl ? global.versionedUrl(path) : path;
+  }
 
   function read(key) {
     try {
@@ -64,18 +88,40 @@
     if (el || failed || !global.Audio) return el;
     try {
       el = new global.Audio();
-      el.loop = true;
+      el.loop = TRACKS.length === 1;
       el.preload = "auto";
       el.volume = 0;
       el.addEventListener("error", function () {
         failed = true;
       });
-      el.src = global.versionedUrl ? global.versionedUrl(SRC) : SRC;
+      if (TRACKS.length > 1) el.addEventListener("ended", next);
+      el.src = url(TRACKS[track]);
     } catch (e) {
       el = null;
       failed = true;
     }
     return el;
+  }
+
+  // Point the element at the current track if it still holds the old one.
+  function cue() {
+    if (!el || !stale) return;
+    stale = false;
+    try {
+      el.src = url(TRACKS[track]);
+    } catch (e) {
+      failed = true;
+    }
+  }
+
+  // A playlist track ended: on to the next one. If the score cannot play
+  // right now (muted, stopped, hidden) the file is fetched only when it can.
+  function next() {
+    track = (track + 1) % TRACKS.length;
+    stale = true;
+    if (muted || !wanted || !unlocked || hidden() || failed) return;
+    cue();
+    start();
   }
 
   function apply() {
@@ -123,6 +169,7 @@
     if (muted || !wanted || !unlocked || hidden() || failed) return false;
     var a = element();
     if (!a) return false;
+    cue();
     ramp(1, FADE_IN);
     if (!a.paused || pending) return true;
     try {
@@ -222,6 +269,7 @@
     // fetch the file without playing it
     load: function () {
       var a = element();
+      cue();
       if (a && a.readyState === 0 && a.load) a.load();
       return a;
     },
@@ -232,6 +280,13 @@
     },
     playing: function () {
       return !!(el && !el.paused);
+    },
+    // the skin's track list and the one playing (or next to play)
+    tracks: function () {
+      return TRACKS.slice();
+    },
+    track: function () {
+      return TRACKS[track];
     },
   };
   Object.defineProperty(t.Music, "volume", {

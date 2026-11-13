@@ -37,5 +37,83 @@
       "lra": 2.5,
       "truePeak": -8.2
     }
+  },
+  "hypnotic-loop": {
+    "id": "hypnotic-loop",
+    "note": "user-supplied, made by the user for Turing's retro skin",
+    "builtAt": "2026-11-13T16:32:26.068Z",
+    "source": {
+      "file": "Hypnotic Loop.wav",
+      "path": "/Users/nadbor/Downloads/Hypnotic Loop.wav",
+      "sha256": "23f4803f7ab9d212291a5be49d92493c10cc2a06532b859c52325f54ee94ce07",
+      "bytes": 47937018,
+      "duration": 249.6,
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 2,
+      "bitrate": 1536000,
+      "lufs": -13.2,
+      "lra": 4.8,
+      "truePeak": -3.4
+    },
+    "target": {
+      "lufs": -20,
+      "truePeakCeiling": -1,
+      "gainDb": -6.8
+    },
+    "command": "ffmpeg -nostdin -v error -y -i '<source>' -map 0:a:0 -af volume=-6.8dB -c:a aac -b:a 160k -ar 48000 -ac 2 -map_metadata -1 -fflags +bitexact -flags:a +bitexact -movflags +faststart -f ipod music/hypnotic-loop.m4a",
+    "ffmpeg": "ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+    "output": {
+      "file": "music/hypnotic-loop.m4a",
+      "sha256": "41a9949043fe31cc361833a39374d3edb56aa7ad606dbd2682746db0db202fea",
+      "bytes": 5260588,
+      "duration": 249.6,
+      "codec": "aac (LC)",
+      "sampleRate": 48000,
+      "channels": 2,
+      "bitrate": 167067,
+      "lufs": -20,
+      "lra": 4.8,
+      "truePeak": -9.3
+    }
+  },
+  "terminal-bleeps": {
+    "id": "terminal-bleeps",
+    "note": "user-supplied, made by the user for Turing's retro skin",
+    "builtAt": "2026-11-13T16:32:30.343Z",
+    "source": {
+      "file": "Terminal Bleeps.wav",
+      "path": "/Users/nadbor/Downloads/Terminal Bleeps.wav",
+      "sha256": "863f5b4e6792a2f503aa52acc49654ba0a418b03436dda0b1d4725f6eb2d693f",
+      "bytes": 47990778,
+      "duration": 249.88,
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 2,
+      "bitrate": 1536000,
+      "lufs": -13.5,
+      "lra": 7.5,
+      "truePeak": -4.3
+    },
+    "target": {
+      "lufs": -20,
+      "truePeakCeiling": -1,
+      "gainDb": -6.5
+    },
+    "command": "ffmpeg -nostdin -v error -y -i '<source>' -map 0:a:0 -af volume=-6.5dB -c:a aac -b:a 160k -ar 48000 -ac 2 -map_metadata -1 -fflags +bitexact -flags:a +bitexact -movflags +faststart -f ipod music/terminal-bleeps.m4a",
+    "ffmpeg": "ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+    "output": {
+      "file": "music/terminal-bleeps.m4a",
+      "sha256": "18acef7d19230ff259c3b6d619a733fa8e247d0be241c79e9c014eba86b6d1da",
+      "bytes": 5306963,
+      "duration": 249.88,
+      "codec": "aac (LC)",
+      "sampleRate": 48000,
+      "channels": 2,
+      "bitrate": 168362,
+      "lufs": -20.1,
+      "lra": 7.5,
+      "truePeak": -9.2
+    }
   }
 }

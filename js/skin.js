@@ -79,6 +79,8 @@
       },
       confetti: ["#ec5b45", "#5ec4ee", "#f6c445", "#a3d9b1", "#9b6bd6", "#f27a9b"],
       themeColor: "#e6bf86",
+      // the score (js/music.js): one track loops, several play in turn forever
+      music: ["music/clockwork-puzzle.m4a"],
       mono: MONO
     },
     retro: {
@@ -116,6 +118,7 @@
       },
       confetti: ["#33ff66", "#b6ffc8", "#ffb000", "#22c94f", "#4cc8ff", "#33ff66"],
       themeColor: "#030805",
+      music: ["music/hypnotic-loop.m4a", "music/terminal-bleeps.m4a"],
       mono: MONO
     }
   };

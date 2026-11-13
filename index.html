@@ -11,7 +11,7 @@
 // Build version, appended as ?v= to every script, stylesheet and asset URL so
 // a returning browser never mixes cached old files with new ones. Set (here and
 // on every tag below) by `node tools/bump-version.mjs`; see README.md.
-window.TURING_VERSION = "20261113-151056-b82180d";
+window.TURING_VERSION = "20261113-163518-597e638";
 window.versionedUrl = function (url) {
   if (!url || /^(data|blob):/.test(url) || /[?&]v=/.test(url)) return url;
   return url + (url.indexOf("?") < 0 ? "?" : "&") + "v=" + encodeURIComponent(window.TURING_VERSION);
@@ -19,76 +19,76 @@ window.versionedUrl = function (url) {
 </script>
 <!-- skin first: sets <html data-skin> before the first paint and makes
      versionedUrl skin-aware (js/skin.js, docs/ui/UI_KIT.md "Skins") -->
-<script src="js/skin.js?v=20261113-151056-b82180d"></script>
-<script src="js/skin-variants.js?v=20261113-151056-b82180d"></script>
+<script src="js/skin.js?v=20261113-163518-597e638"></script>
+<script src="js/skin-variants.js?v=20261113-163518-597e638"></script>
 <!-- libs -->
-<link rel="stylesheet" href="css/style.css?v=20261113-151056-b82180d">
-<link rel="stylesheet" href="css/toybox.css?v=20261113-151056-b82180d">
-<link rel="stylesheet" href="css/retro.css?v=20261113-151056-b82180d">
-<script src='lib/quintus.js?v=20261113-151056-b82180d'></script>
-<script src='lib/quintus_sprites.js?v=20261113-151056-b82180d'></script>
-<script src='lib/quintus_scenes.js?v=20261113-151056-b82180d'></script>
-<script src='lib/quintus_anim.js?v=20261113-151056-b82180d'></script>
-<script src='lib/quintus_2d.js?v=20261113-151056-b82180d'></script>
-<script src='lib/quintus_touch.js?v=20261113-151056-b82180d'></script>
-<script src='lib/quintus_ui.js?v=20261113-151056-b82180d'></script>
-<script src='lib/quintus_input.js?v=20261113-151056-b82180d'></script>
+<link rel="stylesheet" href="css/style.css?v=20261113-163518-597e638">
+<link rel="stylesheet" href="css/toybox.css?v=20261113-163518-597e638">
+<link rel="stylesheet" href="css/retro.css?v=20261113-163518-597e638">
+<script src='lib/quintus.js?v=20261113-163518-597e638'></script>
+<script src='lib/quintus_sprites.js?v=20261113-163518-597e638'></script>
+<script src='lib/quintus_scenes.js?v=20261113-163518-597e638'></script>
+<script src='lib/quintus_anim.js?v=20261113-163518-597e638'></script>
+<script src='lib/quintus_2d.js?v=20261113-163518-597e638'></script>
+<script src='lib/quintus_touch.js?v=20261113-163518-597e638'></script>
+<script src='lib/quintus_ui.js?v=20261113-163518-597e638'></script>
+<script src='lib/quintus_input.js?v=20261113-163518-597e638'></script>
 
-<script type="text/javascript" src="jquery-1.7.1.min.js?v=20261113-151056-b82180d"></script>
+<script type="text/javascript" src="jquery-1.7.1.min.js?v=20261113-163518-597e638"></script>
 
 
-<script src="program.js?v=20261113-151056-b82180d"></script>
-<script src="oaevil.js?v=20261113-151056-b82180d"></script>
-<script src="js/audio.js?v=20261113-151056-b82180d"></script>
-<script src="js/music.js?v=20261113-151056-b82180d"></script>
-<script src="js/ui/kit.js?v=20261113-151056-b82180d"></script>
-<script src="js/scenes/registry.js?v=20261113-151056-b82180d"></script>
-<script src="queue.js?v=20261113-151056-b82180d"></script>
-<script src="Dequeue.js?v=20261113-151056-b82180d"></script>
-<script src="Storage.js?v=20261113-151056-b82180d"></script>
+<script src="program.js?v=20261113-163518-597e638"></script>
+<script src="oaevil.js?v=20261113-163518-597e638"></script>
+<script src="js/audio.js?v=20261113-163518-597e638"></script>
+<script src="js/music.js?v=20261113-163518-597e638"></script>
+<script src="js/ui/kit.js?v=20261113-163518-597e638"></script>
+<script src="js/scenes/registry.js?v=20261113-163518-597e638"></script>
+<script src="queue.js?v=20261113-163518-597e638"></script>
+<script src="Dequeue.js?v=20261113-163518-597e638"></script>
+<script src="Storage.js?v=20261113-163518-597e638"></script>
 
-<script src="EndLevelRobots.js?v=20261113-151056-b82180d"></script>
-<script src="js/skins/retro-robots.js?v=20261113-151056-b82180d"></script>
-<script src="config.js?v=20261113-151056-b82180d"></script>
-<script src="TuringTable.js?v=20261113-151056-b82180d"></script>
-<script src="RobotTable.js?v=20261113-151056-b82180d"></script>
-<script src="Operators.js?v=20261113-151056-b82180d"></script>
-<script src="selector.js?v=20261113-151056-b82180d"></script>
-<script src="editorselector.js?v=20261113-151056-b82180d"></script>
-<script src="obstacles.js?v=20261113-151056-b82180d"></script>
-<script src="animator.js?v=20261113-151056-b82180d"></script>
-<script src="controls.js?v=20261113-151056-b82180d"></script>
-<script src="parser.js?v=20261113-151056-b82180d"></script>
-<script src="levels.js?v=20261113-151056-b82180d"></script>
-<script src="levelsdata.js?v=20261113-151056-b82180d"></script>
-<script src="levelsdata3.js?v=20261113-151056-b82180d"></script>
-<script src="levelsdata2.js?v=20261113-151056-b82180d"></script>
-<script src="levelsdata4.js?v=20261113-151056-b82180d"></script>
-<script src="utilitySprites.js?v=20261113-151056-b82180d"></script>
+<script src="EndLevelRobots.js?v=20261113-163518-597e638"></script>
+<script src="js/skins/retro-robots.js?v=20261113-163518-597e638"></script>
+<script src="config.js?v=20261113-163518-597e638"></script>
+<script src="TuringTable.js?v=20261113-163518-597e638"></script>
+<script src="RobotTable.js?v=20261113-163518-597e638"></script>
+<script src="Operators.js?v=20261113-163518-597e638"></script>
+<script src="selector.js?v=20261113-163518-597e638"></script>
+<script src="editorselector.js?v=20261113-163518-597e638"></script>
+<script src="obstacles.js?v=20261113-163518-597e638"></script>
+<script src="animator.js?v=20261113-163518-597e638"></script>
+<script src="controls.js?v=20261113-163518-597e638"></script>
+<script src="parser.js?v=20261113-163518-597e638"></script>
+<script src="levels.js?v=20261113-163518-597e638"></script>
+<script src="levelsdata.js?v=20261113-163518-597e638"></script>
+<script src="levelsdata3.js?v=20261113-163518-597e638"></script>
+<script src="levelsdata2.js?v=20261113-163518-597e638"></script>
+<script src="levelsdata4.js?v=20261113-163518-597e638"></script>
+<script src="utilitySprites.js?v=20261113-163518-597e638"></script>
 
 <!-- screens: one file per Quintus scene (js/scenes/), UI kit in js/ui/ -->
-<script src="js/ui/tiles.js?v=20261113-151056-b82180d"></script>
-<script src="js/ui/tile-input.js?v=20261113-151056-b82180d"></script>
-<script src="js/ui/tile-explainers.js?v=20261113-151056-b82180d"></script>
-<script src="js/scenes/level.js?v=20261113-151056-b82180d"></script>
-<script src="js/scenes/help.js?v=20261113-151056-b82180d"></script>
-<script src="js/scenes/level-selector.js?v=20261113-151056-b82180d"></script>
-<script src="js/scenes/end-level.js?v=20261113-151056-b82180d"></script>
-<script src="js/scenes/intro.js?v=20261113-151056-b82180d"></script>
-<script src="js/scenes/about.js?v=20261113-151056-b82180d"></script>
-<script src="js/scenes/skin-chooser.js?v=20261113-151056-b82180d"></script>
+<script src="js/ui/tiles.js?v=20261113-163518-597e638"></script>
+<script src="js/ui/tile-input.js?v=20261113-163518-597e638"></script>
+<script src="js/ui/tile-explainers.js?v=20261113-163518-597e638"></script>
+<script src="js/scenes/level.js?v=20261113-163518-597e638"></script>
+<script src="js/scenes/help.js?v=20261113-163518-597e638"></script>
+<script src="js/scenes/level-selector.js?v=20261113-163518-597e638"></script>
+<script src="js/scenes/end-level.js?v=20261113-163518-597e638"></script>
+<script src="js/scenes/intro.js?v=20261113-163518-597e638"></script>
+<script src="js/scenes/about.js?v=20261113-163518-597e638"></script>
+<script src="js/scenes/skin-chooser.js?v=20261113-163518-597e638"></script>
 
 
-<script src="script.js?v=20261113-151056-b82180d"></script>
+<script src="script.js?v=20261113-163518-597e638"></script>
 
 
 <!-- icons: built by tools/art/favicon.mjs from the player robot master -->
-<link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16.png?v=20261113-151056-b82180d">
-<link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32.png?v=20261113-151056-b82180d">
-<link rel="icon" type="image/png" sizes="48x48" href="images/icons/favicon-48.png?v=20261113-151056-b82180d">
-<link rel="icon" type="image/png" sizes="192x192" href="images/icons/icon-192.png?v=20261113-151056-b82180d">
-<link rel="icon" type="image/png" sizes="512x512" href="images/icons/icon-512.png?v=20261113-151056-b82180d">
-<link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png?v=20261113-151056-b82180d">
+<link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16.png?v=20261113-163518-597e638">
+<link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32.png?v=20261113-163518-597e638">
+<link rel="icon" type="image/png" sizes="48x48" href="images/icons/favicon-48.png?v=20261113-163518-597e638">
+<link rel="icon" type="image/png" sizes="192x192" href="images/icons/icon-192.png?v=20261113-163518-597e638">
+<link rel="icon" type="image/png" sizes="512x512" href="images/icons/icon-512.png?v=20261113-163518-597e638">
+<link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png?v=20261113-163518-597e638">
 
 
 
