@@ -268,7 +268,7 @@ t.TuringTable = {
 		var totWid = (this.xmax)*(wid+inter)+inter;
 		var totHei = (this.ymax)*(wid+inter)+inter;
 		this.display1 = new Q.Rectangle({x: 0, y: 0, w: totWid, h: totHei, type: Q.SPRITE_NONE,
-						wid : this.unitwidth, interval: this.interval, color : "#a3d9b1", sort : true});
+						wid : this.unitwidth, interval: this.interval, color : t.Skin.color("board"), sort : true});
 		var display1 = this.display1;
 		display1.tiles = new Array(this.xmax);
 		for(var i=0; i<this.xmax; i++) display1.tiles[i] = new Array(this.ymax);

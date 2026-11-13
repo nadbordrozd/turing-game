@@ -68,6 +68,9 @@
       markerStar: "rgb(246,196,69)",
       markerStarLine: "rgb(42,35,53)",
       markerDot: "rgb(255,255,255)",
+      lineArt: false,            // code-drawn effects: toy fills (false) or phosphor line art (true)
+      // robot sense / bump effects (utilitySprites.js Q.RoboFx)
+      fxWall: "#ec5b45", fxClear: "#58d68d", fxMagic: "#4fb4ff", fxPlain: "#fff1c9", fxSpark: "#ffffff",
       // counter dials (game meaning: keep the six apart)
       counters: {
         Red: { chip: "#ec5b45", lcd: "#ff7a63" }, Blue: { chip: "#2d86b5", lcd: "#7fd6f7" },
@@ -100,6 +103,8 @@
       markerStar: "#ffb000",
       markerStarLine: "#030805",
       markerDot: "#fff2c0",
+      lineArt: true,
+      fxWall: "#ff5c4d", fxClear: "#33ff66", fxMagic: "#4cc8ff", fxPlain: "#b6ffc8", fxSpark: "#e8ffee",
       // tinted phosphors: dark chip, the colour in the text and the digits
       counters: {
         Red: { chip: "#2b0c09", lcd: "#ff5c4d", text: "#ff5c4d" },

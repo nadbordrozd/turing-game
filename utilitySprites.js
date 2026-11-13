@@ -21,7 +21,9 @@ Q.syncTileAnimation = function(){
 Q.RoboFx = {
 	ink : t.Skin.rgb("casing"),		//skin palette (js/skin.js tokens, css/toybox.css)
 	sun : t.Skin.rgb("sun"),
-	colours : {wall : "236,91,69", clear : "88,214,141", magic : "79,180,255", plain : "255,241,201"},
+	spark : t.Skin.rgb("fxSpark"),
+	lineArt : !!t.Skin.token("lineArt"),	//retro: phosphor line art instead of toy fills
+	colours : {wall : t.Skin.rgb("fxWall"), clear : t.Skin.rgb("fxClear"), magic : t.Skin.rgb("fxMagic"), plain : t.Skin.rgb("fxPlain")},
 	eyes : [[-4, -5.5], [4, -5.5]],
 	rgba : function(c, a){ return "rgba(" + c + "," + a + ")"; },
 	envelope : function(k, rise, fall){		//0 -> 1 by `rise`, hold, 1 -> 0 from `fall`
@@ -35,8 +37,10 @@ Q.RoboFx = {
 	},
 	// The program counter marker (Q.Spark, tile explainers): cream halo,
 	// sunny four-point star with an ink outline, centred on the origin.
+	// Retro draws a phosphor reticle instead (drawReticle).
 	drawMarker : function(ctx, size){
 		var S = t.Skin;
+		if(this.lineArt) return this.drawReticle(ctx, size);
 		var pulse = 0.5+0.5*Math.sin(Date.now()/1000*2*Math.PI*1.1);
 		var halo = size*(0.27+0.03*pulse);
 		ctx.beginPath();
@@ -63,6 +67,45 @@ Q.RoboFx = {
 		ctx.arc(0, 0, size*0.04, 0, 2*Math.PI);
 		ctx.fillStyle = S.color("markerDot");
 		ctx.fill();
+	},
+	// Retro program counter: a dark disc so it reads on any tile, a thin
+	// phosphor ring that breathes, four amber crosshair ticks (they turn with
+	// the sprite) and a glowing centre dot. Line art, no filled star.
+	drawReticle : function(ctx, size){
+		var S = t.Skin;
+		var pulse = 0.5+0.5*Math.sin(Date.now()/1000*2*Math.PI*1.1);
+		var R = size*(0.27+0.03*pulse), i, th, c, sn;
+		ctx.save();
+		ctx.beginPath();
+		ctx.arc(0, 0, R, 0, 2*Math.PI);
+		ctx.fillStyle = S.color("markerHalo");
+		ctx.fill();
+		ctx.shadowColor = S.color("markerLine");
+		ctx.shadowBlur = 6;
+		ctx.lineWidth = 1.5;
+		ctx.strokeStyle = S.color("markerLine");
+		ctx.stroke();
+		ctx.beginPath();
+		ctx.arc(0, 0, size*0.17, 0, 2*Math.PI);
+		ctx.lineWidth = 1;
+		ctx.strokeStyle = "rgba(" + S.rgb("markerLine") + ",0.45)";
+		ctx.stroke();
+		ctx.shadowColor = S.color("markerStar");
+		ctx.lineCap = "square";
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = S.color("markerStar");
+		ctx.beginPath();
+		for(i = 0; i < 4; i++){
+			th = i*Math.PI/2; c = Math.cos(th); sn = Math.sin(th);
+			ctx.moveTo(c*size*0.075, sn*size*0.075);
+			ctx.lineTo(c*size*0.21, sn*size*0.21);
+		}
+		ctx.stroke();
+		ctx.beginPath();
+		ctx.arc(0, 0, size*0.035, 0, 2*Math.PI);
+		ctx.fillStyle = S.color("markerDot");
+		ctx.fill();
+		ctx.restore();
 	},
 	// lurch into the wall (0-0.3), squash against it (0.3-0.45), recoil with a
 	// small backwards overshoot and settle exactly where it started (1)
@@ -104,8 +147,15 @@ Q.RoboFx = {
 			ctx.lineTo(Math.sin(th)*rr, cy+1-Math.cos(th)*rr);
 		}
 		ctx.closePath();
-		ctx.fillStyle = this.rgba(this.sun, 1);
-		ctx.strokeStyle = this.rgba(this.ink, 1);
+		if(this.lineArt){			//retro: an amber outline spark, no filled star
+			ctx.fillStyle = this.rgba(this.ink, 1);
+			ctx.strokeStyle = this.rgba(this.sun, 1);
+			ctx.shadowColor = this.rgba(this.sun, 1);
+			ctx.shadowBlur = 4;
+		} else {
+			ctx.fillStyle = this.rgba(this.sun, 1);
+			ctx.strokeStyle = this.rgba(this.ink, 1);
+		}
 		ctx.lineWidth = 1.5;
 		ctx.fill(); ctx.stroke();
 		ctx.restore();
@@ -162,7 +212,7 @@ Q.RoboFx = {
 			ctx.fillRect(ex-7, ey-7, 14, 14);
 			ctx.fillStyle = this.rgba(col, 1);
 			ctx.fillRect(ex-2, ey-2.5, 4, 5);
-			ctx.fillStyle = "rgba(255,255,255,0.95)";
+			ctx.fillStyle = this.rgba(this.spark, 0.95);
 			ctx.fillRect(ex-1, ey-1, 2, 2);
 		}
 		if(s.kind !== 'magic' && k > 0.3){

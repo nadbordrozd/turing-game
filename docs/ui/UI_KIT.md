@@ -206,6 +206,15 @@ step with the CSS. Asset variants go in `js/skin-variants.js` (or a file
 under `js/skins/` that registers its own table). Retro art lives under
 `images/retro/` and `data/retro/`.
 
+Retro canvas art and its sources: the program-tile and robot-window atlases
+(`tools/art/tiles/program-tiles.mjs` and `robot-cell.mjs`, `--style retro`),
+the part reward icons (`tools/art/part-icons.mjs`, `--check`) and the
+robot-window images under `images/retro/`, all mapped in
+`js/skin-variants.js`. Code-drawn effects read the `lineArt` token: in retro
+the program counter (`Q.RoboFx.drawMarker`) is a phosphor reticle instead of
+the toy star, the bump spark is an amber outline, and the sense colours come
+from `fxWall` / `fxClear` / `fxMagic` / `fxPlain`.
+
 The look chooser (`js/scenes/skin-chooser.js`, scene `"skin chooser"`) is the
 first screen on first launch, before the intro, and the target of the Look
 buttons in the level selector header and About (`{back: "level selector"}` /

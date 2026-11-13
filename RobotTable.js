@@ -92,7 +92,7 @@ t.RobotTable = {
 		var totHei = (this.n)*(wid+inter)+inter;
 		// at (0,0): the game screen moves and scales it into the cell window (t.GameScreen.build)
 		this.display1 = new Q.Rectangle({x: 0, y: 0, w: totWid, h: totHei, 'type': Q.SPRITE_NONE,
-							color: "#2a2335", wid : this.unitwidth, interval: this.interval});
+							color: t.Skin.color("casing"), wid : this.unitwidth, interval: this.interval});
 		rt=this.display1;								
 		this.display1.tiles = {};
 		stage.insert(this.display1);

@@ -232,7 +232,7 @@ tiles alone in `-branch-variants`).
 sheets, frame counts, timings, joins and atlas layout in the "retro hacker
 chic" look (epic tg-wtv) into `images/retro/tiles/program-tiles.png` +
 `data/retro/program-tiles.json`; the game swaps only the URLs
-(`js/skins/retro-atlases.js`). Phosphor line art on near-black: a dim tile
+(`js/skin-variants.js`). Phosphor line art on near-black: a dim tile
 rim with brighter corner ticks; belts as two thin rails with thin bright
 chevrons at the Toybox chevron positions, so they stay continuous and in
 phase through corners, Ts and merges (where a side arc merges, the main
