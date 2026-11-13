@@ -59,7 +59,7 @@ export function loadGame() {
   const quiet = { log() {}, warn() {}, error() {}, info() {} };
   const ctx = vm.createContext({
     Q: stub(), $: jq, console: quiet, l: { log() {}, err() {} },
-    window: { localStorage }, document: stub(), Math, JSON, Object, Array,
+    window: { localStorage, location: { search: '' } }, document: stub(), Math, JSON, Object, Array,
   });
   for (const [f, src] of SOURCES) vm.runInContext(src, ctx, { filename: f });
   const t = vm.runInContext('t', ctx);

@@ -48,6 +48,7 @@
 	t.CounterDials = function(colors) {
 		this.colors = colors.slice();
 		this.numbers = {}; this.labels = {}; this.els = {};
+		this.dials = {}; this.matched = {}; this.pending = false;
 		for(var i = 0; i < colors.length; i++) { this.numbers[colors[i]] = 0; this.labels[colors[i]] = "0"; }
 	};
 	t.CounterDials.COLORS = COLORS;
@@ -56,7 +57,39 @@
 		setCounterLabel: function(color, label) { this.numbers[color] = undefined; this.labels[color] = "" + label; this.render(color); },
 		increment: function(color, cb) { this.numbers[color]++; this.labels[color] = "" + this.numbers[color]; this.render(color); if(cb) cb(); },
 		decrement: function(color, cb) { this.numbers[color]--; this.labels[color] = "" + this.numbers[color]; this.render(color); if(cb) cb(); },
-		render: function(color) { var e = this.els[color]; if(e) e.textContent = this.labels[color]; },
+		render: function(color) { var e = this.els[color]; if(e) e.textContent = this.labels[color]; this.scheduleMatch(); },
+
+		// "Matched" look: the dial of the level's target colour lights up while it
+		// SHOWS the target number (level.counterTarget(), display only; the hatch
+		// itself is still opened by level.onCounterUpdated). It is worked out from
+		// the displayed numbers once per frame, so the synchronous virtual runs in
+		// controls.js (every variant, then the worst one again) never flash it.
+		scheduleMatch: function() {
+			if(this.pending) return;
+			this.pending = true;
+			var self = this, run = function() { self.pending = false; self.updateMatch(true); };
+			if(typeof requestAnimationFrame === "function") requestAnimationFrame(run); else setTimeout(run, 0);
+		},
+		target: function() {
+			var lev = t.Levels && t.Levels.currentLevel;
+			return lev && lev.counterTarget ? lev.counterTarget() : null;
+		},
+		updateMatch: function(animate) {
+			var tg = this.target();
+			for(var i = 0; i < this.colors.length; i++) {
+				var c = this.colors[i];
+				this.showMatch(c, !!tg && tg.color === c && this.numbers[c] === tg.value, animate);
+			}
+		},
+		showMatch: function(color, on, animate) {
+			var was = !!this.matched[color], d = this.dials[color];
+			this.matched[color] = on;
+			if(!d) return;
+			d.classList.toggle("matched", on);
+			d.setAttribute("aria-label", color + " counter" + (on ? ", target reached" : ""));
+			if(!on) d.classList.remove("pop");
+			else if(!was && animate) { d.classList.remove("pop"); void d.offsetWidth; d.classList.add("pop"); }
+		},
 		attach: function(parent) {
 			for(var i = 0; i < this.colors.length; i++) {
 				var c = this.colors[i], col = COLORS[c] || { chip: "#6a5f74", lcd: "#fff4dc" };
@@ -66,7 +99,10 @@
 				chip.style.background = col.chip;
 				var lcd = UI.el("div", "lcd", d);
 				lcd.style.color = col.lcd;
+				UI.el("div", "ok", d).appendChild(UI.icon("check", 2));
 				this.els[c] = lcd;
+				this.dials[c] = d;
+				this.showMatch(c, !!this.matched[c], false); // a relayout keeps the state, without a pop
 				this.render(c);
 			}
 		}

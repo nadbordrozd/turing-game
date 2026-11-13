@@ -207,6 +207,8 @@ t.Levels.addLevel({
 	beforePlayInit: function(){
 		t.RobotTable.setCounterLabels(["Red"], [0]);
 	},
+	// display only: lights the dial; tools/levels/counter-targets.mjs checks it against onCounterUpdated
+	counterTarget : function(){ return {color: "Red", value: 5}; },
 	onCounterUpdated : function(color, diff, step){
 		if(t.RobotTable.counters["Red"]===5) {
 			var old = t.RobotTable.table[1][1];
@@ -248,6 +250,8 @@ t.Levels.addLevel({
 	beforePlayInit : function(){
 		t.RobotTable.setCounterLabel("Red", this.alternatives[this.current]);
 	},
+	// display only: lights the dial; tools/levels/counter-targets.mjs checks it against onCounterUpdated
+	counterTarget : function(){ return {color: "Red", value: 0}; },
 	onCounterUpdated : function(color, diff, step){
 		if(t.RobotTable.counters["Red"]===0) {
 			var old = t.RobotTable.table[1][1];
@@ -291,6 +295,8 @@ t.Levels.addLevel({
 	beforePlayInit : function(){
 		t.RobotTable.setCounterLabel("Red", this.alternatives[this.current]);
 	},
+	// display only: lights the dial; tools/levels/counter-targets.mjs checks it against onCounterUpdated
+	counterTarget : function(){ return {color: "Blue", value: this.alternatives[this.current]}; },
 	onCounterUpdated : function(color, diff, step){
 		if(t.RobotTable.counters["Blue"]===this.alternatives[this.current]) {
 			var old = t.RobotTable.table[1][1];
@@ -337,6 +343,8 @@ t.Levels.addLevel({
 	beforePlayInit : function(){
 		t.RobotTable.setCounterLabel("Red", this.alternatives[this.current]);
 	},
+	// display only: lights the dial; tools/levels/counter-targets.mjs checks it against onCounterUpdated
+	counterTarget : function(){ return {color: "Blue", value: 2*this.alternatives[this.current]}; },
 	onCounterUpdated : function(color, diff, step){
 		if(t.RobotTable.counters["Blue"]===2*this.alternatives[this.current]) {
 			var old = t.RobotTable.table[1][1];
@@ -383,6 +391,8 @@ t.Levels.addLevel({
 		t.RobotTable.setCounter("Yellow", 0);
 		t.RobotTable.setCounterLabel("Yellow", 0);
 	},
+	// display only: lights the dial; tools/levels/counter-targets.mjs checks it against onCounterUpdated
+	counterTarget : function(){ return {color: "Yellow", value: this.alternatives[this.current][0]+this.alternatives[this.current][1]}; },
 	onCounterUpdated : function(color, diff, step){
 		if(t.RobotTable.counters["Yellow"]===this.alternatives[this.current][0]+this.alternatives[this.current][1]) {
 			var old = t.RobotTable.table[1][1];
@@ -431,6 +441,8 @@ t.Levels.addLevel({
 		t.RobotTable.setCounter("Pink", 0);
 		t.RobotTable.setCounterLabel("Pink", 0);
 	},
+	// display only: lights the dial; tools/levels/counter-targets.mjs checks it against onCounterUpdated
+	counterTarget : function(){ return {color: "Yellow", value: this.alternatives[this.current][0]*this.alternatives[this.current][1]}; },
 	onCounterUpdated : function(color, diff, step){
 		if(t.RobotTable.counters["Yellow"]===this.alternatives[this.current][0]*this.alternatives[this.current][1]) {
 			var old = t.RobotTable.table[1][1];
@@ -475,6 +487,8 @@ t.Levels.addLevel({
 	beforePlayInit : function(){
 		t.RobotTable.setCounterLabel("Red", this.alternatives[this.current]);
 	},
+	// display only: lights the dial; tools/levels/counter-targets.mjs checks it against onCounterUpdated
+	counterTarget : function(){ return {color: "Blue", value: this.alternatives[this.current]/2}; },
 	onCounterUpdated : function(color, diff, step){
 		if(t.RobotTable.counters["Blue"]===this.alternatives[this.current]/2) {
 			var old = t.RobotTable.table[1][1];
@@ -528,6 +542,8 @@ t.Levels.addLevel({
 		t.RobotTable.setCounter("Pink", 0);
 		t.RobotTable.setCounterLabel("Pink", 0);
 	},
+	// display only: lights the dial; tools/levels/counter-targets.mjs checks it against onCounterUpdated
+	counterTarget : function(){ return {color: "Blue", value: this.alternatives[this.current][1]}; },
 	onCounterUpdated : function(color, diff, step){
 		if(t.RobotTable.counters["Blue"]===this.alternatives[this.current][1]) {
 			var old = t.RobotTable.table[1][1];
@@ -585,6 +601,8 @@ t.Levels.addLevel({
 		t.RobotTable.setCounter("Yellow", 0);
 		t.RobotTable.setCounterLabel("Yellow", 0);
 	},
+	// display only: lights the dial; tools/levels/counter-targets.mjs checks it against onCounterUpdated
+	counterTarget : function(){ return {color: "Yellow", value: this.alternatives[this.current][2]}; },
 	onCounterUpdated : function(color, diff, step){
 		if(t.RobotTable.counters["Yellow"]===this.alternatives[this.current][2]) {
 			var old = t.RobotTable.table[1][1];
@@ -634,6 +652,8 @@ t.Levels.addLevel({
 		t.RobotTable.setCounter("Pink", 0);
 		t.RobotTable.setCounterLabel("Pink", 0);
 	},
+	// display only: lights the dial; tools/levels/counter-targets.mjs checks it against onCounterUpdated
+	counterTarget : function(){ return {color: "Yellow", value: this.alternatives[this.current][2]}; },
 	onCounterUpdated : function(color, diff, step){
 		if(t.RobotTable.counters["Yellow"]===this.alternatives[this.current][2]) {
 			var old = t.RobotTable.table[1][1];
@@ -694,6 +714,8 @@ t.Levels.addLevel({
 		t.RobotTable.setCounter("Pink", 0);
 		t.RobotTable.setCounterLabel("Pink", 0);
 	},
+	// display only: lights the dial; tools/levels/counter-targets.mjs checks it against onCounterUpdated
+	counterTarget : function(){ return {color: "Blue", value: this.alternatives[this.current][1]}; },
 	onCounterUpdated : function(color, diff, step){
 		if(t.RobotTable.counters["Blue"]===this.alternatives[this.current][1]) {
 			var old = t.RobotTable.table[1][1];
