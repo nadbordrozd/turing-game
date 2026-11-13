@@ -3,7 +3,7 @@
   "bead": "tg-wtv.3",
   "class": "retro-backdrop",
   "exploration": false,
-  "_doc": "Retro skin end-level backdrop (epic tg-wtv: phosphor green on near-black). The user's hand-drawn 2012 robots (set retro-legacy) stand on it, about 30 of them, so the bottom half must be an open ground plane. Generated at 512x384 and scaled x2 nearest to 1024x768 (the end-level landscape size). Placement of the robots: tools/art/retro-freed-layout.mjs. Recipes are never edited after generation: add a new id (new seed) instead.",
+  "_doc": "Retro skin end-level backdrop (epic tg-wtv: phosphor green on near-black). The user's hand-drawn 2012 robots (set retro-legacy) stand on it, about 30 of them, so the bottom half must be an open ground plane. Generated at 512x384 and scaled x2 nearest to 1024x768 (the end-level landscape size). Placement of the robots: tools/art/retro-freed-layout.mjs. Recipes are never edited after generation: add a new id (new seed) instead. Superseded by retro-victory-v2 (tg-wtv.5): images/retro/victory-bg.png now derives from there.",
   "shared": {
     "sceneOpts": {
       "detail": "medium detail",
@@ -43,18 +43,5 @@
       "subject": "@cityPlain"
     }
   ],
-  "outputs": [
-    {
-      "path": "images/retro/victory-bg.png",
-      "from": "bg-hills-a#0",
-      "steps": [
-        {
-          "op": "scale",
-          "factor": 2
-        }
-      ],
-      "width": 1024,
-      "height": 768
-    }
-  ]
+  "outputs": []
 }

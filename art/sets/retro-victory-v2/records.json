@@ -1,0 +1,230 @@
+{
+  "bg-town-a": {
+    "id": "bg-town-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-28a8997a-919c-4be4-8e03-780067f6e6e7",
+    "submittedAt": "2026-11-13T14:54:13.090Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/class-retro-world.txt",
+          "text": "Style (retro hacker chic skin): a real place outdoors at night as an old green-screen computer would draw it. Only near-black and phosphor green (bright #33ff66, plus one dim and one dark green step), no other hues. Crisp pixel art: dark silhouettes and flat dark-green shapes with thin 1-2 pixel glowing green edges and sparse lit dots, a faint glow, calm and uncluttered. Backdrop: one wide real landscape seen from a standing person's eye height, like a flat 2D game background, nobody in it, mostly dark and low in contrast so bright, colourful hand-drawn characters placed on top later stand out."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: the edge of a town at night seen across an empty field. The upper half is a dark night sky with long low layered clouds lit faintly green from below by the city, the glow strongest just above the skyline. A little below the middle runs a straight, level horizon: a distant city skyline of office towers, flat blocks, a water tower and a radio mast, dark shapes with dim green lit windows, with low dark hills behind it on the left and right. A row of tall electricity pylons with sagging power lines recedes from the left toward the city, getting smaller. From the horizon down to the bottom edge, a wide, flat, empty field of short dark grass with sparse dim green grass tufts and dithering, a little more detailed toward the bottom, with nothing standing on it."
+        }
+      ],
+      "image_size": {
+        "width": 512,
+        "height": 384
+      },
+      "no_background": false,
+      "seed": 9501,
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style (retro hacker chic skin): a real place outdoors at night as an old green-screen computer would draw it. Only near-black and phosphor green (bright #33ff66, plus one dim and one dark green step), no other hues. Crisp pixel art: dark silhouettes and flat dark-green shapes with thin 1-2 pixel glowing green edges and sparse lit dots, a faint glow, calm and uncluttered. Backdrop: one wide real landscape seen from a standing person's eye height, like a flat 2D game background, nobody in it, mostly dark and low in contrast so bright, colourful hand-drawn characters placed on top later stand out. Subject: the edge of a town at night seen across an empty field. The upper half is a dark night sky with long low layered clouds lit faintly green from below by the city, the glow strongest just above the skyline. A little below the middle runs a straight, level horizon: a distant city skyline of office towers, flat blocks, a water tower and a radio mast, dark shapes with dim green lit windows, with low dark hills behind it on the left and right. A row of tall electricity pylons with sagging power lines recedes from the left toward the city, getting smaller. From the horizon down to the bottom edge, a wide, flat, empty field of short dark grass with sparse dim green grass tufts and dithering, a little more detailed toward the bottom, with nothing standing on it. Must not include: text, letters, numbers, logo, watermark, signature, people, robots, characters, creatures, animals, vehicles, cars, user interface, frame, border, grid floor, perspective grid, tron, cyberspace, circuit board, wireframe, stars, starfield, moon, crescent, red, blue, yellow, purple, orange, white sky, bright fill."
+    },
+    "at": "2026-11-13T14:54:13.093Z",
+    "candidates": [
+      {
+        "file": "bg-town-a-0.png",
+        "sha256": "d24952ca5e9dd43b884ec1da9b71fdc0ade83e7062b16504041d58a96bffbc8c",
+        "width": 512,
+        "height": 384
+      }
+    ]
+  },
+  "bg-road-a": {
+    "id": "bg-road-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-874d6613-12c9-47ff-b029-7efd6bf6e7e8",
+    "submittedAt": "2026-11-13T14:55:55.171Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/class-retro-world.txt",
+          "text": "Style (retro hacker chic skin): a real place outdoors at night as an old green-screen computer would draw it. Only near-black and phosphor green (bright #33ff66, plus one dim and one dark green step), no other hues. Crisp pixel art: dark silhouettes and flat dark-green shapes with thin 1-2 pixel glowing green edges and sparse lit dots, a faint glow, calm and uncluttered. Backdrop: one wide real landscape seen from a standing person's eye height, like a flat 2D game background, nobody in it, mostly dark and low in contrast so bright, colourful hand-drawn characters placed on top later stand out."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a straight empty country road at night running from the bottom centre to a far, level horizon a little below the middle of the picture. The upper half is a dark sky with soft drifting clouds whose undersides glow dim green above a distant city. On the horizon: a low distant city skyline in the centre with glowing windows, dark rolling hills to the left and right, telegraph poles with wires beside the road getting smaller with distance, a few round dark trees. On both sides of the road, wide flat empty fields of short dark grass running to the horizon, with nothing standing on them."
+        }
+      ],
+      "image_size": {
+        "width": 512,
+        "height": 384
+      },
+      "no_background": false,
+      "seed": 9502,
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style (retro hacker chic skin): a real place outdoors at night as an old green-screen computer would draw it. Only near-black and phosphor green (bright #33ff66, plus one dim and one dark green step), no other hues. Crisp pixel art: dark silhouettes and flat dark-green shapes with thin 1-2 pixel glowing green edges and sparse lit dots, a faint glow, calm and uncluttered. Backdrop: one wide real landscape seen from a standing person's eye height, like a flat 2D game background, nobody in it, mostly dark and low in contrast so bright, colourful hand-drawn characters placed on top later stand out. Subject: a straight empty country road at night running from the bottom centre to a far, level horizon a little below the middle of the picture. The upper half is a dark sky with soft drifting clouds whose undersides glow dim green above a distant city. On the horizon: a low distant city skyline in the centre with glowing windows, dark rolling hills to the left and right, telegraph poles with wires beside the road getting smaller with distance, a few round dark trees. On both sides of the road, wide flat empty fields of short dark grass running to the horizon, with nothing standing on them. Must not include: text, letters, numbers, logo, watermark, signature, people, robots, characters, creatures, animals, vehicles, cars, user interface, frame, border, grid floor, perspective grid, tron, cyberspace, circuit board, wireframe, stars, starfield, moon, crescent, red, blue, yellow, purple, orange, white sky, bright fill."
+    },
+    "at": "2026-11-13T14:55:55.172Z",
+    "candidates": [
+      {
+        "file": "bg-road-a-0.png",
+        "sha256": "19e7a7cf8edfd3f2b97cc76a3f1eedc1c13a951798f1a6938f195358c251dc8b",
+        "width": 512,
+        "height": 384
+      }
+    ]
+  },
+  "bg-valley-a": {
+    "id": "bg-valley-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-b7f3cf87-0d91-4795-8f2d-e9ecd047dfc8",
+    "submittedAt": "2026-11-13T14:57:36.529Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/class-retro-world.txt",
+          "text": "Style (retro hacker chic skin): a real place outdoors at night as an old green-screen computer would draw it. Only near-black and phosphor green (bright #33ff66, plus one dim and one dark green step), no other hues. Crisp pixel art: dark silhouettes and flat dark-green shapes with thin 1-2 pixel glowing green edges and sparse lit dots, a faint glow, calm and uncluttered. Backdrop: one wide real landscape seen from a standing person's eye height, like a flat 2D game background, nobody in it, mostly dark and low in contrast so bright, colourful hand-drawn characters placed on top later stand out."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a wide mountain valley at night. The upper half is a dark sky with a range of distant jagged mountains along its lower part, their ridges and snow edges picked out in dim green, and thin layered clouds lit green drifting across. A little below the middle runs a level horizon: a small far town of tiny green lights at the foot of the mountains, a line of dark pine trees and a few pylons with power lines. From the horizon down to the bottom edge, a wide flat empty meadow of short dark grass with sparse dim green tufts, with nothing standing on it."
+        }
+      ],
+      "image_size": {
+        "width": 512,
+        "height": 384
+      },
+      "no_background": false,
+      "seed": 9503,
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style (retro hacker chic skin): a real place outdoors at night as an old green-screen computer would draw it. Only near-black and phosphor green (bright #33ff66, plus one dim and one dark green step), no other hues. Crisp pixel art: dark silhouettes and flat dark-green shapes with thin 1-2 pixel glowing green edges and sparse lit dots, a faint glow, calm and uncluttered. Backdrop: one wide real landscape seen from a standing person's eye height, like a flat 2D game background, nobody in it, mostly dark and low in contrast so bright, colourful hand-drawn characters placed on top later stand out. Subject: a wide mountain valley at night. The upper half is a dark sky with a range of distant jagged mountains along its lower part, their ridges and snow edges picked out in dim green, and thin layered clouds lit green drifting across. A little below the middle runs a level horizon: a small far town of tiny green lights at the foot of the mountains, a line of dark pine trees and a few pylons with power lines. From the horizon down to the bottom edge, a wide flat empty meadow of short dark grass with sparse dim green tufts, with nothing standing on it. Must not include: text, letters, numbers, logo, watermark, signature, people, robots, characters, creatures, animals, vehicles, cars, user interface, frame, border, grid floor, perspective grid, tron, cyberspace, circuit board, wireframe, stars, starfield, moon, crescent, red, blue, yellow, purple, orange, white sky, bright fill."
+    },
+    "at": "2026-11-13T14:57:36.531Z",
+    "candidates": [
+      {
+        "file": "bg-valley-a-0.png",
+        "sha256": "4564be0cb3188576a395186cb8190220480719616b8878693855185fb1e4af4d",
+        "width": 512,
+        "height": 384
+      }
+    ]
+  },
+  "bg-outskirts-a": {
+    "id": "bg-outskirts-a",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-0dc2d1d7-bdfe-4028-bc44-2e0ace485829",
+    "submittedAt": "2026-11-13T14:58:51.731Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/class-retro-world.txt",
+          "text": "Style (retro hacker chic skin): a real place outdoors at night as an old green-screen computer would draw it. Only near-black and phosphor green (bright #33ff66, plus one dim and one dark green step), no other hues. Crisp pixel art: dark silhouettes and flat dark-green shapes with thin 1-2 pixel glowing green edges and sparse lit dots, a faint glow, calm and uncluttered. Backdrop: one wide real landscape seen from a standing person's eye height, like a flat 2D game background, nobody in it, mostly dark and low in contrast so bright, colourful hand-drawn characters placed on top later stand out."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: the outskirts of a big city at night seen from a wide empty lot. The upper half is a dark sky full of soft clouds lit green from below, brightest above the city. A little below the middle runs a level horizon: a wide distant skyline of skyscrapers and towers with dim green windows, a few cranes and chimneys, power lines on poles at the far left and right. From the horizon to the bottom edge, flat empty open ground of packed dark earth and short grass with a few faint tyre tracks, nothing standing on it."
+        }
+      ],
+      "image_size": {
+        "width": 512,
+        "height": 384
+      },
+      "no_background": false,
+      "seed": 9504,
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style (retro hacker chic skin): a real place outdoors at night as an old green-screen computer would draw it. Only near-black and phosphor green (bright #33ff66, plus one dim and one dark green step), no other hues. Crisp pixel art: dark silhouettes and flat dark-green shapes with thin 1-2 pixel glowing green edges and sparse lit dots, a faint glow, calm and uncluttered. Backdrop: one wide real landscape seen from a standing person's eye height, like a flat 2D game background, nobody in it, mostly dark and low in contrast so bright, colourful hand-drawn characters placed on top later stand out. Subject: the outskirts of a big city at night seen from a wide empty lot. The upper half is a dark sky full of soft clouds lit green from below, brightest above the city. A little below the middle runs a level horizon: a wide distant skyline of skyscrapers and towers with dim green windows, a few cranes and chimneys, power lines on poles at the far left and right. From the horizon to the bottom edge, flat empty open ground of packed dark earth and short grass with a few faint tyre tracks, nothing standing on it. Must not include: text, letters, numbers, logo, watermark, signature, people, robots, characters, creatures, animals, vehicles, cars, user interface, frame, border, grid floor, perspective grid, tron, cyberspace, circuit board, wireframe, stars, starfield, moon, crescent, red, blue, yellow, purple, orange, white sky, bright fill."
+    },
+    "at": "2026-11-13T14:58:51.733Z",
+    "candidates": [
+      {
+        "file": "bg-outskirts-a-0.png",
+        "sha256": "90eb16292dcb2916041382eee358f5412cb20e131ef7298b7812606f0f6598e6",
+        "width": 512,
+        "height": 384
+      }
+    ]
+  },
+  "bg-road-b": {
+    "id": "bg-road-b",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-0f3dc96b-a085-4602-a6c1-65804a63c07c",
+    "submittedAt": "2026-11-13T15:01:07.234Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/class-retro-world.txt",
+          "text": "Style (retro hacker chic skin): a real place outdoors at night as an old green-screen computer would draw it. Only near-black and phosphor green (bright #33ff66, plus one dim and one dark green step), no other hues. Crisp pixel art: dark silhouettes and flat dark-green shapes with thin 1-2 pixel glowing green edges and sparse lit dots, a faint glow, calm and uncluttered. Backdrop: one wide real landscape seen from a standing person's eye height, like a flat 2D game background, nobody in it, mostly dark and low in contrast so bright, colourful hand-drawn characters placed on top later stand out."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a straight empty country road at night running from the bottom centre to a far, level horizon a little below the middle of the picture. The upper half is a dark sky with soft drifting clouds whose undersides glow dim green above a distant city. On the horizon: a low distant city skyline in the centre with glowing windows, dark rolling hills to the left and right, telegraph poles with wires beside the road getting smaller with distance, a few round dark trees. On both sides of the road, wide flat empty fields of short dark grass running to the horizon, with nothing standing on them. Colour: the glowing edges, cloud rims, windows and road markings are saturated bright phosphor green #33ff66 like an old terminal screen (not mint, not teal), everything else neutral near-black and two dark greens."
+        }
+      ],
+      "image_size": {
+        "width": 512,
+        "height": 384
+      },
+      "no_background": false,
+      "seed": 9502,
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style (retro hacker chic skin): a real place outdoors at night as an old green-screen computer would draw it. Only near-black and phosphor green (bright #33ff66, plus one dim and one dark green step), no other hues. Crisp pixel art: dark silhouettes and flat dark-green shapes with thin 1-2 pixel glowing green edges and sparse lit dots, a faint glow, calm and uncluttered. Backdrop: one wide real landscape seen from a standing person's eye height, like a flat 2D game background, nobody in it, mostly dark and low in contrast so bright, colourful hand-drawn characters placed on top later stand out. Subject: a straight empty country road at night running from the bottom centre to a far, level horizon a little below the middle of the picture. The upper half is a dark sky with soft drifting clouds whose undersides glow dim green above a distant city. On the horizon: a low distant city skyline in the centre with glowing windows, dark rolling hills to the left and right, telegraph poles with wires beside the road getting smaller with distance, a few round dark trees. On both sides of the road, wide flat empty fields of short dark grass running to the horizon, with nothing standing on them. Colour: the glowing edges, cloud rims, windows and road markings are saturated bright phosphor green #33ff66 like an old terminal screen (not mint, not teal), everything else neutral near-black and two dark greens. Must not include: text, letters, numbers, logo, watermark, signature, people, robots, characters, creatures, animals, vehicles, cars, user interface, frame, border, grid floor, perspective grid, tron, cyberspace, circuit board, wireframe, stars, starfield, moon, crescent, red, blue, yellow, purple, orange, white sky, bright fill."
+    },
+    "at": "2026-11-13T15:01:07.236Z",
+    "candidates": [
+      {
+        "file": "bg-road-b-0.png",
+        "sha256": "8a0027875d8aab7f06eb2d66baa9c3f67da960e17824b00d6c5c21c12f6eccd3",
+        "width": 512,
+        "height": 384
+      }
+    ]
+  },
+  "bg-road-c": {
+    "id": "bg-road-c",
+    "status": "DONE",
+    "endpoint": "create-image-pixen",
+    "jobId": "sync-fdab8105-6921-4ee7-9cc0-6c380e4f6ff7",
+    "submittedAt": "2026-11-13T15:02:17.876Z",
+    "request": {
+      "endpoint": "create-image-pixen",
+      "layers": [
+        {
+          "source": "fragments/class-retro-world.txt",
+          "text": "Style (retro hacker chic skin): a real place outdoors at night as an old green-screen computer would draw it. Only near-black and phosphor green (bright #33ff66, plus one dim and one dark green step), no other hues. Crisp pixel art: dark silhouettes and flat dark-green shapes with thin 1-2 pixel glowing green edges and sparse lit dots, a faint glow, calm and uncluttered. Backdrop: one wide real landscape seen from a standing person's eye height, like a flat 2D game background, nobody in it, mostly dark and low in contrast so bright, colourful hand-drawn characters placed on top later stand out."
+        },
+        {
+          "source": "recipe subject",
+          "text": "Subject: a straight empty country road at night running from the bottom centre to a far, level horizon a little below the middle of the picture. The upper half is a dark sky with soft drifting clouds whose undersides glow dim green above a distant city. On the horizon: a low distant city skyline in the centre with glowing windows, dark rolling hills to the left and right, telegraph poles with wires beside the road getting smaller with distance, a few round dark trees. On both sides of the road, wide flat empty fields of short dark grass running to the horizon, with nothing standing on them. Colour: the glowing edges, cloud rims, windows and road markings are saturated bright phosphor green #33ff66 like an old terminal screen (not mint, not teal), everything else neutral near-black and two dark greens."
+        }
+      ],
+      "image_size": {
+        "width": 512,
+        "height": 384
+      },
+      "no_background": false,
+      "seed": 9506,
+      "detail": "medium detail",
+      "view": "side",
+      "description": "Style (retro hacker chic skin): a real place outdoors at night as an old green-screen computer would draw it. Only near-black and phosphor green (bright #33ff66, plus one dim and one dark green step), no other hues. Crisp pixel art: dark silhouettes and flat dark-green shapes with thin 1-2 pixel glowing green edges and sparse lit dots, a faint glow, calm and uncluttered. Backdrop: one wide real landscape seen from a standing person's eye height, like a flat 2D game background, nobody in it, mostly dark and low in contrast so bright, colourful hand-drawn characters placed on top later stand out. Subject: a straight empty country road at night running from the bottom centre to a far, level horizon a little below the middle of the picture. The upper half is a dark sky with soft drifting clouds whose undersides glow dim green above a distant city. On the horizon: a low distant city skyline in the centre with glowing windows, dark rolling hills to the left and right, telegraph poles with wires beside the road getting smaller with distance, a few round dark trees. On both sides of the road, wide flat empty fields of short dark grass running to the horizon, with nothing standing on them. Colour: the glowing edges, cloud rims, windows and road markings are saturated bright phosphor green #33ff66 like an old terminal screen (not mint, not teal), everything else neutral near-black and two dark greens. Must not include: text, letters, numbers, logo, watermark, signature, people, robots, characters, creatures, animals, vehicles, cars, user interface, frame, border, grid floor, perspective grid, tron, cyberspace, circuit board, wireframe, stars, starfield, moon, crescent, red, blue, yellow, purple, orange, white sky, bright fill."
+    },
+    "at": "2026-11-13T15:02:17.878Z",
+    "candidates": [
+      {
+        "file": "bg-road-c-0.png",
+        "sha256": "ceca76befeb6946b1a4d2c62549a95a5837b52ca684af4e8c4723cde7c0446be",
+        "width": 512,
+        "height": 384
+      }
+    ]
+  }
+}

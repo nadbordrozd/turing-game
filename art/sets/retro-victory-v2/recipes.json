@@ -1,0 +1,80 @@
+{
+  "set": "retro-victory-v2",
+  "bead": "tg-wtv.5",
+  "class": "retro-backdrop",
+  "exploration": false,
+  "_doc": "Retro skin end-level backdrop, second pass (bead tg-wtv.5, user feedback: the freed robots are free in the real world, not in cyberspace; the starfield sky was boring). Same palette as retro-victory-v1 (phosphor green on near-black), new subject: a real place at night with open ground running to a level horizon a little below the middle, and a sky with something in it (city glow, clouds, mountains). On desktop the result card covers x 212-812, y 26-380 of the 1024x768 landscape; on portrait mobile the whole landscape is shown above the card. Generated at 512x384 and scaled x2 nearest to 1024x768. Placement of the robots: tools/art/retro-freed-layout.mjs (perspective from the horizon). Recipes are never edited after generation: add a new id (new seed) instead.",
+  "shared": {
+    "sceneOpts": {
+      "detail": "medium detail",
+      "view": "side"
+    },
+    "townEdge": "Subject: the edge of a town at night seen across an empty field. The upper half is a dark night sky with long low layered clouds lit faintly green from below by the city, the glow strongest just above the skyline. A little below the middle runs a straight, level horizon: a distant city skyline of office towers, flat blocks, a water tower and a radio mast, dark shapes with dim green lit windows, with low dark hills behind it on the left and right. A row of tall electricity pylons with sagging power lines recedes from the left toward the city, getting smaller. From the horizon down to the bottom edge, a wide, flat, empty field of short dark grass with sparse dim green grass tufts and dithering, a little more detailed toward the bottom, with nothing standing on it.",
+    "road": "Subject: a straight empty country road at night running from the bottom centre to a far, level horizon a little below the middle of the picture. The upper half is a dark sky with soft drifting clouds whose undersides glow dim green above a distant city. On the horizon: a low distant city skyline in the centre with glowing windows, dark rolling hills to the left and right, telegraph poles with wires beside the road getting smaller with distance, a few round dark trees. On both sides of the road, wide flat empty fields of short dark grass running to the horizon, with nothing standing on them.",
+    "valley": "Subject: a wide mountain valley at night. The upper half is a dark sky with a range of distant jagged mountains along its lower part, their ridges and snow edges picked out in dim green, and thin layered clouds lit green drifting across. A little below the middle runs a level horizon: a small far town of tiny green lights at the foot of the mountains, a line of dark pine trees and a few pylons with power lines. From the horizon down to the bottom edge, a wide flat empty meadow of short dark grass with sparse dim green tufts, with nothing standing on it.",
+    "outskirts": "Subject: the outskirts of a big city at night seen from a wide empty lot. The upper half is a dark sky full of soft clouds lit green from below, brightest above the city. A little below the middle runs a level horizon: a wide distant skyline of skyscrapers and towers with dim green windows, a few cranes and chimneys, power lines on poles at the far left and right. From the horizon to the bottom edge, flat empty open ground of packed dark earth and short grass with a few faint tyre tracks, nothing standing on it.",
+    "roadVivid": "Subject: a straight empty country road at night running from the bottom centre to a far, level horizon a little below the middle of the picture. The upper half is a dark sky with soft drifting clouds whose undersides glow dim green above a distant city. On the horizon: a low distant city skyline in the centre with glowing windows, dark rolling hills to the left and right, telegraph poles with wires beside the road getting smaller with distance, a few round dark trees. On both sides of the road, wide flat empty fields of short dark grass running to the horizon, with nothing standing on them. Colour: the glowing edges, cloud rims, windows and road markings are saturated bright phosphor green #33ff66 like an old terminal screen (not mint, not teal), everything else neutral near-black and two dark greens."
+  },
+  "defaults": {
+    "endpoint": "create-image-pixen",
+    "fragments": [
+      "class-retro-world"
+    ],
+    "noBackground": false,
+    "options": "@sceneOpts",
+    "width": 512,
+    "height": 384
+  },
+  "recipes": [
+    {
+      "id": "bg-town-a",
+      "concept": "town edge across a field: green-lit clouds, skyline, pylons",
+      "seed": 9501,
+      "subject": "@townEdge"
+    },
+    {
+      "id": "bg-road-a",
+      "concept": "country road to a city on the horizon, clouds, poles",
+      "seed": 9502,
+      "subject": "@road"
+    },
+    {
+      "id": "bg-valley-a",
+      "concept": "mountain valley meadow, far town lights, clouds",
+      "seed": 9503,
+      "subject": "@valley"
+    },
+    {
+      "id": "bg-outskirts-a",
+      "concept": "city outskirts from an empty lot, cloud glow",
+      "seed": 9504,
+      "subject": "@outskirts"
+    },
+    {
+      "id": "bg-road-b",
+      "concept": "road, same seed as bg-road-a, saturated phosphor green asked for",
+      "seed": 9502,
+      "subject": "@roadVivid"
+    },
+    {
+      "id": "bg-road-c",
+      "concept": "road, new seed, saturated phosphor green asked for",
+      "seed": 9506,
+      "subject": "@roadVivid"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "images/retro/victory-bg.png",
+      "from": "bg-road-c#0",
+      "steps": [
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 1024,
+      "height": 768
+    }
+  ]
+}

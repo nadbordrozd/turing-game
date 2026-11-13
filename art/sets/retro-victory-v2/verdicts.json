@@ -1,0 +1,32 @@
+{
+  "bg-town-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Green-lit clouds and skyline are good, but the field's far edge (the horizon) sits at 72% height (y ~555 of 768): only ~210 px of ground for 33 robots' depth; a few red star pixels break the palette",
+    "at": "2026-11-13T15:03:07.448Z"
+  },
+  "bg-road-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Good road perspective (vanishing point y 440) but pale mint-teal greens instead of phosphor green, and mid-distance trees on both sides would sit behind robots drawn in front of them",
+    "at": "2026-11-13T15:03:07.498Z"
+  },
+  "bg-valley-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Striking mountains, but the meadow starts at 78% height (y ~600): almost no ground; lime-yellow greens",
+    "at": "2026-11-13T15:03:07.548Z"
+  },
+  "bg-outskirts-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Horizon at 73% height (y ~560) leaves too little ground; the big busy skyline and crane fill the strip visible under the desktop card",
+    "at": "2026-11-13T15:03:07.600Z"
+  },
+  "bg-road-b#0": {
+    "verdict": "REJECTED",
+    "notes": "Same road composition (vanishing point y ~460), still a soft mint-grey green rather than phosphor; bg-road-c has the palette",
+    "at": "2026-11-13T15:03:07.650Z"
+  },
+  "bg-road-c#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Saturated phosphor green (141,253,101) on neutral near-black like v1; a straight road runs to a glowing city with its vanishing point at y 494 of 768, a real horizon and a strong depth cue for scale; open field on the left for giants on the horizon, trees on the right for scale; green-rimmed clouds fill the sky visible on mobile and beside the desktop card; only a few sparse stars, no moon, no grid",
+    "at": "2026-11-13T15:03:07.699Z"
+  }
+}
