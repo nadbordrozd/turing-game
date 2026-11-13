@@ -508,14 +508,14 @@
 			c.boxes = boxes;
 			boxes.forEach(function(b) {
 				nodeBox[b.n] = b;
-				LS.buildNode(m, N[b.n], b, portrait, root, g.locked);
+				LS.buildNode(m, N[b.n], b, portrait, root, g.locked, g.color);
 			});
 		},
 
-		buildNode: function(m, o, b, portrait, root, cardLocked) {
+		buildNode: function(m, o, b, portrait, root, cardLocked, color) {
 			var next = m.next === o.name;
 			var label = o.name + ": " + (o.solved ? "solved, " + o.parts + " of 3 parts" : o.open ? "open" : "locked");
-			var btn = UI.button({ cls: "ls-node " + o.state + (next ? " next" : ""), title: label,
+			var btn = UI.button({ cls: "ls-node " + o.state + (next ? " next" : "") + (color ? " ls-g-" + color : ""), title: label,
 				sound: o.state === "locked" ? "bump" : "click",
 				onClick: function() {
 					if(o.state === "locked") LS.showLocked(o);

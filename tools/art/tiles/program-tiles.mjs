@@ -537,13 +537,12 @@ function sheetList() {
 export const SHEETS = sheetList();
 const BY_NAME = Object.fromEntries(SHEETS.map((s) => [s.name, s]));
 
-// ---------------------------------------------------------------- retro style (tg-wtv.2)
-// "Retro hacker chic": phosphor line art on near-black (epic tg-wtv). The same
-// sheets, frame counts, timings, geometry and joins as Toybox (RETRO_SHEETS
-// maps SHEETS one to one, swapping only each sheet's scene), so the game only
-// swaps the atlas URLs. Lines are 1-2 units wide with a soft glow; the glow is
-// quantised to GQ alpha steps, so flat regions stay one colour object and the
-// rasteriser only supersamples real edges.
+// ---------------------------------------------------------------- retro style (tg-wtv.2, tg-wtv.8)
+// "Retro hacker chic" (epic tg-wtv). The same sheets, frame counts, timings,
+// geometry and joins as Toybox (RETRO_SHEETS maps SHEETS one to one, swapping
+// only each sheet's scene), so the game only swaps the atlas URLs.
+// RETRO is the skin's phosphor palette (the part icons, tools/art/part-icons.mjs,
+// draw with it); the board itself uses RETRO_BOARD below.
 export const RETRO = {
   bg: "#050b07", // near-black, faint green
   beltGround: "#08180d", // between the rails
@@ -560,93 +559,96 @@ export const RETRO = {
 // Counter colours keep their meaning (game semantics) as tinted phosphor, and
 // keep their glyphs, so they stay distinguishable by hue and by shape.
 export const RETRO_COUNTERS = { Red: "#ff5c50", Blue: "#58a6ff", Green: "#a6ff3c", Purple: "#c08aff", Yellow: "#ffe45a", Pink: "#ff78d4" };
-const R = Object.fromEntries(Object.entries(RETRO).map(([k, v]) => [k, hex(v)]));
-const RCP = Object.fromEntries(Object.entries(RETRO_COUNTERS).map(([k, v]) => [k, hex(v)]));
-// Which ink each symbol uses: step bright phosphor, the clockwise turn phosphor
-// green, the counter-clockwise turn amber (the sparing accent), so the two turns
-// differ by colour as in Toybox; detector diamond and strike-outs amber; magic cyan.
-const RI = { step: R.bright, cw: R.phosphor, ccw: R.amber, go: R.phosphor, wall: R.bright, struck: R.dim, strike: R.amber, sensor: R.amber, magic: R.magic, hub: R.phosphor };
+// The board (tg-wtv.8, "a 1980s hacker's den"): no longer an oscilloscope but
+// a real circuit board. A deep teal solder-mask panel with a faint silkscreen
+// pad grid; belts are copper traces at mid brightness with pale tinned
+// chevrons, clearly quieter than the instructions; instructions are solid
+// parts, each kind its own colour, with a dark outline and a darker rim (no
+// glow), so belts, symbols and the program marker (the brightest thing on the
+// board, drawn by the game) separate at a glance.
+export const RETRO_BOARD = {
+  mask: "#0c2a33", // solder mask: the board floor
+  silk: "#16404b", // tile rim: a faint silkscreen line
+  pad: "#2b6571", // corner pads where four tiles meet
+  outline: "#041014", // dark outline round every part
+  hubFill: "#0a1d24", // inside a branch hub
+  trace: "#4f3319", // copper trace between its edges
+  traceEdge: "#a66a30", // the trace's edges
+  chevron: "#d8b27c", // tinned chevrons: pale, not white
+  neutral: "#d4dde0", // conditional hubs' ring
+  neutralDark: "#8c9ba0",
+  struck: "#5d6f75", // a struck-out icon
+  strike: "#ff6a4a",
+};
+// Symbol colours by kind: step pale ice-cyan, clockwise turn pink, counter-
+// clockwise turn phosphor green, wall sensor red-orange, magic sensor aqua.
+// Counters keep their meaning colours (RETRO_COUNTERS) and their glyphs.
+const RETRO_KINDS = {
+  step: ["#e6fbff", "#a9ecfb", "#4e9fb4"],
+  cw: ["#ffc0e6", "#ff7cc8", "#b0407f"],
+  ccw: ["#d2ffc4", "#86f26c", "#3f9a33"],
+  wall: ["#ffab90", "#ff6a4a", "#b03a22"],
+  magic: ["#b8fff0", "#3fe8c8", "#1e8f7a"],
+  go: ["#d2ffc4", "#86f26c", "#3f9a33"],
+};
+const R = Object.fromEntries(Object.entries(RETRO_BOARD).map(([k, v]) => [k, hex(v)]));
+const RK = Object.fromEntries(Object.entries(RETRO_KINDS).map(([k, [l, b, d]]) => [k, { light: hex(l), base: hex(b), dark: hex(d) }]));
+const darker = (c, t) => [0, 1, 2].map((i) => Math.round(c[i] * (1 - t))).concat(255);
+const RCP = Object.fromEntries(Object.entries(RETRO_COUNTERS).map(([k, v]) => [k, { light: hex(v), base: hex(v), dark: darker(hex(v), 0.45) }]));
 
-const GQ = 16; // glow alpha steps
-const FILL_A = 0.9; // opacity of the dark fill inside outline glyphs
-const tableCache = new Map();
-function table(key, make) {
-  let t = tableCache.get(key);
-  if (!t) tableCache.set(key, (t = Array.from({ length: GQ + 1 }, (_, q) => make(q / GQ))));
-  return t;
+/** A solid part with signed distance d: a 1 unit dark outline outside, a 1
+ *  unit darker rim inside, the flat base fill. */
+function part(d, p) {
+  if (d > 1) return null;
+  if (d > 0) return R.outline;
+  if (d > -1) return p.dark;
+  return p.base;
 }
-const mixRgb = (a, b, t) => [0, 1, 2].map((i) => Math.round(a[i] + (b[i] - a[i]) * t));
-/** Ink at alpha a on transparent ground. */
-const glowOf = (ink) => table(`g${ink}`, (a) => [ink[0], ink[1], ink[2], Math.round(255 * a)]);
-/** Ink at strength a over an opaque ground. */
-const overOf = (ground, ink) => table(`o${ground}|${ink}`, (a) => [...mixRgb(ground, ink, a), 255]);
-/** Dark glyph fill with an inner glow of strength a. */
-const fillOf = (ink) => table(`f${ink}`, (a) => [...mixRgb(R.bg, ink, a), Math.round(255 * FILL_A)]);
-const glowQ = (d, reach, peak) => (d >= reach ? 0 : Math.round(peak * (1 - d / reach) ** 2 * GQ));
-
-const GLOW = { reach: 3, peak: 0.42 };
-/** A stroke edge at distance d (d <= 0 inside the stroke) with a soft glow, on transparent ground. */
-function lit(d, ink, reach = GLOW.reach, peak = GLOW.peak) {
-  if (d <= 0) return ink;
-  const q = glowQ(d, reach, peak);
-  return q > 0 ? glowOf(ink)[q] : null;
-}
-/** The same over an opaque ground (never null). */
-function litOver(d, ink, ground, reach = GLOW.reach, peak = GLOW.peak) {
-  if (d <= 0) return ink;
-  return overOf(ground, ink)[glowQ(d, reach, peak)];
-}
-/** Outline glyph of the shape with signed distance sd: a `half`*2 wide stroke
- *  on its edge, a dark fill with a faint inner glow, a soft outer glow. */
-function outlined(sd, ink, half = 0.7, reach = GLOW.reach, peak = GLOW.peak) {
-  const s = Math.abs(sd) - half;
-  if (s <= 0) return ink;
-  if (sd < 0) return fillOf(ink)[glowQ(s, reach * 0.8, peak * 0.6)];
-  return lit(s, ink, reach, peak);
+/** Small marks: the outline and a flat fill. */
+function mark(d, fill) {
+  if (d > 1) return null;
+  return d > 0 ? R.outline : fill;
 }
 
-/** Retro board panel: near-black, a dim 1 unit rim, brighter ticks at the
- *  corners (neighbouring tiles join them into small crosses). */
+/** Solder mask with a faint silkscreen rim and small pads at the corners
+ *  (neighbouring tiles join them into a pad grid). */
 function retroFloorAt(x, y) {
-  if (x < 1 || y < 1 || x >= D - 1 || y >= D - 1) {
-    const ex = x < H ? x : D - x, ey = y < H ? y : D - y;
-    return ex < 4 && ey < 4 ? R.gridTick : R.grid;
-  }
-  return R.bg;
+  const ex = x < H ? x : D - x, ey = y < H ? y : D - y;
+  if (ex < 3 && ey < 3) return R.pad;
+  if (x < 1 || y < 1 || x >= D - 1 || y >= D - 1) return R.silk;
+  return R.mask;
 }
 
-// Retro belt cross-section: two thin rails and thin bright chevrons on a dark
-// band. Chevrons sit where Toybox's do (same along-coordinate maths), so they
-// run continuously through corners, Ts and merges and stay in phase.
+// The trace's cross-section: a copper band with brighter edges and thin pale
+// chevrons. Chevrons sit where Toybox's do (same along-coordinate maths), so
+// they run continuously through corners, Ts and merges and stay in phase.
 const RAIL_V = 8.1, RAIL_HALF = 0.6;
-// Where a side arc merges into a main line, the main line's rail zone
-// (|v| > main) shows the arc's ground and rails wherever the arc's own
-// |v| < arc, up to `end` units before the east edge (there the two belts
-// coincide and the opening must match the plain conveyor exactly). The arc's
-// chevrons fade out over `fade` units as their tips reach `chevronEnd` along
-// the arc, before the main line would cut them into slivers.
+// Where a side arc merges into a main line, the main line's edge zone
+// (|v| > main) shows the arc's band wherever the arc's own |v| < arc, up to
+// `end` units before the east edge (there the two belts coincide and the
+// opening must match the plain conveyor exactly). The arc's chevrons fade out
+// over `fade` units as their tips reach `chevronEnd` along the arc, before the
+// main line would cut them into slivers.
 const RETRO_MERGE_GAP = { main: 6.4, arc: 6.8, end: 6, chevronEnd: 17, fade: 4 };
 const CHEV_W = 5.4, CHEV_HALF = 0.85;
+const mixC = (a, b, t) => [0, 1, 2].map((i) => Math.round(a[i] + (b[i] - a[i]) * t)).concat(255);
+const FADE_Q = 8;
+const chevronFade = Array.from({ length: FADE_Q + 1 }, (_, q) => mixC(R.trace, R.chevron, q / FADE_Q));
 /** chevronEnd: chevrons whose tip is past this along-coordinate fade out
- *  (-Infinity: rails and ground only). */
+ *  (-Infinity: band and edges only). */
 function retroBeltAt(u, v, off, chevronEnd = Infinity) {
   const av = v < 0 ? -v : v;
   if (av >= BELT_HALF) return null;
+  if (av >= RAIL_V + RAIL_HALF) return R.mask;
+  if (av >= RAIL_V - RAIL_HALF) return R.traceEdge;
   const k = mod(CHEVRON_TIP + off - av - u - CHEVRON_THICK / 2 + PERIOD / 2, PERIOD) - PERIOD / 2;
   let fade = 1;
   if (chevronEnd !== Infinity) fade = Math.min(1, Math.max(0, (chevronEnd - (u + av + k)) / RETRO_MERGE_GAP.fade));
   const dc = fade > 0 ? Math.hypot(Math.max(av - CHEV_W, 0), Math.abs(k) / Math.SQRT2) - CHEV_HALF : Infinity;
-  const ground = av < RAIL_V ? R.beltGround : R.bg;
-  if (dc <= 0) return fade >= 1 ? R.chevron : overOf(ground, R.chevron)[Math.round(fade * GQ)];
-  const dr = Math.abs(av - RAIL_V) - RAIL_HALF;
-  if (dr <= 0) return R.rail;
-  const qc = Math.round(glowQ(dc, 2.0, 0.3) * fade), qr = glowQ(dr, 1.8, 0.4);
-  return qc >= qr ? overOf(ground, R.chevron)[qc] : overOf(ground, R.rail)[qr];
+  if (dc <= 0) return fade >= 1 ? R.chevron : chevronFade[Math.round(fade * FADE_Q)];
+  return R.trace;
 }
 
-// Step arrows keep a short glow: they sit beside side arcs and at the belt openings. Their stroke is inset
-// (it ends on the arrow's edge), so they reach no further than the Toybox arrows' outline.
-const STEP_GLOW = 1.1;
 function retroStepArrows(frame, lanes = "NS") {
   const shift = (mod(frame, STEP_FRAMES) * D) / STEP_FRAMES;
   const ys = [...lanes].map((k) => ARROW_LANES[k]);
@@ -655,7 +657,7 @@ function retroStepArrows(frame, lanes = "NS") {
       const b = y - cy;
       if (b < -9 || b > 9) continue;
       const a = mod(x - shift - ARROW_START, D);
-      const c = outlined(Math.min(sdPolygon(a, b, ARROW), sdPolygon(a - D, b, ARROW)) + 0.65, RI.step, 0.65, STEP_GLOW);
+      const c = part(Math.min(sdPolygon(a, b, ARROW), sdPolygon(a - D, b, ARROW)), RK.step);
       if (c) return c;
     }
     return null;
@@ -665,20 +667,20 @@ function retroStepArrowInline(frame) {
   const x0 = 2.2 + 1.0 * (1 - Math.cos((TAU * mod(frame, STEP_FRAMES)) / STEP_FRAMES));
   return (x, y) => {
     const a = (x - x0) / INLINE_SCALE, b = (y - H) / INLINE_SCALE;
-    if (a < -3 || a > 27 || b < -10 || b > 10) return null;
-    return outlined(sdPolygon(a, b, ARROW) * INLINE_SCALE + 0.65, RI.step, 0.65, STEP_GLOW);
+    if (a < -2 || a > 26 || b < -9 || b > 9) return null;
+    return part(sdPolygon(a, b, ARROW) * INLINE_SCALE, RK.step);
   };
 }
 
 function retroRotator(frame, cw) {
   const dir = cw ? 1 : -1;
   const phase = (frame * ROT_DEG_PER_FRAME * Math.PI) / 180;
-  const ink = cw ? RI.cw : RI.ccw;
+  const p = cw ? RK.cw : RK.ccw;
   return (x, y) => {
     const px = x - H, py = y - H;
     const r = Math.hypot(px, py);
     const t = Math.abs(r - RING.rc);
-    if (t > RING.headHalf + 4) return null;
+    if (t > RING.headHalf + 1.5) return null;
     const theta = Math.atan2(py, px) * dir - phase;
     let d = Infinity;
     for (let k = 0; k < 2; k += 1) {
@@ -690,77 +692,69 @@ function retroRotator(frame, cw) {
       const dHead = Math.max((t - half) * HEAD_K, (-hs * r) / RING.rc);
       d = Math.min(d, dBand, dHead);
     }
-    return outlined(d + 0.7, ink, 0.7, 1.8); // inset stroke: no wider than Toybox's outline
+    return part(d, p);
   };
 }
 
+/** Incrementer: a plus in the counter colour, pulsing gently, the counter's
+ *  glyph cut out of it in the dark outline colour. */
 function retroIncrementer(frame, colour) {
-  const ink = RCP[colour];
+  const p = RCP[colour];
   const glyph = COUNTERS[colour].glyph;
   const sc = 1 - 0.1 * (1 - Math.cos((TAU * mod(frame, PULSE_FRAMES)) / PULSE_FRAMES)) / 2;
-  const reach = PLUS.arm + 4;
+  const reach = PLUS.arm + 2;
   return (x, y) => {
     const px = (x - H) / sc, py = (y - H) / sc;
     if (Math.abs(px) > reach || Math.abs(py) > reach) return null;
-    const g = sdGlyph(glyph, px, py, PLUS.glyph) * sc;
-    if (g <= 0) return ink; // the counter's glyph, solid: it is small
+    if (sdGlyph(glyph, px, py, PLUS.glyph) * sc <= 0) return R.outline;
     const dx = Math.min(sdRoundBox(px, py, PLUS.arm, PLUS.half, PLUS.round), sdRoundBox(px, py, PLUS.half, PLUS.arm, PLUS.round)) * sc;
-    if (dx < 0) {
-      const q = glowQ(g, 1.6, 0.5); // the glyph glows into the dark fill
-      const s = Math.abs(dx) - 0.7;
-      if (s <= 0) return ink;
-      return q > 0 ? fillOf(ink)[q] : fillOf(ink)[glowQ(s, 2.4, 0.25)];
-    }
-    return outlined(dx, ink, 0.7);
+    return part(dx, p);
   };
 }
 
-/** Retro hub: an opaque dark disc (it hides the belt crossing) with a thin ring. */
-function retroHub(ink, inner) {
+/** Hub covering a branch tile's crossing: an opaque dark disc with a thick
+ *  ring in `ring` colours; inner(px, py) draws on the dark fill. */
+function retroHub(ring, inner) {
   return (x, y) => {
     const px = x - H, py = y - H;
     const d = Math.hypot(px, py) - HUB_R;
-    if (d > 0.7) return lit(d - 0.7, ink);
-    if (d > -0.7) return ink;
-    return inner(px, py);
+    if (d > 1) return null;
+    if (d > 0) return R.outline;
+    if (d > -1) return ring.dark;
+    if (d > -2.6) return ring.base;
+    if (d > -3.4) return R.outline;
+    return inner(px, py) ?? R.hubFill;
   };
 }
-/** An outline shape inside a hub (opaque). */
-const hubShape = (sdf, ink, solid = false) => (px, py) => {
-  const sd = sdf(px, py);
-  if (solid && sd <= 0) return ink;
-  return litOver(Math.abs(sd) - 0.75, ink, R.bg, 2.4, 0.45);
-};
-const diamondSd = (px, py) => (Math.abs(px) + Math.abs(py) - 7.5) / Math.SQRT2;
+const diamondSd = (px, py) => (Math.abs(px) + Math.abs(py) - 6.6) / Math.SQRT2;
+const NEUTRAL = { light: R.neutral, base: R.neutral, dark: R.neutralDark };
+const STRUCK = { light: R.struck, base: R.struck, dark: darker(R.struck, 0.35) };
 
-function retroBrick(px, py, ink) {
+function retroBrick(px, py, p) {
   const d = sdRoundBox(px, py, 7, 6, 1.6);
-  const s = Math.abs(d) - 0.6;
-  if (s <= 0) return ink;
-  if (d > 0) return lit(s, ink, 1.8, 0.4);
+  if (d > 1) return null;
+  if (d > 0) return R.outline;
+  if (d > -1) return p.dark;
+  if (Math.abs(py + 2) < 0.5 || Math.abs(py - 2) < 0.5) return p.dark;
   const row = py < -2 ? 0 : py < 2 ? 1 : 2;
-  const mortar = Math.abs(py + 2) < 0.45 || Math.abs(py - 2) < 0.45 || (row === 1 ? [-3.5, 3.5] : [0]).some((jx) => Math.abs(px - jx) < 0.45);
-  return mortar ? fillOf(ink)[Math.round(GQ * 0.6)] : fillOf(ink)[0];
+  for (const jx of row === 1 ? [-3.5, 3.5] : [0]) if (Math.abs(px - jx) < 0.5) return p.dark;
+  return p.base;
 }
-function retroMagicIcon(px, py, ink) {
+function retroMagicIcon(px, py, p) {
   const d = sdRoundBox(px, py, 6.5, 6.5, 2.2);
-  const s = Math.abs(d) - 0.6;
-  if (s <= 0) return ink;
-  if (d > 0) return lit(s, ink, 1.8, 0.4);
-  const sp = Math.min(Math.abs(px) / 1.3 + Math.abs(py) / 4.4, Math.abs(px) / 4.4 + Math.abs(py) / 1.3) - 1;
-  return sp < 0 ? ink : fillOf(ink)[glowQ(sp * 1.3, 1.5, 0.4)];
+  if (d > 1) return null;
+  if (d > 0) return R.outline;
+  if (d > -1) return p.dark;
+  const s = Math.min(Math.abs(px) / 1.3 + Math.abs(py) / 4.4, Math.abs(px) / 4.4 + Math.abs(py) / 1.3) - 1;
+  return s < 0 ? R.outline : p.base;
 }
-const retroStruck = (draw) => (px, py) => {
-  const d = sdSegment(px, py, -6.5, 6.5, 6.5, -6.5) - 0.8;
-  if (d <= 0) return RI.strike;
-  return draw(px, py, RI.struck) ?? lit(d, RI.strike, 1.5, 0.4);
-};
-const retroZero = (ink) => (px, py) => lit(Math.abs(sdRoundBox(px, py, 4.4, 6.2, 4.4)) - 0.8, ink, 1.8, 0.4);
-const retroMinus = (ink) => (px, py) => lit(sdRoundBox(px, py, 5.5, 0.85, 0.85), ink, 1.8, 0.4);
+const retroStruck = (draw) => (px, py) => mark(sdSegment(px, py, -6.5, 6.5, 6.5, -6.5) - 1.2, R.strike) ?? draw(px, py, STRUCK);
+const retroZero = (p) => (px, py) => mark(Math.abs(sdRoundBox(px, py, 4.4, 6.2, 4.4)) - 1.5, p.base);
+const retroMinus = (p) => (px, py) => mark(sdRoundBox(px, py, 6, 1.6, 1.2), p.base);
 
 function retroStartMarker(x, y) {
   const py = y - H;
-  return outlined(Math.min(sdPolygon(x - 11.5, py, START_CHEVRON), sdPolygon(x - 25.5, py, START_CHEVRON)), RI.go, 0.75);
+  return part(Math.min(sdPolygon(x - 11.5, py, START_CHEVRON), sdPolygon(x - 25.5, py, START_CHEVRON)) - 0.8, RK.go);
 }
 
 /** The retro scene of a Toybox sheet (same name, frames and layer). */
@@ -776,20 +770,20 @@ function retroScene(s) {
   if (name === "cwrotatorSymbol" || name === "ccwrotatorSymbol") return (f) => stack(retroRotator(f, name === "cwrotatorSymbol"));
   if (name === "detectorSymbol")
     return () => stack(
-      icons(ICON_SPOTS.north, (px, py) => retroBrick(px, py, RI.wall)),
+      icons(ICON_SPOTS.north, (px, py) => retroBrick(px, py, RK.wall)),
       icons(ICON_SPOTS.south, retroStruck(retroBrick)),
-      retroHub(RI.hub, hubShape(diamondSd, RI.sensor)));
+      retroHub(NEUTRAL, (px, py) => part(diamondSd(px, py), RK.wall)));
   if (name === "magicDetectorSymbol")
     return () => stack(
-      icons(ICON_SPOTS.north, (px, py) => retroMagicIcon(px, py, RI.magic)),
+      icons(ICON_SPOTS.north, (px, py) => retroMagicIcon(px, py, RK.magic)),
       icons(ICON_SPOTS.south, retroStruck(retroMagicIcon)),
-      retroHub(RI.hub, hubShape(diamondSd, RI.magic)));
+      retroHub(NEUTRAL, (px, py) => part(diamondSd(px, py), RK.magic)));
   const m = /^(incrementer|decrementer)(\w+)Symbol$/.exec(name);
   if (m && RCP[m[2]]) {
-    const colour = m[2], ink = RCP[colour], glyph = COUNTERS[colour].glyph;
+    const colour = m[2], p = RCP[colour], glyph = COUNTERS[colour].glyph;
     if (m[1] === "incrementer") return (f) => stack(retroIncrementer(f, colour));
-    return () => stack(icons(ICON_SPOTS.north, retroZero(ink)), icons(ICON_SPOTS.south, retroMinus(ink)),
-      retroHub(ink, hubShape((px, py) => sdGlyph(glyph, px, py, 6.4), ink)));
+    return () => stack(icons(ICON_SPOTS.north, retroZero(p)), icons(ICON_SPOTS.south, retroMinus(p)),
+      retroHub(p, (px, py) => part(sdGlyph(glyph, px, py, 5.6), p)));
   }
   if (name === "emptyOperator") return () => stack(retroFloorAt);
   if (name === "startTile") return () => stack(retroStartMarker);
@@ -1068,7 +1062,7 @@ const label = (img, text, x, y, colour = INK) => drawText(img, text, x, y, colou
 // ("dark") and the label ink. Retro sheets sit on the retro background.
 const REVIEW = {
   toybox: { light: parseColour("#efe9dc"), dark: parseColour("#1b1a20"), ink: INK },
-  retro: { light: parseColour(RETRO.bg), dark: parseColour("#000000"), ink: parseColour(RETRO.phosphor) },
+  retro: { light: parseColour(RETRO_BOARD.mask), dark: parseColour("#000000"), ink: parseColour(RETRO.phosphor) },
 };
 
 function contactSheet(n, style = "toybox") {

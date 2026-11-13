@@ -703,9 +703,13 @@ function glowAny(src, colours) {
   return out;
 }
 
-// ---------------------------------------------------------------- retro style (tg-wtv.2)
-// "Retro hacker chic" (epic tg-wtv): phosphor line art on near-black, drawn
-// here as signed-distance shapes, supersampled RSS x RSS per pixel, with thin
+// ---------------------------------------------------------------- retro style (tg-wtv.2, tg-wtv.8)
+// "Retro hacker chic" (epic tg-wtv). Since tg-wtv.8 the cell is its own
+// device, not another oscilloscope: an ice-blue security monitor over a
+// neutral blue-grey floor with a faint grid, steel-blue walls and crates, the
+// exit hatch in phosphor green, the magic tile aqua (as the board's magic
+// sensor), lava hot orange-red, and a white line robot with cyan eyes on a
+// dark body, so it reads against every tile. Drawn here as signed-distance shapes, supersampled RSS x RSS per pixel, with thin
 // 1-2 px lines and a soft glow. No PixelLab and no masters: the robot is a
 // code-drawn vector robot with the Toybox frame set (FRAMES.player, same
 // meaning per frame) and lava a code-drawn flickering red-amber hatch with the
@@ -713,18 +717,25 @@ function glowAny(src, colours) {
 // game swaps only the URLs (STYLE_FILES).
 export const RETRO = {
   bg: "#050b07",
-  grid: "#0f2c18",
-  gridTick: "#1f6a38",
+  floor: "#1a2634", // blue-grey monitor floor
+  floorRim: "#26364a", // its faint grid
+  floorTick: "#3f5a76", // brighter ticks where four tiles meet
+  wall: "#a8e4ff", // ice-blue walls and crates
+  wallDim: "#3d6a88",
+  wallFill: "#111b27",
+  robotLine: "#eef4f7",
+  robotEye: "#5ff0ff",
+  robotDetail: "#7d93a6",
   phosphor: "#33ff66",
   bright: "#c8ffd6",
   dim: "#1d7a3e",
   faint: "#123f22",
-  fill: "#07130b",
+  fill: "#0f1720",
   amber: "#ffb43a",
   amberBright: "#ffe7a8",
-  magic: "#55f0ff",
-  ice: "#7fdcff",
-  iceGround: "#04121a",
+  magic: "#3fe8c8",
+  ice: "#c8f2ff",
+  iceGround: "#2a4a60",
   waterGround: "#03141a",
   water: "#2f9fd6",
   lavaGround: "#120403",
@@ -818,20 +829,20 @@ function shapes(parts) {
 const part = (sd, mode, ink, extra = {}) => ({ sd, mode, ink, half: 0.6, fill: RX.fill, reach: 2.5, peak: 0.4, ...extra });
 
 // ---- retro terrain
-/** Floor: near-black, a dim 1 px rim, brighter corner ticks. */
+/** Floor: blue-grey, a faint 1 px grid rim, brighter corner ticks. */
 function retroFloor(x, y) {
   if (x < 1 || y < 1 || x >= T - 1 || y >= T - 1) {
     const ex = Math.min(x, T - x), ey = Math.min(y, T - y);
-    return ex < 5 && ey < 5 ? RX.gridTick : RX.grid;
+    return ex < 5 && ey < 5 ? RX.floorTick : RX.floorRim;
   }
-  return RX.bg;
+  return RX.floor;
 }
 
-// Walls: a bright 2 px line 3.5 px in from the wall's edge and a dim 1 px line
-// inside it. Each line ends where it meets a perpendicular wall line of the
+// Walls: a bright 4 px ice-blue bar 4 px in from the wall's edge and a dim 1 px
+// line inside it. Each line ends where it meets a perpendicular wall line of the
 // same tile (clean corners); otherwise it runs to the tile edge, so walls join
 // their neighbours across the gap.
-const WALL_LINES = [{ at: 3.5, half: 1, ink: "phosphor", reach: 3, peak: 0.5 }, { at: 7.5, half: 0.5, ink: "dim", reach: 1.5, peak: 0.3 }];
+const WALL_LINES = [{ at: 4, half: 2, ink: "wall", reach: 2, peak: 0.3 }, { at: 8.5, half: 0.5, ink: "wallDim", reach: 1, peak: 0.2 }];
 function retroWalls(sides) {
   const parts = [];
   for (const L of WALL_LINES) {
@@ -859,11 +870,11 @@ function retroBlock() {
   const crate = (x, y) => {
     if (outer(x, y) > 0) return retroFloor(x, y);
     const di = inner(x, y);
-    if (Math.abs(di) < 0.5) return RX.dim;
-    if (di < 0 && Math.min(Math.abs(x - y), Math.abs(x + y - T)) / Math.SQRT2 < 0.5) return RX.faint;
-    return RX.fill;
+    if (Math.abs(di) < 0.6) return RX.wallDim;
+    if (di < 0 && Math.min(Math.abs(x - y), Math.abs(x + y - T)) / Math.SQRT2 < 0.6) return RX.wallDim;
+    return RX.wallFill;
   };
-  return overScene(shapes([part(outer, "outline", RX.phosphor, { half: 0.9, reach: 3, peak: 0.5, fill: null })]), crate);
+  return overScene(shapes([part(outer, "outline", RX.wall, { half: 1.2, reach: 2, peak: 0.3, fill: null })]), crate);
 }
 
 function retroMagicTile() {
@@ -1063,7 +1074,7 @@ function robotParts(ink, opt = {}) {
   }
   return parts;
 }
-const ROBOT_INK = { line: RX.phosphor, eye: RX.bright, accent: RX.amber, detail: RX.dim, fill: RX.fill, glow: RX.phosphor };
+const ROBOT_INK = { line: RX.robotLine, eye: RX.robotEye, accent: RX.amber, detail: RX.robotDetail, fill: RX.fill, glow: RX.wall, peak: 0.3 };
 const inkMix = (ink, to, t, extra = {}) => ({
   line: rgbMix(ink.line, to, t), eye: rgbMix(ink.eye, to, t * 0.6), accent: rgbMix(ink.accent, to, t), detail: rgbMix(ink.detail, to, t),
   fill: ink.fill, glow: rgbMix(ink.glow, to, t), ...extra,

@@ -77,6 +77,10 @@ function screens(sol) {
     ['selector', { steps: [{ eval: progress }, { eval: 'Q.clearStages(), Q.stageScene("level selector"), true', wait: 900 }] }],
     ['level', { steps: [{ eval: playLevel, wait: 700 }, { eval: placeSolution(sol.grid), wait: 300 }, step, step, step, step, step, step, step,
       { eval: 'var tg = t.RobotTable.counterPanel.target(); t.RobotTable.counterPanel.set(tg.color, tg.value), true', wait: 400 }] }],
+    // mid-run (tg-wtv.8): the program running at normal speed, captured in motion.
+    // Timing-dependent, so not pixel-stable between runs: review only, not for skin diffs.
+    ['run', { steps: [{ eval: playLevel, wait: 700 }, { eval: placeSolution(sol.grid), wait: 300 },
+      { eval: 't.Controls.buttons.play.click(), true', wait: 2300 }] }],
     ['popup', { steps: [{ eval: playLevel, wait: 700 }, { eval: placeSolution(sol.grid), wait: 300 }, { freeze: true }, { eval: 't.TileExplain.open([t.Operators.nameToOp["mRed"]]), true', wait: 900 }] }],
     ['help', { steps: [{ eval: playLevel, wait: 700 }, { eval: placeSolution(sol.grid), wait: 300 }, { eval: 't.HelpOverlay.show(), true', wait: 600 }] }],
     ['about', { steps: [{ eval: 'Q.clearStages(), Q.stageScene("about"), true', wait: 900 }] }],
@@ -148,6 +152,7 @@ async function shots(o) {
           if (s.freeze) { await evaluate(freezeJs); await sleep(200); }
           if (s.eval) await evaluate(s.eval);
           if (s.wait) await sleep(s.wait);
+          if (s.log) console.log(`  ${name}: ${JSON.stringify(await evaluate(s.log))}`);
         }
         if (o.hide) await evaluate(`(function(){ var s = document.createElement('style'); s.textContent = ${JSON.stringify(o.hide)} + '{display:none !important}'; document.head.appendChild(s); return true; })()`);
         if (!sc.steps.some((s) => s.freeze)) await evaluate(freezeJs);

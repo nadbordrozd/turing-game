@@ -89,22 +89,23 @@
       sun: "#ffb000",
       tomato: "#ffb000",
       cream: "#b6ffc8",
-      board: "#071a0d",
-      boardHalo: "rgba(51,255,102,0.10)",
-      window: "#030805",
-      lcd: "#010402",
-      lcdBezel: "#0d4a1f",
+      board: "#0c2a33",          // solder mask (tools/art/tiles/program-tiles.mjs RETRO_BOARD.mask)
+      boardHalo: "rgba(120,220,240,0.10)",
+      window: "#1a2634",         // robot cell floor (tools/art/tiles/robot-cell.mjs RETRO.floor)
+      lcd: "#05080b",
+      lcdBezel: "#2b3a4a",
       exitOff: "rgba(51,255,102,0.30)",
       labelOff: "rgba(51,255,102,0.55)",
       panelWash: "rgba(51,255,102,0.06)",
       dropWash: "rgba(51,255,102,0.18)",
       dragShadow: "rgba(51,255,102,0.55)",
       dim: "#010402",
-      markerHalo: "rgba(3,8,5,0.85)",
-      markerLine: "#33ff66",
-      markerStar: "#ffb000",
-      markerStarLine: "#030805",
-      markerDot: "#fff2c0",
+      // the program marker: the brightest thing on the board (hot white-yellow)
+      markerHalo: "rgba(4,16,20,0.88)",
+      markerLine: "#fff6c8",
+      markerStar: "#ffd23a",
+      markerStarLine: "#041014",
+      markerDot: "#ffffff",
       lineArt: true,
       fxWall: "#ff5c4d", fxClear: "#33ff66", fxMagic: "#4cc8ff", fxPlain: "#b6ffc8", fxSpark: "#e8ffee",
       // tinted phosphors: dark chip, the colour in the text and the digits
@@ -117,7 +118,7 @@
         Pink: { chip: "#2e0b1d", lcd: "#ff7ab8", text: "#ff7ab8" }
       },
       confetti: ["#33ff66", "#b6ffc8", "#ffb000", "#22c94f", "#4cc8ff", "#33ff66"],
-      themeColor: "#030805",
+      themeColor: "#07130d",
       music: ["music/hypnotic-loop.m4a", "music/terminal-bleeps.m4a"],
       mono: MONO
     }

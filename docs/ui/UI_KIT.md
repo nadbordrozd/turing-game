@@ -199,9 +199,32 @@ sets `<html data-skin="toybox|retro">` before the first paint.
 
 CSS: toybox tokens are on `:root` in `css/toybox.css`; `css/retro.css`
 re-points them under `:root[data-skin="retro"]` and changes shapes (1 px
-lines, square corners, bracketed buttons, glow, scanlines; no flicker under
-`prefers-reduced-motion`). Every retro rule is scoped, so toybox renders
-exactly as before. Canvas code takes its colours from `t.Skin` tokens, kept in
+lines, square corners, bracketed buttons, a light glow, subtle scanlines; no
+flicker under `prefers-reduced-motion`). Every retro rule is scoped, so
+toybox renders exactly as before.
+
+Retro is "a 1980s hacker's den" (tg-wtv.8): each window is a different piece
+of kit on a dark circuit-board desk (`images/retro/pcb.png`, a 256 px
+seamless tile from `node tools/art/retro-pcb.mjs`, `--check`). Panel hues:
+
+| Window | Hue | Card / content |
+| --- | --- | --- |
+| header, about text, popups, help, end level | green phosphor terminal `#33ff66` (the default) | `.hdr` |
+| tiles tray, about photo card, selector "sun" groups | amber terminal `#ffb000` | `.sun`, `.ab-side` |
+| program board housing | teal `#5fe0d8`; the board itself a teal solder mask `#0c2a33` | `.mat`, `.gs-board-frame` |
+| robot cell | ice-blue security monitor `#8fd0ff`, window `#1a2634` | `.cell`, `.gs-win` |
+| control deck | gunmetal console, keycaps: RUN red-orange, transport green, speed cyan, an LCD speed readout | `.deck` |
+| last run | violet readout `#c79bff` | `.score` |
+| selector "sky" / "tomato" / "plum" groups | ice / red-orange / violet | `.ls-<color>`, nodes `.ls-g-<color>` |
+
+A hue is a set of `--g*` variables (`--g`, `--g-hi`, `--g-mid`, `--g-dim`,
+`--g-faint`, `--g-rgb`, `--panel`, `--panel-2`, `--mint`) set on the card
+(`.tb-card`, under the canvas) and on its content (`UI.card` gives the
+over-layer content `data-card="<card classes>"`), so every retro rule that
+draws in `var(--g)` takes the window's colour. Custom properties resolve
+where they are declared, so the hue rule re-declares the aliases (`--ink`,
+`--glow`, ...) too. Amber stays the accent for the primary action, the next
+level and warnings. Canvas code takes its colours from `t.Skin` tokens, kept in
 step with the CSS. Asset variants go in `js/skin-variants.js` (or a file
 under `js/skins/` that registers its own table). Retro art lives under
 `images/retro/` and `data/retro/`.
@@ -211,8 +234,8 @@ Retro canvas art and its sources: the program-tile and robot-window atlases
 the part reward icons (`tools/art/part-icons.mjs`, `--check`) and the
 robot-window images under `images/retro/`, all mapped in
 `js/skin-variants.js`. Code-drawn effects read the `lineArt` token: in retro
-the program counter (`Q.RoboFx.drawMarker`) is a phosphor reticle instead of
-the toy star, the bump spark is an amber outline, and the sense colours come
+the program counter (`Q.RoboFx.drawMarker`) is a hot white-yellow reticle
+(the brightest thing on the board) instead of the toy star, the bump spark is an amber outline, and the sense colours come
 from `fxWall` / `fxClear` / `fxMagic` / `fxPlain`.
 
 The look chooser (`js/scenes/skin-chooser.js`, scene `"skin chooser"`) is the
@@ -220,4 +243,5 @@ first screen on first launch, before the intro, and the target of the Look
 buttons in the level selector header and About (`{back: "level selector"}` /
 `{back: "about"}`). `node tools/ui/skin-shots.mjs` screenshots every screen
 in one skin (muted, frozen clock), diffs two shot folders and builds a
-contact sheet.
+contact sheet. Its `run` screen catches the program mid-run (timing
+dependent: for review, not for pixel diffs).

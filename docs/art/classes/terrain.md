@@ -116,7 +116,7 @@ labirynth, ring of fire; `-levels2`: some flag?, just give up, P).
   next to the floor without a seam colour clash, and the robot reads in all four
   rotations.
 
-## Retro skin (tg-wtv.2)
+## Retro skin (tg-wtv.2, readability pass tg-wtv.8)
 
 `node tools/art/tiles/robot-cell.mjs --style retro` draws the robot window in
 the "retro hacker chic" look (epic tg-wtv), code-drawn (no PixelLab, no
@@ -125,13 +125,20 @@ masters): `images/retro/tiles/robot-cell.png` + `data/retro/robot-cell.json`
 `--check` requires the JSON to be identical) and, under the same names in
 `images/retro/`, `robotile.png`, `obstacle.png`, `ice.png`, `crackedIce.png`,
 `water.png` and `resistor1-5.png` (the window's separately loaded images).
-Signed-distance shapes supersampled 4×4: a dim grid floor; walls as a bright
-2 px line with a dim inner line, ending cleanly at corners; the block a
-wireframe crate; the hatch a ring with an iris of spiral seams opening to an
-amber rim; the trap the dim hatch with amber lightning (Toybox's random
-draws); ice and cracked ice cyan line work; dots as amber capsule outlines;
-lava a flickering red-amber diagonal hatch over the 2012 lava's 40 frames.
-The robot is a vector robot with the Toybox frame set and meanings (idle;
+Since tg-wtv.8 the cell is its own device, an ice-blue security monitor, not
+another phosphor-green oscilloscope like the board. Signed-distance shapes
+supersampled 4×4: a neutral blue-grey floor `#1a2634` with a faint grid
+`#26364a` and corner ticks `#3f5a76`; walls as a bright 4 px ice-blue bar
+`#a8e4ff` with a dim inner line `#3d6a88`, ending cleanly at corners; the
+block a steel wireframe crate in the wall colours; the hatch (exit) a phosphor
+green ring with an iris of spiral seams opening to an amber rim; the trap the
+dim hatch with amber lightning (Toybox's random draws); the magic tile aqua
+`#3fe8c8` (as the board's magic sensor); ice a lighter blue-grey panel with
+pale glints, cracked ice the same with cracks; water dark with blue crests;
+dots as amber capsule outlines; lava a flickering red-amber diagonal hatch
+over the 2012 lava's 40 frames. Glow is light (peaks about 0.3).
+The robot is a vector robot in its own colours (white lines `#eef4f7`, cyan
+eyes `#5ff0ff`, amber accents, a dark body) with the Toybox frame set and meanings (idle;
 1-6 electrocution to an amber x-ray and an inverted flash; 7-11 ash and X
 eyes; 12-21 sinking in lava; 23-31 drowning), eyes where `Q.RoboFx.eyes`
 expects them. `--check` covers both styles and builds retro twice

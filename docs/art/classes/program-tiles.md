@@ -226,23 +226,40 @@ tiles alone in `-branch-variants`).
 - On the board mock, belts join with no seam, corners and branches follow the
   flow, and every symbol reads at 1×.
 
-## Retro skin (tg-wtv.2)
+## Retro skin (tg-wtv.2, readability pass tg-wtv.8)
 
 `node tools/art/tiles/program-tiles.mjs --style retro` draws the same
 sheets, frame counts, timings, joins and atlas layout in the "retro hacker
 chic" look (epic tg-wtv) into `images/retro/tiles/program-tiles.png` +
 `data/retro/program-tiles.json`; the game swaps only the URLs
-(`js/skin-variants.js`). Phosphor line art on near-black: a dim tile
-rim with brighter corner ticks; belts as two thin rails with thin bright
-chevrons at the Toybox chevron positions, so they stay continuous and in
-phase through corners, Ts and merges (where a side arc merges, the main
-line's rail opens and the arc's chevrons fade out before it); symbols as
-outline glyphs with a dark fill and a soft, quantised glow (step bright
-phosphor, turn right phosphor green, turn left amber; detector diamond amber,
-magic cyan, struck-out icons dim with an amber slash). Counters keep their
-glyphs and become tinted phosphor (Red `#ff5c50`, Blue `#58a6ff`, Green
-`#a6ff3c`, Purple `#c08aff`, Yellow `#ffe45a`, Pink `#ff78d4`). Strokes of
-symbols that sit near arcs or openings are inset, so they reach no further
-than Toybox's outlines. `--check` runs every self-check above on both styles,
+(`js/skin-variants.js`).
+
+Since tg-wtv.8 the board is a circuit board, not an oscilloscope (the first
+version drew belts, grid, chevrons and symbols all in one phosphor green and
+was hard to read mid-run). Palette `RETRO_BOARD`:
+
+- floor: deep teal solder mask `#0c2a33`, a faint silkscreen rim `#16404b`
+  and small corner pads `#2b6571` that join into a pad grid;
+- belts: copper traces, a `#4f3319` band with `#a66a30` edges and pale tinned
+  chevrons `#d8b27c` at the Toybox chevron positions (continuous and in phase
+  through corners, Ts and merges; where a side arc merges, the main line's
+  edge opens and the arc's chevrons fade out before it). Mid brightness on
+  purpose: belts are clearly quieter than the instructions;
+- instructions: solid parts with a 1 unit dark outline `#041014`, a 1 unit
+  darker rim and a flat fill, no glow; each kind its own colour: step pale
+  ice-cyan `#a9ecfb`, turn right pink `#ff7cc8`, turn left phosphor green
+  `#86f26c`, wall sensor red-orange `#ff6a4a` (bricks; struck-out icons grey
+  `#5d6f75` with a red-orange slash), magic sensor aqua `#3fe8c8`; the two
+  sensors' hubs have a pale neutral ring `#d4dde0`, a decrementer's hub a ring
+  in its counter colour;
+- counters keep their glyphs and meaning colours (Red `#ff5c50`, Blue
+  `#58a6ff`, Green `#a6ff3c`, Purple `#c08aff`, Yellow `#ffe45a`, Pink
+  `#ff78d4`): the incrementer a solid plus with the glyph cut out dark;
+- the program marker (drawn by the game, `Q.RoboFx.drawReticle`, tokens
+  `marker*` in `js/skin.js`) is a hot white-yellow ring with yellow ticks
+  and a glow: the brightest thing on the board.
+
+`RETRO` (the phosphor palette) stays for the part icons
+(`tools/art/part-icons.mjs`). `--check` runs every self-check above on both styles,
 re-renders frames fresh (determinism) and requires the retro layout JSON to
 equal Toybox's; `--style retro --review <dir>` writes the retro review sheets.

@@ -68,9 +68,10 @@ Q.RoboFx = {
 		ctx.fillStyle = S.color("markerDot");
 		ctx.fill();
 	},
-	// Retro program counter: a dark disc so it reads on any tile, a thin
-	// phosphor ring that breathes, four amber crosshair ticks (they turn with
-	// the sprite) and a glowing centre dot. Line art, no filled star.
+	// Retro program counter: a dark disc so it reads on any tile, a hot
+	// white-yellow ring that breathes (the brightest thing on the board),
+	// four yellow crosshair ticks (they turn with the sprite) and a white
+	// centre dot. Line art, no filled star.
 	drawReticle : function(ctx, size){
 		var S = t.Skin;
 		var pulse = 0.5+0.5*Math.sin(Date.now()/1000*2*Math.PI*1.1);
@@ -80,19 +81,18 @@ Q.RoboFx = {
 		ctx.arc(0, 0, R, 0, 2*Math.PI);
 		ctx.fillStyle = S.color("markerHalo");
 		ctx.fill();
-		ctx.shadowColor = S.color("markerLine");
-		ctx.shadowBlur = 6;
-		ctx.lineWidth = 1.5;
+		ctx.shadowColor = S.color("markerStar");
+		ctx.shadowBlur = 10;
+		ctx.lineWidth = 3;
 		ctx.strokeStyle = S.color("markerLine");
 		ctx.stroke();
 		ctx.beginPath();
 		ctx.arc(0, 0, size*0.17, 0, 2*Math.PI);
 		ctx.lineWidth = 1;
-		ctx.strokeStyle = "rgba(" + S.rgb("markerLine") + ",0.45)";
+		ctx.strokeStyle = "rgba(" + S.rgb("markerLine") + ",0.6)";
 		ctx.stroke();
-		ctx.shadowColor = S.color("markerStar");
 		ctx.lineCap = "square";
-		ctx.lineWidth = 2;
+		ctx.lineWidth = 2.5;
 		ctx.strokeStyle = S.color("markerStar");
 		ctx.beginPath();
 		for(i = 0; i < 4; i++){

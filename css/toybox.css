@@ -1167,21 +1167,23 @@ body.tg {
 .sk-toybox .sk-blurb { color: #4a4058; font-family: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; }
 .sk-toybox .sk-name svg { filter: none; }
 .sk-toybox .sk-go { background: #ec5b45; color: #fff4dc; border: 3px solid #2a2335; border-radius: 12px; box-shadow: 0 3px 0 #2a2335; }
-/* the retro card: black glass, phosphor green, an amber prompt */
+/* the retro card (tg-wtv.8): dark glass on the circuit-board desk, a green
+   terminal frame, an amber prompt; its mini screen shows the windows' own hues */
 .sk-retro {
   background:
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.28) 0 1px, rgba(0, 0, 0, 0) 1px 3px),
-    radial-gradient(ellipse at 50% 40%, #0a1d10, #020604 75%);
+    linear-gradient(rgba(3, 8, 5, 0.82), rgba(3, 8, 5, 0.82)),
+    url("../images/retro/pcb.png") 0 0 / 256px 256px repeat,
+    #07130d;
   border: 1px solid #33ff66;
   border-radius: 2px;
-  box-shadow: 0 0 0 4px #020604, 0 0 22px rgba(51, 255, 102, 0.35);
+  box-shadow: 0 0 0 4px #020604, 0 0 18px rgba(51, 255, 102, 0.25);
   color: #33ff66;
   font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
-  text-shadow: 0 0 4px rgba(51, 255, 102, 0.6);
+  text-shadow: 0 0 3px rgba(51, 255, 102, 0.45);
 }
-.sk-retro:hover { box-shadow: 0 0 0 4px #020604, 0 0 30px rgba(51, 255, 102, 0.55); }
+.sk-retro:hover { box-shadow: 0 0 0 4px #020604, 0 0 26px rgba(51, 255, 102, 0.45); }
 .sk-retro:active { top: 2px; }
-.sk-retro .sk-name svg { filter: drop-shadow(0 0 3px rgba(51, 255, 102, 0.7)); }
+.sk-retro .sk-name svg { filter: drop-shadow(0 0 2px rgba(51, 255, 102, 0.6)); }
 .sk-retro .sk-blurb { color: #2bd957; font-weight: 500; font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace; }
 .sk-retro .sk-go { color: #ffb000; border: 1px solid #ffb000; filter: drop-shadow(0 0 3px rgba(255, 176, 0, 0.6)); }
 .sk-current .sk-go { opacity: 0.75; }
@@ -1246,33 +1248,41 @@ body.tg {
 .sk-toybox .sk-pv-run { background: #ec5b45; border: 2px solid #2a2335; border-radius: 6px; }
 .sk-toybox .sk-pv-key { background: #fff4dc; border: 2px solid #2a2335; border-radius: 4px; }
 
-.sk-retro .sk-pv { background: #020604; border: 1px solid #1a9c40; }
-.sk-retro .sk-pv-hdr, .sk-retro .sk-pv-deck, .sk-retro .sk-pv-tray, .sk-retro .sk-pv-mat, .sk-retro .sk-pv-cell { border: 1px solid #1a9c40; }
+/* retro mini screen (tg-wtv.8): circuit-board desk, a green terminal header,
+   an amber tray, a teal board with copper belts, an ice-blue robot cell, a
+   gunmetal deck with coloured keys (css/retro.css "panel hues") */
+.sk-retro .sk-pv { background: url("../images/retro/pcb.png") 0 0 / 128px 128px repeat, #07130d; border: 1px solid #23706c; }
+.sk-retro .sk-pv-hdr { background: #06110a; border: 1px solid #33ff66; }
 .sk-retro .sk-pv-badge { border: 1px solid #33ff66; }
-.sk-retro .sk-pv-line { background: #33ff66; box-shadow: 0 0 4px rgba(51, 255, 102, 0.8); height: 12%; }
+.sk-retro .sk-pv-line { background: #33ff66; box-shadow: 0 0 3px rgba(51, 255, 102, 0.6); height: 12%; }
 .sk-retro .sk-pv-line.short { background: #1a9c40; box-shadow: none; }
-.sk-retro .sk-pv-tile { border: 1px solid #33ff66; }
-.sk-retro .sk-pv-tile:nth-child(3) { border-color: #ff5c4d; }
-.sk-retro .sk-pv-tile:nth-child(6) { border-color: #4cc8ff; }
+.sk-retro .sk-pv-tray { background: #150e03; border: 1px solid #ffb000; }
+.sk-retro .sk-pv-tile { background: #0c2a33; border: 1px solid #9a6a10; }
+.sk-retro .sk-pv-tile:nth-child(3) { background: #ff5c50; border-color: #041014; }
+.sk-retro .sk-pv-tile:nth-child(6) { background: #58a6ff; border-color: #041014; }
+.sk-retro .sk-pv-mat { background: #081a1f; border: 1px solid #5fe0d8; }
 .sk-retro .sk-pv-board {
-  background: repeating-linear-gradient(90deg, rgba(51, 255, 102, 0.22) 0 1px, transparent 1px 16.66%),
-    repeating-linear-gradient(0deg, rgba(51, 255, 102, 0.22) 0 1px, transparent 1px 16.66%), #071a0d;
-  border: 1px solid #33ff66;
+  background: repeating-linear-gradient(90deg, rgba(95, 224, 216, 0.16) 0 1px, transparent 1px 16.66%),
+    repeating-linear-gradient(0deg, rgba(95, 224, 216, 0.16) 0 1px, transparent 1px 16.66%), #0c2a33;
+  border: 1px solid #3a8a92;
 }
-.sk-retro .sk-pv-belt { border: 1px solid #33ff66; background: rgba(51, 255, 102, 0.12); }
-.sk-retro .sk-pv-belt::after { content: ""; position: absolute; inset: 42% 18%; background: #33ff66; }
-.sk-retro .sk-pv-marker { background: #ffb000; box-shadow: 0 0 6px #ffb000; }
-.sk-retro .sk-pv-win { border: 1px solid #33ff66; }
-.sk-retro .sk-pv-robot { border: 1px solid #b6ffc8; box-shadow: 0 0 5px rgba(51, 255, 102, 0.7); }
-.sk-retro .sk-pv-dial { border: 1px solid #ff5c4d; box-shadow: inset 0 0 6px rgba(255, 92, 77, 0.5); }
-.sk-retro .sk-pv-dial.blue { border-color: #4cc8ff; box-shadow: inset 0 0 6px rgba(76, 200, 255, 0.5); }
-.sk-retro .sk-pv-run { border: 1px solid #ffb000; box-shadow: 0 0 5px rgba(255, 176, 0, 0.6); }
-.sk-retro .sk-pv-key { border: 1px solid #1a9c40; }
+.sk-retro .sk-pv-belt { border: 1px solid #a66a30; background: #4f3319; }
+.sk-retro .sk-pv-belt::after { content: ""; position: absolute; inset: 40% 22%; background: #d8b27c; }
+.sk-retro .sk-pv-marker { background: #fff6c8; border: 1px solid #ffd23a; box-shadow: 0 0 6px #ffd23a; }
+.sk-retro .sk-pv-cell { background: #0c1520; border: 1px solid #8fd0ff; }
+.sk-retro .sk-pv-win { background: #1a2634; border: 1px solid #8fd0ff; }
+.sk-retro .sk-pv-robot { background: #0f1720; border: 1px solid #eef4f7; }
+.sk-retro .sk-pv-dial { background: #05080b; border: 1px solid #ff5c50; }
+.sk-retro .sk-pv-dial.blue { border-color: #58a6ff; }
+.sk-retro .sk-pv-deck { background: linear-gradient(180deg, #2a3038, #15181d); border: 1px solid #4b5560; }
+.sk-retro .sk-pv-run { background: #c8461e; border: 1px solid #0b0d10; }
+.sk-retro .sk-pv-key { background: #2f7a4a; border: 1px solid #0b0d10; }
+.sk-retro .sk-pv-key:nth-child(4) { background: #24728a; }
 .sk-retro .sk-pv::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.35) 0 1px, rgba(0, 0, 0, 0) 1px 3px);
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0 1px, rgba(0, 0, 0, 0) 1px 3px);
   pointer-events: none;
 }
 

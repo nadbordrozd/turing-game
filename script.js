@@ -50,7 +50,8 @@ window.addEventListener('load',function(e) {
 		"coilBW.png", "integratedcircuitBW.png", 'capacitorBW.png',
 		"greencoil.png", "greenintegratedcircuit.png", "greencapacitor.png",
 		"lucydesk.png"
-		].concat(t.EndLevelRobots.images);
+		// the toybox victory crowd; retro has its own (js/scenes/end-level.js warms it up)
+		].concat(t.Skin.id === "retro" ? [] : t.EndLevelRobots.images);
 
 	for(var i in t.Operators){
 		if(t.Operators[i].img!==undefined) imagesToLoad.push(t.Operators[i].img);

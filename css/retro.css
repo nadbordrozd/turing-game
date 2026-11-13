@@ -1,26 +1,37 @@
-/* Retro hacker chic skin (epic tg-wtv, js/skin.js): the toybox layout in
-   phosphor green on near-black. Every rule is scoped to
+/* Retro hacker chic skin (epic tg-wtv, js/skin.js): the toybox layout as "a
+   1980s hacker's den" (tg-wtv.8). Every rule is scoped to
    :root[data-skin="retro"], so the toybox look is untouched. Tokens first
    (they recolour most of css/toybox.css), then the shapes that change:
    thin line borders, square corners, no toy bevels, bracketed terminal
-   buttons, a glow on text and lines, and CSS scanlines over the page.
-   Amber is the one accent: the primary action, the next level, warnings.
+   buttons, a light glow on text and lines, subtle CSS scanlines.
+
+   Each window is a different piece of kit, on a dark circuit-board desk
+   (images/retro/pcb.png, tools/art/retro-pcb.mjs): the header a green
+   phosphor terminal, the tiles tray an amber terminal, the program board a
+   teal circuit board, the robot cell an ice-blue security monitor, the
+   control deck a gunmetal console with coloured keycaps, the last run a
+   violet readout. A window's hue is a set of --g* variables ("panel hues"
+   below) set on its card (.tb-card, under the canvas) and on its content
+   ([data-card], over the canvas; js/ui/kit.js UI.card), so every retro rule
+   that draws in var(--g) takes the window's colour. Amber stays the accent
+   for the primary action, the next level and warnings.
    Canvas colours live in js/skin.js (TOKENS.retro); keep the two in step. */
 
 :root[data-skin="retro"] {
-  /* phosphor steps */
+  /* phosphor steps (the default hue: green) */
   --g: #33ff66;
   --g-hi: #b6ffc8;
   --g-mid: #2bd957;
   --g-dim: #1a9c40;
   --g-faint: #0d4a1f;
+  --g-rgb: 51, 255, 102;
   --amber: #ffb000;
   --amber-dim: #8a5d00;
   --bg: #030805;
   --panel: #06110a;
   --panel-2: #0a1a0f;
-  --glow: 0 0 4px rgba(51, 255, 102, 0.55);
-  --glow-box: 0 0 14px rgba(51, 255, 102, 0.12);
+  --glow: 0 0 3px rgba(var(--g-rgb), 0.4);
+  --glow-box: 0 0 12px rgba(var(--g-rgb), 0.1);
   --term: "SF Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
 
   /* the toybox tokens, re-pointed */
@@ -44,14 +55,64 @@
   --mono: var(--term);
   --lift: 0 0 0 transparent;
   --soft: 0 0 0 transparent;
-  --card-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6), var(--glow-box);
+  --card-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6), 0 6px 18px rgba(0, 0, 0, 0.55), var(--glow-box);
   color-scheme: dark;
 }
 
-/* ---- page: black glass, faint bloom, scanlines ---- */
+/* ---- panel hues: a window's colour set. Custom properties that use other
+   ones resolve where they are declared, so each hue re-declares the aliases
+   (--ink, --glow, ...) after its own steps. ---- */
+:root[data-skin="retro"] :is(.hue-amber, .tb-card.sun, [data-card~="sun"], .tb-card.ls-sun, [data-card~="ls-sun"], .ls-g-sun, .tb-card.ab-side) {
+  --g: #ffb000; --g-hi: #ffe0a0; --g-mid: #f0a400; --g-dim: #9a6a10; --g-faint: #4a3306; --g-rgb: 255, 176, 0;
+  --panel: #150e03; --panel-2: #1f1505; --mint: #2e1f04;
+}
+:root[data-skin="retro"] :is(.hue-ice, .tb-card.sky, [data-card~="sky"], .tb-card.ls-sky, [data-card~="ls-sky"], .ls-g-sky, .tb-card.cell, [data-card~="cell"]) {
+  --g: #8fd0ff; --g-hi: #dff2ff; --g-mid: #6fb8ee; --g-dim: #3d6a92; --g-faint: #1d3248; --g-rgb: 143, 208, 255;
+  --panel: #0c1520; --panel-2: #121e2c; --mint: #16304a;
+}
+:root[data-skin="retro"] :is(.hue-teal, .tb-card.mat, [data-card~="mat"]) {
+  --g: #5fe0d8; --g-hi: #c8fff8; --g-mid: #45c4bc; --g-dim: #23706c; --g-faint: #123a3a; --g-rgb: 95, 224, 216;
+  --panel: #081a1f; --panel-2: #0c242a; --mint: #10363a;
+}
+:root[data-skin="retro"] :is(.hue-red, .tb-card.tomato, [data-card~="tomato"], .tb-card.ls-tomato, [data-card~="ls-tomato"], .ls-g-tomato) {
+  --g: #ff7a5c; --g-hi: #ffd2c4; --g-mid: #ee6448; --g-dim: #96402c; --g-faint: #4a1c12; --g-rgb: 255, 122, 92;
+  --panel: #170906; --panel-2: #210d08; --mint: #3a150c;
+}
+:root[data-skin="retro"] :is(.hue-violet, .tb-card.score, [data-card~="score"], .tb-card.ls-plum, [data-card~="ls-plum"], .ls-g-plum) {
+  --g: #c79bff; --g-hi: #eedcff; --g-mid: #b080f0; --g-dim: #674a96; --g-faint: #2e2148; --g-rgb: 199, 155, 255;
+  --panel: #110c1c; --panel-2: #181128; --mint: #281b44;
+}
+:root[data-skin="retro"] :is(.hue-steel, .tb-card.deck, [data-card~="deck"]) {
+  --g: #b4c0cc; --g-hi: #e6edf3; --g-mid: #9aa7b4; --g-dim: #56606c; --g-faint: #2c333b; --g-rgb: 180, 192, 204;
+  --panel: #171b20; --panel-2: #1e2329; --mint: #262d35;
+}
+/* the cell's own window keeps ice even though it is a .tomato card */
+:root[data-skin="retro"] :is(.tb-card.tomato.cell, [data-card~="cell"]) {
+  --g: #8fd0ff; --g-hi: #dff2ff; --g-mid: #6fb8ee; --g-dim: #3d6a92; --g-faint: #1d3248; --g-rgb: 143, 208, 255;
+  --panel: #0c1520; --panel-2: #121e2c; --mint: #16304a;
+}
+/* the board's housing keeps teal even though it is a .sky card */
+:root[data-skin="retro"] :is(.tb-card.sky.mat, [data-card~="mat"]) {
+  --g: #5fe0d8; --g-hi: #c8fff8; --g-mid: #45c4bc; --g-dim: #23706c; --g-faint: #123a3a; --g-rgb: 95, 224, 216;
+  --panel: #081a1f; --panel-2: #0c242a; --mint: #10363a;
+}
+:root[data-skin="retro"] :is(.hue-amber, .hue-ice, .hue-teal, .hue-red, .hue-violet, .hue-steel, .tb-card, [data-card], .ls-g-sun, .ls-g-sky, .ls-g-tomato, .ls-g-plum, .ab-side) {
+  --ink: var(--g); --ink-2: var(--g-mid); --ink-3: var(--g-dim);
+  --cream: var(--panel); --cream-2: var(--panel-2); --sky: var(--panel); --sky-d: var(--g-hi);
+  --sun: var(--panel); --sun-d: var(--g-dim); --mint-d: var(--g); --plum: var(--panel); --pink: var(--panel);
+  --glow: 0 0 3px rgba(var(--g-rgb), 0.4);
+  --glow-box: 0 0 12px rgba(var(--g-rgb), 0.1);
+  --card-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6), 0 6px 18px rgba(0, 0, 0, 0.55), var(--glow-box);
+}
+:root[data-skin="retro"] [data-card] { color: var(--g); text-shadow: var(--glow); }
+
+/* ---- page: a dark circuit-board desk, a soft vignette, faint scanlines ---- */
 :root[data-skin="retro"] body,
 :root[data-skin="retro"] body.tg {
-  background: radial-gradient(ellipse at 50% 40%, #0a1a0f 0%, #030805 70%), #030805;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(3, 8, 5, 0) 35%, rgba(2, 5, 3, 0.7) 100%),
+    url("../images/retro/pcb.png") 0 0 / 256px 256px repeat,
+    #07130d;
   background-attachment: fixed;
   color: var(--g);
 }
@@ -62,19 +123,19 @@
   z-index: 50;
   pointer-events: none;
   background:
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.22) 0 1px, rgba(0, 0, 0, 0) 1px 3px),
-    radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.45) 100%);
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0 1px, rgba(0, 0, 0, 0) 1px 3px),
+    radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.3) 100%);
   animation: rt-flicker 7s steps(1) infinite;
 }
 @keyframes rt-flicker {
   0%, 100% { opacity: 1; }
-  41% { opacity: 0.86; }
+  41% { opacity: 0.9; }
   42% { opacity: 1; }
-  77% { opacity: 0.92; }
+  77% { opacity: 0.95; }
   78% { opacity: 1; }
 }
 :root[data-skin="retro"] #tg-stage { text-shadow: var(--glow); }
-:root[data-skin="retro"] .tb-px { filter: drop-shadow(0 0 2px rgba(51, 255, 102, 0.6)); }
+:root[data-skin="retro"] .tb-px { filter: drop-shadow(0 0 1px rgba(var(--g-rgb), 0.5)); }
 :root[data-skin="retro"] ::selection { background: var(--g); color: var(--bg); }
 
 /* ---- cards and tags ---- */
@@ -83,7 +144,7 @@
 :root[data-skin="retro"] .tb-card.sky,
 :root[data-skin="retro"] .tb-card.tomato,
 :root[data-skin="retro"] .tb-card.mint {
-  background: var(--panel);
+  background: linear-gradient(180deg, var(--panel-2) 0, var(--panel) 46px), var(--panel);
   border: 1px solid var(--g-dim);
   border-radius: 0;
   box-shadow: var(--card-shadow);
@@ -104,6 +165,22 @@
     linear-gradient(var(--g), var(--g)) 100% 100% / 10px 2px no-repeat,
     linear-gradient(var(--g), var(--g)) 100% 100% / 2px 10px no-repeat;
 }
+/* the control deck: a brushed gunmetal console, screws in the corners, no ticks */
+:root[data-skin="retro"] .tb-card.deck {
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.018) 0 1px, rgba(0, 0, 0, 0) 1px 3px),
+    linear-gradient(180deg, #2a3038 0, #1b1f25 60%, #15181d 100%);
+  border: 1px solid #4b5560;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -2px 0 rgba(0, 0, 0, 0.4), 0 6px 18px rgba(0, 0, 0, 0.55);
+}
+:root[data-skin="retro"] .tb-card.deck::before {
+  inset: 6px;
+  background:
+    radial-gradient(circle, #6b7682 0 2px, #2a3038 2.5px, rgba(0, 0, 0, 0) 3px) 0 0 / 7px 7px no-repeat,
+    radial-gradient(circle, #6b7682 0 2px, #2a3038 2.5px, rgba(0, 0, 0, 0) 3px) 100% 0 / 7px 7px no-repeat,
+    radial-gradient(circle, #6b7682 0 2px, #2a3038 2.5px, rgba(0, 0, 0, 0) 3px) 0 100% / 7px 7px no-repeat,
+    radial-gradient(circle, #6b7682 0 2px, #2a3038 2.5px, rgba(0, 0, 0, 0) 3px) 100% 100% / 7px 7px no-repeat;
+}
 :root[data-skin="retro"] .tb-tag,
 :root[data-skin="retro"] .tb-tag.sky,
 :root[data-skin="retro"] .tb-tag.tomato,
@@ -111,13 +188,15 @@
 :root[data-skin="retro"] .tb-tag.cream,
 :root[data-skin="retro"] .tb-tag.plum,
 :root[data-skin="retro"] .tb-tag.sun {
-  background: var(--bg);
+  background: var(--g);
   border: 1px solid var(--g);
   border-radius: 0;
-  box-shadow: 0 0 6px rgba(51, 255, 102, 0.35);
-  color: var(--g);
+  box-shadow: 0 0 6px rgba(var(--g-rgb), 0.3);
+  color: var(--bg);
+  text-shadow: none;
   padding: 6px 10px 5px;
 }
+:root[data-skin="retro"] .tb-tag .tb-px { filter: none; }
 
 /* ---- buttons: [ LABEL ] ---- */
 :root[data-skin="retro"] .tb-btn {
@@ -141,7 +220,7 @@
 }
 :root[data-skin="retro"] .tb-btn:not(.gs-q)::before { left: 3px; border-right: 0; }
 :root[data-skin="retro"] .tb-btn:not(.gs-q)::after { right: 3px; border-left: 0; }
-:root[data-skin="retro"] .tb-btn:hover { filter: none; background: rgba(51, 255, 102, 0.12); }
+:root[data-skin="retro"] .tb-btn:hover { filter: none; background: rgba(var(--g-rgb), 0.12); }
 :root[data-skin="retro"] .tb-btn:active,
 :root[data-skin="retro"] .tb-btn.tb-pressed { top: 0; box-shadow: none; background: var(--g); color: var(--bg); text-shadow: none; }
 :root[data-skin="retro"] .tb-btn:active .tb-px { filter: none; }
@@ -151,7 +230,7 @@
 :root[data-skin="retro"] .tb-btn[disabled]:active { top: 0; box-shadow: none; background: var(--panel); color: var(--g); }
 :root[data-skin="retro"] .tb-btn.sky,
 :root[data-skin="retro"] .tb-btn.sun { background: var(--panel); color: var(--g-hi); }
-:root[data-skin="retro"] .tb-btn.mint { background: rgba(51, 255, 102, 0.14); border-color: var(--g-dim); color: var(--g); }
+:root[data-skin="retro"] .tb-btn.mint { background: rgba(var(--g-rgb), 0.14); border-color: var(--g-dim); color: var(--g); }
 /* the primary action: amber */
 :root[data-skin="retro"] .tb-btn.tomato {
   background: #120c00;
@@ -171,7 +250,7 @@
   border: 1px solid var(--g-dim);
   border-radius: 0;
   background: var(--bg);
-  box-shadow: inset 0 0 8px rgba(51, 255, 102, 0.18);
+  box-shadow: inset 0 0 8px rgba(var(--g-rgb), 0.18);
   color: var(--g);
 }
 
@@ -181,7 +260,7 @@
   background: #040b06;
   border: 1px solid var(--g);
   border-radius: 0;
-  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--g-faint), 0 0 34px rgba(51, 255, 102, 0.18);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--g-faint), 0 0 34px rgba(var(--g-rgb), 0.18);
   color: var(--g);
 }
 :root[data-skin="retro"] .tb-popup .tb-close { top: -18px; right: -14px; }
@@ -189,14 +268,14 @@
   background: #040b06;
   border: 1px solid var(--g);
   border-radius: 0;
-  box-shadow: 0 0 16px rgba(51, 255, 102, 0.2);
+  box-shadow: 0 0 16px rgba(var(--g-rgb), 0.2);
   color: var(--g);
 }
 :root[data-skin="retro"] .tb-callout b { color: var(--amber); }
 :root[data-skin="retro"] .tb-ring {
   border: 1px dashed var(--g-hi);
   border-radius: 0;
-  box-shadow: 0 0 0 1px rgba(1, 4, 2, 0.8), 0 0 12px rgba(51, 255, 102, 0.3);
+  box-shadow: 0 0 0 1px rgba(1, 4, 2, 0.8), 0 0 12px rgba(var(--g-rgb), 0.3);
 }
 :root[data-skin="retro"] .tb-bar {
   border: 1px solid var(--g);
@@ -205,8 +284,8 @@
 }
 :root[data-skin="retro"] .tb-bar > i,
 :root[data-skin="retro"] .el-bar > i {
-  background: repeating-linear-gradient(90deg, var(--g) 0 8px, rgba(51, 255, 102, 0.55) 8px 10px);
-  box-shadow: 0 0 8px rgba(51, 255, 102, 0.6);
+  background: repeating-linear-gradient(90deg, var(--g) 0 8px, rgba(var(--g-rgb), 0.55) 8px 10px);
+  box-shadow: 0 0 8px rgba(var(--g-rgb), 0.6);
 }
 
 /* =================== main game screen =================== */
@@ -214,7 +293,7 @@
   border: 1px solid var(--g);
   border-radius: 0;
   background: var(--bg);
-  box-shadow: inset 0 0 10px rgba(51, 255, 102, 0.2);
+  box-shadow: inset 0 0 10px rgba(var(--g-rgb), 0.2);
 }
 :root[data-skin="retro"] .gs-msg { color: var(--g-mid); }
 :root[data-skin="retro"] .gs-cap { color: var(--g-dim); }
@@ -225,11 +304,13 @@
 :root[data-skin="retro"] .gs-undo small { color: var(--g-dim); }
 :root[data-skin="retro"] .gs-bin.hot { background: rgba(255, 176, 0, 0.16); border-color: var(--amber); color: var(--amber); }
 :root[data-skin="retro"] .gs-bin.hot small { color: var(--amber); }
+/* the program board: a teal solder-mask circuit board in a dark slot (its
+   tiles: tools/art/tiles/program-tiles.mjs RETRO_BOARD) */
 :root[data-skin="retro"] .gs-board-frame {
-  border: 1px solid var(--g);
+  border: 1px solid #3a8a92;
   border-radius: 0;
-  background: #071a0d;
-  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--g-faint), 0 0 18px rgba(51, 255, 102, 0.15);
+  background: #0c2a33;
+  box-shadow: 0 0 0 4px #04090b, 0 0 0 5px #1b4a52, 0 4px 14px rgba(0, 0, 0, 0.6);
 }
 :root[data-skin="retro"] .gs-flag {
   background: #120c00;
@@ -246,11 +327,13 @@
   color: var(--amber);
   text-shadow: 0 0 4px rgba(255, 176, 0, 0.5);
 }
+/* the robot cell: an ice-blue security monitor (its tiles:
+   tools/art/tiles/robot-cell.mjs RETRO) */
 :root[data-skin="retro"] .gs-win {
-  border: 1px solid var(--g);
+  border: 1px solid #8fd0ff;
   border-radius: 0;
-  background: var(--bg);
-  box-shadow: 0 0 14px rgba(51, 255, 102, 0.15);
+  background: #1a2634;
+  box-shadow: 0 0 0 4px #05090e, 0 0 0 5px #2b4560, 0 0 14px rgba(143, 208, 255, 0.18);
 }
 /* counter dials: tinted phosphors (chip and digits coloured in js/skin.js) */
 :root[data-skin="retro"] .gs-dial { border-radius: 0; }
@@ -265,7 +348,7 @@
   border: 1px solid var(--g-dim);
   border-radius: 0;
   background: #010402;
-  box-shadow: inset 0 0 10px rgba(51, 255, 102, 0.12);
+  box-shadow: inset 0 0 10px rgba(var(--g-rgb), 0.12);
   font: 700 22px var(--term);
   text-shadow: 0 0 6px currentColor;
 }
@@ -278,9 +361,9 @@
 }
 :root[data-skin="retro"] .gs-dial .ok .tb-icon { filter: none; }
 :root[data-skin="retro"] .gs-dial.matched {
-  box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--g-hi), 0 0 16px 5px rgba(51, 255, 102, 0.55);
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--g-hi), 0 0 16px 5px rgba(var(--g-rgb), 0.55);
 }
-:root[data-skin="retro"] .gs-dial.matched .lcd { border-color: var(--g); box-shadow: inset 0 0 14px rgba(51, 255, 102, 0.35); }
+:root[data-skin="retro"] .gs-dial.matched .lcd { border-color: var(--g); box-shadow: inset 0 0 14px rgba(var(--g-rgb), 0.35); }
 
 :root[data-skin="retro"] .gs-steps .num { font: 700 34px/1 var(--term); color: var(--g-hi); }
 :root[data-skin="retro"] .gs-steps .lbl { color: var(--g-dim); }
@@ -288,12 +371,56 @@
 :root[data-skin="retro"] .gs-goal {
   border: 1px solid var(--g);
   border-radius: 0;
-  background: #0b2a15;
-  box-shadow: 0 0 8px rgba(51, 255, 102, 0.25);
+  background: var(--mint);
+  box-shadow: 0 0 8px rgba(var(--g-rgb), 0.25);
 }
 :root[data-skin="retro"] .gs-goal.off { background: var(--bg); border: 1px dashed var(--g-dim); box-shadow: none; }
 :root[data-skin="retro"] .gs-goal.off img { opacity: 0.4; }
 :root[data-skin="retro"] .gs-hint { color: var(--g-dim); }
+
+/* ---- control deck: coloured keycaps on the gunmetal console. RUN warm
+   red-orange, transport (pause, step, stop) green, speed cyan; no brackets. ---- */
+:root[data-skin="retro"] [data-card~="deck"] .tb-btn {
+  --cap: #2f7a4a; --cap-hi: #49a868; --cap-lo: #1c4a2c; --cap-ink: #c9ffd8;
+  border: 1px solid #0b0d10;
+  background: linear-gradient(180deg, var(--cap-hi) 0, var(--cap) 18%, var(--cap) 70%, var(--cap-lo) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 3px 0 #0b0d10, 0 4px 6px rgba(0, 0, 0, 0.45);
+  color: var(--cap-ink);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+}
+:root[data-skin="retro"] [data-card~="deck"] .tb-btn::before,
+:root[data-skin="retro"] [data-card~="deck"] .tb-btn::after { content: none; }
+:root[data-skin="retro"] [data-card~="deck"] .tb-btn .tb-px,
+:root[data-skin="retro"] [data-card~="deck"] .tb-btn .tb-icon { filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.45)); }
+:root[data-skin="retro"] [data-card~="deck"] .tb-btn.sky { --cap: #24728a; --cap-hi: #3aa0bc; --cap-lo: #164656; --cap-ink: #d2f6ff; }
+:root[data-skin="retro"] [data-card~="deck"] .tb-btn.tomato {
+  --cap: #c8461e; --cap-hi: #f07038; --cap-lo: #7e2a10; --cap-ink: #fff0d8;
+  border-color: #0b0d10;
+}
+:root[data-skin="retro"] [data-card~="deck"] .tb-btn:hover { filter: brightness(1.12); background: linear-gradient(180deg, var(--cap-hi) 0, var(--cap) 18%, var(--cap) 70%, var(--cap-lo) 100%); }
+:root[data-skin="retro"] [data-card~="deck"] .tb-btn:active,
+:root[data-skin="retro"] [data-card~="deck"] .tb-btn.tb-pressed {
+  top: 2px;
+  background: var(--cap);
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.35), 0 1px 0 #0b0d10;
+  color: var(--cap-ink);
+}
+:root[data-skin="retro"] [data-card~="deck"] .tb-btn[disabled],
+:root[data-skin="retro"] [data-card~="deck"] .tb-btn.off { opacity: 0.4; }
+:root[data-skin="retro"] [data-card~="deck"] .tb-btn[disabled]:active { top: 0; background: linear-gradient(180deg, var(--cap-hi) 0, var(--cap) 18%, var(--cap) 70%, var(--cap-lo) 100%); }
+/* the speed readout: a small cyan LCD set into the console */
+:root[data-skin="retro"] [data-card~="deck"] .tb-pill {
+  border: 1px solid #0b0d10;
+  background: #05080b;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: #8ff0ff;
+  text-shadow: 0 0 4px rgba(143, 240, 255, 0.5);
+}
+/* portrait: the last run sits in the deck, as a violet readout */
+:root[data-skin="retro"] [data-card~="deck"] .gs-score {
+  --g: #c79bff; --g-hi: #eedcff; --g-mid: #b080f0; --g-dim: #674a96; --g-faint: #2e2148; --g-rgb: 199, 155, 255; --mint: #281b44;
+  color: var(--g);
+}
 
 /* =================== end-level screen =================== */
 :root[data-skin="retro"] .el-screen { background: var(--bg); color: var(--g); }
@@ -301,13 +428,13 @@
   border: 1px solid var(--g);
   border-radius: 0;
   background: #000;
-  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--g-faint), 0 0 20px rgba(51, 255, 102, 0.18);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--g-faint), 0 0 20px rgba(var(--g-rgb), 0.18);
 }
 :root[data-skin="retro"] .el-card {
   background: rgba(4, 11, 6, 0.94);
   border: 1px solid var(--g);
   border-radius: 0;
-  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--g-faint), 0 0 30px rgba(51, 255, 102, 0.2);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--g-faint), 0 0 30px rgba(var(--g-rgb), 0.2);
 }
 :root[data-skin="retro"] .el-head { color: var(--g-hi); }
 :root[data-skin="retro"] .el-sub { color: var(--g-mid); }
@@ -331,17 +458,17 @@
 :root[data-skin="retro"] .el-spark i { background: var(--g); box-shadow: 0 0 6px var(--g); }
 :root[data-skin="retro"] .el-spark i:nth-child(3n+1) { background: var(--g-hi); }
 :root[data-skin="retro"] .el-spark i:nth-child(3n+2) { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
-:root[data-skin="retro"] .el-confetti i { border: 1px solid var(--bg); border-radius: 0; box-shadow: 0 0 4px rgba(51, 255, 102, 0.5); }
+:root[data-skin="retro"] .el-confetti i { border: 1px solid var(--bg); border-radius: 0; box-shadow: 0 0 4px rgba(var(--g-rgb), 0.5); }
 :root[data-skin="retro"] .el-whoa-title { color: var(--amber); }
 
 /* =================== intro =================== */
-:root[data-skin="retro"] .in-logo { color: var(--g); filter: drop-shadow(0 0 6px rgba(51, 255, 102, 0.6)); }
+:root[data-skin="retro"] .in-logo { color: var(--g); filter: drop-shadow(0 0 6px rgba(var(--g-rgb), 0.6)); }
 :root[data-skin="retro"] .in-book { border-radius: 0; }
 :root[data-skin="retro"] .in-pic {
   border: 1px solid var(--g);
   border-radius: 0;
   background: #000;
-  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--g-faint), 0 0 22px rgba(51, 255, 102, 0.2);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--g-faint), 0 0 22px rgba(var(--g-rgb), 0.2);
 }
 :root[data-skin="retro"] .in-retro .in-pic::after {
   content: "";
@@ -369,7 +496,8 @@
   box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--g-faint);
 }
 /* a green-screen photo: the toybox art, seen through the terminal */
-:root[data-skin="retro"] .ab-photo img { filter: grayscale(1) sepia(1) hue-rotate(75deg) saturate(2.4) brightness(0.85) contrast(1.1); }
+/* an amber-screen photo: the toybox art, seen through the side card's amber terminal */
+:root[data-skin="retro"] .ab-photo img { filter: grayscale(1) sepia(1) saturate(2.6) brightness(0.9) contrast(1.1); }
 :root[data-skin="retro"] .ab-caption { color: var(--g-dim); }
 :root[data-skin="retro"] .ab-link small { color: var(--g-mid); }
 :root[data-skin="retro"] .ab-text { color: var(--g-mid); }
@@ -409,7 +537,7 @@
 }
 :root[data-skin="retro"] .ls-hdr-portrait .ls-legend { font-size: 10px; gap: 4px; letter-spacing: -0.02em; }
 :root[data-skin="retro"] .ls-hdr-portrait .ls-legend > span:not(.ls-key) { margin-right: 2px; }
-:root[data-skin="retro"] .ls-key.solved { background: #0b2a15; }
+:root[data-skin="retro"] .ls-key.solved { background: var(--mint); }
 :root[data-skin="retro"] .ls-key.locked { border: 1px dashed var(--g-dim); background: transparent; }
 :root[data-skin="retro"] .tb-card.ls-card,
 :root[data-skin="retro"] .tb-card.ls-sun,
@@ -425,7 +553,7 @@
   background: var(--bg);
   color: var(--g);
 }
-:root[data-skin="retro"] .ls-chip.ok { background: #0b2a15; border-color: var(--g); }
+:root[data-skin="retro"] .ls-chip.ok { background: var(--mint); border-color: var(--g); }
 :root[data-skin="retro"] .ls-chip.need { background: var(--bg); border-style: dashed; color: var(--g-dim); }
 :root[data-skin="retro"] .tb-btn.ls-node {
   border: 1px solid var(--g-dim);
@@ -437,7 +565,7 @@
 :root[data-skin="retro"] .tb-btn.ls-node::before,
 :root[data-skin="retro"] .tb-btn.ls-node::after { top: 3px; bottom: 3px; width: 4px; border-width: 1px; }
 :root[data-skin="retro"] .tb-btn.ls-node:active { transform: none; box-shadow: none; }
-:root[data-skin="retro"] .tb-btn.ls-node.solved { background: #0b2a15; border-color: var(--g); color: var(--g-hi); }
+:root[data-skin="retro"] .tb-btn.ls-node.solved { background: var(--mint); border-color: var(--g); color: var(--g-hi); }
 :root[data-skin="retro"] .tb-btn.ls-node.locked {
   background: transparent;
   border: 1px dashed var(--g-faint);
@@ -469,21 +597,22 @@
 :root[data-skin="retro"] .ls-next .tb-px { filter: none; }
 :root[data-skin="retro"] .ls-lock { border: 1px dashed var(--g-dim); border-radius: 0; background: var(--bg); color: var(--g-dim); }
 :root[data-skin="retro"] .ls-parts.tab { border: 1px solid var(--g-dim); border-radius: 0; background: var(--bg); }
-:root[data-skin="retro"] .ls-parts img.no { opacity: 0.25; }
+/* not-earned part icons are already dim line art (images/retro/parts/*BW.png): no grayscale filter on top (tg-wtv.6) */
+:root[data-skin="retro"] .ls-parts img.no { filter: none; opacity: 0.7; }
 :root[data-skin="retro"] .ls-go { border: 1px solid var(--amber); border-radius: 0; background: var(--bg); color: var(--amber); }
 /* paths: a black casing, solid phosphor when solved, dashed when open */
 :root[data-skin="retro"] .ls-path.casing { stroke: var(--bg); stroke-linecap: square; }
 :root[data-skin="retro"] .ls-path.open { stroke: var(--g-hi); stroke-dasharray: 6 4; stroke-linecap: butt; }
 :root[data-skin="retro"] .ls-path.solved { stroke: var(--g); }
 :root[data-skin="retro"] .ls-path.locked { stroke: var(--g-dim); opacity: 0.55; }
-:root[data-skin="retro"] .ls-paths { filter: drop-shadow(0 0 2px rgba(51, 255, 102, 0.5)); }
+:root[data-skin="retro"] .ls-paths { filter: drop-shadow(0 0 2px rgba(var(--g-rgb), 0.5)); }
 
 /* =================== tile explainers =================== */
 :root[data-skin="retro"] .tx-stage {
   border: 1px solid var(--g-dim);
   border-radius: 0;
   background: var(--bg);
-  box-shadow: inset 0 0 18px rgba(51, 255, 102, 0.1);
+  box-shadow: inset 0 0 18px rgba(var(--g-rgb), 0.1);
 }
 :root[data-skin="retro"] .tx-point {
   border: 1px solid var(--amber-dim);

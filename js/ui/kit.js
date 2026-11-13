@@ -199,6 +199,8 @@
     o = o || {};
     var bg = UI.place(UI.el("div", "tb-card " + (cls || ""), UI.under), r);
     var el = UI.place(UI.el("div", "tb-content " + (o.contentCls || ""), UI.over), r);
+    // the card's classes, so a skin can theme its content too (css/retro.css)
+    if (cls) el.setAttribute("data-card", cls);
     if (o.tag) UI.tag(o.tag, o.tagCls, el);
     return { bg: bg, el: el, rect: r };
   };

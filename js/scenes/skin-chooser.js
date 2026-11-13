@@ -13,7 +13,7 @@
 TuringScenes.add(function(Q) {
 	var UI = t.UI;
 	var CARDS = [
-		{ id: "retro", name: "Retro hacker chic", blurb: "Green phosphor on black, like it's 1983. The original look, rebooted." },
+		{ id: "retro", name: "Retro hacker chic", blurb: "Glowing terminals on a circuit-board desk, like it's 1983. The original look, rebooted." },
 		{ id: "toybox", name: "Toybox", blurb: "Bright, chunky and friendly, like a box of toys." }
 	];
 	var active = null; // {back} while the chooser is up
