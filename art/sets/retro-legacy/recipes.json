@@ -1,0 +1,554 @@
+{
+  "set": "retro-legacy",
+  "bead": "tg-wtv.3",
+  "class": "legacy",
+  "exploration": false,
+  "_doc": "User-supplied legacy assets for the retro skin: the user's own 2012 intro screens (narration baked into the picture) and the hand-drawn freed robots of the original end-level screen, restored byte-identical from git 8a9315e (images/intro1-3.png and every image listed in 8a9315e:EndLevelRobots.js). Recipes here are import records, not PixelLab requests (endpoint \"imported\", seed 0); each record carries its source and sha256, like audio/sfx records.json click#import. Outputs copy each master unchanged into images/retro/. Never generate from this set.",
+  "defaults": {
+    "noBackground": false
+  },
+  "recipes": [
+    {
+      "id": "intro1",
+      "concept": "2012 intro screen 1 (narration baked into the picture)",
+      "endpoint": "imported",
+      "width": 1026,
+      "height": 768,
+      "seed": 0,
+      "source": "git 8a9315e:images/intro1.png"
+    },
+    {
+      "id": "intro2",
+      "concept": "2012 intro screen 2 (narration baked into the picture)",
+      "endpoint": "imported",
+      "width": 1026,
+      "height": 768,
+      "seed": 0,
+      "source": "git 8a9315e:images/intro2.png"
+    },
+    {
+      "id": "intro3",
+      "concept": "2012 intro screen 3 (narration baked into the picture)",
+      "endpoint": "imported",
+      "width": 1026,
+      "height": 768,
+      "seed": 0,
+      "source": "git 8a9315e:images/intro3.png"
+    },
+    {
+      "id": "myrobo",
+      "concept": "2012 freed robot myrobo.png",
+      "endpoint": "imported",
+      "width": 200,
+      "height": 200,
+      "seed": 0,
+      "source": "git 8a9315e:images/myrobo.png"
+    },
+    {
+      "id": "aibo",
+      "concept": "2012 freed robot aibo.png",
+      "endpoint": "imported",
+      "width": 125,
+      "height": 136,
+      "seed": 0,
+      "source": "git 8a9315e:images/aibo.png"
+    },
+    {
+      "id": "mechagodzilla",
+      "concept": "2012 freed robot mechagodzilla.png",
+      "endpoint": "imported",
+      "width": 210,
+      "height": 202,
+      "seed": 0,
+      "source": "git 8a9315e:images/mechagodzilla.png"
+    },
+    {
+      "id": "securiton",
+      "concept": "2012 freed robot securiton.png",
+      "endpoint": "imported",
+      "width": 190,
+      "height": 194,
+      "seed": 0,
+      "source": "git 8a9315e:images/securiton.png"
+    },
+    {
+      "id": "asimo",
+      "concept": "2012 freed robot asimo.png",
+      "endpoint": "imported",
+      "width": 100,
+      "height": 187,
+      "seed": 0,
+      "source": "git 8a9315e:images/asimo.png"
+    },
+    {
+      "id": "turret",
+      "concept": "2012 freed robot turret.png",
+      "endpoint": "imported",
+      "width": 44,
+      "height": 98,
+      "seed": 0,
+      "source": "git 8a9315e:images/turret.png"
+    },
+    {
+      "id": "bender",
+      "concept": "2012 freed robot bender.png",
+      "endpoint": "imported",
+      "width": 80,
+      "height": 178,
+      "seed": 0,
+      "source": "git 8a9315e:images/bender.png"
+    },
+    {
+      "id": "dalek",
+      "concept": "2012 freed robot dalek.png",
+      "endpoint": "imported",
+      "width": 180,
+      "height": 216,
+      "seed": 0,
+      "source": "git 8a9315e:images/dalek.png"
+    },
+    {
+      "id": "marsrover",
+      "concept": "2012 freed robot marsrover.png",
+      "endpoint": "imported",
+      "width": 130,
+      "height": 136,
+      "seed": 0,
+      "source": "git 8a9315e:images/marsrover.png"
+    },
+    {
+      "id": "cylon",
+      "concept": "2012 freed robot cylon.png",
+      "endpoint": "imported",
+      "width": 80,
+      "height": 189,
+      "seed": 0,
+      "source": "git 8a9315e:images/cylon.png"
+    },
+    {
+      "id": "r2d2",
+      "concept": "2012 freed robot r2d2.png",
+      "endpoint": "imported",
+      "width": 120,
+      "height": 182,
+      "seed": 0,
+      "source": "git 8a9315e:images/r2d2.png"
+    },
+    {
+      "id": "awesomo",
+      "concept": "2012 freed robot awesomo.png",
+      "endpoint": "imported",
+      "width": 133,
+      "height": 110,
+      "seed": 0,
+      "source": "git 8a9315e:images/awesomo.png"
+    },
+    {
+      "id": "tachikoma",
+      "concept": "2012 freed robot tachikoma.png",
+      "endpoint": "imported",
+      "width": 200,
+      "height": 219,
+      "seed": 0,
+      "source": "git 8a9315e:images/tachikoma.png"
+    },
+    {
+      "id": "pris",
+      "concept": "2012 freed robot pris.png",
+      "endpoint": "imported",
+      "width": 60,
+      "height": 160,
+      "seed": 0,
+      "source": "git 8a9315e:images/pris.png"
+    },
+    {
+      "id": "scv",
+      "concept": "2012 freed robot scv.png",
+      "endpoint": "imported",
+      "width": 160,
+      "height": 143,
+      "seed": 0,
+      "source": "git 8a9315e:images/scv.png"
+    },
+    {
+      "id": "lostinspacerobot",
+      "concept": "2012 freed robot lostinspacerobot.png",
+      "endpoint": "imported",
+      "width": 100,
+      "height": 190,
+      "seed": 0,
+      "source": "git 8a9315e:images/lostinspacerobot.png"
+    },
+    {
+      "id": "claptrap",
+      "concept": "2012 freed robot claptrap.png",
+      "endpoint": "imported",
+      "width": 177,
+      "height": 176,
+      "seed": 0,
+      "source": "git 8a9315e:images/claptrap.png"
+    },
+    {
+      "id": "wheatley",
+      "concept": "2012 freed robot wheatley.png",
+      "endpoint": "imported",
+      "width": 100,
+      "height": 129,
+      "seed": 0,
+      "source": "git 8a9315e:images/wheatley.png"
+    },
+    {
+      "id": "kitt",
+      "concept": "2012 freed robot kitt.png",
+      "endpoint": "imported",
+      "width": 150,
+      "height": 79,
+      "seed": 0,
+      "source": "git 8a9315e:images/kitt.png"
+    },
+    {
+      "id": "marvin",
+      "concept": "2012 freed robot marvin.png",
+      "endpoint": "imported",
+      "width": 120,
+      "height": 180,
+      "seed": 0,
+      "source": "git 8a9315e:images/marvin.png"
+    },
+    {
+      "id": "partyrock",
+      "concept": "2012 freed robot partyrock.png",
+      "endpoint": "imported",
+      "width": 100,
+      "height": 174,
+      "seed": 0,
+      "source": "git 8a9315e:images/partyrock.png"
+    },
+    {
+      "id": "robotchicken",
+      "concept": "2012 freed robot robotchicken.png",
+      "endpoint": "imported",
+      "width": 110,
+      "height": 154,
+      "seed": 0,
+      "source": "git 8a9315e:images/robotchicken.png"
+    },
+    {
+      "id": "sojourner",
+      "concept": "2012 freed robot sojourner.png",
+      "endpoint": "imported",
+      "width": 133,
+      "height": 168,
+      "seed": 0,
+      "source": "git 8a9315e:images/sojourner.png"
+    },
+    {
+      "id": "roomba",
+      "concept": "2012 freed robot roomba.png",
+      "endpoint": "imported",
+      "width": 80,
+      "height": 49,
+      "seed": 0,
+      "source": "git 8a9315e:images/roomba.png"
+    },
+    {
+      "id": "wall-e",
+      "concept": "2012 freed robot wall-e.png",
+      "endpoint": "imported",
+      "width": 140,
+      "height": 140,
+      "seed": 0,
+      "source": "git 8a9315e:images/wall-e.png"
+    },
+    {
+      "id": "canti",
+      "concept": "2012 freed robot Canti.png",
+      "endpoint": "imported",
+      "width": 80,
+      "height": 204,
+      "seed": 0,
+      "source": "git 8a9315e:images/Canti.png"
+    },
+    {
+      "id": "jetsons",
+      "concept": "2012 freed robot jetsons.png",
+      "endpoint": "imported",
+      "width": 100,
+      "height": 165,
+      "seed": 0,
+      "source": "git 8a9315e:images/jetsons.png"
+    },
+    {
+      "id": "ed209",
+      "concept": "2012 freed robot ed209.png",
+      "endpoint": "imported",
+      "width": 159,
+      "height": 158,
+      "seed": 0,
+      "source": "git 8a9315e:images/ed209.png"
+    },
+    {
+      "id": "crowtrobot",
+      "concept": "2012 freed robot crowtrobot.png",
+      "endpoint": "imported",
+      "width": 107,
+      "height": 200,
+      "seed": 0,
+      "source": "git 8a9315e:images/crowtrobot.png"
+    },
+    {
+      "id": "geth",
+      "concept": "2012 freed robot geth.png",
+      "endpoint": "imported",
+      "width": 98,
+      "height": 199,
+      "seed": 0,
+      "source": "git 8a9315e:images/geth.png"
+    },
+    {
+      "id": "optimusprime",
+      "concept": "2012 freed robot optimusPrime.png",
+      "endpoint": "imported",
+      "width": 166,
+      "height": 229,
+      "seed": 0,
+      "source": "git 8a9315e:images/optimusPrime.png"
+    },
+    {
+      "id": "eve",
+      "concept": "2012 freed robot eve.png",
+      "endpoint": "imported",
+      "width": 131,
+      "height": 158,
+      "seed": 0,
+      "source": "git 8a9315e:images/eve.png"
+    },
+    {
+      "id": "darpadog",
+      "concept": "2012 freed robot darpadog.png",
+      "endpoint": "imported",
+      "width": 155,
+      "height": 125,
+      "seed": 0,
+      "source": "git 8a9315e:images/darpadog.png"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "images/retro/intro1.png",
+      "from": "intro1#0",
+      "width": 1026,
+      "height": 768
+    },
+    {
+      "path": "images/retro/intro2.png",
+      "from": "intro2#0",
+      "width": 1026,
+      "height": 768
+    },
+    {
+      "path": "images/retro/intro3.png",
+      "from": "intro3#0",
+      "width": 1026,
+      "height": 768
+    },
+    {
+      "path": "images/retro/robots/myrobo.png",
+      "from": "myrobo#0",
+      "width": 200,
+      "height": 200
+    },
+    {
+      "path": "images/retro/robots/aibo.png",
+      "from": "aibo#0",
+      "width": 125,
+      "height": 136
+    },
+    {
+      "path": "images/retro/robots/mechagodzilla.png",
+      "from": "mechagodzilla#0",
+      "width": 210,
+      "height": 202
+    },
+    {
+      "path": "images/retro/robots/securiton.png",
+      "from": "securiton#0",
+      "width": 190,
+      "height": 194
+    },
+    {
+      "path": "images/retro/robots/asimo.png",
+      "from": "asimo#0",
+      "width": 100,
+      "height": 187
+    },
+    {
+      "path": "images/retro/robots/turret.png",
+      "from": "turret#0",
+      "width": 44,
+      "height": 98
+    },
+    {
+      "path": "images/retro/robots/bender.png",
+      "from": "bender#0",
+      "width": 80,
+      "height": 178
+    },
+    {
+      "path": "images/retro/robots/dalek.png",
+      "from": "dalek#0",
+      "width": 180,
+      "height": 216
+    },
+    {
+      "path": "images/retro/robots/marsrover.png",
+      "from": "marsrover#0",
+      "width": 130,
+      "height": 136
+    },
+    {
+      "path": "images/retro/robots/cylon.png",
+      "from": "cylon#0",
+      "width": 80,
+      "height": 189
+    },
+    {
+      "path": "images/retro/robots/r2d2.png",
+      "from": "r2d2#0",
+      "width": 120,
+      "height": 182
+    },
+    {
+      "path": "images/retro/robots/awesomo.png",
+      "from": "awesomo#0",
+      "width": 133,
+      "height": 110
+    },
+    {
+      "path": "images/retro/robots/tachikoma.png",
+      "from": "tachikoma#0",
+      "width": 200,
+      "height": 219
+    },
+    {
+      "path": "images/retro/robots/pris.png",
+      "from": "pris#0",
+      "width": 60,
+      "height": 160
+    },
+    {
+      "path": "images/retro/robots/scv.png",
+      "from": "scv#0",
+      "width": 160,
+      "height": 143
+    },
+    {
+      "path": "images/retro/robots/lostinspacerobot.png",
+      "from": "lostinspacerobot#0",
+      "width": 100,
+      "height": 190
+    },
+    {
+      "path": "images/retro/robots/claptrap.png",
+      "from": "claptrap#0",
+      "width": 177,
+      "height": 176
+    },
+    {
+      "path": "images/retro/robots/wheatley.png",
+      "from": "wheatley#0",
+      "width": 100,
+      "height": 129
+    },
+    {
+      "path": "images/retro/robots/kitt.png",
+      "from": "kitt#0",
+      "width": 150,
+      "height": 79
+    },
+    {
+      "path": "images/retro/robots/marvin.png",
+      "from": "marvin#0",
+      "width": 120,
+      "height": 180
+    },
+    {
+      "path": "images/retro/robots/partyrock.png",
+      "from": "partyrock#0",
+      "width": 100,
+      "height": 174
+    },
+    {
+      "path": "images/retro/robots/robotchicken.png",
+      "from": "robotchicken#0",
+      "width": 110,
+      "height": 154
+    },
+    {
+      "path": "images/retro/robots/sojourner.png",
+      "from": "sojourner#0",
+      "width": 133,
+      "height": 168
+    },
+    {
+      "path": "images/retro/robots/roomba.png",
+      "from": "roomba#0",
+      "width": 80,
+      "height": 49
+    },
+    {
+      "path": "images/retro/robots/wall-e.png",
+      "from": "wall-e#0",
+      "width": 140,
+      "height": 140
+    },
+    {
+      "path": "images/retro/robots/Canti.png",
+      "from": "canti#0",
+      "width": 80,
+      "height": 204
+    },
+    {
+      "path": "images/retro/robots/jetsons.png",
+      "from": "jetsons#0",
+      "width": 100,
+      "height": 165
+    },
+    {
+      "path": "images/retro/robots/ed209.png",
+      "from": "ed209#0",
+      "width": 159,
+      "height": 158
+    },
+    {
+      "path": "images/retro/robots/crowtrobot.png",
+      "from": "crowtrobot#0",
+      "width": 107,
+      "height": 200
+    },
+    {
+      "path": "images/retro/robots/geth.png",
+      "from": "geth#0",
+      "width": 98,
+      "height": 199
+    },
+    {
+      "path": "images/retro/robots/optimusPrime.png",
+      "from": "optimusprime#0",
+      "width": 166,
+      "height": 229
+    },
+    {
+      "path": "images/retro/robots/eve.png",
+      "from": "eve#0",
+      "width": 131,
+      "height": 158
+    },
+    {
+      "path": "images/retro/robots/darpadog.png",
+      "from": "darpadog#0",
+      "width": 155,
+      "height": 125
+    }
+  ]
+}

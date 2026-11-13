@@ -1,0 +1,17 @@
+{
+  "bg-hills-a#0": {
+    "verdict": "ACCEPTED",
+    "notes": "Clean near-black night: thin green contour hills, tiny city lights, crescent moon and stars; horizon at 65% height leaves a wide empty perspective-grid plain (y 496-768 at 1024x768) for ~30 robots; low contrast so the colourful hand-drawn robots pop",
+    "at": "2026-11-13T14:30:03.420Z"
+  },
+  "bg-city-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Good skyline but the grid floor starts at 76% height (only ~180 of 768 px for 30 robots' feet) and the grey-green sky and building fills are busier and lower-contrast behind colourful robots",
+    "at": "2026-11-13T14:30:03.475Z"
+  },
+  "bg-cityplain-a#0": {
+    "verdict": "REJECTED",
+    "notes": "Noisy: the ground is a clutter of scattered strokes and posts, stray diagonal lines across the sky, bright fills; reads as glitch, not an open ground plane",
+    "at": "2026-11-13T14:30:03.530Z"
+  }
+}

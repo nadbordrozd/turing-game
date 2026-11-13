@@ -1,0 +1,60 @@
+{
+  "set": "retro-victory-v1",
+  "bead": "tg-wtv.3",
+  "class": "retro-backdrop",
+  "exploration": false,
+  "_doc": "Retro skin end-level backdrop (epic tg-wtv: phosphor green on near-black). The user's hand-drawn 2012 robots (set retro-legacy) stand on it, about 30 of them, so the bottom half must be an open ground plane. Generated at 512x384 and scaled x2 nearest to 1024x768 (the end-level landscape size). Placement of the robots: tools/art/retro-freed-layout.mjs. Recipes are never edited after generation: add a new id (new seed) instead.",
+  "shared": {
+    "sceneOpts": {
+      "detail": "medium detail",
+      "view": "side"
+    },
+    "city": "Subject: a night-time city horizon behind a game's victory screen. The top third is a black night sky with a few tiny green star pixels and a thin green crescent moon on the upper right. Just above the middle, a long low city skyline runs along the whole horizon: flat rectangular buildings and towers of different heights, dark silhouettes with thin glowing green outlines and a few dim green window dots, one or two antenna masts. From the horizon down to the bottom edge, one wide flat empty ground plane: a dark floor covered by a dim glowing green perspective grid of thin lines receding to the horizon, with nothing standing on it.",
+    "hills": "Subject: a night-time landscape horizon behind a game's victory screen. The top third is a black night sky with a few tiny green star pixels and a thin green crescent moon on the upper left. Just above the middle, far rolling hills and low mountains drawn as thin glowing green contour lines on black, with a tiny distant city of dim green lights in a valley in the centre. From the horizon down to the bottom edge, one wide flat empty plain: a dark floor covered by a dim glowing green perspective grid of thin lines receding to the horizon, with nothing standing on it.",
+    "cityPlain": "Subject: a night-time city horizon behind a game's victory screen. The top third is a black night sky with a few tiny green star pixels. Just above the middle, a long low city skyline runs along the whole horizon: flat rectangular buildings and towers of different heights, dark silhouettes with thin glowing green outlines and a few dim green window dots. From the horizon down to the bottom edge, one wide flat empty open ground: a very dark green floor with sparse dim green dither dots and a few faint horizontal lines that get closer together near the horizon, with nothing standing on it."
+  },
+  "defaults": {
+    "endpoint": "create-image-pixen",
+    "fragments": [
+      "class-retro-backdrop"
+    ],
+    "noBackground": false,
+    "options": "@sceneOpts",
+    "width": 512,
+    "height": 384
+  },
+  "recipes": [
+    {
+      "id": "bg-city-a",
+      "concept": "green-screen city skyline over a perspective grid floor",
+      "seed": 9101,
+      "subject": "@city"
+    },
+    {
+      "id": "bg-hills-a",
+      "concept": "green contour-line hills, tiny city lights, grid floor",
+      "seed": 9201,
+      "subject": "@hills"
+    },
+    {
+      "id": "bg-cityplain-a",
+      "concept": "green-screen city skyline over a plain dithered ground",
+      "seed": 9301,
+      "subject": "@cityPlain"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "images/retro/victory-bg.png",
+      "from": "bg-hills-a#0",
+      "steps": [
+        {
+          "op": "scale",
+          "factor": 2
+        }
+      ],
+      "width": 1024,
+      "height": 768
+    }
+  ]
+}

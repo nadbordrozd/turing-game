@@ -1,0 +1,182 @@
+{
+  "intro1#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's 2012 intro screen 1 (green vector butler and top-hat gent), byte-identical; narration baked in, so the retro intro shows no duplicate text; 1026x768 with a dark vignette, letterboxes cleanly on black",
+    "at": "2026-11-13T14:25:52.319Z"
+  },
+  "intro2#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's 2012 intro screen 2 (robot at the chalkboard), byte-identical; narration baked in (contains the original typo 'endavour'); letterboxes cleanly on black",
+    "at": "2026-11-13T14:25:52.372Z"
+  },
+  "intro3#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's 2012 intro screen 3 (robots behind bars), byte-identical; narration baked in; letterboxes cleanly on black",
+    "at": "2026-11-13T14:25:52.423Z"
+  },
+  "myrobo#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:52.521Z"
+  },
+  "aibo#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:52.573Z"
+  },
+  "mechagodzilla#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:52.627Z"
+  },
+  "securiton#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:52.681Z"
+  },
+  "asimo#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:52.734Z"
+  },
+  "turret#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:52.785Z"
+  },
+  "bender#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:52.838Z"
+  },
+  "dalek#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:52.892Z"
+  },
+  "marsrover#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:52.945Z"
+  },
+  "cylon#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.001Z"
+  },
+  "r2d2#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.053Z"
+  },
+  "awesomo#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.107Z"
+  },
+  "tachikoma#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.160Z"
+  },
+  "pris#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.212Z"
+  },
+  "scv#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.266Z"
+  },
+  "lostinspacerobot#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.319Z"
+  },
+  "claptrap#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.372Z"
+  },
+  "wheatley#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.424Z"
+  },
+  "kitt#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.479Z"
+  },
+  "marvin#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.532Z"
+  },
+  "partyrock#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.584Z"
+  },
+  "robotchicken#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.639Z"
+  },
+  "sojourner#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.692Z"
+  },
+  "roomba#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.746Z"
+  },
+  "wall-e#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.797Z"
+  },
+  "canti#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.849Z"
+  },
+  "jetsons#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.905Z"
+  },
+  "ed209#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:53.958Z"
+  },
+  "crowtrobot#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:54.010Z"
+  },
+  "geth#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:54.065Z"
+  },
+  "optimusprime#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:54.118Z"
+  },
+  "eve#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:54.172Z"
+  },
+  "darpadog#0": {
+    "verdict": "ACCEPTED",
+    "notes": "User's hand-drawn 2012 freed robot, byte-identical to 8a9315e; reviewed at native size on light and dark: intact, clean alpha cut-out",
+    "at": "2026-11-13T14:25:54.227Z"
+  }
+}

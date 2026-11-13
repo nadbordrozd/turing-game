@@ -1,12 +1,28 @@
 // End-of-level screen on stage 2 (Toybox, bead tg-84y.9).
 // Q.stageScene("endLevel", 2, {result, totalSteps, totalParts}) after a victory.
 // The freed robots stand beside the main robot on the landscape
-// (EndLevelRobots.js); robots freed by this finish drop in with a sparkle.
-// Everything is HTML in the kit's modal layer; the Quintus stage only holds
-// the state (tile input stays locked while stage 2 exists). The first finish
-// of an alwaysFull level ('just give up') opens a celebration popup first.
+// (EndLevelRobots.js; the retro skin uses js/skins/retro-robots.js, the
+// user's hand-drawn 2012 robots); robots freed by this finish drop in with a
+// sparkle. Everything is HTML in the kit's modal layer; the Quintus stage only
+// holds the state (tile input stays locked while stage 2 exists). The first
+// finish of an alwaysFull level ('just give up') opens a celebration popup first.
 (function() {
 	var UI = t.UI;
+
+	// Per-skin art (epic tg-wtv): t.Skin.id once js/skin.js is loaded, else toybox.
+	function skinId() { return (window.t && t.Skin && t.Skin.id) || "toybox"; }
+	// The crowd for the current skin: {retro, background, data}. Retro entries
+	// are [image, x, y, z, w, h]; their images are not in the preloader.
+	function crowd() {
+		if(skinId() === "retro" && t.EndLevelRobotsRetro)
+			return { retro: true, background: t.EndLevelRobotsRetro.background, data: t.EndLevelRobotsRetro.data };
+		return { retro: false, background: t.EndLevelRobots.background, data: t.EndLevelRobots.data };
+	}
+	function sizeOf(Q, d) {
+		if(d.length >= 6) return { w: d[4], h: d[5] };
+		var a = Q.asset(d[0]);
+		return { w: a ? a.width : 64, h: a ? a.height : 64 };
+	}
 
 	var EL = t.EndLevel = {
 		POINTS_PER_ROBOT: 3,
@@ -23,7 +39,7 @@
 		// Robots freed beside the main robot (entry 0, always shown): entry i
 		// (i >= 1) is freed at POINTS_PER_ROBOT * i points.
 		freed: function(points) {
-			var max = t.EndLevelRobots.data.length - 1;
+			var max = crowd().data.length - 1;
 			return Math.max(0, Math.min(max, Math.floor(points / EL.POINTS_PER_ROBOT)));
 		},
 		available: function(level) {
@@ -87,17 +103,20 @@
 		var land = UI.el("div", "el-land");
 		var bg = UI.el("img", "el-bg", land);
 		bg.alt = "";
-		bg.src = assetSrc(Q, t.EndLevelRobots.background);
+		var c = crowd();
+		bg.src = assetSrc(Q, c.background);
 		var fresh = [];
-		var data = t.EndLevelRobots.data;
+		var data = c.data;
 		for(var i = 0; i <= freedNow; i++) {
-			var d = data[i], a = Q.asset(d[0]);
-			var w = a ? a.width : 64, h = a ? a.height : 64;
+			var d = data[i], size = sizeOf(Q, d);
+			var w = size.w, h = size.h;
 			var wrap = UI.place(UI.el("div", "el-robot", land), { x: d[1] - w / 2, y: d[2] - h / 2, w: w, h: h });
 			wrap.style.zIndex = d[3];
 			var img = UI.el("img", "", wrap);
 			img.alt = "";
 			img.src = assetSrc(Q, d[0]);
+			// hand-drawn 2012 robots scale smoothly, not as pixel art
+			if(c.retro) img.style.imageRendering = "auto";
 			if(i === 0) wrap.classList.add("el-main");
 			if(animate && i === 0) wrap.classList.add("el-hop");
 			if(animate && i > freedBefore) {
@@ -210,6 +229,13 @@
 	TuringScenes.add(function(Q) {
 		UI.scene("endLevel", { covers: true, responsive: true });
 
+		// The retro crowd is not in the preloader: fetch it in the background so
+		// the victory screen does not pop in.
+		var c = crowd();
+		if(c.retro) [c.background].concat(c.data.map(function(d) { return d[0]; })).forEach(function(name) {
+			new Image().src = versionedUrl("images/" + name);
+		});
+
 		// A layout change restages the game screen (clearing stage 2); put the
 		// result screen back, without replaying its entrance.
 		UI.on("modechange", function() {
@@ -244,7 +270,7 @@
 			st.shown = true;
 			var steps = typeof o.totalSteps === "number" ? o.totalSteps : null;
 			var freedBefore = EL.freed(st.before), freedNow = EL.freed(st.after);
-			var total = t.EndLevelRobots.data.length - 1;
+			var total = crowd().data.length - 1;
 			var portrait = UI.mode === "portrait";
 			var timers = [];
 
@@ -385,10 +411,10 @@
 		// For the celebration path the landscape is built without entrance
 		// classes (so nothing animates under the popup); find the new robots.
 		function buildFreshList(landEl, freedBefore, freedNow) {
-			var data = t.EndLevelRobots.data, els = landEl.querySelectorAll(".el-robot"), out = [];
+			var data = crowd().data, els = landEl.querySelectorAll(".el-robot"), out = [];
 			for(var i = freedBefore + 1; i <= freedNow && i < els.length; i++) {
-				var a = Q.asset(data[i][0]);
-				out.push({ el: els[i], x: data[i][1], y: data[i][2], w: a ? a.width : 64, h: a ? a.height : 64, z: data[i][3] });
+				var size = sizeOf(Q, data[i]);
+				out.push({ el: els[i], x: data[i][1], y: data[i][2], w: size.w, h: size.h, z: data[i][3] });
 			}
 			return out;
 		}

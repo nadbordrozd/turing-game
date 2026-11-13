@@ -1,0 +1,686 @@
+{
+  "intro1": {
+    "id": "intro1",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/intro1.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "intro1-0.png",
+        "sha256": "564c9fc4e1ecf0bcdde9c99385920a042654be07f5582f6991e9641af793b45a",
+        "width": 1026,
+        "height": 768,
+        "bytes": 65998
+      }
+    ]
+  },
+  "intro2": {
+    "id": "intro2",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/intro2.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "intro2-0.png",
+        "sha256": "0ded2589c13438a8ec0e2fc4d7bd16c11f88b4f86caa01ddd4952ece7440641a",
+        "width": 1026,
+        "height": 768,
+        "bytes": 92845
+      }
+    ]
+  },
+  "intro3": {
+    "id": "intro3",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/intro3.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "intro3-0.png",
+        "sha256": "507a0fb15934a4da7668026d257058dfdf1013ea61e5b6986952ea96c21d56f1",
+        "width": 1026,
+        "height": 768,
+        "bytes": 150515
+      }
+    ]
+  },
+  "myrobo": {
+    "id": "myrobo",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/myrobo.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "myrobo-0.png",
+        "sha256": "ce3f7494b6e0f05f6be954b18456d768b939654519055c28117e2d54483a9253",
+        "width": 200,
+        "height": 200,
+        "bytes": 26439
+      }
+    ]
+  },
+  "aibo": {
+    "id": "aibo",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/aibo.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "aibo-0.png",
+        "sha256": "596b3a99042efca8448cb480378783dd499efa6a22bf7c803d6b9d1236706f00",
+        "width": 125,
+        "height": 136,
+        "bytes": 16309
+      }
+    ]
+  },
+  "mechagodzilla": {
+    "id": "mechagodzilla",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/mechagodzilla.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "mechagodzilla-0.png",
+        "sha256": "94c20aca07f70df53722b74ea69bb6e50bc607566c5eca23a7728f572983d95b",
+        "width": 210,
+        "height": 202,
+        "bytes": 64407
+      }
+    ]
+  },
+  "securiton": {
+    "id": "securiton",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/securiton.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "securiton-0.png",
+        "sha256": "0258355fa1e5b0ccbef9d18cb2cc044f8ea1529e78645fd480ac9ff6f5bd305f",
+        "width": 190,
+        "height": 194,
+        "bytes": 55729
+      }
+    ]
+  },
+  "asimo": {
+    "id": "asimo",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/asimo.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "asimo-0.png",
+        "sha256": "4884d8cc37a566a79d275a83d0fd3d29eba52c47e3477eb0672065ba145a2803",
+        "width": 100,
+        "height": 187,
+        "bytes": 21009
+      }
+    ]
+  },
+  "turret": {
+    "id": "turret",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/turret.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "turret-0.png",
+        "sha256": "bab63d946fa33f1329553286727fee27f3356e3a04b0df1df8ba25b7a944a341",
+        "width": 44,
+        "height": 98,
+        "bytes": 11335
+      }
+    ]
+  },
+  "bender": {
+    "id": "bender",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/bender.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "bender-0.png",
+        "sha256": "484c43433d446e0aab6dc4c8e5dee7dfbbed41b3eebffea6989914058fb49483",
+        "width": 80,
+        "height": 178,
+        "bytes": 22198
+      }
+    ]
+  },
+  "dalek": {
+    "id": "dalek",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/dalek.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "dalek-0.png",
+        "sha256": "7e4613091c4a17c80021fd99f1e610429d31fd6d708cd80ebd7e0e24830c08d7",
+        "width": 180,
+        "height": 216,
+        "bytes": 39249
+      }
+    ]
+  },
+  "marsrover": {
+    "id": "marsrover",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/marsrover.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "marsrover-0.png",
+        "sha256": "e919ed2ab2bf9679faf9e5e70a72ccd5bf7ca6bbf5232d4e05457d07b81e975b",
+        "width": 130,
+        "height": 136,
+        "bytes": 19613
+      }
+    ]
+  },
+  "cylon": {
+    "id": "cylon",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/cylon.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "cylon-0.png",
+        "sha256": "34923eee158d1cf8213955c0bb116875dcffb341d10456f0bd681f854ddb377e",
+        "width": 80,
+        "height": 189,
+        "bytes": 21911
+      }
+    ]
+  },
+  "r2d2": {
+    "id": "r2d2",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/r2d2.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "r2d2-0.png",
+        "sha256": "8d8eda56c1f53b024494e992f94d92f4c0b5d1fcf638b095c2c14bb74aba0992",
+        "width": 120,
+        "height": 182,
+        "bytes": 35098
+      }
+    ]
+  },
+  "awesomo": {
+    "id": "awesomo",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/awesomo.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "awesomo-0.png",
+        "sha256": "a4dfe1ad2c5529fcb883a6fbeb013208cd869ed712a406cfd50091dbb2e1d5d4",
+        "width": 133,
+        "height": 110,
+        "bytes": 19141
+      }
+    ]
+  },
+  "tachikoma": {
+    "id": "tachikoma",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/tachikoma.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "tachikoma-0.png",
+        "sha256": "813a889816f4538879b5fcaef3d0e4db180787d8bdabdb61be6ad1593ff59183",
+        "width": 200,
+        "height": 219,
+        "bytes": 48562
+      }
+    ]
+  },
+  "pris": {
+    "id": "pris",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/pris.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "pris-0.png",
+        "sha256": "2fd8b44aa07a813a5afe7566f9b0db137d81d18812b837426796933faaf61ae7",
+        "width": 60,
+        "height": 160,
+        "bytes": 18914
+      }
+    ]
+  },
+  "scv": {
+    "id": "scv",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/scv.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "scv-0.png",
+        "sha256": "18f3834b0595ba0c9f1853efe1f9065c45dadd9d0957f6ef9c828b7c3d4aa70e",
+        "width": 160,
+        "height": 143,
+        "bytes": 40655
+      }
+    ]
+  },
+  "lostinspacerobot": {
+    "id": "lostinspacerobot",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/lostinspacerobot.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "lostinspacerobot-0.png",
+        "sha256": "7bd10a2919afb9bbcdb7669420b76ac116b6c03ff5058df18a1db84071c2d8f6",
+        "width": 100,
+        "height": 190,
+        "bytes": 25700
+      }
+    ]
+  },
+  "claptrap": {
+    "id": "claptrap",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/claptrap.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "claptrap-0.png",
+        "sha256": "acf71eda425f777757e1558be9057ff6b623882066ccae08544061287241d16d",
+        "width": 177,
+        "height": 176,
+        "bytes": 24044
+      }
+    ]
+  },
+  "wheatley": {
+    "id": "wheatley",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/wheatley.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "wheatley-0.png",
+        "sha256": "6bd73144df3070c2ce8b7c6b7a556c4806cbd64a133aa46cdb553e4b0d05acd2",
+        "width": 100,
+        "height": 129,
+        "bytes": 19477
+      }
+    ]
+  },
+  "kitt": {
+    "id": "kitt",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/kitt.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "kitt-0.png",
+        "sha256": "506ff8010d96d155e3c95c75d46028945c507826e666f283a6428bb15d2b9fe1",
+        "width": 150,
+        "height": 79,
+        "bytes": 16094
+      }
+    ]
+  },
+  "marvin": {
+    "id": "marvin",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/marvin.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "marvin-0.png",
+        "sha256": "ec8e4c872159f0ff982bb3234dabd765eb2857a88fe1bf3af6b8ea4e87962df0",
+        "width": 120,
+        "height": 180,
+        "bytes": 26575
+      }
+    ]
+  },
+  "partyrock": {
+    "id": "partyrock",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/partyrock.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "partyrock-0.png",
+        "sha256": "c722d1cfca036beaa7ae371fb344b0604f67a48569e561d04e4ab51036a7fbd9",
+        "width": 100,
+        "height": 174,
+        "bytes": 27305
+      }
+    ]
+  },
+  "robotchicken": {
+    "id": "robotchicken",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/robotchicken.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "robotchicken-0.png",
+        "sha256": "77029bada3710ad417b92d7f5f6ea45ee35f0d0c61619bcdfba4c76d884e2d69",
+        "width": 110,
+        "height": 154,
+        "bytes": 24986
+      }
+    ]
+  },
+  "sojourner": {
+    "id": "sojourner",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/sojourner.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "sojourner-0.png",
+        "sha256": "0b1bd2ac9cd74a0b524c5e9a779a8bd54dc46528a0cda8eb6187551005db118b",
+        "width": 133,
+        "height": 168,
+        "bytes": 19821
+      }
+    ]
+  },
+  "roomba": {
+    "id": "roomba",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/roomba.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "roomba-0.png",
+        "sha256": "aa8e373d83b17415548a4c93bd7c0c5e63aebc75607404c440db8367c915f9cc",
+        "width": 80,
+        "height": 49,
+        "bytes": 9016
+      }
+    ]
+  },
+  "wall-e": {
+    "id": "wall-e",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/wall-e.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "wall-e-0.png",
+        "sha256": "798b1bc835b6a59cbf885b1f22a0288b8632330821aa27f74a43338bf10bb6ea",
+        "width": 140,
+        "height": 140,
+        "bytes": 21405
+      }
+    ]
+  },
+  "canti": {
+    "id": "canti",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/Canti.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "canti-0.png",
+        "sha256": "f27840cdf205892e9d4dd687bcde491e7a4066a7eacd0ad82c3000b770f3226b",
+        "width": 80,
+        "height": 204,
+        "bytes": 29378
+      }
+    ]
+  },
+  "jetsons": {
+    "id": "jetsons",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/jetsons.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "jetsons-0.png",
+        "sha256": "e485e77eacbccb6b6d2ecec99ddd28fd0fb80846b203c9eda982fdc980889161",
+        "width": 100,
+        "height": 165,
+        "bytes": 17785
+      }
+    ]
+  },
+  "ed209": {
+    "id": "ed209",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/ed209.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "ed209-0.png",
+        "sha256": "26aae3f69baa85e193e0b506911ac6f918cf3c89e8162577a2325380b9cd1429",
+        "width": 159,
+        "height": 158,
+        "bytes": 44939
+      }
+    ]
+  },
+  "crowtrobot": {
+    "id": "crowtrobot",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/crowtrobot.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "crowtrobot-0.png",
+        "sha256": "d5b1e089b85b0fe81f57884752f445610220ac8346288274d155f430ba456a14",
+        "width": 107,
+        "height": 200,
+        "bytes": 31167
+      }
+    ]
+  },
+  "geth": {
+    "id": "geth",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/geth.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "geth-0.png",
+        "sha256": "e74ac002d1475bff1d59c00e9c2e0ce62d98baf6191b7e8081c49eb840133630",
+        "width": 98,
+        "height": 199,
+        "bytes": 29024
+      }
+    ]
+  },
+  "optimusprime": {
+    "id": "optimusprime",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/optimusPrime.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "optimusprime-0.png",
+        "sha256": "5687f52350daabf86fd954ea31826a8ba4181bf09f11d6b0c545b359a5ff8276",
+        "width": 166,
+        "height": 229,
+        "bytes": 58437
+      }
+    ]
+  },
+  "eve": {
+    "id": "eve",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/eve.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "eve-0.png",
+        "sha256": "853461c9c1a7903a2629864d0ddf806d31373115aeca7a40307bc3a9debdb600",
+        "width": 131,
+        "height": 158,
+        "bytes": 17047
+      }
+    ]
+  },
+  "darpadog": {
+    "id": "darpadog",
+    "status": "DONE",
+    "imported": true,
+    "endpoint": "imported",
+    "jobId": "import-git-8a9315e",
+    "at": "2026-11-13T14:25:44.662Z",
+    "source": "git 8a9315e:images/darpadog.png",
+    "note": "user-supplied: the user's own 2012 original, restored byte-identical from the game's first commit; not a PixelLab take, no cost",
+    "candidates": [
+      {
+        "file": "darpadog-0.png",
+        "sha256": "96873daa1d79c24592d8eea224972ccb6c4565a52178d8ec3e900b6771f268b8",
+        "width": 155,
+        "height": 125,
+        "bytes": 26693
+      }
+    ]
+  }
+}

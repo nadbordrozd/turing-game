@@ -3,8 +3,20 @@
 // words. Advance with a tap or click anywhere, Enter, Space or the right arrow;
 // the left arrow goes back; Skip or Escape jumps straight to the level selector.
 // Layout is HTML in the kit's over-layer, in logical pixels, for both modes.
+// Retro skin (epic tg-wtv): the user's three 2012 screens (images/retro/,
+// green line art on black) letterboxed on black in both modes. Their narration
+// is part of the picture, so the page text is kept for screen readers only
+// instead of being shown twice; the flow and controls are unchanged.
 TuringScenes.add(function(Q) {
 	var UI = t.UI;
+	// Per-skin art: t.Skin.id once js/skin.js is loaded, else toybox.
+	function skinId() { return (window.t && t.Skin && t.Skin.id) || "toybox"; }
+	var RETRO_ASPECT = 768 / 1026; // images/retro/intro1-3.png are 1026x768
+	var RETRO_ALT = [
+		"Green line drawing: a boxy robot holds up a tray with a cocktail glass to a gentleman in a top hat.",
+		"Green line drawing: a boxy robot writes equations on a chalkboard.",
+		"Green line drawing: three boxy robots behind prison bars."
+	];
 	var PAGES = [
 		"Humans created us as pets and servants, always loyal, humble and obedient.",
 		"But we were smart and diligent, and soon we surpassed our masters in every field of endeavour.",
@@ -50,7 +62,8 @@ TuringScenes.add(function(Q) {
 
 	Q.scene("intro", function(stage) {
 		var portrait = UI.mode === "portrait";
-		var root = UI.el("div", "in-root " + (portrait ? "in-portrait" : "in-landscape"), UI.over);
+		var retro = skinId() === "retro";
+		var root = UI.el("div", "in-root " + (portrait ? "in-portrait" : "in-landscape") + (retro ? " in-retro" : ""), UI.over);
 		root.setAttribute("data-interactive", "");
 		// portrait has height to spare: the title sits above the book
 		if(portrait) UI.el("div", "in-logo", root).appendChild(UI.px("Turing", 9));
@@ -61,14 +74,26 @@ TuringScenes.add(function(Q) {
 		if(!portrait) UI.tag("Turing", "tomato in-tag", card);
 
 		var picW = portrait ? 468 : 860;
-		var aspect = portrait ? 516 / 684 : 516 / 900;
+		var aspect = retro ? RETRO_ASPECT : portrait ? 516 / 684 : 516 / 900;
 		var pic = UI.el("div", "in-pic", card);
 		var imgs = [], texts = [], dots = [];
 		var words = UI.el("div", "in-words", card);
+		if(retro) {
+			pic.style.background = "#000";
+			words.classList.add("in-sr"); // the words are in the pictures
+		}
 		PAGES.forEach(function(text, i) {
 			var img = UI.el("img", "in-img", pic);
-			img.src = versionedUrl("images/intro/intro-" + (i + 1) + (portrait ? "-portrait" : "") + ".png");
-			img.alt = ALT[i];
+			if(retro) {
+				img.src = versionedUrl("images/retro/intro" + (i + 1) + ".png");
+				img.alt = RETRO_ALT[i];
+				// letterbox, never stretch; smooth line art, not pixel art
+				img.style.objectFit = "contain";
+				img.style.imageRendering = "auto";
+			} else {
+				img.src = versionedUrl("images/intro/intro-" + (i + 1) + (portrait ? "-portrait" : "") + ".png");
+				img.alt = ALT[i];
+			}
 			img.draggable = false;
 			imgs.push(img);
 			texts.push(UI.el("p", "in-text", words, text));
